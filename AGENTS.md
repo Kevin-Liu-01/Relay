@@ -13,7 +13,10 @@ Preserve failures and mark missing usage unknown. References are scripts, not mo
 For the public release at `relay.kevinliu.studio`, read `docs/hosting.md` and
 `docs/system-one.md`. `src/live/` owns the screen-first BYOK UI; `hosted/` owns
 request-isolated execution and NDJSON streaming; `api/relay.mjs` is the Vercel entry.
-Keys stay out of browser persistence and traces. Never deploy a shared provider key.
+Provider keys may persist only in the operator UI's dedicated localStorage record
+when “Remember keys on this device” is enabled (default on, as requested by Kevin).
+Keep keys out of run history, audit, replay, exports and server persistence. Never
+deploy a shared provider key. Restoring a key may discover models, never start a run.
 History is browser-local, not a shared server database. Jev uses TypeSafe's official
 Choice API, not SGLang: text observations, deterministic candidate menu, real returned
 probabilities. Fake transport tests are not evidence of live Jev inference.

@@ -56,7 +56,7 @@ function fakeRouter(provider, key) {
     }),
   };
 }
-test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no key persistence', async ({
+test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection and key-free history', async ({
   page,
   request,
 }) => {
@@ -65,6 +65,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
   await once(server, 'listening');
   const url = `http://127.0.0.1:${server.address().port}`;
   const errors = [];
+  const runRequests = [];
+  page.on('request', (r) => {
+    if (r.url().includes('/api/relay?op=run')) runRequests.push(r.url());
+  });
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await page.goto(url);
@@ -114,6 +118,11 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     await page.getByLabel('Provider API key').fill('private-test-key-for-browser');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();
     await expect(page.getByLabel('Model', { exact: true })).toHaveValue('jev-latest');
+    expect(
+      await page.evaluate(
+        () => JSON.parse(localStorage.getItem('relay-credentials-v1')).keys.typesafe,
+      ),
+    ).toBe('private-test-key-for-browser');
     await expect(page.getByLabel('Interface', { exact: true })).toHaveValue('a11y');
     await page.getByRole('button', { name: 'Run', exact: true }).click();
     await expect(page.getByText('Action probabilities', { exact: true })).toBeVisible({
@@ -178,6 +187,16 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     expect(parsed.events.filter((e) => e.event.replay).length).toBe(5);
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayCapture');
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('"replay"');
+    await page.reload();
+    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(page.getByLabel('Model', { exact: true })).toHaveValue('jev-latest');
+    expect(runRequests).toHaveLength(1); // Reload only discovers models, never starts inference.
+    await page.getByRole('button', { name: 'Connected', exact: true }).click();
+    await expect(page.getByLabel('Provider API key')).toHaveAttribute('type', 'password');
+    await expect(page.getByLabel('Provider API key')).toHaveValue('private-test-key-for-browser');
+    await page.getByRole('button', { name: 'Forget key', exact: true }).click();
+    await expect(page.getByLabel('Provider API key')).toHaveValue('');
+    expect(await page.evaluate(() => localStorage.getItem('relay-credentials-v1'))).toBeNull();
     await page.reload();
     await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
     await page.getByRole('button', { name: /History/ }).click();
@@ -318,6 +337,9 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
     expect(runs[0].run.episodes[0].initialHash).toBe(runs[1].run.episodes[0].initialHash);
     expect(runs[0].run.config.maxEstimatedUSD).toBe(runs[1].run.config.maxEstimatedUSD);
     expect(JSON.stringify(runs)).not.toMatch(/arena-fake-[ab]/);
+    expect(
+      await page.evaluate(() => JSON.parse(localStorage.getItem('relay-credentials-v1')).keys),
+    ).toEqual({ ramp: 'arena-fake-b', typesafe: 'arena-fake-a' });
     await arena
       .getByRole('button', { name: /Play the run/ })
       .first()

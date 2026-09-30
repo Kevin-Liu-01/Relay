@@ -69,6 +69,11 @@ export function Duel({
   cap,
   steps,
   connection,
+  providerKeys,
+  rememberKeys,
+  onRememberChange,
+  onConnectedKey,
+  onForgetKey,
   onReplay,
   onSaved,
 }) {
@@ -89,7 +94,14 @@ export function Duel({
     [errors, setErrors] = useState(['', '']),
     [connecting, setConnecting] = useState(null);
   const controllers = useRef([]);
-  useEffect(() => () => controllers.current.forEach((c) => c.abort()), []);
+  const connectionAbort = useRef(null);
+  useEffect(
+    () => () => {
+      controllers.current.forEach((c) => c.abort());
+      connectionAbort.current?.abort();
+    },
+    [],
+  );
   const change = (i, patch) =>
     setLanes((old) => old.map((x, j) => (i === j ? { ...x, ...patch } : x)));
   const setAt = (fn, i, v) => fn((old) => old.map((x, j) => (i === j ? v : x)));
@@ -105,28 +117,48 @@ export function Duel({
     change(i, { model: id, rates });
   };
   async function connect(i) {
+    const controller = new AbortController();
+    connectionAbort.current?.abort();
+    connectionAbort.current = controller;
     setConnecting(i);
     setAt(setErrors, i, '');
     try {
-      const l = lanes[i],
+      const l = { ...lanes[i], key: lanes[i].key.trim() },
         r = await fetch('/api/relay?op=models', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ provider: l.provider, key: l.key }),
+          signal: controller.signal,
         });
       const data = await r.json();
+      if (controller.signal.aborted) return;
       if (!r.ok) throw Error(data.error);
       const id = data.models[0]?.id ?? '';
       change(i, {
+        key: l.key,
         catalog: data.models,
         model: id,
         rates: l.provider === 'typesafe' ? { input: 0.042, output: 0 } : { input: 0, output: 0 },
       });
+      setAt(setErrors, i, onConnectedKey(l.provider, l.key));
     } catch (e) {
-      setAt(setErrors, i, e.message);
+      if (!controller.signal.aborted) setAt(setErrors, i, e.message);
     } finally {
-      setConnecting(null);
+      if (connectionAbort.current === controller) setConnecting(null);
     }
+  }
+  function forget(i) {
+    connectionAbort.current?.abort();
+    setConnecting(null);
+    const provider = lanes[i].provider;
+    setLanes((old) =>
+      old.map((lane) =>
+        lane.provider === provider
+          ? { ...lane, key: '', model: '', catalog: [], rates: { input: 0, output: 0 } }
+          : lane,
+      ),
+    );
+    setAt(setErrors, i, onForgetKey(provider));
   }
   async function start() {
     if (
@@ -211,6 +243,21 @@ export function Duel({
   const verdict = duelVerdict(records);
   return (
     <div className="duel-surface">
+      <label className="check">
+        <input
+          type="checkbox"
+          checked={rememberKeys}
+          disabled={busy || connecting !== null}
+          onChange={(e) => setAt(setErrors, 0, onRememberChange(e.target.checked))}
+        />
+        Remember keys on this device
+      </label>
+      <p className="hint">
+        {rememberKeys
+          ? 'Saves the latest connected key per provider in unencrypted local storage. Scripts on this site can read it; avoid shared devices. '
+          : 'Keys stay only in this tab. '}
+        Keys never enter match history or downloads.
+      </p>
       <div className="duel-top">
         <div>
           <span className="mini-label">MATCHED TASK · FRESH WORKSPACES</span>
@@ -252,12 +299,12 @@ export function Duel({
                 <summary>Model connection</summary>
                 <select
                   aria-label={`Provider ${i ? 'B' : 'A'}`}
-                  disabled={busy}
+                  disabled={busy || connecting !== null}
                   value={lane.provider}
                   onChange={(e) =>
                     change(i, {
                       provider: e.target.value,
-                      key: '',
+                      key: providerKeys[e.target.value] ?? '',
                       model: '',
                       catalog: [],
                       rates: { input: 0, output: 0 },
@@ -273,7 +320,7 @@ export function Duel({
                     autoComplete="off"
                     aria-label={`API key ${i ? 'B' : 'A'}`}
                     value={lane.key}
-                    disabled={busy}
+                    disabled={busy || connecting !== null}
                     placeholder="Provider API key"
                     onChange={(e) => change(i, { key: e.target.value, catalog: [], model: '' })}
                   />
@@ -283,6 +330,13 @@ export function Duel({
                   >
                     <KeyRound size={14} />
                     Connect
+                  </button>
+                  <button
+                    disabled={busy}
+                    aria-label={`Forget key ${i ? 'B' : 'A'}`}
+                    onClick={() => forget(i)}
+                  >
+                    Forget
                   </button>
                 </div>
                 <select
@@ -363,7 +417,7 @@ export function Duel({
       <p className="duel-note">
         Both start together with the same task, seed, interface and budgets. Provider/model and
         action policy may differ. Shared worker load affects latency; cost uses your recorded rates.
-        Closing stops active requests. Keys are never saved.
+        Closing stops active requests. Keys are never included in match evidence.
       </p>
     </div>
   );

@@ -71,6 +71,11 @@ in the UI. **History**, **Compare**, and **Audit** keep outcomes, exact requests
 actions and screenshots accessible without cluttering the workspace. Download
 important runs; browser storage is not a cloud backup.
 
+Connected keys are remembered on this device by default. Uncheck **Remember keys
+on this device** for memory-only use; **Forget key** removes that provider's saved
+copy. Local storage is unencrypted and readable by scripts on this site—avoid
+shared devices. Keys never enter run history or evidence downloads.
+
 For the original local lab and larger experiment matrices, run the application
 and operator console in separate terminals:
 

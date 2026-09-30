@@ -1,5 +1,26 @@
 # Verification and evidence
 
+## Remembered provider connections — 2026-09-30
+
+At the user's request, successful connections can now persist keys in dedicated,
+unencrypted localStorage (Remember defaults on). This supersedes the original
+reload-forgets-key behavior below. History, audit, replay and downloads remain
+key-free; restoration discovers models only and never launches inference.
+
+New unit and browser checks cover provider separation, replacement, opt-out,
+forgetting, solo/1v1 reuse, corrupt records, revoked credentials, blocked storage,
+and forgetting during an in-flight connection. All provider traffic in these
+checks uses fake transports; no real credentials or paid inference are used.
+All **65 backend/harness and 32 browser checks** pass. The trust/retention tradeoff
+is disclosed in the UI and [hosting guide](hosting.md).
+
+A repeated pre-release run hit the shared local test store's 256-session cap;
+one arena check also reported a closed browser context. The test-only store was
+retained under a backup name and the full suite rerun with a fresh store, passing
+without changing application limits or adding retries. Repeated local test runs
+still need a fresh test store; this release does not claim to fix that harness
+lifecycle limitation.
+
 ## Welcome refinement — 2026-09-30
 
 The welcome headline is “Computer Use Playground.” with the Slack/computer-use

@@ -25,6 +25,8 @@ Open `http://localhost:4340`. This path accepts keys in the UI; it does not load
 ```mermaid
 flowchart LR
   B[Your browser: key in memory] -->|HTTPS request| F[One bounded worker request]
+  B -->|Remember enabled| K[Local storage: provider keys]
+  K -->|Reload: discover models only| B
   F -->|Key + model input| P[Selected official provider]
   F --> W[Private Chromium + SQLite workspace]
   W --> F
@@ -33,8 +35,11 @@ flowchart LR
   B --> D[Download: evidence JSON]
 ```
 
-- The key is sent to Relay's worker and only the selected provider's fixed official API. It is not a browser-to-provider direct connection. Authentication headers are never recorded in traces, and no key is intentionally written to disk, saved in browser storage or included in downloads. JavaScript memory is not guaranteed to be securely zeroized.
-- Reload/disconnect forgets the UI connection. Provider-side revoke/rotation remains your responsibility. A key previously pasted into a conversation should be rotated before continued use.
+- The key is sent to Relay's worker and only the selected provider's fixed official API. It is not a browser-to-provider direct connection. Keys and authentication headers never intentionally enter server persistence, run history, audit, replay or downloads. JavaScript memory is not guaranteed to be securely zeroized.
+- **Remember keys on this device** is enabled by default, per the operator's requested behavior. After a successful connection, the latest key per provider is saved in the `relay-credentials-v1` localStorage record, separate from IndexedDB evidence. Solo and 1v1 connections share it. Reload restores the last connected provider and discovers its account models; it never resumes a run or starts inference. Editing or unsuccessfully connecting a replacement does not overwrite the saved key.
+- Local storage is **not encrypted** and scripts running on this origin can read it. Anyone with access to this browser profile may use it. Avoid shared devices. Unchecking Remember immediately clears all saved provider keys while leaving current in-memory connections usable. With remembering enabled, one key per provider is retained; if both arena lanes use different keys for the same provider, the most recently connected one is remembered.
+- **Forget key** clears that provider's saved copy and the current UI connection, including matching arena lanes. It does not erase run history, revoke the provider credential or clear copies already held in another tab's memory. Clearing this site's browser data removes keys and history. Provider-side revoke/rotation remains your responsibility. A key previously pasted into a conversation should be rotated before continued use.
+- Corrupt stored credentials are ignored. Blocked storage falls back to in-memory use with a visible warning on save/removal failure. A saved key that fails authentication remains available to update or forget; there is no retry loop or provider substitution.
 - History belongs to this browser profile and origin. Other visitors cannot query a shared history endpoint. Clearing browser storage deletes history; another device will not see it. Download important runs.
 - Each run owns a random temporary directory, loopback application/control listeners, control secret, SQLite sessions and fresh browser contexts. Normal completion/disconnect closes them and deletes temporary run files. Forced process termination can prevent cleanup; temporary files are not durable storage or a recovery guarantee.
 - The observer receives initial/final state and grader results as audit evidence. The model receives only its configured observation interface, not the observer's final audit or control secret.

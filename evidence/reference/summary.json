@@ -1,9 +1,9 @@
 {
   "evidenceKind": "scripted-browser-reference",
   "stats": {
-    "startTime": "2026-09-30T22:53:55.805Z",
-    "duration": 12931.726,
-    "expected": 28,
+    "startTime": "2026-09-30T23:07:48.200Z",
+    "duration": 18036.408,
+    "expected": 32,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
@@ -12,23 +12,55 @@
     {
       "title": "trainer bridge: reset, screenshots, terminal reward, caps and cleanup",
       "status": "passed",
-      "durationMs": 1476,
+      "durationMs": 2094,
       "attachments": {
         "screenshot": "trainer-bridge-reset-screenshots-terminal-reward-caps-and-cleanup/final.png"
       }
     },
     {
-      "title": "hosted UI: BYOK, live Jev decisions, audit, replay, private history and no key persistence",
+      "title": "saved provider keys restore, prefill 1v1, forget independently and support opt-out",
       "status": "passed",
-      "durationMs": 5412,
+      "durationMs": 2313,
       "attachments": {
-        "screenshot": "hosted-ui-byok-live-jev-decisions-audit-replay-private-history-and-no-key-persistence/final.png"
+        "screenshot": "saved-provider-keys-restore-prefill-1v1-forget-independently-and-support-opt-out/final.png"
+      }
+    },
+    {
+      "title": "failed, corrupt and revoked credentials never silently reconnect or save a replacement",
+      "status": "passed",
+      "durationMs": 1529,
+      "attachments": {
+        "screenshot": "failed-corrupt-and-revoked-credentials-never-silently-reconnect-or-save-a-replacement/final.png"
+      }
+    },
+    {
+      "title": "blocked local storage allows an in-memory connection and shows the persistence failure",
+      "status": "passed",
+      "durationMs": 1095,
+      "attachments": {
+        "screenshot": "blocked-local-storage-allows-an-in-memory-connection-and-shows-the-persistence-failure/final.png"
+      }
+    },
+    {
+      "title": "forget during connection cancels the late response so it cannot restore or persist the key",
+      "status": "passed",
+      "durationMs": 853,
+      "attachments": {
+        "screenshot": "forget-during-connection-cancels-the-late-response-so-it-cannot-restore-or-persist-the-key/final.png"
+      }
+    },
+    {
+      "title": "hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection and key-free history",
+      "status": "passed",
+      "durationMs": 6224,
+      "attachments": {
+        "screenshot": "hosted-ui-byok-live-jev-decisions-audit-replay-remembered-connection-and-key-free-history/final.png"
       }
     },
     {
       "title": "no-key replay: real UI, play/pause/seek, no run requests, legacy fallback and reduced motion",
       "status": "passed",
-      "durationMs": 3559,
+      "durationMs": 3721,
       "attachments": {
         "screenshot": "no-key-replay-real-ui-play-pause-seek-no-run-requests-legacy-fallback-and-reduced-motion/final.png"
       }
@@ -36,7 +68,7 @@
     {
       "title": "1v1: concurrent matched systems, separate history, visible outcome and replay",
       "status": "passed",
-      "durationMs": 4350,
+      "durationMs": 5487,
       "attachments": {
         "screenshot": "1v1-concurrent-matched-systems-separate-history-visible-outcome-and-replay/final.png"
       }
@@ -44,7 +76,7 @@
     {
       "title": "two hosted requests have isolated browser sessions and no shared history API",
       "status": "passed",
-      "durationMs": 831,
+      "durationMs": 996,
       "attachments": {
         "screenshot": "two-hosted-requests-have-isolated-browser-sessions-and-no-shared-history-api/final.png"
       }
@@ -52,7 +84,7 @@
     {
       "title": "connected Router defaults are actionable; a model run is never labeled as a script",
       "status": "passed",
-      "durationMs": 1465,
+      "durationMs": 1826,
       "attachments": {
         "screenshot": "connected-router-defaults-are-actionable-a-model-run-is-never-labeled-as-a-script/final.png"
       }
@@ -60,7 +92,7 @@
     {
       "title": "lab launches genuine reference episodes, compares results and replays evidence",
       "status": "passed",
-      "durationMs": 5012,
+      "durationMs": 5709,
       "attachments": {
         "screenshot": "lab-launches-genuine-reference-episodes-compares-results-and-replays-evidence/final.png"
       }
@@ -68,7 +100,7 @@
     {
       "title": "API spectator follows the same session without changing state or model input",
       "status": "passed",
-      "durationMs": 511,
+      "durationMs": 712,
       "attachments": {
         "screenshot": "api-spectator-follows-the-same-session-without-changing-state-or-model-input/final.png"
       }
@@ -76,7 +108,7 @@
     {
       "title": "interface gateway pixels: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 471,
+      "durationMs": 748,
       "attachments": {
         "screenshot": "interface-gateway-pixels-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -84,7 +116,7 @@
     {
       "title": "interface gateway a11y: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 653,
+      "durationMs": 895,
       "attachments": {
         "screenshot": "interface-gateway-a11y-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -92,7 +124,7 @@
     {
       "title": "interface gateway json-ui: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 722,
+      "durationMs": 676,
       "attachments": {
         "screenshot": "interface-gateway-json-ui-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -100,7 +132,7 @@
     {
       "title": "page JSON omits offscreen and scroll-clipped text until it is visible",
       "status": "passed",
-      "durationMs": 460,
+      "durationMs": 526,
       "attachments": {
         "screenshot": "page-json-omits-offscreen-and-scroll-clipped-text-until-it-is-visible/final.png"
       }
@@ -108,7 +140,7 @@
     {
       "title": "presentation has nine usable slides, local figures and no horizontal overflow",
       "status": "passed",
-      "durationMs": 520,
+      "durationMs": 698,
       "attachments": {
         "screenshot": "presentation-has-nine-usable-slides-local-figures-and-no-horizontal-overflow/final.png"
       }
@@ -116,7 +148,7 @@
     {
       "title": "OFL typography, open UI glyphs and fictional initials load without third-party requests",
       "status": "passed",
-      "durationMs": 490,
+      "durationMs": 603,
       "attachments": {
         "screenshot": "ofl-typography-open-ui-glyphs-and-fictional-initials-load-without-third-party-requests/final.png"
       }
@@ -124,7 +156,7 @@
     {
       "title": "thread reply via search and semantic controls seed 42",
       "status": "passed",
-      "durationMs": 558,
+      "durationMs": 701,
       "attachments": {
         "trajectory": "thread-reply-via-search-and-semantic-controls-seed-42/trajectory.json",
         "screenshot": "thread-reply-via-search-and-semantic-controls-seed-42/final.png"
@@ -133,7 +165,7 @@
     {
       "title": "edit original via keyboard shortcut seed 42",
       "status": "passed",
-      "durationMs": 507,
+      "durationMs": 681,
       "attachments": {
         "trajectory": "edit-original-via-keyboard-shortcut-seed-42/trajectory.json",
         "screenshot": "edit-original-via-keyboard-shortcut-seed-42/final.png"
@@ -142,7 +174,7 @@
     {
       "title": "incident triage via pointer and menus seed 42",
       "status": "passed",
-      "durationMs": 640,
+      "durationMs": 857,
       "attachments": {
         "trajectory": "incident-triage-via-pointer-and-menus-seed-42/trajectory.json",
         "screenshot": "incident-triage-via-pointer-and-menus-seed-42/final.png"
@@ -151,7 +183,7 @@
     {
       "title": "cross-channel handoff via quick switcher seed 42",
       "status": "passed",
-      "durationMs": 399,
+      "durationMs": 560,
       "attachments": {
         "trajectory": "cross-channel-handoff-via-quick-switcher-seed-42/trajectory.json",
         "screenshot": "cross-channel-handoff-via-quick-switcher-seed-42/final.png"
@@ -160,7 +192,7 @@
     {
       "title": "delete only own draft seed 42",
       "status": "passed",
-      "durationMs": 568,
+      "durationMs": 798,
       "attachments": {
         "trajectory": "delete-only-own-draft-seed-42/trajectory.json",
         "screenshot": "delete-only-own-draft-seed-42/final.png"
@@ -169,7 +201,7 @@
     {
       "title": "channel topic through dialog seed 42",
       "status": "passed",
-      "durationMs": 501,
+      "durationMs": 710,
       "attachments": {
         "trajectory": "channel-topic-through-dialog-seed-42/trajectory.json",
         "screenshot": "channel-topic-through-dialog-seed-42/final.png"
@@ -178,7 +210,7 @@
     {
       "title": "thread reply via search and semantic controls seed 43",
       "status": "passed",
-      "durationMs": 427,
+      "durationMs": 599,
       "attachments": {
         "trajectory": "thread-reply-via-search-and-semantic-controls-seed-43/trajectory.json",
         "screenshot": "thread-reply-via-search-and-semantic-controls-seed-43/final.png"
@@ -187,7 +219,7 @@
     {
       "title": "edit original via keyboard shortcut seed 43",
       "status": "passed",
-      "durationMs": 452,
+      "durationMs": 737,
       "attachments": {
         "trajectory": "edit-original-via-keyboard-shortcut-seed-43/trajectory.json",
         "screenshot": "edit-original-via-keyboard-shortcut-seed-43/final.png"
@@ -196,7 +228,7 @@
     {
       "title": "incident triage via pointer and menus seed 43",
       "status": "passed",
-      "durationMs": 665,
+      "durationMs": 869,
       "attachments": {
         "trajectory": "incident-triage-via-pointer-and-menus-seed-43/trajectory.json",
         "screenshot": "incident-triage-via-pointer-and-menus-seed-43/final.png"
@@ -205,7 +237,7 @@
     {
       "title": "cross-channel handoff via quick switcher seed 43",
       "status": "passed",
-      "durationMs": 436,
+      "durationMs": 589,
       "attachments": {
         "trajectory": "cross-channel-handoff-via-quick-switcher-seed-43/trajectory.json",
         "screenshot": "cross-channel-handoff-via-quick-switcher-seed-43/final.png"
@@ -214,7 +246,7 @@
     {
       "title": "delete only own draft seed 43",
       "status": "passed",
-      "durationMs": 567,
+      "durationMs": 849,
       "attachments": {
         "trajectory": "delete-only-own-draft-seed-43/trajectory.json",
         "screenshot": "delete-only-own-draft-seed-43/final.png"
@@ -223,7 +255,7 @@
     {
       "title": "channel topic through dialog seed 43",
       "status": "passed",
-      "durationMs": 505,
+      "durationMs": 658,
       "attachments": {
         "trajectory": "channel-topic-through-dialog-seed-43/trajectory.json",
         "screenshot": "channel-topic-through-dialog-seed-43/final.png"
@@ -232,7 +264,7 @@
     {
       "title": "browser sessions remain isolated in the same browser context",
       "status": "passed",
-      "durationMs": 541,
+      "durationMs": 816,
       "attachments": {
         "screenshot": "browser-sessions-remain-isolated-in-the-same-browser-context/final.png"
       }
@@ -240,7 +272,7 @@
     {
       "title": "typed edits preserve focus; markup cannot execute",
       "status": "passed",
-      "durationMs": 501,
+      "durationMs": 581,
       "attachments": {
         "screenshot": "typed-edits-preserve-focus-markup-cannot-execute/final.png"
       }

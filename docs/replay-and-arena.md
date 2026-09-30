@@ -71,6 +71,11 @@ One development task is not a benchmark leaderboard or statistical conclusion.
 The per-worker admission cap is two; competing requests may be rejected. No retry
 or substitute model is silently inserted. Stop both or close the arena to cancel;
 already-sent provider calls may remain billable. Keys are not saved with match metadata.
+The separate Remember option stores the latest successfully connected key per
+provider in localStorage; the arena prefills it without putting it in evidence.
+Forget clears the provider's saved copy and matching in-memory lanes. See the
+[credential storage contract](hosting.md#where-data-goes) for the unencrypted-storage
+tradeoff, opt-out, reload behavior and other-tab limitation.
 
 ## Motion and verification receipt
 

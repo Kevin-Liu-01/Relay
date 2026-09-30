@@ -33,6 +33,12 @@ import Slack from '@thesvg/react/slack';
 import { ModelMark } from '../lab/model-mark.jsx';
 import relayMark from '../assets/relay-mark.svg';
 import { history, readRun, saveRun, deleteRun, downloadEvidence } from './storage.js';
+import {
+  readCredentials,
+  saveCredential,
+  setRememberCredentials,
+  forgetCredential,
+} from './credentials.js';
 import './style.css';
 import './experience.css';
 import { ActionSpotlight, ResultCard } from './feedback.jsx';
@@ -99,9 +105,11 @@ function Modal({ title, close, children, wide = false }) {
   );
 }
 function App() {
+  const [remembered] = useState(() => readCredentials());
+  const [rememberKeys, setRememberKeys] = useState(remembered.remember);
   const [setup, setSetup] = useState(null),
-    [provider, setProvider] = useState('ramp'),
-    [keys, setKeys] = useState({ ramp: '', typesafe: '' }),
+    [provider, setProvider] = useState(remembered.provider),
+    [keys, setKeys] = useState(remembered.keys),
     [catalog, setCatalog] = useState([]),
     [model, setModel] = useState(''),
     [rates, setRates] = useState({ input: 0.15, output: 0.6 }),
@@ -131,6 +139,8 @@ function App() {
     setModal('replay-player');
   }
   const abort = useRef(null),
+    connectionAbort = useRef(null),
+    connectionVersion = useRef(0),
     current = useRef(null),
     follow = useRef(true);
   useEffect(() => {
@@ -139,7 +149,13 @@ function App() {
       .then(setSetup)
       .catch((e) => setError(e.message));
     refreshHistory();
-    return () => abort.current?.abort();
+    if (remembered.keys[remembered.provider])
+      connect(remembered.provider, remembered.keys[remembered.provider], true);
+    return () => {
+      abort.current?.abort();
+      connectionAbort.current?.abort();
+      connectionVersion.current++;
+    };
   }, []);
   async function refreshHistory() {
     try {
@@ -164,22 +180,82 @@ function App() {
     }
     setError('');
   }
-  async function connect() {
+  function rememberConnectedKey(p, key) {
+    setKeys((old) => ({ ...old, [p]: key }));
+    try {
+      saveCredential(p, key, rememberKeys);
+      return '';
+    } catch {
+      return 'Connected for this tab, but browser storage is unavailable. The key could not be saved.';
+    }
+  }
+  function changeRemember(remember) {
+    setRememberKeys(remember);
+    try {
+      setRememberCredentials(remember);
+      setError('');
+      return '';
+    } catch {
+      const message =
+        'Browser storage could not be updated. Clear this site’s data in your browser to remove any saved keys.';
+      setError(message);
+      return message;
+    }
+  }
+  function forgetKey(p = provider) {
+    if (p === provider) {
+      connectionVersion.current++;
+      connectionAbort.current?.abort();
+      setConnecting(false);
+      setModel('');
+      setCatalog([]);
+    }
+    setKeys((old) => ({ ...old, [p]: '' }));
+    try {
+      forgetCredential(p);
+      setError('');
+      return '';
+    } catch {
+      const message =
+        'Key cleared from this tab, but the saved copy could not be removed. Clear this site’s data in your browser.';
+      setError(message);
+      return message;
+    }
+  }
+  async function connect(p = provider, inputKey = keys[p], restoring = false) {
+    const key = inputKey.trim();
+    const version = ++connectionVersion.current;
+    connectionAbort.current?.abort();
+    connectionAbort.current = new AbortController();
     setConnecting(true);
     setError('');
+    setModel('');
+    setCatalog([]);
     try {
-      const c = await (await api('models', { provider, key: keys[provider] })).json();
+      const c = await (
+        await api('models', { provider: p, key }, connectionAbort.current.signal)
+      ).json();
+      if (version !== connectionVersion.current) return;
       setCatalog(c.models);
       chooseModel(
-        c.models.find((m) => m.id === (provider === 'typesafe' ? 'jev-latest' : 'gpt-4o-mini'))
-          ?.id ?? c.models[0]?.id,
-        provider,
+        c.models.find((m) => m.id === (p === 'typesafe' ? 'jev-latest' : 'gpt-4o-mini'))?.id ??
+          c.models[0]?.id,
+        p,
       );
-      setModal(null);
+      // Restoring never writes a key back: another tab may have forgotten it.
+      if (!restoring) {
+        setError(rememberConnectedKey(p, key));
+        setModal(null);
+      }
     } catch (e) {
-      setError(e.message);
+      if (version === connectionVersion.current && e.name !== 'AbortError')
+        setError(
+          restoring
+            ? 'Saved key could not reconnect. Open Connect a key to update or forget it.'
+            : e.message,
+        );
     } finally {
-      setConnecting(false);
+      if (version === connectionVersion.current) setConnecting(false);
     }
   }
   async function start(compare = false) {
@@ -363,7 +439,7 @@ function App() {
         <span className="nav-divider" />
         <span className="nav-caption">Agents, in the open.</span>
         <div className="nav-spacer" />
-        <button disabled={busy} onClick={() => setModal('duel')}>
+        <button disabled={busy || connecting} onClick={() => setModal('duel')}>
           <Swords size={16} />
           1v1
         </button>
@@ -390,7 +466,7 @@ function App() {
         </a>
         <button className="connect" onClick={() => setModal('connect')}>
           <KeyRound size={14} />
-          {model ? 'Connected' : 'Connect a key'}
+          {connecting ? 'Connecting…' : model ? 'Connected' : 'Connect a key'}
         </button>
       </header>
       {error && (
@@ -702,6 +778,17 @@ function App() {
             cap={cap}
             steps={steps}
             connection={{ provider, key: keys[provider], model, catalog, rates }}
+            providerKeys={keys}
+            rememberKeys={rememberKeys}
+            onRememberChange={changeRemember}
+            onConnectedKey={(p, key) => {
+              if (p === provider && key !== keys[p]) {
+                setModel('');
+                setCatalog([]);
+              }
+              return rememberConnectedKey(p, key);
+            }}
+            onForgetKey={forgetKey}
             onReplay={openReplay}
             onSaved={refreshHistory}
           />
@@ -787,7 +874,7 @@ function App() {
               <button
                 className={provider === id ? 'selected' : ''}
                 key={id}
-                disabled={busy}
+                disabled={busy || connecting}
                 onClick={() => chooseProvider(id)}
               >
                 {id === 'typesafe' ? <Workflow size={16} /> : <Layers size={16} />} {label}
@@ -802,13 +889,29 @@ function App() {
               autoComplete="off"
               spellCheck={false}
               value={keys[provider]}
-              onChange={(e) => setKeys({ ...keys, [provider]: e.target.value })}
+              disabled={busy || connecting}
+              onChange={(e) => {
+                setKeys({ ...keys, [provider]: e.target.value });
+                setModel('');
+                setCatalog([]);
+              }}
               placeholder="Paste your key"
             />
           </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={rememberKeys}
+              disabled={busy || connecting}
+              onChange={(e) => changeRemember(e.target.checked)}
+            />
+            Remember keys on this device
+          </label>
           <p className="hint">
-            Used only for this connection and run. Never saved in browser storage or Relay traces.
-            Relay’s server sends it only to{' '}
+            {rememberKeys
+              ? 'Saved after connecting in this browser’s local storage, not encrypted. Scripts on this site can read it. Avoid shared devices. '
+              : 'Kept only in this tab. '}
+            Never included in history, audit or downloads. Relay’s server sends it only to{' '}
             {provider === 'typesafe' ? 'api.typesafe.ai' : 'api.router.com'}. Set a spending cap
             with your provider.
           </p>
@@ -825,20 +928,14 @@ function App() {
               Get a key
               <ArrowUpRight size={12} />
             </a>
-            <button
-              onClick={() => {
-                setKeys({ ...keys, [provider]: '' });
-                setModel('');
-                setCatalog([]);
-              }}
-            >
+            <button disabled={busy} onClick={() => forgetKey()}>
               <Unplug size={14} />
               Forget key
             </button>
             <button
               className="primary"
               disabled={connecting || busy || !keys[provider]}
-              onClick={connect}
+              onClick={() => connect()}
             >
               {connecting ? 'Connecting…' : 'Connect'}
               <ChevronRight size={14} />
