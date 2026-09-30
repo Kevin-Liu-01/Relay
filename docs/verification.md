@@ -8,6 +8,10 @@ action titles retain their existing prominence. Browser regressions cover the
 copy, absent eyebrow, idle/action sizing and mobile welcome layout. This update
 changes no workflow or model evidence.
 
+The follow-up copy is “Try out Computer Use” without a trailing period. Only
+“Computer Use” uses Relay's existing purple (`#62416f`); “Try out” remains
+graphite. The same desktop/mobile test checks the exact wording and both colors.
+
 ## Relay identity — 2026-09-30
 
 The [original Relay mark](brand.md) now appears beside the Live and Lab wordmarks

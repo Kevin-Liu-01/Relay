@@ -68,7 +68,14 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await page.goto(url);
-    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toBeVisible();
+    await expect(page.locator('.welcome-accent')).toHaveText('Computer Use');
+    await expect(page.locator('.welcome-accent')).toHaveCSS('color', 'rgb(98, 65, 111)');
+    await expect(page.locator('.welcome-accent')).toHaveCSS('white-space', 'nowrap');
+    await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toHaveCSS(
+      'color',
+      'rgb(40, 38, 44)',
+    );
     await expect(page.getByText('SLACK / COMPUTER USE', { exact: true })).toHaveCount(0);
     await expect(page.getByRole('heading', { name: 'Waiting for a decision' })).toHaveCSS(
       'font-size',
@@ -82,7 +89,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
         .map((face) => face.weight),
     );
     expect(loadedCamberWeights).toEqual(expect.arrayContaining(['400', '700']));
-    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toHaveCSS(
+    await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toHaveCSS(
       'font-family',
       /^"?Relay Camber"?,/,
     );
@@ -91,7 +98,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
       /^"?Relay Camber"?,/,
     );
     const headingTracking = await page
-      .getByRole('heading', { name: 'Computer Use Playground.' })
+      .getByRole('heading', { name: 'Try out Computer Use' })
       .evaluate((el) => getComputedStyle(el).letterSpacing);
     expect(parseFloat(headingTracking)).toBeGreaterThan(0);
     await page.screenshot({ path: 'evidence/visual/relay-live.png', fullPage: true });
@@ -99,7 +106,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toBeInViewport();
+    await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toBeInViewport();
     await page.screenshot({ path: 'evidence/visual/relay-welcome-mobile.png', fullPage: true });
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();

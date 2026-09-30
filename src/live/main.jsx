@@ -496,7 +496,9 @@ function App() {
             )}
             {!run && (
               <div className="welcome">
-                <h1>Computer Use Playground.</h1>
+                <h1>
+                  Try out <span className="welcome-accent">Computer Use</span>
+                </h1>
                 <p>
                   Connect a model. Give it a task.
                   <br />

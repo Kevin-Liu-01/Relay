@@ -311,6 +311,10 @@ button.primary:hover {
   letter-spacing: var(--relay-heading-tracking);
   margin: 14px 0 6px;
 }
+.welcome-accent {
+  color: var(--purple);
+  white-space: nowrap;
+}
 .welcome p {
   font-size: 15px;
   line-height: 1.7;
