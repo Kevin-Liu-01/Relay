@@ -1,0 +1,31 @@
+{
+  "provider": "ramp",
+  "models": [
+    { "id": "gpt-4o-mini", "rates": { "input": 0.15, "output": 0.6 }, "vision": false },
+    {
+      "id": "gpt-6-luna",
+      "rates": { "input": 0.1, "output": 0.5 },
+      "vision": false,
+      "reasoning": "none"
+    },
+    {
+      "id": "nemotron-lightning-3p5-30b-a3b",
+      "rates": { "input": 0.05, "output": 0.2 },
+      "vision": false
+    }
+  ],
+  "tasks": ["channel-topic"],
+  "seeds": [42],
+  "repeats": 1,
+  "interfaces": ["a11y", "json-ui", "api"],
+  "guides": [false],
+  "histories": ["recent-4"],
+  "orderSeed": 20260929,
+  "maxSteps": 8,
+  "maxRequests": 72,
+  "maxOutputTokens": 512,
+  "maxInputUnits": 128000,
+  "episodeSeconds": 90,
+  "runSeconds": 600,
+  "maxEstimatedUSD": 0.35
+}

@@ -1,0 +1,190 @@
+{
+  "retrievedAt": "2026-09-29T18:14:55.258Z",
+  "method": "GitHub public API via gh; branch-head provenance, not a quality/popularity ranking",
+  "repositories": [
+    {
+      "repo": "Sirneij/slack-clone-ui",
+      "url": "https://github.com/Sirneij/slack-clone-ui",
+      "description": "A responsive and beautiful slack clone UI with rich text editor created from scratch using HTML5, CSS3 and Vanilla JavaScript",
+      "defaultBranch": "master",
+      "sha": "662066375f5975c2d68582bd4061633686efcc08",
+      "commitDate": "2021-07-01T08:39:17Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/Sirneij/slack-clone-ui/tree/662066375f5975c2d68582bd4061633686efcc08",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "lukejacksonn/react-slack-clone",
+      "url": "https://github.com/lukejacksonn/react-slack-clone",
+      "description": "Complete chat application, built with Chatkit | by @lukejacksonn",
+      "defaultBranch": "master",
+      "sha": "fd62288d063c811c6e609ac863dd4fd8ab321961",
+      "commitDate": "2019-10-02T14:46:18Z",
+      "license": "MIT",
+      "archived": true,
+      "pinnedURL": "https://github.com/lukejacksonn/react-slack-clone/tree/fd62288d063c811c6e609ac863dd4fd8ab321961",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "remarkablemark/clask",
+      "url": "https://github.com/remarkablemark/clask",
+      "description": ":speech_balloon: Slack clone.",
+      "defaultBranch": "master",
+      "sha": "c425591619b0202d03d84d9254d8b16df4690414",
+      "commitDate": "2017-03-02T05:15:03Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/remarkablemark/clask/tree/c425591619b0202d03d84d9254d8b16df4690414",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "chunkangwong/slack-clone",
+      "url": "https://github.com/chunkangwong/slack-clone",
+      "description": "This is a Slack clone, built with Next.js, shadcn/ui component library, convex database and auth",
+      "defaultBranch": "main",
+      "sha": "ff0908382a2b0c16d76f1672d5d0f0e06c832b58",
+      "commitDate": "2025-12-07T10:32:04Z",
+      "license": "not-detected",
+      "archived": false,
+      "pinnedURL": "https://github.com/chunkangwong/slack-clone/tree/ff0908382a2b0c16d76f1672d5d0f0e06c832b58",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "harryheman/slack-clone",
+      "url": "https://github.com/harryheman/slack-clone",
+      "description": "Slack Clone developed using Next.js, TypeScript, TailwindCSS (shadcn/ui) & Convex",
+      "defaultBranch": "main",
+      "sha": "620432e82fcebf8798a86cfc1615a214a2496c54",
+      "commitDate": "2024-09-24T10:13:43Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/harryheman/slack-clone/tree/620432e82fcebf8798a86cfc1615a214a2496c54",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "farhanmasood-se/slack-clone",
+      "error": "Command failed: gh api repos/farhanmasood-se/slack-clone\ngh: Not Found (HTTP 404)\n"
+    },
+    {
+      "repo": "leonickson1/chatcn",
+      "url": "https://github.com/leonickson1/chatcn",
+      "description": " Beautiful, open-source chat UI components for React. Messages, threads, reactions, file upload, 4 themes. Built on shadcn/ui + Tailwind CSS.",
+      "defaultBranch": "main",
+      "sha": "a7be5c3aedebed3441594ce8f532acc168c1628c",
+      "commitDate": "2026-04-03T02:16:27Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/leonickson1/chatcn/tree/a7be5c3aedebed3441594ce8f532acc168c1628c",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "trycua/cua",
+      "url": "https://github.com/trycua/cua",
+      "description": "Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation.",
+      "defaultBranch": "main",
+      "sha": "c3941497a5545b6b977c55962c29391da10bdc03",
+      "commitDate": "2026-09-29T04:31:23Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/trycua/cua/tree/c3941497a5545b6b977c55962c29391da10bdc03",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "benchflow-ai/env0",
+      "url": "https://github.com/benchflow-ai/env0",
+      "description": null,
+      "defaultBranch": "main",
+      "sha": "a292cc5aae29b12a0779da895616175485a526af",
+      "commitDate": "2026-08-09T19:18:18Z",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "pinnedURL": "https://github.com/benchflow-ai/env0/tree/a292cc5aae29b12a0779da895616175485a526af",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "agent-diff-bench/agent-diff",
+      "url": "https://github.com/agent-diff-bench/agent-diff",
+      "description": "Interactive Sandboxes for AI Agent Evaluations & Reinforcement Learning on 3rd party APIs (Slack, Linear, Box, gCalendar)",
+      "defaultBranch": "main",
+      "sha": "3bb9c40707df23d89e5dbc0e40c424ba38c69ff8",
+      "commitDate": "2026-07-02T03:24:01Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/agent-diff-bench/agent-diff/tree/3bb9c40707df23d89e5dbc0e40c424ba38c69ff8",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "microsoft/sentinel_environments",
+      "url": "https://github.com/microsoft/sentinel_environments",
+      "description": "Environments that evolve over time to test monitoring and proactive scenarios.",
+      "defaultBranch": "main",
+      "sha": "0faca33cc58ea62e97a928b67cd3beec7176b408",
+      "commitDate": "2026-06-08T14:48:12Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/microsoft/sentinel_environments/tree/0faca33cc58ea62e97a928b67cd3beec7176b408",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "TheAgentCompany/TheAgentCompany",
+      "url": "https://github.com/TheAgentCompany/TheAgentCompany",
+      "description": "An agent benchmark with tasks in a simulated software company.",
+      "defaultBranch": "main",
+      "sha": "98b68ef82a47690c316f42fddb05baafaab56851",
+      "commitDate": "2025-11-17T20:31:14Z",
+      "license": "MIT",
+      "archived": false,
+      "pinnedURL": "https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "ServiceNow/BrowserGym",
+      "url": "https://github.com/ServiceNow/BrowserGym",
+      "description": "🌎💪 BrowserGym, a Gym environment for web task automation",
+      "defaultBranch": "main",
+      "sha": "c05d7f38f4f788d6e4ee960512c3d5c8aabc6e42",
+      "commitDate": "2026-09-27T20:43:44Z",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pinnedURL": "https://github.com/ServiceNow/BrowserGym/tree/c05d7f38f4f788d6e4ee960512c3d5c8aabc6e42",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "web-arena-x/webarena",
+      "url": "https://github.com/web-arena-x/webarena",
+      "description": "Code repo for \"WebArena: A Realistic Web Environment for Building Autonomous Agents\"",
+      "defaultBranch": "main",
+      "sha": "dce04686a56253aefba7b18a4fa0937cf1dc987b",
+      "commitDate": "2025-11-26T21:15:59Z",
+      "license": "Apache-2.0",
+      "archived": false,
+      "pinnedURL": "https://github.com/web-arena-x/webarena/tree/dce04686a56253aefba7b18a4fa0937cf1dc987b",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "agi-inc/REAL",
+      "url": "https://github.com/agi-inc/REAL",
+      "description": null,
+      "defaultBranch": "main",
+      "sha": "56d8f1643bdaa5e662086b1a357a9693c9ededf6",
+      "commitDate": "2025-05-15T23:21:21Z",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pinnedURL": "https://github.com/agi-inc/REAL/tree/56d8f1643bdaa5e662086b1a357a9693c9ededf6",
+      "inspected": "README/landing and selected source; not executed"
+    },
+    {
+      "repo": "huggingface/OpenEnv",
+      "url": "https://github.com/huggingface/OpenEnv",
+      "description": "An interface library for RL post training with environments. ",
+      "defaultBranch": "main",
+      "sha": "4f4c85fb9038f43efc2f51858a27638277f16355",
+      "commitDate": "2026-09-29T16:40:37Z",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "pinnedURL": "https://github.com/huggingface/OpenEnv/tree/4f4c85fb9038f43efc2f51858a27638277f16355",
+      "inspected": "README/landing and selected source; not executed"
+    }
+  ]
+}

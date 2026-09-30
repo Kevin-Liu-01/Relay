@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relay — Slack-like CUA environment</title>
+    <style>
+      :root {
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        color: #24202b;
+        background: #f4f2f6;
+        font-synthesis: none;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      header {
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4vw;
+        border-bottom: 1px solid #ddd6e4;
+        background: #fff;
+      }
+      header strong {
+        font-size: 20px;
+        letter-spacing: -0.7px;
+      }
+      header span {
+        font-size: 12px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: #746980;
+      }
+      .mark {
+        display: inline-grid;
+        place-items: center;
+        background: #40224e;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        margin-right: 10px;
+      }
+      main {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 36px 48px 76px;
+      }
+      .slide {
+        display: none;
+        min-height: calc(100vh - 180px);
+      }
+      .slide.active {
+        display: block;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #7f608f;
+        font-weight: 750;
+        margin: 0 0 18px;
+      }
+      h1 {
+        font-size: clamp(40px, 5vw, 72px);
+        letter-spacing: -3px;
+        line-height: 1.06;
+        margin: 0 0 24px;
+        max-width: 850px;
+      }
+      h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        letter-spacing: -1.8px;
+        line-height: 1.12;
+        margin: 0 0 20px;
+      }
+      h3 {
+        font-size: 21px;
+        margin: 0 0 12px;
+        letter-spacing: -0.5px;
+      }
+      p {
+        font-size: 20px;
+        line-height: 1.5;
+        color: #655c6e;
+        margin: 12px 0 24px;
+      }
+      strong {
+        color: #302738;
+      }
+      a {
+        color: #694380;
+        text-underline-offset: 4px;
+      }
+      .lead {
+        max-width: 850px;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1.12fr;
+        gap: 36px;
+        align-items: center;
+      }
+      .split > div {
+        min-width: 0;
+      }
+      .hero {
+        width: 100%;
+        border: 1px solid #cfc6d6;
+        border-radius: 12px;
+        box-shadow: 0 20px 50px #30133d12;
+      }
+      .wide {
+        max-height: 55vh;
+        object-fit: contain;
+        background: white;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin: 28px 0;
+      }
+      .card {
+        padding: 25px;
+        background: #fff;
+        border: 1px solid #e0d9e5;
+        border-radius: 14px;
+      }
+      .card p {
+        font-size: 16px;
+        margin: 0;
+      }
+      .number {
+        font-size: 44px;
+        font-weight: 750;
+        letter-spacing: -2px;
+        color: #593769;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 12px;
+        background: #e9e1ef;
+        color: #644777;
+        padding: 6px 10px;
+        border-radius: 20px;
+        margin: 0 6px 8px 0;
+      }
+      .note {
+        font-size: 13px;
+        color: #817588;
+        line-height: 1.5;
+      }
+      .callout {
+        background: #e9e1ef;
+        border-left: 3px solid #765289;
+        padding: 17px 23px;
+        border-radius: 0 12px 12px 0;
+        font-size: 18px;
+        color: #4f365f;
+      }
+      .flow {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        margin: 24px 0;
+      }
+      .node {
+        border: 1px solid #d9cfdf;
+        background: white;
+        border-radius: 14px;
+        padding: 22px;
+        font-weight: 650;
+        min-width: 155px;
+        text-align: center;
+      }
+      .node small {
+        display: block;
+        font-size: 12px;
+        color: #85748e;
+        margin-top: 8px;
+        font-weight: 400;
+      }
+      .arrow {
+        font-size: 26px;
+        color: #9879a9;
+      }
+      .trusted {
+        background: #e5eee7;
+        border-color: #bbd4c2;
+      }
+      .actors {
+        background: #f0e8f5;
+      }
+      .boundary {
+        border: 1px dashed #947ca4;
+        padding: 18px;
+        border-radius: 16px;
+        margin: 18px 0;
+      }
+      .boundary .note {
+        margin: 0;
+        text-align: center;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 24px 0;
+      }
+      .table th,
+      .table td {
+        text-align: left;
+        padding: 16px 18px;
+        border-bottom: 1px solid #e9e3ed;
+        font-size: 16px;
+      }
+      .table th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #86728e;
+        background: #eee7f3;
+      }
+      .table td:last-child {
+        color: #6b5777;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 24px 0;
+      }
+      .metrics .card {
+        padding: 20px;
+      }
+      .metrics p {
+        font-size: 14px;
+      }
+      .metrics .number {
+        font-size: 36px;
+      }
+      .limits {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .limits ul {
+        padding-left: 22px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: #66596e;
+      }
+      .shot-caption {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 54px;
+        background: #ffffffed;
+        border-top: 1px solid #ddd6e4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4vw;
+        backdrop-filter: blur(12px);
+      }
+      nav button {
+        background: #40224e;
+        color: white;
+        border: 0;
+        border-radius: 7px;
+        padding: 9px 18px;
+        font: inherit;
+        cursor: pointer;
+      }
+      nav button:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+      .counter {
+        font-size: 13px;
+        color: #7d6a88;
+      }
+      .navhint {
+        font-size: 12px;
+        color: #908099;
+      }
+      code {
+        background: #eae5ee;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 0.86em;
+      }
+      .check {
+        color: #2d7856;
+      }
+      .bar {
+        height: 10px;
+        background: #795789;
+        border-radius: 5px;
+        margin: 12px 0 0;
+      }
+      .caption {
+        font-size: 14px;
+        color: #8b7c95;
+      }
+      .links {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        margin-top: 24px;
+      }
+      @media (max-width: 850px) {
+        main {
+          padding: 28px 24px 80px;
+        }
+        .split,
+        .limits {
+          grid-template-columns: 1fr;
+        }
+        .grid,
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .flow {
+          flex-wrap: wrap;
+        }
+        .navhint {
+          display: none;
+        }
+        .table td,
+        .table th {
+          padding: 10px;
+          font-size: 13px;
+        }
+      }
+      @media print {
+        header,
+        nav {
+          display: none;
+        }
+        main {
+          padding: 0;
+          max-width: none;
+        }
+        .slide {
+          display: block !important;
+          page-break-after: always;
+          min-height: 0;
+          padding: 20mm 12mm;
+        }
+        h1 {
+          font-size: 42px;
+        }
+        h2 {
+          font-size: 32px;
+        }
+        p {
+          font-size: 16px;
+        }
+        .card {
+          break-inside: avoid;
+        }
+        .hero {
+          box-shadow: none;
+        }
+        .wide {
+          max-height: 120mm;
+        }
+        .table td,
+        .table th {
+          padding: 10px;
+          font-size: 13px;
+        }
+        .note {
+          font-size: 10px;
+        }
+        @page {
+          size: A4 landscape;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong><span class="mark">R</span>Relay</strong
+      ><span>Computer-use environment · September 2026</span>
+    </header>
+    <main>
+      <section class="slide active" data-title="Overview">
+        <div class="split">
+          <div>
+            <div class="eyebrow">01 / Build something agents can actually use</div>
+            <h1>A familiar workspace.<br />A measurable environment.</h1>
+            <p>
+              Slack-like workflows with persistent state, isolated episodes, and outcomes we can
+              verify.
+            </p>
+            <span class="tag">Local-first</span><span class="tag">Six task contracts</span
+            ><span class="tag">No model key required</span>
+            <p class="note">
+              Relay / fictional Northstar workspace. Focused assignment implementation—not Slack
+              affiliation or API compatibility.
+            </p>
+          </div>
+          <div>
+            <img
+              class="hero"
+              src="../evidence/visual/relay-lab.png"
+              alt="Relay's public operator console with a Slack-like workspace and action history"
+            />
+            <p class="shot-caption">Current public build · scripted reference replay</p>
+          </div>
+        </div>
+      </section>
+      <section class="slide" data-title="Research">
+        <div class="eyebrow">02 / Start with the landscape</div>
+        <h2>A Slack mockup is not an RL environment.</h2>
+        <p class="lead">The useful prior work falls into three different categories.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>UI & full-app clones</h3>
+            <p>
+              Sirneij, Clask, Chatcn, Next/Convex tutorial family. Great interaction references;
+              usually no task reset or reward contract.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Existing Slack environments</h3>
+            <p>
+              Cua's browser-native <code>slack_env</code>; env0's API replica plus UI. These are the
+              closest systems, not just inspiration screenshots.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Evaluation infrastructure</h3>
+            <p>
+              Agent-Diff, BrowserGym, OpenEnv, WebArena. Learn from outcome grading, lifecycle
+              boundaries and reusable interfaces.
+            </p>
+          </div>
+        </div>
+        <div class="callout">
+          Decision: original focused UI + small transactional state engine. Own the evaluation
+          boundary; do not claim novelty.
+        </div>
+        <p class="note">
+          Repository heads and licenses recorded. External systems reviewed, not independently
+          executed or benchmarked. No benchmark code copied; official visual assets are separately
+          attributed.
+        </p>
+        <div class="links">
+          <a href="research.md">Full sourced survey</a
+          ><a href="../evidence/research/repositories.json">Pinned source metadata</a>
+        </div>
+      </section>
+      <section class="slide" data-title="Architecture">
+        <div class="eyebrow">03 / Keep the oracle out of the actor's hands</div>
+        <h2>Two interfaces. One explicit state contract.</h2>
+        <div class="boundary">
+          <div class="flow">
+            <div class="node actors">Policy<small>Screenshot / visible DOM</small></div>
+            <span class="arrow">→</span>
+            <div class="node actors">Browser context<small>Mouse + keyboard only</small></div>
+            <span class="arrow">→</span>
+            <div class="node">Actor server<small>Port 4318</small></div>
+            <span class="arrow">→</span>
+            <div class="node">SQLite / session<small>State + revision + audit</small></div>
+          </div>
+          <p class="note">A token routes to one private file. No shared session cookie.</p>
+        </div>
+        <div class="flow">
+          <div class="node trusted">
+            Trusted trainer<small>Create / reset / step / close</small>
+          </div>
+          <span class="arrow">↔</span>
+          <div class="node trusted">Control server<small>Loopback + secret · 4319</small></div>
+          <span class="arrow">↔</span>
+          <div class="node trusted">
+            Outcome grader<small>Final state, not claimed success</small>
+          </div>
+        </div>
+        <p class="note">
+          Today, both HTTP listeners share one process. Interface separation is not a hostile-code
+          sandbox. Production requires a separate control network and isolated actor workers.
+        </p>
+      </section>
+      <section class="slide" data-title="Task design">
+        <div class="eyebrow">04 / Small surface, meaningful interactions</div>
+        <h2>Six workflows. Six ways to get it wrong.</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Find → reply</h3>
+            <p>Search for the right release and respond inside its thread—not the channel.</p>
+          </div>
+          <div class="card">
+            <h3>Edit the original</h3>
+            <p>
+              Change your earlier message without posting a duplicate or touching someone else's.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Triage an incident</h3>
+            <p>Distinguish the current incident, acknowledge it, and pin the same message.</p>
+          </div>
+          <div class="card">
+            <h3>Read → hand off</h3>
+            <p>
+              Use current facts, ignore a superseded draft, and send one DM to the right person.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Delete carefully</h3>
+            <p>Remove your placeholder draft while preserving the approved announcement.</p>
+          </div>
+          <div class="card">
+            <h3>Set a topic</h3>
+            <p>Navigate to the intended channel and update its topic through the dialog.</p>
+          </div>
+        </div>
+        <div class="callout">
+          Reward = 1 only if the requested outcome is present and the complete final state has no
+          extra changes.
+        </div>
+      </section>
+      <section class="slide" data-title="Verification">
+        <div class="eyebrow">05 / Evidence, not a success-rate headline</div>
+        <h2>Three layers of verification.</h2>
+        <div class="grid">
+          <div class="card">
+            <div class="number">24</div>
+            <h3>Backend checks</h3>
+            <p>
+              Ownership, false-positive graders, stale writes, idempotency, isolation, reset and
+              fresh-process recovery.
+            </p>
+          </div>
+          <div class="card">
+            <div class="number">16</div>
+            <h3>Browser checks</h3>
+            <p>
+              Six tasks × two seeds, plus focus/inert HTML, same-context isolation and the trainer
+              bridge. Scripted references.
+            </p>
+          </div>
+          <div class="card">
+            <div class="number">3</div>
+            <h3>Interactive model episodes</h3>
+            <p>
+              Search/DOM; keyboard edit + reload; screenshot-only incident triage. Each passed its
+              state contract.
+            </p>
+          </div>
+        </div>
+        <p>
+          <strong>Important:</strong> the interactive episodes were builder-informed smoke tests.
+          They are not a blind model comparison, trained-policy result or statistical success
+          estimate.
+        </p>
+        <p class="note">
+          A real typing-focus defect was found and fixed. A fill-only test would have missed it.
+          Shareable evidence includes screenshots, event logs, state hashes and terminal checks.
+        </p>
+        <div class="links">
+          <a href="verification.md">Verification report</a
+          ><a href="../evidence/agent/summary.json">Interactive episodes</a
+          ><a href="../evidence/reference/summary.json">Reference test results</a>
+        </div>
+      </section>
+      <section class="slide" data-title="Live visual trajectory">
+        <div class="eyebrow">06 / Demonstrate the complete interaction</div>
+        <h2>A visible workspace. A verifiable outcome.</h2>
+        <img
+          class="hero wide"
+          src="../evidence/visual/slack-assets.png"
+          alt="Current public Slack-like workspace with local Lato typography and fictional initials"
+        />
+        <p class="caption">
+          Current public UI capture. Historical coordinate-based incident-triage evidence is
+          preserved as trajectory JSON; its private-prototype screenshots are not distributed.
+        </p>
+      </section>
+      <section class="slide" data-title="Measurements">
+        <div class="eyebrow">07 / Optimize what actually costs time</div>
+        <h2>The browser costs more than the reset.</h2>
+        <div class="metrics">
+          <div class="card">
+            <p>CREATE / p50</p>
+            <div class="number">5.19<span class="caption"> ms</span></div>
+            <div class="bar" style="width: 8%"></div>
+          </div>
+          <div class="card">
+            <p>RESET / p50</p>
+            <div class="number">0.37<span class="caption"> ms</span></div>
+            <div class="bar" style="width: 1%"></div>
+          </div>
+          <div class="card">
+            <p>WRITE HTTP / p50</p>
+            <div class="number">1.35<span class="caption"> ms</span></div>
+            <div class="bar" style="width: 2%"></div>
+          </div>
+          <div class="card">
+            <p>SCREENSHOT / p50</p>
+            <div class="number">69.49<span class="caption"> ms</span></div>
+            <div class="bar" style="width: 100%"></div>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Measured</th>
+              <th>Bounded experiment</th>
+              <th>Not established</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100 stored sessions</td>
+              <td>~48 KiB per post-mutation SQLite fixture</td>
+              <td>100 simultaneous browser agents</td>
+            </tr>
+            <tr>
+              <td>400 reads / concurrency 16</td>
+              <td>p95 8.37 ms; short loopback burst</td>
+              <td>Sustained production throughput</td>
+            </tr>
+            <tr>
+              <td>10 fresh browser contexts</td>
+              <td>Page-ready p50 67.29 ms, sequential</td>
+              <td>Multi-hour memory stability</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">
+          Apple M5 Max / 128 GiB / Node 24.13 / Chromium 153. Store calls exclude HTTP; screenshots
+          include capture. Client/server share benchmark process. Browser child memory not measured.
+          Raw samples included.
+        </p>
+      </section>
+      <section class="slide" data-title="Tradeoffs">
+        <div class="eyebrow">08 / Know where the prototype stops</div>
+        <h2>Scale the episode boundary, not the whole app.</h2>
+        <div class="limits">
+          <div class="card">
+            <h3>Good fit today</h3>
+            <ul>
+              <li>Shared immutable frontend assets</li>
+              <li>Private deterministic state per episode</li>
+              <li>Revision fencing and retry-safe writes</li>
+              <li>Fresh browser context, explicit close</li>
+              <li>Small Linux image, no hosted backend</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Next engineering gate</h3>
+            <ul>
+              <li>Separate actor/control processes and networks</li>
+              <li>Bounded browser pools, quotas and janitor</li>
+              <li>Process-tree memory and concurrency soak</li>
+              <li>Template-level held-out tasks</li>
+              <li>Independent agents and fidelity checks</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">
+          No realtime coworkers, uploads, OAuth or Slack API parity. Seed variation is cosmetic, not
+          a genuine train/test split. Reversible detours may pass final-state grading; path-level
+          safety requires event constraints.
+        </p>
+      </section>
+      <section class="slide" data-title="Discussion">
+        <div class="eyebrow">09 / Demo & discussion</div>
+        <h2>Runnable now.<br />Clear experiments next.</h2>
+        <div class="split">
+          <div>
+            <h3>Live demo · three minutes</h3>
+            <p>
+              Open a fresh task. Show search and a thread reply. Grade it. Reset it. Show a second
+              session stayed unchanged.
+            </p>
+            <p>
+              <code>npm ci</code> → <code>npm run dev</code><br /><code
+                >npm run session -- create thread-reply 47</code
+              >
+            </p>
+          </div>
+          <div class="card">
+            <h3>Questions worth brainstorming</h3>
+            <p>
+              Where is fidelity worth its reset cost?<br />What observation boundary best matches
+              the target policy?<br />When should recovery count as success?<br />Which task splits
+              actually prevent memorization?<br />How much isolation does the threat model require?
+            </p>
+          </div>
+        </div>
+        <div class="links">
+          <a href="../README.md">Setup</a><a href="research.md">Research</a
+          ><a href="architecture.md">Architecture</a><a href="handoff.md">Handoff</a
+          ><a href="presentation-notes.md">Speaker notes</a>
+        </div>
+        <p class="note">
+          All demonstrated data is synthetic. No private assignment document or live credentials are
+          in the shareable archive.
+        </p>
+      </section>
+    </main>
+    <nav aria-label="Slide navigation">
+      <button id="prev" aria-label="Previous slide">← Previous</button
+      ><span class="navhint">Arrow keys to navigate · Print to PDF for handout</span
+      ><span class="counter" id="counter" aria-live="polite"></span
+      ><button id="next" aria-label="Next slide">Next →</button>
+    </nav>
+    <script>
+      const slides = [...document.querySelectorAll('.slide')];
+      let index = Math.max(
+        0,
+        Math.min(slides.length - 1, (Number(location.hash.slice(1)) || 1) - 1),
+      );
+      function show(i) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        slides.forEach((s, n) => s.classList.toggle('active', n === index));
+        document.getElementById('counter').textContent =
+          `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
+        document.getElementById('prev').disabled = index === 0;
+        document.getElementById('next').disabled = index === slides.length - 1;
+        history.replaceState(null, '', `#${index + 1}`);
+        window.scrollTo(0, 0);
+      }
+      document.getElementById('prev').onclick = () => show(index - 1);
+      document.getElementById('next').onclick = () => show(index + 1);
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          e.preventDefault();
+          show(index + 1);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          show(index - 1);
+        }
+      });
+      show(index);
+    </script>
+  </body>
+</html>

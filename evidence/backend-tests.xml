@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="deterministic seeds vary content and remain independent" time="0.002991" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="search handles quotes, AND, people, channel and exclusions" time="0.000515" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="search distinguishes threads and dates" time="0.005553" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="ownership and cross-channel thread boundaries enforced" time="0.000824" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="invalid actions leave input unchanged" time="0.000700" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="reaction and pin toggles are reversible" time="0.000755" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader thread-reply: seed fails; intended state passes; unrelated mutation fails" time="0.004997" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader edit-message: seed fails; intended state passes; unrelated mutation fails" time="0.004680" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader incident-triage: seed fails; intended state passes; unrelated mutation fails" time="0.003868" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader handoff-dm: seed fails; intended state passes; unrelated mutation fails" time="0.003769" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader delete-draft: seed fails; intended state passes; unrelated mutation fails" time="0.003720" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader channel-topic: seed fails; intended state passes; unrelated mutation fails" time="0.004360" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="grader rejects right text in wrong place and duplicate answers" time="0.000859" classname="test" file="/Users/kevinliu/repos/Relay/tests/domain.test.mjs"/>
+	<testcase name="audit includes complete input, state events and chain-bound artifacts without inference" time="0.079206" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="audit detects changed inputs, removed artifacts, truncated chains and malformed records" time="0.028789" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="legacy audit never invents missing request bodies or event timestamps" time="0.026293" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="audit downloads are read-only, same-origin, credential-scanned and include every event" time="0.043754" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="portable export refuses overwrites, active runs and leaked capabilities" time="0.025669" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="unpriced models, zero-cost coercion and credential-shaped config fields fail closed" time="0.000284" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="failed/incomplete provider responses and impossible usage cannot produce actions" time="0.001138" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="undisclosed message aliases are rejected, then disclosed aliases work" time="0.015916" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="all six API reference workflows pass across two fixture seeds without hidden answer lookup" time="0.249495" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="cancelling an in-flight response stops new actions and retains uncertain spend" time="0.017883" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="restart marks in-flight usage unknown, recomputes errors and never resubmits" time="0.003555" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="console restart never overwrites an active CLI checkpoint; imports it after completion" time="0.004916" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="overlapping streamed starts admit exactly one active run" time="0.051465" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="all control operations have bounded network waits, including cleanup" time="0.103499" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="paired factorial schedule is complete, unique, reproducible and shuffled" time="0.000655" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="invalid matrices, absent prices and unverified vision are rejected before requests" time="0.000189" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="history intervention retains task and guide, not omitted turns" time="0.000124" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="Router uses Responses endpoint, no fallback, records returned identity and usage" time="0.000254" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="Router errors never echo secrets and retry count stays one" time="0.000164" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="request accounting includes guide, history and images; not just generated text" time="0.000040" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="API gateway exposes opaque actor IDs, never evaluator controls, preserves isolation" time="0.019267" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="live-style fake transport executes observed action, grades and persists a hash chain" time="0.017940" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="dollar reservation stops before sending; missing usage stops and is not free" time="0.029229" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="invalid model outputs consume attempts; no-op cannot satisfy grader" time="0.015081" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="comparison denominators include errors and exclude unattempted cells; pairs retain fixed factors" time="0.000211" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="operator server rejects cross-origin, CSRF, credentialless runs and arbitrary artifact paths" time="0.002724" classname="test" file="/Users/kevinliu/repos/Relay/tests/lab.test.mjs"/>
+	<testcase name="committed mutation survives a fresh OS process; token remains scoped" time="0.083667" classname="test" file="/Users/kevinliu/repos/Relay/tests/restart.test.mjs"/>
+	<testcase name="control plane is absent from app and requires token" time="0.021811" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="unknown and traversal session tokens fail closed" time="0.004266" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="sessions are physically separate and cannot leak writes" time="0.020910" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="idempotency replay succeeds once and conflicting reuse is rejected" time="0.011562" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="concurrent stale writes yield one success and one conflict" time="0.006769" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="reset is deterministic, preserves audit, and fences stale writes" time="0.013017" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="reopening the store survives a process-level connection boundary" time="0.006967" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="bad input and cross-origin writes leave state unchanged" time="0.006207" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="HTML input stays inert JSON and grader receives no browser claims" time="0.007497" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<testcase name="close invalidates session without touching sibling" time="0.012185" classname="test" file="/Users/kevinliu/repos/Relay/tests/server.test.mjs"/>
+	<!-- tests 50 -->
+	<!-- suites 0 -->
+	<!-- pass 50 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 970.952625 -->
+</testsuites>

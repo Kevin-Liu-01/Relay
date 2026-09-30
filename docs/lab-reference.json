@@ -1,0 +1,18 @@
+{
+  "provider": "reference",
+  "models": [{ "id": "scripted-reference" }],
+  "tasks": ["channel-topic"],
+  "seeds": [42],
+  "repeats": 1,
+  "interfaces": ["a11y", "json-ui", "api"],
+  "guides": [false, true],
+  "histories": ["full", "recent-4"],
+  "orderSeed": 20260929,
+  "maxSteps": 30,
+  "maxRequests": 100,
+  "maxOutputTokens": 512,
+  "maxInputUnits": 64000,
+  "episodeSeconds": 90,
+  "runSeconds": 600,
+  "maxEstimatedUSD": 1
+}

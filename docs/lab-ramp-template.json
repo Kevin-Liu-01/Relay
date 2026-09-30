@@ -1,0 +1,20 @@
+{
+  "provider": "ramp",
+  "models": [
+    { "id": "REPLACE_WITH_EXACT_CATALOG_ID", "rates": { "input": 0, "output": 0 }, "vision": false }
+  ],
+  "tasks": ["channel-topic"],
+  "seeds": [42],
+  "repeats": 1,
+  "interfaces": ["a11y", "json-ui", "api"],
+  "guides": [false],
+  "histories": ["recent-4"],
+  "orderSeed": 20260929,
+  "maxSteps": 20,
+  "maxRequests": 60,
+  "maxOutputTokens": 512,
+  "maxInputUnits": 64000,
+  "episodeSeconds": 90,
+  "runSeconds": 600,
+  "maxEstimatedUSD": 1
+}

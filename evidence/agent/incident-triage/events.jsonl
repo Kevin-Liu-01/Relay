@@ -1,0 +1,8 @@
+{"seq":1,"kind":"interaction","type":"navigate","label":"incidents","key":"","x":null,"y":null,"at":"2026-09-29T17:57:20.074Z"}
+{"seq":2,"kind":"interaction","type":"click","label":"Channel incidents","key":"","x":153,"y":400,"at":"2026-09-29T17:57:20.077Z"}
+{"seq":3,"kind":"interaction","type":"click","label":"React to Sam Rivera's message","key":"","x":1584,"y":462,"at":"2026-09-29T17:57:37.614Z"}
+{"seq":4,"kind":"mutation","revision":1,"action":{"type":"reaction.toggle","id":"incident-target","emoji":"✅"},"beforeHash":"f1e77a1333e1e6e672a8476d29112aa8ff17a6ab585e838df27a244d0162321c","afterHash":"72b4a92b72c52677835d2440de35121bf112ee2d053e2729be551229b818c976","at":"2026-09-29T17:57:43.139Z"}
+{"seq":5,"kind":"interaction","type":"click","label":"React ✅","key":"","x":1447,"y":507,"at":"2026-09-29T17:57:43.140Z"}
+{"seq":6,"kind":"interaction","type":"click","label":"More actions for Sam Rivera's message","key":"","x":1669,"y":461,"at":"2026-09-29T17:57:49.114Z"}
+{"seq":7,"kind":"mutation","revision":2,"action":{"type":"pin.toggle","id":"incident-target"},"beforeHash":"72b4a92b72c52677835d2440de35121bf112ee2d053e2729be551229b818c976","afterHash":"f4d86e2d1a4b3305d634985e84941df31d73a73f3edc46dff1ce67150f85b286","at":"2026-09-29T17:57:54.360Z"}
+{"seq":8,"kind":"interaction","type":"click","label":"Pin to this conversation","key":"","x":1578,"y":501,"at":"2026-09-29T17:57:54.361Z"}

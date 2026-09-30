@@ -1,0 +1,42 @@
+{
+  "retrievedAt": "2026-09-29T18:52:22.374Z",
+  "referencePage": "https://slack.com/signin",
+  "note": "Public release includes unmodified OFL Lato fonts only. Proprietary icon font and sample photographs from the private prototype are excluded.",
+  "assets": [
+    {
+      "file": "fonts/OFL.txt",
+      "source": "https://raw.githubusercontent.com/slackapi/assets-app-directory/1276ee44c6f18f1c4009bfdb1f5924b8d59911e3/fonts/Lato/OFL.txt",
+      "rights": "SIL OFL 1.1 license text",
+      "bytes": 4498,
+      "sha256": "befc3894e43954cea768dab03df0be09aef36d861c8fd5759b1d36272b749ad4"
+    },
+    {
+      "file": "fonts/slack-lato-regular.woff2",
+      "source": "https://a.slack-edge.com/bv1-13-br/lato-regular-ef8e44a2b506169e.woff2",
+      "rights": "SIL OFL 1.1",
+      "bytes": 203536,
+      "sha256": "b5b8cac1d8b029b471cb7f6d5e2cc713a3bbcfea888e6a85d59b3ec9d478ecd3"
+    },
+    {
+      "file": "fonts/slack-lato-bold.woff2",
+      "source": "https://a.slack-edge.com/bv1-13-br/lato-bold-78da5d4476a83d65.woff2",
+      "rights": "SIL OFL 1.1",
+      "bytes": 202444,
+      "sha256": "6e21fb5102f293831847e25d704a659740b7ff29bd444053dbb3fa81643e9db3"
+    },
+    {
+      "file": "fonts/slack-lato-black.woff2",
+      "source": "https://a.slack-edge.com/bv1-13-br/lato-black-7b284cff5d2dfc23.woff2",
+      "rights": "SIL OFL 1.1",
+      "bytes": 195592,
+      "sha256": "5e2d65f15e268a086b8d0d88119e55d5a554aa7c8f835a48ff83939dfa83d07b"
+    },
+    {
+      "file": "fonts/slack-lato-italic.woff2",
+      "source": "https://a.slack-edge.com/bv1-13-br/lato-italic-648fd7b4348ee72c.woff2",
+      "rights": "SIL OFL 1.1",
+      "bytes": 219628,
+      "sha256": "ac813aaf3390292c351c16994f5ff6a7fa02696ca70dd65f8f9e54b92ab5e2e7"
+    }
+  ]
+}

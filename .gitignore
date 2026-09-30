@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.runtime/
+test-results/
+playwright-report/
+artifacts/
+*.tgz
+.env
+.env.*
+!.env.example
+.vercel/

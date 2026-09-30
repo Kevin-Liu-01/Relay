@@ -1,0 +1,16 @@
+{
+  "repo": "agent-diff-bench/agent-diff",
+  "path": "README.md",
+  "sha": "3bb9c40707df23d89e5dbc0e40c424ba38c69ff8",
+  "sourceURL": "https://github.com/agent-diff-bench/agent-diff/blob/3bb9c40707df23d89e5dbc0e40c424ba38c69ff8/README.md",
+  "lineCount": 202,
+  "matchingLineNumbers": [
+    84,
+    115,
+    122,
+    123,
+    127,
+    130
+  ],
+  "note": "Selected line locations for task configuration, evaluation or state lifecycle. Read at the pinned source URL; no upstream source is bundled."
+}

@@ -1,0 +1,8 @@
+node_modules
+dist
+.runtime
+artifacts
+test-results
+playwright-report
+evidence
+package-lock.json

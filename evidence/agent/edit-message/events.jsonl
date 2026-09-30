@@ -1,0 +1,8 @@
+{"seq":1,"kind":"interaction","type":"keydown","label":"Message #proj-atlas","key":"ArrowUp","x":null,"y":null,"at":"2026-09-29T17:56:57.541Z"}
+{"seq":2,"kind":"interaction","type":"keydown","label":"Edit message","key":"Meta+Meta","x":null,"y":null,"at":"2026-09-29T17:56:57.552Z"}
+{"seq":3,"kind":"interaction","type":"keydown","label":"Edit message","key":"Meta+A","x":null,"y":null,"at":"2026-09-29T17:56:57.558Z"}
+{"seq":4,"kind":"interaction","type":"keydown","label":"Edit message","key":"Tab","x":null,"y":null,"at":"2026-09-29T17:56:57.623Z"}
+{"seq":5,"kind":"interaction","type":"keydown","label":"","key":"Tab","x":null,"y":null,"at":"2026-09-29T17:56:57.630Z"}
+{"seq":6,"kind":"interaction","type":"keydown","label":"","key":"Enter","x":null,"y":null,"at":"2026-09-29T17:57:03.005Z"}
+{"seq":7,"kind":"interaction","type":"click","label":"Save changes","key":"","x":0,"y":0,"at":"2026-09-29T17:57:03.006Z"}
+{"seq":8,"kind":"mutation","revision":1,"action":{"type":"message.edit","id":"launch-old","text":"Launch review is at 15:00 UTC. Please bring the final checklist."},"beforeHash":"08d93be1d51378bb8d50da68654ff5cab677f1426845af1b809269d781e40129","afterHash":"f733772ece1d3d9924b937971259e9bf3bfb382265c35b27f7b247b7b495eb44","at":"2026-09-29T17:57:03.007Z"}

@@ -1,0 +1,31 @@
+{
+  "repo": "trycua/cua",
+  "path": "libs/cua-bench/tasks/slack_env/main.py",
+  "sha": "c3941497a5545b6b977c55962c29391da10bdc03",
+  "sourceURL": "https://github.com/trycua/cua/blob/c3941497a5545b6b977c55962c29391da10bdc03/libs/cua-bench/tasks/slack_env/main.py",
+  "lineCount": 350,
+  "matchingLineNumbers": [
+    19,
+    46,
+    47,
+    69,
+    70,
+    110,
+    111,
+    121,
+    136,
+    137,
+    153,
+    154,
+    171,
+    172,
+    204,
+    214,
+    221,
+    222,
+    245,
+    251,
+    272
+  ],
+  "note": "Selected line locations for task configuration, evaluation or state lifecycle. Read at the pinned source URL; no upstream source is bundled."
+}

@@ -1,0 +1,18 @@
+{
+  "provider": "ramp",
+  "models": [{ "id": "gpt-4o-mini", "rates": { "input": 0.15, "output": 0.6 }, "vision": false }],
+  "tasks": ["channel-topic"],
+  "seeds": [42],
+  "repeats": 1,
+  "interfaces": ["a11y"],
+  "guides": [false],
+  "histories": ["recent-4"],
+  "orderSeed": 20260929,
+  "maxSteps": 8,
+  "maxRequests": 8,
+  "maxOutputTokens": 512,
+  "maxInputUnits": 64000,
+  "episodeSeconds": 90,
+  "runSeconds": 120,
+  "maxEstimatedUSD": 0.1
+}

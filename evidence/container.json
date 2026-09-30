@@ -1,0 +1,16 @@
+{
+  "at": "2026-09-29T20:06:57.469Z",
+  "imageId": "sha256:56c3324c7bb593651c2dfdcf5f80f1e235ba8e1e08bfb1d424b471de96ea8040",
+  "os": "linux",
+  "architecture": "arm64",
+  "imageSizeBytes": 80000035,
+  "user": "node",
+  "checks": {
+    "applicationServed": true,
+    "mutationAndGrade": true,
+    "sessionIsolation": true,
+    "containerRestartPersistence": true,
+    "nonRoot": true
+  },
+  "limitations": "One local Docker/Colima runtime. No browser in container, no scale or hostile-code claims."
+}

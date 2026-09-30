@@ -1,0 +1,5 @@
+{"seq":1,"kind":"interaction","type":"keydown","label":"Search Northstar","key":"Enter","x":null,"y":null,"at":"2026-09-29T17:56:20.608Z"}
+{"seq":2,"kind":"interaction","type":"search","label":"in:proj-orbit ORBIT-288","key":"","x":null,"y":null,"at":"2026-09-29T17:56:20.615Z"}
+{"seq":3,"kind":"interaction","type":"click","label":"Open 1 replies to Maya Chen's message","key":"","x":496,"y":369,"at":"2026-09-29T17:56:35.339Z"}
+{"seq":4,"kind":"interaction","type":"click","label":"Send reply","key":"","x":1668,"y":924,"at":"2026-09-29T17:56:35.629Z"}
+{"seq":5,"kind":"mutation","revision":1,"action":{"type":"message.send","channelId":"project","parentId":"qa-target","text":"QA checklist complete. Ready for review."},"beforeHash":"26c1c808e5d4cd573ce3481b6996284a860eab7650d16784beeb613ea4f3b34b","afterHash":"fc2d46b230600cace2cd1da2e63edc19fe2cb57dd5008004df27a935ff8ccec6","at":"2026-09-29T17:56:35.632Z"}

@@ -1,0 +1,65 @@
+{
+  "cell": {
+    "taskId": "channel-topic",
+    "seed": 42,
+    "repeat": 0,
+    "model": {
+      "id": "scripted-reference"
+    },
+    "mode": "api",
+    "guide": false,
+    "history": "full",
+    "block": "channel-topic:42:0",
+    "episodeId": "episode-011"
+  },
+  "status": "completed",
+  "steps": 2,
+  "startedAt": "2026-09-29T19:37:21.027Z",
+  "estimatedUSD": 0,
+  "usageKnown": true,
+  "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+  "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+  "appProvenance": {
+    "ok": true,
+    "service": "relay-app",
+    "backendHash": "beded91b886578b884e510e659eb625d75022a5e9c95e128639b535adf2d9f3b",
+    "buildHash": "03374b3c301911b12e19310d910ff525b0463beb2936b33748ad2f78fb0f6575"
+  },
+  "operatorScreenshot": null,
+  "currentObservation": {
+    "interface": "api",
+    "result": {
+      "revision": 1,
+      "replayed": false
+    }
+  },
+  "currentStep": 2,
+  "lastAction": {
+    "type": "finish"
+  },
+  "lastError": null,
+  "evaluation": {
+    "taskId": "channel-topic",
+    "seed": 42,
+    "success": true,
+    "reward": 1,
+    "checks": [
+      {
+        "name": "topic_correct",
+        "passed": true
+      },
+      {
+        "name": "no_unrequested_state_changes",
+        "passed": true
+      }
+    ],
+    "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+    "finalHash": "31733a52c04311c4c8baf6ea3a7f827bc3b43977a5a7dbdfb05db2b9c0cc075d",
+    "graderVersion": "state-contract-v1",
+    "revision": 1,
+    "sessionId": "14276f2e-373b-466e-8ce2-3d126f487d29"
+  },
+  "durationMs": 19,
+  "finishedAt": "2026-09-29T19:37:21.046Z",
+  "traceRoot": "ce5198fe69da2cc65c9eeb7f96072a6e9842efb9fa495c6842a169e0b2e4d8ea"
+}

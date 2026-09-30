@@ -1,0 +1,30 @@
+{
+  "evidenceKind": "interactive-codex-builder-smoke",
+  "limitations": "Three builder-informed interactive episodes, not an independent or statistically powered agent evaluation. No policy training performed.",
+  "episodes": [
+    {
+      "task": "thread-reply",
+      "seed": 47,
+      "success": true,
+      "revision": 1,
+      "events": 5,
+      "path": "agent/thread-reply/trajectory.json"
+    },
+    {
+      "task": "edit-message",
+      "seed": 48,
+      "success": true,
+      "revision": 1,
+      "events": 8,
+      "path": "agent/edit-message/trajectory.json"
+    },
+    {
+      "task": "incident-triage",
+      "seed": 49,
+      "success": true,
+      "revision": 2,
+      "events": 8,
+      "path": "agent/incident-triage/trajectory.json"
+    }
+  ]
+}

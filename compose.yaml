@@ -1,0 +1,16 @@
+services:
+  relay:
+    build: .
+    ports:
+      - '127.0.0.1:4318:4318'
+      - '127.0.0.1:4319:4319'
+    volumes:
+      - relay-data:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    mem_limit: 256m
+    cpus: 1
+    restart: 'no'
+volumes:
+  relay-data:

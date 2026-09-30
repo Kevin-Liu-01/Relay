@@ -1,0 +1,499 @@
+{
+  "cell": {
+    "taskId": "channel-topic",
+    "seed": 42,
+    "repeat": 0,
+    "model": {
+      "id": "scripted-reference"
+    },
+    "mode": "json-ui",
+    "guide": false,
+    "history": "full",
+    "block": "channel-topic:42:0",
+    "episodeId": "episode-008"
+  },
+  "status": "completed",
+  "steps": 4,
+  "startedAt": "2026-09-29T19:37:18.935Z",
+  "estimatedUSD": 0,
+  "usageKnown": true,
+  "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+  "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+  "appProvenance": {
+    "ok": true,
+    "service": "relay-app",
+    "backendHash": "beded91b886578b884e510e659eb625d75022a5e9c95e128639b535adf2d9f3b",
+    "buildHash": "03374b3c301911b12e19310d910ff525b0463beb2936b33748ad2f78fb0f6575"
+  },
+  "operatorScreenshot": "visual-003.png",
+  "currentObservation": {
+    "interface": "json-ui",
+    "scope": "viewport text and controls; not an occlusion-perfect pixel reconstruction",
+    "text": "⌘ G\nLocal workspace\nN\n✦\nHome\nDMs\nThreads\nLater\nNorthstar\nA little space for good work\nThreads\nSaved for later\nChannels\ngeneral\nproj-meridian\nengineering\ndesign\nincidents\nrandom\nDirect messages\nMaya Chen\nJordan Lee\nSam Rivera\nPriya Shah\nLeo Park\nJump to a conversation\nK\n✦\nThoughtful work, together.\nYour team's shared space.\nproj-meridian\nLaunch review · 15:00 UTC · Bring the final checklist\n5\nMessages\nPins\n0\nEverything in its right place.\nJordan Lee\n9:18 AM\nThe refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.\n✨\n2\n2\nreplies\nLast reply\n9:24 AM\nAlex Morgan\n9:27 AM\nyou\nLaunch review is at 14:00 UTC. Please bring the final checklist.\nPriya Shah\n9:30 AM\nThe customer preview remains at 14:00 UTC. That is separate from the launch review.\nMaya Chen\n9:33 AM\nMERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.\n👀\n1\n1\nreply\nLast reply\n9:36 AM\nSam Rivera\n9:39 AM\nHandoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UTC. Please use these details for today’s handoff.\nSam Rivera\n9:42 AM\nYesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.\nPriya Shah\n9:45 AM\nThanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\nShift + Enter for a new line\nYou're all caught up\nEnter\nto send\nChannel topic updated",
+    "elements": [
+      {
+        "ref": "e1",
+        "role": "button",
+        "name": "Back to project",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e2",
+        "role": "button",
+        "name": "Go to general",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e3",
+        "role": "button",
+        "name": "Open quick switcher",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e4",
+        "role": "textbox",
+        "name": "Search Northstar",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e5",
+        "role": "button",
+        "name": "Keyboard shortcuts and help",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e6",
+        "role": "button",
+        "name": "Northstar home",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e7",
+        "role": "button",
+        "name": "\nHome",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e8",
+        "role": "button",
+        "name": "\nDMs",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e9",
+        "role": "button",
+        "name": "\nThreads",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e10",
+        "role": "button",
+        "name": "\nLater",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e11",
+        "role": "button",
+        "name": "Switch conversation",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e12",
+        "role": "button",
+        "name": "Northstar\n\n",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e13",
+        "role": "button",
+        "name": "\nThreads",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e14",
+        "role": "button",
+        "name": "\nSaved for later",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e15",
+        "role": "button",
+        "name": "Find a channel",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e16",
+        "role": "button",
+        "name": "Channel general",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e17",
+        "role": "button",
+        "name": "Channel proj-meridian",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e18",
+        "role": "button",
+        "name": "Channel engineering",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e19",
+        "role": "button",
+        "name": "Channel design",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e20",
+        "role": "button",
+        "name": "Channel incidents",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e21",
+        "role": "button",
+        "name": "Channel random",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e22",
+        "role": "button",
+        "name": "Find a person",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e23",
+        "role": "button",
+        "name": "Direct message Maya Chen",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e24",
+        "role": "button",
+        "name": "Direct message Jordan Lee",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e25",
+        "role": "button",
+        "name": "Direct message Sam Rivera",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e26",
+        "role": "button",
+        "name": "Direct message Priya Shah",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e27",
+        "role": "button",
+        "name": "Direct message Leo Park",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e28",
+        "role": "button",
+        "name": "⌘\nJump to a conversation\nK",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e29",
+        "role": "button",
+        "name": "Launch review · 15:00 UTC · Bring the final checklist",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e30",
+        "role": "button",
+        "name": "Edit channel topic",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e31",
+        "role": "button",
+        "name": "\nPins\n0",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e32",
+        "role": "article",
+        "name": "Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi",
+        "disabled": false
+      },
+      {
+        "ref": "e33",
+        "role": "button",
+        "name": "Jordan Lee",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e34",
+        "role": "button",
+        "name": "✨ reaction, 2, selected",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e35",
+        "role": "button",
+        "name": "Add reaction to Jordan Lee's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e36",
+        "role": "button",
+        "name": "Open 2 replies to Jordan Lee's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e37",
+        "role": "article",
+        "name": "Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.",
+        "disabled": false
+      },
+      {
+        "ref": "e38",
+        "role": "button",
+        "name": "Alex Morgan",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e39",
+        "role": "article",
+        "name": "Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+        "disabled": false
+      },
+      {
+        "ref": "e40",
+        "role": "button",
+        "name": "Priya Shah",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e41",
+        "role": "article",
+        "name": "Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi",
+        "disabled": false
+      },
+      {
+        "ref": "e42",
+        "role": "button",
+        "name": "Maya Chen",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e43",
+        "role": "button",
+        "name": "👀 reaction, 1",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e44",
+        "role": "button",
+        "name": "Add reaction to Maya Chen's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e45",
+        "role": "button",
+        "name": "Open 1 replies to Maya Chen's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e46",
+        "role": "button",
+        "name": "React to Maya Chen's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e47",
+        "role": "button",
+        "name": "Reply to Maya Chen's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e48",
+        "role": "button",
+        "name": "Save message for later",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e49",
+        "role": "button",
+        "name": "More actions for Maya Chen's message",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e50",
+        "role": "article",
+        "name": "Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT",
+        "disabled": false
+      },
+      {
+        "ref": "e51",
+        "role": "button",
+        "name": "Sam Rivera",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e52",
+        "role": "article",
+        "name": "Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details",
+        "disabled": false
+      },
+      {
+        "ref": "e53",
+        "role": "button",
+        "name": "Sam Rivera",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e54",
+        "role": "article",
+        "name": "Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+        "disabled": false
+      },
+      {
+        "ref": "e55",
+        "role": "button",
+        "name": "Priya Shah",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e56",
+        "role": "button",
+        "name": "Bold text",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e57",
+        "role": "button",
+        "name": "Italic text",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e58",
+        "role": "button",
+        "name": "Insert code",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e59",
+        "role": "button",
+        "name": "Insert list",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e60",
+        "role": "textbox",
+        "name": "Message #proj-meridian",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e61",
+        "role": "button",
+        "name": "Add smile emoji",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e62",
+        "role": "button",
+        "name": "Mention someone",
+        "value": "",
+        "disabled": false
+      },
+      {
+        "ref": "e63",
+        "role": "button",
+        "name": "Send message",
+        "value": "",
+        "disabled": true
+      }
+    ]
+  },
+  "currentStep": 4,
+  "lastAction": {
+    "type": "finish"
+  },
+  "lastError": null,
+  "evaluation": {
+    "taskId": "channel-topic",
+    "seed": 42,
+    "success": true,
+    "reward": 1,
+    "checks": [
+      {
+        "name": "topic_correct",
+        "passed": true
+      },
+      {
+        "name": "no_unrequested_state_changes",
+        "passed": true
+      }
+    ],
+    "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+    "finalHash": "31733a52c04311c4c8baf6ea3a7f827bc3b43977a5a7dbdfb05db2b9c0cc075d",
+    "graderVersion": "state-contract-v1",
+    "revision": 1,
+    "sessionId": "e7a27b6b-6010-4ae7-a1e0-46b2e165ab92"
+  },
+  "durationMs": 934,
+  "finishedAt": "2026-09-29T19:37:19.869Z",
+  "traceRoot": "709a308839b711beba0fb3ed8f6ee844beb04035c6bbdb46c7e4848e86308d52"
+}

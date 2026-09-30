@@ -1,0 +1,217 @@
+{
+  "evidenceKind": "scripted-browser-reference",
+  "stats": {
+    "startTime": "2026-09-30T18:43:41.544Z",
+    "duration": 7057.148,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "trainer bridge: reset, screenshots, terminal reward, caps and cleanup",
+      "status": "passed",
+      "durationMs": 1493,
+      "attachments": {
+        "screenshot": "trainer-bridge-reset-screenshots-terminal-reward-caps-and-cleanup/final.png"
+      }
+    },
+    {
+      "title": "connected Router defaults are actionable; a model run is never labeled as a script",
+      "status": "passed",
+      "durationMs": 1484,
+      "attachments": {
+        "screenshot": "connected-router-defaults-are-actionable-a-model-run-is-never-labeled-as-a-script/final.png"
+      }
+    },
+    {
+      "title": "lab launches genuine reference episodes, compares results and replays evidence",
+      "status": "passed",
+      "durationMs": 4052,
+      "attachments": {
+        "screenshot": "lab-launches-genuine-reference-episodes-compares-results-and-replays-evidence/final.png"
+      }
+    },
+    {
+      "title": "API spectator follows the same session without changing state or model input",
+      "status": "passed",
+      "durationMs": 470,
+      "attachments": {
+        "screenshot": "api-spectator-follows-the-same-session-without-changing-state-or-model-input/final.png"
+      }
+    },
+    {
+      "title": "interface gateway pixels: observation boundary and forbidden actions",
+      "status": "passed",
+      "durationMs": 443,
+      "attachments": {
+        "screenshot": "interface-gateway-pixels-observation-boundary-and-forbidden-actions/final.png"
+      }
+    },
+    {
+      "title": "interface gateway a11y: observation boundary and forbidden actions",
+      "status": "passed",
+      "durationMs": 576,
+      "attachments": {
+        "screenshot": "interface-gateway-a11y-observation-boundary-and-forbidden-actions/final.png"
+      }
+    },
+    {
+      "title": "interface gateway json-ui: observation boundary and forbidden actions",
+      "status": "passed",
+      "durationMs": 599,
+      "attachments": {
+        "screenshot": "interface-gateway-json-ui-observation-boundary-and-forbidden-actions/final.png"
+      }
+    },
+    {
+      "title": "page JSON omits offscreen and scroll-clipped text until it is visible",
+      "status": "passed",
+      "durationMs": 419,
+      "attachments": {
+        "screenshot": "page-json-omits-offscreen-and-scroll-clipped-text-until-it-is-visible/final.png"
+      }
+    },
+    {
+      "title": "presentation has nine usable slides, local figures and no horizontal overflow",
+      "status": "passed",
+      "durationMs": 484,
+      "attachments": {
+        "screenshot": "presentation-has-nine-usable-slides-local-figures-and-no-horizontal-overflow/final.png"
+      }
+    },
+    {
+      "title": "OFL typography, open UI glyphs and fictional initials load without third-party requests",
+      "status": "passed",
+      "durationMs": 395,
+      "attachments": {
+        "screenshot": "ofl-typography-open-ui-glyphs-and-fictional-initials-load-without-third-party-requests/final.png"
+      }
+    },
+    {
+      "title": "thread reply via search and semantic controls seed 42",
+      "status": "passed",
+      "durationMs": 473,
+      "attachments": {
+        "trajectory": "thread-reply-via-search-and-semantic-controls-seed-42/trajectory.json",
+        "screenshot": "thread-reply-via-search-and-semantic-controls-seed-42/final.png"
+      }
+    },
+    {
+      "title": "edit original via keyboard shortcut seed 42",
+      "status": "passed",
+      "durationMs": 466,
+      "attachments": {
+        "trajectory": "edit-original-via-keyboard-shortcut-seed-42/trajectory.json",
+        "screenshot": "edit-original-via-keyboard-shortcut-seed-42/final.png"
+      }
+    },
+    {
+      "title": "incident triage via pointer and menus seed 42",
+      "status": "passed",
+      "durationMs": 669,
+      "attachments": {
+        "trajectory": "incident-triage-via-pointer-and-menus-seed-42/trajectory.json",
+        "screenshot": "incident-triage-via-pointer-and-menus-seed-42/final.png"
+      }
+    },
+    {
+      "title": "cross-channel handoff via quick switcher seed 42",
+      "status": "passed",
+      "durationMs": 421,
+      "attachments": {
+        "trajectory": "cross-channel-handoff-via-quick-switcher-seed-42/trajectory.json",
+        "screenshot": "cross-channel-handoff-via-quick-switcher-seed-42/final.png"
+      }
+    },
+    {
+      "title": "delete only own draft seed 42",
+      "status": "passed",
+      "durationMs": 575,
+      "attachments": {
+        "trajectory": "delete-only-own-draft-seed-42/trajectory.json",
+        "screenshot": "delete-only-own-draft-seed-42/final.png"
+      }
+    },
+    {
+      "title": "channel topic through dialog seed 42",
+      "status": "passed",
+      "durationMs": 437,
+      "attachments": {
+        "trajectory": "channel-topic-through-dialog-seed-42/trajectory.json",
+        "screenshot": "channel-topic-through-dialog-seed-42/final.png"
+      }
+    },
+    {
+      "title": "thread reply via search and semantic controls seed 43",
+      "status": "passed",
+      "durationMs": 444,
+      "attachments": {
+        "trajectory": "thread-reply-via-search-and-semantic-controls-seed-43/trajectory.json",
+        "screenshot": "thread-reply-via-search-and-semantic-controls-seed-43/final.png"
+      }
+    },
+    {
+      "title": "edit original via keyboard shortcut seed 43",
+      "status": "passed",
+      "durationMs": 461,
+      "attachments": {
+        "trajectory": "edit-original-via-keyboard-shortcut-seed-43/trajectory.json",
+        "screenshot": "edit-original-via-keyboard-shortcut-seed-43/final.png"
+      }
+    },
+    {
+      "title": "incident triage via pointer and menus seed 43",
+      "status": "passed",
+      "durationMs": 624,
+      "attachments": {
+        "trajectory": "incident-triage-via-pointer-and-menus-seed-43/trajectory.json",
+        "screenshot": "incident-triage-via-pointer-and-menus-seed-43/final.png"
+      }
+    },
+    {
+      "title": "cross-channel handoff via quick switcher seed 43",
+      "status": "passed",
+      "durationMs": 403,
+      "attachments": {
+        "trajectory": "cross-channel-handoff-via-quick-switcher-seed-43/trajectory.json",
+        "screenshot": "cross-channel-handoff-via-quick-switcher-seed-43/final.png"
+      }
+    },
+    {
+      "title": "delete only own draft seed 43",
+      "status": "passed",
+      "durationMs": 573,
+      "attachments": {
+        "trajectory": "delete-only-own-draft-seed-43/trajectory.json",
+        "screenshot": "delete-only-own-draft-seed-43/final.png"
+      }
+    },
+    {
+      "title": "channel topic through dialog seed 43",
+      "status": "passed",
+      "durationMs": 453,
+      "attachments": {
+        "trajectory": "channel-topic-through-dialog-seed-43/trajectory.json",
+        "screenshot": "channel-topic-through-dialog-seed-43/final.png"
+      }
+    },
+    {
+      "title": "browser sessions remain isolated in the same browser context",
+      "status": "passed",
+      "durationMs": 518,
+      "attachments": {
+        "screenshot": "browser-sessions-remain-isolated-in-the-same-browser-context/final.png"
+      }
+    },
+    {
+      "title": "typed edits preserve focus; markup cannot execute",
+      "status": "passed",
+      "durationMs": 440,
+      "attachments": {
+        "screenshot": "typed-edits-preserve-focus-markup-cannot-execute/final.png"
+      }
+    }
+  ]
+}

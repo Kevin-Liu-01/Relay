@@ -1,0 +1,25 @@
+{
+  "repo": "benchflow-ai/env0",
+  "path": "packages/environments/mock-slack/README.md",
+  "sha": "a292cc5aae29b12a0779da895616175485a526af",
+  "sourceURL": "https://github.com/benchflow-ai/env0/blob/a292cc5aae29b12a0779da895616175485a526af/packages/environments/mock-slack/README.md",
+  "lineCount": 188,
+  "matchingLineNumbers": [
+    7,
+    9,
+    10,
+    46,
+    111,
+    114,
+    116,
+    117,
+    123,
+    124,
+    142,
+    146,
+    169,
+    176,
+    182
+  ],
+  "note": "Selected line locations for task configuration, evaluation or state lifecycle. Read at the pinned source URL; no upstream source is bundled."
+}
