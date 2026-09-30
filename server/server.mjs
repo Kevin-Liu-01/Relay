@@ -144,6 +144,7 @@ export function createServers({
           '.js': 'application/javascript',
           '.css': 'text/css',
           '.svg': 'image/svg+xml',
+          '.ico': 'image/x-icon',
           '.jpg': 'image/jpeg',
           '.png': 'image/png',
           '.woff2': 'font/woff2',

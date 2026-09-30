@@ -34,6 +34,8 @@ export function createLiveServer(options = {}) {
           '.js': 'application/javascript',
           '.css': 'text/css',
           '.png': 'image/png',
+          '.svg': 'image/svg+xml',
+          '.ico': 'image/x-icon',
           '.json': 'application/json',
           '.woff2': 'font/woff2',
         }[extname(file)] ?? 'application/octet-stream',

@@ -309,6 +309,8 @@ export function createLab({
             '.woff2': 'font/woff2',
             '.jpg': 'image/jpeg',
             '.png': 'image/png',
+            '.svg': 'image/svg+xml',
+            '.ico': 'image/x-icon',
             '.md': 'text/plain; charset=utf-8',
           }[extname(path)] ?? 'application/octet-stream',
         'cache-control': 'no-cache',

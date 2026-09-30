@@ -31,6 +31,7 @@ import {
 import Github from '@thesvg/react/github';
 import Slack from '@thesvg/react/slack';
 import { ModelMark } from '../lab/model-mark.jsx';
+import relayMark from '../assets/relay-mark.svg';
 import { history, readRun, saveRun, deleteRun, downloadEvidence } from './storage.js';
 import './style.css';
 import './experience.css';
@@ -355,6 +356,7 @@ function App() {
     <div className="live-shell">
       <header className="nav">
         <a className="wordmark" href="/">
+          <img className="relay-mark" src={relayMark} width="30" height="30" alt="" />
           Relay
           <span className="wordmark-dot" />
         </a>

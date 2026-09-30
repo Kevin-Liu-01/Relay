@@ -6,6 +6,7 @@ import { once } from 'node:events';
 import { createLab } from '../../runner/lab-server.mjs';
 import { InterfaceEnvironment } from '../../runner/interfaces.mjs';
 import { actionProtocol } from '../../runner/protocol.mjs';
+import { expectRelayBrand } from './brand-assertions.mjs';
 
 const environment = {
   appURL: 'http://127.0.0.1:4320',
@@ -14,6 +15,7 @@ const environment = {
 };
 test('connected Router defaults are actionable; a model run is never labeled as a script', async ({
   page,
+  request,
 }) => {
   const dir = mkdtempSync(join(tmpdir(), 'relay-connected-ui-'));
   let calls = 0;
@@ -40,6 +42,7 @@ test('connected Router defaults are actionable; a model run is never labeled as 
   try {
     await page.goto(`http://127.0.0.1:${lab.server.address().port}`);
     await expect(page.getByLabel('Model', { exact: true })).toHaveValue('gpt-4o-mini');
+    await expectRelayBrand(page, request);
     await page.evaluate(() => document.fonts.ready);
     expect(
       await page.evaluate(() =>

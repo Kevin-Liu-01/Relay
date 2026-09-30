@@ -109,6 +109,12 @@ input[type='range'] {
   font-size: 23px;
   letter-spacing: 0;
 }
+.brand .relay-mark {
+  display: block;
+  flex-shrink: 0;
+  align-self: center;
+  margin-right: 2px;
+}
 .brand span {
   font-size: 12px;
   color: var(--muted);

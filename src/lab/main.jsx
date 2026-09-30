@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './style.css';
 import { AuditView } from './audit.jsx';
 import { ModelMark } from './model-mark.jsx';
+import relayMark from '../assets/relay-mark.svg';
 import { Play, Square, Settings2, ArrowUpRight, X } from 'lucide-react';
 
 const MODES = { pixels: 'Pixels', a11y: 'Accessibility', 'json-ui': 'Page JSON', api: 'API' };
@@ -307,6 +308,7 @@ function App() {
     <div className="lab-shell">
       <header className="topbar">
         <a href="/" className="brand" aria-label="Relay Lab home">
+          <img className="relay-mark" src={relayMark} width="28" height="28" alt="" />
           <b>Relay</b>
           <span>lab</span>
         </a>

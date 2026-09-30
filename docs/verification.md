@@ -1,5 +1,13 @@
 # Verification and evidence
 
+## Relay identity — 2026-09-30
+
+The [original Relay mark](brand.md) now appears beside the Live and Lab wordmarks
+and as the favicon across Live, Lab, Slack and replay entries. SVG, 16/32px ICO
+and 180px touch assets are local and cache-busted. The 59 backend/harness and 28
+browser checks include logo decoding, icon MIME types and sizes, consistent
+entry metadata and mobile layout. This update runs no live model inference.
+
 ## Relay typography — 2026-09-30
 
 Relay Live and the local Lab now use the user-approved, self-hosted Camber files.

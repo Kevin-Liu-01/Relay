@@ -139,6 +139,11 @@ button.primary:hover {
   margin-bottom: 7px;
   border-radius: 50%;
 }
+.wordmark .relay-mark {
+  display: block;
+  flex-shrink: 0;
+  margin-right: 7px;
+}
 .nav-divider {
   height: 18px;
   width: 1px;

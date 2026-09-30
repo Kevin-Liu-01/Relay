@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
 import { TypeSafeRouter } from '../../runner/typesafe.mjs';
+import { expectRelayBrand } from './brand-assertions.mjs';
 
 function fakeRouter(provider, key) {
   if (provider === 'typesafe')
@@ -57,6 +58,7 @@ function fakeRouter(provider, key) {
 }
 test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no key persistence', async ({
   page,
+  request,
 }) => {
   const server = createLiveServer({ routerFactory: fakeRouter });
   server.listen(0, '127.0.0.1');
@@ -67,6 +69,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
   try {
     await page.goto(url);
     await expect(page.getByRole('heading', { name: 'Watch the next move.' })).toBeVisible();
+    await expectRelayBrand(page, request);
     await page.evaluate(() => document.fonts.ready);
     const loadedCamberWeights = await page.evaluate(() =>
       [...document.fonts]
@@ -104,6 +107,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     const replay = page.getByRole('dialog', { name: 'Replay studio' });
     const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
     await expect(workspace.locator('#root')).toHaveAttribute('inert', '');
+    await expect(workspace.locator('link[rel="icon"][type="image/svg+xml"]')).toHaveAttribute(
+      'href',
+      await page.locator('link[rel="icon"][type="image/svg+xml"]').getAttribute('href'),
+    );
     await expect(workspace.locator('#root')).toHaveCSS('font-family', /^"?Slack-Lato"?,/);
     await page.getByRole('button', { name: 'Next action', exact: true }).click();
     await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);

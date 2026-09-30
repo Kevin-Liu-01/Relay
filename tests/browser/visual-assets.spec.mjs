@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
+import { expectRelayBrand } from './brand-assertions.mjs';
 
 test('OFL typography, open UI glyphs and fictional initials load without third-party requests', async ({
   page,
@@ -16,6 +17,7 @@ test('OFL typography, open UI glyphs and fictional initials load without third-p
   });
   await page.goto(`/s/${session.token}`);
   await expect(page.getByRole('heading', { level: 1, name: 'proj-meridian' })).toBeVisible();
+  await expectRelayBrand(page, request, { logo: false });
   const fonts = await page.evaluate(async () => {
     await document.fonts.ready;
     return [...document.fonts].map((f) => ({
