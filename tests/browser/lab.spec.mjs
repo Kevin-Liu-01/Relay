@@ -40,6 +40,18 @@ test('connected Router defaults are actionable; a model run is never labeled as 
   try {
     await page.goto(`http://127.0.0.1:${lab.server.address().port}`);
     await expect(page.getByLabel('Model', { exact: true })).toHaveValue('gpt-4o-mini');
+    await page.evaluate(() => document.fonts.ready);
+    expect(
+      await page.evaluate(() =>
+        [...document.fonts]
+          .filter((face) => face.family === 'Relay Camber' && face.status === 'loaded')
+          .map((face) => face.weight),
+      ),
+    ).toEqual(expect.arrayContaining(['400', '700']));
+    await expect(page.getByRole('button', { name: 'Run', exact: true })).toHaveCSS(
+      'font-family',
+      /^"?Relay Camber"?,/,
+    );
     await expect(page.locator('.episode-meta .model-mark')).toHaveCount(1);
     await page.getByRole('button', { name: 'Run', exact: true }).click();
     await expect(page.locator('.stage-heading strong')).toHaveText('Complete', { timeout: 20000 });

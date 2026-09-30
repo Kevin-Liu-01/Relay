@@ -1,0 +1,58 @@
+/* Relay chrome only. Slack and its replay renderer keep their own Lato faces. */
+@font-face {
+  font-family: Relay Camber;
+  src: url('./assets/fonts/camber-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Camber;
+  src: url('./assets/fonts/camber-medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Camber;
+  src: url('./assets/fonts/camber-semibold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Camber;
+  src: url('./assets/fonts/camber-bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Camber;
+  src: url('./assets/fonts/camber-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+/* The supplied Camber cut has limited glyph coverage; Lato covers other text. */
+@font-face {
+  font-family: Relay Lato;
+  src: url('./assets/fonts/slack-lato-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Lato;
+  src: url('./assets/fonts/slack-lato-bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Relay Lato;
+  src: url('./assets/fonts/slack-lato-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}

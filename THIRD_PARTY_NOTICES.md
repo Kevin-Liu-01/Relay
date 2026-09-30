@@ -41,4 +41,20 @@ The private prototype used a **Slack v2** icon font and six sample photographs. 
 
 Lato's SIL Open Font License is included at `src/assets/fonts/OFL.txt`, sourced from [Slack's published design assets](https://github.com/slackapi/assets-app-directory/tree/1276ee44c6f18f1c4009bfdb1f5924b8d59911e3/fonts/Lato). The downloaded font binaries are unmodified.
 
-`src/assets/provenance.json` records source URLs, sizes and SHA-256 hashes for the retained font files. They are unmodified and served locally. UI and provider icons are bundled from the locked packages, not fetched at runtime.
+`src/assets/provenance.json` records sources, sizes and SHA-256 hashes for the retained font files. They are unmodified and served locally. UI and provider icons are bundled from the locked packages, not fetched at runtime.
+
+## Camber — Relay interface
+
+[Camber](https://emtype.net/fonts/camber) is by Eduardo Manso / Emtype Foundry.
+The regular, medium, semibold, bold and italic WOFF2 files were supplied from
+Kevin's existing mailroom project, with permission to reuse them and confirmation
+of webfont-license coverage for `relay.kevinliu.studio` on 2026-09-30.
+These proprietary assets are **not covered by Lato's OFL or a code license**;
+inclusion does not grant a sublicense. Obtain your own appropriate
+[Emtype license](https://emtype.net/licenses) before reusing them elsewhere.
+
+The supplied source labels this asset set a limited-character trial cut. Its
+bytes are preserved rather than presented as a full-character commercial build;
+Lato supplies glyphs absent from the provided Camber files. Relay's operator
+interface uses Camber, while Slack and its replay frame retain Slack-Lato and
+audit/code blocks retain monospace.

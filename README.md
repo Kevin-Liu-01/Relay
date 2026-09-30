@@ -159,7 +159,7 @@ No RL training or GPU experiment is claimed. [Full evidence chronology →](docs
 - **Ramp Responses** for bounded model calls, with no hidden retries or fallback models.
 - **TypeSafe Jev** for bounded Choice decisions with exact candidate/probability receipts.
 - **Vercel + Chromium** for short-lived BYOK runs and a continuous spectator feed.
-- **Lucide + theSVG** for UI glyphs and provider/technology marks; local OFL Lato typography.
+- **Lucide + theSVG** for UI glyphs and provider/technology marks; self-hosted Camber for Relay's interface, OFL Lato for Slack. See [font rights](THIRD_PARTY_NOTICES.md#camber--relay-interface).
 
 Public assets exclude the proprietary icon font and stock portraits used in the
 private reference prototype. Brand marks identify integrations, not endorsement.

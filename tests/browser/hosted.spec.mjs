@@ -67,6 +67,25 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
   try {
     await page.goto(url);
     await expect(page.getByRole('heading', { name: 'Watch the next move.' })).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    const loadedCamberWeights = await page.evaluate(() =>
+      [...document.fonts]
+        .filter((face) => face.family === 'Relay Camber' && face.status === 'loaded')
+        .map((face) => face.weight),
+    );
+    expect(loadedCamberWeights).toEqual(expect.arrayContaining(['400', '700']));
+    await expect(page.getByRole('heading', { name: 'Watch the next move.' })).toHaveCSS(
+      'font-family',
+      /^"?Relay Camber"?,/,
+    );
+    await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toHaveCSS(
+      'font-family',
+      /^"?Relay Camber"?,/,
+    );
+    const headingTracking = await page
+      .getByRole('heading', { name: 'Watch the next move.' })
+      .evaluate((el) => getComputedStyle(el).letterSpacing);
+    expect(parseFloat(headingTracking)).toBeGreaterThan(0);
     await page.screenshot({ path: 'evidence/visual/relay-live.png', fullPage: true });
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
@@ -85,6 +104,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     const replay = page.getByRole('dialog', { name: 'Replay studio' });
     const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
     await expect(workspace.locator('#root')).toHaveAttribute('inert', '');
+    await expect(workspace.locator('#root')).toHaveCSS('font-family', /^"?Slack-Lato"?,/);
     await page.getByRole('button', { name: 'Next action', exact: true }).click();
     await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);
     await page.getByRole('button', { name: 'Next action', exact: true }).click();

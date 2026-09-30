@@ -1,7 +1,40 @@
 {
   "retrievedAt": "2026-09-29T18:52:22.374Z",
   "referencePage": "https://slack.com/signin",
-  "note": "Public release includes unmodified OFL Lato fonts only. Proprietary icon font and sample photographs from the private prototype are excluded.",
+  "note": "Unmodified OFL Lato for Slack and fallback text; user-provided proprietary Camber for Relay chrome. Camber is not OFL or sublicensed. Proprietary Slack icon font and sample photographs from the private prototype are excluded.",
+  "camber": {
+    "source": "User-provided mailroom/src/app/fonts/Camber-*.woff2",
+    "foundry": "https://emtype.net/fonts/camber",
+    "rights": "Proprietary Emtype webfont; user confirmed reuse and coverage for relay.kevinliu.studio on 2026-09-30. No sublicense granted.",
+    "sourceNote": "Source project describes this asset set as a trial cut with limited character coverage; unchanged binaries, Lato fallback for absent glyphs.",
+    "assets": [
+      {
+        "file": "fonts/camber-regular.woff2",
+        "bytes": 8096,
+        "sha256": "ee44a59725b519cc6a2cd3d587d2a27a5a47df0e35a13f83bcb803166b0643fc"
+      },
+      {
+        "file": "fonts/camber-medium.woff2",
+        "bytes": 8280,
+        "sha256": "f78e712501efc72c38a912fe014e584f2a004ee0146e4f8ac470e3bea885ec29"
+      },
+      {
+        "file": "fonts/camber-semibold.woff2",
+        "bytes": 8240,
+        "sha256": "a48b76db6a38357f2fe0cd766e3d40de247c571a9143cd0c6915d8ab013ea25d"
+      },
+      {
+        "file": "fonts/camber-bold.woff2",
+        "bytes": 8172,
+        "sha256": "4eccc07e661ef458b00e620145e467b733bea8e36003a69f8680399ccb67ef5a"
+      },
+      {
+        "file": "fonts/camber-italic.woff2",
+        "bytes": 8748,
+        "sha256": "cdd63810e9f61192718329ce881bb9ad18e9c701b8023911483c8f347db7a35d"
+      }
+    ]
+  },
   "assets": [
     {
       "file": "fonts/OFL.txt",

@@ -1,5 +1,21 @@
 # Verification and evidence
 
+## Relay typography — 2026-09-30
+
+Relay Live and the local Lab now use the user-approved, self-hosted Camber files.
+Headings use positive `0.015em` tracking; the wordmark no longer uses negative
+tracking. Slack's application and replay frame keep Slack-Lato, and structured
+audit data keeps monospace. The supplied Camber cut has limited glyph coverage;
+Lato is the fallback. Font provenance and separate proprietary rights are recorded
+in [third-party notices](../THIRD_PARTY_NOTICES.md#camber--relay-interface).
+
+All **59 backend/harness and 28 browser checks** pass. Regression assertions
+verify loaded Camber regular/bold faces in both operator interfaces, inherited
+control typography, positive header tracking and the unchanged Slack frame font.
+Desktop and mobile screenshots were refreshed; replay was also exercised in the
+in-app browser. This cosmetic update made no inference calls and changes no task,
+grader or historical model evidence.
+
 ## Replay studio + 1v1 arena — 2026-09-30
 
 This update passes **59 backend/harness checks and 28 browser checks**. New cases

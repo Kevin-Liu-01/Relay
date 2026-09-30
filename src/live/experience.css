@@ -27,7 +27,7 @@
   font-size: 20px;
   line-height: 1.25;
   overflow-wrap: anywhere;
-  letter-spacing: -0.4px;
+  letter-spacing: var(--relay-heading-tracking);
 }
 .action-headline {
   animation: result-arrive 180ms ease-out both;
@@ -77,7 +77,7 @@
 .result-card h3 {
   margin: 5px 0 0;
   font-size: 22px;
-  letter-spacing: -0.5px;
+  letter-spacing: var(--relay-heading-tracking);
 }
 .result-card p {
   font-size: 12px;
@@ -324,7 +324,7 @@ dialog > header {
 .duel-top h3 {
   margin: 7px 0;
   font-size: 22px;
-  letter-spacing: -0.5px;
+  letter-spacing: var(--relay-heading-tracking);
 }
 .duel-top p {
   font-size: 12px;
