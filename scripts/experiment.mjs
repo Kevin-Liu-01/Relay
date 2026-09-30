@@ -4,11 +4,18 @@ import { ROOT } from '../runner/lab-server.mjs';
 import { Experiment } from '../runner/experiment.mjs';
 import { DEFAULT_CONFIG, schedule } from '../runner/design.mjs';
 import { RampRouter } from '../runner/router.mjs';
+import { TypeSafeRouter } from '../runner/typesafe.mjs';
 import { exportRun } from '../runner/export.mjs';
 if (existsSync(join(ROOT, '.env'))) process.loadEnvFile(join(ROOT, '.env'));
 const [command = 'plan', path, destination] = process.argv.slice(2);
-if (command === 'models') console.log(JSON.stringify(await new RampRouter().models(), null, 2));
-else if (command === 'export') {
+if (command === 'models') {
+  if (path && !['ramp', 'typesafe'].includes(path)) throw Error('Unknown provider.');
+  const router =
+    path === 'typesafe'
+      ? new TypeSafeRouter({ apiKey: process.env.TYPESAFE_API_KEY })
+      : new RampRouter();
+  console.log(JSON.stringify(await router.models(), null, 2));
+} else if (command === 'export') {
   if (!destination) throw Error('Provide a new destination directory.');
   console.log(
     JSON.stringify(
@@ -16,7 +23,11 @@ else if (command === 'export') {
         runRoot: join(ROOT, '.runtime/lab-runs'),
         id: path,
         destination,
-        secrets: [process.env.RAMP_ROUTER_API_KEY, process.env.CONTROL_TOKEN],
+        secrets: [
+          process.env.RAMP_ROUTER_API_KEY,
+          process.env.TYPESAFE_API_KEY,
+          process.env.CONTROL_TOKEN,
+        ],
       }),
       null,
       2,

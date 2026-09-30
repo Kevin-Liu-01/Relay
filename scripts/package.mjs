@@ -10,6 +10,9 @@ const roots = [
   'package-lock.json',
   'index.html',
   'lab.html',
+  'live.html',
+  'vercel.json',
+  '.vercelignore',
   '.env.example',
   'vite.config.mjs',
   'playwright.config.mjs',
@@ -23,6 +26,8 @@ const roots = [
   'server',
   'src',
   'runner',
+  'hosted',
+  'api',
   'scripts',
   'tests',
   'docs',
@@ -43,8 +48,9 @@ for (const p of files) {
     (/\/s\/[a-f0-9]{64}|"token"\s*:\s*"[a-f0-9]{64}"|Bearer\s+(?!browser-test-only\b)[A-Za-z0-9._~+/-]{16,}|sk-routgw-[A-Za-z0-9]{16,}/.test(
       readFileSync(p, 'utf8'),
     ) ||
-      (process.env.RAMP_ROUTER_API_KEY &&
-        readFileSync(p, 'utf8').includes(process.env.RAMP_ROUTER_API_KEY)))
+      [process.env.RAMP_ROUTER_API_KEY, process.env.TYPESAFE_API_KEY].some(
+        (secret) => secret && readFileSync(p, 'utf8').includes(secret),
+      ))
   )
     throw Error(`Credential-shaped content in ${p}`);
 }

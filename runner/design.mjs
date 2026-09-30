@@ -29,7 +29,7 @@ export function validateConfig(c) {
     Object.keys(c).every((k) => allowedKeys.includes(k)),
     'Unknown configuration fields are rejected; never place credentials in run configs.',
   );
-  check(['reference', 'ramp'].includes(c.provider), 'provider must be reference or ramp.');
+  check(['reference', 'ramp', 'typesafe'].includes(c.provider), 'Unknown provider.');
   for (const [key, allowed] of [
     ['tasks', TASK_IDS],
     ['interfaces', INTERFACES],
@@ -81,7 +81,17 @@ export function validateConfig(c) {
     if (c.provider === 'reference')
       check(m.id === 'scripted-reference', 'Reference mode requires scripted-reference.');
     else {
-      validateRates(m.rates);
+      if (c.provider === 'typesafe') {
+        check(
+          m.rates &&
+            Number.isFinite(m.rates.input) &&
+            m.rates.input > 0 &&
+            m.rates.input <= 1000 &&
+            m.rates.output === 0,
+          'Jev requires a positive input rate and zero output rate.',
+        );
+        check(!m.reasoning, 'Jev does not generate reasoning.');
+      } else validateRates(m.rates);
       if (c.interfaces.includes('pixels'))
         check(
           m.vision === true,
@@ -93,6 +103,16 @@ export function validateConfig(c) {
           'Invalid reasoning setting.',
         );
     }
+  }
+  if (c.provider === 'typesafe') {
+    check(
+      c.interfaces.every((m) => ['a11y', 'json-ui'].includes(m)),
+      'Jev uses text UI observations, not pixels or API actions.',
+    );
+    check(
+      !c.tasks.includes('handoff-dm'),
+      'The bounded Jev candidate policy cannot compose novel handoff text. Use an LLM for this task.',
+    );
   }
   if (c.provider === 'reference') {
     check(

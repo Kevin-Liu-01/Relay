@@ -144,6 +144,11 @@ export function createLab({
             error: 'One run at a time. Cancel or finish the active run first.',
           });
         const config = await body(req);
+        if (config.provider === 'typesafe')
+          return send(res, 400, {
+            error:
+              'Use Relay Live (port 4340) or the CLI for Jev. This operator console discovers Ramp models only.',
+          });
         try {
           validateConfig(config);
         } catch (e) {

@@ -1,0 +1,8 @@
+.env
+.env.*
+.runtime
+node_modules
+artifacts
+test-results
+playwright-report
+.git

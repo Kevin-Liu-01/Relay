@@ -1,4 +1,4 @@
-import { chromium } from '@playwright/test';
+import { chromium } from 'playwright-core';
 
 /** Trusted trainer-side bridge. Never expose this object/controlToken to a policy. */
 export class RelayEnvironment {
@@ -10,6 +10,8 @@ export class RelayEnvironment {
     maxSteps = 60,
     viewport = { width: 1440, height: 900 },
     controlTimeoutMs = 10000,
+    launchOptions = {},
+    onPage,
   } = {}) {
     if (!controlToken) throw Error('A trainer control token is required.');
     if (!['screenshot', 'dom'].includes(observation)) throw Error('Unknown observation mode.');
@@ -25,6 +27,8 @@ export class RelayEnvironment {
       maxSteps,
       viewport,
       controlTimeoutMs,
+      launchOptions,
+      onPage,
     };
   }
   async control(path, method = 'GET', body) {
@@ -52,7 +56,7 @@ export class RelayEnvironment {
     };
   }
   async openPage() {
-    this.browser ??= await chromium.launch({ headless: true });
+    this.browser ??= await chromium.launch({ headless: true, ...this.options.launchOptions });
     this.context = await this.browser.newContext({
       viewport: this.options.viewport,
       locale: 'en-US',
@@ -71,6 +75,7 @@ export class RelayEnvironment {
     );
     await this.page.goto(`${this.options.appURL}/s/${this.session.token}`, { timeout: 10000 });
     await this.page.getByRole('textbox', { name: 'Search Northstar' }).waitFor({ timeout: 10000 });
+    await this.options.onPage?.(this.page);
   }
   async observe() {
     const screenshot = (await this.page.screenshot({ type: 'png' })).toString('base64');

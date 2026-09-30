@@ -1,6 +1,40 @@
 # Verification and evidence
 
-## Standalone public release — 2026-09-30
+## Hosted BYOK + Jev adapter — 2026-09-30
+
+The live site is [relay.kevinliu.studio](https://relay.kevinliu.studio). The release
+passes **56 backend/harness checks and 26 browser checks**, including two concurrent
+hosted requests, fresh session IDs, real Chromium screen frames, no shared history
+API, key-free IndexedDB history, reload-forgets-key, mobile layout, replay and audit.
+Jev's protocol and topic workflow use a **fake TypeSafe transport**. They are not
+live Jev inference; no TypeSafe API key was supplied.
+
+Real hosted Ramp smokes are retained in [the hosted evidence inventory](../evidence/hosted/summary.json),
+with full structured downloads including PNGs, exact requests and initial/final state.
+The first GPT-4o mini accessibility run **failed** after two calls: it filled the
+message composer instead of editing the topic, then claimed finish. The grader
+correctly rejected it. It cost $0.00153555 estimated and delivered 12 spectator
+frames with a verified capture-time audit. A later GPT-4o mini **actor API** run
+passed in two calls, $0.00025260 estimated, with 9 frames and a verified audit.
+These are different interface/deployment cells, not a matched model comparison.
+
+A third cloud smoke used GPT-5 nano / page JSON. Its one call returned an incomplete
+provider response; the harness executed no action and stopped with
+`provider_receipt_invalid`. The final audit is consistent, but task success is
+false and billed usage is unknown. The $0.00067425 figure is a retained reservation,
+not measured spend. No retry or substitute model was used. This result is preserved
+in the same inventory rather than hidden as an infrastructure exception.
+
+The first deployed root page exposed the wrong HTML entry despite HTTP 200.
+A real browser check caught it; the hosted build now preserves the private
+workspace entry separately and serves the BYOK console as the public index.
+The corrected domain was then checked over HTTPS and with real model execution.
+
+No RL training, H100 work, sustained scalability result, or novel benchmark claim
+is made. Browser/application isolation is not hostile-code isolation. See
+[hosting](hosting.md), [System One](system-one.md), and the limits below.
+
+## Standalone public baseline — 2026-09-30 (earlier checkpoint)
 
 Relay now has a standalone source tree for `Kevin-Liu-01/Relay`, separate from
 the memory research repository. The public UI uses unmodified OFL Lato fonts,

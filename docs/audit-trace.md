@@ -1,5 +1,11 @@
 # Full audit trace
 
+**Hosted UI:** use **Audit** beneath the workspace, then download the JSON evidence.
+It includes structured requests/events/states and PNG replay images. History is
+local to this browser; hosted run URLs and artifact inventory paths are not public
+retrieval endpoints. The raw filesystem archives and deep links described below
+belong to the original local Lab. See [hosted download boundaries](hosting.md).
+
 Select a saved run and click **Audit trace ↗**. The monitor stays minimal; the
 audit opens on demand. A direct link is `/?run=RUN_UUID&episode=episode-001&view=audit`.
 Opening, filtering, refreshing, or downloading an audit never starts inference.

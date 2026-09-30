@@ -1,5 +1,15 @@
 # Exact handoff
 
+## Hosted release
+
+The live site is [relay.kevinliu.studio](https://relay.kevinliu.studio). Source is
+`Kevin-Liu-01/Relay`, branch `main`. Read [hosting](hosting.md) for deployment,
+privacy, budgets and cleanup; [System One](system-one.md) for the Jev adapter.
+The public page needs the visitor's Ramp or TypeSafe key. There is no deployed
+shared key, public history database, SGLang server or GPU allocation.
+Use `npm run build:hosted && npm run live` for the same UI locally on 4340.
+Real Ramp cloud smokes and failures are separate from the fake-Jev browser contracts.
+
 ## Relay Lab addition
 
 Start the app, then `npm run lab` and open `http://localhost:4330`. The new
@@ -15,7 +25,7 @@ Reference scripts, fake transport tests and real model results must stay distinc
 
 The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, six task contracts, trainer bridge, tests, interactive trajectory JSON, research provenance, local measurements, a Docker recipe and a nine-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for the reference scripts.
 
-Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the discussion. This checkpoint runs locally; public hosted BYOK and System-1 decision serving are follow-up work, not capabilities claimed by this release.
+Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the original environment discussion. The hosted BYOK release now adds the screen-first console and TypeSafe decision transport; real Jev inference still requires an authenticated pilot.
 
 ## Submission checklist
 

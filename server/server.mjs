@@ -18,10 +18,12 @@ const BACKEND_HASH = digest(
     'runner/protocol.mjs',
   ].map((p) => [p, readFileSync(join(ROOT, p), 'utf8')]),
 );
+const workspaceEntry = () =>
+  existsSync(join(ROOT, 'dist/workspace.html')) ? 'workspace.html' : 'index.html';
 function servedBuildHash() {
-  if (!existsSync(join(ROOT, 'dist/index.html'))) return null;
+  if (!existsSync(join(ROOT, 'dist', workspaceEntry()))) return null;
   const files = [
-    'index.html',
+    workspaceEntry(),
     ...readdirSync(join(ROOT, 'dist/assets'))
       .sort()
       .map((p) => `assets/${p}`),
@@ -131,7 +133,7 @@ export function createServers({
       fail(req.method === 'GET', 'Method not allowed.', 405);
       let path;
       if (url.pathname === '/' || /^\/s\/[a-f0-9]{64}$/.test(url.pathname))
-        path = join(ROOT, 'dist/index.html');
+        path = join(ROOT, 'dist', workspaceEntry());
       else if (/^\/assets\/[\w.-]+$/.test(url.pathname))
         path = resolve(ROOT, `dist${url.pathname}`);
       else throw new Fault(404, 'Page not found.');

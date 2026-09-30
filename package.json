@@ -4,10 +4,12 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24.13.0"
+    "node": ">=24.13.0 <25"
   },
   "scripts": {
     "build": "vite build",
+    "build:hosted": "vite build && node scripts/hosted-assets.mjs",
+    "live": "node hosted/local.mjs",
     "start": "node server/server.mjs",
     "dev": "npm run build && npm start",
     "test": "node --test tests/*.test.mjs",
@@ -19,14 +21,16 @@
     "evidence": "node scripts/collect-evidence.mjs",
     "bench": "node scripts/benchmark.mjs",
     "session": "node scripts/session.mjs",
-    "verify": "npm run build && npm test && npm run test:browser",
+    "verify": "npm run build:hosted && npm test && npm run test:browser",
     "package": "node scripts/package.mjs",
     "lab": "node runner/lab-server.mjs",
     "experiment": "node scripts/experiment.mjs"
   },
   "dependencies": {
+    "@sparticuz/chromium": "153.0.0",
     "@thesvg/react": "3.3.9",
     "lucide-react": "1.49.0",
+    "playwright-core": "1.63.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },

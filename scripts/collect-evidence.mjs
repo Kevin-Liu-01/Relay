@@ -88,6 +88,9 @@ const sourceFiles = [
   'package-lock.json',
   'index.html',
   'lab.html',
+  'live.html',
+  'vercel.json',
+  '.vercelignore',
   '.env.example',
   'vite.config.mjs',
   'playwright.config.mjs',
@@ -100,7 +103,7 @@ const sourceFiles = [
   '.dockerignore',
   '.prettierrc.json',
   '.prettierignore',
-  ...['server', 'src', 'runner', 'tests', 'scripts', 'docs'].flatMap(walk),
+  ...['server', 'src', 'runner', 'hosted', 'api', 'tests', 'scripts', 'docs'].flatMap(walk),
 ].sort();
 writeFileSync(
   'evidence/source-manifest.json',

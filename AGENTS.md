@@ -10,7 +10,16 @@ Ramp Responses transport, budget and evidence. Do not substitute another provide
 key for Ramp. Live runs require positive pricing and account-discovered model IDs.
 Preserve failures and mark missing usage unknown. References are scripts, not model evidence.
 
+For the public release at `relay.kevinliu.studio`, read `docs/hosting.md` and
+`docs/system-one.md`. `src/live/` owns the screen-first BYOK UI; `hosted/` owns
+request-isolated execution and NDJSON streaming; `api/relay.mjs` is the Vercel entry.
+Keys stay out of browser persistence and traces. Never deploy a shared provider key.
+History is browser-local, not a shared server database. Jev uses TypeSafe's official
+Choice API, not SGLang: text observations, deterministic candidate menu, real returned
+probabilities. Fake transport tests are not evidence of live Jev inference.
+
 - `npm ci && npm run build && npm start`: local application.
+- `npm run build:hosted && npm run live`: BYOK live interface on 4340.
 - `npm test`: domain, persistence, isolation and evaluator checks.
 - `npx playwright install chromium && npm run test:browser`: committed browser reference tests.
 - `npm run bench`: bounded local measurements; overwrites the benchmark evidence.

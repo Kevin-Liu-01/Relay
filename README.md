@@ -6,7 +6,7 @@
 
 Real interactions. Isolated workspaces. Comparable runs. An inspectable audit trail.
 
-[Get started](#run-locally) · [How it works](#one-task-four-interfaces) · [Evidence](docs/verification.md) · [Architecture](docs/architecture.md)
+[Open Relay ↗](https://relay.kevinliu.studio) · [Get started](#run-locally) · [Jev / System One](docs/system-one.md) · [Evidence](docs/verification.md)
 
 ![Node 24](https://img.shields.io/badge/Node-24-397d59?style=flat-square)
 ![React](https://img.shields.io/badge/React-19-78638c?style=flat-square)
@@ -26,7 +26,12 @@ interface, documentation or history policy.
 Relay separates **the workspace**, **the policy**, and **the evaluator**. A model
 claiming “done” does not make a task pass—the final workspace state does.
 
-<img src="evidence/visual/relay-lab.png" alt="Relay's workspace-first operator console" width="100%" />
+<img src="evidence/visual/relay-live.png" alt="Relay Live — a large Slack workspace with a compact decision panel" width="100%" />
+
+**[Try Relay Live →](https://relay.kevinliu.studio)** Bring a **TypeSafe key for Jev**
+or a **Ramp Router key**. Choose a model and task, then watch its real browser.
+No GPU setup. Keys are kept out of saved history; runs stay in your browser.
+[Privacy, budgets and hosting limits →](docs/hosting.md)
 
 ### Small surface. Deep evidence.
 
@@ -38,19 +43,28 @@ claiming “done” does not make a task pass—the final workspace state does.
 
 ## Run locally
 
-Requires **Node 24.13+**, npm, and Chromium installed through Playwright.
+Requires **Node 24.13+ (24.x)**, npm, and Chromium installed through Playwright.
 
 ```sh
 git clone https://github.com/Kevin-Liu-01/Relay.git
 cd Relay
 npm ci
 npx playwright install chromium
-npm run dev
+npm run build:hosted
+npm run live
 ```
 
-In a second terminal:
+Open **[Relay Live → localhost:4340](http://localhost:4340)**. Connect your own key
+in the UI. **History**, **Compare**, and **Audit** keep outcomes, exact requests,
+actions and screenshots accessible without cluttering the workspace. Download
+important runs; browser storage is not a cloud backup.
+
+For the original local lab and larger experiment matrices, run the application
+and operator console in separate terminals:
 
 ```sh
+npm start
+# In another terminal:
 npm run lab
 ```
 
@@ -62,6 +76,15 @@ To use Ramp Router, copy `.env.example` to a private `.env`, set
 `RAMP_ROUTER_API_KEY`, and restart the lab. Discover your available model IDs,
 confirm pricing, and start with one small task. Set a provider-side spend cap.
 Never commit the key. [Model setup and budgets →](docs/benchmark-lab.md)
+
+### Jev, without a server
+
+Connect **Jev · TypeSafe** and start with **Update a topic → Accessibility**.
+Jev selects from a recorded menu of visible actions; the side panel displays its
+returned probability distribution. Current Jev is text-only, so its supported
+interfaces are accessibility and page JSON—not pixels. Candidate selection and
+free-form action generation are different policies, explicitly labeled in comparisons.
+[How the adapter works and what is verified →](docs/system-one.md)
 
 ## One task, four interfaces
 
@@ -111,7 +134,7 @@ npm run verify                  # build, backend and browser checks
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The imported baseline has **50 backend checks and 24 browser checks**. Historical
+The current release has **56 backend checks and 26 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 No RL training or GPU experiment is claimed. [Full evidence chronology →](docs/verification.md)
@@ -122,6 +145,8 @@ No RL training or GPU experiment is claimed. [Full evidence chronology →](docs
 - **Session-private SQLite** for deterministic fixture state and audit events.
 - **Playwright** for isolated browser contexts and permission-limited actions.
 - **Ramp Responses** for bounded model calls, with no hidden retries or fallback models.
+- **TypeSafe Jev** for bounded Choice decisions with exact candidate/probability receipts.
+- **Vercel + Chromium** for short-lived BYOK runs and a continuous spectator feed.
 - **Lucide + theSVG** for UI glyphs and provider/technology marks; local OFL Lato typography.
 
 Public assets exclude the proprietary icon font and stock portraits used in the
@@ -132,6 +157,7 @@ private reference prototype. Brand marks identify integrations, not endorsement.
 
 [Architecture & isolation](docs/architecture.md) · [Research landscape](docs/research.md) ·
 [Trainer interface](docs/trainer.md) · [Verification](docs/verification.md) ·
+[Hosting & privacy](docs/hosting.md) · [System One](docs/system-one.md) ·
 [Handoff](docs/handoff.md) · [Presentation](docs/presentation.html)
 
 ---

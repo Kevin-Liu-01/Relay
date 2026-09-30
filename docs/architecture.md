@@ -8,6 +8,11 @@ The policy never receives operator/control credentials. Interface, documentation
 and history conditions are recorded separately. See [the lab contract](benchmark-lab.md).
 State ownership, the original grader and hostile-code limitations below remain unchanged.
 
+Relay Live adds a public BYOK surface with request-owned browser/app instances,
+live spectator frames and browser-local history. It uses the same experiment core,
+plus a TypeSafe Jev candidate-selection adapter. See [hosting](hosting.md) and
+[System One](system-one.md) for the distinct data flow, bounds and limitations.
+
 ## Design decision
 
 Build an original, narrowly scoped React workspace and a small deterministic state engine rather than adapting a production collaboration stack. The goal is credible computer interaction plus trustworthy evaluation—not reproducing every Slack endpoint. Static mockups are insufficient because an agent must change persistent state; a full enterprise clone adds authentication, hosted-backend and reset costs unrelated to the selected tasks.
@@ -76,4 +81,9 @@ The benchmark runs 100 stored sessions, 400 reads at concurrency 16, and 10 sequ
 
 Assume an evaluated policy can see rendered content and issue allowed browser actions. Do not assume it is trusted with the machine. Capability URLs can leak through histories, browser trace archives, process logs or copied links; referrers are disabled and public evidence is token-free. Raw trace/video folders remain ignored.
 
-Before remote multi-tenant deployment: TLS and real authentication; actor/control process split; network ACLs; per-episode filesystem and browser sandboxing; request/rate/mutation quotas; production error monitoring; hard timeouts; backpressure; corruption handling; periodic cleanup; versioned fixture migrations and browser pool soak tests. Public exposure is deliberately not shipped.
+The public deployment is a bounded BYOK demonstration, not a general hostile-policy
+service. It adds TLS, request-owned directories/contexts, same-origin checks and
+per-run limits. Before broader multi-tenant use: real user authentication, global
+admission/rate limits, actor/control process split, network ACLs, OS sandboxing,
+crash cleanup and sustained browser soak tests. A provider key is not Relay user
+authentication. See [the exact hosted boundary](hosting.md).

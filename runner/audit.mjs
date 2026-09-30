@@ -105,7 +105,10 @@ export function buildAudit({ runRoot, id, run, secrets = [] }) {
             inputs[event.requestFile] = input;
             check(
               `Prompt hash: step ${event.step}`,
-              hash({ instructions: input.instructions, input: input.input }) === event.promptHash,
+              (manifest.config.provider === 'typesafe'
+                ? hash(input)
+                : hash({ instructions: input.instructions, input: input.input })) ===
+                event.promptHash,
               eid,
             );
             check(`Request body: step ${event.step}`, hash(input) === event.requestHash, eid);

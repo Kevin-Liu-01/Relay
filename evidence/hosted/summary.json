@@ -1,0 +1,105 @@
+{
+  "evidenceKind": "bounded-hosted-model-smokes",
+  "limitations": "Synthetic development tasks, one episode per condition, sequential deployment checks; not a paired experiment or leaderboard. Preserve failed tasks. Source/build hashes differ between deployment revisions.",
+  "runs": [
+    {
+      "at": "2026-09-30T19:19:02.856Z",
+      "origin": "https://relay.kevinliu.studio",
+      "id": "1a8cb337-1efb-4ca5-be03-7423746a1a8e",
+      "completedStream": true,
+      "frames": 9,
+      "auditIntegrity": "verified",
+      "status": "completed",
+      "requests": 2,
+      "estimatedUSD": 0.00025259999999999996,
+      "usageKnown": true,
+      "episodes": [
+        {
+          "task": "channel-topic",
+          "interface": "api",
+          "model": "gpt-4o-mini",
+          "status": "completed",
+          "success": true,
+          "steps": 2,
+          "durationMs": 10689,
+          "error": null,
+          "provenance": {
+            "ok": true,
+            "service": "relay-app",
+            "backendHash": "971c9b1a0bedc9acf5de9276c574aef95582411afd48ba10bab432390d616138",
+            "buildHash": "43ec6ade61bcfe2667b23dc4122da1b351749ba7163ebde8c7e00a6a500ab52e"
+          }
+        }
+      ],
+      "error": null,
+      "path": "1a8cb337-1efb-4ca5-be03-7423746a1a8e.json",
+      "sha256": "b97ef75c23e6424ab1caaca7931931ea99734c2046ddb415b84a61b049bb2557"
+    },
+    {
+      "at": "2026-09-30T19:21:09.885Z",
+      "origin": "https://relay.kevinliu.studio",
+      "id": "5e813ee9-a32e-46c0-8687-071f043ccac4",
+      "completedStream": true,
+      "frames": 5,
+      "auditIntegrity": "verified",
+      "status": "stopped",
+      "requests": 1,
+      "estimatedUSD": 0.00067425,
+      "usageKnown": false,
+      "episodes": [
+        {
+          "task": "channel-topic",
+          "interface": "json-ui",
+          "model": "gpt-5-nano",
+          "status": "provider_receipt_invalid",
+          "success": false,
+          "steps": 0,
+          "durationMs": 10419,
+          "error": "Router did not return a completed response; request d9bed153-60b3-4f16-baba-ec6691d083fa. No action executed.",
+          "provenance": {
+            "ok": true,
+            "service": "relay-app",
+            "backendHash": "971c9b1a0bedc9acf5de9276c574aef95582411afd48ba10bab432390d616138",
+            "buildHash": "43ec6ade61bcfe2667b23dc4122da1b351749ba7163ebde8c7e00a6a500ab52e"
+          }
+        }
+      ],
+      "error": null,
+      "path": "5e813ee9-a32e-46c0-8687-071f043ccac4.json",
+      "sha256": "4edb1867f170fe5429e7817b0c19fc474064d50d922688f21588c603cbc53040"
+    },
+    {
+      "at": "2026-09-30T19:10:37.763Z",
+      "origin": "https://relay-teal-iota.vercel.app",
+      "id": "f1c921f3-9d47-44e2-ba46-8b844434e2d7",
+      "completedStream": true,
+      "frames": 12,
+      "auditIntegrity": "verified",
+      "status": "completed",
+      "requests": 2,
+      "estimatedUSD": 0.0015355499999999997,
+      "usageKnown": true,
+      "episodes": [
+        {
+          "task": "channel-topic",
+          "interface": "a11y",
+          "model": "gpt-4o-mini",
+          "status": "completed",
+          "success": false,
+          "steps": 2,
+          "durationMs": 10758,
+          "error": null,
+          "provenance": {
+            "ok": true,
+            "service": "relay-app",
+            "backendHash": "beded91b886578b884e510e659eb625d75022a5e9c95e128639b535adf2d9f3b",
+            "buildHash": "8963a24529e340a5beceb0b6e2228a4369c1dc5437225ca80d4196cb47120ccd"
+          }
+        }
+      ],
+      "error": null,
+      "path": "f1c921f3-9d47-44e2-ba46-8b844434e2d7.json",
+      "sha256": "29545539607469d3603705cecbbcb463572244bdb2702c77176859faba34811b"
+    }
+  ]
+}

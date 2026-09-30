@@ -4,15 +4,17 @@ Relay's application, fixture and task code was written for this assignment. No e
 
 Direct npm dependencies at the inspected versions:
 
-| Package         | Version | License                                                  |
-| --------------- | ------- | -------------------------------------------------------- |
-| React           | 19.3.0  | MIT                                                      |
-| React DOM       | 19.3.0  | MIT                                                      |
-| Vite            | 8.3.1   | MIT                                                      |
-| Playwright Test | 1.63.0  | Apache-2.0                                               |
-| Prettier        | 3.9.9   | MIT                                                      |
-| Lucide React    | 1.49.0  | ISC                                                      |
-| theSVG React    | 3.3.9   | MIT (package code; brand marks retain applicable rights) |
+| Package             | Version | License                                                  |
+| ------------------- | ------- | -------------------------------------------------------- |
+| React               | 19.3.0  | MIT                                                      |
+| React DOM           | 19.3.0  | MIT                                                      |
+| Vite                | 8.3.1   | MIT                                                      |
+| Playwright Test     | 1.63.0  | Apache-2.0                                               |
+| Playwright Core     | 1.63.0  | Apache-2.0                                               |
+| @sparticuz/chromium | 153.0.0 | MIT (wrapper); bundled Chromium retains its own notices  |
+| Prettier            | 3.9.9   | MIT                                                      |
+| Lucide React        | 1.49.0  | ISC                                                      |
+| theSVG React        | 3.3.9   | MIT (package code; brand marks retain applicable rights) |
 
 These are installed using `package-lock.json`; their upstream license files remain with the installed packages. Chromium and the Node container image have their own notices. Review transitive dependency notices for any binary redistribution. The submission archive contains source and lockfile, not `node_modules` or browser binaries.
 

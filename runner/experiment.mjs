@@ -10,6 +10,7 @@ import { join } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { InterfaceEnvironment } from './interfaces.mjs';
 import { RampRouter, requestEstimate, responsePayload, RunStop } from './router.mjs';
+import { TypeSafeRouter } from './typesafe.mjs';
 import { validateConfig, schedule, aggregate, pairedComparisons } from './design.mjs';
 import { buildInput, parseAction, PROTOCOL_VERSION, LLMS_TXT, SITE_GUIDE } from './protocol.mjs';
 import { referenceAction } from './reference.mjs';
@@ -23,12 +24,12 @@ export const atomicJSON = (path, value) => {
 };
 
 export function sourceFingerprint(root) {
-  const files = ['server', 'runner', 'src'].flatMap(function walk(p) {
+  const files = ['server', 'runner', 'src', 'hosted', 'api'].flatMap(function walk(p) {
     return readdirSync(join(root, p), { withFileTypes: true })
       .sort((a, b) => a.name.localeCompare(b.name))
       .flatMap((f) => (f.isDirectory() ? walk(`${p}/${f.name}`) : [`${p}/${f.name}`]));
   });
-  files.push('package-lock.json');
+  files.push('package-lock.json', 'vercel.json');
   return hash(files.map((p) => [p, hash(readFileSync(join(root, p)))]));
 }
 
@@ -38,19 +39,25 @@ export class Experiment {
     root,
     runRoot,
     environment,
-    router = new RampRouter(),
+    router,
     onChange = () => {},
     launcher = 'library',
     operatorVisuals = false,
+    onRecord = () => {},
   }) {
     if (!['console', 'cli', 'library'].includes(launcher)) throw Error('Unknown run launcher.');
     this.config = validateConfig(config);
-    this.router = router;
+    this.router =
+      router ??
+      (this.config.provider === 'typesafe'
+        ? new TypeSafeRouter({ apiKey: process.env.TYPESAFE_API_KEY })
+        : new RampRouter());
     this.environment = environment;
     this.operatorVisuals = operatorVisuals;
     this.id = randomUUID();
     this.dir = join(runRoot, this.id);
     this.onChange = onChange;
+    this.onRecord = onRecord;
     this.abort = new AbortController();
     this.data = {
       schemaVersion: 1,
@@ -96,7 +103,7 @@ export class Experiment {
     this.start = Date.now();
     this.persist();
     try {
-      if (this.config.provider === 'ramp') {
+      if (this.config.provider !== 'reference') {
         this.data.catalog = await this.router.models({
           signal: this.abort.signal,
           timeoutMs: Math.min(15000, this.config.runSeconds * 1000),
@@ -148,7 +155,7 @@ export class Experiment {
       throw new RunStop('budget', 'Run wall-time limit reached.');
     if (
       checkRequests &&
-      this.config.provider === 'ramp' &&
+      this.config.provider !== 'reference' &&
       this.data.budget.requests >= this.config.maxRequests
     )
       throw new RunStop('budget', 'Run request limit reached.');
@@ -186,6 +193,7 @@ export class Experiment {
         join(dir, 'steps.jsonl'),
         JSON.stringify({ ...value, hash: traceHash }) + '\n',
       );
+      this.onRecord(cell.episodeId, { ...value, hash: traceHash });
     };
     try {
       let { instruction, observation } = await env.reset({ taskId: cell.taskId, seed: cell.seed });
@@ -241,17 +249,30 @@ export class Experiment {
           turns,
           observation,
         });
-        const promptHash = hash(prompt);
+        let promptHash = hash(prompt);
         const requestFile = `request-${String(i + 1).padStart(3, '0')}.json`;
+        const prepared =
+          c.provider === 'typesafe'
+            ? this.router.prepare({
+                model: cell.model.id,
+                instruction,
+                observation,
+                turns,
+                guide: cell.guide,
+                history: cell.history,
+              })
+            : null;
+        if (prepared) promptHash = hash(prepared.body);
         const request =
           c.provider === 'reference'
             ? prompt
-            : responsePayload({
+            : (prepared?.body ??
+              responsePayload({
                 model: cell.model.id,
                 ...prompt,
                 maxOutputTokens: c.maxOutputTokens,
                 reasoning: cell.model.reasoning,
-              });
+              }));
         atomicJSON(join(dir, requestFile), request);
         record({
           kind: 'input',
@@ -271,7 +292,11 @@ export class Experiment {
             returnedModel: null,
           };
         } else {
-          const reservation = requestEstimate(prompt, cell.model.rates, c.maxOutputTokens);
+          const reservation = requestEstimate(
+            prepared?.body ?? prompt,
+            cell.model.rates,
+            c.provider === 'typesafe' ? 0 : c.maxOutputTokens,
+          );
           if (reservation.inputUpper > c.maxInputUnits)
             throw new RunStop('budget', 'Input-unit/context limit reached; no hidden truncation.');
           if (this.data.budget.estimatedUSD + reservation.usd > c.maxEstimatedUSD)
@@ -295,6 +320,7 @@ export class Experiment {
           });
           try {
             response = await this.router.respond({
+              prepared,
               model: cell.model.id,
               ...prompt,
               maxOutputTokens: c.maxOutputTokens,
@@ -339,7 +365,7 @@ export class Experiment {
           e.inFlight = false;
         }
         record({ kind: 'response', step: i + 1, promptHash, response });
-        if (response.usage === null && c.provider === 'ramp')
+        if (response.usage === null && c.provider !== 'reference')
           throw new RunStop(
             'usage_missing',
             'Provider omitted usage. No action executed; reservation retained.',
@@ -374,7 +400,7 @@ export class Experiment {
         observation = await env.observe();
         e.currentObservation = this.saveObservation(dir, i + 1, observation);
         this.persist();
-        if (response.usage === null && c.provider === 'ramp')
+        if (response.usage === null && c.provider !== 'reference')
           throw new RunStop(
             'usage_missing',
             'Provider omitted usage; stopped conservatively with cost reservation retained.',
