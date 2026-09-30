@@ -76,7 +76,9 @@ export function ActionSpotlight({ events = [], busy = false, selected, episode }
       </div>
       <div className="action-headline" key={`${deciding}-${pending ? start?.step : last?.step}`}>
         <Icon size={25} />
-        <h3>{deciding ? 'Choosing the next move' : describeAction(action, observation)}</h3>
+        <h3 className={!deciding && !action ? 'is-waiting' : undefined}>
+          {deciding ? 'Choosing the next move' : describeAction(action, observation)}
+        </h3>
       </div>
       {(action?.text || action?.topic || last?.error) && (
         <p>{last?.error ?? action.text ?? action.topic}</p>

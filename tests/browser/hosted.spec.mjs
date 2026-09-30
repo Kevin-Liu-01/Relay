@@ -68,7 +68,12 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await page.goto(url);
-    await expect(page.getByRole('heading', { name: 'Watch the next move.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toBeVisible();
+    await expect(page.getByText('SLACK / COMPUTER USE', { exact: true })).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Waiting for a decision' })).toHaveCSS(
+      'font-size',
+      '15px',
+    );
     await expectRelayBrand(page, request);
     await page.evaluate(() => document.fonts.ready);
     const loadedCamberWeights = await page.evaluate(() =>
@@ -77,7 +82,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
         .map((face) => face.weight),
     );
     expect(loadedCamberWeights).toEqual(expect.arrayContaining(['400', '700']));
-    await expect(page.getByRole('heading', { name: 'Watch the next move.' })).toHaveCSS(
+    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toHaveCSS(
       'font-family',
       /^"?Relay Camber"?,/,
     );
@@ -86,10 +91,17 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
       /^"?Relay Camber"?,/,
     );
     const headingTracking = await page
-      .getByRole('heading', { name: 'Watch the next move.' })
+      .getByRole('heading', { name: 'Computer Use Playground.' })
       .evaluate((el) => getComputedStyle(el).letterSpacing);
     expect(parseFloat(headingTracking)).toBeGreaterThan(0);
     await page.screenshot({ path: 'evidence/visual/relay-live.png', fullPage: true });
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await expect(page.getByRole('heading', { name: 'Computer Use Playground.' })).toBeInViewport();
+    await page.screenshot({ path: 'evidence/visual/relay-welcome-mobile.png', fullPage: true });
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
     await page.getByLabel('Provider API key').fill('private-test-key-for-browser');
@@ -101,6 +113,9 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
       timeout: 20000,
     });
     await expect(page.getByText('Task passed', { exact: true })).toBeVisible({ timeout: 20000 });
+    await expect(
+      page.getByRole('region', { name: 'Current action', exact: true }).getByRole('heading'),
+    ).toHaveCSS('font-size', '20px');
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeVisible();
     // New captures are observer-only, and restore actual application state in an inert frame.
     await page.getByRole('button', { name: 'Play the run', exact: false }).click();

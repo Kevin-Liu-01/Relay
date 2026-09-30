@@ -32,6 +32,11 @@
 .action-headline {
   animation: result-arrive 180ms ease-out both;
 }
+.action-spotlight .action-headline h3.is-waiting {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
 .action-spotlight p {
   margin: 10px 0;
   font-size: 13px;

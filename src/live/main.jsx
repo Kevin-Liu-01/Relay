@@ -496,8 +496,7 @@ function App() {
             )}
             {!run && (
               <div className="welcome">
-                <span className="mini-label">SLACK / COMPUTER USE</span>
-                <h1>Watch the next move.</h1>
+                <h1>Computer Use Playground.</h1>
                 <p>
                   Connect a model. Give it a task.
                   <br />

@@ -1,5 +1,13 @@
 # Verification and evidence
 
+## Welcome refinement — 2026-09-30
+
+The welcome headline is “Computer Use Playground.” with the Slack/computer-use
+eyebrow removed. The idle “Waiting for a decision” label is 15px medium; actual
+action titles retain their existing prominence. Browser regressions cover the
+copy, absent eyebrow, idle/action sizing and mobile welcome layout. This update
+changes no workflow or model evidence.
+
 ## Relay identity — 2026-09-30
 
 The [original Relay mark](brand.md) now appears beside the Live and Lab wordmarks
