@@ -10,6 +10,12 @@ shared key, public history database, SGLang server or GPU allocation.
 Use `npm run build:hosted && npm run live` for the same UI locally on 4340.
 Real Ramp cloud smokes and failures are separate from the fake-Jev browser contracts.
 
+The live console now adds **1v1**, **Replay studio**, a prominent current-action
+card and explicit outcome checks. Read [the replay/arena contract](replay-and-arena.md)
+before changing capture or comparison semantics. Replays do not invoke providers;
+old recordings retain screenshot/state-only fidelity labels. No new paid model
+measurements are implied by this UI release.
+
 ## Relay Lab addition
 
 Start the app, then `npm run lab` and open `http://localhost:4330`. The new

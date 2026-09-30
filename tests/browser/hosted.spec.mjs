@@ -80,6 +80,22 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     });
     await expect(page.getByText('Task passed', { exact: true })).toBeVisible({ timeout: 20000 });
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeVisible();
+    // New captures are observer-only, and restore actual application state in an inert frame.
+    await page.getByRole('button', { name: 'Play the run', exact: false }).click();
+    const replay = page.getByRole('dialog', { name: 'Replay studio' });
+    const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
+    await expect(workspace.locator('#root')).toHaveAttribute('inert', '');
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(
+      'Launch review · 15:00 UTC · Bring the final checklist',
+    );
+    expect(await replay.evaluate((el) => el.scrollHeight <= el.clientHeight + 2)).toBe(true);
+    await page.screenshot({ path: 'evidence/visual/relay-replay.png', fullPage: true });
+    await page.getByLabel('Playback position').fill('4');
+    await expect(replay).toContainText('Task passed');
+    await page.keyboard.press('Escape');
     await page.getByRole('button', { name: 'Audit', exact: true }).click();
     await expect(page.getByRole('dialog')).toContainText('verified');
     await page.getByLabel('Search audit events').fill('"kind":"input"');
@@ -109,6 +125,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     expect(stored).not.toContain('private-test-key-for-browser');
     expect(stored).toContain('fake-jev-contract-test');
     expect(stored).toContain('initial.json');
+    const parsed = JSON.parse(stored)[0];
+    expect(parsed.events.filter((e) => e.event.replay).length).toBe(5);
+    expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayCapture');
+    expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('"replay"');
     await page.reload();
     await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
     await page.getByRole('button', { name: /History/ }).click();
@@ -125,6 +145,153 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, private history and no
     );
     await page.screenshot({ path: 'evidence/visual/relay-live-mobile.png', fullPage: true });
     expect(errors).toEqual([]);
+  } finally {
+    server.closeAllConnections();
+    await new Promise((r) => server.close(r));
+  }
+});
+
+test('no-key replay: real UI, play/pause/seek, no run requests, legacy fallback and reduced motion', async ({
+  page,
+}) => {
+  const server = createLiveServer();
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  const url = `http://127.0.0.1:${server.address().port}`;
+  const requests = [];
+  page.on('request', (r) => requests.push({ url: r.url(), method: r.method() }));
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await page.goto(url);
+    await page.getByRole('button', { name: 'Watch a replay', exact: true }).click();
+    await page.getByRole('button', { name: /Watch a topic update/ }).click();
+    const dialog = page.getByRole('dialog', { name: 'Replay studio' });
+    await expect(dialog).toContainText('Reference script · not model inference');
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    const frame = page.frameLocator('iframe[title="Recorded Slack workspace"]');
+    await expect(frame.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    await expect(frame.locator('textarea[aria-label="Channel topic"]')).toHaveValue(
+      /Launch review/,
+    );
+    await page.getByRole('button', { name: 'Previous action', exact: true }).click();
+    await expect(frame.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);
+    await dialog.getByRole('button', { name: 'Play replay', exact: true }).click();
+    await expect(page.getByLabel('Playback position')).toHaveValue('2', { timeout: 5000 });
+    await page.getByRole('button', { name: 'Pause replay', exact: true }).click();
+    await page.getByRole('button', { name: 'Restart replay', exact: true }).click();
+    await expect(page.getByLabel('Playback position')).toHaveValue('0');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    expect(await dialog.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+    await page.screenshot({ path: 'evidence/visual/relay-replay-mobile.png', fullPage: true });
+    await page.keyboard.press('Escape');
+    await page.getByRole('button', { name: 'Replays', exact: true }).click();
+    await page.getByRole('button', { name: /GPT-4o mini · an incomplete browser run/ }).click();
+    await expect(dialog).toContainText('UI position not recorded');
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    await expect(dialog).toContainText('Legacy screenshot');
+    expect(
+      requests.filter(
+        (r) => r.method !== 'GET' || r.url.includes('/api/state') || r.url.includes('/api/demo'),
+      ),
+    ).toEqual([]);
+    expect(errors).toEqual([]);
+  } finally {
+    server.closeAllConnections();
+    await new Promise((r) => server.close(r));
+  }
+});
+
+test('1v1: concurrent matched systems, separate history, visible outcome and replay', async ({
+  page,
+}) => {
+  const server = createLiveServer({ routerFactory: fakeRouter });
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  const url = `http://127.0.0.1:${server.address().port}`;
+  try {
+    await page.goto(url);
+    await page.getByRole('button', { name: '1v1', exact: true }).click();
+    const arena = page.getByRole('dialog', { name: '1v1 arena' });
+    await page.getByLabel('Provider A', { exact: true }).selectOption('typesafe');
+    await page.getByLabel('API key A', { exact: true }).fill('arena-fake-a');
+    await page
+      .getByRole('region', { name: 'Model A', exact: true })
+      .getByRole('button', { name: 'Connect', exact: true })
+      .click();
+    await expect(page.getByRole('combobox', { name: 'Model A', exact: true })).toHaveValue(
+      'jev-latest',
+    );
+    await page.getByLabel('API key B', { exact: true }).fill('arena-fake-b');
+    await page
+      .getByRole('region', { name: 'Model B', exact: true })
+      .getByRole('button', { name: 'Connect', exact: true })
+      .click();
+    await expect(page.getByRole('combobox', { name: 'Model B', exact: true })).toHaveValue(
+      'gpt-4o-mini',
+    );
+    const openaiMark = page
+      .getByRole('region', { name: 'Model B', exact: true })
+      .locator('header .model-mark path')
+      .first();
+    expect(await openaiMark.evaluate((el) => getComputedStyle(el).fill)).not.toBe(
+      'rgb(255, 255, 255)',
+    );
+    await page.getByLabel('Input rate B').fill('0.15');
+    await page.getByLabel('Output rate B').fill('0.6');
+    await page.getByRole('button', { name: 'Start 1v1', exact: true }).click();
+    await expect(arena.locator('.duel-verdict')).toContainText('A completed the task', {
+      timeout: 20000,
+    });
+    await expect(arena.getByRole('button', { name: 'Start 1v1', exact: true })).toBeVisible();
+    await expect(arena.getByRole('region', { name: 'Run result' })).toHaveCount(2);
+    await page.screenshot({ path: 'evidence/visual/relay-duel.png', fullPage: true });
+    const runs = await page.evaluate(async () => {
+      const db = await new Promise((r) => {
+        const q = indexedDB.open('relay-history-v1');
+        q.onsuccess = () => r(q.result);
+      });
+      const rows = await new Promise((r) => {
+        const q = db.transaction('runs').objectStore('runs').getAll();
+        q.onsuccess = () => r(q.result);
+      });
+      db.close();
+      return rows;
+    });
+    expect(runs).toHaveLength(2);
+    expect(runs[0].duel.id).toBe(runs[1].duel.id);
+    expect(runs[0].run.id).not.toBe(runs[1].run.id);
+    expect(runs[0].run.episodes[0].initialHash).toBe(runs[1].run.episodes[0].initialHash);
+    expect(runs[0].run.config.maxEstimatedUSD).toBe(runs[1].run.config.maxEstimatedUSD);
+    expect(JSON.stringify(runs)).not.toMatch(/arena-fake-[ab]/);
+    await arena
+      .getByRole('button', { name: /Play the run/ })
+      .first()
+      .click();
+    await expect(page.getByRole('dialog', { name: 'Replay studio' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await page.getByRole('button', { name: '1v1', exact: true }).click();
+    for (const side of ['A', 'B']) {
+      await page.getByLabel(`API key ${side}`, { exact: true }).fill(`stop-fake-${side}`);
+      await page
+        .getByRole('region', { name: `Model ${side}`, exact: true })
+        .getByRole('button', { name: 'Connect', exact: true })
+        .click();
+      await expect(page.getByRole('combobox', { name: `Model ${side}`, exact: true })).toHaveValue(
+        'gpt-4o-mini',
+      );
+      await page.getByLabel(`Input rate ${side}`).fill('0.15');
+      await page.getByLabel(`Output rate ${side}`).fill('0.6');
+    }
+    await page.getByRole('button', { name: 'Start 1v1', exact: true }).click();
+    await page.getByRole('button', { name: 'Stop both', exact: true }).click();
+    await expect(arena.locator('.duel-verdict')).toContainText('Inconclusive');
+    await expect(page.getByRole('button', { name: 'Start 1v1', exact: true })).toBeVisible();
   } finally {
     server.closeAllConnections();
     await new Promise((r) => server.close(r));

@@ -11,6 +11,7 @@ const roots = [
   'index.html',
   'lab.html',
   'live.html',
+  'replay.html',
   'vercel.json',
   '.vercelignore',
   '.env.example',
@@ -44,7 +45,7 @@ const files = roots.flatMap(function walk(p) {
 // browser-test-only is the public, disposable test-server credential, not a live secret.
 for (const p of files) {
   if (
-    /\.(json|jsonl|md|html|mjs|jsx|yml|yaml)$/.test(p) &&
+    /\.(json|jsonl|md|html|js|mjs|jsx|yml|yaml)$/.test(p) &&
     (/\/s\/[a-f0-9]{64}|"token"\s*:\s*"[a-f0-9]{64}"|Bearer\s+(?!browser-test-only\b)[A-Za-z0-9._~+/-]{16,}|sk-routgw-[A-Za-z0-9]{16,}/.test(
       readFileSync(p, 'utf8'),
     ) ||

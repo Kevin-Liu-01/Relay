@@ -36,10 +36,12 @@ import {
 } from './icons.jsx';
 import { portraits } from './portraits.js';
 import './style.css';
+import { REPLAY_MODE, readVisibleUI, validSnapshot } from './replay-bridge.js';
 
 const emojis = ['✅', '👍', '👀', '🎉', '❤️', '🙌', '✨', '🚀'];
 let token = location.pathname.match(/^\/s\/([a-f0-9]{64})$/)?.[1];
 async function api(path, method = 'GET', body) {
+  if (REPLAY_MODE) throw new Error('Recorded workspace: network actions are disabled.');
   const r = await fetch(`/api/${path}`, {
     method,
     headers: { 'content-type': 'application/json', ...(token ? { 'x-session-token': token } : {}) },
@@ -50,7 +52,7 @@ async function api(path, method = 'GET', body) {
   return data;
 }
 function track(event) {
-  if (token) api('events', 'POST', event).catch(() => {});
+  if (!REPLAY_MODE && token) api('events', 'POST', event).catch(() => {});
 }
 function IconButton({ label, children, onClick, ...props }) {
   return (
@@ -115,6 +117,12 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
   const [value, setValue] = useState(''),
     [sending, setSending] = useState(false);
   const ref = useRef(null);
+  useEffect(() => {
+    if (!REPLAY_MODE) return;
+    const apply = (e) => setValue(e.detail?.find((f) => f.label === label)?.value ?? '');
+    window.addEventListener('relay-replay-fields', apply);
+    return () => window.removeEventListener('relay-replay-fields', apply);
+  }, [label]);
   async function submit(e) {
     e.preventDefault();
     if (!value.trim() || sending) return;
@@ -240,7 +248,89 @@ function App() {
     setData(d);
     return d;
   };
+  const [replayRevision, setReplayRevision] = useState(0);
+  const replayFields = useRef(null);
   useEffect(() => {
+    if (REPLAY_MODE) return;
+    window.__relayCapture = () => ({
+      version: 1,
+      data,
+      ui: {
+        channelId,
+        view,
+        threadId,
+        menu,
+        reaction,
+        edit,
+        deleting,
+        topic,
+        query,
+        searched,
+        results,
+        searching,
+        switcher,
+        switchQuery,
+        help,
+        toast,
+      },
+      dom: readVisibleUI(),
+      viewport: { width: innerWidth, height: innerHeight },
+    });
+    return () => {
+      delete window.__relayCapture;
+    };
+  });
+  useEffect(() => {
+    if (!REPLAY_MODE) return;
+    const apply = (e) => {
+      if (
+        e.origin !== location.origin ||
+        e.source !== parent ||
+        e.data?.type !== 'relay-replay' ||
+        !validSnapshot(e.data.snapshot)
+      )
+        return;
+      const snapshot = e.data.snapshot,
+        u = snapshot.ui ?? {};
+      setData(snapshot.data);
+      setError('');
+      setChannelId(u.channelId ?? snapshot.data.state.channels[0].id);
+      setView(u.view ?? 'channel');
+      setThreadId(u.threadId ?? null);
+      setMenu(u.menu ?? null);
+      setReaction(u.reaction ?? null);
+      setEdit(u.edit ?? null);
+      setDeleting(u.deleting ?? null);
+      setTopic(u.topic ?? null);
+      setQuery(u.query ?? '');
+      setSearched(u.searched ?? '');
+      setResults(u.results ?? []);
+      setSearching(false);
+      setSwitcher(u.switcher ?? false);
+      setSwitchQuery(u.switchQuery ?? '');
+      setHelp(u.help ?? false);
+      setToast(u.toast ?? '');
+      replayFields.current = snapshot.dom;
+      setReplayRevision((n) => n + 1);
+    };
+    window.addEventListener('message', apply);
+    parent.postMessage({ type: 'relay-replay-ready' }, location.origin);
+    return () => window.removeEventListener('message', apply);
+  }, []);
+  useEffect(() => {
+    if (!REPLAY_MODE || !replayRevision) return;
+    const id = requestAnimationFrame(() => {
+      window.dispatchEvent(
+        new CustomEvent('relay-replay-fields', { detail: replayFields.current?.fields ?? [] }),
+      );
+      for (const saved of replayFields.current?.scroll ?? [])
+        for (const el of document.querySelectorAll('.messages-scroll,.thread-scroll'))
+          if (el.className === saved.className) el.scrollTop = saved.top;
+    });
+    return () => cancelAnimationFrame(id);
+  }, [replayRevision]);
+  useEffect(() => {
+    if (REPLAY_MODE) return;
     (async () => {
       try {
         if (!token) {
@@ -305,7 +395,7 @@ function App() {
     return () => window.removeEventListener('keydown', key);
   }, []);
   useEffect(() => {
-    if (toast) {
+    if (toast && !REPLAY_MODE) {
       const t = setTimeout(() => setToast(''), 2400);
       return () => clearTimeout(t);
     }

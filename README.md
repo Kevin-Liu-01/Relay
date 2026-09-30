@@ -33,6 +33,18 @@ or a **Ramp Router key**. Choose a model and task, then watch its real browser.
 No GPU setup. Keys are kept out of saved history; runs stay in your browser.
 [Privacy, budgets and hosting limits →](docs/hosting.md)
 
+**No key? Open Replays.** Play a recorded run inside the actual Slack interface,
+with the dialog, typed text and action target restored at each step. Try the
+labeled reference example or inspect a real model's earlier success and failure.
+
+**Two models? Open 1v1.** Same task and seed, two fresh workspaces, side-by-side
+action feeds and independently checked outcomes. One total spend cap, split equally.
+Both runs stay in History. [Replay fidelity and match rules →](docs/replay-and-arena.md)
+
+<img src="evidence/visual/relay-replay.png" alt="Replay studio restores the topic dialog and recorded action target in the real Slack interface" width="100%" />
+
+<sub>Playback verification using a labeled fake transport, not live model performance.</sub>
+
 ### Small surface. Deep evidence.
 
 | Watch                                   | Compare                               | Inspect                                  |
@@ -134,7 +146,7 @@ npm run verify                  # build, backend and browser checks
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The current release has **56 backend checks and 26 browser checks**. Historical
+The current release has **59 backend checks and 28 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 No RL training or GPU experiment is claimed. [Full evidence chronology →](docs/verification.md)

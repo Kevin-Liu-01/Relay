@@ -89,6 +89,7 @@ const sourceFiles = [
   'index.html',
   'lab.html',
   'live.html',
+  'replay.html',
   'vercel.json',
   '.vercelignore',
   '.env.example',

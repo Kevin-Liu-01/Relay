@@ -10,7 +10,7 @@ export function createLiveServer(options = {}) {
     if (url.pathname === '/api/relay') return handler(req, res);
     if (
       req.method !== 'GET' ||
-      !/^\/(?:|live.html|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(url.pathname)
+      !/^\/(?:|live.html|replay.html|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(url.pathname)
     ) {
       res.writeHead(404);
       return res.end();
@@ -21,6 +21,13 @@ export function createLiveServer(options = {}) {
       return res.end();
     }
     res.writeHead(200, {
+      ...(url.pathname === '/replay.html'
+        ? Object.fromEntries(
+            JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8')).headers[0].headers.map(
+              (h) => [h.key, h.value],
+            ),
+          )
+        : {}),
       'content-type':
         {
           '.html': 'text/html',

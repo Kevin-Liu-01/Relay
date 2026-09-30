@@ -2,7 +2,7 @@ FROM node:24.13.0-bookworm-slim@sha256:4660b1ca8b28d6d1906fd644abe34b2ed81d15434
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
-COPY index.html lab.html live.html vite.config.mjs ./
+COPY index.html lab.html live.html replay.html vite.config.mjs ./
 COPY src ./src
 RUN npm run build
 

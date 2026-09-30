@@ -25,12 +25,18 @@ import {
   RefreshCw,
   Unplug,
   Search,
+  Film,
+  Swords,
 } from 'lucide-react';
 import Github from '@thesvg/react/github';
 import Slack from '@thesvg/react/slack';
 import { ModelMark } from '../lab/model-mark.jsx';
 import { history, readRun, saveRun, deleteRun, downloadEvidence } from './storage.js';
 import './style.css';
+import './experience.css';
+import { ActionSpotlight, ResultCard } from './feedback.jsx';
+import { ReplayPlayer, ReplayLibrary } from './replay.jsx';
+import { Duel } from './duel.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const ModeIcon = ({ mode }) => {
@@ -118,6 +124,11 @@ function App() {
     [auditIndex, setAuditIndex] = useState(0),
     [allOptions, setAllOptions] = useState(false),
     [demo, setDemo] = useState(false);
+  const [replayRecord, setReplayRecord] = useState(null);
+  function openReplay(value) {
+    setReplayRecord(value);
+    setModal('replay-player');
+  }
   const abort = useRef(null),
     current = useRef(null),
     follow = useRef(true);
@@ -350,6 +361,14 @@ function App() {
         <span className="nav-divider" />
         <span className="nav-caption">Agents, in the open.</span>
         <div className="nav-spacer" />
+        <button disabled={busy} onClick={() => setModal('duel')}>
+          <Swords size={16} />
+          1v1
+        </button>
+        <button disabled={busy} onClick={() => setModal('replays')}>
+          <Film size={16} />
+          Replays
+        </button>
         <button onClick={() => setModal('history')}>
           <History size={16} />
           History{saved.length > 0 && <span className="count">{saved.length}</span>}
@@ -487,14 +506,9 @@ function App() {
                     <KeyRound size={14} />
                     Bring your own key
                   </button>
-                  <button
-                    onClick={() => {
-                      setDemo(true);
-                      setModal('demo');
-                    }}
-                  >
+                  <button onClick={() => setModal('replays')}>
                     <Play size={13} />
-                    View reference
+                    Watch a replay
                   </button>
                 </div>
               </div>
@@ -511,6 +525,10 @@ function App() {
             </div>
           </div>
           <div className="timeline">
+            <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>
+              <Play size={14} />
+              Play replay
+            </button>
             <button
               title="Follow latest"
               onClick={() => {
@@ -560,6 +578,12 @@ function App() {
             </div>
           </div>
           <div className="panel-divider" />
+          <ActionSpotlight
+            events={events}
+            busy={busy}
+            selected={selectedStep == null ? null : activeStep}
+            episode={episode}
+          />
           {decision ? (
             <>
               <div className="section-label">
@@ -577,7 +601,13 @@ function App() {
                       <b className="numeric">{(c.p * 100).toFixed(1)}%</b>
                     </div>
                     <div className="probability-track">
-                      <i style={{ width: `${c.p * 100}%` }} />
+                      <i
+                        style={{
+                          width: '100%',
+                          transform: `scaleX(${c.p})`,
+                          transformOrigin: 'left',
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -641,13 +671,10 @@ function App() {
           )}
           <div className="panel-bottom">
             {episode?.evaluation ? (
-              <div className={`verdict ${episode.evaluation.success ? 'pass' : 'fail'}`}>
-                {episode.evaluation.success ? <Check size={17} /> : <AlertTriangle size={17} />}
-                <div>
-                  <b>{episode.evaluation.success ? 'Task passed' : 'Task incomplete'}</b>
-                  <span>{episode.error ?? 'Verified against workspace state'}</span>
-                </div>
-              </div>
+              <ResultCard
+                episode={episode}
+                onReplay={!busy ? () => openReplay(record) : undefined}
+              />
             ) : (
               <span className="quiet-note">
                 <ShieldCheck size={14} />
@@ -661,6 +688,36 @@ function App() {
           </div>
         </aside>
       </main>
+      {modal === 'duel' && setup && (
+        <Modal title="1v1 arena" wide close={() => setModal(null)}>
+          <Duel
+            setup={setup}
+            task={task}
+            mode={mode}
+            guide={guide}
+            context={context}
+            cap={cap}
+            steps={steps}
+            connection={{ provider, key: keys[provider], model, catalog, rates }}
+            onReplay={openReplay}
+            onSaved={refreshHistory}
+          />
+        </Modal>
+      )}
+      {modal === 'replays' && (
+        <Modal title="Replays" wide close={() => setModal(null)}>
+          <ReplayLibrary
+            saved={saved}
+            onRecording={openReplay}
+            onSaved={async (id) => openReplay(await readRun(id))}
+          />
+        </Modal>
+      )}
+      {modal === 'replay-player' && replayRecord && (
+        <Modal title="Replay studio" wide close={() => setModal(null)}>
+          <ReplayPlayer record={replayRecord} />
+        </Modal>
+      )}
       <section className="episode-bar" aria-label="Episodes">
         {run?.episodes.map((e, i) => (
           <button
@@ -887,6 +944,7 @@ function App() {
                 <button className="history-main" disabled={busy} onClick={() => openRun(s.id)}>
                   <b>{s.run.config.models[0].id}</b>
                   <span>
+                    {s.duel && `1v1 ${s.duel.side === 0 ? 'A' : 'B'} · ${s.duel.id.slice(0, 6)} · `}
                     {setup?.tasks[s.run.config.tasks[0]]} ·{' '}
                     {new Date(s.capturedAt).toLocaleString()}
                   </span>

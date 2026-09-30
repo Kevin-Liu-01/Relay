@@ -225,6 +225,7 @@ export class Experiment {
           kind: 'observation',
           step: i + 1,
           observation: obs,
+          replay: await env.replaySnapshot(),
           operatorScreenshot,
           artifacts: {
             ...(obs.imageFile ? { [obs.imageFile]: obs.imageHash } : {}),
@@ -427,6 +428,7 @@ export class Experiment {
           e.evaluation = await env.evaluate();
           atomicJSON(join(dir, 'outcome.json'), await env.export());
           const screenshot = await env.screenshot();
+          record({ kind: 'replay_final', replay: await env.replaySnapshot() });
           if (screenshot) {
             writeFileSync(join(dir, 'final.png'), Buffer.from(screenshot, 'base64'));
             e.finalScreenshot = 'final.png';

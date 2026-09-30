@@ -312,6 +312,10 @@ export class InterfaceEnvironment {
   async close() {
     await this.base.close();
   }
+  async replaySnapshot() {
+    if (!this.operatorVisuals || !this.base.page) return null;
+    return this.base.page.evaluate(() => window.__relayCapture?.() ?? null);
+  }
 }
 
 function safeKey(key) {

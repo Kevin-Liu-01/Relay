@@ -28,6 +28,9 @@ The public Relay release retains Lato under the included SIL Open Font License,
 uses Lucide (ISC) for interface glyphs, and theSVG for provider/technology marks.
 Brand marks identify integrations, not sponsorship; each owner's trademark rules
 still apply. Fixture avatars use original colored initials, not stock photographs.
+Model-family marks from [theSVG](https://thesvg.org) cover OpenAI, Anthropic,
+DeepSeek, Qwen, Gemini, NVIDIA, Mistral, Meta, xAI, Cohere and Moonshot. Unrecognized
+families use a generic agent glyph rather than a fabricated company logo.
 The proprietary icon font and sample photos from the private prototype are not
 included in this repository or deployment. Historical evidence JSON may describe
 the earlier build; its private screenshots are not redistributed here.

@@ -1,5 +1,24 @@
 # Verification and evidence
 
+## Replay studio + 1v1 arena — 2026-09-30
+
+This update passes **59 backend/harness checks and 28 browser checks**. New cases
+verify matched arena outcomes, provenance/condition mismatches, missing receipts,
+two isolated histories, and actual-UI replay with restored dialog/input state.
+Playback tests cover play/pause/restart/backward seek, zero model or actor API
+requests, legacy fidelity labels, mobile fit and reduced-motion behavior.
+
+The [no-inference reference recording](../evidence/replay/reference-topic.json)
+contains five captured UI states and a verified event chain. It is a scripted
+example, not new model evidence. Existing real hosted pass/fail recordings remain
+unchanged and are available in the replay library at their original fidelity.
+The arena screenshot is a **fake-provider contract test**, not a real Jev victory.
+
+The interface was also exercised directly in the in-app browser; that found and
+fixed replay dialog overflow. The [replay/arena contract](replay-and-arena.md)
+documents state fidelity, measurement limits, motion choices and code ownership.
+No paid inference, RL training or GPU work was performed for this UI update.
+
 ## Hosted BYOK + Jev adapter — 2026-09-30
 
 The live site is [relay.kevinliu.studio](https://relay.kevinliu.studio). The release

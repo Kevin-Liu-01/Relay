@@ -18,6 +18,11 @@ History is browser-local, not a shared server database. Jev uses TypeSafe's offi
 Choice API, not SGLang: text observations, deterministic candidate menu, real returned
 probabilities. Fake transport tests are not evidence of live Jev inference.
 
+Read `docs/replay-and-arena.md` for the 1v1 and actual-UI playback contracts.
+Snapshots are observer-only hash-chained evidence, never additional model input.
+Replay is inert/offline and may use a newer renderer; do not backfill old capture
+fidelity. Arena errors, missing receipts or unmatched provenance are inconclusive.
+
 - `npm ci && npm run build && npm start`: local application.
 - `npm run build:hosted && npm run live`: BYOK live interface on 4340.
 - `npm test`: domain, persistence, isolation and evaluator checks.

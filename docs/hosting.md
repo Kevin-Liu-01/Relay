@@ -4,6 +4,11 @@ Open **[relay.kevinliu.studio](https://relay.kevinliu.studio)**. Choose **Connec
 
 The large screen is the agent's actual browser, streamed while it works. It is read-only for the observer. The right panel shows Jev's returned action probabilities or a generative model's recorded actions. Replay, Audit, History and Compare stay out of the workspace until needed.
 
+**1v1** runs two matched, request-isolated systems side by side. **Replays** offers
+no-key examples and your saved runs, played through the actual read-only Slack UI.
+The current action and independent outcome checks have dedicated cards. See the
+[match and replay contract](replay-and-arena.md), including legacy capture limits.
+
 ## Run the same interface locally
 
 ```sh

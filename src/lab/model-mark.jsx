@@ -5,6 +5,11 @@ import Deepseek from '@thesvg/react/deepseek';
 import Qwen from '@thesvg/react/qwen';
 import Gemini from '@thesvg/react/google-gemini';
 import Nvidia from '@thesvg/react/nvidia';
+import Mistral from '@thesvg/react/mistral-ai';
+import Meta from '@thesvg/react/metaai';
+import Xai from '@thesvg/react/xai';
+import Cohere from '@thesvg/react/cohere';
+import Moonshot from '@thesvg/react/moonshot-ai';
 import { Bot, Workflow } from 'lucide-react';
 
 // Marks identify a model family, not the transport or an endorsement.
@@ -25,6 +30,20 @@ export function ModelMark({ id = '', size = 16 }) {
                 ? Gemini
                 : /nemotron|nvidia/.test(value)
                   ? Nvidia
-                  : Bot;
-  return <Mark className="model-mark" width={size} height={size} aria-hidden="true" />;
+                  : /mistral|mixtral|codestral/.test(value)
+                    ? Mistral
+                    : /llama|meta[/-]/.test(value)
+                      ? Meta
+                      : /grok|xai/.test(value)
+                        ? Xai
+                        : /cohere|command-r/.test(value)
+                          ? Cohere
+                          : /kimi|moonshot/.test(value)
+                            ? Moonshot
+                            : Bot;
+  // These upstream defaults are white marks intended for dark backgrounds.
+  const variant = [Openai, Anthropic, Qwen, Nvidia].includes(Mark) ? 'light' : undefined;
+  return (
+    <Mark variant={variant} className="model-mark" width={size} height={size} aria-hidden="true" />
+  );
 }
