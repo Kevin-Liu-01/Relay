@@ -117,13 +117,17 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
     await page.getByLabel('Provider API key').fill('private-test-key-for-browser');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();
-    await expect(page.getByLabel('Model', { exact: true })).toHaveValue('jev-latest');
+    await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
+      'jev-latest',
+    );
     expect(
       await page.evaluate(
         () => JSON.parse(localStorage.getItem('relay-credentials-v1')).keys.typesafe,
       ),
     ).toBe('private-test-key-for-browser');
-    await expect(page.getByLabel('Interface', { exact: true })).toHaveValue('a11y');
+    await expect(page.getByRole('combobox', { name: 'Interface', exact: true })).toHaveText(
+      'Accessibility',
+    );
     await page.getByRole('button', { name: 'Run', exact: true }).click();
     await expect(page.getByText('Action probabilities', { exact: true })).toBeVisible({
       timeout: 20000,
@@ -189,7 +193,9 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('"replay"');
     await page.reload();
     await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
-    await expect(page.getByLabel('Model', { exact: true })).toHaveValue('jev-latest');
+    await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
+      'jev-latest',
+    );
     expect(runRequests).toHaveLength(1); // Reload only discovers models, never starts inference.
     await page.getByRole('button', { name: 'Connected', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveAttribute('type', 'password');
@@ -286,13 +292,14 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
     await page.goto(url);
     await page.getByRole('button', { name: '1v1', exact: true }).click();
     const arena = page.getByRole('dialog', { name: '1v1 arena' });
-    await page.getByLabel('Provider A', { exact: true }).selectOption('typesafe');
+    await page.getByRole('combobox', { name: 'Provider A', exact: true }).click();
+    await page.getByRole('option', { name: 'Jev · TypeSafe', exact: true }).click();
     await page.getByLabel('API key A', { exact: true }).fill('arena-fake-a');
     await page
       .getByRole('region', { name: 'Model A', exact: true })
       .getByRole('button', { name: 'Connect', exact: true })
       .click();
-    await expect(page.getByRole('combobox', { name: 'Model A', exact: true })).toHaveValue(
+    await expect(page.getByRole('combobox', { name: 'Model A', exact: true })).toHaveText(
       'jev-latest',
     );
     await page.getByLabel('API key B', { exact: true }).fill('arena-fake-b');
@@ -300,7 +307,7 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
       .getByRole('region', { name: 'Model B', exact: true })
       .getByRole('button', { name: 'Connect', exact: true })
       .click();
-    await expect(page.getByRole('combobox', { name: 'Model B', exact: true })).toHaveValue(
+    await expect(page.getByRole('combobox', { name: 'Model B', exact: true })).toHaveText(
       'gpt-4o-mini',
     );
     const openaiMark = page
@@ -353,7 +360,7 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
         .getByRole('region', { name: `Model ${side}`, exact: true })
         .getByRole('button', { name: 'Connect', exact: true })
         .click();
-      await expect(page.getByRole('combobox', { name: `Model ${side}`, exact: true })).toHaveValue(
+      await expect(page.getByRole('combobox', { name: `Model ${side}`, exact: true })).toHaveText(
         'gpt-4o-mini',
       );
       await page.getByLabel(`Input rate ${side}`).fill('0.15');

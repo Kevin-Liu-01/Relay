@@ -22,6 +22,8 @@ Choice API, not SGLang: text observations, deterministic candidate menu, real re
 probabilities. Fake transport tests are not evidence of live Jev inference.
 
 Read `docs/replay-and-arena.md` for the 1v1 and actual-UI playback contracts.
+Read `docs/interface-controls.md` before changing Relay's custom icon menus.
+Keep `RelaySelect` shared and its dialog, keyboard and reduced-motion checks intact.
 Snapshots are observer-only hash-chained evidence, never additional model input.
 Replay is inert/offline and may use a newer renderer; do not backfill old capture
 fidelity. Arena errors, missing receipts or unmatched provenance are inconclusive.

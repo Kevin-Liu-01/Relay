@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Swords, Square, Trophy, KeyRound, Film, Download } from 'lucide-react';
+import { Swords, Square, Trophy, KeyRound, Film, Download, Layers, Workflow } from 'lucide-react';
 import { ModelMark } from '../lab/model-mark.jsx';
 import { ActionSpotlight, ResultCard } from './feedback.jsx';
 import { saveRun, downloadEvidence } from './storage.js';
 import { duelVerdict } from './duel-policy.js';
+import { RelaySelect } from './select.jsx';
 
 async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
   const record = { run: null, events: [], artifacts: {}, audit: null };
@@ -297,23 +298,24 @@ export function Duel({
               </header>
               <details open={!record} className="duel-config">
                 <summary>Model connection</summary>
-                <select
-                  aria-label={`Provider ${i ? 'B' : 'A'}`}
+                <RelaySelect
+                  label={`Provider ${i ? 'B' : 'A'}`}
                   disabled={busy || connecting !== null}
                   value={lane.provider}
-                  onChange={(e) =>
+                  onChange={(provider) =>
                     change(i, {
-                      provider: e.target.value,
-                      key: providerKeys[e.target.value] ?? '',
+                      provider,
+                      key: providerKeys[provider] ?? '',
                       model: '',
                       catalog: [],
                       rates: { input: 0, output: 0 },
                     })
                   }
-                >
-                  <option value="ramp">Ramp Router</option>
-                  <option value="typesafe">Jev · TypeSafe</option>
-                </select>
+                  options={[
+                    { value: 'ramp', label: 'Ramp Router', icon: <Layers size={17} /> },
+                    { value: 'typesafe', label: 'Jev · TypeSafe', icon: <Workflow size={17} /> },
+                  ]}
+                />
                 <div className="duel-key">
                   <input
                     type="password"
@@ -339,17 +341,21 @@ export function Duel({
                     Forget
                   </button>
                 </div>
-                <select
-                  aria-label={`Model ${i ? 'B' : 'A'}`}
+                <RelaySelect
+                  label={`Model ${i ? 'B' : 'A'}`}
                   value={lane.model}
                   disabled={busy}
-                  onChange={(e) => pick(i, e.target.value)}
-                >
-                  <option value="">Choose model</option>
-                  {lane.catalog.map((m) => (
-                    <option key={m.id}>{m.id}</option>
-                  ))}
-                </select>
+                  onChange={(id) => pick(i, id)}
+                  placeholder="Choose a model"
+                  placeholderIcon={<ModelMark />}
+                  emptyText="Connect a key to see models"
+                  wide
+                  options={lane.catalog.map((m) => ({
+                    value: m.id,
+                    label: m.id,
+                    icon: <ModelMark id={m.id} />,
+                  }))}
+                />
                 <div className="duel-rates">
                   <label>
                     Input $/M

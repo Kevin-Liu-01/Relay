@@ -1,5 +1,19 @@
 # Verification and evidence
 
+## Custom icon menus — 2026-09-30
+
+Relay Live now uses styled, icon-led menus across its run controls, settings,
+arena and replay surfaces. Task/interface glyphs and bundled model-lab logos
+appear in both selected controls and their options. The Slack environment is
+unchanged. See the [menu contract](interface-controls.md) for scope, keyboard and
+dialog behavior, motion decisions, bundle cost and verification boundaries.
+
+Three new browser cases exercise pointer/touch and keyboard navigation,
+typeahead, focus restoration, nested Escape, viewport fit, long catalogs,
+disabled Jev options and reduced motion. Existing remembered-key, arena and
+replay checks now operate the custom controls. All **65 backend/harness and 35
+browser checks** pass. No live inference was performed.
+
 ## Remembered provider connections — 2026-09-30
 
 At the user's request, successful connections can now persist keys in dedicated,

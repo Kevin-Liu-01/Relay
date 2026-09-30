@@ -174,25 +174,6 @@ button.primary:hover {
   gap: 10px;
   padding: 12px 0 17px;
 }
-.select-field {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 7px;
-  padding: 0 10px;
-  min-width: 0;
-}
-.select-field select {
-  border: 0;
-  background: transparent;
-  color: #514b58;
-  font-size: 12px;
-  padding: 9px 0;
-  max-width: 240px;
-  outline-offset: 0;
-}
 .control-bar > .icon {
   color: #817888;
 }
@@ -718,7 +699,6 @@ dialog h2 {
   margin: 14px 0;
 }
 .field input,
-.field select,
 .search input {
   padding: 10px 12px;
   background: white;
@@ -943,12 +923,6 @@ details pre {
   .control-bar {
     gap: 6px;
   }
-  .select-field {
-    padding: 0 7px;
-  }
-  .select-field select {
-    max-width: 150px;
-  }
   .welcome {
     padding: 30px;
   }
@@ -994,14 +968,6 @@ details pre {
     flex-wrap: wrap;
     padding: 7px 0 12px;
     gap: 6px;
-  }
-  .control-bar .select-field {
-    flex: 1 1 39%;
-    max-width: calc(50% - 4px);
-  }
-  .select-field select {
-    max-width: 100%;
-    width: 100%;
   }
   .control-bar > .nav-spacer {
     display: none;

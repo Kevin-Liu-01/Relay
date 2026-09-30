@@ -15,6 +15,7 @@ Direct npm dependencies at the inspected versions:
 | Prettier            | 3.9.9   | MIT                                                      |
 | Lucide React        | 1.49.0  | ISC                                                      |
 | theSVG React        | 3.3.9   | MIT (package code; brand marks retain applicable rights) |
+| Radix Select        | 2.3.7   | MIT                                                      |
 
 These are installed using `package-lock.json`; their upstream license files remain with the installed packages. Chromium and the Node container image have their own notices. Review transitive dependency notices for any binary redistribution. The submission archive contains source and lockfile, not `node_modules` or browser binaries.
 

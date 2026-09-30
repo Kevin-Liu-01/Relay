@@ -27,6 +27,7 @@
     "experiment": "node scripts/experiment.mjs"
   },
   "dependencies": {
+    "@radix-ui/react-select": "2.3.7",
     "@sparticuz/chromium": "153.0.0",
     "@thesvg/react": "3.3.9",
     "lucide-react": "1.49.0",

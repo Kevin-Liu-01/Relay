@@ -15,8 +15,6 @@ import {
   Radio,
   Layers,
   Eye,
-  MousePointer2,
-  Braces,
   Workflow,
   Check,
   AlertTriangle,
@@ -29,7 +27,6 @@ import {
   Swords,
 } from 'lucide-react';
 import Github from '@thesvg/react/github';
-import Slack from '@thesvg/react/slack';
 import { ModelMark } from '../lab/model-mark.jsx';
 import relayMark from '../assets/relay-mark.svg';
 import { history, readRun, saveRun, deleteRun, downloadEvidence } from './storage.js';
@@ -44,13 +41,10 @@ import './experience.css';
 import { ActionSpotlight, ResultCard } from './feedback.jsx';
 import { ReplayPlayer, ReplayLibrary } from './replay.jsx';
 import { Duel } from './duel.jsx';
+import { RelaySelect } from './select.jsx';
+import { TaskIcon, ModeIcon } from './select-icons.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
-const ModeIcon = ({ mode }) => {
-  const Icon =
-    { a11y: Eye, 'json-ui': Braces, pixels: MousePointer2, api: Workflow }[mode] ?? Layers;
-  return <Icon size={14} aria-hidden="true" />;
-};
 const elapsed = (n) =>
   n == null ? '—' : n < 1000 ? `${Math.round(n)} ms` : `${(n / 1000).toFixed(1)} s`;
 const money = (n) => (n == null ? '—' : `$${n.toFixed(5)}`);
@@ -479,60 +473,49 @@ function App() {
         </div>
       )}
       <section className="control-bar" aria-label="Run controls">
-        <label className="select-field">
-          <Slack width={17} height={17} />
-          <select
-            aria-label="Task"
-            disabled={busy}
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-          >
-            {Object.entries(setup?.tasks ?? { 'channel-topic': 'Update a topic' }).map(
-              ([id, label]) => (
-                <option
-                  key={id}
-                  value={id}
-                  disabled={provider === 'typesafe' && id === 'handoff-dm'}
-                >
-                  {label}
-                </option>
-              ),
-            )}
-          </select>
-        </label>
-        <label className="select-field">
-          <ModelMark id={model} />
-          <select
-            aria-label="Model"
-            disabled={busy}
-            value={model}
-            onChange={(e) => chooseModel(e.target.value)}
-          >
-            <option value="">Choose a model</option>
-            {catalog.map((m) => (
-              <option key={m.id}>{m.id}</option>
-            ))}
-          </select>
-        </label>
-        <label className="select-field">
-          <ModeIcon mode={mode} />
-          <select
-            aria-label="Interface"
-            disabled={busy}
-            value={mode}
-            onChange={(e) => setMode(e.target.value)}
-          >
-            {Object.entries(MODES).map(([id, label]) => (
-              <option
-                key={id}
-                value={id}
-                disabled={provider === 'typesafe' && ['pixels', 'api'].includes(id)}
-              >
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
+        <RelaySelect
+          label="Task"
+          disabled={busy}
+          value={task}
+          onChange={setTask}
+          options={Object.entries(setup?.tasks ?? { 'channel-topic': 'Update a topic' }).map(
+            ([id, label]) => ({
+              value: id,
+              label,
+              icon: <TaskIcon task={id} />,
+              disabled: provider === 'typesafe' && id === 'handoff-dm',
+              disabledReason: 'Jev does not support composing new handoff text.',
+            }),
+          )}
+        />
+        <RelaySelect
+          label="Model"
+          disabled={busy || connecting}
+          value={model}
+          onChange={(id) => chooseModel(id)}
+          placeholder="Choose a model"
+          placeholderIcon={<ModelMark />}
+          emptyText="Connect a key to see models"
+          wide
+          options={catalog.map((m) => ({
+            value: m.id,
+            label: m.id,
+            icon: <ModelMark id={m.id} />,
+          }))}
+        />
+        <RelaySelect
+          label="Interface"
+          disabled={busy}
+          value={mode}
+          onChange={setMode}
+          options={Object.entries(MODES).map(([id, label]) => ({
+            value: id,
+            label,
+            icon: <ModeIcon mode={id} />,
+            disabled: provider === 'typesafe' && ['pixels', 'api'].includes(id),
+            disabledReason: 'Jev supports Accessibility and Page JSON.',
+          }))}
+        />
         <button className="icon" aria-label="Run settings" onClick={() => setModal('settings')}>
           <Settings2 size={17} />
         </button>
@@ -1002,13 +985,18 @@ function App() {
             <input type="checkbox" checked={guide} onChange={(e) => setGuide(e.target.checked)} />
             Supply llms.txt + interaction guide
           </label>
-          <label className="field">
+          <div className="field">
             Context
-            <select value={context} onChange={(e) => setContext(e.target.value)}>
-              <option value="recent-4">Last four turns</option>
-              <option value="full">Full episode history</option>
-            </select>
-          </label>
+            <RelaySelect
+              label="Context"
+              value={context}
+              onChange={setContext}
+              options={[
+                { value: 'recent-4', label: 'Last four turns', icon: <Layers size={17} /> },
+                { value: 'full', label: 'Full episode history', icon: <History size={17} /> },
+              ]}
+            />
+          </div>
           {provider === 'ramp' && (
             <label className="check">
               <input

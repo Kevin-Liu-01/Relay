@@ -8,9 +8,13 @@ import {
   MousePointer2,
   Film,
   Layers,
+  Gauge,
+  FastForward,
 } from 'lucide-react';
 import { ModelMark } from '../lab/model-mark.jsx';
 import { describeAction } from './feedback.jsx';
+import { RelaySelect } from './select.jsx';
+import { ModeIcon } from './select-icons.jsx';
 
 export function replayFrames(record, episodeId) {
   const e = record?.audit?.episodes?.find((x) => x.episode.cell.episodeId === episodeId);
@@ -190,13 +194,16 @@ export function ReplayPlayer({ record }) {
             · no model calls during playback
           </span>
         </div>
-        <select aria-label="Replay episode" value={eid} onChange={(e) => setEid(e.target.value)}>
-          {record.run.episodes.map((e) => (
-            <option key={e.cell.episodeId} value={e.cell.episodeId}>
-              {e.cell.episodeId} · {e.cell.mode}
-            </option>
-          ))}
-        </select>
+        <RelaySelect
+          label="Replay episode"
+          value={eid}
+          onChange={setEid}
+          options={record.run.episodes.map((e) => ({
+            value: e.cell.episodeId,
+            label: `${e.cell.episodeId} · ${e.cell.mode}`,
+            icon: <ModeIcon mode={e.cell.mode} />,
+          }))}
+        />
       </div>
       <WorkspaceReplay frame={frame} />
       <div className="replay-action">
@@ -248,17 +255,16 @@ export function ReplayPlayer({ record }) {
         <span>
           {index + 1} / {frames.length}
         </span>
-        <select
-          aria-label="Playback speed"
+        <RelaySelect
+          label="Playback speed"
           value={speed}
-          onChange={(e) => setSpeed(Number(e.target.value))}
-        >
-          {[0.5, 1, 2].map((s) => (
-            <option key={s} value={s}>
-              {s}×
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setSpeed(Number(value))}
+          options={[
+            { value: 0.5, label: '0.5×', icon: <Gauge size={16} /> },
+            { value: 1, label: '1×', icon: <Play size={16} /> },
+            { value: 2, label: '2×', icon: <FastForward size={16} /> },
+          ]}
+        />
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ import { Bot, Workflow } from 'lucide-react';
 export function ModelMark({ id = '', size = 16 }) {
   const value = id.toLowerCase();
   const Mark =
-    value === 'scripted-reference'
+    value === 'scripted-reference' || /^jev(?:-|$)/.test(value)
       ? Workflow
       : /(^|\/)(gpt|o[134](?:-|$))|openai/.test(value)
         ? Openai

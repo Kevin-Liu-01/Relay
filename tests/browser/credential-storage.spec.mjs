@@ -58,13 +58,16 @@ test('saved provider keys restore, prefill 1v1, forget independently and support
       typesafe: 'fake-remembered-typesafe',
     });
     await page.reload();
-    await expect(page.getByLabel('Model', { exact: true })).toHaveValue('jev-latest');
+    await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
+      'jev-latest',
+    );
     expect(calls.at(-1)).toEqual({ provider: 'typesafe', key: 'fake-remembered-typesafe' });
     await page.getByRole('button', { name: '1v1', exact: true }).click();
     await expect(page.getByLabel('API key A', { exact: true })).toHaveValue(
       'fake-remembered-typesafe',
     );
-    await page.getByLabel('Provider B', { exact: true }).selectOption('ramp');
+    await page.getByRole('combobox', { name: 'Provider B', exact: true }).click();
+    await page.getByRole('option', { name: 'Ramp Router', exact: true }).click();
     await expect(page.getByLabel('API key B', { exact: true })).toHaveValue('fake-remembered-ramp');
     await expect(page.getByLabel('API key B', { exact: true })).toHaveAttribute('type', 'password');
     await page.getByRole('button', { name: 'Forget key A', exact: true }).click();
@@ -144,7 +147,9 @@ test('blocked local storage allows an in-memory connection and shows the persist
     await page.goto(url);
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
     await enterKey(page, 'fake-private-memory-key');
-    await expect(page.getByLabel('Model', { exact: true })).toHaveValue('gpt-4o-mini');
+    await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
+      'gpt-4o-mini',
+    );
     await expect(page.getByRole('alert')).toContainText('key could not be saved');
     await expect(page.getByRole('alert')).not.toContainText('fake-private-memory-key');
     await page.getByRole('button', { name: 'Connected', exact: true }).click();
