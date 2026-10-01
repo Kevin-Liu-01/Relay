@@ -39,9 +39,20 @@ import './style.css';
 import { REPLAY_MODE, readVisibleUI, validSnapshot } from './replay-bridge.js';
 
 const emojis = ['✅', '👍', '👀', '🎉', '❤️', '🙌', '✨', '🚀'];
+const PLAY_MODE = document.documentElement.dataset.relayPlay === 'true';
+const playSession = PLAY_MODE
+  ? import('./play/session.mjs').then(async ({ createPlaySession }) => {
+      const response = await fetch('/demo/sandbox.json');
+      if (!response.ok) throw new Error('Could not load the sandbox. Please refresh.');
+      return createPlaySession(await response.json());
+    })
+  : null;
+if (PLAY_MODE)
+  document.getElementById('play-reset')?.addEventListener('click', () => location.reload());
 let token = location.pathname.match(/^\/s\/([a-f0-9]{64})$/)?.[1];
 async function api(path, method = 'GET', body) {
   if (REPLAY_MODE) throw new Error('Recorded workspace: network actions are disabled.');
+  if (PLAY_MODE) return (await playSession).request(path, method, body);
   const r = await fetch(`/api/${path}`, {
     method,
     headers: { 'content-type': 'application/json', ...(token ? { 'x-session-token': token } : {}) },
@@ -52,7 +63,7 @@ async function api(path, method = 'GET', body) {
   return data;
 }
 function track(event) {
-  if (!REPLAY_MODE && token) api('events', 'POST', event).catch(() => {});
+  if (!REPLAY_MODE && !PLAY_MODE && token) api('events', 'POST', event).catch(() => {});
 }
 function IconButton({ label, children, onClick, ...props }) {
   return (
@@ -353,7 +364,7 @@ function App() {
     if (REPLAY_MODE) return;
     (async () => {
       try {
-        if (!token) {
+        if (!token && !PLAY_MODE) {
           const r = await api('demo', 'POST', {});
           token = r.token;
           history.replaceState({}, '', `/s/${token}`);

@@ -1,5 +1,15 @@
 # Relay Live · hosted BYOK
 
+To use the mocked Slack UI yourself, open **[Try Slack](https://relay.kevinliu.studio/play)**
+or the **Try Slack** link on the home page. It opens a separate tab, including
+during an agent run, so your interactions cannot alter the evaluated workspace.
+No key, model request, server browser or database allocation is needed. The same
+React UI and transition/search rules run against fictional data in page memory;
+each tab is independent, and **Reset** or refresh returns it to its initial state.
+On narrow screens the Slack workspace pans within its own area; the Relay and
+Reset controls stay visible. It is a practice sandbox, not a scored session,
+durable chat service, or shared workspace. No messages are sent to real Slack.
+
 Open **[relay.kevinliu.studio](https://relay.kevinliu.studio)**. Choose **Connect a key**, select **Jev · TypeSafe** or **Ramp Router**, and enter that provider's key. Model discovery uses your account, not a fabricated model list. Select a task, model and interface, then **Run**. A TypeSafe key is sufficient for Jev; no SGLang server, GPU or H100 allocation is required.
 
 The large screen is the agent's actual browser, streamed while it works. It is read-only for the observer. The right panel shows Jev's returned action probabilities or a generative model's recorded actions. Replay, Audit, History and Compare stay out of the workspace until needed.

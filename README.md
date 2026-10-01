@@ -35,6 +35,11 @@ Paste a key once: Relay connects automatically, loads published pricing, and
 reuses the connection for solo runs and both 1v1 lanes. No pricing form.
 [Privacy, budgets and hosting limits →](docs/hosting.md)
 
+**Want to use Slack yourself? [Open the hands-on sandbox →](https://relay.kevinliu.studio/play)**
+No key or model required. Send messages, edit, reply in threads, search, use DMs,
+pins, saved messages and channel details. Changes stay in that tab and reset on
+refresh. This is a personal practice workspace, not a scored agent run.
+
 **No key? Open Replays.** Play a recorded run inside the actual Slack interface,
 with the dialog, typed text and action target restored at each step. Try the
 labeled reference example or inspect a real model's earlier success and failure.
@@ -157,7 +162,7 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **103 backend checks and 67 browser checks**. Historical
+The expanded suite has **106 backend checks and 69 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 New workflow evidence is scripted, with no paid inference. No RL training or GPU

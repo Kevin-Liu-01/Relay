@@ -450,6 +450,10 @@ function App() {
         <span className="nav-divider" />
         <span className="nav-caption">Agents, in the open.</span>
         <div className="nav-spacer" />
+        <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
+          <ArrowUpRight size={16} />
+          Try Slack
+        </a>
         <button disabled={busy || connecting} onClick={() => setModal('duel')}>
           <Swords size={16} />
           1v1
@@ -608,6 +612,10 @@ function App() {
                     <Play size={13} />
                     Watch a replay
                   </button>
+                  <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
+                    <ArrowUpRight size={14} />
+                    Try Slack yourself
+                  </a>
                 </div>
               </div>
             )}

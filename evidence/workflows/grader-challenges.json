@@ -10,12 +10,13 @@
     999,
     1000000000
   ],
-  "generatedAt": "2026-10-01T04:37:13.092Z",
+  "generatedAt": "2026-10-01T17:52:53.879Z",
   "source": {
     "server/tasks.mjs": "10035ed0630fbf4753e429d6cabb34808177834d76ecf2a59f10379b8f23388f",
     "server/workflow-tasks.mjs": "daa569b6f6ff76216c1028b24e737a744911ca75969499b2d7dcd2aa9771bbba",
     "server/workflow-seed.mjs": "d5d693a9d1552a980782d76d5c6bd00b3b5e0d1db38d442ddb61a904b96b02b2",
-    "server/domain.mjs": "591150d83d45dc21c2ebde266baab8de3fffcb51cf0ea359bcf7b9cc92c11573",
+    "server/domain.mjs": "ef8a8d8d38fa628beaf694252823d42c2a4c81388d1b0272c640ad86d3768dad",
+    "shared/workspace.mjs": "3cc45785e6588e459478107e35be849ed311e9f41f6426fe0dbcf3eb49f82428",
     "runner/workflow-reference.mjs": "901cddeb0da65b0cce49f1093a9a845e38a9e1bacb9c29b175a9425058ed0d2a",
     "tests/helpers/workflow-cases.mjs": "c15bb6ea02386dce8454b380fbe20d538325860dce2668cd74756d335b8078e8"
   },

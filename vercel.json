@@ -3,6 +3,7 @@
   "framework": "vite",
   "buildCommand": "npm run build:hosted",
   "outputDirectory": "dist",
+  "rewrites": [{ "source": "/play", "destination": "/play.html" }],
   "functions": {
     "api/relay.mjs": {
       "maxDuration": 240,

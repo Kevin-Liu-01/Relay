@@ -1,0 +1,65 @@
+@import '../relay-typography.css';
+.play-mode {
+  overflow: hidden;
+}
+.play-mode #root {
+  height: calc(100dvh - 44px);
+  overflow: auto;
+}
+.play-mode .shell {
+  height: 100%;
+  min-width: 720px;
+}
+.play-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  background: #f7f6f9;
+  color: #5c5362;
+  font:
+    13px 'Relay Camber',
+    sans-serif;
+  border-bottom: 1px solid #dedbe2;
+}
+.play-bar a,
+.play-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+.play-bar a {
+  font-weight: 600;
+  color: #302735;
+}
+.play-bar span {
+  min-width: 0;
+}
+.play-bar small {
+  font-size: 12px;
+  color: #7b7183;
+}
+.play-bar button {
+  margin-left: auto;
+  font: inherit;
+  padding: 6px 9px;
+  border-radius: 6px;
+}
+.play-bar a:focus-visible {
+  outline: 2px solid #62416f;
+  outline-offset: 3px;
+}
+@media (max-width: 400px) {
+  .play-bar {
+    gap: 8px;
+    padding: 0 9px;
+  }
+  .play-bar small {
+    display: block;
+    font-size: 10px;
+  }
+}

@@ -15,6 +15,14 @@ plus a TypeSafe Jev candidate-selection adapter. See [hosting](hosting.md) and
 
 ## Design decision
 
+The public hands-on `/play` route reuses the workspace components and the pure
+transition/search engine in `shared/workspace.mjs`, with a page-memory adapter.
+It loads only a static actor-visible fixture and never calls the actor, trainer
+or provider API. Server sessions still use SQLite and the same transition rules;
+their hashes include the shared engine. Sandbox changes are deliberately not
+persisted, graded or mixed into experiment evidence. It provides direct manual
+interaction without opening an unauthenticated server-compute endpoint.
+
 Build an original, narrowly scoped React workspace and a small deterministic state engine rather than adapting a production collaboration stack. The goal is credible computer interaction plus trustworthy evaluation—not reproducing every Slack endpoint. Static mockups are insufficient because an agent must change persistent state; a full enterprise clone adds authentication, hosted-backend and reset costs unrelated to the selected tasks.
 
 ```mermaid

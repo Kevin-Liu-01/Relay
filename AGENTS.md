@@ -13,6 +13,12 @@ Preserve failures and mark missing usage unknown. References are scripts, not mo
 For the public release at `relay.kevinliu.studio`, read `docs/hosting.md` and
 `docs/system-one.md`. `src/live/` owns the screen-first BYOK UI; `hosted/` owns
 request-isolated execution and NDJSON streaming; `api/relay.mjs` is the Vercel entry.
+`/play` (also `play.html`) is the no-key, hands-on sandbox, using the same Slack
+React app and `shared/workspace.mjs` transition/search rules. `src/play/session.mjs`
+owns only page-memory state. The build emits an actor-visible fictional seed,
+never task answers or a grader. Refresh/reset clears it. Do not persist sandbox
+state with provider credentials, write it into agent history, or treat it as a
+scored benchmark. The agent spectator and recorded replay remain read-only.
 Provider keys may persist only in the operator UI's dedicated localStorage record
 when “Remember keys on this device” is enabled (default on, as requested by Kevin).
 Keep keys out of run history, audit, replay, exports and server persistence. Never

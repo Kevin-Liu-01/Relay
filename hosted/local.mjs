@@ -10,12 +10,22 @@ export function createLiveServer(options = {}) {
     if (url.pathname === '/api/relay') return handler(req, res);
     if (
       req.method !== 'GET' ||
-      !/^\/(?:|live.html|replay.html|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(url.pathname)
+      !/^\/(?:|live.html|replay.html|play\/?|play.html|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(
+        url.pathname,
+      )
     ) {
       res.writeHead(404);
       return res.end();
     }
-    const file = join(ROOT, 'dist', url.pathname === '/' ? 'live.html' : url.pathname);
+    const file = join(
+      ROOT,
+      'dist',
+      url.pathname === '/'
+        ? 'live.html'
+        : /^\/play\/?$/.test(url.pathname)
+          ? 'play.html'
+          : url.pathname,
+    );
     if (!existsSync(file)) {
       res.writeHead(404);
       return res.end();

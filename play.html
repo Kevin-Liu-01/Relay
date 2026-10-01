@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-relay-play="true">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/src/assets/relay-favicon.ico" sizes="16x16 32x32" />
+    <link rel="icon" href="/src/assets/relay-mark.svg" type="image/svg+xml" sizes="any" />
+    <link rel="stylesheet" href="/src/play/style.css" />
+    <title>Try Slack · Relay</title>
+  </head>
+  <body class="play-mode">
+    <header class="play-bar" aria-label="Sandbox controls">
+      <a href="/" aria-label="Back to Relay"
+        ><img src="/src/assets/relay-mark.svg" alt="" width="23" height="23" />Relay</a
+      >
+      <span>Sandbox <small>· resets on refresh</small></span>
+      <button id="play-reset" type="button" aria-label="Reset workspace">
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 11a9 9 0 1 1 2.5 7M3 4v7h7" /></svg
+        >Reset
+      </button>
+    </header>
+    <div id="root" role="region" aria-label="Hands-on Slack workspace"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

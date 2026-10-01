@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "session": {
-    "id": "da346fe2-ea00-4966-a238-1930ff5b370a",
+    "id": "8a12abbb-c6a5-4133-940a-2ac817fd301e",
     "taskId": "channel-topic",
     "seed": 43,
     "mode": "evaluation",
-    "createdAt": 1790876540969,
-    "expiresAt": 1790962940969
+    "createdAt": 1790877146927,
+    "expiresAt": 1790963546927
   },
   "task": {
     "id": "channel-topic",
@@ -678,7 +678,7 @@
     "finalHash": "1fbf33a82baeda227ea18ff360f39b24e18bca594e07004e88fa73002e9c6ba5",
     "graderVersion": "state-contract-v1",
     "revision": 1,
-    "sessionId": "da346fe2-ea00-4966-a238-1930ff5b370a"
+    "sessionId": "8a12abbb-c6a5-4133-940a-2ac817fd301e"
   },
   "events": [
     {
@@ -689,7 +689,7 @@
       "key": "",
       "x": 1401,
       "y": 83,
-      "at": "2026-10-01T17:42:21.150Z"
+      "at": "2026-10-01T17:52:27.090Z"
     },
     {
       "seq": 2,
@@ -699,7 +699,7 @@
       "key": "",
       "x": 938,
       "y": 399,
-      "at": "2026-10-01T17:42:21.267Z"
+      "at": "2026-10-01T17:52:27.205Z"
     },
     {
       "seq": 3,
@@ -712,7 +712,7 @@
       },
       "beforeHash": "1180c0288f01444f7d9698c104efcdd3b6b044a653f44f67db428e9fbbaa6056",
       "afterHash": "1fbf33a82baeda227ea18ff360f39b24e18bca594e07004e88fa73002e9c6ba5",
-      "at": "2026-10-01T17:42:21.270Z"
+      "at": "2026-10-01T17:52:27.210Z"
     }
   ],
   "evidenceKind": "scripted-browser-reference"

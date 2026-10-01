@@ -37,6 +37,7 @@ const report = {
       'server/workflow-tasks.mjs',
       'server/workflow-seed.mjs',
       'server/domain.mjs',
+      'shared/workspace.mjs',
       'runner/workflow-reference.mjs',
       'tests/helpers/workflow-cases.mjs',
     ].map((p) => [p, createHash('sha256').update(readFileSync(p)).digest('hex')]),

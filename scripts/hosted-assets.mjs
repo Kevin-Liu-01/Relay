@@ -1,9 +1,12 @@
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { makeWorkflowSeed } from '../server/workflow-seed.mjs';
 // Vercel serves an existing index before fallback rewrites. Keep the private
 // workspace entry separate, and make the actual public index the BYOK console.
 copyFileSync('dist/index.html', 'dist/workspace.html');
 copyFileSync('dist/live.html', 'dist/index.html');
 mkdirSync('dist/demo', { recursive: true });
+// Actor-visible fictional fixture only. No task instructions, grader or answers.
+writeFileSync('dist/demo/sandbox.json', JSON.stringify(makeWorkflowSeed(42)));
 const source = 'evidence/reference/channel-topic-through-dialog-seed-42';
 copyFileSync(`${source}/final.png`, 'dist/demo/workspace.png');
 copyFileSync('evidence/visual/relay-lab.png', 'dist/demo/lab.png');

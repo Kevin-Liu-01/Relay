@@ -1,5 +1,23 @@
 # Verification and evidence
 
+## Hands-on Slack sandbox — 2026-10-01
+
+`/play` opens the actual interactive Slack components without a key or a model.
+The homepage has **Try Slack** links; they open a separate tab so running episodes
+are not interrupted. This is a page-memory practice session, with no grader or
+benchmark history. Reset/refresh clears the tab, and sibling tabs stay independent.
+
+The sandbox and server share the same transition/search engine, extracted without
+semantic changes. Three new unit checks cover transition parity, ownership,
+idempotency, stale writes, immutable reads, search and independent sessions. Two
+browser cases cover messaging, edits, reactions, saving, pins, threads, search,
+DMs, topics, descriptions, reset, new-tab entry and narrow-screen containment.
+They assert no actor/provider API requests. Manual browser checks also exercise
+the actual message composer and topic dialog. No paid inference is needed.
+The release gate passes **106 backend/harness checks and 69 browser checks**.
+The shared-engine refactor also passes the existing independent grader challenge
+suite; none of the task rewards or fixture contracts was changed.
+
 ## Screenshot failure isolation and compact sidebar — 2026-10-01
 
 An authenticated production reproduction with the operator's existing Ramp key

@@ -12,6 +12,7 @@ const roots = [
   'lab.html',
   'live.html',
   'replay.html',
+  'play.html',
   'vercel.json',
   '.vercelignore',
   '.env.example',

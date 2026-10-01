@@ -5,7 +5,13 @@ export default defineConfig({
     assetsInlineLimit: (path) => (path.includes('/relay-') ? false : undefined),
     sourcemap: false,
     rolldownOptions: {
-      input: { app: 'index.html', lab: 'lab.html', live: 'live.html', replay: 'replay.html' },
+      input: {
+        app: 'index.html',
+        lab: 'lab.html',
+        live: 'live.html',
+        replay: 'replay.html',
+        play: 'play.html',
+      },
     },
   },
   server: { host: '127.0.0.1' },
