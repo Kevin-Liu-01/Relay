@@ -150,6 +150,12 @@ The optional `scripts/hosted-smoke.mjs` uses a private `RAMP_ROUTER_API_KEY` env
 
 ### Capture failures
 
+Cold concurrent requests share a worker-local promise for Chromium executable
+extraction before either launches. This avoids executing a partially unpacked
+shared `/tmp/chromium` file; only executable readiness is shared, never browser or
+workspace state. A failed initialization is retained until the worker is recycled,
+not automatically retried against a partial executable.
+
 Required pixel observations have an explicit 10-second deadline; a failure stops
 the episode, without substituting an older frame or a text interface. Text-mode
 setup does not capture a discarded initial PNG. Observer PNGs have a separate

@@ -1,10 +1,7 @@
 import chromium from '@sparticuz/chromium';
 import { createHostedHandler } from '../hosted/service.mjs';
+import { createBrowserLaunchOptions } from '../hosted/chromium.mjs';
 
 export default createHostedHandler({
-  launchOptions: async () => ({
-    args: chromium.args,
-    executablePath: await chromium.executablePath(),
-    headless: true,
-  }),
+  launchOptions: createBrowserLaunchOptions(chromium),
 });

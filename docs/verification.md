@@ -24,13 +24,30 @@ Matched interfaces also use separate requests, not a shared short deadline.
 Unknown usage, interrupted/unverified evidence and failed history persistence
 stop the remaining queue; no retries or automatic restart on reload.
 
-The release gate passes **113 backend/harness checks and 72 browser checks**.
+The release gate passes **115 backend/harness checks and 72 browser checks**.
 New browser coverage uses an explicitly fake transport for sequential model jobs,
 full per-cell budgets, audited isolated histories, secret-free evidence,
 comparison rows, unknown-usage stops, search, selection bounds and mobile/keyboard
 controls. This is wiring evidence, not model quality. The picker was also checked
 interactively in a local no-inference preview. Existing screenshot-capture limits
 below remain unresolved by this change.
+
+The first production pair after deployment preserved both outcomes. GPT-6 Luna
+passed the topic task through Actor API in two calls (9.219 s, $0.0002086 estimated,
+known usage, verified audit, five live frames, three PNGs, no capture gaps).
+The simultaneous Gemini 3.8 Flash request failed before inference with
+`spawn ETXTBSY` (zero requests): both cold starts could call Chromium extraction
+against the shared `/tmp/chromium` path. The pinned library checks file existence,
+not completion of another caller's decompression. This is a harness startup
+failure, not a Gemini model result or a budget stop. Private raw runs are retained
+under `.runtime/hosted-smokes/`, IDs `7f6009d0-0950-4532-bd13-84e561107c98` and
+`eb8912e7-5768-46b4-b996-dc21976bbb0d`; no capability-bearing raw exports are public.
+
+The function now shares one worker-local executable-initialization promise;
+browser contexts, processes and workspaces remain separate. A failed initialization
+stays failed for that worker, rather than retrying against a partial file. Two new
+red-to-green regressions exercise concurrent initialization and retained rejection.
+This guard is worker-local, not a cross-process filesystem lock.
 
 ## Hands-on Slack sandbox — 2026-10-01
 
