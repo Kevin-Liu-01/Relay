@@ -30,6 +30,23 @@ continued task success and visible audit gaps, and separately verify fatal pixel
 observation failures and explicit deadlines. Post-deployment real-model results
 are recorded separately below when available.
 
+The first post-deployment accessibility run (`341957be-8d48-42d1-94a7-a124145c2dab`)
+had no capture warnings, but Router returned `status: incomplete` before any
+action. Its unreconciled reservation was $0.0017891; billing is unknown. The
+old receipt discarded the incomplete reason, so token exhaustion for that
+particular response is unproven. One separate, manually requested replay of the
+same prepared request completed (3,494 input / 271 output, including 216 reasoning
+tokens; estimated $0.0004849), with no workspace action executed.
+
+The hosted output default was only 512 tokens, shared with internal reasoning.
+Following [the Responses token-budget contract](https://developers.openai.com/api/docs/guides/reasoning),
+hosted requests now permit 4,096 tokens without increasing per-run dollar/time
+caps or altering reasoning effort. This is a configuration hardening, not proof
+that every incomplete response was caused by the old cap. A new red-to-green
+transport test verifies allowlisted incomplete reasons, validated usage and no
+partial-action execution; arbitrary provider strings are not copied to errors.
+The combined gate passes **99 backend/harness checks and 67 browser checks**.
+
 ## Compact result typography — 2026-09-30
 
 Result titles now stay on one line, use Camber semibold (600) at 18px, and

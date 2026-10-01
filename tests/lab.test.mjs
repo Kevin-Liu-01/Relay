@@ -706,6 +706,44 @@ test('Router errors never echo secrets and retry count stays one', async () => {
   assert.throws(() => new RampRouter({ apiKey: 'x', baseURL: 'https://evil.example/v1' }), /only/);
   await assert.rejects(new RampRouter({ apiKey: '' }).models(), /RAMP_ROUTER_API_KEY/);
 });
+test('incomplete Router receipts preserve safe reasons and usage without executing partial output', async () => {
+  for (const reason of ['max_output_tokens', 'content_filter', 'secret-sentinel']) {
+    let calls = 0;
+    const router = new RampRouter({
+      apiKey: 'secret-sentinel',
+      fetchImpl: async () => {
+        calls++;
+        return new Response(
+          JSON.stringify({
+            status: 'incomplete',
+            incomplete_details: { reason },
+            output: [
+              { type: 'message', content: [{ type: 'output_text', text: '{"type":"finish"}' }] },
+            ],
+            usage: {
+              input_tokens: 100,
+              output_tokens: 512,
+              output_tokens_details: { reasoning_tokens: 512 },
+            },
+          }),
+        );
+      },
+    });
+    await assert.rejects(
+      router.respond({ model: 'test-model', instructions: '', input: [], maxOutputTokens: 512 }),
+      (error) => {
+        assert.equal(error.code, 'provider_receipt_invalid');
+        assert.equal(error.receipt.incompleteReason, reason === 'secret-sentinel' ? null : reason);
+        assert.equal(error.receipt.usage.outputTokens, 512);
+        assert.equal(error.receipt.usage.reasoningTokens, 512);
+        assert.equal(error.receipt.text, undefined);
+        assert.ok(!JSON.stringify(error.receipt).includes('secret-sentinel'));
+        return true;
+      },
+    );
+    assert.equal(calls, 1);
+  }
+});
 test('request accounting includes guide, history and images; not just generated text', () => {
   const plain = requestEstimate({ input: 'a' }, { input: 1, output: 2 }, 128),
     image = requestEstimate(

@@ -22,6 +22,7 @@ export const LIMITS = {
   maxEpisodes: 3,
   runSeconds: 150,
   maxEstimatedUSD: 0.5,
+  maxOutputTokens: 4096,
 };
 export function hostedConfig(input) {
   const c = validateConfig(input);
@@ -35,7 +36,7 @@ export function hostedConfig(input) {
     c.runSeconds > LIMITS.runSeconds ||
     c.episodeSeconds > 90 ||
     c.maxEstimatedUSD > LIMITS.maxEstimatedUSD ||
-    c.maxOutputTokens > 1024 ||
+    c.maxOutputTokens > LIMITS.maxOutputTokens ||
     c.maxInputUnits > 128000
   )
     throw Error(
@@ -112,6 +113,7 @@ export function createHostedHandler({
           maxSteps: 12,
           maxRequests: 24,
           maxInputUnits: 128000,
+          maxOutputTokens: LIMITS.maxOutputTokens,
           runSeconds: 150,
           episodeSeconds: 60,
           maxEstimatedUSD: 0.25,

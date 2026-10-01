@@ -11,8 +11,7 @@ if (!key) throw Error('Load RAMP_ROUTER_API_KEY through a private environment fi
 const base = url.origin;
 const mode = process.argv[3] ?? 'a11y';
 const model = process.argv[4] ?? 'gpt-4o-mini';
-if (!['a11y', 'json-ui', 'api', 'pixels'].includes(mode))
-  throw Error('Choose a supported interface.');
+if (!['a11y', 'json-ui', 'api'].includes(mode)) throw Error('Choose a supported interface.');
 const setup = await (await fetch(`${base}/api/relay?op=config`)).json();
 const catalogResponse = await fetch(`${base}/api/relay?op=models`, {
   method: 'POST',

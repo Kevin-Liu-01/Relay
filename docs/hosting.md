@@ -55,10 +55,18 @@ flowchart LR
 | Episode time                  |                 90 seconds |
 | Estimated model spend / run   |                      $0.50 |
 | Input allowance / request     | 128,000 conservative units |
-| Generated output / request    |               1,024 tokens |
+| Generated output / request    |               4,096 tokens |
 | Concurrent runs / warm worker |                          2 |
 
 The UI starts below these limits. Estimates use the recorded rates, not invoices. Missing usage stays unknown and stops further calls. Set provider-side spend caps. Stopping or losing the connection can leave one already-sent request billable; there are no hidden retries or model substitutions.
+
+The output allowance includes internal reasoning, not only visible action JSON.
+Hosted defaults now allow 4,096 tokens instead of 512; per-run dollar and time
+caps are unchanged. This is room to finish a response, not a target token spend.
+Reasoning effort remains the provider default unless explicitly configured; it
+is not silently disabled. Incomplete responses never execute partial actions.
+Audits retain allowlisted incomplete reasons and validated usage when supplied;
+rejected receipts still conservatively retain the reservation in run accounting.
 
 The 12 [multi-step workflows](task-suite.md) default to 40 actions / 90 seconds;
 the six original controls default to 12 actions / 60 seconds. Dollar caps are

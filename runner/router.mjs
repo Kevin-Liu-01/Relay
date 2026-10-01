@@ -157,19 +157,12 @@ export class RampRouter {
       responseId: typeof d.id === 'string' ? d.id : null,
       providerStatus: typeof d.status === 'string' ? d.status : null,
       returnedModel: typeof d.model === 'string' ? d.model : null,
+      incompleteReason: ['max_output_tokens', 'content_filter'].includes(
+        d.incomplete_details?.reason,
+      )
+        ? d.incomplete_details.reason
+        : null,
     };
-    if (d.status !== 'completed' || !Array.isArray(d.output))
-      throw rejectReceipt(
-        'provider_receipt_invalid',
-        `Router did not return a completed response; request ${requestId}. No action executed.`,
-        metadata,
-      );
-    const text = (d.output ?? [])
-      .filter((x) => x.type === 'message')
-      .flatMap((x) => x.content ?? [])
-      .filter((x) => x.type === 'output_text')
-      .map((x) => (typeof x.text === 'string' ? x.text : ''))
-      .join('');
     const validCount = (n) => Number.isSafeInteger(n) && n >= 0;
     if (
       d.usage &&
@@ -195,6 +188,18 @@ export class RampRouter {
           reasoningTokens: d.usage.output_tokens_details?.reasoning_tokens ?? null,
         }
       : null;
+    if (d.status !== 'completed' || !Array.isArray(d.output))
+      throw rejectReceipt(
+        'provider_receipt_invalid',
+        `${metadata.incompleteReason === 'max_output_tokens' ? 'The model reached its output-token limit before finishing a response.' : 'Router did not return a completed response.'} Request ${receipt.requestId}. No action executed.`,
+        { ...metadata, usage },
+      );
+    const text = d.output
+      .filter((x) => x.type === 'message')
+      .flatMap((x) => x.content ?? [])
+      .filter((x) => x.type === 'output_text')
+      .map((x) => (typeof x.text === 'string' ? x.text : ''))
+      .join('');
     return {
       ...receipt,
       responseHash: metadata.responseHash,

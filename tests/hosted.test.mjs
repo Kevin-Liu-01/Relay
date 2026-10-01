@@ -150,12 +150,14 @@ test('Jev fails closed on invented choices, incomplete probabilities and HTTP er
 });
 test('hosted limits reject free public compute, arbitrary endpoints, large matrices and excessive budgets', () => {
   assert.equal(hostedConfig(config()).provider, 'ramp');
+  assert.equal(hostedConfig({ ...config(), maxOutputTokens: 4096 }).maxOutputTokens, 4096);
   for (const c of [
     DEFAULT_CONFIG,
     { ...config(), endpoint: 'http://localhost' },
     { ...config(), maxSteps: 41 },
     { ...config(), runSeconds: 151 },
     { ...config(), maxEstimatedUSD: 1 },
+    { ...config(), maxOutputTokens: 4097 },
     { ...config(), interfaces: ['api', 'a11y', 'json-ui'], guides: [true, false] },
   ])
     assert.throws(() => hostedConfig(c));
@@ -206,7 +208,12 @@ test('public HTTP boundary requires same origin, correct provider and bounded JS
     assert.equal(calls, 1);
     assert.ok(!(await r.text()).includes(body.key));
     assert.equal((await fetch(`${origin}/api/relay?op=history`)).status, 404);
-    assert.equal((await fetch(`${origin}/api/relay?op=config`)).status, 200);
+    const settingsResponse = await fetch(`${origin}/api/relay?op=config`);
+    assert.equal(settingsResponse.status, 200);
+    const settings = await settingsResponse.json();
+    assert.equal(settings.defaults.maxOutputTokens, 4096);
+    assert.equal(settings.defaults.maxEstimatedUSD, 0.25);
+    assert.equal(settings.limits.maxEstimatedUSD, 0.5);
   } finally {
     server.closeAllConnections();
     await new Promise((r) => server.close(r));
