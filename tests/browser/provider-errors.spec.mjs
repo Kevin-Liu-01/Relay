@@ -4,6 +4,30 @@ import { createLiveServer } from '../../hosted/local.mjs';
 import { RampRouter } from '../../runner/router.mjs';
 import { testPricing } from '../fixtures/pricing.mjs';
 
+async function expectCompactResult(page, result, title) {
+  const heading = result.getByRole('heading', { name: title, exact: true });
+  for (const width of [1440, 900, 375, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(heading).toHaveCSS('font-weight', '600');
+    await expect(heading).toHaveCSS('white-space', 'nowrap');
+    await expect(result.locator('.mini-label')).toHaveCSS('font-weight', '500');
+    const geometry = await heading.evaluate((el) => {
+      const text = document.createRange();
+      text.selectNodeContents(el);
+      const rects = [...text.getClientRects()];
+      const card = el.closest('.result-card').getBoundingClientRect();
+      return {
+        lines: new Set(rects.map((r) => r.top)).size,
+        right: Math.max(...rects.map((r) => r.right)),
+        cardRight: card.right,
+      };
+    });
+    expect(geometry.lines).toBe(1);
+    expect(geometry.right).toBeLessThanOrEqual(geometry.cardRight - 12);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+}
+
 test('Router 403 is blocked, not task failure or verified success; unknown usage and manual recovery', async ({
   page,
 }) => {
@@ -56,6 +80,7 @@ test('Router 403 is blocked, not task failure or verified success; unknown usage
     await expect(page.getByText('WORKSPACE VERIFIED', { exact: true })).toHaveCount(0);
     await expect(result).toContainText('No agent actions were executed');
     await expect(result).not.toContainText('Task incomplete');
+    await expectCompactResult(page, result, 'Provider unavailable');
     await expect(result.getByRole('button', { name: 'Choose another model' })).toBeInViewport();
     await expect(page.locator('footer')).toContainText('Unknown');
     await expect(page.locator('footer')).not.toContainText('0tokens');
@@ -74,6 +99,8 @@ test('Router 403 is blocked, not task failure or verified success; unknown usage
     ).toBeVisible();
     await expect(result).toContainText('WORKSPACE CHECKED');
     await expect(result).not.toContainText('RUN BLOCKED');
+    await expectCompactResult(page, result, 'Task incomplete');
+    await result.screenshot({ path: 'evidence/visual/relay-result-compact.png' });
     expect(requests).toBe(2);
     await page.getByRole('button', { name: /^History/ }).click();
     await expect(page.getByRole('dialog')).not.toContainText('never-persist-provider-error-body');

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "session": {
-    "id": "0359c230-37ba-43bc-9bb9-1369e86a8f33",
+    "id": "b5fcb13e-1f94-416f-9366-c3c078a7f8c9",
     "taskId": "handoff-dm",
     "seed": 43,
     "mode": "evaluation",
-    "createdAt": 1790829442006,
-    "expiresAt": 1790915842006
+    "createdAt": 1790829832479,
+    "expiresAt": 1790916232479
   },
   "task": {
     "id": "handoff-dm",
@@ -694,7 +694,7 @@
     "finalHash": "b2fe426a2a08dac0ff47612fa12780f4afe3bd3df8313a74e8f639824ff8a642",
     "graderVersion": "state-contract-v1",
     "revision": 1,
-    "sessionId": "0359c230-37ba-43bc-9bb9-1369e86a8f33"
+    "sessionId": "b5fcb13e-1f94-416f-9366-c3c078a7f8c9"
   },
   "events": [
     {
@@ -705,7 +705,7 @@
       "key": "Enter",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.313Z"
+      "at": "2026-10-01T04:43:52.731Z"
     },
     {
       "seq": 2,
@@ -715,7 +715,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.322Z"
+      "at": "2026-10-01T04:43:52.733Z"
     },
     {
       "seq": 3,
@@ -725,7 +725,7 @@
       "key": "Ctrl+Control",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.366Z"
+      "at": "2026-10-01T04:43:52.770Z"
     },
     {
       "seq": 4,
@@ -735,7 +735,7 @@
       "key": "Ctrl+k",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.373Z"
+      "at": "2026-10-01T04:43:52.775Z"
     },
     {
       "seq": 5,
@@ -745,7 +745,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.436Z"
+      "at": "2026-10-01T04:43:52.810Z"
     },
     {
       "seq": 6,
@@ -758,7 +758,7 @@
       },
       "beforeHash": "1180c0288f01444f7d9698c104efcdd3b6b044a653f44f67db428e9fbbaa6056",
       "afterHash": "b2fe426a2a08dac0ff47612fa12780f4afe3bd3df8313a74e8f639824ff8a642",
-      "at": "2026-10-01T04:37:22.542Z"
+      "at": "2026-10-01T04:43:52.857Z"
     },
     {
       "seq": 7,
@@ -768,7 +768,7 @@
       "key": "Enter",
       "x": null,
       "y": null,
-      "at": "2026-10-01T04:37:22.548Z"
+      "at": "2026-10-01T04:43:52.862Z"
     }
   ],
   "evidenceKind": "scripted-browser-reference"

@@ -1,5 +1,15 @@
 # Verification and evidence
 
+## Compact result typography — 2026-09-30
+
+Result titles now stay on one line, use Camber semibold (600) at 18px, and
+step down to 16px in the narrow tablet sidebar. The small result label uses
+medium (500). Other Relay headings and the Slack workspace are unchanged.
+Browser checks verify single-line text geometry, no right-edge clipping and
+both font weights at 1440, 900, 375 and 320px for incomplete and provider-blocked
+results. `relay-result-compact.png` is a fake-transport rendering check, not
+model-performance evidence. No new motion or paid inference was introduced.
+
 ## Router rejection and result presentation — 2026-09-30
 
 A user-reported Router 403 exposed a misleading result card: “WORKSPACE VERIFIED”
