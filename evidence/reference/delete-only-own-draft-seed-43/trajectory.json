@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "session": {
-    "id": "a1f057b6-6e6e-4de4-9270-d3843ffc2f47",
+    "id": "cc9b74c5-68ed-47c2-9789-aefd1a32e5eb",
     "taskId": "delete-draft",
     "seed": 43,
     "mode": "evaluation",
-    "createdAt": 1790813448919,
-    "expiresAt": 1790899848919
+    "createdAt": 1790813775445,
+    "expiresAt": 1790900175445
   },
   "task": {
     "id": "delete-draft",
@@ -666,7 +666,7 @@
     "finalHash": "c0e3b345720e00bb077573a83f3c44426d4b7308aa2e95d955054cdebc3d55a2",
     "graderVersion": "state-contract-v1",
     "revision": 1,
-    "sessionId": "a1f057b6-6e6e-4de4-9270-d3843ffc2f47"
+    "sessionId": "cc9b74c5-68ed-47c2-9789-aefd1a32e5eb"
   },
   "events": [
     {
@@ -677,7 +677,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-10-01T00:10:49.039Z"
+      "at": "2026-10-01T00:16:15.569Z"
     },
     {
       "seq": 2,
@@ -687,7 +687,7 @@
       "key": "",
       "x": 186,
       "y": 335,
-      "at": "2026-10-01T00:10:49.042Z"
+      "at": "2026-10-01T00:16:15.573Z"
     },
     {
       "seq": 3,
@@ -697,7 +697,7 @@
       "key": "",
       "x": 1401,
       "y": 597,
-      "at": "2026-10-01T00:10:49.121Z"
+      "at": "2026-10-01T00:16:15.683Z"
     },
     {
       "seq": 4,
@@ -707,7 +707,7 @@
       "key": "",
       "x": 1305,
       "y": 717,
-      "at": "2026-10-01T00:10:49.156Z"
+      "at": "2026-10-01T00:16:15.718Z"
     },
     {
       "seq": 5,
@@ -719,7 +719,7 @@
       },
       "beforeHash": "1180c0288f01444f7d9698c104efcdd3b6b044a653f44f67db428e9fbbaa6056",
       "afterHash": "c0e3b345720e00bb077573a83f3c44426d4b7308aa2e95d955054cdebc3d55a2",
-      "at": "2026-10-01T00:10:49.187Z"
+      "at": "2026-10-01T00:16:15.748Z"
     },
     {
       "seq": 6,
@@ -729,7 +729,7 @@
       "key": "",
       "x": 933,
       "y": 367,
-      "at": "2026-10-01T00:10:49.189Z"
+      "at": "2026-10-01T00:16:15.750Z"
     }
   ],
   "evidenceKind": "scripted-browser-reference"

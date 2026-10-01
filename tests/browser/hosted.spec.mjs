@@ -5,6 +5,29 @@ import { TypeSafeRouter } from '../../runner/typesafe.mjs';
 import { expectRelayBrand } from './brand-assertions.mjs';
 import { testPricing } from '../fixtures/pricing.mjs';
 
+async function expectFullWidthWorkspace(page) {
+  const frame = page.locator('.viewport > img');
+  await expect(frame).toBeVisible();
+  await expect.poll(() => frame.evaluate((el) => el.complete && el.naturalWidth > 0)).toBe(true);
+  const geometry = await frame.evaluate((el) => {
+    const image = el.getBoundingClientRect(),
+      stage = el.parentElement.getBoundingClientRect();
+    return {
+      left: image.left - stage.left,
+      right: stage.right - image.right,
+      top: image.top - stage.top,
+      bottom: stage.bottom - image.bottom,
+      ratio: image.width / image.height,
+      naturalRatio: el.naturalWidth / el.naturalHeight,
+    };
+  });
+  for (const side of ['left', 'right', 'top', 'bottom'])
+    expect(Math.abs(geometry[side])).toBeLessThan(1);
+  expect(geometry.ratio).toBeCloseTo(geometry.naturalRatio, 3);
+  expect(geometry.naturalRatio).toBeCloseTo(1.6, 3);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+}
+
 function fakeRouter(provider, key) {
   if (provider === 'typesafe')
     return new TypeSafeRouter({
@@ -138,6 +161,29 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       page.getByRole('region', { name: 'Current action', exact: true }).getByRole('heading'),
     ).toHaveCSS('font-size', '20px');
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeVisible();
+    for (const size of [
+      { width: 1920, height: 1080 },
+      { width: 1440, height: 900 },
+      { width: 800, height: 900 },
+    ]) {
+      await page.setViewportSize(size);
+      await expectFullWidthWorkspace(page);
+      await page
+        .getByRole('button', { name: 'Inspect the evidence', exact: true })
+        .scrollIntoViewIfNeeded();
+      await expect(
+        page.getByRole('button', { name: 'Inspect the evidence', exact: true }),
+      ).toBeInViewport();
+      expect(
+        await page.locator('.options-list').evaluate((el) => el.clientHeight),
+      ).toBeGreaterThanOrEqual(85);
+      if (size.width === 1920)
+        await page.screenshot({
+          path: 'evidence/visual/relay-full-width-desktop.png',
+          fullPage: true,
+        });
+    }
+    await page.setViewportSize({ width: 1440, height: 900 });
     // New captures are observer-only, and restore actual application state in an inert frame.
     await page.getByRole('button', { name: 'Play the run', exact: false }).click();
     const replay = page.getByRole('dialog', { name: 'Replay studio' });
@@ -219,6 +265,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       true,
     );
     await page.screenshot({ path: 'evidence/visual/relay-live-mobile.png', fullPage: true });
+    await expectFullWidthWorkspace(page);
     expect(errors).toEqual([]);
   } finally {
     server.closeAllConnections();

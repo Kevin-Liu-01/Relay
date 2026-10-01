@@ -1,5 +1,19 @@
 # Relay menus
 
+## Full-width workspace viewer
+
+Once starting or displaying a run, the observer stage uses the agent frame's
+1440×900 (8:5) proportions at the full available width. The page grows vertically
+when needed rather than adding side gutters, cropping controls or stretching
+text. The decision panel follows that height; its lists remain scrollable. Mobile
+uses the same full-width frame with the decision panel below. The welcome layout,
+fixed agent viewport, pixel coordinates, capture artifacts and model inputs are
+unchanged. Arena and actual-UI replay already use proportional stages.
+
+The hosted browser regression checks all four image edges and undistorted frame
+proportions at 1920×1080, 1440×900, 800×900 and 390×844, including a saved run. The desktop
+image `relay-full-width-desktop.png` is a fake-provider UI check, not model evidence.
+
 ## One-click connections and launches
 
 Pasting a valid-looking key connects after 600ms without further typing. The

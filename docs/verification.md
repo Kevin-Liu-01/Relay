@@ -1,5 +1,14 @@
 # Verification and evidence
 
+## Full-width observer frame — 2026-09-30
+
+The Slack frame now fills the observer stage edge to edge without side gutters.
+Its 8:5 proportions are preserved: the surrounding page can grow vertically,
+rather than cropping or stretching recorded actions. Agent viewport, observation
+boundaries, coordinates and saved artifacts are unchanged. Desktop and mobile
+geometry assertions accompany the existing hosted run/history test; the checks
+use fake providers and do not spend model credits.
+
 ## One-click Live setup — 2026-09-30
 
 Published prices and saved connections now load automatically across solo,

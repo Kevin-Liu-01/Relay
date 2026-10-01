@@ -429,7 +429,7 @@ function App() {
           ? 'Recorded demo'
           : 'Ready';
   return (
-    <div className="live-shell">
+    <div className={`live-shell ${run || busy ? 'workspace-expanded' : ''}`}>
       <header className="nav">
         <a className="wordmark" href="/">
           <img className="relay-mark" src={relayMark} width="30" height="30" alt="" />
