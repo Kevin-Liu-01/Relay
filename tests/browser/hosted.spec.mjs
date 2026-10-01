@@ -226,6 +226,8 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       'src',
       /^data:image\/png/,
     );
+    await expect(page.getByAltText('Recorded workspace')).toHaveJSProperty('naturalWidth', 1440);
+    await expect(page.getByAltText('Recorded workspace')).toHaveJSProperty('naturalHeight', 900);
     // Same-origin database is inspected only in this committed regression test.
     const stored = await page.evaluate(async () => {
       const db = await new Promise((resolve) => {

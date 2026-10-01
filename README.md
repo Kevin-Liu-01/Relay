@@ -163,6 +163,11 @@ establish a general leaderboard. Cosmetic seeds are not held-out task families.
 New workflow evidence is scripted, with no paid inference. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
+Hosted text policies now survive optional screenshot failures, but cloud PNG
+capture still has intermittent gaps. Live viewing and actual-UI replay remain
+available; missing images are disclosed in the audit. Hosted pixel-policy
+reliability has not been established. [Current capture limits →](docs/hosting.md#capture-failures)
+
 ## Under the hood
 
 - **React + Vite** for the workspace and console.

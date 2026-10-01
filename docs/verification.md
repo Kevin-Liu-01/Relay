@@ -89,6 +89,35 @@ including the no-capture-warning hosted check, 1v1, and credential opt-out.
 The hosted smoke additionally requires multiple live frames, PNG artifacts and
 completed episode statuses, not just a passing diagnostic grade.
 
+Native surface capture did not eliminate the cloud stall. Run
+`e166e1cf-474e-4a39-a1a6-e61db8e7c4f8` passed both outcome checks in five
+actions/five calls (49.5 seconds, $0.0060344 estimated, usage reported), with
+18 live frames and three PNGs. Step four and final PNGs timed out specifically
+in the native capture phase; the smoke correctly failed. The stream and final
+audit completed. A final bounded capture experiment switches only the native
+source to `fromSurface: false`, the view path exposed by
+[Chromium's capture API](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot).
+This was not a cached-frame fallback and still required the same viewport and
+fresh-image checks. It failed locally: the hosted replay could not find its
+initial PNG, and a separate 1v1 teardown hit a closed-browser fixture error.
+The native view experiment was reverted without deployment or paid inference.
+Its private trace was retained; native surface capture remains the shipped path.
+
+### Closeout boundary
+
+The run-aborting screenshot failure is fixed and the duplicate/oversized sidebar
+is removed. Three consecutive production task episodes passed after output
+headroom and observer isolation, but none had fully complete PNG evidence. The
+last production test (`e166e1cf…`, source `6380510`) delivered 18 live frames,
+three exact PNGs, actual-UI replay snapshots and a verified final audit. That is
+not a clean screenshot-capture pass, a pixel-policy verification, or a population
+reliability claim. The strict hosted smoke continues to fail on capture gaps.
+
+Known provider-usage-based estimates across all live debugging calls sum to
+$0.0146888. One rejected receipt has unknown billing and a retained $0.0017891
+reservation, not a known charge. No provider retry or model substitution was
+introduced. Private keys and raw recordings remain excluded from Git.
+
 ## Compact result typography — 2026-09-30
 
 Result titles now stay on one line, use Camber semibold (600) at 18px, and

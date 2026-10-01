@@ -131,6 +131,13 @@ backpressure waits (five seconds per drain), so the final evidence batch does no
 overflow the live stream's two-megabyte queue guard. A disconnected client still
 cancels delivery; no evidence is silently replaced or marked complete early.
 
+**Current hosted limitation (2026-10-01):** production `gpt-6-luna` text-mode
+tasks complete, live frames arrive and audits verify, but fresh PNG capture can
+still time out later in an episode. Those gaps remain visible. The native view
+alternative failed local replay verification and was not deployed. Hosted pixel
+policy reliability is not established by these text-mode passes; required image
+failures remain fatal. See [the recorded investigation](verification.md#screenshot-failure-isolation-and-compact-sidebar--2026-10-01).
+
 Observer PNG/replay failures record `capture_warning` in the hash-chained audit
 and `captureWarnings` in the episode. They do not abort a text policy or overwrite
 a valid final-state grade. After the first failed per-step observer PNG, later
