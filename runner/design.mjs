@@ -1,4 +1,5 @@
 import { TASK_IDS } from '../server/tasks.mjs';
+import { supportsChoice } from '../shared/task-catalog.mjs';
 import { INTERFACES, HISTORIES } from './protocol.mjs';
 import { validateRates } from './router.mjs';
 
@@ -110,8 +111,8 @@ export function validateConfig(c) {
       'Jev uses text UI observations, not pixels or API actions.',
     );
     check(
-      !c.tasks.includes('handoff-dm'),
-      'The bounded Jev candidate policy cannot compose novel handoff text. Use an LLM for this task.',
+      c.tasks.every(supportsChoice),
+      'The bounded Jev candidate policy cannot compose novel handoff or workflow text. Use an LLM for this task.',
     );
   }
   if (c.provider === 'reference') {
@@ -234,7 +235,8 @@ export function aggregate(episodes) {
       });
     const g = groups.get(key);
     g.attempted++;
-    g.passed += e.evaluation?.success === true ? 1 : 0;
+    g.passed +=
+      ['completed', 'step_limit'].includes(e.status) && e.evaluation?.success === true ? 1 : 0;
     g.errors += !['completed', 'step_limit'].includes(e.status) ? 1 : 0;
     g.steps += e.steps ?? 0;
     g.latencyMs += e.durationMs ?? 0;

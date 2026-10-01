@@ -251,7 +251,7 @@ test('undisclosed message aliases are rejected, then disclosed aliases work', ()
     }
   }));
 
-test('all six API reference workflows pass across two fixture seeds without hidden answer lookup', () =>
+test('all API reference workflows pass across two fixture seeds without hidden answer lookup', () =>
   fixture(async ({ dir, environment }) => {
     const run = new Experiment({
       config: { ...DEFAULT_CONFIG, tasks: TASK_IDS, interfaces: ['api'], seeds: [42, 43] },
@@ -260,12 +260,51 @@ test('all six API reference workflows pass across two fixture seeds without hidd
       environment,
     });
     const out = await run.run();
-    assert.equal(out.episodes.length, 12);
+    assert.equal(out.episodes.length, TASK_IDS.length * 2);
     for (const e of out.episodes) {
       assert.equal(e.status, 'completed', JSON.stringify(e));
       assert.equal(e.evaluation.reward, 1, JSON.stringify(e));
       assert.ok(e.appProvenance.backendHash && e.appProvenance.buildHash);
     }
+  }));
+
+test('Router 403 stops the matrix before actions, keeps diagnostic grade and unknown accounting, and clears in-flight state', () =>
+  fixture(async ({ dir, environment }) => {
+    let requests = 0;
+    const router = new RampRouter({
+      apiKey: 'fake-403-lab-key',
+      fetchImpl: async (url) => {
+        if (url.endsWith('/models'))
+          return new Response(JSON.stringify({ data: [{ id: 'test-model' }] }));
+        requests++;
+        return new Response('private-error-body', {
+          status: 403,
+          headers: { 'x-request-id': 'failure-403-test' },
+        });
+      },
+    });
+    const run = new Experiment({
+      config: liveConfig({ tasks: ['channel-topic', 'thread-reply'] }),
+      root: ROOT,
+      runRoot: join(dir, 'runs'),
+      environment,
+      router,
+    });
+    const out = await run.run(),
+      episode = out.episodes[0];
+    assert.equal(requests, 1);
+    assert.equal(episode.status, 'provider_unavailable');
+    assert.equal(episode.steps, 0);
+    assert.equal(episode.inFlight, false);
+    assert.equal(episode.evaluation.success, false);
+    assert.equal(episode.providerFailure.requestId, 'failure-403-test');
+    assert.equal(episode.providerFailure.httpStatus, 403);
+    assert.equal(out.episodes[1].status, 'queued');
+    assert.equal(out.budget.usageKnown, false);
+    assert.ok(out.budget.estimatedUSD > 0);
+    assert.doesNotMatch(JSON.stringify(out), /private-error-body|fake-403-lab-key/);
+    assert.equal(out.summary[0].errors, 1);
+    assert.equal(out.summary[0].passed, 0);
   }));
 
 test('cancelling an in-flight response stops new actions and retains uncertain spend', () =>

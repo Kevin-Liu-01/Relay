@@ -1,6 +1,9 @@
 import { makeSeed } from './seed.mjs';
 import { digest, fail } from './domain.mjs';
-export const TASK_IDS = [
+import { WORKFLOW_IDS } from '../shared/task-catalog.mjs';
+import { makeWorkflowSeed } from './workflow-seed.mjs';
+import { workflowContract, gradeWorkflow } from './workflow-tasks.mjs';
+export const LEGACY_TASK_IDS = [
   'thread-reply',
   'edit-message',
   'incident-triage',
@@ -8,8 +11,20 @@ export const TASK_IDS = [
   'delete-draft',
   'channel-topic',
 ];
+export const TASK_IDS = [...LEGACY_TASK_IDS, ...WORKFLOW_IDS];
+export const taskSeed = (id, seed) =>
+  WORKFLOW_IDS.includes(id) ? makeWorkflowSeed(seed) : makeSeed(seed);
 export function taskSpec(id, seed) {
   fail(TASK_IDS.includes(id), 'Unknown task.', 404);
+  if (WORKFLOW_IDS.includes(id))
+    return {
+      id,
+      seed,
+      instruction: workflowContract(id, seed).instruction,
+      maxSteps: 80,
+      fixtureVersion: 'northstar-workflows-v2',
+      graderVersion: 'workflow-state-v2',
+    };
   const s = makeSeed(seed),
     c = s.channels.find((c) => c.id === 'project'),
     target = s.messages.find((m) => m.id === 'qa-target');
@@ -27,6 +42,7 @@ export function taskSpec(id, seed) {
 }
 
 export function grade(id, seed, final) {
+  if (WORKFLOW_IDS.includes(id)) return gradeWorkflow(id, seed, final);
   const baseline = makeSeed(seed),
     expected = structuredClone(baseline);
   const checks = [];

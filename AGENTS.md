@@ -23,6 +23,11 @@ probabilities. Fake transport tests are not evidence of live Jev inference.
 
 Read `docs/replay-and-arena.md` for the 1v1 and actual-UI playback contracts.
 Read `docs/interface-controls.md` before changing Relay's custom icon menus.
+Read `docs/task-suite.md` before adding tasks or changing rewards. The six original
+tasks keep v1 fixtures; the 12 new workflows use separate v2 fixtures/contracts.
+Never derive grader expectations by replaying the reference policy or transitions.
+`npm run test:workflows` verifies deep UI paths; `npm run test:graders` exports the
+zero-inference adversarial report. New templates are development tasks, not holdouts.
 Keep `RelaySelect` shared and its dialog, keyboard and reduced-motion checks intact.
 Hosted pricing comes from `hosted/pricing.mjs`, not user confirmation or frontend
 model hints. Keep exact-ID matching, dated provenance, expiry and server-side rate
@@ -31,6 +36,10 @@ a synchronous lock. See `docs/interface-controls.md` for debounce/cancellation r
 Snapshots are observer-only hash-chained evidence, never additional model input.
 Replay is inert/offline and may use a newer renderer; do not backfill old capture
 fidelity. Arena errors, missing receipts or unmatched provenance are inconclusive.
+Provider errors are blocked runs, not ordinary task failures or verified passes.
+Keep `shared/run-outcome.mjs` consistent across results, comparisons and replays;
+preserve diagnostic grades and unknown usage without treating reservations as
+invoices. Router 403 recovery is manual model selection, never hidden retries.
 
 - `npm ci && npm run build && npm start`: local application.
 - `npm run build:hosted && npm run live`: BYOK live interface on 4340.

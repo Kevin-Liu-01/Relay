@@ -1,0 +1,31 @@
+{
+  "provider": "reference",
+  "models": [{ "id": "scripted-reference" }],
+  "tasks": [
+    "release-sync",
+    "incident-closeout",
+    "saved-cleanup",
+    "decision-record",
+    "handoff-repair",
+    "qa-signoff",
+    "publish-update",
+    "oncall-briefing",
+    "thread-repair",
+    "pin-refresh",
+    "design-handoff",
+    "release-retrospective"
+  ],
+  "seeds": [42, 43],
+  "repeats": 1,
+  "interfaces": ["api"],
+  "guides": [false],
+  "histories": ["full"],
+  "orderSeed": 20260930,
+  "maxSteps": 16,
+  "maxRequests": 240,
+  "maxOutputTokens": 512,
+  "maxInputUnits": 128000,
+  "episodeSeconds": 30,
+  "runSeconds": 300,
+  "maxEstimatedUSD": 0.25
+}

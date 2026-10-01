@@ -1,5 +1,9 @@
 // Builder-informed deterministic references. Not model evaluation or training.
+import { WORKFLOW_IDS } from '../shared/task-catalog.mjs';
+import { workflowReferenceAction } from './workflow-reference.mjs';
 export function referenceAction(cell, observation, step, turns = []) {
+  if (WORKFLOW_IDS.includes(cell.taskId))
+    return workflowReferenceAction(cell, observation, step, turns);
   const { taskId, mode } = cell;
   if (mode !== 'api') {
     if (taskId !== 'channel-topic' || mode === 'pixels')

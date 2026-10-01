@@ -97,10 +97,12 @@ export function transition(original, action, serial) {
         : [...m.savedBy, user];
       break;
     }
+    case 'channel.description':
     case 'channel.topic': {
       const c = channel(action.channelId);
       fail(c.kind === 'channel', 'Direct messages do not have editable topics.');
-      c.topic = text(action.topic, 250);
+      if (action.type === 'channel.description') c.description = text(action.description, 500);
+      else c.topic = text(action.topic, 250);
       break;
     }
     default:
@@ -115,6 +117,9 @@ export function searchMessages(s, query) {
   fail(typeof query === 'string' && query.length <= 500, 'Search is limited to 500 characters.');
   const tokens = query.match(/(?:[^\s"]+|"[^"]*")+/g) ?? [];
   return s.messages
+    .filter((m) =>
+      s.channels.some((c) => c.id === m.channelId && c.members.includes(s.currentUserId)),
+    )
     .filter((m) =>
       tokens.every((raw) => {
         const negate = raw.startsWith('-');
@@ -136,7 +141,11 @@ export function searchMessages(s, query) {
               : t === 'has:reaction'
                 ? Object.keys(m.reactions).length > 0
                 : false;
-        else if (t.startsWith('is:')) result = t === 'is:thread' && !!m.parentId;
+        else if (t.startsWith('is:'))
+          result =
+            t === 'is:saved'
+              ? m.savedBy.includes(s.currentUserId)
+              : t === 'is:thread' && !!m.parentId;
         else if (t.startsWith('before:') || t.startsWith('after:') || t.startsWith('on:')) {
           const [op, date] = t.split(':');
           const valid = /^\d{4}-\d{2}-\d{2}$/.test(date);

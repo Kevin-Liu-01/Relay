@@ -1,5 +1,21 @@
 # Relay menus
 
+## Workspace interaction coverage
+
+The Slack-like workspace now has real Pins/Messages views, a DMs people directory
+and a Details dialog with members and editable channel descriptions. Personal
+`is:saved` search and saved/search thread links preserve the correct context.
+Drafts remain conversation/thread-scoped until page reload. Sends and mutations
+acquire synchronous locks; pending composers are read-only. Out-of-order search
+responses cannot overwrite newer results. Enter in the quick switcher prevents
+the event from also submitting a search or reactivating the restored opener.
+
+Message menus/reaction popovers support arrow/Home/End navigation and Escape;
+closing a nested menu does not also close the thread. Dialogs trap Tab and restore
+their opener. The [workflow suite](task-suite.md) exercises these behaviors,
+including delayed requests, rapid duplicate sends, cancellation, formatting and
+thread editing. This is targeted accessibility verification, not certification.
+
 ## Full-width workspace viewer
 
 Once starting or displaying a run, the observer stage uses the agent frame's

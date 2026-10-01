@@ -6,7 +6,7 @@
   "functions": {
     "api/relay.mjs": {
       "maxDuration": 240,
-      "includeFiles": "{dist/**,server/**,runner/**,src/**,hosted/**,api/**,vercel.json,package-lock.json,node_modules/@sparticuz/chromium/bin/**}"
+      "includeFiles": "{dist/**,server/**,runner/**,src/**,hosted/**,api/**,shared/**,vercel.json,package-lock.json,node_modules/@sparticuz/chromium/bin/**}"
     }
   },
   "headers": [

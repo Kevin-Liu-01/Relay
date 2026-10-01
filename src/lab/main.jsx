@@ -7,14 +7,7 @@ import relayMark from '../assets/relay-mark.svg';
 import { Play, Square, Settings2, ArrowUpRight, X } from 'lucide-react';
 
 const MODES = { pixels: 'Pixels', a11y: 'Accessibility', 'json-ui': 'Page JSON', api: 'API' };
-const TASKS = {
-  'channel-topic': 'Update a topic',
-  'thread-reply': 'Reply in a thread',
-  'edit-message': 'Edit a message',
-  'incident-triage': 'Triage an incident',
-  'handoff-dm': 'Send a handoff',
-  'delete-draft': 'Delete a draft',
-};
+import { TASK_LABELS as TASKS } from '../../shared/task-catalog.mjs';
 const money = (n) => `$${(n ?? 0).toFixed(4)}`;
 const time = (n) => (n < 1000 ? `${Math.round(n ?? 0)}ms` : `${((n ?? 0) / 1000).toFixed(1)}s`);
 const toggle = (a, x) => (a.includes(x) ? a.filter((v) => v !== x) : [...a, x]);

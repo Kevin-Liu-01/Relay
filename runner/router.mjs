@@ -8,6 +8,47 @@ export class RunStop extends Error {
 }
 const hash = (v) => createHash('sha256').update(JSON.stringify(v)).digest('hex');
 
+// Status meanings: https://docs.router.com/api/errors-and-limits (2026-09-30).
+// Fixed local messages only: never persist an upstream body that may echo secrets.
+function httpFailure(status) {
+  return (
+    {
+      400: [
+        'provider_request_invalid',
+        'Router rejected the request format. Inspect the evidence before retrying.',
+      ],
+      401: [
+        'credentials_invalid',
+        'Router rejected this key. Check that it is active and within its spend limits, then reconnect.',
+      ],
+      402: ['credits_exhausted', 'Router reports no available credit. Check your Router balance.'],
+      403: [
+        'provider_unavailable',
+        'Router reports that this provider is unavailable. Choose another model or check provider access in Router.',
+      ],
+      404: [
+        'model_unavailable',
+        'This model is unavailable to your key. Refresh the connection and choose an available model.',
+      ],
+      429: [
+        'provider_rate_limited',
+        'Router or the provider is rate limited. Wait before starting another run.',
+      ],
+      501: [
+        'unsupported_capability',
+        'The provider cannot support this request. Choose another model or supported interface.',
+      ],
+      503: [
+        'provider_unavailable',
+        'Router reports temporarily unavailable credentials or pricing. Try another model or check Router later.',
+      ],
+    }[status] ?? [
+      'provider_error',
+      'Router could not complete this request. Inspect the evidence and Router logs.',
+    ]
+  );
+}
+
 // Shared with the audit recorder so the saved body is the body sent on the wire.
 // Authentication headers are intentionally not part of this object.
 export const responsePayload = ({ model, instructions, input, maxOutputTokens, reasoning }) => ({
@@ -47,11 +88,13 @@ export class RampRouter {
       signal: AbortSignal.any([...(signal ? [signal] : []), AbortSignal.timeout(timeoutMs)]),
       redirect: 'error',
     });
-    if (!r.ok)
+    if (!r.ok) {
+      const [, message] = httpFailure(r.status);
       throw new RunStop(
         'catalog_error',
-        `Router catalog HTTP ${r.status}. Check your key and account access.`,
+        `${message} Catalog HTTP ${r.status}. No automatic retry.`,
       );
+    }
     const data = await r.json();
     if (!Array.isArray(data.data) || data.data.some((m) => typeof m.id !== 'string'))
       throw new RunStop('catalog_error', 'Invalid Router model catalog.');
@@ -100,11 +143,14 @@ export class RampRouter {
       return error;
     };
     // Do not log raw upstream errors: some echo requests or authentication material.
-    if (!r.ok)
+    if (!r.ok) {
+      const [code, message] = httpFailure(r.status);
       throw rejectReceipt(
-        r.status === 501 ? 'unsupported_capability' : 'provider_error',
-        `Router HTTP ${r.status}; request ${requestId}. No automatic retry.`,
+        code,
+        `${message} HTTP ${r.status}; request ${receipt.requestId}. No automatic retry.`,
+        { failureCode: code },
       );
+    }
     const d = await r.json();
     const metadata = {
       responseHash: hash(d),

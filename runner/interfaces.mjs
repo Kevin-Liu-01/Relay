@@ -63,6 +63,7 @@ export class InterfaceEnvironment {
           name: c.name,
           kind: c.kind,
           topic: c.topic,
+          description: c.description,
           members: c.members.map((id) => this.alias(id, 'u')),
         })),
     };
@@ -271,6 +272,7 @@ export class InterfaceEnvironment {
           'pin.toggle',
           'save.toggle',
           'channel.topic',
+          'channel.description',
         ].includes(a.type)
       )
         throw Error('Action not allowed by this interface.');

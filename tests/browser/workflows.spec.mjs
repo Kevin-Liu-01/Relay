@@ -38,8 +38,14 @@ for (const seed of [42, 43]) {
       .fill('QA checklist complete. Ready for review.');
     await page.getByRole('button', { name: 'Send reply', exact: true }).click();
     await expect(
-      page.getByText('QA checklist complete. Ready for review.', { exact: true }),
+      page.getByRole('article', {
+        name: 'Message from Alex Morgan: QA checklist complete. Ready for review.',
+        exact: true,
+      }),
     ).toBeVisible();
+    await expect(page.getByRole('textbox', { name: 'Reply in thread', exact: true })).toHaveValue(
+      '',
+    );
     await evidence(request, s, page, info);
   });
   test(`edit original via keyboard shortcut seed ${seed}`, async ({ page, request }, info) => {

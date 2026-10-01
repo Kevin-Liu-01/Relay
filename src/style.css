@@ -1109,12 +1109,13 @@ p {
   z-index: 30;
 }
 .modal {
+  max-height: 75vh;
   width: min(550px, calc(100vw - 40px));
   background: white;
   border: 1px solid #ded5e3;
   border-radius: 12px;
   box-shadow: 0 22px 80px #1b0d3450;
-  overflow: hidden;
+  overflow-y: auto;
   outline: none !important;
 }
 .switch-search {
@@ -1124,6 +1125,47 @@ p {
   padding: 21px;
   color: #8d7a9a;
   border-bottom: 1px solid #eae4ed;
+}
+.people-directory {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+}
+.people-directory > button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid #e6e2e8;
+  border-radius: 9px;
+  text-align: left;
+}
+.people-directory > button:hover {
+  background: #f6f3f7;
+}
+.people-directory > button > span:nth-child(2) {
+  flex: 1;
+}
+.people-directory small,
+.details-members small {
+  display: block;
+  color: #615967;
+  margin-top: 4px;
+}
+.description-field {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+}
+.details-members {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+.details-members > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .switch-search input {
   flex: 1;

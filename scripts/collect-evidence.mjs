@@ -104,7 +104,9 @@ const sourceFiles = [
   '.dockerignore',
   '.prettierrc.json',
   '.prettierignore',
-  ...['server', 'src', 'runner', 'hosted', 'api', 'tests', 'scripts', 'docs'].flatMap(walk),
+  ...['server', 'src', 'runner', 'hosted', 'api', 'shared', 'tests', 'scripts', 'docs'].flatMap(
+    walk,
+  ),
 ].sort();
 writeFileSync(
   'evidence/source-manifest.json',

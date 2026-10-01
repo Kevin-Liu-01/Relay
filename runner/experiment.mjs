@@ -24,7 +24,7 @@ export const atomicJSON = (path, value) => {
 };
 
 export function sourceFingerprint(root) {
-  const files = ['server', 'runner', 'src', 'hosted', 'api'].flatMap(function walk(p) {
+  const files = ['server', 'runner', 'src', 'hosted', 'api', 'shared'].flatMap(function walk(p) {
     return readdirSync(join(root, p), { withFileTypes: true })
       .sort((a, b) => a.name.localeCompare(b.name))
       .flatMap((f) => (f.isDirectory() ? walk(`${p}/${f.name}`) : [`${p}/${f.name}`]));
@@ -337,7 +337,16 @@ export class Experiment {
               ),
             });
           } catch (err) {
+            e.inFlight = false;
             e.usageKnown = false;
+            if (err.receipt)
+              e.providerFailure = {
+                code: err.code,
+                httpStatus: err.receipt.httpStatus,
+                requestId: err.receipt.requestId,
+                clientRequestId: err.receipt.clientRequestId,
+                traceId: err.receipt.traceId,
+              };
             this.data.budget.usageKnown = false;
             record({
               kind: 'provider_error',
@@ -397,7 +406,8 @@ export class Experiment {
           nonInferenceStepMs: performance.now() - stepStart - response.latencyMs,
         });
         turns.push({ observation, output: response.text, error });
-        if (cell.history === 'recent-4') turns = turns.slice(-4);
+        // Builder references are deterministic controls, not history-ablation policies.
+        if (cell.history === 'recent-4' && c.provider !== 'reference') turns = turns.slice(-4);
         observation = await env.observe();
         e.currentObservation = this.saveObservation(dir, i + 1, observation);
         this.persist();
@@ -423,6 +433,7 @@ export class Experiment {
       e.error = this.safeError(err);
       record({ kind: 'episode_error', error: e.error, code: e.status });
     } finally {
+      e.inFlight = false;
       if (env.base.session) {
         try {
           e.evaluation = await env.evaluate();

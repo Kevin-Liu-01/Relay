@@ -85,6 +85,7 @@
   letter-spacing: var(--relay-heading-tracking);
 }
 .result-card p {
+  overflow-wrap: anywhere;
   font-size: 12px;
   line-height: 1.5;
   color: #67616a;

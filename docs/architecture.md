@@ -54,6 +54,12 @@ SQLite provides atomic transaction recovery, and tests verify committed state su
 
 ## Reward contract
 
+The original six tasks keep their v1 contracts. New multi-step tasks use the
+separately versioned fixture and independent declarative grader in
+`server/workflow-seed.mjs` and `server/workflow-tasks.mjs`. The public shared
+catalog contains labels/capabilities only, not answers. See the
+[task suite](task-suite.md) for outcome contracts and adversarial checks.
+
 The evaluator constructs the expected state from the same deterministic fixture and compares the complete final workspace, with narrowly permitted generated-message metadata. It checks author, destination, parent, exact text, uniqueness and absence of unintended final changes. A replacement post does not satisfy editing; a right answer in the wrong channel does not satisfy messaging; pinning the wrong incident does not satisfy triage.
 
 Reward is binary and sparse. `step()` returns zero before finish/budget exhaustion; terminal reward is one only if all checks pass. Diagnostic check names are retained in operator exports, not policy observations. There is no LLM judge, so text tasks explicitly request exact strings. A paraphrase can be semantically acceptable but intentionally fail this contract.

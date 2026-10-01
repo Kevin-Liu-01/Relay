@@ -15,6 +15,9 @@ const BACKEND_HASH = digest(
     'server/domain.mjs',
     'server/seed.mjs',
     'server/tasks.mjs',
+    'server/workflow-seed.mjs',
+    'server/workflow-tasks.mjs',
+    'shared/task-catalog.mjs',
     'runner/protocol.mjs',
   ].map((p) => [p, readFileSync(join(ROOT, p), 'utf8')]),
 );

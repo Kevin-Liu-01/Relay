@@ -113,10 +113,14 @@ function RichText({ text }) {
   );
 }
 
-function Composer({ label, onSend, onEditLast, compact = false }) {
-  const [value, setValue] = useState(''),
+function Composer({ label, onSend, onEditLast, compact = false, drafts, draftKey = label }) {
+  const [value, setValue] = useState(() => drafts?.current[draftKey] ?? ''),
     [sending, setSending] = useState(false);
   const ref = useRef(null);
+  const sendingRef = useRef(false);
+  useEffect(() => {
+    if (drafts) drafts.current[draftKey] = value;
+  }, [value, draftKey, drafts]);
   useEffect(() => {
     if (!REPLAY_MODE) return;
     const apply = (e) => setValue(e.detail?.find((f) => f.label === label)?.value ?? '');
@@ -125,18 +129,22 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
   }, [label]);
   async function submit(e) {
     e.preventDefault();
-    if (!value.trim() || sending) return;
+    if (!value.trim() || sendingRef.current) return;
+    sendingRef.current = true;
     setSending(true);
     try {
       await onSend(value);
+      if (drafts?.current[draftKey] === value) drafts.current[draftKey] = '';
       setValue('');
       ref.current?.focus();
     } catch {
     } finally {
+      sendingRef.current = false;
       setSending(false);
     }
   }
   function wrap(mark) {
+    if (sendingRef.current) return;
     const el = ref.current,
       start = el.selectionStart,
       end = el.selectionEnd;
@@ -146,18 +154,19 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
   return (
     <form className={`composer ${compact ? 'compact' : ''}`} onSubmit={submit} aria-label={label}>
       <div className="format-toolbar">
-        <IconButton label="Bold text" onClick={() => wrap('**')}>
+        <IconButton label="Bold text" disabled={sending} onClick={() => wrap('**')}>
           <Bold size={16} />
         </IconButton>
-        <IconButton label="Italic text" onClick={() => wrap('_')}>
+        <IconButton label="Italic text" disabled={sending} onClick={() => wrap('_')}>
           <Italic size={16} />
         </IconButton>
         <span className="divider" />
-        <IconButton label="Insert code" onClick={() => wrap('`')}>
+        <IconButton label="Insert code" disabled={sending} onClick={() => wrap('`')}>
           <Code size={17} />
         </IconButton>
         <IconButton
           label="Insert list"
+          disabled={sending}
           onClick={() => {
             setValue(value + '\n• ');
             ref.current?.focus();
@@ -171,6 +180,8 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
         aria-label={label}
         placeholder={label}
         value={value}
+        readOnly={sending}
+        aria-busy={sending}
         maxLength={4000}
         rows={compact ? 2 : 2}
         onChange={(e) => setValue(e.target.value)}
@@ -189,6 +200,7 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
         <div>
           <IconButton
             label="Add smile emoji"
+            disabled={sending}
             onClick={() => {
               setValue(value + ' 🙂');
               ref.current?.focus();
@@ -198,6 +210,7 @@ function Composer({ label, onSend, onEditLast, compact = false }) {
           </IconButton>
           <IconButton
             label="Mention someone"
+            disabled={sending}
             onClick={() => {
               setValue(value + '@');
               ref.current?.focus();
@@ -230,7 +243,12 @@ function App() {
     [reaction, setReaction] = useState(null),
     [edit, setEdit] = useState(null),
     [deleting, setDeleting] = useState(null),
-    [topic, setTopic] = useState(null);
+    [topic, setTopic] = useState(null),
+    [details, setDetails] = useState(null);
+  const mutationRef = useRef(false),
+    searchVersion = useRef(0);
+  const drafts = useRef({});
+  const [pending, setPending] = useState(false);
   const [query, setQuery] = useState(''),
     [searched, setSearched] = useState(''),
     [results, setResults] = useState([]),
@@ -264,6 +282,7 @@ function App() {
         edit,
         deleting,
         topic,
+        details,
         query,
         searched,
         results,
@@ -302,6 +321,7 @@ function App() {
       setEdit(u.edit ?? null);
       setDeleting(u.deleting ?? null);
       setTopic(u.topic ?? null);
+      setDetails(u.details ?? null);
       setQuery(u.query ?? '');
       setSearched(u.searched ?? '');
       setResults(u.results ?? []);
@@ -381,6 +401,12 @@ function App() {
         searchRef.current?.focus();
       }
       if (e.key === 'Escape') {
+        if (e.defaultPrevented) return;
+        if (menu || reaction) {
+          setMenu(null);
+          setReaction(null);
+          return;
+        }
         setSwitcher(false);
         setThreadId(null);
         setMenu(null);
@@ -388,12 +414,51 @@ function App() {
         setEdit(null);
         setDeleting(null);
         setTopic(null);
+        setDetails(null);
         setHelp(false);
       }
     };
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, []);
+  }, [menu, reaction]);
+  useEffect(() => {
+    if (!menu && !reaction) return;
+    const popover = document.querySelector('.message-menu,.emoji-popover');
+    const before = document.activeElement;
+    popover?.querySelector('button')?.focus();
+    const key = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        setMenu(null);
+        setReaction(null);
+        before?.focus();
+      } else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) {
+        const buttons = [...popover.querySelectorAll('button')],
+          index = buttons.indexOf(document.activeElement);
+        const next =
+          e.key === 'Home'
+            ? 0
+            : e.key === 'End'
+              ? buttons.length - 1
+              : (index + (e.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length;
+        e.preventDefault();
+        buttons[next]?.focus();
+      }
+    };
+    const outside = (e) => {
+      if (!e.target.closest('.message-menu,.emoji-popover,.message-actions,.reactions')) {
+        setMenu(null);
+        setReaction(null);
+      }
+    };
+    popover?.addEventListener('keydown', key);
+    document.addEventListener('pointerdown', outside);
+    return () => {
+      popover?.removeEventListener('keydown', key);
+      document.removeEventListener('pointerdown', outside);
+    };
+  }, [menu, reaction]);
   useEffect(() => {
     if (toast && !REPLAY_MODE) {
       const t = setTimeout(() => setToast(''), 2400);
@@ -412,6 +477,9 @@ function App() {
     if (threadRef.current) threadRef.current.scrollTop = threadRef.current.scrollHeight;
   }, [threadId, data?.state.messages.length]);
   async function act(action) {
+    if (mutationRef.current) throw new Error('An update is already in progress.');
+    mutationRef.current = true;
+    setPending(true);
     try {
       await api('action', 'POST', {
         requestId: crypto.randomUUID(),
@@ -426,25 +494,33 @@ function App() {
       setToast(e.message);
       await refresh();
       throw e;
+    } finally {
+      mutationRef.current = false;
+      setPending(false);
     }
   }
   async function search(e) {
     e?.preventDefault();
     if (!query.trim()) return;
+    const version = ++searchVersion.current;
     setSearching(true);
     setThreadId(null);
     setSearched(query);
     setView('search');
+    setResults([]);
     track({ type: 'search', label: query });
     try {
-      setResults((await api(`search?q=${encodeURIComponent(query)}`)).messages);
+      const result = await api(`search?q=${encodeURIComponent(query)}`);
+      if (version === searchVersion.current) setResults(result.messages);
     } catch (e) {
       setToast(e.message);
     } finally {
-      setSearching(false);
+      if (version === searchVersion.current) setSearching(false);
     }
   }
   function navigate(id, highlight) {
+    searchVersion.current++;
+    setSearching(false);
     setChannelId(id);
     setView('channel');
     setSwitcher(false);
@@ -482,7 +558,11 @@ function App() {
         ? s.messages.filter((m) => m.savedBy.includes(s.currentUserId))
         : view === 'threads'
           ? s.messages.filter((m) => !m.parentId && s.messages.some((x) => x.parentId === m.id))
-          : s.messages.filter((m) => m.channelId === channelId && !m.parentId);
+          : view === 'pins'
+            ? s.messages.filter((m) => m.channelId === channelId && m.pinned)
+            : view === 'dms'
+              ? []
+              : s.messages.filter((m) => m.channelId === channelId && !m.parentId);
   const openThread = (m) => {
     setThreadId(m.parentId ?? m.id);
     setMenu(null);
@@ -509,7 +589,10 @@ function App() {
           {context && (
             <button
               className="context-link"
-              onClick={() => navigate(m.channelId, m.parentId ?? m.id)}
+              onClick={() => {
+                navigate(m.channelId, m.parentId ?? m.id);
+                if (m.parentId) openThread(m);
+              }}
             >
               {chan(m.channelId).kind === 'channel' ? '# ' : ''}
               {chan(m.channelId).name}
@@ -558,8 +641,13 @@ function App() {
                 <button type="button" className="outline" onClick={() => setEdit(null)}>
                   Cancel
                 </button>
-                <button className="primary" type="submit">
-                  Save changes
+                <button
+                  className="primary"
+                  type="submit"
+                  disabled={pending || !edit.text.trim()}
+                  aria-busy={pending}
+                >
+                  {pending ? 'Saving…' : 'Save changes'}
                 </button>
               </div>
             </form>
@@ -768,7 +856,8 @@ function App() {
         <button
           className="rail-item"
           onClick={() => {
-            navigate('dm-maya');
+            setView('dms');
+            setThreadId(null);
           }}
         >
           <DirectMessages size={24} />
@@ -846,7 +935,9 @@ function App() {
             .map((c) => (
               <button
                 key={c.id}
-                className={view === 'channel' && c.id === channelId ? 'selected' : ''}
+                className={
+                  ['channel', 'pins'].includes(view) && c.id === channelId ? 'selected' : ''
+                }
                 onClick={() => navigate(c.id)}
                 aria-label={`Channel ${c.name}`}
               >
@@ -897,7 +988,7 @@ function App() {
         <header className="channel-header">
           <div>
             <h1>
-              {view === 'channel' ? (
+              {['channel', 'pins'].includes(view) ? (
                 <>
                   {current.kind === 'channel' ? (
                     <Hash size={22} />
@@ -911,6 +1002,11 @@ function App() {
                   <Search size={21} />
                   Search results
                 </>
+              ) : view === 'dms' ? (
+                <>
+                  <DirectMessages size={21} />
+                  Direct messages
+                </>
               ) : view === 'saved' ? (
                 <>
                   <Bookmark size={21} />
@@ -923,7 +1019,7 @@ function App() {
                 </>
               )}
             </h1>
-            {view === 'channel' && (
+            {['channel', 'pins'].includes(view) && (
               <button
                 className="topic-preview"
                 onClick={() => {
@@ -935,13 +1031,17 @@ function App() {
             )}
           </div>
           <div className="channel-header-right">
-            {view === 'channel' && (
+            {['channel', 'pins'].includes(view) && (
               <>
-                <div className="member-stack" aria-label={`${current.members.length} members`}>
+                <button
+                  className="member-stack"
+                  aria-label={`Channel details, ${current.members.length} members`}
+                  onClick={() => setDetails(current.description)}
+                >
                   {current.members.slice(0, 3).map((id) => (
                     <Avatar key={id} user={user(id)} small />
                   ))}
-                </div>
+                </button>
                 <span>{current.members.length}</span>
                 {current.kind === 'channel' && (
                   <IconButton label="Edit channel topic" onClick={() => setTopic(current.topic)}>
@@ -952,20 +1052,22 @@ function App() {
             )}
           </div>
         </header>
-        {view === 'channel' ? (
+        {['channel', 'pins'].includes(view) ? (
           <div className="channel-tabs">
-            <span className="tab active">
+            <button
+              className={`tab ${view === 'channel' ? 'active' : ''}`}
+              aria-pressed={view === 'channel'}
+              onClick={() => setView('channel')}
+            >
               <MessageSquare size={15} />
               Messages
-            </span>
+            </button>
             <button
+              className={view === 'pins' ? 'active' : ''}
+              aria-pressed={view === 'pins'}
               onClick={() => {
-                setQuery(`in:${current.name} has:pin`);
-                setSearched(`in:${current.name} has:pin`);
-                setView('search');
-                api(`search?q=${encodeURIComponent(`in:${current.name} has:pin`)}`).then((r) =>
-                  setResults(r.messages),
-                );
+                setView('pins');
+                setThreadId(null);
               }}
             >
               <Pin size={14} />
@@ -974,7 +1076,9 @@ function App() {
                 {s.messages.filter((m) => m.channelId === channelId && m.pinned).length}
               </span>
             </button>
-            <span className="tab-note">Everything in its right place.</span>
+            <button onClick={() => setDetails(current.description)} aria-label="Channel details">
+              Details
+            </button>
           </div>
         ) : view === 'search' ? (
           <div className="search-summary">
@@ -989,9 +1093,11 @@ function App() {
           </div>
         ) : (
           <div className="search-summary">
-            {view === 'saved'
-              ? 'Keep the things you want to come back to.'
-              : 'Conversations worth following.'}
+            {view === 'dms'
+              ? 'People at Northstar'
+              : view === 'saved'
+                ? 'Keep the things you want to come back to.'
+                : 'Conversations worth following.'}
           </div>
         )}
         <div
@@ -1005,6 +1111,28 @@ function App() {
                 : 'Messages'
           }
         >
+          {view === 'dms' && (
+            <div className="people-directory">
+              {s.users
+                .filter((u) => u.id !== me.id)
+                .map((u) => (
+                  <button
+                    key={u.id}
+                    onClick={() => navigate(`dm-${u.id}`)}
+                    aria-label={`Message ${u.name}`}
+                  >
+                    <Avatar user={u} />
+                    <span>
+                      <strong>{u.name}</strong>
+                      <small>
+                        {u.role} · {u.status}
+                      </small>
+                    </span>
+                    <MessageSquare size={18} />
+                  </button>
+                ))}
+            </div>
+          )}
           {view === 'channel' && (
             <div className="channel-intro">
               <div className="intro-icon">
@@ -1035,22 +1163,26 @@ function App() {
               {renderMessage(m, { context: view !== 'channel' })}
             </React.Fragment>
           ))}
-          {!visible.length && (
+          {!visible.length && view !== 'dms' && !searching && (
             <div className="empty-state">
               <Search size={36} />
               <h2>
                 {view === 'search'
                   ? 'No messages found'
-                  : view === 'saved'
-                    ? 'A little room for later'
-                    : 'Start a conversation'}
+                  : view === 'pins'
+                    ? 'No pinned messages'
+                    : view === 'saved'
+                      ? 'A little room for later'
+                      : 'Start a conversation'}
               </h2>
               <p>
                 {view === 'search'
                   ? 'Try a different phrase, person, or channel.'
-                  : view === 'saved'
-                    ? 'Save a message to keep it close at hand.'
-                    : 'Good work starts with a message.'}
+                  : view === 'pins'
+                    ? 'Pin a message from its More actions menu.'
+                    : view === 'saved'
+                      ? 'Save a message to keep it close at hand.'
+                      : 'Good work starts with a message.'}
               </p>
               {view === 'search' && (
                 <p className="search-tip">
@@ -1063,6 +1195,7 @@ function App() {
         {view === 'channel' && (
           <div className="composer-container">
             <Composer
+              drafts={drafts}
               key={channelId}
               label={`Message ${current.kind === 'channel' ? '#' : ''}${current.name}`}
               onSend={(text) => act({ type: 'message.send', channelId, text })}
@@ -1106,9 +1239,17 @@ function App() {
           </div>
           <div className="thread-composer">
             <Composer
+              drafts={drafts}
               key={thread.id}
+              draftKey={`thread:${thread.id}`}
               label="Reply in thread"
               compact
+              onEditLast={() => {
+                const m = s.messages
+                  .filter((m) => m.parentId === thread.id && m.userId === me.id)
+                  .at(-1);
+                if (m) setEdit({ id: m.id, text: m.text });
+              }}
               onSend={(text) =>
                 act({
                   type: 'message.send',
@@ -1126,13 +1267,14 @@ function App() {
           <div className="switch-search">
             <Search size={21} />
             <input
-              autoFocus
               aria-label="Find a conversation"
               placeholder="Where would you like to go?"
               value={switchQuery}
               onChange={(e) => setSwitchQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
+                  e.preventDefault();
+                  e.stopPropagation();
                   const c = s.channels.find((c) =>
                     c.name.toLowerCase().includes(switchQuery.toLowerCase()),
                   );
@@ -1168,6 +1310,8 @@ function App() {
               </button>
               <button
                 className="danger-button"
+                disabled={pending}
+                aria-busy={pending}
                 onClick={async () => {
                   try {
                     await act({ type: 'message.delete', id: deleting.id });
@@ -1198,7 +1342,6 @@ function App() {
             <h2>Edit topic</h2>
             <p>Let people know what #{current.name} is about.</p>
             <textarea
-              autoFocus
               aria-label="Channel topic"
               value={topic}
               maxLength={250}
@@ -1208,9 +1351,74 @@ function App() {
               <button className="outline" type="button" onClick={() => setTopic(null)}>
                 Cancel
               </button>
-              <button className="primary" type="submit">
-                Save
+              <button
+                className="primary"
+                type="submit"
+                disabled={pending || !topic.trim()}
+                aria-busy={pending}
+              >
+                {pending ? 'Saving…' : 'Save'}
               </button>
+            </div>
+          </form>
+        </Modal>
+      )}
+      {details !== null && (
+        <Modal label="Channel details" close={() => setDetails(null)}>
+          <form
+            className="dialog-content"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              try {
+                await act({ type: 'channel.description', channelId, description: details });
+                setDetails(null);
+                setToast('Channel description updated');
+              } catch {}
+            }}
+          >
+            <h2>
+              {current.kind === 'channel' ? '#' : ''}
+              {current.name}
+            </h2>
+            {current.kind === 'channel' && (
+              <label className="description-field">
+                Description
+                <textarea
+                  aria-label="Channel description"
+                  value={details}
+                  maxLength={500}
+                  onChange={(e) => setDetails(e.target.value)}
+                />
+              </label>
+            )}
+            <h3>Members · {current.members.length}</h3>
+            <div className="details-members">
+              {current.members.map((id) => (
+                <div key={id}>
+                  <Avatar user={user(id)} small />
+                  <span>
+                    <strong>{user(id).name}</strong>
+                    <small>
+                      {user(id).role} · {user(id).status}
+                    </small>
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="dialog-buttons">
+              <button type="button" className="outline" onClick={() => setDetails(null)}>
+                Close
+              </button>
+              {current.kind === 'channel' && (
+                <button
+                  type="submit"
+                  className="primary"
+                  disabled={pending || !details.trim() || details === current.description}
+                  aria-busy={pending}
+                >
+                  {pending ? 'Saving…' : 'Save description'}
+                </button>
+              )}
             </div>
           </form>
         </Modal>
@@ -1236,7 +1444,7 @@ function App() {
             </dl>
             <p>
               Search supports quoted phrases, in:, from:, before:, after:, on:, has:pin,
-              has:reaction, is:thread, and negative terms.
+              has:reaction, is:thread, is:saved, and negative terms.
             </p>
             <button className="primary" onClick={() => setHelp(false)}>
               Got it
@@ -1255,20 +1463,32 @@ function App() {
 }
 function Modal({ label, close, children }) {
   const ref = useRef(null);
+  const closeRef = useRef(close);
+  closeRef.current = close;
   useEffect(() => {
     const before = document.activeElement;
-    ref.current?.focus();
+    const panel = ref.current;
+    (panel?.querySelector('[autofocus],textarea,input,button') ?? panel)?.focus();
     const key = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        closeRef.current();
+        return;
+      }
       if (e.key === 'Tab') {
         const els = [
           ...ref.current.querySelectorAll('button,input,textarea,[tabindex="0"]'),
         ].filter((el) => !el.disabled);
         const first = els[0],
           last = els.at(-1);
-        if (e.shiftKey && document.activeElement === first) {
+        if (e.shiftKey && (document.activeElement === first || document.activeElement === panel)) {
           e.preventDefault();
           last?.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
+        } else if (
+          !e.shiftKey &&
+          (document.activeElement === last || document.activeElement === panel)
+        ) {
           e.preventDefault();
           first?.focus();
         }
@@ -1276,7 +1496,7 @@ function Modal({ label, close, children }) {
     };
     ref.current?.addEventListener('keydown', key);
     return () => {
-      ref.current?.removeEventListener('keydown', key);
+      panel?.removeEventListener('keydown', key);
       before?.focus();
     };
   }, []);

@@ -153,7 +153,7 @@ test('hosted limits reject free public compute, arbitrary endpoints, large matri
   for (const c of [
     DEFAULT_CONFIG,
     { ...config(), endpoint: 'http://localhost' },
-    { ...config(), maxSteps: 17 },
+    { ...config(), maxSteps: 41 },
     { ...config(), runSeconds: 151 },
     { ...config(), maxEstimatedUSD: 1 },
     { ...config(), interfaces: ['api', 'a11y', 'json-ui'], guides: [true, false] },

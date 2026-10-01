@@ -18,8 +18,7 @@ export default defineConfig({
     screenshot: 'on',
   },
   webServer: {
-    command:
-      'PORT=4320 CONTROL_PORT=4321 DATA_DIR=.runtime/browser-tests CONTROL_TOKEN=browser-test-only ALLOW_DEMO=0 node server/server.mjs',
+    command: 'node scripts/browser-test-server.mjs',
     url: 'http://127.0.0.1:4320/health',
     reuseExistingServer: false,
   },

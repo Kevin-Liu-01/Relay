@@ -49,8 +49,8 @@ flowchart LR
 | Resource                      |             Hosted maximum |
 | ----------------------------- | -------------------------: |
 | Episodes / run                |                          3 |
-| Actions / episode             |                         16 |
-| Model calls / run             |                         32 |
+| Actions / episode             |                         40 |
+| Model calls / run             |                         80 |
 | Model-loop time / run         |                150 seconds |
 | Episode time                  |                 90 seconds |
 | Estimated model spend / run   |                      $0.50 |
@@ -59,6 +59,12 @@ flowchart LR
 | Concurrent runs / warm worker |                          2 |
 
 The UI starts below these limits. Estimates use the recorded rates, not invoices. Missing usage stays unknown and stops further calls. Set provider-side spend caps. Stopping or losing the connection can leave one already-sent request billable; there are no hidden retries or model substitutions.
+
+The 12 [multi-step workflows](task-suite.md) default to 40 actions / 90 seconds;
+the six original controls default to 12 actions / 60 seconds. Dollar caps are
+unchanged. Longer workflows may hit the hosted time limit; the separately
+budgeted local runner supports longer episodes. More permitted actions are not
+a promise that any model will finish within the cap.
 
 Pricing now loads automatically; there is no confirmation form. The worker joins
 account-discovered model IDs to official published pricing, rechecks it before
@@ -71,6 +77,26 @@ for cache, fallback and cancellation details.
 **These are not global abuse controls.** Autoscaled workers each have their own concurrency counter. A valid provider key is required before browser allocation, but is not Relay user authentication. The operator still pays hosting compute/egress. Before promoting this beyond a bounded demo, configure hosting spend alerts/limits, global rate limiting or authenticated access, and measure sustained browser load. Those controls are not claimed by this release. The function time limit is 240 seconds; graceful cleanup is attempted before it.
 
 ## Deployment and operations
+
+### If Router rejects a run
+
+Router [documents HTTP 403](https://docs.router.com/api/errors-and-limits) as
+provider unavailability, not a failed Slack action. Relay shows **Provider
+unavailable**, preserves the request ID, and offers **Choose another model**.
+Selecting a model does not start a paid request; press Run when ready. A model's
+presence in the account catalog does not guarantee it can serve every request.
+For persistent 403s, check the selected provider's availability/access in Router
+or contact Router support with the request ID. Relay cannot change provider or
+account access, and never circumvents a rejection or silently substitutes a model.
+
+401 points to a key requiring attention, 402 to Router credit, 404 to model
+availability, 429 to a rate limit and 501 to an unsupported capability. The UI
+keeps provider blockage separate from completed-but-wrong task outcomes. A
+zero-action error's workspace checks are diagnostic only. Missing usage is
+**unknown**, and retained budget allowances are not billed charges. Router's logs
+are needed to resolve actual billing; no raw error body is persisted.
+
+### Release process
 
 The Vercel project is `relay` in `kl01s-projects`, connected to `Kevin-Liu-01/Relay` on `main`. `vercel.json` builds `build:hosted` and packages a Node 24 function with Chromium. The build preserves `workspace.html` for the private app and makes the public `index.html` the live console; an index-file rewrite alone is insufficient on this deployment.
 

@@ -1,5 +1,90 @@
 # Verification and evidence
 
+## Router rejection and result presentation — 2026-09-30
+
+A user-reported Router 403 exposed a misleading result card: “WORKSPACE VERIFIED”
+and “Task incomplete” appeared despite zero agent actions. New deterministic
+transport and full hosted-browser reproductions failed against that behavior
+before the fix. A 403 now produces **Provider unavailable / RUN BLOCKED**, with
+the returned request ID, manual model-selection recovery and no automatic retry
+or substitute model. Replays and comparison rows use the same presentation rule,
+including older stored 403 records without rewriting them. Error episodes cannot
+count as passes even if their diagnostic final-state snapshot happens to pass.
+
+Unknown token usage no longer displays as zero. Unknown cost remains unknown;
+the footer identifies its conservative local budget allowance as **not a provider
+charge**. Reservations remain in budget accounting: a failed request is not
+silently counted as free. Terminal errors clear the in-flight flag. Raw provider
+error bodies remain excluded because they can echo credentials or prompts.
+
+The release gate passes **93 backend/harness and 67 browser checks**. The new
+browser case verifies one rejected request, zero actions, unknown accounting,
+model-menu recovery with no request on selection, then a manually started second
+run using a fake responding model. It distinguishes that completed-but-wrong
+outcome from provider blockage. The screenshot `relay-provider-blocked.png` is
+from this fake transport, not a live outage recording.
+
+The full release pass also exposed an ambiguous older reply-test locator: it
+matched both the committed message and the composer while the composer was
+clearing. The check now targets the message article and separately verifies the
+empty composer; no retries or longer timeouts were added.
+The menu keyboard check also waits for the selected option to receive focus
+after reopening before sending Home, instead of treating CSS readiness as
+keyboard readiness.
+
+Router's [documented 403 meaning](https://docs.router.com/api/errors-and-limits)
+is provider unavailability; 401 and 402 have distinct key/credit meanings. The
+original provider-side reason cannot be recovered from the previous discarded
+error body, and this update does not claim to change account permissions or make
+an unavailable provider available. No real provider calls were made for this fix.
+
+## Multi-step task expansion — 2026-09-30
+
+The catalog now contains 18 tasks: six unchanged v1 controls and 12 separately
+versioned v2 workflows. They combine source retrieval, current-versus-stale
+disambiguation and 3–6 required mutations across channels, threads and DMs. See
+[the task suite](task-suite.md) for every outcome contract and the explicitly
+bounded model-pilot plan.
+
+Verification passed **89 backend/harness checks and 66 browser checks**. This
+includes all 18 API reference tasks on two seeds, 24 new full browser workflows
+(12 tasks × two seeds), and three additional workspace interaction regressions.
+The separate [grader challenge report](../evidence/workflows/grader-challenges.json)
+accepts **84 correct outcomes and rejects 2,583 deliberately wrong final states**
+across seven seeds. Additional tests accept valid alternative action orders and
+fully undone actions, consistent with the declared final-state reward policy.
+
+New browser recipes mutate only through the actual UI, reload persistent state
+and independently export/grade the outcome. Portable trajectories include
+per-mutation UI snapshots and the original event log; final screenshots are
+collected in [the reference inventory](../evidence/reference/summary.json).
+These recipes are builder-informed scripts, not blind model runs. **No paid
+inference, RL training or GPU work was performed for this expansion.** Existing
+real-model success/failure recordings remain unchanged.
+
+The tests found a real quick-switcher Enter propagation bug: restoring focus
+could submit the underlying search. The fix prevents the default key action and
+propagation. Menus/dialogs now manage focus and nested Escape; saved-thread links
+open their actual thread; scoped drafts survive navigation; delayed search results
+cannot replace newer results; rapid sends commit once. A new dedicated test store
+per suite also fixes the repeated-run 256-session-cap problem described in the
+earlier entry below. Normal teardown removes only that suite's disposable data.
+
+Intermediate failures are not concealed as model errors: initial test locators
+matched multiple headings/search hits, a helper confused the pre-existing
+`new-team` ID with generated messages, and a formatting test used Control+A
+instead of the platform-neutral select-all chord. Those test defects were fixed.
+The deeper API reference also exposed that four-turn retention discarded its
+source records; reference scripts now retain their history, as documented, while
+real models' full/recent-4 behavior is unchanged.
+
+Pins, Details and a decision-record workflow were also exercised interactively
+in the in-app browser. This is a development UI check, not an independent agent
+benchmark or full accessibility certification. Seed variation is not semantic
+holdout coverage; all new templates are public. The original presentation and
+historical measurements below remain dated evidence, not updated performance
+claims for the larger fixture.
+
 ## Full-width observer frame — 2026-09-30
 
 The Slack frame now fills the observer stage edge to edge without side gutters.

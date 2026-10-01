@@ -32,7 +32,14 @@ The side panel shows the **actual returned conditional probabilities over this o
 | Jev                   | Accessibility or visible-page JSON            | Select one deterministic candidate |
 | Ramp generative model | Pixels, accessibility, page JSON or actor API | Generate a validated action        |
 
-Jev currently rejects the free-composition handoff task and pixel/API conditions. This is not screenshot-grounded Jev computer use: the spectator sees pixels, while Jev reads text. Menu construction is part of the harness, so comparing Jev with a generative model changes both model and action policy. Report it as a **system comparison**, not a clean model-only causal effect.
+Jev currently rejects the free-composition handoff task, all 12 new multi-step
+workflows and pixel/API conditions. The new tasks require composing outputs from
+retrieved facts; their answers are never injected into Jev's candidate menu.
+Unsupported combinations are disabled in the UI and rejected before inference.
+This is not screenshot-grounded Jev computer use: the spectator sees pixels,
+while Jev reads text. Menu construction is part of the harness, so comparing Jev
+with a generative model changes both model and action policy. Report it as a
+**system comparison**, not a clean model-only causal effect.
 
 Keep task, seed, interface, guide, history, action/time budgets, candidate-policy version and app/source provenance explicit. Hosted Compare lists these factors but does not magically pair unlike runs or establish significance. The local factorial runner offers matched cells and paired summaries; development seeds are not held-out reasoning tasks.
 

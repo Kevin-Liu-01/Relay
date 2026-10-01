@@ -15,6 +15,9 @@ export function RelaySelect({
   disabled = false,
   className = '',
   wide = false,
+  id,
+  open: controlledOpen,
+  onOpenChange,
 }) {
   const trigger = useRef(null);
   const [open, setOpen] = useState(false);
@@ -26,15 +29,17 @@ export function RelaySelect({
       value={String(value ?? '')}
       onValueChange={onChange}
       disabled={disabled}
-      open={open && !disabled}
+      open={(controlledOpen ?? open) && !disabled}
       onOpenChange={(next) => {
         // Native dialogs live in the top layer: keep their menus inside them.
         setContainer(trigger.current?.closest('dialog') ?? undefined);
         setOpen(next);
+        onOpenChange?.(next);
       }}
     >
       <Select.Trigger
         ref={trigger}
+        id={id}
         className={`relay-select ${className}`}
         aria-label={label}
         title={selected?.label ?? placeholder}
@@ -63,6 +68,7 @@ export function RelaySelect({
             // One Escape dismisses this menu, not the enclosing native dialog.
             event.preventDefault();
             setOpen(false);
+            onOpenChange?.(false);
           }}
         >
           <Select.ScrollUpButton className="relay-select-scroll">

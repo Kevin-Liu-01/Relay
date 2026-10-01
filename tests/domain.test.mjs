@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { makeSeed } from '../server/seed.mjs';
 import { searchMessages, transition, digest } from '../server/domain.mjs';
-import { TASK_IDS, grade } from '../server/tasks.mjs';
+import { LEGACY_TASK_IDS, grade } from '../server/tasks.mjs';
 
 test('deterministic seeds vary content and remain independent', () => {
   const a = makeSeed(42),
@@ -120,7 +120,7 @@ const solutions = {
     },
   ],
 };
-for (const id of TASK_IDS)
+for (const id of LEGACY_TASK_IDS)
   test(`grader ${id}: seed fails; intended state passes; unrelated mutation fails`, () => {
     for (const seed of [0, 42, 43, 999]) {
       let s = makeSeed(seed);

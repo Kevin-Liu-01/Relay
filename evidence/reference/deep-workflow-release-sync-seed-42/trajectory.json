@@ -1,0 +1,4922 @@
+{
+  "schemaVersion": 1,
+  "session": {
+    "id": "2bc75d4c-cb2a-40a2-8530-54187681020f",
+    "taskId": "release-sync",
+    "seed": 42,
+    "mode": "evaluation",
+    "createdAt": 1790829385926,
+    "expiresAt": 1790915785926
+  },
+  "task": {
+    "id": "release-sync",
+    "seed": 42,
+    "instruction": "Coordinate the release in #proj-meridian. Find the current release handoff and final QA matrix in #engineering. Edit your existing launch-review message to “Launch review: BUILD at TIME UTC; COUNT checks passed.” Set the project topic to “Release BUILD · TIME UTC”. Reply to Maya’s release-candidate request with “QA verified: COUNT checks passed for BUILD.” DM the rollback owner “Please cover rollback for BUILD at TIME UTC.” Substitute current facts in all four formats. Make only these changes; preserve all other workspace state.",
+    "maxSteps": 80,
+    "fixtureVersion": "northstar-workflows-v2",
+    "graderVersion": "workflow-state-v2"
+  },
+  "revision": 4,
+  "state": {
+    "fixtureVersion": "northstar-workflows-v2",
+    "seed": 42,
+    "workspace": "Northstar",
+    "currentUserId": "alex",
+    "users": [
+      {
+        "id": "alex",
+        "name": "Alex Morgan",
+        "handle": "alex",
+        "role": "Product engineer",
+        "color": "#d4e5fa",
+        "initials": "AM",
+        "status": "online"
+      },
+      {
+        "id": "maya",
+        "name": "Maya Chen",
+        "handle": "maya",
+        "role": "Engineering lead",
+        "color": "#f3d3bd",
+        "initials": "MC",
+        "status": "online"
+      },
+      {
+        "id": "jordan",
+        "name": "Jordan Lee",
+        "handle": "jordan",
+        "role": "Product designer",
+        "color": "#dcd4f2",
+        "initials": "JL",
+        "status": "online"
+      },
+      {
+        "id": "sam",
+        "name": "Sam Rivera",
+        "handle": "sam",
+        "role": "Site reliability",
+        "color": "#cce7d5",
+        "initials": "SR",
+        "status": "away"
+      },
+      {
+        "id": "priya",
+        "name": "Priya Shah",
+        "handle": "priya",
+        "role": "Product manager",
+        "color": "#f2d7e3",
+        "initials": "PS",
+        "status": "online"
+      },
+      {
+        "id": "leo",
+        "name": "Leo Park",
+        "handle": "leo",
+        "role": "Frontend engineer",
+        "color": "#f1e1ac",
+        "initials": "LP",
+        "status": "away"
+      }
+    ],
+    "channels": [
+      {
+        "id": "general",
+        "name": "general",
+        "topic": "The company living room. Updates, ideas, and a little everyday magic.",
+        "description": "A place for everyone at Northstar.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "maya",
+          "jordan",
+          "sam",
+          "priya",
+          "leo"
+        ]
+      },
+      {
+        "id": "project",
+        "name": "proj-meridian",
+        "topic": "Release rc-311 · 16:30 UTC",
+        "description": "Our next big thing, built together.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "maya",
+          "jordan",
+          "priya",
+          "leo",
+          "sam"
+        ]
+      },
+      {
+        "id": "engineering",
+        "name": "engineering",
+        "topic": "Ship thoughtfully. Share what you learn.",
+        "description": "Engineering discussion and weekly updates.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "maya",
+          "jordan",
+          "sam",
+          "priya",
+          "leo"
+        ]
+      },
+      {
+        "id": "design",
+        "name": "design",
+        "topic": "Details make the difference.",
+        "description": "Work in progress, inspiration, and critique.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "jordan",
+          "priya",
+          "leo"
+        ]
+      },
+      {
+        "id": "incidents",
+        "name": "incidents",
+        "topic": "Operational updates · Current status: all systems healthy",
+        "description": "Incident coordination and follow-ups.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "maya",
+          "sam"
+        ]
+      },
+      {
+        "id": "random",
+        "name": "random",
+        "topic": "A little off topic is a good thing.",
+        "description": "Coffee, good reads, and weekend plans.",
+        "kind": "channel",
+        "members": [
+          "alex",
+          "maya",
+          "jordan",
+          "sam",
+          "priya",
+          "leo"
+        ]
+      },
+      {
+        "id": "dm-maya",
+        "name": "Maya Chen",
+        "topic": "Engineering lead",
+        "description": "",
+        "kind": "dm",
+        "members": [
+          "alex",
+          "maya"
+        ]
+      },
+      {
+        "id": "dm-jordan",
+        "name": "Jordan Lee",
+        "topic": "Product designer",
+        "description": "",
+        "kind": "dm",
+        "members": [
+          "alex",
+          "jordan"
+        ]
+      },
+      {
+        "id": "dm-sam",
+        "name": "Sam Rivera",
+        "topic": "Site reliability",
+        "description": "",
+        "kind": "dm",
+        "members": [
+          "alex",
+          "sam"
+        ]
+      },
+      {
+        "id": "dm-priya",
+        "name": "Priya Shah",
+        "topic": "Product manager",
+        "description": "",
+        "kind": "dm",
+        "members": [
+          "alex",
+          "priya"
+        ]
+      },
+      {
+        "id": "dm-leo",
+        "name": "Leo Park",
+        "topic": "Frontend engineer",
+        "description": "",
+        "kind": "dm",
+        "members": [
+          "alex",
+          "leo"
+        ]
+      }
+    ],
+    "messages": [
+      {
+        "id": "welcome",
+        "channelId": "general",
+        "userId": "priya",
+        "text": "Good morning, team! ☀️ A new week, a fresh notebook, and a few things worth sharing.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:00:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "weekly",
+        "channelId": "general",
+        "userId": "maya",
+        "text": "This week: make the small things feel great. The product review is Friday — drop your demos in the project channel.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:03:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "🙌": [
+            "alex",
+            "jordan",
+            "leo"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "coffee",
+        "channelId": "general",
+        "userId": "jordan",
+        "text": "Starting a little ritual: what’s one thing you shipped last week that you’re proud of?",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:06:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "coffee-reply",
+        "channelId": "general",
+        "userId": "leo",
+        "text": "Keyboard navigation for the new command menu. Small detail, big difference.",
+        "parentId": "coffee",
+        "createdAt": "2026-09-28T09:09:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "new-team",
+        "channelId": "general",
+        "userId": "sam",
+        "text": "The new observability dashboard is live. Fewer tabs, clearer signals. Happy to give anyone a tour.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:12:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "🎉": [
+            "maya",
+            "priya"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "project-intro",
+        "channelId": "project",
+        "userId": "priya",
+        "text": "Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:15:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-ready",
+        "channelId": "project",
+        "userId": "jordan",
+        "text": "The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:18:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "✨": [
+            "maya",
+            "alex"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-reply",
+        "channelId": "project",
+        "userId": "alex",
+        "text": "Love the direction. The quieter sidebar makes a real difference.",
+        "parentId": "design-ready",
+        "createdAt": "2026-09-28T09:21:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-reply-2",
+        "channelId": "project",
+        "userId": "maya",
+        "text": "Agreed. Let’s bring this into the next build.",
+        "parentId": "design-ready",
+        "createdAt": "2026-09-28T09:24:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "launch-old",
+        "channelId": "project",
+        "userId": "alex",
+        "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:27:00.000Z",
+        "editedAt": "2026-09-29T10:00:01.000Z",
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "launch-distractor",
+        "channelId": "project",
+        "userId": "priya",
+        "text": "The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:30:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "qa-target",
+        "channelId": "project",
+        "userId": "maya",
+        "text": "MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:33:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "👀": [
+            "leo",
+            "alex"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "qa-reply",
+        "channelId": "project",
+        "userId": "leo",
+        "text": "The keyboard and focus checks are passing on my side.",
+        "parentId": "qa-target",
+        "createdAt": "2026-09-28T09:36:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "handoff-distractor",
+        "channelId": "project",
+        "userId": "sam",
+        "text": "Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:42:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": [
+          "alex",
+          "sam"
+        ]
+      },
+      {
+        "id": "project-wrap",
+        "channelId": "project",
+        "userId": "priya",
+        "text": "Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:45:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "eng-note",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "A reminder for reviews: describe the tradeoff, not just the implementation. A good decision log saves a lot of future archaeology.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:48:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "eng-tip",
+        "channelId": "engineering",
+        "userId": "leo",
+        "text": "Tiny performance win: we removed an unnecessary render from the sidebar. The browser is doing a lot less work now.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:51:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "🚀": [
+            "alex",
+            "sam"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "eng-duplicate",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "MERIDIAN-283: this engineering note is background context only. The QA request lives in the project channel.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:54:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "delete-target",
+        "channelId": "engineering",
+        "userId": "alex",
+        "text": "Draft announcement — placeholder numbers, do not share.",
+        "parentId": null,
+        "createdAt": "2026-09-28T09:57:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "delete-distractor",
+        "channelId": "engineering",
+        "userId": "leo",
+        "text": "Draft announcement — approved numbers, ready to share.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:00:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-note",
+        "channelId": "design",
+        "userId": "jordan",
+        "text": "A few references for the next iteration: generous spacing, quiet borders, and a clear sense of place.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:03:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-feedback",
+        "channelId": "design",
+        "userId": "priya",
+        "text": "Let’s keep the familiar interactions. The polish should make things easier to find, not harder.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:06:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "incident-old",
+        "channelId": "incidents",
+        "userId": "sam",
+        "text": "INC-103 from last week is closed. No further action is required.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:09:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": true,
+        "savedBy": [
+          "alex"
+        ]
+      },
+      {
+        "id": "incident-target",
+        "channelId": "incidents",
+        "userId": "sam",
+        "text": "INC-242: elevated latency in the search service. Mitigation is deployed. Please acknowledge this update and pin it for the handoff.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:12:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "incident-update",
+        "channelId": "incidents",
+        "userId": "maya",
+        "text": "Thanks, Sam. We’ll keep an eye on the next metrics window.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:15:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "random-book",
+        "channelId": "random",
+        "userId": "jordan",
+        "text": "Weekend recommendation: take the long route home. Found a lovely little bookshop that way. 📚",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:18:00.000Z",
+        "editedAt": null,
+        "reactions": {
+          "❤️": [
+            "priya",
+            "alex"
+          ]
+        },
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "random-coffee",
+        "channelId": "random",
+        "userId": "leo",
+        "text": "Serious question: is a third coffee a personality trait?",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:21:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "random-answer",
+        "channelId": "random",
+        "userId": "sam",
+        "text": "Only if you document it.",
+        "parentId": "random-coffee",
+        "createdAt": "2026-09-28T10:24:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "dm-maya-intro",
+        "channelId": "dm-maya",
+        "userId": "maya",
+        "text": "Hey Alex — thanks for taking the QA pass today. Let me know if anything feels off.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:27:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "dm-jordan-intro",
+        "channelId": "dm-jordan",
+        "userId": "jordan",
+        "text": "The latest designs are in the project channel. Would love your thoughts when you have a moment.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:30:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "dm-sam-intro",
+        "channelId": "dm-sam",
+        "userId": "sam",
+        "text": "Could you send me the current rollback owner and release window when you find them?",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:33:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "dm-priya-intro",
+        "channelId": "dm-priya",
+        "userId": "priya",
+        "text": "Thanks for helping keep the launch on track!",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:36:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "dm-leo-intro",
+        "channelId": "dm-leo",
+        "userId": "leo",
+        "text": "Happy to pair on the keyboard interactions this afternoon.",
+        "parentId": null,
+        "createdAt": "2026-09-28T10:39:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "release-plan-old",
+        "channelId": "project",
+        "userId": "maya",
+        "text": "Previous release plan: build rc-299, window 17:00 UTC. Superseded; keep this message for the record.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:18:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": true,
+        "savedBy": []
+      },
+      {
+        "id": "qa-matrix",
+        "channelId": "engineering",
+        "userId": "leo",
+        "text": "Final QA matrix: build rc-311; 24 checks passed; 0 blockers. The archived matrix below is not current.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:19:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "qa-matrix-old",
+        "channelId": "engineering",
+        "userId": "leo",
+        "text": "Archived QA matrix: build rc-299; 12 checks passed; 2 blockers. Historical reference only.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:20:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "qa-proof",
+        "channelId": "project",
+        "userId": "leo",
+        "text": "Verified release build rc-311. The final check count is in #engineering.",
+        "parentId": "qa-target",
+        "createdAt": "2026-09-29T09:21:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "incident-resolution",
+        "channelId": "incidents",
+        "userId": "sam",
+        "text": "Resolution confirmed: search p95 is 99 ms; error rate 0.1%. Search service is healthy.",
+        "parentId": "incident-target",
+        "createdAt": "2026-09-29T09:22:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "incident-provisional",
+        "channelId": "incidents",
+        "userId": "maya",
+        "text": "Earlier provisional reading: p95 240 ms; error rate 1.2%. Superseded by Sam’s resolution.",
+        "parentId": "incident-target",
+        "createdAt": "2026-09-29T09:23:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-proposal",
+        "channelId": "design",
+        "userId": "jordan",
+        "text": "Navigation decision: Willow or Cedar? Final approval will be in this thread. Do not use the prototype vote.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:24:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-approved",
+        "channelId": "design",
+        "userId": "priya",
+        "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+        "parentId": "design-proposal",
+        "createdAt": "2026-09-29T09:25:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "design-prototype",
+        "channelId": "design",
+        "userId": "jordan",
+        "text": "Prototype only: Cedar navigation. Not approved.",
+        "parentId": "design-proposal",
+        "createdAt": "2026-09-29T09:26:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "estimate-root",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "Migration estimate: please keep the current estimate in this thread.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:27:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "estimate-own",
+        "channelId": "engineering",
+        "userId": "alex",
+        "text": "Migration estimate: 8 days. Pending review.",
+        "parentId": "estimate-root",
+        "createdAt": "2026-09-29T09:28:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "estimate-approved",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "Reviewed migration estimate: 3 days. Approved; replaces the 8-day draft.",
+        "parentId": "estimate-root",
+        "createdAt": "2026-09-29T09:29:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "oncall-current",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "Current on-call: Sam Rivera, Site reliability. Backup: Leo Park. Contact the primary, not the backup.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:30:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "oncall-old",
+        "channelId": "engineering",
+        "userId": "maya",
+        "text": "Previous on-call: Leo Park. This rotation has ended.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:31:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "handoff-own",
+        "channelId": "dm-sam",
+        "userId": "alex",
+        "text": "Rollback owner: Jordan Lee. Release window: 17:00 UTC.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:32:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "retro-request",
+        "channelId": "project",
+        "userId": "priya",
+        "text": "Release retrospective: reply here with the approved build, final QA count, and resolved search latency. Keep source messages intact.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:33:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "handoff-target",
+        "channelId": "project",
+        "userId": "sam",
+        "text": "Current release handoff: rollback owner is Priya Shah. The release window is 16:30 UTC. Approved build: rc-311. This replaces yesterday’s draft.",
+        "parentId": null,
+        "createdAt": "2026-09-29T09:35:00.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": true,
+        "savedBy": []
+      },
+      {
+        "id": "new-3",
+        "channelId": "project",
+        "userId": "alex",
+        "text": "QA verified: 24 checks passed for rc-311.",
+        "parentId": "qa-target",
+        "createdAt": "2026-09-29T10:00:03.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      },
+      {
+        "id": "new-4",
+        "channelId": "dm-priya",
+        "userId": "alex",
+        "text": "Please cover rollback for rc-311 at 16:30 UTC.",
+        "parentId": null,
+        "createdAt": "2026-09-29T10:00:04.000Z",
+        "editedAt": null,
+        "reactions": {},
+        "pinned": false,
+        "savedBy": []
+      }
+    ],
+    "clock": "2026-09-29T10:00:00.000Z"
+  },
+  "evaluation": {
+    "taskId": "release-sync",
+    "seed": 42,
+    "success": true,
+    "reward": 1,
+    "checks": [
+      {
+        "name": "change_1_edit_timestamp",
+        "passed": true
+      },
+      {
+        "name": "change_1_launch-old",
+        "passed": true
+      },
+      {
+        "name": "change_2_project",
+        "passed": true
+      },
+      {
+        "name": "exact_new_message_count",
+        "passed": true
+      },
+      {
+        "name": "new_message_destination_and_content",
+        "passed": true
+      },
+      {
+        "name": "new_message_metadata",
+        "passed": true
+      },
+      {
+        "name": "new_message_destination_and_content",
+        "passed": true
+      },
+      {
+        "name": "new_message_metadata",
+        "passed": true
+      },
+      {
+        "name": "all_requested_messages",
+        "passed": true
+      },
+      {
+        "name": "unique_message_ids",
+        "passed": true
+      },
+      {
+        "name": "no_unrequested_state_changes",
+        "passed": true
+      }
+    ],
+    "baselineHash": "e808da3e11450e308191cdcba1879eab91653238d6f85330b018d23b7c62459b",
+    "finalHash": "8f6793f6c78f3b9721bfdcb592a21a0ab7d09e78322ceae8bc43dfe9715aa887",
+    "graderVersion": "workflow-state-v2",
+    "revision": 4,
+    "sessionId": "2bc75d4c-cb2a-40a2-8530-54187681020f"
+  },
+  "events": [
+    {
+      "seq": 1,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Search Northstar",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.113Z"
+    },
+    {
+      "seq": 2,
+      "kind": "interaction",
+      "type": "search",
+      "label": "\"Current release handoff\"",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.116Z"
+    },
+    {
+      "seq": 3,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Search Northstar",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.177Z"
+    },
+    {
+      "seq": 4,
+      "kind": "interaction",
+      "type": "search",
+      "label": "\"Final QA matrix\"",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.179Z"
+    },
+    {
+      "seq": 5,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Search Northstar",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.241Z"
+    },
+    {
+      "seq": 6,
+      "kind": "interaction",
+      "type": "search",
+      "label": "\"Resolution confirmed\"",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.244Z"
+    },
+    {
+      "seq": 7,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Search Northstar",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.332Z"
+    },
+    {
+      "seq": 8,
+      "kind": "interaction",
+      "type": "search",
+      "label": "from:priya \"Final approval\"",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.333Z"
+    },
+    {
+      "seq": 9,
+      "kind": "interaction",
+      "type": "navigate",
+      "label": "project",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.395Z"
+    },
+    {
+      "seq": 10,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Channel proj-meridian",
+      "key": "",
+      "x": 186,
+      "y": 301,
+      "at": "2026-10-01T04:36:26.404Z"
+    },
+    {
+      "seq": 11,
+      "kind": "interaction",
+      "type": "click",
+      "label": "More actions for Alex Morgan's message",
+      "key": "",
+      "x": 1401,
+      "y": 421,
+      "at": "2026-10-01T04:36:26.546Z"
+    },
+    {
+      "seq": 12,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Edit message",
+      "key": "",
+      "x": 1305,
+      "y": 536,
+      "at": "2026-10-01T04:36:26.599Z"
+    },
+    {
+      "seq": 13,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Save changes",
+      "key": "",
+      "x": 1361,
+      "y": 569,
+      "at": "2026-10-01T04:36:26.698Z"
+    },
+    {
+      "seq": 14,
+      "kind": "mutation",
+      "revision": 1,
+      "action": {
+        "type": "message.edit",
+        "id": "launch-old",
+        "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed."
+      },
+      "beforeHash": "e808da3e11450e308191cdcba1879eab91653238d6f85330b018d23b7c62459b",
+      "afterHash": "42a513daf2ca7a417ad718bc273dc52c5d78fab979d86dfbb3f70095e6523d2c",
+      "at": "2026-10-01T04:36:26.703Z"
+    },
+    {
+      "seq": 15,
+      "kind": "interaction",
+      "type": "navigate",
+      "label": "project",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:26.793Z"
+    },
+    {
+      "seq": 16,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Channel proj-meridian",
+      "key": "",
+      "x": 186,
+      "y": 301,
+      "at": "2026-10-01T04:36:26.795Z"
+    },
+    {
+      "seq": 17,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Edit channel topic",
+      "key": "",
+      "x": 1401,
+      "y": 83,
+      "at": "2026-10-01T04:36:26.847Z"
+    },
+    {
+      "seq": 18,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Save",
+      "key": "",
+      "x": 938,
+      "y": 399,
+      "at": "2026-10-01T04:36:26.972Z"
+    },
+    {
+      "seq": 19,
+      "kind": "mutation",
+      "revision": 2,
+      "action": {
+        "type": "channel.topic",
+        "channelId": "project",
+        "topic": "Release rc-311 · 16:30 UTC"
+      },
+      "beforeHash": "42a513daf2ca7a417ad718bc273dc52c5d78fab979d86dfbb3f70095e6523d2c",
+      "afterHash": "50e07fa19a04947b58cc371051a8317cfdbfde185ba9dd6f30040f2d14987277",
+      "at": "2026-10-01T04:36:26.979Z"
+    },
+    {
+      "seq": 20,
+      "kind": "interaction",
+      "type": "navigate",
+      "label": "project",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:27.093Z"
+    },
+    {
+      "seq": 21,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Channel proj-meridian",
+      "key": "",
+      "x": 186,
+      "y": 301,
+      "at": "2026-10-01T04:36:27.095Z"
+    },
+    {
+      "seq": 22,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Reply to Maya Chen's message",
+      "key": "",
+      "x": 1345,
+      "y": 549,
+      "at": "2026-10-01T04:36:27.199Z"
+    },
+    {
+      "seq": 23,
+      "kind": "mutation",
+      "revision": 3,
+      "action": {
+        "type": "message.send",
+        "channelId": "project",
+        "parentId": "qa-target",
+        "text": "QA verified: 24 checks passed for rc-311."
+      },
+      "beforeHash": "50e07fa19a04947b58cc371051a8317cfdbfde185ba9dd6f30040f2d14987277",
+      "afterHash": "85fb8a62682b668b88dc15d78a3ac8195a55b960c2931603e81856a46753331f",
+      "at": "2026-10-01T04:36:27.228Z"
+    },
+    {
+      "seq": 24,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Reply in thread",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:27.231Z"
+    },
+    {
+      "seq": 25,
+      "kind": "interaction",
+      "type": "navigate",
+      "label": "dm-priya",
+      "key": "",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:27.330Z"
+    },
+    {
+      "seq": 26,
+      "kind": "interaction",
+      "type": "click",
+      "label": "Direct message Priya Shah",
+      "key": "",
+      "x": 186,
+      "y": 621,
+      "at": "2026-10-01T04:36:27.334Z"
+    },
+    {
+      "seq": 27,
+      "kind": "mutation",
+      "revision": 4,
+      "action": {
+        "type": "message.send",
+        "channelId": "dm-priya",
+        "text": "Please cover rollback for rc-311 at 16:30 UTC."
+      },
+      "beforeHash": "85fb8a62682b668b88dc15d78a3ac8195a55b960c2931603e81856a46753331f",
+      "afterHash": "8f6793f6c78f3b9721bfdcb592a21a0ab7d09e78322ceae8bc43dfe9715aa887",
+      "at": "2026-10-01T04:36:27.372Z"
+    },
+    {
+      "seq": 28,
+      "kind": "interaction",
+      "type": "keydown",
+      "label": "Message Priya Shah",
+      "key": "Enter",
+      "x": null,
+      "y": null,
+      "at": "2026-10-01T04:36:27.375Z"
+    }
+  ],
+  "evidenceKind": "builder-informed-scripted-browser-reference",
+  "checkpoints": [
+    {
+      "index": 0,
+      "action": "message.edit",
+      "phase": "after-action",
+      "snapshot": {
+        "version": 1,
+        "data": {
+          "revision": 1,
+          "state": {
+            "fixtureVersion": "northstar-workflows-v2",
+            "seed": 42,
+            "workspace": "Northstar",
+            "currentUserId": "alex",
+            "users": [
+              {
+                "id": "alex",
+                "name": "Alex Morgan",
+                "handle": "alex",
+                "role": "Product engineer",
+                "color": "#d4e5fa",
+                "initials": "AM",
+                "status": "online"
+              },
+              {
+                "id": "maya",
+                "name": "Maya Chen",
+                "handle": "maya",
+                "role": "Engineering lead",
+                "color": "#f3d3bd",
+                "initials": "MC",
+                "status": "online"
+              },
+              {
+                "id": "jordan",
+                "name": "Jordan Lee",
+                "handle": "jordan",
+                "role": "Product designer",
+                "color": "#dcd4f2",
+                "initials": "JL",
+                "status": "online"
+              },
+              {
+                "id": "sam",
+                "name": "Sam Rivera",
+                "handle": "sam",
+                "role": "Site reliability",
+                "color": "#cce7d5",
+                "initials": "SR",
+                "status": "away"
+              },
+              {
+                "id": "priya",
+                "name": "Priya Shah",
+                "handle": "priya",
+                "role": "Product manager",
+                "color": "#f2d7e3",
+                "initials": "PS",
+                "status": "online"
+              },
+              {
+                "id": "leo",
+                "name": "Leo Park",
+                "handle": "leo",
+                "role": "Frontend engineer",
+                "color": "#f1e1ac",
+                "initials": "LP",
+                "status": "away"
+              }
+            ],
+            "channels": [
+              {
+                "id": "general",
+                "name": "general",
+                "topic": "The company living room. Updates, ideas, and a little everyday magic.",
+                "description": "A place for everyone at Northstar.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "project",
+                "name": "proj-meridian",
+                "topic": "Building a calmer way to work. Launch planning and product decisions.",
+                "description": "Our next big thing, built together.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "priya",
+                  "leo",
+                  "sam"
+                ]
+              },
+              {
+                "id": "engineering",
+                "name": "engineering",
+                "topic": "Ship thoughtfully. Share what you learn.",
+                "description": "Engineering discussion and weekly updates.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "design",
+                "name": "design",
+                "topic": "Details make the difference.",
+                "description": "Work in progress, inspiration, and critique.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "jordan",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "incidents",
+                "name": "incidents",
+                "topic": "Operational updates · Current status: all systems healthy",
+                "description": "Incident coordination and follow-ups.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "sam"
+                ]
+              },
+              {
+                "id": "random",
+                "name": "random",
+                "topic": "A little off topic is a good thing.",
+                "description": "Coffee, good reads, and weekend plans.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "dm-maya",
+                "name": "Maya Chen",
+                "topic": "Engineering lead",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "maya"
+                ]
+              },
+              {
+                "id": "dm-jordan",
+                "name": "Jordan Lee",
+                "topic": "Product designer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "jordan"
+                ]
+              },
+              {
+                "id": "dm-sam",
+                "name": "Sam Rivera",
+                "topic": "Site reliability",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "dm-priya",
+                "name": "Priya Shah",
+                "topic": "Product manager",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "priya"
+                ]
+              },
+              {
+                "id": "dm-leo",
+                "name": "Leo Park",
+                "topic": "Frontend engineer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "leo"
+                ]
+              }
+            ],
+            "messages": [
+              {
+                "id": "welcome",
+                "channelId": "general",
+                "userId": "priya",
+                "text": "Good morning, team! ☀️ A new week, a fresh notebook, and a few things worth sharing.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "weekly",
+                "channelId": "general",
+                "userId": "maya",
+                "text": "This week: make the small things feel great. The product review is Friday — drop your demos in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:03:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🙌": [
+                    "alex",
+                    "jordan",
+                    "leo"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee",
+                "channelId": "general",
+                "userId": "jordan",
+                "text": "Starting a little ritual: what’s one thing you shipped last week that you’re proud of?",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee-reply",
+                "channelId": "general",
+                "userId": "leo",
+                "text": "Keyboard navigation for the new command menu. Small detail, big difference.",
+                "parentId": "coffee",
+                "createdAt": "2026-09-28T09:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "new-team",
+                "channelId": "general",
+                "userId": "sam",
+                "text": "The new observability dashboard is live. Fewer tabs, clearer signals. Happy to give anyone a tour.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:12:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🎉": [
+                    "maya",
+                    "priya"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "project-intro",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-ready",
+                "channelId": "project",
+                "userId": "jordan",
+                "text": "The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "✨": [
+                    "maya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Love the direction. The quieter sidebar makes a real difference.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply-2",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Agreed. Let’s bring this into the next build.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-old",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:27:00.000Z",
+                "editedAt": "2026-09-29T10:00:01.000Z",
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-distractor",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-target",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "👀": [
+                    "leo",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-reply",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "The keyboard and focus checks are passing on my side.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-28T09:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-distractor",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:42:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "project-wrap",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:45:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-note",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "A reminder for reviews: describe the tradeoff, not just the implementation. A good decision log saves a lot of future archaeology.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:48:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-tip",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Tiny performance win: we removed an unnecessary render from the sidebar. The browser is doing a lot less work now.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:51:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🚀": [
+                    "alex",
+                    "sam"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-duplicate",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "MERIDIAN-283: this engineering note is background context only. The QA request lives in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:54:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-target",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Draft announcement — placeholder numbers, do not share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:57:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-distractor",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Draft announcement — approved numbers, ready to share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-note",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "A few references for the next iteration: generous spacing, quiet borders, and a clear sense of place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:03:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-feedback",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Let’s keep the familiar interactions. The polish should make things easier to find, not harder.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-old",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-103 from last week is closed. No further action is required.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": [
+                  "alex"
+                ]
+              },
+              {
+                "id": "incident-target",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-242: elevated latency in the search service. Mitigation is deployed. Please acknowledge this update and pin it for the handoff.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:12:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-update",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Thanks, Sam. We’ll keep an eye on the next metrics window.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-book",
+                "channelId": "random",
+                "userId": "jordan",
+                "text": "Weekend recommendation: take the long route home. Found a lovely little bookshop that way. 📚",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "❤️": [
+                    "priya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-coffee",
+                "channelId": "random",
+                "userId": "leo",
+                "text": "Serious question: is a third coffee a personality trait?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-answer",
+                "channelId": "random",
+                "userId": "sam",
+                "text": "Only if you document it.",
+                "parentId": "random-coffee",
+                "createdAt": "2026-09-28T10:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-maya-intro",
+                "channelId": "dm-maya",
+                "userId": "maya",
+                "text": "Hey Alex — thanks for taking the QA pass today. Let me know if anything feels off.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-jordan-intro",
+                "channelId": "dm-jordan",
+                "userId": "jordan",
+                "text": "The latest designs are in the project channel. Would love your thoughts when you have a moment.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-sam-intro",
+                "channelId": "dm-sam",
+                "userId": "sam",
+                "text": "Could you send me the current rollback owner and release window when you find them?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-priya-intro",
+                "channelId": "dm-priya",
+                "userId": "priya",
+                "text": "Thanks for helping keep the launch on track!",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-leo-intro",
+                "channelId": "dm-leo",
+                "userId": "leo",
+                "text": "Happy to pair on the keyboard interactions this afternoon.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:39:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "release-plan-old",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Previous release plan: build rc-299, window 17:00 UTC. Superseded; keep this message for the record.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Final QA matrix: build rc-311; 24 checks passed; 0 blockers. The archived matrix below is not current.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:19:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix-old",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Archived QA matrix: build rc-299; 12 checks passed; 2 blockers. Historical reference only.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:20:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-proof",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "Verified release build rc-311. The final check count is in #engineering.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-resolution",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "Resolution confirmed: search p95 is 99 ms; error rate 0.1%. Search service is healthy.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:22:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-provisional",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Earlier provisional reading: p95 240 ms; error rate 1.2%. Superseded by Sam’s resolution.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:23:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-proposal",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Navigation decision: Willow or Cedar? Final approval will be in this thread. Do not use the prototype vote.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-approved",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:25:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-prototype",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Prototype only: Cedar navigation. Not approved.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:26:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-root",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Migration estimate: please keep the current estimate in this thread.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-own",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Migration estimate: 8 days. Pending review.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:28:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-approved",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Reviewed migration estimate: 3 days. Approved; replaces the 8-day draft.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:29:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-current",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Current on-call: Sam Rivera, Site reliability. Backup: Leo Park. Contact the primary, not the backup.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-old",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Previous on-call: Leo Park. This rotation has ended.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:31:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-own",
+                "channelId": "dm-sam",
+                "userId": "alex",
+                "text": "Rollback owner: Jordan Lee. Release window: 17:00 UTC.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:32:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "retro-request",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Release retrospective: reply here with the approved build, final QA count, and resolved search latency. Keep source messages intact.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-target",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Current release handoff: rollback owner is Priya Shah. The release window is 16:30 UTC. Approved build: rc-311. This replaces yesterday’s draft.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:35:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              }
+            ],
+            "clock": "2026-09-29T10:00:00.000Z"
+          }
+        },
+        "ui": {
+          "channelId": "project",
+          "view": "channel",
+          "threadId": null,
+          "menu": null,
+          "reaction": null,
+          "edit": null,
+          "deleting": null,
+          "topic": null,
+          "details": null,
+          "query": "from:priya \"Final approval\"",
+          "searched": "from:priya \"Final approval\"",
+          "results": [
+            {
+              "id": "design-approved",
+              "channelId": "design",
+              "userId": "priya",
+              "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+              "parentId": "design-proposal",
+              "createdAt": "2026-09-29T09:25:00.000Z",
+              "editedAt": null,
+              "reactions": {},
+              "pinned": false,
+              "savedBy": []
+            }
+          ],
+          "searching": false,
+          "switcher": false,
+          "switchQuery": "",
+          "help": false,
+          "toast": "Message updated"
+        },
+        "dom": {
+          "fields": [
+            {
+              "label": "Search Northstar",
+              "value": "from:priya \"Final approval\""
+            },
+            {
+              "label": "Message #proj-meridian",
+              "value": ""
+            }
+          ],
+          "scroll": [
+            {
+              "className": "messages-scroll",
+              "top": 161
+            }
+          ],
+          "targets": []
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "index": 1,
+      "action": "channel.topic",
+      "phase": "after-action",
+      "snapshot": {
+        "version": 1,
+        "data": {
+          "revision": 2,
+          "state": {
+            "fixtureVersion": "northstar-workflows-v2",
+            "seed": 42,
+            "workspace": "Northstar",
+            "currentUserId": "alex",
+            "users": [
+              {
+                "id": "alex",
+                "name": "Alex Morgan",
+                "handle": "alex",
+                "role": "Product engineer",
+                "color": "#d4e5fa",
+                "initials": "AM",
+                "status": "online"
+              },
+              {
+                "id": "maya",
+                "name": "Maya Chen",
+                "handle": "maya",
+                "role": "Engineering lead",
+                "color": "#f3d3bd",
+                "initials": "MC",
+                "status": "online"
+              },
+              {
+                "id": "jordan",
+                "name": "Jordan Lee",
+                "handle": "jordan",
+                "role": "Product designer",
+                "color": "#dcd4f2",
+                "initials": "JL",
+                "status": "online"
+              },
+              {
+                "id": "sam",
+                "name": "Sam Rivera",
+                "handle": "sam",
+                "role": "Site reliability",
+                "color": "#cce7d5",
+                "initials": "SR",
+                "status": "away"
+              },
+              {
+                "id": "priya",
+                "name": "Priya Shah",
+                "handle": "priya",
+                "role": "Product manager",
+                "color": "#f2d7e3",
+                "initials": "PS",
+                "status": "online"
+              },
+              {
+                "id": "leo",
+                "name": "Leo Park",
+                "handle": "leo",
+                "role": "Frontend engineer",
+                "color": "#f1e1ac",
+                "initials": "LP",
+                "status": "away"
+              }
+            ],
+            "channels": [
+              {
+                "id": "general",
+                "name": "general",
+                "topic": "The company living room. Updates, ideas, and a little everyday magic.",
+                "description": "A place for everyone at Northstar.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "project",
+                "name": "proj-meridian",
+                "topic": "Release rc-311 · 16:30 UTC",
+                "description": "Our next big thing, built together.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "priya",
+                  "leo",
+                  "sam"
+                ]
+              },
+              {
+                "id": "engineering",
+                "name": "engineering",
+                "topic": "Ship thoughtfully. Share what you learn.",
+                "description": "Engineering discussion and weekly updates.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "design",
+                "name": "design",
+                "topic": "Details make the difference.",
+                "description": "Work in progress, inspiration, and critique.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "jordan",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "incidents",
+                "name": "incidents",
+                "topic": "Operational updates · Current status: all systems healthy",
+                "description": "Incident coordination and follow-ups.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "sam"
+                ]
+              },
+              {
+                "id": "random",
+                "name": "random",
+                "topic": "A little off topic is a good thing.",
+                "description": "Coffee, good reads, and weekend plans.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "dm-maya",
+                "name": "Maya Chen",
+                "topic": "Engineering lead",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "maya"
+                ]
+              },
+              {
+                "id": "dm-jordan",
+                "name": "Jordan Lee",
+                "topic": "Product designer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "jordan"
+                ]
+              },
+              {
+                "id": "dm-sam",
+                "name": "Sam Rivera",
+                "topic": "Site reliability",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "dm-priya",
+                "name": "Priya Shah",
+                "topic": "Product manager",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "priya"
+                ]
+              },
+              {
+                "id": "dm-leo",
+                "name": "Leo Park",
+                "topic": "Frontend engineer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "leo"
+                ]
+              }
+            ],
+            "messages": [
+              {
+                "id": "welcome",
+                "channelId": "general",
+                "userId": "priya",
+                "text": "Good morning, team! ☀️ A new week, a fresh notebook, and a few things worth sharing.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "weekly",
+                "channelId": "general",
+                "userId": "maya",
+                "text": "This week: make the small things feel great. The product review is Friday — drop your demos in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:03:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🙌": [
+                    "alex",
+                    "jordan",
+                    "leo"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee",
+                "channelId": "general",
+                "userId": "jordan",
+                "text": "Starting a little ritual: what’s one thing you shipped last week that you’re proud of?",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee-reply",
+                "channelId": "general",
+                "userId": "leo",
+                "text": "Keyboard navigation for the new command menu. Small detail, big difference.",
+                "parentId": "coffee",
+                "createdAt": "2026-09-28T09:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "new-team",
+                "channelId": "general",
+                "userId": "sam",
+                "text": "The new observability dashboard is live. Fewer tabs, clearer signals. Happy to give anyone a tour.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:12:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🎉": [
+                    "maya",
+                    "priya"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "project-intro",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-ready",
+                "channelId": "project",
+                "userId": "jordan",
+                "text": "The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "✨": [
+                    "maya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Love the direction. The quieter sidebar makes a real difference.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply-2",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Agreed. Let’s bring this into the next build.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-old",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:27:00.000Z",
+                "editedAt": "2026-09-29T10:00:01.000Z",
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-distractor",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-target",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "👀": [
+                    "leo",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-reply",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "The keyboard and focus checks are passing on my side.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-28T09:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-distractor",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:42:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "project-wrap",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:45:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-note",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "A reminder for reviews: describe the tradeoff, not just the implementation. A good decision log saves a lot of future archaeology.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:48:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-tip",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Tiny performance win: we removed an unnecessary render from the sidebar. The browser is doing a lot less work now.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:51:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🚀": [
+                    "alex",
+                    "sam"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-duplicate",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "MERIDIAN-283: this engineering note is background context only. The QA request lives in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:54:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-target",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Draft announcement — placeholder numbers, do not share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:57:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-distractor",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Draft announcement — approved numbers, ready to share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-note",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "A few references for the next iteration: generous spacing, quiet borders, and a clear sense of place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:03:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-feedback",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Let’s keep the familiar interactions. The polish should make things easier to find, not harder.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-old",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-103 from last week is closed. No further action is required.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": [
+                  "alex"
+                ]
+              },
+              {
+                "id": "incident-target",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-242: elevated latency in the search service. Mitigation is deployed. Please acknowledge this update and pin it for the handoff.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:12:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-update",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Thanks, Sam. We’ll keep an eye on the next metrics window.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-book",
+                "channelId": "random",
+                "userId": "jordan",
+                "text": "Weekend recommendation: take the long route home. Found a lovely little bookshop that way. 📚",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "❤️": [
+                    "priya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-coffee",
+                "channelId": "random",
+                "userId": "leo",
+                "text": "Serious question: is a third coffee a personality trait?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-answer",
+                "channelId": "random",
+                "userId": "sam",
+                "text": "Only if you document it.",
+                "parentId": "random-coffee",
+                "createdAt": "2026-09-28T10:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-maya-intro",
+                "channelId": "dm-maya",
+                "userId": "maya",
+                "text": "Hey Alex — thanks for taking the QA pass today. Let me know if anything feels off.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-jordan-intro",
+                "channelId": "dm-jordan",
+                "userId": "jordan",
+                "text": "The latest designs are in the project channel. Would love your thoughts when you have a moment.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-sam-intro",
+                "channelId": "dm-sam",
+                "userId": "sam",
+                "text": "Could you send me the current rollback owner and release window when you find them?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-priya-intro",
+                "channelId": "dm-priya",
+                "userId": "priya",
+                "text": "Thanks for helping keep the launch on track!",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-leo-intro",
+                "channelId": "dm-leo",
+                "userId": "leo",
+                "text": "Happy to pair on the keyboard interactions this afternoon.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:39:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "release-plan-old",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Previous release plan: build rc-299, window 17:00 UTC. Superseded; keep this message for the record.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Final QA matrix: build rc-311; 24 checks passed; 0 blockers. The archived matrix below is not current.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:19:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix-old",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Archived QA matrix: build rc-299; 12 checks passed; 2 blockers. Historical reference only.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:20:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-proof",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "Verified release build rc-311. The final check count is in #engineering.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-resolution",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "Resolution confirmed: search p95 is 99 ms; error rate 0.1%. Search service is healthy.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:22:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-provisional",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Earlier provisional reading: p95 240 ms; error rate 1.2%. Superseded by Sam’s resolution.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:23:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-proposal",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Navigation decision: Willow or Cedar? Final approval will be in this thread. Do not use the prototype vote.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-approved",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:25:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-prototype",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Prototype only: Cedar navigation. Not approved.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:26:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-root",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Migration estimate: please keep the current estimate in this thread.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-own",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Migration estimate: 8 days. Pending review.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:28:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-approved",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Reviewed migration estimate: 3 days. Approved; replaces the 8-day draft.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:29:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-current",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Current on-call: Sam Rivera, Site reliability. Backup: Leo Park. Contact the primary, not the backup.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-old",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Previous on-call: Leo Park. This rotation has ended.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:31:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-own",
+                "channelId": "dm-sam",
+                "userId": "alex",
+                "text": "Rollback owner: Jordan Lee. Release window: 17:00 UTC.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:32:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "retro-request",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Release retrospective: reply here with the approved build, final QA count, and resolved search latency. Keep source messages intact.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-target",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Current release handoff: rollback owner is Priya Shah. The release window is 16:30 UTC. Approved build: rc-311. This replaces yesterday’s draft.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:35:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              }
+            ],
+            "clock": "2026-09-29T10:00:00.000Z"
+          }
+        },
+        "ui": {
+          "channelId": "project",
+          "view": "channel",
+          "threadId": null,
+          "menu": null,
+          "reaction": null,
+          "edit": null,
+          "deleting": null,
+          "topic": null,
+          "details": null,
+          "query": "from:priya \"Final approval\"",
+          "searched": "from:priya \"Final approval\"",
+          "results": [
+            {
+              "id": "design-approved",
+              "channelId": "design",
+              "userId": "priya",
+              "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+              "parentId": "design-proposal",
+              "createdAt": "2026-09-29T09:25:00.000Z",
+              "editedAt": null,
+              "reactions": {},
+              "pinned": false,
+              "savedBy": []
+            }
+          ],
+          "searching": false,
+          "switcher": false,
+          "switchQuery": "",
+          "help": false,
+          "toast": "Channel topic updated"
+        },
+        "dom": {
+          "fields": [
+            {
+              "label": "Search Northstar",
+              "value": "from:priya \"Final approval\""
+            },
+            {
+              "label": "Message #proj-meridian",
+              "value": ""
+            }
+          ],
+          "scroll": [
+            {
+              "className": "messages-scroll",
+              "top": 161
+            }
+          ],
+          "targets": []
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "index": 2,
+      "action": "message.send",
+      "phase": "after-action",
+      "snapshot": {
+        "version": 1,
+        "data": {
+          "revision": 3,
+          "state": {
+            "fixtureVersion": "northstar-workflows-v2",
+            "seed": 42,
+            "workspace": "Northstar",
+            "currentUserId": "alex",
+            "users": [
+              {
+                "id": "alex",
+                "name": "Alex Morgan",
+                "handle": "alex",
+                "role": "Product engineer",
+                "color": "#d4e5fa",
+                "initials": "AM",
+                "status": "online"
+              },
+              {
+                "id": "maya",
+                "name": "Maya Chen",
+                "handle": "maya",
+                "role": "Engineering lead",
+                "color": "#f3d3bd",
+                "initials": "MC",
+                "status": "online"
+              },
+              {
+                "id": "jordan",
+                "name": "Jordan Lee",
+                "handle": "jordan",
+                "role": "Product designer",
+                "color": "#dcd4f2",
+                "initials": "JL",
+                "status": "online"
+              },
+              {
+                "id": "sam",
+                "name": "Sam Rivera",
+                "handle": "sam",
+                "role": "Site reliability",
+                "color": "#cce7d5",
+                "initials": "SR",
+                "status": "away"
+              },
+              {
+                "id": "priya",
+                "name": "Priya Shah",
+                "handle": "priya",
+                "role": "Product manager",
+                "color": "#f2d7e3",
+                "initials": "PS",
+                "status": "online"
+              },
+              {
+                "id": "leo",
+                "name": "Leo Park",
+                "handle": "leo",
+                "role": "Frontend engineer",
+                "color": "#f1e1ac",
+                "initials": "LP",
+                "status": "away"
+              }
+            ],
+            "channels": [
+              {
+                "id": "general",
+                "name": "general",
+                "topic": "The company living room. Updates, ideas, and a little everyday magic.",
+                "description": "A place for everyone at Northstar.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "project",
+                "name": "proj-meridian",
+                "topic": "Release rc-311 · 16:30 UTC",
+                "description": "Our next big thing, built together.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "priya",
+                  "leo",
+                  "sam"
+                ]
+              },
+              {
+                "id": "engineering",
+                "name": "engineering",
+                "topic": "Ship thoughtfully. Share what you learn.",
+                "description": "Engineering discussion and weekly updates.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "design",
+                "name": "design",
+                "topic": "Details make the difference.",
+                "description": "Work in progress, inspiration, and critique.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "jordan",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "incidents",
+                "name": "incidents",
+                "topic": "Operational updates · Current status: all systems healthy",
+                "description": "Incident coordination and follow-ups.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "sam"
+                ]
+              },
+              {
+                "id": "random",
+                "name": "random",
+                "topic": "A little off topic is a good thing.",
+                "description": "Coffee, good reads, and weekend plans.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "dm-maya",
+                "name": "Maya Chen",
+                "topic": "Engineering lead",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "maya"
+                ]
+              },
+              {
+                "id": "dm-jordan",
+                "name": "Jordan Lee",
+                "topic": "Product designer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "jordan"
+                ]
+              },
+              {
+                "id": "dm-sam",
+                "name": "Sam Rivera",
+                "topic": "Site reliability",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "dm-priya",
+                "name": "Priya Shah",
+                "topic": "Product manager",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "priya"
+                ]
+              },
+              {
+                "id": "dm-leo",
+                "name": "Leo Park",
+                "topic": "Frontend engineer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "leo"
+                ]
+              }
+            ],
+            "messages": [
+              {
+                "id": "welcome",
+                "channelId": "general",
+                "userId": "priya",
+                "text": "Good morning, team! ☀️ A new week, a fresh notebook, and a few things worth sharing.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "weekly",
+                "channelId": "general",
+                "userId": "maya",
+                "text": "This week: make the small things feel great. The product review is Friday — drop your demos in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:03:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🙌": [
+                    "alex",
+                    "jordan",
+                    "leo"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee",
+                "channelId": "general",
+                "userId": "jordan",
+                "text": "Starting a little ritual: what’s one thing you shipped last week that you’re proud of?",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee-reply",
+                "channelId": "general",
+                "userId": "leo",
+                "text": "Keyboard navigation for the new command menu. Small detail, big difference.",
+                "parentId": "coffee",
+                "createdAt": "2026-09-28T09:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "new-team",
+                "channelId": "general",
+                "userId": "sam",
+                "text": "The new observability dashboard is live. Fewer tabs, clearer signals. Happy to give anyone a tour.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:12:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🎉": [
+                    "maya",
+                    "priya"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "project-intro",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-ready",
+                "channelId": "project",
+                "userId": "jordan",
+                "text": "The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "✨": [
+                    "maya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Love the direction. The quieter sidebar makes a real difference.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply-2",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Agreed. Let’s bring this into the next build.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-old",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:27:00.000Z",
+                "editedAt": "2026-09-29T10:00:01.000Z",
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-distractor",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-target",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "👀": [
+                    "leo",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-reply",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "The keyboard and focus checks are passing on my side.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-28T09:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-distractor",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:42:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "project-wrap",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:45:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-note",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "A reminder for reviews: describe the tradeoff, not just the implementation. A good decision log saves a lot of future archaeology.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:48:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-tip",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Tiny performance win: we removed an unnecessary render from the sidebar. The browser is doing a lot less work now.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:51:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🚀": [
+                    "alex",
+                    "sam"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-duplicate",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "MERIDIAN-283: this engineering note is background context only. The QA request lives in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:54:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-target",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Draft announcement — placeholder numbers, do not share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:57:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-distractor",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Draft announcement — approved numbers, ready to share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-note",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "A few references for the next iteration: generous spacing, quiet borders, and a clear sense of place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:03:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-feedback",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Let’s keep the familiar interactions. The polish should make things easier to find, not harder.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-old",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-103 from last week is closed. No further action is required.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": [
+                  "alex"
+                ]
+              },
+              {
+                "id": "incident-target",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-242: elevated latency in the search service. Mitigation is deployed. Please acknowledge this update and pin it for the handoff.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:12:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-update",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Thanks, Sam. We’ll keep an eye on the next metrics window.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-book",
+                "channelId": "random",
+                "userId": "jordan",
+                "text": "Weekend recommendation: take the long route home. Found a lovely little bookshop that way. 📚",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "❤️": [
+                    "priya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-coffee",
+                "channelId": "random",
+                "userId": "leo",
+                "text": "Serious question: is a third coffee a personality trait?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-answer",
+                "channelId": "random",
+                "userId": "sam",
+                "text": "Only if you document it.",
+                "parentId": "random-coffee",
+                "createdAt": "2026-09-28T10:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-maya-intro",
+                "channelId": "dm-maya",
+                "userId": "maya",
+                "text": "Hey Alex — thanks for taking the QA pass today. Let me know if anything feels off.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-jordan-intro",
+                "channelId": "dm-jordan",
+                "userId": "jordan",
+                "text": "The latest designs are in the project channel. Would love your thoughts when you have a moment.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-sam-intro",
+                "channelId": "dm-sam",
+                "userId": "sam",
+                "text": "Could you send me the current rollback owner and release window when you find them?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-priya-intro",
+                "channelId": "dm-priya",
+                "userId": "priya",
+                "text": "Thanks for helping keep the launch on track!",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-leo-intro",
+                "channelId": "dm-leo",
+                "userId": "leo",
+                "text": "Happy to pair on the keyboard interactions this afternoon.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:39:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "release-plan-old",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Previous release plan: build rc-299, window 17:00 UTC. Superseded; keep this message for the record.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Final QA matrix: build rc-311; 24 checks passed; 0 blockers. The archived matrix below is not current.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:19:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix-old",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Archived QA matrix: build rc-299; 12 checks passed; 2 blockers. Historical reference only.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:20:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-proof",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "Verified release build rc-311. The final check count is in #engineering.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-resolution",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "Resolution confirmed: search p95 is 99 ms; error rate 0.1%. Search service is healthy.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:22:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-provisional",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Earlier provisional reading: p95 240 ms; error rate 1.2%. Superseded by Sam’s resolution.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:23:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-proposal",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Navigation decision: Willow or Cedar? Final approval will be in this thread. Do not use the prototype vote.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-approved",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:25:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-prototype",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Prototype only: Cedar navigation. Not approved.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:26:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-root",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Migration estimate: please keep the current estimate in this thread.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-own",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Migration estimate: 8 days. Pending review.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:28:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-approved",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Reviewed migration estimate: 3 days. Approved; replaces the 8-day draft.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:29:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-current",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Current on-call: Sam Rivera, Site reliability. Backup: Leo Park. Contact the primary, not the backup.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-old",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Previous on-call: Leo Park. This rotation has ended.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:31:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-own",
+                "channelId": "dm-sam",
+                "userId": "alex",
+                "text": "Rollback owner: Jordan Lee. Release window: 17:00 UTC.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:32:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "retro-request",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Release retrospective: reply here with the approved build, final QA count, and resolved search latency. Keep source messages intact.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-target",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Current release handoff: rollback owner is Priya Shah. The release window is 16:30 UTC. Approved build: rc-311. This replaces yesterday’s draft.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:35:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "new-3",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "QA verified: 24 checks passed for rc-311.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T10:00:03.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              }
+            ],
+            "clock": "2026-09-29T10:00:00.000Z"
+          }
+        },
+        "ui": {
+          "channelId": "project",
+          "view": "channel",
+          "threadId": "qa-target",
+          "menu": null,
+          "reaction": null,
+          "edit": null,
+          "deleting": null,
+          "topic": null,
+          "details": null,
+          "query": "from:priya \"Final approval\"",
+          "searched": "from:priya \"Final approval\"",
+          "results": [
+            {
+              "id": "design-approved",
+              "channelId": "design",
+              "userId": "priya",
+              "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+              "parentId": "design-proposal",
+              "createdAt": "2026-09-29T09:25:00.000Z",
+              "editedAt": null,
+              "reactions": {},
+              "pinned": false,
+              "savedBy": []
+            }
+          ],
+          "searching": false,
+          "switcher": false,
+          "switchQuery": "",
+          "help": false,
+          "toast": "Channel topic updated"
+        },
+        "dom": {
+          "fields": [
+            {
+              "label": "Search Northstar",
+              "value": "from:priya \"Final approval\""
+            },
+            {
+              "label": "Message #proj-meridian",
+              "value": ""
+            },
+            {
+              "label": "Reply in thread",
+              "value": ""
+            }
+          ],
+          "scroll": [
+            {
+              "className": "messages-scroll",
+              "top": 657
+            },
+            {
+              "className": "thread-scroll",
+              "top": 0
+            }
+          ],
+          "targets": []
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "index": 3,
+      "action": "message.send",
+      "phase": "after-action",
+      "snapshot": {
+        "version": 1,
+        "data": {
+          "revision": 4,
+          "state": {
+            "fixtureVersion": "northstar-workflows-v2",
+            "seed": 42,
+            "workspace": "Northstar",
+            "currentUserId": "alex",
+            "users": [
+              {
+                "id": "alex",
+                "name": "Alex Morgan",
+                "handle": "alex",
+                "role": "Product engineer",
+                "color": "#d4e5fa",
+                "initials": "AM",
+                "status": "online"
+              },
+              {
+                "id": "maya",
+                "name": "Maya Chen",
+                "handle": "maya",
+                "role": "Engineering lead",
+                "color": "#f3d3bd",
+                "initials": "MC",
+                "status": "online"
+              },
+              {
+                "id": "jordan",
+                "name": "Jordan Lee",
+                "handle": "jordan",
+                "role": "Product designer",
+                "color": "#dcd4f2",
+                "initials": "JL",
+                "status": "online"
+              },
+              {
+                "id": "sam",
+                "name": "Sam Rivera",
+                "handle": "sam",
+                "role": "Site reliability",
+                "color": "#cce7d5",
+                "initials": "SR",
+                "status": "away"
+              },
+              {
+                "id": "priya",
+                "name": "Priya Shah",
+                "handle": "priya",
+                "role": "Product manager",
+                "color": "#f2d7e3",
+                "initials": "PS",
+                "status": "online"
+              },
+              {
+                "id": "leo",
+                "name": "Leo Park",
+                "handle": "leo",
+                "role": "Frontend engineer",
+                "color": "#f1e1ac",
+                "initials": "LP",
+                "status": "away"
+              }
+            ],
+            "channels": [
+              {
+                "id": "general",
+                "name": "general",
+                "topic": "The company living room. Updates, ideas, and a little everyday magic.",
+                "description": "A place for everyone at Northstar.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "project",
+                "name": "proj-meridian",
+                "topic": "Release rc-311 · 16:30 UTC",
+                "description": "Our next big thing, built together.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "priya",
+                  "leo",
+                  "sam"
+                ]
+              },
+              {
+                "id": "engineering",
+                "name": "engineering",
+                "topic": "Ship thoughtfully. Share what you learn.",
+                "description": "Engineering discussion and weekly updates.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "design",
+                "name": "design",
+                "topic": "Details make the difference.",
+                "description": "Work in progress, inspiration, and critique.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "jordan",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "incidents",
+                "name": "incidents",
+                "topic": "Operational updates · Current status: all systems healthy",
+                "description": "Incident coordination and follow-ups.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "sam"
+                ]
+              },
+              {
+                "id": "random",
+                "name": "random",
+                "topic": "A little off topic is a good thing.",
+                "description": "Coffee, good reads, and weekend plans.",
+                "kind": "channel",
+                "members": [
+                  "alex",
+                  "maya",
+                  "jordan",
+                  "sam",
+                  "priya",
+                  "leo"
+                ]
+              },
+              {
+                "id": "dm-maya",
+                "name": "Maya Chen",
+                "topic": "Engineering lead",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "maya"
+                ]
+              },
+              {
+                "id": "dm-jordan",
+                "name": "Jordan Lee",
+                "topic": "Product designer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "jordan"
+                ]
+              },
+              {
+                "id": "dm-sam",
+                "name": "Sam Rivera",
+                "topic": "Site reliability",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "dm-priya",
+                "name": "Priya Shah",
+                "topic": "Product manager",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "priya"
+                ]
+              },
+              {
+                "id": "dm-leo",
+                "name": "Leo Park",
+                "topic": "Frontend engineer",
+                "description": "",
+                "kind": "dm",
+                "members": [
+                  "alex",
+                  "leo"
+                ]
+              }
+            ],
+            "messages": [
+              {
+                "id": "welcome",
+                "channelId": "general",
+                "userId": "priya",
+                "text": "Good morning, team! ☀️ A new week, a fresh notebook, and a few things worth sharing.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "weekly",
+                "channelId": "general",
+                "userId": "maya",
+                "text": "This week: make the small things feel great. The product review is Friday — drop your demos in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:03:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🙌": [
+                    "alex",
+                    "jordan",
+                    "leo"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee",
+                "channelId": "general",
+                "userId": "jordan",
+                "text": "Starting a little ritual: what’s one thing you shipped last week that you’re proud of?",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "coffee-reply",
+                "channelId": "general",
+                "userId": "leo",
+                "text": "Keyboard navigation for the new command menu. Small detail, big difference.",
+                "parentId": "coffee",
+                "createdAt": "2026-09-28T09:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "new-team",
+                "channelId": "general",
+                "userId": "sam",
+                "text": "The new observability dashboard is live. Fewer tabs, clearer signals. Happy to give anyone a tour.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:12:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🎉": [
+                    "maya",
+                    "priya"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "project-intro",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-ready",
+                "channelId": "project",
+                "userId": "jordan",
+                "text": "The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "✨": [
+                    "maya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Love the direction. The quieter sidebar makes a real difference.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-reply-2",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Agreed. Let’s bring this into the next build.",
+                "parentId": "design-ready",
+                "createdAt": "2026-09-28T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-old",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "Launch review: rc-311 at 16:30 UTC; 24 checks passed.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:27:00.000Z",
+                "editedAt": "2026-09-29T10:00:01.000Z",
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "launch-distractor",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-target",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "👀": [
+                    "leo",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-reply",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "The keyboard and focus checks are passing on my side.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-28T09:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-distractor",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:42:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": [
+                  "alex",
+                  "sam"
+                ]
+              },
+              {
+                "id": "project-wrap",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:45:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-note",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "A reminder for reviews: describe the tradeoff, not just the implementation. A good decision log saves a lot of future archaeology.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:48:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-tip",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Tiny performance win: we removed an unnecessary render from the sidebar. The browser is doing a lot less work now.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:51:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "🚀": [
+                    "alex",
+                    "sam"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "eng-duplicate",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "MERIDIAN-283: this engineering note is background context only. The QA request lives in the project channel.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:54:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-target",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Draft announcement — placeholder numbers, do not share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T09:57:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "delete-distractor",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Draft announcement — approved numbers, ready to share.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:00:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-note",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "A few references for the next iteration: generous spacing, quiet borders, and a clear sense of place.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:03:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-feedback",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Let’s keep the familiar interactions. The polish should make things easier to find, not harder.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:06:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-old",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-103 from last week is closed. No further action is required.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:09:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": [
+                  "alex"
+                ]
+              },
+              {
+                "id": "incident-target",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "INC-242: elevated latency in the search service. Mitigation is deployed. Please acknowledge this update and pin it for the handoff.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:12:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-update",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Thanks, Sam. We’ll keep an eye on the next metrics window.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:15:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-book",
+                "channelId": "random",
+                "userId": "jordan",
+                "text": "Weekend recommendation: take the long route home. Found a lovely little bookshop that way. 📚",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:18:00.000Z",
+                "editedAt": null,
+                "reactions": {
+                  "❤️": [
+                    "priya",
+                    "alex"
+                  ]
+                },
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-coffee",
+                "channelId": "random",
+                "userId": "leo",
+                "text": "Serious question: is a third coffee a personality trait?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "random-answer",
+                "channelId": "random",
+                "userId": "sam",
+                "text": "Only if you document it.",
+                "parentId": "random-coffee",
+                "createdAt": "2026-09-28T10:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-maya-intro",
+                "channelId": "dm-maya",
+                "userId": "maya",
+                "text": "Hey Alex — thanks for taking the QA pass today. Let me know if anything feels off.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-jordan-intro",
+                "channelId": "dm-jordan",
+                "userId": "jordan",
+                "text": "The latest designs are in the project channel. Would love your thoughts when you have a moment.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-sam-intro",
+                "channelId": "dm-sam",
+                "userId": "sam",
+                "text": "Could you send me the current rollback owner and release window when you find them?",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-priya-intro",
+                "channelId": "dm-priya",
+                "userId": "priya",
+                "text": "Thanks for helping keep the launch on track!",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:36:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "dm-leo-intro",
+                "channelId": "dm-leo",
+                "userId": "leo",
+                "text": "Happy to pair on the keyboard interactions this afternoon.",
+                "parentId": null,
+                "createdAt": "2026-09-28T10:39:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "release-plan-old",
+                "channelId": "project",
+                "userId": "maya",
+                "text": "Previous release plan: build rc-299, window 17:00 UTC. Superseded; keep this message for the record.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:18:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Final QA matrix: build rc-311; 24 checks passed; 0 blockers. The archived matrix below is not current.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:19:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-matrix-old",
+                "channelId": "engineering",
+                "userId": "leo",
+                "text": "Archived QA matrix: build rc-299; 12 checks passed; 2 blockers. Historical reference only.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:20:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "qa-proof",
+                "channelId": "project",
+                "userId": "leo",
+                "text": "Verified release build rc-311. The final check count is in #engineering.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T09:21:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-resolution",
+                "channelId": "incidents",
+                "userId": "sam",
+                "text": "Resolution confirmed: search p95 is 99 ms; error rate 0.1%. Search service is healthy.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:22:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "incident-provisional",
+                "channelId": "incidents",
+                "userId": "maya",
+                "text": "Earlier provisional reading: p95 240 ms; error rate 1.2%. Superseded by Sam’s resolution.",
+                "parentId": "incident-target",
+                "createdAt": "2026-09-29T09:23:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-proposal",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Navigation decision: Willow or Cedar? Final approval will be in this thread. Do not use the prototype vote.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:24:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-approved",
+                "channelId": "design",
+                "userId": "priya",
+                "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:25:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "design-prototype",
+                "channelId": "design",
+                "userId": "jordan",
+                "text": "Prototype only: Cedar navigation. Not approved.",
+                "parentId": "design-proposal",
+                "createdAt": "2026-09-29T09:26:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-root",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Migration estimate: please keep the current estimate in this thread.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:27:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-own",
+                "channelId": "engineering",
+                "userId": "alex",
+                "text": "Migration estimate: 8 days. Pending review.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:28:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "estimate-approved",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Reviewed migration estimate: 3 days. Approved; replaces the 8-day draft.",
+                "parentId": "estimate-root",
+                "createdAt": "2026-09-29T09:29:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-current",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Current on-call: Sam Rivera, Site reliability. Backup: Leo Park. Contact the primary, not the backup.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:30:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "oncall-old",
+                "channelId": "engineering",
+                "userId": "maya",
+                "text": "Previous on-call: Leo Park. This rotation has ended.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:31:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-own",
+                "channelId": "dm-sam",
+                "userId": "alex",
+                "text": "Rollback owner: Jordan Lee. Release window: 17:00 UTC.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:32:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "retro-request",
+                "channelId": "project",
+                "userId": "priya",
+                "text": "Release retrospective: reply here with the approved build, final QA count, and resolved search latency. Keep source messages intact.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:33:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "handoff-target",
+                "channelId": "project",
+                "userId": "sam",
+                "text": "Current release handoff: rollback owner is Priya Shah. The release window is 16:30 UTC. Approved build: rc-311. This replaces yesterday’s draft.",
+                "parentId": null,
+                "createdAt": "2026-09-29T09:35:00.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": true,
+                "savedBy": []
+              },
+              {
+                "id": "new-3",
+                "channelId": "project",
+                "userId": "alex",
+                "text": "QA verified: 24 checks passed for rc-311.",
+                "parentId": "qa-target",
+                "createdAt": "2026-09-29T10:00:03.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              },
+              {
+                "id": "new-4",
+                "channelId": "dm-priya",
+                "userId": "alex",
+                "text": "Please cover rollback for rc-311 at 16:30 UTC.",
+                "parentId": null,
+                "createdAt": "2026-09-29T10:00:04.000Z",
+                "editedAt": null,
+                "reactions": {},
+                "pinned": false,
+                "savedBy": []
+              }
+            ],
+            "clock": "2026-09-29T10:00:00.000Z"
+          }
+        },
+        "ui": {
+          "channelId": "dm-priya",
+          "view": "channel",
+          "threadId": null,
+          "menu": null,
+          "reaction": null,
+          "edit": null,
+          "deleting": null,
+          "topic": null,
+          "details": null,
+          "query": "from:priya \"Final approval\"",
+          "searched": "from:priya \"Final approval\"",
+          "results": [
+            {
+              "id": "design-approved",
+              "channelId": "design",
+              "userId": "priya",
+              "text": "Final approval: Willow navigation. Accessibility reviewed; handoff to Leo Park.",
+              "parentId": "design-proposal",
+              "createdAt": "2026-09-29T09:25:00.000Z",
+              "editedAt": null,
+              "reactions": {},
+              "pinned": false,
+              "savedBy": []
+            }
+          ],
+          "searching": false,
+          "switcher": false,
+          "switchQuery": "",
+          "help": false,
+          "toast": "Channel topic updated"
+        },
+        "dom": {
+          "fields": [
+            {
+              "label": "Search Northstar",
+              "value": "from:priya \"Final approval\""
+            },
+            {
+              "label": "Message Priya Shah",
+              "value": ""
+            }
+          ],
+          "scroll": [
+            {
+              "className": "messages-scroll",
+              "top": 0
+            }
+          ],
+          "targets": []
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    }
+  ]
+}

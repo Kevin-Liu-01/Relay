@@ -19,7 +19,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 ## The idea
 
-Give an agent a small, realistic Slack workflow. Watch what it sees, what it tries,
+Give an agent a realistic, multi-step Slack workflow. Watch what it sees, what it tries,
 and what actually changed. Then repeat the same task with a different model,
 interface, documentation or history policy.
 
@@ -125,16 +125,19 @@ Cross interfaces with supplied `llms.txt` guidance and full versus bounded histo
 The API condition changes both visibility and action granularity—it is **not**
 equivalent to screenshot-based computer use. [Experiment contract →](docs/lab-plan.md)
 
-## Six workflows
+## 18 tasks, from controls to coordinated work
 
-| Task               | What the agent must do                             |
-| ------------------ | -------------------------------------------------- |
-| Reply in a thread  | Search, disambiguate, reply under the right parent |
-| Edit a message     | Update the original—not post a replacement         |
-| Triage an incident | React to and pin the correct incident              |
-| Send a handoff     | Read current facts and DM the right person         |
-| Delete a draft     | Delete only the requested message                  |
-| Update a topic     | Set the exact topic without collateral changes     |
+| Family                 | Examples                                                           | What gets tested                                                          |
+| ---------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Six original controls  | Thread reply, edit, triage, handoff, delete, topic                 | Exact targets and no collateral changes                                   |
+| Release coordination   | Release sync, QA sign-off, publish update, retrospective           | Combine current facts across channels; edit, reply, DM and publish        |
+| Operational handoffs   | Incident closeout, on-call briefing, handoff repair, thread repair | Reject stale drafts; preserve message identity and other users' reactions |
+| Workspace organization | Saved cleanup, decision record, pin refresh, design handoff        | Later, Pins, Details, descriptions, members and saved thread replies      |
+
+The 12 new workflows require 3–6 coordinated state changes, with meaningful
+seed-dependent facts and misleading historical records. The entire final state
+is checked—not a model's claim that it finished. Valid alternative action orders
+pass. [Full task catalog, grader contracts and low-cost evaluation plan →](docs/task-suite.md)
 
 ## Every run has receipts
 
@@ -150,13 +153,15 @@ fields were not recorded. Nothing is backfilled as if it were original evidence.
 
 ```sh
 npm run verify                  # build, backend and browser checks
+npm run test:graders             # 84 positives + 2,583 adversarial state challenges; $0 inference
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The current release has **59 backend checks and 28 browser checks**. Historical
+The expanded suite has **93 backend checks and 67 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
-No RL training or GPU experiment is claimed. [Full evidence chronology →](docs/verification.md)
+New workflow evidence is scripted, with no paid inference. No RL training or GPU
+experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
 ## Under the hood
 

@@ -29,6 +29,11 @@ Reference scripts, fake transport tests and real model results must stay distinc
 
 ## Ready now
 
+The current catalog has **18 tasks**. Read [the task suite](task-suite.md) for the
+12 new multi-step contracts, richer fixtures, 24 browser recipes, grader challenge
+report and bounded model-pilot plan. The following original handoff context and
+presentation describe the earlier six-control baseline, not new model evidence.
+
 The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, six task contracts, trainer bridge, tests, interactive trajectory JSON, research provenance, local measurements, a Docker recipe and a nine-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for the reference scripts.
 
 Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the original environment discussion. The hosted BYOK release now adds the screen-first console and TypeSafe decision transport; real Jev inference still requires an authenticated pilot.
@@ -36,7 +41,7 @@ Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task wit
 ## Submission checklist
 
 - Extract `artifacts/relay-slack-env.tar.gz` into a fresh directory; verify its `.sha256` companion.
-- Run the README setup and verify the six task instructions are understandable.
+- Run the README setup and verify the 18 task instructions and outcome contracts.
 - Include the archive, README, research document, verification document and presentation. Token-free evidence is already in the archive.
 - Keep the private assignment PDF, `.runtime`, operator tokens and raw Playwright replay/video folders out of the submission.
 - Rehearse a fresh-session demo, outcome grade, cross-session noninterference and reset.

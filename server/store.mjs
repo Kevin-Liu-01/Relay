@@ -2,9 +2,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { randomBytes, randomUUID } from 'node:crypto';
 import { mkdirSync, readdirSync, unlinkSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { makeSeed } from './seed.mjs';
 import { digest, fail, transition } from './domain.mjs';
-import { taskSpec, grade } from './tasks.mjs';
+import { taskSpec, taskSeed, grade } from './tasks.mjs';
 
 export class Store {
   constructor(root, { ttlMs = 86_400_000, maxSessions = 256 } = {}) {
@@ -62,7 +61,7 @@ export class Store {
         'PRAGMA journal_mode=DELETE; CREATE TABLE meta(value TEXT NOT NULL); CREATE TABLE state(id INTEGER PRIMARY KEY CHECK(id=1), revision INTEGER NOT NULL, value TEXT NOT NULL); CREATE TABLE events(seq INTEGER PRIMARY KEY AUTOINCREMENT, value TEXT NOT NULL); CREATE TABLE requests(id TEXT PRIMARY KEY, hash TEXT NOT NULL, revision INTEGER NOT NULL);',
       );
       db.prepare('INSERT INTO meta VALUES (?)').run(JSON.stringify(meta));
-      db.prepare('INSERT INTO state VALUES (1,0,?)').run(JSON.stringify(makeSeed(seed)));
+      db.prepare('INSERT INTO state VALUES (1,0,?)').run(JSON.stringify(taskSeed(taskId, seed)));
     } finally {
       db.close();
     }
@@ -147,7 +146,7 @@ export class Store {
       db.exec('BEGIN IMMEDIATE');
       try {
         const old = db.prepare('SELECT revision FROM state WHERE id=1').get();
-        const state = makeSeed(meta.seed);
+        const state = taskSeed(meta.taskId, meta.seed);
         db.prepare('UPDATE state SET revision=?,value=?').run(
           old.revision + 1,
           JSON.stringify(state),

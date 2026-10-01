@@ -25,6 +25,7 @@ const roots = [
   'compose.yaml',
   'THIRD_PARTY_NOTICES.md',
   'server',
+  'shared',
   'src',
   'runner',
   'hosted',

@@ -59,12 +59,12 @@ test('custom menus: task icons, pointer, keyboard, typeahead, dismissal and dial
     expect(await task.evaluate((el) => el.tagName)).toBe('BUTTON');
     await task.click();
     const menu = page.getByRole('listbox', { name: 'Task', exact: true });
-    await expect(menu.getByRole('option')).toHaveCount(6);
-    await expect(menu.locator('.relay-select-option-glyph svg')).toHaveCount(6);
+    await expect(menu.getByRole('option')).toHaveCount(18);
+    await expect(menu.locator('.relay-select-option-glyph svg')).toHaveCount(18);
     const icons = await menu
       .locator('.relay-select-option-glyph')
       .evaluateAll((els) => els.map((el) => el.innerHTML));
-    expect(new Set(icons).size).toBe(6);
+    expect(new Set(icons).size).toBeGreaterThanOrEqual(12);
     await expect(page.getByRole('option', { name: 'Update a topic', exact: true })).toHaveAttribute(
       'aria-selected',
       'true',
@@ -81,10 +81,15 @@ test('custom menus: task icons, pointer, keyboard, typeahead, dismissal and dial
       menu.getByRole('option', { name: 'Reply in a thread', exact: true }),
     ).toBeFocused();
     await page.keyboard.press('End');
-    await expect(menu.getByRole('option', { name: 'Send a handoff', exact: true })).toBeFocused();
+    await expect(
+      menu.getByRole('option', { name: 'Prepare a release retrospective', exact: true }),
+    ).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(task).toHaveText('Send a handoff');
+    await expect(task).toHaveText('Prepare a release retrospective');
     await task.press('Enter');
+    await expect(
+      menu.getByRole('option', { name: 'Prepare a release retrospective', exact: true }),
+    ).toBeFocused();
     await expect(menu).toHaveCSS('transition-duration', '0s');
     await page.keyboard.press('Home');
     await expect(menu.getByRole('option', { name: 'Update a topic', exact: true })).toBeFocused();

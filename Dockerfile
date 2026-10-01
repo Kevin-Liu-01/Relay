@@ -4,12 +4,14 @@ COPY package*.json ./
 RUN npm ci
 COPY index.html lab.html live.html replay.html vite.config.mjs ./
 COPY src ./src
+COPY shared ./shared
 RUN npm run build
 
 FROM node:24.13.0-bookworm-slim@sha256:4660b1ca8b28d6d1906fd644abe34b2ed81d15434d26d845ef0aced307cf4b6f
 WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY server ./server
+COPY shared ./shared
 COPY runner/protocol.mjs ./runner/protocol.mjs
 COPY scripts/session.mjs ./scripts/session.mjs
 RUN mkdir /data && chown node:node /data

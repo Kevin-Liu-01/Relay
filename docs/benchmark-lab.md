@@ -80,17 +80,20 @@ not cover every tier, context or caching adjustment.
 | Site guide       | Absent / supplied llms.txt + linked guide           | Injection, not automatic discovery.                   |
 | History          | `full` / `recent-4`                                 | All or four preceding observation/action/error turns. |
 | Model            | Exact Router catalog ID; optional reasoning setting | Fixed requested route, not immutable model weights.   |
-| Task/seed/repeat | Six tasks, configurable seeds/repetitions           | Matched blocks, not held-out reasoning templates.     |
+| Task/seed/repeat | 18 tasks, configurable seeds/repetitions            | Matched blocks, not held-out reasoning templates.     |
 
 Task instructions, actor, permissions and grader remain fixed. Each model ×
 interface × guide × history cell gets a fresh session and conversation. The
 complete schedule is persisted first; a seeded shuffle randomizes block order
 and cell order within each task/seed/repetition block.
 
-Tasks remain thread-reply, edit-message, incident-triage, handoff-dm, delete-draft
-and channel-topic. Seeds mostly vary identifiers: no generalization claim.
-A four-step topic task cannot reveal long-history effects; add longer workflows
-before interpreting context results. Reference scripts intentionally ignore the
+The original six control tasks retain their frozen v1 fixtures and graders.
+Twelve [multi-step workflows](task-suite.md) add cross-channel retrieval, current
+versus superseded facts, preservation constraints and 3–6 coordinated mutations.
+Their v2 seeds vary substantive facts, but are still public development templates,
+not held-out families. A short topic task cannot reveal long-history effects;
+even the longer tasks need trace review and actual matched model runs before
+interpreting context results. Reference scripts intentionally ignore the
 guide/history intervention; only real model policies can show whether it helps.
 
 ### Visibility/action contracts

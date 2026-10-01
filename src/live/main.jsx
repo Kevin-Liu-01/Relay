@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { supportsChoice, WORKFLOW_IDS } from '../../shared/task-catalog.mjs';
+import { episodeOutcome } from '../../shared/run-outcome.mjs';
 import { createRoot } from 'react-dom/client';
 import {
   Play,
@@ -94,6 +96,7 @@ function Modal({ title, close, children, wide = false }) {
   );
 }
 function App() {
+  const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [remembered] = useState(() => readCredentials());
   const [rememberKeys, setRememberKeys] = useState(remembered.remember);
   const rememberPreference = useRef(remembered.remember);
@@ -172,7 +175,10 @@ function App() {
     setRates(null);
     if (p === 'typesafe') {
       if (['pixels', 'api'].includes(mode)) setMode('json-ui');
-      if (task === 'handoff-dm') setTask('channel-topic');
+      if (!supportsChoice(task)) {
+        setTask('channel-topic');
+        setSteps(12);
+      }
     }
     setError('');
     if (validKey(keys[p])) connect(p, keys[p], true);
@@ -293,6 +299,11 @@ function App() {
       guides: [guide],
       histories: [context],
       maxSteps: steps,
+      maxRequests: Math.min(
+        setup.limits.maxRequests,
+        Math.max(setup.defaults.maxRequests, steps * (compare ? 3 : 1)),
+      ),
+      episodeSeconds: WORKFLOW_IDS.includes(task) ? 90 : setup.defaults.episodeSeconds,
       maxEstimatedUSD: cap,
     };
     try {
@@ -487,19 +498,25 @@ function App() {
           label="Task"
           disabled={busy}
           value={task}
-          onChange={setTask}
+          onChange={(id) => {
+            setTask(id);
+            setSteps(WORKFLOW_IDS.includes(id) ? 40 : 12);
+          }}
           options={Object.entries(setup?.tasks ?? { 'channel-topic': 'Update a topic' }).map(
             ([id, label]) => ({
               value: id,
               label,
               icon: <TaskIcon task={id} />,
-              disabled: provider === 'typesafe' && id === 'handoff-dm',
-              disabledReason: 'Jev does not support composing new handoff text.',
+              disabled: provider === 'typesafe' && !supportsChoice(id),
+              disabledReason: 'This workflow needs text composition. Choose a generative model.',
             }),
           )}
         />
         <RelaySelect
           label="Model"
+          id="relay-model-selector"
+          open={modelMenuOpen}
+          onOpenChange={setModelMenuOpen}
           disabled={busy || connecting}
           value={model}
           onChange={(id) => chooseModel(id)}
@@ -735,7 +752,9 @@ function App() {
                 ) : (
                   <div className="action-placeholder">
                     <Workflow size={24} />
-                    <p>Decisions will appear here.</p>
+                    <p>
+                      {episode?.error ? 'No decisions returned.' : 'Decisions will appear here.'}
+                    </p>
                     <span>
                       {provider === 'typesafe'
                         ? 'Jev returns a ranked choice, not generated text.'
@@ -757,10 +776,20 @@ function App() {
             </div>
           )}
           <div className="panel-bottom">
-            {episode?.evaluation ? (
+            {episode?.evaluation || episode?.error ? (
               <ResultCard
                 episode={episode}
                 onReplay={!busy ? () => openReplay(record) : undefined}
+                onChooseModel={
+                  !busy
+                    ? () => {
+                        document
+                          .getElementById('relay-model-selector')
+                          ?.scrollIntoView({ block: 'center' });
+                        setModelMenuOpen(true);
+                      }
+                    : undefined
+                }
               />
             ) : (
               <span className="quiet-note">
@@ -832,8 +861,8 @@ function App() {
               follow.current = false;
             }}
           >
-            <span className={e.evaluation?.success ? 'pass-text' : ''}>
-              {e.evaluation ? (e.evaluation.success ? '✓' : '×') : String(i + 1).padStart(2, '0')}
+            <span className={episodeOutcome(e).kind === 'passed' ? 'pass-text' : ''}>
+              {e.evaluation || e.error ? episodeOutcome(e).symbol : String(i + 1).padStart(2, '0')}
             </span>
             <ModeIcon mode={e.cell.mode} />
             {MODES[e.cell.mode]}
@@ -869,13 +898,15 @@ function App() {
           <small>calls</small>
         </span>
         <span className="numeric">
-          {((run?.budget.inputTokens ?? 0) + (run?.budget.outputTokens ?? 0)).toLocaleString()}
+          {run?.budget.usageKnown === false
+            ? 'Unknown'
+            : ((run?.budget.inputTokens ?? 0) + (run?.budget.outputTokens ?? 0)).toLocaleString()}
           <small>tokens</small>
         </span>
         <span className="numeric">
           {money(run?.budget.estimatedUSD ?? 0)}
           <small>
-            {run?.budget.usageKnown === false ? 'reserved · usage unknown' : 'estimated'}
+            {run?.budget.usageKnown === false ? 'budget allowance · not a charge' : 'estimated'}
           </small>
         </span>
         <span className="local-note">History stays in this browser</span>
@@ -997,7 +1028,7 @@ function App() {
                 type="number"
                 aria-label="Max actions"
                 min="1"
-                max="16"
+                max={setup?.limits.maxSteps ?? 40}
                 value={steps}
                 onChange={(e) => setSteps(Number(e.target.value))}
               />
@@ -1150,15 +1181,12 @@ function App() {
                           <small>{e.cell.history}</small>
                         </td>
                         <td>
-                          {e.evaluation ? (e.evaluation.success ? 'Pass' : 'Incomplete') : e.status}
+                          {episodeOutcome(e).title}
                           {!s.completeAudit && <small>Partial capture</small>}
                         </td>
                         <td>{e.steps}</td>
                         <td>{elapsed(e.durationMs)}</td>
-                        <td>
-                          {money(e.estimatedUSD)}
-                          {e.usageKnown === false ? ' *' : ''}
-                        </td>
+                        <td>{e.usageKnown === false ? 'Unknown' : money(e.estimatedUSD)}</td>
                       </tr>
                     )),
                 )}

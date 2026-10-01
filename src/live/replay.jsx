@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { episodeOutcome } from '../../shared/run-outcome.mjs';
 import {
   Play,
   Pause,
@@ -212,9 +213,7 @@ export function ReplayPlayer({ record }) {
           {frame?.step
             ? describeAction(frame.step.action, frame.step.observation)
             : index === frames.length - 1
-              ? episode?.evaluation?.success
-                ? 'Task passed'
-                : 'Task incomplete'
+              ? episodeOutcome(episode).title
               : 'Starting workspace'}
         </strong>
         {frame?.step?.error && <small>{frame.step.error}</small>}

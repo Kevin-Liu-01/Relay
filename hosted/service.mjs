@@ -12,22 +12,16 @@ import { TypeSafeRouter } from '../runner/typesafe.mjs';
 import { createPricingResolver, applyCatalogRates } from './pricing.mjs';
 import { buildAudit } from '../runner/audit.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
+import { TASK_CATALOG, TASK_LABELS } from '../shared/task-catalog.mjs';
+export { TASK_LABELS };
 
 export const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const LIMITS = {
-  maxSteps: 16,
-  maxRequests: 32,
+  maxSteps: 40,
+  maxRequests: 80,
   maxEpisodes: 3,
   runSeconds: 150,
   maxEstimatedUSD: 0.5,
-};
-export const TASK_LABELS = {
-  'channel-topic': 'Update a topic',
-  'thread-reply': 'Reply in a thread',
-  'edit-message': 'Edit a message',
-  'incident-triage': 'Triage an incident',
-  'delete-draft': 'Delete a draft',
-  'handoff-dm': 'Send a handoff',
 };
 export function hostedConfig(input) {
   const c = validateConfig(input);
@@ -110,6 +104,7 @@ export function createHostedHandler({
       return json(res, 200, {
         name: 'Relay',
         tasks: TASK_LABELS,
+        taskCatalog: TASK_CATALOG,
         limits: LIMITS,
         defaults: {
           ...DEFAULT_CONFIG,

@@ -14,6 +14,8 @@
     "dev": "npm run build && npm start",
     "test": "node --test tests/*.test.mjs",
     "test:browser": "playwright test",
+    "test:graders": "node scripts/check-workflow-graders.mjs",
+    "test:workflows": "npm run build:hosted && node --test tests/workflow-graders.test.mjs && npm run test:graders && playwright test tests/browser/deep-workflows.spec.mjs",
     "test:report": "node --test --test-reporter=junit --test-reporter-destination=evidence/backend-tests.xml tests/*.test.mjs",
     "test:container": "docker build -t relay-slack:local . && node scripts/container-check.mjs",
     "format": "prettier --write .",

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { supportsChoice, WORKFLOW_IDS } from '../../shared/task-catalog.mjs';
 import {
   Swords,
   Trophy,
@@ -197,9 +198,9 @@ export function Duel({
     }
     if (
       lanes.some((l) => l.provider === 'typesafe') &&
-      (['pixels', 'api'].includes(mode) || task === 'handoff-dm')
+      (['pixels', 'api'].includes(mode) || !supportsChoice(task))
     ) {
-      setErrors(['Jev matches support Accessibility / Page JSON and non-handoff tasks.', '']);
+      setErrors(['Jev matches support text interfaces and tasks without free composition.', '']);
       return;
     }
     if (mode === 'pixels') {
@@ -228,6 +229,11 @@ export function Duel({
             guides: [guide],
             histories: [context],
             maxSteps: steps,
+            maxRequests: Math.min(
+              setup.limits.maxRequests,
+              Math.max(setup.defaults.maxRequests, steps),
+            ),
+            episodeSeconds: WORKFLOW_IDS.includes(task) ? 90 : setup.defaults.episodeSeconds,
             maxEstimatedUSD: cap / 2,
           };
           const record = await streamRun({
