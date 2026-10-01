@@ -1,5 +1,34 @@
 # Verification and evidence
 
+## Continuous viewing, cursor evidence and paced replay — 2026-10-01
+
+A deterministic regression reproduced dropped final frames: three changes inside
+the old 220 ms throttle delivered only the first. It now passes with first/latest
+delivery, ordered episode-local sequences, acknowledgment of all received frames
+and pending-timer cancellation on page close. Delivery is capped at 12.5/s, not
+advertised as a guaranteed frame rate. Live image decoding is bounded and keeps
+the previous decoded frame visible while the next loads.
+
+New browser episodes hash-chain trusted pointer events. Replay and live/1v1 views
+draw the cursor outside the actor page. A real-browser regression compares PNG
+bytes before/after telemetry plus movement/clicks: they are identical on the
+unchanged fixture. Another test changes a real page's background and verifies
+screencast updates and native PNG dimensions. No API cursor is invented. Pointer
+capture is observer-only; actor inputs are checked for absence of the binding.
+
+Playback now has smart pacing, original capture intervals, pause/seek/speed,
+recorded cursor coordinates with disclosed interpolation, and an expanded view.
+Older recordings retain explicit target-only/legacy fallbacks. Pure timing tests
+check interval mapping, backward seek and missing history; browser checks cover
+the actual Slack dialog/text, focus fit/escape, mobile/reduced motion and inert,
+network-free replay. The no-inference example was refreshed; historical model
+captures were not rewritten. Manual in-app review checked focus and replay layout.
+
+The local gate passes **119 backend/harness checks and 74 browser checks**. These
+are deterministic and fake-provider verification, not new model benchmark results.
+No grader, reward or task fixture changed. The known intermittent hosted PNG
+capture limitation remains separate from the live JPEG feed.
+
 ## Catalog pricing, usable allowances and model queues — 2026-10-01
 
 Two deterministic failing regressions reproduced the report: the Router adapter

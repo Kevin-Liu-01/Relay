@@ -192,6 +192,16 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
         });
     }
     await page.setViewportSize({ width: 1440, height: 900 });
+    await page.getByRole('button', { name: 'Expand workspace', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Exit workspace focus' })).toBeFocused();
+    await expect(page.locator('.decision-panel')).toBeHidden();
+    await expect(page.getByLabel('Replay step')).toBeInViewport();
+    const focusedGeometry = await page.locator('.viewport').boundingBox();
+    expect(focusedGeometry.width).toBeGreaterThan(1400);
+    expect(focusedGeometry.height).toBeLessThan(900);
+    await page.screenshot({ path: 'evidence/visual/relay-workspace-focus.png', fullPage: true });
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.decision-panel')).toBeVisible();
     // New captures are observer-only, and restore actual application state in an inert frame.
     await page.getByRole('button', { name: 'Play the run', exact: false }).click();
     const replay = page.getByRole('dialog', { name: 'Replay studio' });
@@ -204,6 +214,8 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await expect(workspace.locator('#root')).toHaveCSS('font-family', /^"?Slack-Lato"?,/);
     await page.getByRole('button', { name: 'Next action', exact: true }).click();
     await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(/Building/);
+    await expect(replay.locator('.agent-cursor')).toHaveAttribute('data-source', 'browser-event');
+    await expect(replay.locator('.agent-cursor')).toHaveCSS('transition-duration', '0s');
     await page.getByRole('button', { name: 'Next action', exact: true }).click();
     await expect(workspace.locator('textarea[aria-label="Channel topic"]')).toHaveValue(
       'Launch review · 15:00 UTC · Bring the final checklist',
@@ -245,6 +257,11 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     expect(stored).toContain('fake-jev-contract-test');
     expect(stored).toContain('initial.json');
     const parsed = JSON.parse(stored)[0];
+    const pointers = parsed.events.filter((e) => e.event.kind === 'pointer');
+    expect(pointers.length).toBeGreaterThanOrEqual(4);
+    expect(pointers.some((e) => e.event.pointer.type === 'pointerdown')).toBe(true);
+    expect(pointers.every((e) => e.event.pointer.source === 'browser-event')).toBe(true);
+    expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayObservePointer');
     expect(parsed.run.episodes[0].captureWarnings ?? []).toEqual([]);
     expect(parsed.events.filter((e) => e.event.replay).length).toBe(5);
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayCapture');
@@ -315,8 +332,19 @@ test('no-key replay: real UI, play/pause/seek, no run requests, legacy fallback 
     await page.getByRole('button', { name: 'Pause replay', exact: true }).click();
     await page.getByRole('button', { name: 'Restart replay', exact: true }).click();
     await expect(page.getByLabel('Playback position')).toHaveValue('0');
+    await expect(dialog.getByRole('combobox', { name: 'Playback timing' })).toContainText(
+      'Smart pace',
+    );
+    await page.getByRole('button', { name: 'Expand replay' }).click();
+    await expect(page.getByRole('button', { name: 'Exit replay focus' })).toBeVisible();
+    await page.getByRole('combobox', { name: 'Playback timing' }).click();
+    await page.getByRole('option', { name: 'Recorded timing', exact: true }).click();
+    await expect(dialog).toContainText('Original capture intervals');
+    await page.getByRole('button', { name: 'Exit replay focus' }).click();
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.getByRole('button', { name: 'Next action', exact: true }).click();
+    await expect(dialog.locator('.agent-cursor')).toHaveCSS('transition-duration', '0s');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

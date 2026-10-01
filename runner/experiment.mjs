@@ -9,6 +9,7 @@ import {
 import { join } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { InterfaceEnvironment } from './interfaces.mjs';
+import { observePointer } from './pointer-observer.mjs';
 import { RampRouter, requestEstimate, responsePayload, RunStop } from './router.mjs';
 import { TypeSafeRouter } from './typesafe.mjs';
 import { validateConfig, schedule, aggregate, pairedComparisons } from './design.mjs';
@@ -211,6 +212,12 @@ export class Experiment {
     };
     try {
       let { instruction, observation } = await env.reset({ taskId: cell.taskId, seed: cell.seed });
+      if (this.operatorVisuals && cell.mode !== 'api')
+        await capture('pointer_observer', 0, () =>
+          observePointer(env.base.page, (pointer) =>
+            record({ kind: 'pointer', step: e.currentStep ?? 0, pointer }),
+          ),
+        );
       e.instruction = instruction;
       e.initialHash = env.initialHash;
       e.appProvenance = env.appProvenance;

@@ -43,6 +43,9 @@ refresh. This is a personal practice workspace, not a scored agent run.
 **No key? Open Replays.** Play a recorded run inside the actual Slack interface,
 with the dialog, typed text and action target restored at each step. Try the
 labeled reference example or inspect a real model's earlier success and failure.
+New browser runs include recorded cursor positions and click feedback. **Smart pace**
+makes fast actions readable and shortens long waits; **Recorded timing** preserves
+capture intervals. Use the expand icon to focus on either the live workspace or replay.
 
 **Two models? Open 1v1.** Same task and seed, two fresh workspaces, side-by-side
 action feeds and independently checked outcomes. Each model gets its own allowance;
@@ -169,7 +172,7 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **115 backend checks and 72 browser checks**. Historical
+The expanded suite has **119 backend checks and 74 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 New workflow evidence is scripted, with no paid inference. No RL training or GPU

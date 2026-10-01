@@ -18,6 +18,8 @@ import { RelaySelect } from './select.jsx';
 import { preferredModel, validKey } from './connections.js';
 import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
 import { makeRunPlan } from './run-plan.mjs';
+import { AgentCursor, StreamImage, StreamBadge } from './workspace-view.jsx';
+import { acceptFrame } from './playback.mjs';
 
 async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
   const record = { run: null, events: [], artifacts: {}, audit: null };
@@ -49,7 +51,7 @@ async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
         const { type, data } = JSON.parse(line);
         if (type === 'run') record.run = data;
         if (type === 'event') record.events.push(data);
-        if (type === 'frame') onFrame(data.image);
+        if (type === 'frame') onFrame(data);
         if (type === 'artifact') record.artifacts[data.path] = data.image;
         if (type === 'audit') record.audit = data;
         if (type === 'error') throw Error(data.message);
@@ -247,7 +249,8 @@ export function Duel({
             config,
             signal: controllers.current[i].signal,
             onUpdate: (r) => setAt(setRecords, i, r),
-            onFrame: (f) => setAt(setFrames, i, f),
+            onFrame: (f) =>
+              setFrames((old) => old.map((value, j) => (j === i ? acceptFrame(value, f) : value))),
           });
           record.duel = {
             id,
@@ -325,6 +328,7 @@ export function Duel({
           const record = records[i],
             episode = record?.run?.episodes[0],
             events = record?.events.map((e) => e.event) ?? [];
+          const pointerEvent = events.filter((e) => e.kind === 'pointer').at(-1);
           return (
             <section
               className={`duel-lane ${verdict.winner === i ? 'winner' : ''}`}
@@ -432,7 +436,27 @@ export function Duel({
               )}
               <div className="duel-screen">
                 {frames[i] ? (
-                  <img src={frames[i]} alt={`Live workspace ${i ? 'B' : 'A'}`} />
+                  <>
+                    <StreamImage
+                      key={record?.run?.id ?? i}
+                      image={frames[i].image}
+                      alt={`Live workspace ${i ? 'B' : 'A'}`}
+                    />
+                    <AgentCursor
+                      point={
+                        pointerEvent
+                          ? { ...pointerEvent.pointer, sequence: pointerEvent.sequence }
+                          : null
+                      }
+                      viewport={frames[i].viewport}
+                      smooth={busy}
+                    />
+                    <StreamBadge
+                      live={busy && episode?.status === 'running'}
+                      frame={frames[i]}
+                      label="Recorded workspace"
+                    />
+                  </>
                 ) : (
                   <span>
                     {busy ? (

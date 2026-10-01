@@ -3,7 +3,10 @@
 ## Try it
 
 **Replays → Watch a topic update** needs no key. Play, pause, change speed, scrub,
-or move one action at a time. The purple target marks the next recorded action.
+or move one action at a time. New browser recordings show actual pointer positions,
+with smoothed movement and click feedback. Older captures use a dashed action
+target, explicitly **not** a cursor recording. Use the expand icon for a focused
+workspace; the live view also supports expand/Escape, with Stop always available.
 The reference example is a deterministic script, explicitly not model inference.
 Two older real GPT-4o mini recordings retain both a success and a failure.
 
@@ -28,7 +31,7 @@ flowchart LR
   H --> I[Browser-local history / evidence JSON]
   I --> P[Playback position]
   P --> R[Same Slack React app, inert and offline]
-  P --> C[Action label + recorded target]
+  P --> C[Recorded pointer / labeled legacy target]
 ```
 
 New visually captured runs record a versioned snapshot before each attempted
@@ -45,12 +48,28 @@ and its Content Security Policy forbids network connections. Parent messages mus
 come from the same-origin parent window. The public console remains unframeable;
 only the replay entry permits same-origin framing.
 
-This is boundary-state playback, not a lossless video or deterministic browser
-re-execution. Cursor positions between boundaries, every keystroke, hover styling,
-selection/caret and animation phases are not fully recorded. Playback uses the
-currently deployed renderer, so historical CSS can differ. Original screenshots,
-build/source hashes and event records remain the fidelity references. Speed means
-fixed presentation intervals (1.5 seconds per frame at 1×), not measured model latency.
+New browser runs also hash-chain observer-only `pointer` events: trusted move,
+down/up and wheel coordinates, viewport and host receipt time. Move samples are
+coalesced to about 31 Hz with the trailing sample retained; clicks flush pending
+movement. No DOM content, key text or credentials are collected by this observer.
+It does not inject an on-page cursor, change policy observations or add deliberate
+input delays. API actions do not invent a cursor; their monitor is not GUI use.
+
+This is still boundary-state playback, not a lossless video or deterministic browser
+re-execution. Pointer motion between recorded positions is visually interpolated
+over 160 ms, not an assertion of the exact trajectory. Every keystroke, hover style,
+selection/caret and animation phase is not recorded. Fill actions may insert a
+whole string at once; playback does not fake typing. The currently deployed renderer
+can differ from historical CSS. Original PNGs, source hashes and events remain the
+fidelity references. Live JPEGs are transient and are not policy observations.
+
+**Smart pace** maps each captured interval to 0.8–2 seconds, slowing very fast
+steps and shortening long idle waits. Pointer timestamps are mapped within that
+interval. **Recorded timing** uses original capture intervals where present;
+legacy missing timing falls back to a disclosed 1.5 seconds. Both hold the final
+capture for 1.5 seconds. Playback speed multiplies this presentation clock, never
+the reported model latency. Pause/seek are immediate, seeking does not animate a
+false trajectory, hidden tabs pause, and changing reduced-motion preference pauses.
 
 Old runs are not backfilled. They show original screenshots at recorded steps and
 initial/final state rendered with **UI position not recorded**. Missing UI state is
@@ -88,6 +107,29 @@ tradeoff, opt-out, reload behavior and other-tab limitation.
 | Dialog arrival and target movement | Preserve visual continuity                          | 160–200 ms; direct keyboard controls          |
 | Reduced motion                     | Keep the same information without motion            | Animations/transitions disabled; no autoplay  |
 
+### Live-view and playback motion receipt — 2026-10-01
+
+| Before                                   | After                                                | Why                                                                            |
+| ---------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Drop every frame arriving within 220 ms  | 80 ms latest-frame queue, including a trailing flush | A final UI change cannot be dropped just because it arrives during throttling  |
+| Replacing images directly                | One decoding image plus one latest pending image     | Keep the previous decoded frame visible; bound memory and prevent decode races |
+| Fixed 1.5 s playback steps               | Explicit smart pacing or recorded timing             | Readable actions without presenting compressed waits as measured latency       |
+| An animated target mistaken for a cursor | Recorded pointer overlay; dashed legacy target       | Show observed input while labeling interpolation and missing data              |
+| Workspace competes with panels           | Expand/Escape focus view, contained full viewport    | See all Slack controls with the same coordinate mapping and accessible Stop    |
+
+Routes: live workspace and Replay studio. Checked at 1440×900, 1920×1080,
+800×900 and 390×844; interactive in-app review at its current desktop size.
+Owner: `AgentCursor`; occasional move/click feedback uses CSS transform (160 ms,
+`cubic-bezier(0.22, 1, 0.36, 1)`) and click-ring opacity/scale (280 ms).
+Rapid updates retarget the transition; pause/seek and reduced motion remove it.
+Pointer overlays are noninteractive. Focus mode preserves keyboard exit and Stop;
+replay controls retain native button/range keyboard behavior and mobile containment.
+Live frames are event-driven, capped at 12.5 deliveries/s—not a guaranteed FPS.
+A receive-age badge reports old frames instead of claiming a stationary image is
+fresh. This does not distinguish a quiet page from a stalled capture connection.
+Performance evidence is bounded queue size, CSS-only cursor transforms and browser
+regressions, not a sustained cloud throughput measurement.
+
 Committed browser tests exercise real workspace dialogs and typed text, backwards
 seek, play/pause/restart, legacy fallback, zero model/API requests during replay,
 mobile/reduced-motion layout, matched two-system execution, separate key-free
@@ -100,7 +142,7 @@ opening the library, moving backward/forward, and checking arena setup. The init
 replay overflow was found there and corrected by fitting the workspace to the
 available dialog height.
 
-Code: `src/live/{replay,duel,feedback}.jsx`, `duel-policy.js`, `experience.css`,
+Code: `src/live/{replay,duel,feedback,workspace-view}.jsx`, `playback.mjs`, `duel-policy.js`, `experience.css`,
 `src/replay-bridge.js`, `runner/interfaces.mjs`, and `runner/experiment.mjs`.
 Refresh only the no-inference example with `node scripts/capture-replay-demo.mjs`
 after a build; rebuild hosted assets afterward. Never rewrite historical model runs.

@@ -6,26 +6,30 @@ import {
   SkipBack,
   SkipForward,
   RotateCcw,
-  MousePointer2,
   Film,
   Layers,
   Gauge,
   FastForward,
+  Maximize2,
+  Minimize2,
+  Clock3,
 } from 'lucide-react';
 import { ModelMark } from '../lab/model-mark.jsx';
 import { describeAction } from './feedback.jsx';
 import { RelaySelect } from './select.jsx';
 import { ModeIcon } from './select-icons.jsx';
+import { episodeEvents, playbackTimeline, playbackAt } from './playback.mjs';
+import { AgentCursor } from './workspace-view.jsx';
 
 export function replayFrames(record, episodeId) {
   const e = record?.audit?.episodes?.find((x) => x.episode.cell.episodeId === episodeId);
-  const events =
-    record?.events?.filter((x) => x.episodeId === episodeId).map((x) => x.event) ?? e?.trace ?? [];
+  const events = episodeEvents(record, episodeId);
   const steps = events.filter((x) => x.kind === 'step');
   const recorded = events
     .filter((x) => x.replay?.version === 1)
     .map((x) => ({
       snapshot: x.replay,
+      elapsedMs: x.elapsedMs,
       step: steps.find((s) => s.step === x.step),
       label: x.kind === 'replay_final' ? 'Final workspace' : `Before action ${x.step}`,
       fidelity: 'Recorded UI state',
@@ -60,7 +64,13 @@ export function replayFrames(record, episodeId) {
     stateFrame(e?.outcome, 'Final workspace'),
   ].filter(Boolean);
 }
-export function WorkspaceReplay({ frame, title = 'Recorded Slack workspace' }) {
+export function WorkspaceReplay({
+  frame,
+  pointer,
+  recordedPointer = false,
+  smooth = false,
+  title = 'Recorded Slack workspace',
+}) {
   const outer = useRef(null),
     iframe = useRef(null);
   const [width, setWidth] = useState(900),
@@ -132,58 +142,81 @@ export function WorkspaceReplay({ frame, title = 'Recorded Slack workspace' }) {
       ) : (
         <p>No captured frame available.</p>
       )}
-      {point && (
-        <div
-          className="replay-pointer"
-          style={{
-            left: `${(point.x / viewport.width) * 100}%`,
-            top: `${(point.y / viewport.height) * 100}%`,
-          }}
-        >
-          <span />
-          <MousePointer2 size={24} fill="currentColor" />
-        </div>
-      )}
+      <AgentCursor
+        point={recordedPointer ? pointer : point}
+        viewport={viewport}
+        smooth={smooth && recordedPointer}
+        target={!recordedPointer}
+      />
       <span className="replay-safety">
         <Layers size={12} /> {frame?.fidelity ?? 'No capture'} · read-only
+        {recordedPointer
+          ? ' · recorded cursor, smoothed motion'
+          : point
+            ? ' · target, not cursor'
+            : ''}
       </span>
     </div>
   );
 }
 export function ReplayPlayer({ record }) {
   const [eid, setEid] = useState(record.run.episodes[0].cell.episodeId),
-    [index, setIndex] = useState(0),
+    [time, setTime] = useState(0),
     [playing, setPlaying] = useState(false),
-    [speed, setSpeed] = useState(1);
+    [speed, setSpeed] = useState(1),
+    [pacing, setPacing] = useState('paced'),
+    [focus, setFocus] = useState(false);
+  const clock = useRef(0);
   const frames = useMemo(() => replayFrames(record, eid), [record, eid]);
+  const timeline = useMemo(
+    () => playbackTimeline(frames, episodeEvents(record, eid), pacing),
+    [frames, record, eid, pacing],
+  );
+  const { index, pointer } = playbackAt(timeline, time);
   const episode = record.run.episodes.find((e) => e.cell.episodeId === eid);
   useEffect(() => {
-    setIndex(0);
+    setTime(0);
+    clock.current = 0;
     setPlaying(false);
-  }, [eid]);
+  }, [eid, pacing]);
   useEffect(() => {
     if (!playing) return;
-    if (index >= frames.length - 1) {
-      setPlaying(false);
-      return;
-    }
-    const t = setTimeout(() => setIndex((i) => i + 1), 1500 / speed);
-    return () => clearTimeout(t);
-  }, [playing, index, speed, frames.length]);
+    let raf,
+      last = performance.now();
+    const tick = (now) => {
+      clock.current = Math.min(timeline.duration, clock.current + (now - last) * speed);
+      last = now;
+      setTime(clock.current);
+      if (clock.current >= timeline.duration) setPlaying(false);
+      else raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [playing, speed, timeline]);
   useEffect(() => {
     const pause = () => {
       if (document.hidden) setPlaying(false);
     };
     document.addEventListener('visibilitychange', pause);
-    return () => document.removeEventListener('visibilitychange', pause);
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    const reduce = () => {
+      if (media.matches) setPlaying(false);
+    };
+    media.addEventListener('change', reduce);
+    return () => {
+      document.removeEventListener('visibilitychange', pause);
+      media.removeEventListener('change', reduce);
+    };
   }, []);
   const frame = frames[index];
   const seek = (i) => {
     setPlaying(false);
-    setIndex(Math.max(0, Math.min(frames.length - 1, i)));
+    const position = timeline.segments[Math.max(0, Math.min(frames.length - 1, i))]?.start ?? 0;
+    clock.current = position;
+    setTime(position);
   };
   return (
-    <div className="replay-player">
+    <div className="replay-player" data-focus={focus}>
       <div className="replay-heading">
         <ModelMark id={episode?.cell.model.id} size={24} />
         <div>
@@ -206,7 +239,12 @@ export function ReplayPlayer({ record }) {
           }))}
         />
       </div>
-      <WorkspaceReplay frame={frame} />
+      <WorkspaceReplay
+        frame={frame}
+        pointer={pointer}
+        recordedPointer={timeline.pointers.length > 0}
+        smooth={playing}
+      />
       <div className="replay-action">
         <span>{frame?.label ?? 'No frames'}</span>
         <strong>
@@ -230,7 +268,10 @@ export function ReplayPlayer({ record }) {
           aria-label={playing ? 'Pause replay' : 'Play replay'}
           disabled={frames.length < 2}
           onClick={() => {
-            if (index === frames.length - 1) setIndex(0);
+            if (!playing && index === frames.length - 1) {
+              clock.current = 0;
+              setTime(0);
+            }
             setPlaying(!playing);
           }}
         >
@@ -264,6 +305,34 @@ export function ReplayPlayer({ record }) {
             { value: 2, label: '2×', icon: <FastForward size={16} /> },
           ]}
         />
+        <button
+          aria-label={focus ? 'Exit replay focus' : 'Expand replay'}
+          aria-pressed={focus}
+          onClick={() => setFocus(!focus)}
+        >
+          {focus ? <Minimize2 size={17} /> : <Maximize2 size={17} />}
+        </button>
+      </div>
+      <div className="replay-timing">
+        <RelaySelect
+          label="Playback timing"
+          value={pacing}
+          onChange={setPacing}
+          options={[
+            { value: 'paced', label: 'Smart pace', icon: <FastForward size={14} /> },
+            { value: 'recorded', label: 'Recorded timing', icon: <Clock3 size={14} /> },
+          ]}
+        />
+        <span>
+          {pacing === 'paced'
+            ? 'Long waits shortened · fast steps slowed for readability'
+            : frames.every((f) => Number.isFinite(f.elapsedMs))
+              ? 'Original capture intervals · final hold 1.5s'
+              : 'Timing not recorded · 1.5s per capture'}
+        </span>
+        <span className="numeric">
+          {(time / 1000).toFixed(1)} / {(timeline.duration / 1000).toFixed(1)}s
+        </span>
       </div>
     </div>
   );

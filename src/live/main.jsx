@@ -27,6 +27,8 @@ import {
   Film,
   Swords,
   LoaderCircle,
+  Maximize2,
+  Minimize2,
 } from 'lucide-react';
 import Github from '@thesvg/react/github';
 import { ModelMark } from '../lab/model-mark.jsx';
@@ -40,7 +42,7 @@ import {
 } from './credentials.js';
 import './style.css';
 import './experience.css';
-import { ActionSpotlight, ResultCard } from './feedback.jsx';
+import { ActionSpotlight, ResultCard, describeAction } from './feedback.jsx';
 import { ReplayPlayer, ReplayLibrary } from './replay.jsx';
 import { Duel } from './duel.jsx';
 import { RelaySelect } from './select.jsx';
@@ -48,6 +50,8 @@ import { TaskIcon, ModeIcon } from './select-icons.jsx';
 import { createConnections, preferredModel, validKey } from './connections.js';
 import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
 import { makeRunPlan, queueMustStop } from './run-plan.mjs';
+import { acceptFrame } from './playback.mjs';
+import { AgentCursor, StreamImage, StreamBadge } from './workspace-view.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const elapsed = (n) =>
@@ -97,6 +101,7 @@ function Modal({ title, close, children, wide = false }) {
   );
 }
 function App() {
+  const [workspaceFocus, setWorkspaceFocus] = useState(false);
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [remembered] = useState(() => readCredentials());
   const [rememberKeys, setRememberKeys] = useState(remembered.remember);
@@ -134,6 +139,19 @@ function App() {
   const [connections] = useState(createConnections);
   const launch = useLaunchLock();
   const connectTimer = useRef(null);
+  useEffect(() => {
+    if (!workspaceFocus) return;
+    const escape = (e) => {
+      if (e.key === 'Escape' && !modal) setWorkspaceFocus(false);
+    };
+    document.addEventListener('keydown', escape);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', escape);
+      document.body.style.overflow = overflow;
+    };
+  }, [workspaceFocus, modal]);
   function openReplay(value) {
     setReplayRecord(value);
     setModal('replay-player');
@@ -363,7 +381,7 @@ function App() {
             setRecord({ ...current.current });
           }
           if (type === 'frame' && follow.current) {
-            setFrame(data);
+            setFrame((old) => acceptFrame(old, data));
           }
           if (type === 'event') {
             current.current.events.push(data);
@@ -438,6 +456,12 @@ function App() {
       .map((c) => ({ ...c, p: decision.probabilities[c.name] }))
       .sort((a, b) => b.p - a.p) ?? [];
   const stepImage = activeStep?.observation?.imageFile ?? activeStep?.operatorScreenshot;
+  const pointerEvent = events.filter((e) => e.kind === 'pointer').at(-1);
+  const pointer =
+    selectedStep == null && pointerEvent
+      ? { ...pointerEvent.pointer, sequence: pointerEvent.sequence }
+      : null;
+  const latestAction = events.filter((e) => e.kind === 'action_started').at(-1);
   const image =
     selectedStep != null
       ? record?.artifacts[`${episodeId}/${stepImage}`]
@@ -466,7 +490,9 @@ function App() {
           ? 'Recorded demo'
           : 'Ready';
   return (
-    <div className={`live-shell ${run || busy ? 'workspace-expanded' : ''}`}>
+    <div
+      className={`live-shell ${run || busy ? 'workspace-expanded' : ''} ${workspaceFocus ? 'workspace-focus' : ''}`}
+    >
       <header className="nav">
         <a className="wordmark" href="/">
           <img className="relay-mark" src={relayMark} width="30" height="30" alt="" />
@@ -626,22 +652,49 @@ function App() {
                   ? 'Loading models…'
                   : state}
             </span>
-            <span className="workspace-task">
-              {episode?.instruction ?? 'A fresh workspace for every episode.'}
+            <span className="workspace-task" title={episode?.instruction}>
+              {workspaceFocus && episode
+                ? `${episode.cell.model.id} · ${busy && episode.inFlight ? 'Choosing the next move' : latestAction ? describeAction(latestAction.action, episode.currentObservation) : state}`
+                : (episode?.instruction ?? 'A fresh workspace for every episode.')}
             </span>
             <span className="read-only">
               <Eye size={12} />
               Read-only
             </span>
+            {workspaceFocus && busy && (
+              <button className="focus-stop" onClick={() => abort.current?.abort()}>
+                Stop run
+              </button>
+            )}
+            <button
+              className="icon workspace-focus-button"
+              aria-label={workspaceFocus ? 'Exit workspace focus' : 'Expand workspace'}
+              aria-pressed={workspaceFocus}
+              onClick={() => setWorkspaceFocus(!workspaceFocus)}
+            >
+              {workspaceFocus ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+            </button>
           </div>
           <div className="viewport">
             {image ? (
-              <img src={image} alt={busy ? 'Live agent workspace' : 'Recorded workspace'} />
+              <StreamImage
+                key={`${run?.id ?? 'welcome'}/${episodeId}`}
+                image={image}
+                alt={busy ? 'Live agent workspace' : 'Recorded workspace'}
+              />
             ) : (
               <div className="frame-unavailable" role="status">
                 {busy && <LoaderCircle className="busy-spinner" size={22} aria-hidden="true" />}
                 {busy ? 'Preparing a fresh workspace…' : 'No frame recorded for this step.'}
               </div>
+            )}
+            {image && run && (
+              <AgentCursor
+                key={`${run.id}/${episodeId}`}
+                point={pointer}
+                viewport={frame?.viewport}
+                smooth={busy}
+              />
             )}
             {!run && !busy && (
               <div className="welcome">
@@ -673,18 +726,21 @@ function App() {
                 </div>
               </div>
             )}
-            <div className="viewport-tag">
-              <Radio size={12} />
-              {busy
-                ? image
-                  ? 'Live stream'
-                  : 'Connecting'
-                : run
-                  ? image
-                    ? 'Recorded replay'
-                    : 'Frame unavailable'
-                  : 'Reference screenshot'}
-            </div>
+            <StreamBadge
+              live={busy}
+              frame={frame?.episodeId === episodeId ? frame : null}
+              label={
+                run ? (image ? 'Recorded workspace' : 'Frame unavailable') : 'Reference screenshot'
+              }
+            />
+            {pointer && (
+              <span
+                className="cursor-disclosure"
+                title="Positions captured from browser events. Movement between positions is visually smoothed."
+              >
+                Recorded cursor · smoothed
+              </span>
+            )}
           </div>
           <div className="timeline">
             <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>

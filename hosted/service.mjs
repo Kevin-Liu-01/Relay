@@ -221,11 +221,10 @@ export function createHostedHandler({
       let activeEpisode = 'episode-001';
       const captures = new WeakMap();
       const onPage = async (page) => {
+        const episodeId = activeEpisode;
         captures.set(
           page,
-          await startSpectator(page, (frame) =>
-            emit('frame', { episodeId: activeEpisode, ...frame }),
-          ),
+          await startSpectator(page, (frame) => emit('frame', { episodeId, ...frame })),
         );
       };
       run = new Experiment({

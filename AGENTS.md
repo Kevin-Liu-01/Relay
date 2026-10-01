@@ -48,6 +48,11 @@ The default $2 allowance is per model, including both 1v1 lanes; show total expo
 before launching multiple cells. Shared connections are key-scoped and tab-local; launches acquire
 a synchronous lock. See `docs/interface-controls.md` for debounce/cancellation rules.
 Snapshots are observer-only hash-chained evidence, never additional model input.
+`runner/pointer-observer.mjs` records trusted browser pointer events only; draw
+cursor overlays in the operator UI, never the actor page. API monitoring has no
+invented cursor. Preserve trailing frames and pointer samples when throttling;
+frame sequence IDs are episode-local. `src/live/playback.mjs` maps recorded timing
+to explicitly labeled presentation pacing without rewriting original evidence.
 Optional observer capture errors must be recorded as evidence gaps without
 aborting a text policy or overwriting grades; required pixel captures remain
 fatal. See the separate deadlines and no-stale-observation rule in `docs/hosting.md`.

@@ -127,7 +127,15 @@ for (const arena of [false, true])
             fullPage: true,
           });
         }
-        await page.getByRole('button', { name: arena ? 'Stop both' : 'Stop', exact: true }).click();
+        if (arena) await page.getByRole('button', { name: 'Stop both', exact: true }).click();
+        else {
+          await page.getByRole('button', { name: 'Expand workspace' }).click();
+          await expect(
+            page.getByRole('button', { name: 'Stop run', exact: true }),
+          ).toBeInViewport();
+          await page.getByRole('button', { name: 'Stop run', exact: true }).click();
+          await page.getByRole('button', { name: 'Exit workspace focus' }).click();
+        }
         await expect(
           page.getByRole('button', { name: arena ? 'Start 1v1' : 'Run', exact: true }),
         ).toBeEnabled();

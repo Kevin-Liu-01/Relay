@@ -55,6 +55,11 @@ let pending = '',
   events = [],
   artifacts = {},
   error = null;
+let orderedFrames = true,
+  firstFrameAt = null,
+  lastFrameAt = null,
+  frameBytes = 0;
+const sequences = new Map();
 for (;;) {
   const c = await reader.read();
   if (c.done) break;
@@ -66,7 +71,19 @@ for (;;) {
     if (!line) continue;
     assertSafeEvidence(line, [key]);
     const item = JSON.parse(line);
-    if (item.type === 'frame') frames++;
+    if (item.type === 'frame') {
+      frames++;
+      const frame = item.data;
+      if (
+        !Number.isInteger(frame.sequence) ||
+        frame.sequence <= (sequences.get(frame.episodeId) ?? 0)
+      )
+        orderedFrames = false;
+      sequences.set(frame.episodeId, frame.sequence);
+      firstFrameAt ??= Date.now();
+      lastFrameAt = Date.now();
+      frameBytes += Buffer.byteLength(frame.image ?? '');
+    }
     if (item.type === 'run') run = item.data;
     if (item.type === 'event') events.push(item.data);
     if (item.type === 'artifact') artifacts[item.data.path] = item.data.image;
@@ -82,6 +99,10 @@ const summary = {
   id: run?.id,
   completedStream: done,
   frames,
+  orderedFrames,
+  frameBytes,
+  frameSpanMs: lastFrameAt == null ? null : lastFrameAt - firstFrameAt,
+  pointerEvents: events.filter((e) => e.event.kind === 'pointer').length,
   pngArtifacts: Object.keys(artifacts).length,
   auditIntegrity: audit?.integrity.status ?? null,
   status: run?.status ?? null,
@@ -113,6 +134,7 @@ if (
   error ||
   audit?.integrity.status !== 'verified' ||
   frames < 2 ||
+  !orderedFrames ||
   !Object.keys(artifacts).length ||
   !summary.episodes?.length ||
   summary.episodes.some((e) => e.status !== 'completed' || !e.success || e.captureWarnings.length)

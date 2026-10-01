@@ -1,6 +1,38 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { startSpectator } from '../hosted/spectator.mjs';
+import { EventEmitter } from 'node:events';
+
+test('spectator delivers the trailing frame, orders frames and cancels on close', async () => {
+  const session = new EventEmitter();
+  const calls = [];
+  session.send = async (method) => calls.push(method);
+  const page = new EventEmitter();
+  page.context = () => ({ newCDPSession: async () => session });
+  page.viewportSize = () => ({ width: 1440, height: 900 });
+  const frames = [];
+  await startSpectator(page, (frame) => frames.push(frame));
+  const send = (data) => session.emit('Page.screencastFrame', { data, sessionId: 1 });
+  send('first');
+  send('middle');
+  send('last');
+  await new Promise((r) => setTimeout(r, 140));
+  assert.deepEqual(
+    frames.map((f) => f.image.split(',')[1]),
+    ['first', 'last'],
+  );
+  assert.deepEqual(
+    frames.map((f) => f.sequence),
+    [1, 2],
+  );
+  assert.deepEqual(frames[1].viewport, { width: 1440, height: 900 });
+  assert.equal(calls.filter((m) => m === 'Page.screencastFrameAck').length, 3);
+  send('visible-before-close');
+  send('pending');
+  page.emit('close');
+  await new Promise((r) => setTimeout(r, 140));
+  assert.ok(!frames.some((f) => f.image.endsWith(',pending')));
+});
 
 const png = Buffer.concat([
   Buffer.from('89504e470d0a1a0a', 'hex'),

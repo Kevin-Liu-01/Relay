@@ -14,6 +14,14 @@ Open **[relay.kevinliu.studio](https://relay.kevinliu.studio)**. Choose **Connec
 
 The large screen is the agent's actual browser, streamed while it works. It is read-only for the observer. The right panel shows Jev's returned action probabilities or a generative model's recorded actions. Replay, Audit, History and Compare stay out of the workspace until needed.
 
+The expand icon puts the workspace in a distraction-free, aspect-correct view;
+Escape restores the panels and **Stop run** remains available. Browser input
+positions and click feedback are drawn only on the viewing surface. API runs have
+no fabricated cursor. Frame delivery coalesces to at most 12.5/s and preserves the
+trailing update; decoded images replace the previous frame without blanking it.
+Sequence numbers fence late images within each episode. The age label reports
+when no fresh frame has arrived; it is not proof of a disconnected worker.
+
 **1v1** runs two matched, request-isolated systems side by side. **Replays** offers
 no-key examples and your saved runs, played through the actual read-only Slack UI.
 The current action and independent outcome checks have dedicated cards. See the

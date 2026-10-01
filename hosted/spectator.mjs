@@ -24,12 +24,41 @@ async function bounded(promise, timeout, phase) {
 
 export async function startSpectator(page, emitFrame) {
   const session = await page.context().newCDPSession(page);
-  let last = 0;
-  session.on('Page.screencastFrame', ({ data, sessionId }) => {
-    session.send('Page.screencastFrameAck', { sessionId }).catch(() => {});
-    if (Date.now() - last < 220) return;
+  let last = 0,
+    sequence = 0,
+    pending,
+    timer,
+    closed = false;
+  const flush = () => {
+    timer = null;
+    if (closed || !pending) return;
     last = Date.now();
-    emitFrame({ image: `data:image/jpeg;base64,${data}`, at: last });
+    emitFrame({ ...pending, sequence: ++sequence });
+    pending = null;
+  };
+  const close = () => {
+    closed = true;
+    clearTimeout(timer);
+    pending = null;
+  };
+  page.on?.('close', close);
+  session.on('Disconnected', close);
+  session.on('Page.screencastFrame', ({ data, sessionId, metadata }) => {
+    session.send('Page.screencastFrameAck', { sessionId }).catch(() => {});
+    if (closed) return;
+    // Conflate intermediate frames, but always deliver the last changed screen.
+    // A trailing timer avoids leaving the viewer stuck just before a UI update.
+    pending = {
+      image: `data:image/jpeg;base64,${data}`,
+      at: Date.now(),
+      capturedAt: metadata?.timestamp ? metadata.timestamp * 1000 : null,
+      viewport: page.viewportSize?.() ?? { width: 1440, height: 900 },
+    };
+    if (!timer) {
+      const wait = Math.max(0, 80 - (Date.now() - last));
+      if (wait) timer = setTimeout(flush, wait);
+      else flush();
+    }
   });
   await bounded(session.send('Page.startScreencast', STREAM_OPTIONS), 1000, 'stream startup');
   return async (options) => {
