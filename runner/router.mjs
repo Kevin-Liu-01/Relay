@@ -8,6 +8,42 @@ export class RunStop extends Error {
 }
 const hash = (v) => createHash('sha256').update(JSON.stringify(v)).digest('hex');
 
+// Only keep the catalog fields used for admission. Do not serialize arbitrary
+// provider metadata. Base rates use the same USD/M-token units as Router's table.
+export function catalogModel(model) {
+  const row = { id: model.id, owned_by: model.owned_by ?? null };
+  if (model.router == null) return row; // Older catalogs use exact-ID docs fallback.
+  const meta = model.router;
+  const validIdentity = meta.schema_version === 1 && meta.request_name === model.id;
+  const callable = validIdentity && ['active', 'deprecated'].includes(meta.status);
+  const responds = Array.isArray(meta.surfaces) && meta.surfaces.includes('responses');
+  const rate = (value) => {
+    if (!(
+      typeof value === 'number' ||
+      (typeof value === 'string' && /^\d+(?:\.\d+)?$/.test(value))
+    ))
+      return null;
+    const n = Number(value);
+    return Number.isFinite(n) && n > 0 && n <= 1000 ? n : null;
+  };
+  const input = rate(meta.pricing?.input),
+    output = rate(meta.pricing?.output);
+  return {
+    ...row,
+    catalogRates:
+      callable && responds && input != null && output != null ? { input, output } : null,
+    unavailableReason: !validIdentity
+      ? 'Unrecognized catalog metadata; reconnect after Router updates it.'
+      : !callable
+        ? 'Router marks this model unavailable.'
+        : !responds
+          ? 'This model needs a different API. For Jev, connect TypeSafe.'
+          : input == null || output == null
+            ? 'Router did not supply valid base pricing for this exact model.'
+            : null,
+  };
+}
+
 // Status meanings: https://docs.router.com/api/errors-and-limits (2026-09-30).
 // Fixed local messages only: never persist an upstream body that may echo secrets.
 function httpFailure(status) {
@@ -101,7 +137,7 @@ export class RampRouter {
     return {
       at: new Date().toISOString(),
       hash: hash(data),
-      models: data.data.map((m) => ({ id: m.id, owned_by: m.owned_by ?? null })),
+      models: data.data.map(catalogModel),
     };
   }
   async respond({

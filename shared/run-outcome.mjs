@@ -26,7 +26,11 @@ export function episodeOutcome(episode) {
                 ? 'Model unavailable'
                 : episode.status === 'cancelled'
                   ? 'Run stopped'
-                  : 'Run blocked',
+                  : episode.status === 'budget'
+                    ? 'Run limit reached'
+                    : episode.status === 'timeout'
+                      ? 'Time limit reached'
+                      : 'Run blocked',
       changeModel:
         [403, 404, 501].includes(status) ||
         ['provider_unavailable', 'model_unavailable', 'unsupported_capability'].includes(

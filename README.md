@@ -45,8 +45,15 @@ with the dialog, typed text and action target restored at each step. Try the
 labeled reference example or inspect a real model's earlier success and failure.
 
 **Two models? Open 1v1.** Same task and seed, two fresh workspaces, side-by-side
-action feeds and independently checked outcomes. One total spend cap, split equally.
+action feeds and independently checked outcomes. Each model gets its own allowance;
+the combined maximum is shown before launch.
 Both runs stay in History. [Replay fidelity and match rules →](docs/replay-and-arena.md)
+
+**More models? Choose Try models.** Queue up to eight against the same task and
+seed. Each plays live in a fresh workspace, with a separate audit and history.
+Default: $2 estimated allowance, 40 actions and 180 seconds **per model**;
+Run settings allows up to $5 and 80 actions. Unused allowance is not spent.
+The picker shows the total before launch. These exploratory runs are not a leaderboard.
 
 <img src="evidence/visual/relay-replay.png" alt="Replay studio restores the topic dialog and recorded action target in the real Slack interface" width="100%" />
 
@@ -162,7 +169,7 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **106 backend checks and 69 browser checks**. Historical
+The expanded suite has **113 backend checks and 72 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 New workflow evidence is scripted, with no paid inference. No RL training or GPU

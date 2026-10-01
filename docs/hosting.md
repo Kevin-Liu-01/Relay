@@ -56,39 +56,63 @@ flowchart LR
 
 ## Bounds and costs
 
+**Try models** queues 1–8 selected models against the current task, seed, interface,
+guide and history. Each is a separate request with a fresh workspace, its full
+allowance, and its own audit/replay/history. They run sequentially in selection
+order, while this tab stays open. Stop cancels the active request and the remaining
+queue. Reload never resumes it. Unknown usage, interrupted/unverified evidence,
+or failed history saving stops later jobs. Known task failures remain results;
+they do not turn into hidden retries. Compare's matched interfaces use the same
+separate-request scheduling, so later cells no longer inherit a nearly exhausted
+shared deadline. These convenience queues are not randomized research experiments.
+
 | Resource                      |             Hosted maximum |
 | ----------------------------- | -------------------------: |
 | Episodes / run                |                          3 |
-| Actions / episode             |                         40 |
+| Actions / episode             |                         80 |
 | Model calls / run             |                         80 |
-| Model-loop time / run         |                150 seconds |
-| Episode time                  |                 90 seconds |
-| Estimated model spend / run   |                      $0.50 |
+| Model-loop time / run         |                190 seconds |
+| Episode time                  |                180 seconds |
+| Estimated model spend / run   |                      $5.00 |
 | Input allowance / request     | 128,000 conservative units |
 | Generated output / request    |               4,096 tokens |
 | Concurrent runs / warm worker |                          2 |
 
-The UI starts below these limits. Estimates use the recorded rates, not invoices. Missing usage stays unknown and stops further calls. Set provider-side spend caps. Stopping or losing the connection can leave one already-sent request billable; there are no hidden retries or model substitutions.
+The UI defaults to **$2, 40 actions and 180 seconds per model**. The per-model
+allowance is not divided in 1v1 or queues: two models permit at most $4 estimated,
+eight at most $16 by default. The total is shown before launch; changing Run
+settings changes it explicitly. Unused allowance is not spent. Estimates use the
+recorded base rates, not invoices. Missing usage stays unknown and stops further
+calls. Set provider-side spend caps. Stopping or losing the connection can leave
+one already-sent request billable; there are no hidden retries or substitutions.
 
 The output allowance includes internal reasoning, not only visible action JSON.
-Hosted defaults now allow 4,096 tokens instead of 512; per-run dollar and time
-caps are unchanged. This is room to finish a response, not a target token spend.
+Hosted defaults allow 4,096 tokens instead of the original 512. This is room to
+finish a response, not a target token spend.
 Reasoning effort remains the provider default unless explicitly configured; it
 is not silently disabled. Incomplete responses never execute partial actions.
 Audits retain allowlisted incomplete reasons and validated usage when supplied;
 rejected receipts still conservatively retain the reservation in run accounting.
 
-The 12 [multi-step workflows](task-suite.md) default to 40 actions / 90 seconds;
-the six original controls default to 12 actions / 60 seconds. Dollar caps are
-unchanged. Longer workflows may hit the hosted time limit; the separately
-budgeted local runner supports longer episodes. More permitted actions are not
-a promise that any model will finish within the cap.
+All [tasks and workflows](task-suite.md) now use the same 40-action / 180-second
+defaults, adjustable up to 80 actions. Longer workflows may still hit the hosted
+time limit; the separately budgeted local runner supports longer episodes. More
+permitted actions are not a promise that any model will finish within the cap.
+Before each call, Relay reserves conservative input units plus the full output
+allowance. It releases unused reservation when valid usage returns. A stop now
+reports the next request's required allowance and what remains; a reservation is
+not a bill. Unknown receipts remain unknown, never free.
 
-Pricing now loads automatically; there is no confirmation form. The worker joins
-account-discovered model IDs to official published pricing, rechecks it before
-execution and records source/date/hash with the catalog. Unknown or expired rates
-disable that model instead of guessing. Public documentation requests carry no
-credentials. Saved connections work across solo and 1v1; key entry is debounced
+Pricing loads automatically; there is no confirmation form. For Router, the
+worker uses validated v1 pricing from the authenticated account catalog, matched
+to the exact callable request ID. This includes IDs absent from the display-label
+documentation. Catalog entries must support Responses and be active or deprecated
+but still callable; retired or incompatible entries remain disabled. Jev's Router
+System One entry cannot be sent to Responses: use the TypeSafe connection.
+Older catalogs without metadata fall back to exact-ID public documentation,
+with dated expiry. Invalid metadata never permits guessing. Rates are rechecked
+before execution and source/date/hash is preserved per model. Public documentation
+requests carry no credentials. Saved connections work across solo and 1v1; key entry is debounced
 and run launches are single-flight. See the [interaction contract](interface-controls.md)
 for cache, fallback and cancellation details.
 

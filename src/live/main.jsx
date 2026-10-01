@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { supportsChoice, WORKFLOW_IDS } from '../../shared/task-catalog.mjs';
+import { supportsChoice } from '../../shared/task-catalog.mjs';
 import { episodeOutcome } from '../../shared/run-outcome.mjs';
 import { createRoot } from 'react-dom/client';
 import {
@@ -47,6 +47,7 @@ import { RelaySelect } from './select.jsx';
 import { TaskIcon, ModeIcon } from './select-icons.jsx';
 import { createConnections, preferredModel, validKey } from './connections.js';
 import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
+import { makeRunPlan, queueMustStop } from './run-plan.mjs';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const elapsed = (n) =>
@@ -111,8 +112,8 @@ function App() {
     [guide, setGuide] = useState(false),
     [context, setContext] = useState('recent-4'),
     [vision, setVision] = useState(false),
-    [cap, setCap] = useState(0.25),
-    [steps, setSteps] = useState(12),
+    [cap, setCap] = useState(2),
+    [steps, setSteps] = useState(40),
     [modal, setModal] = useState(null),
     [error, setError] = useState(''),
     [connecting, setConnecting] = useState(false),
@@ -127,6 +128,9 @@ function App() {
     [allOptions, setAllOptions] = useState(false),
     [demo, setDemo] = useState(false);
   const [replayRecord, setReplayRecord] = useState(null);
+  const [batchModels, setBatchModels] = useState([]);
+  const [modelSearch, setModelSearch] = useState('');
+  const [queue, setQueue] = useState(null);
   const [connections] = useState(createConnections);
   const launch = useLaunchLock();
   const connectTimer = useRef(null);
@@ -177,7 +181,6 @@ function App() {
       if (['pixels', 'api'].includes(mode)) setMode('json-ui');
       if (!supportsChoice(task)) {
         setTask('channel-topic');
-        setSteps(12);
       }
     }
     setError('');
@@ -262,56 +265,80 @@ function App() {
       if (version === connectionVersion.current) setConnecting(false);
     }
   }
-  async function start(compare = false) {
+  async function start(compare = false, selected = [{ id: model, rates, vision }]) {
     if (busy || connecting) return;
     if (!setup || !model || !keys[provider]) {
       setModal('connect');
       return;
     }
-    if (
-      !Number.isFinite(rates?.input) ||
-      rates.input <= 0 ||
-      (provider === 'ramp' && rates.output <= 0)
-    ) {
-      setError('Pricing is temporarily unavailable for this model. Choose another model.');
+    let jobs;
+    try {
+      jobs = makeRunPlan({
+        setup,
+        provider,
+        models: selected,
+        task,
+        mode,
+        guide,
+        context,
+        cap,
+        steps,
+        compare,
+      });
+    } catch (e) {
+      setError(e.message);
       return;
     }
     if (!launch.acquire()) return;
     setError('');
     setBusy(true);
+    setModal(null);
+    abort.current = new AbortController();
+    const controller = abort.current;
+    const batch =
+      jobs.length > 1
+        ? {
+            id: crypto.randomUUID(),
+            total: jobs.length,
+            capUSD: cap * jobs.length,
+            execution: 'sequential',
+          }
+        : null;
+    setQueue(batch ? { ...batch, completed: 0, stopped: false } : null);
+    try {
+      for (let i = 0; i < jobs.length; i++) {
+        if (controller.signal.aborted) break;
+        const result = await executeRun(
+          jobs[i],
+          controller.signal,
+          batch && { ...batch, index: i },
+        );
+        if (batch) setQueue((old) => ({ ...old, completed: i + 1 }));
+        if (controller.signal.aborted || queueMustStop(result)) {
+          if (batch && i < jobs.length - 1) {
+            setQueue((old) => ({ ...old, stopped: true }));
+            setError(
+              'Queue stopped: a request was interrupted or its usage/evidence is incomplete. Remaining models were not called. Inspect this run before starting another.',
+            );
+          }
+          break;
+        }
+      }
+    } finally {
+      abort.current = null;
+      setBusy(false);
+      launch.release();
+    }
+  }
+  async function executeRun(config, signal, batch) {
     setDemo(false);
     setRecord(null);
     setFrame(null);
     setSelectedStep(null);
     follow.current = true;
-    abort.current = new AbortController();
-    current.current = { run: null, events: [], artifacts: {}, audit: null };
-    const config = {
-      ...setup.defaults,
-      provider,
-      models: [{ id: model, rates, vision }],
-      tasks: [task],
-      interfaces: compare
-        ? provider === 'typesafe'
-          ? ['a11y', 'json-ui']
-          : ['a11y', 'json-ui', 'api']
-        : [mode],
-      guides: [guide],
-      histories: [context],
-      maxSteps: steps,
-      maxRequests: Math.min(
-        setup.limits.maxRequests,
-        Math.max(setup.defaults.maxRequests, steps * (compare ? 3 : 1)),
-      ),
-      episodeSeconds: WORKFLOW_IDS.includes(task) ? 90 : setup.defaults.episodeSeconds,
-      maxEstimatedUSD: cap,
-    };
+    current.current = { run: null, events: [], artifacts: {}, audit: null, batch };
     try {
-      const response = await api(
-        'run',
-        { provider, key: keys[provider], config },
-        abort.current.signal,
-      );
+      const response = await api('run', { provider, key: keys[provider], config }, signal);
       const reader = response.body.getReader(),
         decoder = new TextDecoder();
       let buffer = '';
@@ -367,19 +394,18 @@ function App() {
         setRecord({ ...current.current });
       }
     } finally {
-      abort.current = null;
       if (current.current.run) {
         setRecord({ ...current.current });
         try {
           await saveRun(current.current);
           await refreshHistory();
         } catch {
+          current.current.error = 'History could not be saved.';
           setError('History could not be saved. Download this evidence before leaving.');
         }
       }
-      setBusy(false);
-      launch.release();
     }
+    return current.current;
   }
   async function openRun(id) {
     try {
@@ -479,7 +505,7 @@ function App() {
         >
           <Github width={19} height={19} />
         </a>
-        <button className="connect" onClick={() => setModal('connect')}>
+        <button className="connect" disabled={busy} onClick={() => setModal('connect')}>
           {connecting ? (
             <LoaderCircle className="busy-spinner" size={14} />
           ) : (
@@ -504,7 +530,6 @@ function App() {
           value={task}
           onChange={(id) => {
             setTask(id);
-            setSteps(WORKFLOW_IDS.includes(id) ? 40 : 12);
           }}
           options={Object.entries(setup?.tasks ?? { 'channel-topic': 'Update a topic' }).map(
             ([id, label]) => ({
@@ -533,7 +558,8 @@ function App() {
             label: m.id,
             icon: <ModelMark id={m.id} />,
             disabled: !m.rates,
-            disabledReason: 'Published pricing unavailable for this exact model ID.',
+            disabledReason:
+              m.unavailableReason ?? 'Published pricing unavailable for this exact model ID.',
           }))}
         />
         <RelaySelect
@@ -549,11 +575,17 @@ function App() {
             disabledReason: 'Jev supports Accessibility and Page JSON.',
           }))}
         />
-        <button className="icon" aria-label="Run settings" onClick={() => setModal('settings')}>
+        <button
+          className="icon"
+          disabled={busy}
+          aria-label="Run settings"
+          onClick={() => setModal('settings')}
+        >
           <Settings2 size={17} />
         </button>
         <div className="nav-spacer" />
         <RunButton
+          label="Run"
           busy={busy}
           starting={!frame && !actions.length}
           disabled={!setup || connecting || (!!catalog.length && !rates)}
@@ -561,6 +593,28 @@ function App() {
           onStop={() => abort.current?.abort()}
         />
       </section>
+      <div className="run-toolbar">
+        <button
+          disabled={busy || connecting || !catalog.some((m) => m.rates) || mode === 'pixels'}
+          onClick={() => {
+            setBatchModels(model ? [model] : []);
+            setModelSearch('');
+            setModal('models');
+          }}
+        >
+          <Layers size={14} /> Try models
+        </button>
+        <span>
+          ${cap.toFixed(2)} allowance / model · {steps} actions ·{' '}
+          {setup?.defaults.episodeSeconds ?? 180}s
+        </span>
+        {queue && (
+          <span role="status" className="queue-progress">
+            {queue.stopped ? 'Queue paused' : busy ? 'Model queue' : 'Queue finished'} ·{' '}
+            {queue.completed} / {queue.total}
+          </span>
+        )}
+      </div>
       <main className="arena">
         <section className="viewport-column" aria-label="Live Slack workspace">
           <div className="workspace-top">
@@ -1012,12 +1066,12 @@ function App() {
           </p>
           <div className="two-fields">
             <label className="field">
-              Estimated spend cap
+              Estimated allowance per model
               <input
                 type="number"
                 aria-label="Spend cap"
                 min="0.01"
-                max="0.5"
+                max={setup?.limits.maxEstimatedUSD ?? 5}
                 step="0.01"
                 value={cap}
                 onChange={(e) => setCap(Number(e.target.value))}
@@ -1029,12 +1083,16 @@ function App() {
                 type="number"
                 aria-label="Max actions"
                 min="1"
-                max={setup?.limits.maxSteps ?? 40}
+                max={setup?.limits.maxSteps ?? 80}
                 value={steps}
                 onChange={(e) => setSteps(Number(e.target.value))}
               />
             </label>
           </div>
+          <p className="hint">
+            Each model gets its own allowance, including in 1v1. Unused allowance is not spent. Stop
+            is always available; an in-flight request may still be billable.
+          </p>
           <label className="check">
             <input type="checkbox" checked={guide} onChange={(e) => setGuide(e.target.checked)} />
             Supply llms.txt + interaction guide
@@ -1071,6 +1129,73 @@ function App() {
           </button>
         </Modal>
       )}
+      {modal === 'models' && (
+        <Modal title="Try models" close={() => setModal(null)}>
+          <p className="hint">
+            Same task, fresh workspaces. Choose up to eight. Runs play here one at a time; results
+            land in History and Compare. Keep this tab open.
+          </p>
+          <label className="search">
+            <Search size={15} />
+            <input
+              aria-label="Search models"
+              placeholder="Search models"
+              value={modelSearch}
+              onChange={(e) => setModelSearch(e.target.value)}
+            />
+          </label>
+          <div className="model-queue-list">
+            {catalog
+              .filter((m) => m.id.toLowerCase().includes(modelSearch.toLowerCase()))
+              .map((m) => (
+                <label
+                  key={m.id}
+                  className={`model-queue-option ${batchModels.includes(m.id) ? 'selected' : ''}`}
+                >
+                  <input
+                    type="checkbox"
+                    aria-label={m.id}
+                    checked={batchModels.includes(m.id)}
+                    disabled={!m.rates || (!batchModels.includes(m.id) && batchModels.length >= 8)}
+                    onChange={(e) =>
+                      setBatchModels((old) =>
+                        e.target.checked ? [...old, m.id] : old.filter((id) => id !== m.id),
+                      )
+                    }
+                  />
+                  <ModelMark id={m.id} />
+                  <span>
+                    {m.id}
+                    <small>
+                      {m.rates
+                        ? `$${m.rates.input} in · $${m.rates.output} out / 1M tokens`
+                        : (m.unavailableReason ?? 'Pricing unavailable')}
+                    </small>
+                  </span>
+                </label>
+              ))}
+          </div>
+          <div className="queue-launch">
+            <span>
+              {batchModels.length} selected
+              <small>Up to ${(cap * batchModels.length).toFixed(2)} estimated total</small>
+            </span>
+            <button
+              className="primary"
+              disabled={busy || !batchModels.length}
+              onClick={() =>
+                start(
+                  false,
+                  batchModels.map((id) => catalog.find((m) => m.id === id)),
+                )
+              }
+            >
+              <Play size={15} /> Run {batchModels.length}{' '}
+              {batchModels.length === 1 ? 'model' : 'models'}
+            </button>
+          </div>
+        </Modal>
+      )}
       {modal === 'history' && (
         <Modal title="Run history" close={() => setModal(null)} wide>
           <p className="hint">
@@ -1087,6 +1212,7 @@ function App() {
                   <b>{s.run.config.models[0].id}</b>
                   <span>
                     {s.duel && `1v1 ${s.duel.side === 0 ? 'A' : 'B'} · ${s.duel.id.slice(0, 6)} · `}
+                    {s.batch && `Queue ${s.batch.index + 1}/${s.batch.total} · `}
                     {setup?.tasks[s.run.config.tasks[0]]} ·{' '}
                     {new Date(s.capturedAt).toLocaleString()}
                   </span>
@@ -1137,6 +1263,10 @@ function App() {
             <GitCompareArrows size={15} />
             Run matched interfaces
           </button>
+          <p className="hint">
+            Each interface gets ${cap.toFixed(2)} allowance and its own time limit · up to $
+            {(cap * (provider === 'typesafe' ? 2 : 3)).toFixed(2)} total.
+          </p>
           <div className="table-scroll">
             <table>
               <thead>

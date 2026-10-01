@@ -25,11 +25,12 @@ export async function flushStream(res, signal) {
 
 export const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const LIMITS = {
-  maxSteps: 40,
+  maxSteps: 80,
   maxRequests: 80,
   maxEpisodes: 3,
-  runSeconds: 150,
-  maxEstimatedUSD: 0.5,
+  runSeconds: 190,
+  episodeSeconds: 180,
+  maxEstimatedUSD: 5,
   maxOutputTokens: 4096,
 };
 export function hostedConfig(input) {
@@ -42,7 +43,7 @@ export function hostedConfig(input) {
     c.maxSteps > LIMITS.maxSteps ||
     c.maxRequests > LIMITS.maxRequests ||
     c.runSeconds > LIMITS.runSeconds ||
-    c.episodeSeconds > 90 ||
+    c.episodeSeconds > LIMITS.episodeSeconds ||
     c.maxEstimatedUSD > LIMITS.maxEstimatedUSD ||
     c.maxOutputTokens > LIMITS.maxOutputTokens ||
     c.maxInputUnits > 128000
@@ -118,13 +119,13 @@ export function createHostedHandler({
         defaults: {
           ...DEFAULT_CONFIG,
           interfaces: ['a11y'],
-          maxSteps: 12,
-          maxRequests: 24,
+          maxSteps: 40,
+          maxRequests: 80,
           maxInputUnits: 128000,
           maxOutputTokens: LIMITS.maxOutputTokens,
-          runSeconds: 150,
-          episodeSeconds: 60,
-          maxEstimatedUSD: 0.25,
+          runSeconds: LIMITS.runSeconds,
+          episodeSeconds: LIMITS.episodeSeconds,
+          maxEstimatedUSD: 2,
         },
         providers: [
           { id: 'ramp', name: 'Ramp Router' },
@@ -248,7 +249,7 @@ export function createHostedHandler({
         },
         onRecord: (episodeId, event) => emit('event', { episodeId, event }),
       });
-      deadline = setTimeout(() => run.cancel(), 165000);
+      deadline = setTimeout(() => run.cancel(), (LIMITS.runSeconds + 15) * 1000);
       if (abort.signal.aborted) run.cancel();
       await run.run();
       const audit = buildAudit({

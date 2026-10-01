@@ -689,3 +689,65 @@ button:focus-visible {
   border: 1px solid #ded9e6;
   font-size: 12px;
 }
+.run-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: -6px 0 12px;
+  color: #827b8b;
+  font-size: 11px;
+}
+.run-toolbar button {
+  padding: 5px 8px;
+  font-size: 11px;
+  color: #62416f;
+}
+.queue-progress {
+  margin-left: auto;
+  color: #62416f;
+}
+.model-queue-list {
+  max-height: 360px;
+  overflow-y: auto;
+  margin: 12px 0;
+}
+.model-queue-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.model-queue-option.selected {
+  background: #f3edf7;
+}
+.model-queue-option:hover {
+  background: #f7f4f9;
+}
+.model-queue-option:has(input:disabled) {
+  opacity: 0.55;
+  cursor: default;
+}
+.model-queue-option input {
+  accent-color: #745185;
+}
+.model-queue-option > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.model-queue-option small,
+.queue-launch small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #827b8b;
+}
+.queue-launch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}

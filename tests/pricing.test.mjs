@@ -8,6 +8,106 @@ import {
 } from '../hosted/pricing.mjs';
 import { createConnections, preferredModel } from '../src/live/connections.js';
 import { testPricing } from './fixtures/pricing.mjs';
+import { RampRouter, requestEstimate, catalogModel } from '../runner/router.mjs';
+import { DEFAULT_CONFIG } from '../runner/design.mjs';
+import { hostedConfig } from '../hosted/service.mjs';
+
+const catalogRow = (id, overrides = {}) => ({
+  id,
+  owned_by: 'provider',
+  router: {
+    schema_version: 1,
+    request_name: id,
+    status: 'active',
+    surfaces: ['responses', 'messages'],
+    pricing: { input: '2', output: '10' },
+    ...overrides,
+  },
+});
+
+test('account catalog pricing unlocks exact callable IDs absent from display-label docs', async () => {
+  const router = new RampRouter({
+    apiKey: 'fake-catalog-key',
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          data: [
+            catalogRow('claude-sonnet-5-5'),
+            catalogRow('us.openai.gpt-6-sol', { pricing: { input: '2.2', output: '11' } }),
+          ],
+        }),
+      ),
+  });
+  const resolve = createPricingResolver({ fetchImpl: async () => new Response(rampDoc) });
+  const catalog = await resolve('ramp', await router.models());
+  assert.deepEqual(
+    catalog.models.map((m) => m.rates),
+    [
+      { input: 2, output: 10 },
+      { input: 2.2, output: 11 },
+    ],
+  );
+  assert.equal(catalog.models[0].pricing.source, 'https://api.router.com/v1/models');
+  assert.equal(catalog.models[0].pricing.hash, catalog.hash);
+  assert.equal(catalog.models[0].pricing.unit, 'USD per million tokens');
+  assert.ok(!JSON.stringify(catalog).includes('fake-catalog-key'));
+});
+
+test('a normal expensive-model request is admitted with the new allowance, not the old quarter-dollar cap', () => {
+  const rates = { input: 10, output: 50 };
+  const request = requestEstimate({ input: 'x'.repeat(10000) }, rates, 4096);
+  assert.ok(request.usd > 0.25 && request.usd < 2);
+  assert.equal(
+    hostedConfig({
+      ...DEFAULT_CONFIG,
+      provider: 'ramp',
+      models: [{ id: 'test-premium', rates }],
+      interfaces: ['a11y'],
+      maxSteps: 40,
+      maxRequests: 80,
+      maxOutputTokens: 4096,
+      runSeconds: 190,
+      episodeSeconds: 180,
+      maxEstimatedUSD: 2,
+    }).maxEstimatedUSD,
+    2,
+  );
+});
+
+test('catalog metadata fails closed for invalid prices, mismatched IDs, retired models and non-Responses APIs', async () => {
+  for (const overrides of [
+    { schema_version: 2 },
+    { request_name: 'a-different-model' },
+    { status: 'retired' },
+    { surfaces: ['systemone'] },
+    { pricing: { input: '', output: '1' } },
+    { pricing: { input: '-1', output: '1' } },
+    { pricing: { input: '2', output: '0' } },
+    { pricing: { input: 'Infinity', output: '10' } },
+    { pricing: { input: true, output: 10 } },
+    { pricing: { input: 1, output: 1001 } },
+  ]) {
+    // Even a docs-known ID must not override an explicit incompatible/invalid catalog row.
+    const model = catalogModel(catalogRow('gpt-4o-mini', overrides));
+    assert.equal(model.catalogRates, null);
+    assert.ok(model.unavailableReason);
+    const catalog = await createPricingResolver({ fetchImpl: async () => new Response(rampDoc) })(
+      'ramp',
+      { models: [model] },
+    );
+    assert.equal(catalog.models[0].rates, null);
+    assert.throws(() =>
+      applyCatalogRates(
+        { models: [{ id: model.id, rates: { input: 0.01, output: 0.01 } }] },
+        catalog,
+      ),
+    );
+  }
+  assert.deepEqual(
+    catalogModel(catalogRow('deprecated-but-callable', { status: 'deprecated' })).catalogRates,
+    { input: 2, output: 10 },
+  );
+});
 
 const rampDoc =
   '`gpt-4o-mini`</DocModelName> | $0.15 | $0.60 |\n`future-model`</DocModelName> | $1.2 | $3.4 |\n## Deprecated models\n`retired-model`</DocModelName> | $2 | $4 |';

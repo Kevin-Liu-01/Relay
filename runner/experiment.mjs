@@ -318,7 +318,13 @@ export class Experiment {
           if (reservation.inputUpper > c.maxInputUnits)
             throw new RunStop('budget', 'Input-unit/context limit reached; no hidden truncation.');
           if (this.data.budget.estimatedUSD + reservation.usd > c.maxEstimatedUSD)
-            throw new RunStop('budget', 'Estimated-dollar reservation would exceed the run cap.');
+            throw new RunStop(
+              'budget',
+              `Next request needs $${reservation.usd.toFixed(4)} of estimated allowance; ` +
+                `$${Math.max(0, c.maxEstimatedUSD - this.data.budget.estimatedUSD).toFixed(4)} remains ` +
+                `of the $${c.maxEstimatedUSD.toFixed(2)} run cap. Raise the allowance in Run settings. ` +
+                'This reservation is not a charge.',
+            );
           this.data.budget.requests++;
           e.inFlight = true;
           e.usageKnown = false;

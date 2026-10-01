@@ -848,6 +848,8 @@ test('dollar reservation stops before sending; missing usage stops and is not fr
     const first = await limited.run();
     assert.equal(calls, 0);
     assert.equal(first.episodes[0].status, 'budget');
+    assert.match(first.episodes[0].error, /Next request needs \$/);
+    assert.match(first.episodes[0].error, /reservation is not a charge/);
     const unknown = new Experiment({
       config: liveConfig(),
       root: ROOT,

@@ -46,7 +46,17 @@ connected key of the same provider. Distinct keys remain distinct. Forget cancel
 pending discovery and invalidates all cached keys for that provider. Late replies
 cannot resurrect a forgotten or edited connection.
 
-`hosted/pricing.mjs` joins account-discovered IDs to exact IDs in the current
+`hosted/pricing.mjs` now prefers Router's authenticated `GET /v1/models` v1
+metadata. `runner/router.mjs` retains only validated exact-ID base rates and a
+fixed incompatibility reason, not arbitrary upstream metadata. Request-name,
+schema version, lifecycle status, Responses support and finite positive prices
+are checked. Catalog rates preserve source URL, timestamp and catalog hash per
+model. They also retain distinct provider-variant prices (no prefix stripping).
+New catalog formats or explicit invalid pricing fail closed. Jev's System One
+entry needs the separate TypeSafe adapter, not the Responses transport.
+
+For older Router catalogs without metadata and for TypeSafe, it joins
+account-discovered IDs to exact IDs in the current
 [Ramp model table](https://docs.router.com/supported-models) or
 [TypeSafe model documentation](https://docs.typesafe.ai/models). Public docs are
 fetched without credentials, deduplicated and cached for five minutes. A checked-in

@@ -1,5 +1,37 @@
 # Verification and evidence
 
+## Catalog pricing, usable allowances and model queues — 2026-10-01
+
+Two deterministic failing regressions reproduced the report: the Router adapter
+dropped v1 pricing metadata, leaving display-label docs as the only price source;
+and a normal 10,000-byte input plus 4,096-output allowance at $10/$50 per million
+requires about $0.305, above the old $0.25 default. Both regressions now pass.
+
+A read-only authenticated catalog check returned 88 entries: 45 were selectable
+before the fix, 87 afterward. The remaining Jev entry advertises `systemone`, not
+`responses`, and is correctly directed to the separate TypeSafe connection. This
+is catalog/admission evidence, not proof every provider can serve every model.
+Base-rate units were cross-checked against overlapping IDs in Router's official
+[model table](https://docs.router.com/supported-models); provider variants retain
+their catalog prices, never a stripped-prefix guess. Catalog schema/status/API
+and numeric validation, exact-ID binding, and dated docs fallback have regressions.
+
+The default is now $2 / 40 actions / 180 seconds per model, adjustable to $5 / 80
+actions. 1v1 no longer halves the configured allowance. **Try models** selects up
+to eight and shows combined exposure before launch. Each runs in a separate worker
+request with matched task/seed/settings and independent workspace/audit/history.
+Matched interfaces also use separate requests, not a shared short deadline.
+Unknown usage, interrupted/unverified evidence and failed history persistence
+stop the remaining queue; no retries or automatic restart on reload.
+
+The release gate passes **113 backend/harness checks and 72 browser checks**.
+New browser coverage uses an explicitly fake transport for sequential model jobs,
+full per-cell budgets, audited isolated histories, secret-free evidence,
+comparison rows, unknown-usage stops, search, selection bounds and mobile/keyboard
+controls. This is wiring evidence, not model quality. The picker was also checked
+interactively in a local no-inference preview. Existing screenshot-capture limits
+below remain unresolved by this change.
+
 ## Hands-on Slack sandbox — 2026-10-01
 
 `/play` opens the actual interactive Slack components without a key or a model.

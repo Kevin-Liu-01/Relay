@@ -36,8 +36,16 @@ Never derive grader expectations by replaying the reference policy or transition
 zero-inference adversarial report. New templates are development tasks, not holdouts.
 Keep `RelaySelect` shared and its dialog, keyboard and reduced-motion checks intact.
 Hosted pricing comes from `hosted/pricing.mjs`, not user confirmation or frontend
-model hints. Keep exact-ID matching, dated provenance, expiry and server-side rate
-binding intact. Shared connections are key-scoped and tab-local; launches acquire
+model hints. Prefer validated Router v1 catalog pricing for its exact request ID;
+use exact-ID public-doc rates only for older catalogs without metadata. Explicitly
+invalid/incompatible metadata cannot fall back to guessed display labels. Keep
+source/date/hash, bounded fallback expiry and server-side rate binding intact.
+`src/live/run-plan.mjs` gives queued models and matched interfaces separate hosted
+requests and full per-cell budgets. Queue up to eight models; one runs at a time.
+Stop cancels remaining jobs; unknown usage, interrupted evidence or failed history
+save halts the queue. Do not resume on reload or retry inference automatically.
+The default $2 allowance is per model, including both 1v1 lanes; show total exposure
+before launching multiple cells. Shared connections are key-scoped and tab-local; launches acquire
 a synchronous lock. See `docs/interface-controls.md` for debounce/cancellation rules.
 Snapshots are observer-only hash-chained evidence, never additional model input.
 Optional observer capture errors must be recorded as evidence gaps without

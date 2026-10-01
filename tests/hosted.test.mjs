@@ -184,9 +184,10 @@ test('hosted limits reject free public compute, arbitrary endpoints, large matri
   for (const c of [
     DEFAULT_CONFIG,
     { ...config(), endpoint: 'http://localhost' },
-    { ...config(), maxSteps: 41 },
-    { ...config(), runSeconds: 151 },
-    { ...config(), maxEstimatedUSD: 1 },
+    { ...config(), maxSteps: 81 },
+    { ...config(), runSeconds: 191 },
+    { ...config(), episodeSeconds: 181 },
+    { ...config(), maxEstimatedUSD: 5.01 },
     { ...config(), maxOutputTokens: 4097 },
     { ...config(), interfaces: ['api', 'a11y', 'json-ui'], guides: [true, false] },
   ])
@@ -242,8 +243,10 @@ test('public HTTP boundary requires same origin, correct provider and bounded JS
     assert.equal(settingsResponse.status, 200);
     const settings = await settingsResponse.json();
     assert.equal(settings.defaults.maxOutputTokens, 4096);
-    assert.equal(settings.defaults.maxEstimatedUSD, 0.25);
-    assert.equal(settings.limits.maxEstimatedUSD, 0.5);
+    assert.equal(settings.defaults.maxEstimatedUSD, 2);
+    assert.equal(settings.limits.maxEstimatedUSD, 5);
+    assert.equal(settings.defaults.episodeSeconds, 180);
+    assert.equal(settings.defaults.maxSteps, 40);
   } finally {
     server.closeAllConnections();
     await new Promise((r) => server.close(r));

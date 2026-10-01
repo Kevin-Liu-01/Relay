@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { supportsChoice, WORKFLOW_IDS } from '../../shared/task-catalog.mjs';
+import { supportsChoice } from '../../shared/task-catalog.mjs';
 import {
   Swords,
   Trophy,
@@ -17,6 +17,7 @@ import { duelVerdict } from './duel-policy.js';
 import { RelaySelect } from './select.jsx';
 import { preferredModel, validKey } from './connections.js';
 import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
+import { makeRunPlan } from './run-plan.mjs';
 
 async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
   const record = { run: null, events: [], artifacts: {}, audit: null };
@@ -210,6 +211,26 @@ export function Duel({
       ]);
       return;
     }
+    let configs;
+    try {
+      configs = lanes.map(
+        (l) =>
+          makeRunPlan({
+            setup,
+            provider: l.provider,
+            models: [{ id: l.model, rates: l.rates }],
+            task,
+            mode,
+            guide,
+            context,
+            cap,
+            steps,
+          })[0],
+      );
+    } catch (e) {
+      setErrors([e.message, '']);
+      return;
+    }
     if (!launch.acquire()) return;
     setBusy(true);
     setRecords([null, null]);
@@ -220,22 +241,7 @@ export function Duel({
     try {
       await Promise.all(
         lanes.map(async (l, i) => {
-          const config = {
-            ...setup.defaults,
-            provider: l.provider,
-            models: [{ id: l.model, rates: l.rates }],
-            tasks: [task],
-            interfaces: [mode],
-            guides: [guide],
-            histories: [context],
-            maxSteps: steps,
-            maxRequests: Math.min(
-              setup.limits.maxRequests,
-              Math.max(setup.defaults.maxRequests, steps),
-            ),
-            episodeSeconds: WORKFLOW_IDS.includes(task) ? 90 : setup.defaults.episodeSeconds,
-            maxEstimatedUSD: cap / 2,
-          };
+          const config = configs[i];
           const record = await streamRun({
             ...l,
             config,
@@ -251,7 +257,7 @@ export function Duel({
             mode,
             guide,
             history: context,
-            capUSD: cap,
+            capUSD: cap * 2,
             execution: 'concurrent',
           };
           setAt(setRecords, i, { ...record });
@@ -294,7 +300,8 @@ export function Duel({
           <span className="mini-label">MATCHED TASK · FRESH WORKSPACES</span>
           <h3>{setup.tasks[task]}</h3>
           <p>
-            {mode} · seed {setup.defaults.seeds[0]} · ${(cap / 2).toFixed(3)} cap per model
+            {mode} · seed {setup.defaults.seeds[0]} · ${cap.toFixed(2)} per model · $
+            {(cap * 2).toFixed(2)} total allowance
           </p>
         </div>
         <RunButton
@@ -411,7 +418,9 @@ export function Duel({
                     label: m.id,
                     icon: <ModelMark id={m.id} />,
                     disabled: !m.rates,
-                    disabledReason: 'Published pricing unavailable for this exact model ID.',
+                    disabledReason:
+                      m.unavailableReason ??
+                      'Published pricing unavailable for this exact model ID.',
                   }))}
                 />
                 <ModelPrice rates={lane.rates} />

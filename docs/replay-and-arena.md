@@ -10,7 +10,8 @@ Two older real GPT-4o mini recordings retain both a success and a failure.
 For a live match, select the task and text interface on the main screen, then
 **1v1**. Saved connections and published prices load automatically. Pick two models and choose
 **Start 1v1**. A and B can use the same provider/key or separate Ramp/TypeSafe keys.
-The main Run settings apply to both; the total dollar cap is divided equally.
+The main Run settings apply independently to both: the default is $2 per model,
+$4 combined. The combined allowance is visible before launch, and is not a charge.
 Each side has a fresh workspace, action feed, outcome checks, replay and download.
 History keeps two separate runs labeled with the same match ID.
 

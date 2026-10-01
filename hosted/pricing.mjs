@@ -56,7 +56,13 @@ export function createPricingResolver({ fetchImpl = fetch, now = Date.now, refre
     checked = new Map();
   return async (provider, catalog) => {
     if (!PRICING_URLS[provider]) throw Error('Unknown pricing provider.');
-    if (refresh && (!checked.has(provider) || now() - checked.get(provider) >= TTL)) {
+    const catalogOnly =
+      provider === 'ramp' && catalog.models.every((model) => Object.hasOwn(model, 'catalogRates'));
+    if (
+      !catalogOnly &&
+      refresh &&
+      (!checked.has(provider) || now() - checked.get(provider) >= TTL)
+    ) {
       if (!pending.has(provider)) {
         const work = (async () => {
           try {
@@ -90,13 +96,32 @@ export function createPricingResolver({ fetchImpl = fetch, now = Date.now, refre
       unit: 'USD per million tokens',
       basis: 'published base rates; estimates, not provider billing',
     };
+    const catalogPricing = {
+      source: 'https://api.router.com/v1/models',
+      at: catalog.at,
+      hash: catalog.hash,
+      status: 'catalog',
+      unit: pricing.unit,
+      basis: pricing.basis,
+    };
     return {
       ...catalog,
-      pricing,
-      models: catalog.models.map((model) => ({
-        ...model,
-        rates: fresh && Object.hasOwn(source.rates, model.id) ? source.rates[model.id] : null,
-      })),
+      pricing: catalogOnly ? catalogPricing : pricing,
+      models: catalog.models.map((model) => {
+        // Catalog pricing is bound to the exact callable ID, including provider
+        // variants. Missing/invalid v1 metadata cannot be rescued by a label guess.
+        if (provider === 'ramp' && Object.hasOwn(model, 'catalogRates'))
+          return {
+            ...model,
+            rates: model.catalogRates,
+            pricing: catalogPricing,
+          };
+        return {
+          ...model,
+          rates: fresh && Object.hasOwn(source.rates, model.id) ? source.rates[model.id] : null,
+          pricing,
+        };
+      }),
     };
   };
 }
@@ -108,7 +133,10 @@ export function applyCatalogRates(config, catalog) {
       const found = catalog.models.find((m) => m.id === model.id);
       if (!found) throw Error('Selected model is not in your account catalog.');
       if (!found.rates)
-        throw Error('Pricing is temporarily unavailable for this model. Choose another model.');
+        throw Error(
+          found.unavailableReason ??
+            'Pricing is temporarily unavailable for this model. Choose another model.',
+        );
       return { ...model, rates: found.rates };
     }),
   };

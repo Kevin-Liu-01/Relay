@@ -44,6 +44,7 @@ export const saveRun = (record) =>
       capturedAt: new Date().toISOString(),
       error: record.error ?? null,
       duel: record.duel ?? null,
+      batch: record.batch ?? null,
     };
     tx.objectStore('runs').put(value);
     tx.objectStore('summaries').put({
@@ -53,6 +54,7 @@ export const saveRun = (record) =>
       completeAudit: !!value.audit,
       error: value.error,
       duel: value.duel,
+      batch: value.batch,
     });
   });
 export const deleteRun = (id) =>
