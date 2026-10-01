@@ -54,11 +54,40 @@ PNG timeouts, so the smoke correctly exited nonzero for incomplete image evidenc
 This confirms that capture failure no longer kills the text policy, not complete
 capture reliability. Twenty live frames and the actual-UI replay state survived.
 
-The next targeted change pauses Chromium's live screencast around each exact
-PNG capture and resumes it even on failure. Unit tests enforce that ordering;
-the full hosted browser tests exercise real screencast plus PNG behavior. A live
-post-deployment run is still required to test the cloud-contention hypothesis.
+The next targeted experiment paused Chromium's live screencast around each exact
+PNG capture and resumed it even on failure. Unit tests enforced that ordering;
+the full hosted browser tests exercised real screencast plus PNG behavior. A live
+post-deployment run was required to test the cloud-contention hypothesis.
 The coordination release gate passes **101 backend/harness and 67 browser checks**.
+
+That hypothesis failed in production. Run `31039bdf-598f-41cf-b329-85349a73dbde`
+passed both task checks in four actions/four calls (44.0 seconds, $0.0035329
+estimated, usage reported), but the same two PNG timeouts remained and only one
+live frame arrived. Its smoke exited nonzero. The pause/resume change was removed.
+
+The replacement keeps the stream running and requests a fresh native Chromium
+viewport PNG, with page activation, font readiness and capture sharing one finite
+deadline. It does not substitute a cached frame. Unit checks cover fresh bytes,
+capture rejection, no stream restart and an unresponsive capture deadline.
+Local tests alone do not establish cloud capture reliability; post-deployment
+results are recorded below when available.
+
+The first full native-capture browser suite exposed an additional delivery bug:
+the four-action 1v1 lane ended before its final audit, while the short lane
+completed. Larger native PNGs made the synchronous final evidence batch exceed
+the two-megabyte stream queue guard. The final PNGs and audit now wait for stream
+drain between writes, with cancellation and a five-second drain deadline. A
+deterministic slow-writer check covers large artifacts and cancellation, and
+the real hosted-browser scenario must pass without retries before release.
+
+The next full suite passed the 1v1 scenario but had one unrelated test-fixture
+failure before page creation (`apiRequestContext ... browser has been closed`).
+The raw trace was preserved privately. No UI assertion ran for that failed case;
+no production behavior was changed to mask it and test retries remain disabled.
+The subsequent complete gate passed **103 backend/harness and 67 browser checks**,
+including the no-capture-warning hosted check, 1v1, and credential opt-out.
+The hosted smoke additionally requires multiple live frames, PNG artifacts and
+completed episode statuses, not just a passing diagnostic grade.
 
 ## Compact result typography — 2026-09-30
 

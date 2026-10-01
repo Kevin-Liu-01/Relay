@@ -16,6 +16,13 @@ import { TASK_CATALOG, TASK_LABELS } from '../shared/task-catalog.mjs';
 import { startSpectator } from './spectator.mjs';
 export { TASK_LABELS };
 
+export async function flushStream(res, signal) {
+  signal.throwIfAborted();
+  if (res.writableNeedDrain)
+    await once(res, 'drain', { signal: AbortSignal.any([signal, AbortSignal.timeout(5000)]) });
+  signal.throwIfAborted();
+}
+
 export const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const LIMITS = {
   maxSteps: 40,
@@ -251,6 +258,7 @@ export function createHostedHandler({
       });
       // Preserve exact PNG/request artifacts for portable integrity verification. Live JPEGs
       // are only a viewing feed; they are not substituted for hashed policy observations.
+      await flushStream(res, abort.signal);
       for (const episode of run.data.episodes) {
         if (episode.status === 'queued') continue;
         const eid = episode.cell.episodeId;
@@ -260,9 +268,11 @@ export function createHostedHandler({
             path: `${eid}/${file}`,
             image: `data:image/png;base64,${readFileSync(join(run.dir, eid, file)).toString('base64')}`,
           });
+          await flushStream(res, abort.signal);
         }
       }
       emit('audit', audit);
+      await flushStream(res, abort.signal);
       emit('done', { id: run.id });
     } catch (e) {
       const message = run

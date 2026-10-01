@@ -1,5 +1,5 @@
-// A live screencast and an exact PNG share Chromium's compositor. Pause the
-// spectator around each fresh capture; never replace it with a cached JPEG.
+// Keep the viewing feed separate from fresh, bounded native PNG captures.
+// Do not stop/restart the screencast: that degraded frame delivery in cloud tests.
 const STREAM_OPTIONS = {
   format: 'jpeg',
   quality: 65,
@@ -8,13 +8,13 @@ const STREAM_OPTIONS = {
   everyNthFrame: 1,
 };
 
-async function command(session, method, params) {
+async function bounded(promise, timeout, phase) {
   let timer;
   try {
     return await Promise.race([
-      session.send(method, params),
+      promise,
       new Promise((_, reject) => {
-        timer = setTimeout(() => reject(Error(`Viewer ${method} timed out.`)), 1000);
+        timer = setTimeout(() => reject(Error(`Screenshot ${phase} timed out.`)), timeout);
       }),
     ]);
   } finally {
@@ -31,14 +31,30 @@ export async function startSpectator(page, emitFrame) {
     last = Date.now();
     emitFrame({ image: `data:image/jpeg;base64,${data}`, at: last });
   });
-  await command(session, 'Page.startScreencast', STREAM_OPTIONS);
+  await bounded(session.send('Page.startScreencast', STREAM_OPTIONS), 1000, 'stream startup');
   return async (options) => {
-    await command(session, 'Page.stopScreencast');
-    try {
-      return await page.screenshot(options);
-    } finally {
-      last = 0;
-      await command(session, 'Page.startScreencast', STREAM_OPTIONS);
-    }
+    if (options.type !== 'png' || !(options.timeout > 0))
+      throw Error('Bounded PNG capture required.');
+    const deadline = performance.now() + options.timeout;
+    const within = (promise, phase) =>
+      bounded(promise, Math.max(1, deadline - performance.now()), phase);
+    await within(session.send('Page.bringToFront'), 'activation');
+    await within(
+      page.evaluate(() => document.fonts.ready.then(() => true)),
+      'fonts',
+    );
+    const { data } = await within(
+      session.send('Page.captureScreenshot', {
+        format: 'png',
+        fromSurface: true,
+        captureBeyondViewport: false,
+        optimizeForSpeed: true,
+      }),
+      'native capture',
+    );
+    const png = Buffer.from(data, 'base64');
+    if (!png.subarray(0, 8).equals(Buffer.from('89504e470d0a1a0a', 'hex')))
+      throw Error('Native capture did not return a PNG.');
+    return png;
   };
 }

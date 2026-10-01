@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
+import { Writable } from 'node:stream';
 import { createHash } from 'node:crypto';
 import { TypeSafeRouter, actionCandidates } from '../runner/typesafe.mjs';
 import { DEFAULT_CONFIG, validateConfig } from '../runner/design.mjs';
-import { hostedConfig } from '../hosted/service.mjs';
+import { hostedConfig, flushStream } from '../hosted/service.mjs';
 import { createLiveServer } from '../hosted/local.mjs';
 import { testPricing } from './fixtures/pricing.mjs';
 
@@ -40,6 +41,35 @@ const config = (provider = 'ramp') => ({
   runSeconds: 90,
   episodeSeconds: 45,
   maxEstimatedUSD: 0.25,
+});
+
+test('hosted evidence delivery drains between large artifacts and honors cancellation', async () => {
+  let flushed = 0;
+  const res = new Writable({
+    highWaterMark: 1024,
+    write(chunk, encoding, done) {
+      setImmediate(() => {
+        flushed += chunk.length;
+        done();
+      });
+    },
+  });
+  const abort = new AbortController();
+  try {
+    for (let i = 0; i < 4; i++) {
+      res.write(Buffer.alloc(1024 * 1024));
+      await flushStream(res, abort.signal);
+      assert.equal(res.writableLength, 0);
+      assert.equal(flushed, (i + 1) * 1024 * 1024);
+    }
+    res.write(Buffer.alloc(2048));
+    const pending = flushStream(res, abort.signal);
+    abort.abort();
+    await assert.rejects(pending, { name: 'AbortError' });
+    await assert.rejects(flushStream(res, abort.signal), { name: 'AbortError' });
+  } finally {
+    res.destroy();
+  }
 });
 
 test('Jev candidates use disclosed controls and task quotes, not hidden state or task IDs', () => {

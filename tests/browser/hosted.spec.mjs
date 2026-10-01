@@ -243,6 +243,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     expect(stored).toContain('fake-jev-contract-test');
     expect(stored).toContain('initial.json');
     const parsed = JSON.parse(stored)[0];
+    expect(parsed.run.episodes[0].captureWarnings ?? []).toEqual([]);
     expect(parsed.events.filter((e) => e.event.replay).length).toBe(5);
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayCapture');
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('"replay"');

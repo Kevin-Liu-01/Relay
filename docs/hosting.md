@@ -120,10 +120,16 @@ Required pixel observations have an explicit 10-second deadline; a failure stops
 the episode, without substituting an older frame or a text interface. Text-mode
 setup does not capture a discarded initial PNG. Observer PNGs have a separate
 5-second deadline instead of inheriting the 2.5-second action deadline.
-The hosted live screencast pauses during each exact PNG capture and restarts
-afterwards, including failed captures. Each pause/resume command is bounded to
-one second. It never substitutes the last streamed JPEG for a new PNG. The two
-extra stream-control deadlines are separate from the screenshot deadline.
+Hosted capture activates the private page, waits for its fonts, and requests a
+fresh viewport PNG from Chromium's native capture API. These phases share the
+same total capture deadline. The live screencast stays active; it is never used
+as a cached replacement for a PNG. No caret-hiding stylesheet is injected into
+the app for capture. This differs from local Playwright capture and is bound to
+the release source; do not claim byte-identical rendering across those paths.
+Exact replay PNGs and the final audit are delivered sequentially with bounded
+backpressure waits (five seconds per drain), so the final evidence batch does not
+overflow the live stream's two-megabyte queue guard. A disconnected client still
+cancels delivery; no evidence is silently replaced or marked complete early.
 
 Observer PNG/replay failures record `capture_warning` in the hash-chained audit
 and `captureWarnings` in the episode. They do not abort a text policy or overwrite

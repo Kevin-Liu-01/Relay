@@ -82,6 +82,7 @@ const summary = {
   id: run?.id,
   completedStream: done,
   frames,
+  pngArtifacts: Object.keys(artifacts).length,
   auditIntegrity: audit?.integrity.status ?? null,
   status: run?.status ?? null,
   requests: run?.budget.requests ?? 0,
@@ -109,8 +110,11 @@ writeFileSync(
 console.log(JSON.stringify(summary, null, 2));
 if (
   !done ||
+  error ||
   audit?.integrity.status !== 'verified' ||
-  frames === 0 ||
-  summary.episodes?.some((e) => !e.success || e.captureWarnings.length)
+  frames < 2 ||
+  !Object.keys(artifacts).length ||
+  !summary.episodes?.length ||
+  summary.episodes.some((e) => e.status !== 'completed' || !e.success || e.captureWarnings.length)
 )
   process.exitCode = 1;
