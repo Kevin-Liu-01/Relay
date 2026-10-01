@@ -493,6 +493,14 @@ test('two hosted requests have isolated browser sessions and no shared history A
     expect(audits.every(Boolean)).toBe(true);
     expect(audits[0].run.id).not.toBe(audits[1].run.id);
     for (const [i, audit] of audits.entries()) {
+      let liveRun;
+      for (const item of streams[i]) {
+        if (item.type === 'run') liveRun = item.data;
+        if (item.type === 'event' && item.data.event.kind === 'action_started')
+          expect(
+            liveRun.episodes.find((e) => e.cell.episodeId === item.data.episodeId).inFlight,
+          ).toBe(false);
+      }
       expect(audit.run.config.models[0].rates).toEqual({ input: 0.15, output: 0.6 });
       expect(audit.run.catalog.pricing.source).toBe('https://docs.router.com/supported-models.md');
       expect(audit.run.catalog.pricing.hash).toMatch(/^[a-f0-9]{64}$/);

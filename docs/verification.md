@@ -29,6 +29,24 @@ are deterministic and fake-provider verification, not new model benchmark result
 No grader, reward or task fixture changed. The known intermittent hosted PNG
 capture limitation remains separate from the live JPEG feed.
 
+Production `f163c6d`: GPT-6 Luna completed the topic task through accessibility
+in four calls/actions, 35.163 seconds and $0.0035314 estimated with known usage.
+Run `d216230c-08a9-41de-9873-bc305e928878` delivered 18 ordered JPEG frames
+(1,042,618 base64-image bytes over 19.100 seconds), six pointer events, five UI
+snapshots including final state, two PNGs and a verified audit. The third step's
+observer PNG and the final PNG timed out. The strict smoke therefore exited
+nonzero despite task success: this is stream/cursor wiring evidence, **not** a
+clean PNG-capture or hosted pixel-policy reliability result. Private raw evidence
+is retained in `.runtime/hosted-smokes/`; no inference retry followed.
+
+Final review also reproduced stale live status: the worker did not publish
+`inFlight: false` until after executing the action and taking the next observation.
+It now publishes the response/usage update before `action_started`. The streamed
+ordering regression fails before that change and passes afterward. Production
+home/replay controls were checked interactively; Vercel reported Ready and a
+short post-deploy error-log scan returned no logs. This does not erase the two
+application-level capture warnings above.
+
 ## Catalog pricing, usable allowances and model queues — 2026-10-01
 
 Two deterministic failing regressions reproduced the report: the Router adapter

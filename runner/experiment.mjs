@@ -405,6 +405,9 @@ export class Experiment {
           e.inFlight = false;
         }
         record({ kind: 'response', step: i + 1, promptHash, response });
+        // Publish the end of inference before input starts. Waiting until the
+        // next observation leaves spectators showing "Deciding" over real actions.
+        this.persist();
         if (response.usage === null && c.provider !== 'reference')
           throw new RunStop(
             'usage_missing',
