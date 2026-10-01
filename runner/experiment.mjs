@@ -195,6 +195,20 @@ export class Experiment {
       );
       this.onRecord(cell.episodeId, { ...value, hash: traceHash });
     };
+    // Viewer evidence is not a policy observation. Record gaps without retrying
+    // actions/inference or substituting a stale frame into the model's input.
+    let operatorImageUnavailable = false;
+    const capture = async (kind, step, fn) => {
+      try {
+        return await fn();
+      } catch (err) {
+        const warning = { kind, step, error: this.safeError(err) };
+        (e.captureWarnings ??= []).push(warning);
+        record({ kind: 'capture_warning', capture: warning });
+        if (kind === 'operator_screenshot') operatorImageUnavailable = true;
+        return null;
+      }
+    };
     try {
       let { instruction, observation } = await env.reset({ taskId: cell.taskId, seed: cell.seed });
       e.instruction = instruction;
@@ -215,7 +229,10 @@ export class Experiment {
         const stepStart = performance.now();
         const obs = this.saveObservation(dir, i, observation);
         const captureStart = performance.now();
-        const operatorImage = cell.mode !== 'pixels' ? await env.screenshot() : null;
+        const operatorImage =
+          cell.mode !== 'pixels' && !operatorImageUnavailable
+            ? await capture('operator_screenshot', i + 1, () => env.screenshot())
+            : null;
         const operatorScreenshot = operatorImage
           ? `visual-${String(i).padStart(3, '0')}.png`
           : null;
@@ -225,7 +242,7 @@ export class Experiment {
           kind: 'observation',
           step: i + 1,
           observation: obs,
-          replay: await env.replaySnapshot(),
+          replay: await capture('replay_snapshot', i + 1, () => env.replaySnapshot()),
           operatorScreenshot,
           artifacts: {
             ...(obs.imageFile ? { [obs.imageFile]: obs.imageHash } : {}),
@@ -438,8 +455,11 @@ export class Experiment {
         try {
           e.evaluation = await env.evaluate();
           atomicJSON(join(dir, 'outcome.json'), await env.export());
-          const screenshot = await env.screenshot();
-          record({ kind: 'replay_final', replay: await env.replaySnapshot() });
+          const screenshot = await capture('final_screenshot', e.steps, () => env.screenshot());
+          record({
+            kind: 'replay_final',
+            replay: await capture('final_replay', e.steps, () => env.replaySnapshot()),
+          });
           if (screenshot) {
             writeFileSync(join(dir, 'final.png'), Buffer.from(screenshot, 'base64'));
             e.finalScreenshot = 'final.png';

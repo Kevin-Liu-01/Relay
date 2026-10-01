@@ -11,18 +11,26 @@ if (!key) throw Error('Load RAMP_ROUTER_API_KEY through a private environment fi
 const base = url.origin;
 const mode = process.argv[3] ?? 'a11y';
 const model = process.argv[4] ?? 'gpt-4o-mini';
-const approved = {
-  'gpt-4o-mini': { input: 0.15, output: 0.6 },
-  'gpt-5-nano': { input: 0.05, output: 0.4 },
-};
-if (!['a11y', 'json-ui', 'api'].includes(mode) || !approved[model])
-  throw Error('Choose a bounded smoke interface and an explicitly priced model.');
+if (!['a11y', 'json-ui', 'api', 'pixels'].includes(mode))
+  throw Error('Choose a supported interface.');
 const setup = await (await fetch(`${base}/api/relay?op=config`)).json();
+const catalogResponse = await fetch(`${base}/api/relay?op=models`, {
+  method: 'POST',
+  headers: { origin: base, 'content-type': 'application/json' },
+  body: JSON.stringify({ provider: 'ramp', key }),
+  signal: AbortSignal.timeout(20000),
+});
+if (!catalogResponse.ok) throw Error(`Catalog HTTP ${catalogResponse.status}; body withheld.`);
+const catalog = await catalogResponse.json();
+const selected = catalog.models.find((m) => m.id === model && m.rates);
+if (!selected) throw Error('The exact model must be available and priced in your catalog.');
+const task = process.argv[5] ?? 'channel-topic';
+if (!Object.hasOwn(setup.tasks, task)) throw Error('Unknown task.');
 const config = {
   ...setup.defaults,
   provider: 'ramp',
-  models: [{ id: model, rates: approved[model] }],
-  tasks: ['channel-topic'],
+  models: [{ id: model, rates: selected.rates }],
+  tasks: [task],
   interfaces: [mode],
   maxSteps: 8,
   maxRequests: 8,
@@ -89,6 +97,7 @@ const summary = {
     steps: e.steps,
     durationMs: e.durationMs,
     error: e.error ?? null,
+    captureWarnings: e.captureWarnings ?? [],
     provenance: e.appProvenance,
   })),
   error,
@@ -99,4 +108,10 @@ writeFileSync(
   { mode: 0o600 },
 );
 console.log(JSON.stringify(summary, null, 2));
-if (!done || audit?.integrity.status !== 'verified' || frames === 0) process.exitCode = 1;
+if (
+  !done ||
+  audit?.integrity.status !== 'verified' ||
+  frames === 0 ||
+  summary.episodes?.some((e) => !e.success || e.captureWarnings.length)
+)
+  process.exitCode = 1;

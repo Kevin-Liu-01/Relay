@@ -104,7 +104,22 @@ No shared model secret is deployed. `.env*` (except the example), `.runtime`, `.
 
 Before release: `npm run verify`, `npm run test:report`, `npm run evidence`, `npm run package`. After deployment, check the home page in a browser, public config, TLS and a bounded live run. A 200 response alone did not catch the initial wrong-entry-page bug.
 
-The optional `scripts/hosted-smoke.mjs` uses a private `RAMP_ROUTER_API_KEY` environment variable and accepts only the verified Relay production hosts. Its arguments are host, interface and explicitly priced smoke model. Each invocation caps eight calls and $0.10 estimated spend. It saves failures as well as successes under ignored `.runtime/hosted-smokes`; it is not a benchmark campaign.
+The optional `scripts/hosted-smoke.mjs` uses a private `RAMP_ROUTER_API_KEY` environment variable and accepts only the verified Relay production hosts. Its arguments are host, interface, exact model ID and optional task ID (default `channel-topic`). It checks the authenticated account catalog and published server pricing before launch. Each invocation caps eight calls and $0.10 estimated spend. It saves failures as well as successes under ignored `.runtime/hosted-smokes`; it is not a benchmark campaign. A missing final audit, no live frames, failed task or capture warning produces a nonzero exit. It never retries inference or substitutes a model.
+
+### Capture failures
+
+Required pixel observations have an explicit 10-second deadline; a failure stops
+the episode, without substituting an older frame or a text interface. Text-mode
+setup does not capture a discarded initial PNG. Observer PNGs have a separate
+5-second deadline instead of inheriting the 2.5-second action deadline.
+
+Observer PNG/replay failures record `capture_warning` in the hash-chained audit
+and `captureWarnings` in the episode. They do not abort a text policy or overwrite
+a valid final-state grade. After the first failed per-step observer PNG, later
+per-step PNG attempts stop; one final capture is still attempted. State replay and
+the live JPEG feed are separate. The result discloses incomplete replay imagery;
+audit integrity means consistency, not complete capture. No stale observer image
+is inserted into the model's input, and actions/provider calls are not retried.
 
 ## What a download proves
 

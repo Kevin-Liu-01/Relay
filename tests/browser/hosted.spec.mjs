@@ -107,8 +107,15 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await expect(page.getByText('SLACK / COMPUTER USE', { exact: true })).toHaveCount(0);
     await expect(page.getByRole('heading', { name: 'Waiting for a decision' })).toHaveCSS(
       'font-size',
-      '15px',
+      '13px',
     );
+    expect(
+      (await page.getByRole('region', { name: 'Current action', exact: true }).boundingBox())
+        .height,
+    ).toBeLessThan(65);
+    expect(
+      (await page.locator('.decision-panel .model-heading').boundingBox()).height,
+    ).toBeLessThan(45);
     await expectRelayBrand(page, request);
     await page.evaluate(() => document.fonts.ready);
     const loadedCamberWeights = await page.evaluate(() =>
@@ -156,10 +163,11 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await expect(page.getByText('Action probabilities', { exact: true })).toBeVisible({
       timeout: 20000,
     });
-    await expect(page.getByText('Task passed', { exact: true })).toBeVisible({ timeout: 20000 });
-    await expect(
-      page.getByRole('region', { name: 'Current action', exact: true }).getByRole('heading'),
-    ).toHaveCSS('font-size', '20px');
+    await expect(page.getByRole('heading', { name: 'Task passed', exact: true })).toBeVisible({
+      timeout: 20000,
+    });
+    await expect(page.getByRole('region', { name: 'Current action', exact: true })).toHaveCount(0);
+    await expect(page.locator('.workspace-top [role="status"]')).toHaveText('Task passed');
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeVisible();
     for (const size of [
       { width: 1920, height: 1080 },
@@ -255,7 +263,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await page.getByRole('button', { name: /History/ }).click();
     await expect(page.locator('.history-row')).toHaveCount(1);
     await page.locator('.history-main').click();
-    await expect(page.getByText('Task passed', { exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Task passed', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Compare', exact: true }).click();
     await expect(page.getByRole('dialog')).toContainText('Candidate selection');
     await page.keyboard.press('Escape');

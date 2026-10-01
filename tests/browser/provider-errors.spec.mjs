@@ -80,6 +80,8 @@ test('Router 403 is blocked, not task failure or verified success; unknown usage
     await expect(page.getByText('WORKSPACE VERIFIED', { exact: true })).toHaveCount(0);
     await expect(result).toContainText('No agent actions were executed');
     await expect(result).not.toContainText('Task incomplete');
+    await expect(page.getByRole('region', { name: 'Current action', exact: true })).toHaveCount(0);
+    await expect(page.locator('.workspace-top [role="status"]')).toHaveText('Provider unavailable');
     await expectCompactResult(page, result, 'Provider unavailable');
     await expect(result.getByRole('button', { name: 'Choose another model' })).toBeInViewport();
     await expect(page.locator('footer')).toContainText('Unknown');

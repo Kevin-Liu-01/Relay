@@ -1,7 +1,7 @@
 /* Motion explains state; no simulated progress or decorative continuous motion. */
 .action-spotlight {
-  margin: 16px 0;
-  padding: 19px;
+  margin: 4px 0 16px;
+  padding: 11px 12px;
   border: 1px solid #ded5e4;
   border-radius: 12px;
   background: #f5f0f8;
@@ -18,13 +18,14 @@
 .action-headline {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 15px 0 10px;
+  gap: 8px;
+  margin: 0;
   color: #5d3b70;
 }
 .action-headline h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.25;
   overflow-wrap: anywhere;
   letter-spacing: var(--relay-heading-tracking);
@@ -33,7 +34,7 @@
   animation: result-arrive 180ms ease-out both;
 }
 .action-spotlight .action-headline h3.is-waiting {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
 }
@@ -48,6 +49,38 @@
 .action-feedback {
   color: #766c7d;
   font-size: 11px;
+}
+.decision-panel .model-heading {
+  padding: 0 0 12px;
+  gap: 9px;
+  align-items: center;
+}
+.decision-panel .model-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+.decision-panel .model-heading h2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+.decision-panel .model-heading .latency {
+  flex: none;
+  font-size: 10px;
+}
+.decision-panel .actions {
+  flex: 0 0 auto;
+  max-height: 290px;
+  min-height: 0;
+}
+.decision-panel .panel-bottom {
+  margin-top: 12px;
+}
+.decision-panel .action-placeholder {
+  padding: 14px 0;
+}
+.action-headline > svg {
+  flex-shrink: 0;
 }
 .is-deciding .action-headline > svg {
   animation: decision-turn 1.3s linear infinite;

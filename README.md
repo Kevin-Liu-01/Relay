@@ -157,7 +157,7 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **93 backend checks and 67 browser checks**. Historical
+The expanded suite has **98 backend checks and 67 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 New workflow evidence is scripted, with no paid inference. No RL training or GPU

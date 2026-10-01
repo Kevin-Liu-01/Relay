@@ -23,7 +23,9 @@ export class InterfaceEnvironment {
       this.base.session = await this.base.control('/sessions', 'POST', spec);
       if (this.operatorVisuals) await this.base.openPage();
     } else {
-      await this.base.reset(spec);
+      // This gateway supplies its own observation; do not take a discarded PNG
+      // during text/API setup or capture the first pixel observation twice.
+      await this.base.reset(spec, { observe: false });
       this.base.page.setDefaultTimeout(2500);
     }
     const initial = await this.actor('/api/state');
@@ -100,7 +102,7 @@ export class InterfaceEnvironment {
     const page = this.base.page;
     if (this.mode === 'pixels')
       return {
-        image: (await page.screenshot({ type: 'png' })).toString('base64'),
+        image: (await page.screenshot({ type: 'png', timeout: 10000 })).toString('base64'),
         viewport: this.base.options.viewport,
       };
     const ui = await page.evaluate(() => {
@@ -309,7 +311,10 @@ export class InterfaceEnvironment {
           .click();
       }
     }
-    return this.base.page ? (await this.base.page.screenshot()).toString('base64') : null;
+    // Observer captures have their own finite deadline, not the 2.5s action timeout.
+    return this.base.page
+      ? (await this.base.page.screenshot({ type: 'png', timeout: 5000 })).toString('base64')
+      : null;
   }
   async close() {
     await this.base.close();

@@ -45,12 +45,12 @@ export class RelayEnvironment {
     if (!r.ok) throw Error(d.error);
     return d;
   }
-  async reset({ taskId = 'thread-reply', seed = 42 } = {}) {
+  async reset({ taskId = 'thread-reply', seed = 42 } = {}, { observe = true } = {}) {
     await this.closeEpisode();
     this.session = await this.control('/sessions', 'POST', { taskId, seed });
     await this.openPage();
     return {
-      observation: await this.observe(),
+      observation: observe ? await this.observe() : null,
       instruction: this.session.task.instruction,
       info: { taskId, seed, maxSteps: this.options.maxSteps },
     };
@@ -78,7 +78,9 @@ export class RelayEnvironment {
     await this.options.onPage?.(this.page);
   }
   async observe() {
-    const screenshot = (await this.page.screenshot({ type: 'png' })).toString('base64');
+    const screenshot = (await this.page.screenshot({ type: 'png', timeout: 10000 })).toString(
+      'base64',
+    );
     return {
       screenshot,
       mimeType: 'image/png',

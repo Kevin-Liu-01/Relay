@@ -63,26 +63,8 @@ export function ActionSpotlight({ events = [], busy = false, selected, episode }
       aria-label="Current action"
       aria-live="polite"
     >
-      <div className="action-eyebrow">
-        <span>
-          {blocked
-            ? 'RUN BLOCKED'
-            : deciding
-              ? 'DECIDING'
-              : pending
-                ? 'ACTING NOW'
-                : last
-                  ? `ACTION ${String(last.step).padStart(2, '0')}`
-                  : 'NEXT MOVE'}
-        </span>
-        <span>
-          {last?.response?.latencyMs != null
-            ? `${(last.response.latencyMs / 1000).toFixed(2)}s`
-            : ''}
-        </span>
-      </div>
       <div className="action-headline" key={`${deciding}-${pending ? start?.step : last?.step}`}>
-        <Icon size={25} />
+        <Icon size={17} />
         <h3 className={!deciding && !action ? 'is-waiting' : undefined}>
           {blocked
             ? outcome.title
@@ -94,17 +76,6 @@ export function ActionSpotlight({ events = [], busy = false, selected, episode }
       {(action?.text || action?.topic || last?.error) && (
         <p>{last?.error ?? action.text ?? action.topic}</p>
       )}
-      <div className="action-feedback">
-        {blocked
-          ? 'Stopped · no automatic retry'
-          : last?.error
-            ? 'Action rejected · recorded in audit'
-            : pending
-              ? 'Applying to workspace…'
-              : last
-                ? 'Action recorded'
-                : 'Watch each decision land in Slack.'}
-      </div>
     </section>
   );
 }
@@ -190,6 +161,15 @@ export function ResultCard({ episode, onReplay, onChooseModel }) {
         <p className="hint">
           Usage and cost are unknown. The local budget allowance is not a provider charge.
         </p>
+      )}
+      {!!episode.captureWarnings?.length && (
+        <details className="capture-note">
+          <summary>Some replay images are unavailable</summary>
+          <p>
+            Workspace checks are unchanged. Capture failures are recorded in Audit; missing images
+            were not substituted into model inputs.
+          </p>
+        </details>
       )}
       {onReplay && (
         <button className="full-width replay-cta" onClick={onReplay}>

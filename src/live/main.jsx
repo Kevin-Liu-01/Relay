@@ -432,8 +432,8 @@ function App() {
     ? episode?.inFlight
       ? 'Deciding'
       : 'Running'
-    : run?.status === 'completed'
-      ? 'Complete'
+    : episode && episodeOutcome(episode).kind !== 'pending'
+      ? episodeOutcome(episode).title
       : run
         ? run.status
         : demo
@@ -662,28 +662,21 @@ function App() {
           </div>
         </section>
         <aside className="decision-panel" aria-label="Agent decisions">
-          <div className="panel-top">
-            <span className="mini-label">{decision ? 'SYSTEM ONE' : 'POLICY'}</span>
-            <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
-          </div>
           <div className="model-heading">
-            <ModelMark id={episode?.cell.model.id ?? model} size={27} />
+            <ModelMark id={episode?.cell.model.id ?? model} size={20} />
             <div>
               <h2>{(episode?.cell.model.id ?? model) || 'Your model'}</h2>
-              <span>
-                {run?.config.provider === 'typesafe' || (!run && provider === 'typesafe')
-                  ? 'Selects an offered action'
-                  : 'Generates an action'}
-              </span>
             </div>
+            <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
           </div>
-          <div className="panel-divider" />
-          <ActionSpotlight
-            events={events}
-            busy={busy}
-            selected={selectedStep == null ? null : activeStep}
-            episode={episode}
-          />
+          {((!episode?.evaluation && !episode?.error) || busy) && (
+            <ActionSpotlight
+              events={events}
+              busy={busy}
+              selected={selectedStep == null ? null : activeStep}
+              episode={episode}
+            />
+          )}
           {decision ? (
             <>
               <div className="section-label">
@@ -721,7 +714,7 @@ function App() {
                 Probabilities over this offered menu. Not a measured chance of task success.
               </p>
             </>
-          ) : (
+          ) : actions.length || (!episode?.evaluation && !episode?.error) || busy ? (
             <>
               <div className="section-label">
                 <h3>Actions</h3>
@@ -764,7 +757,7 @@ function App() {
                 )}
               </div>
             </>
-          )}
+          ) : null}
           {busy && (
             <div className="thinking" role="status">
               <span className="state-dot running" />

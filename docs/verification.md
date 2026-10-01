@@ -1,5 +1,35 @@
 # Verification and evidence
 
+## Screenshot failure isolation and compact sidebar — 2026-10-01
+
+An authenticated production reproduction with the operator's existing Ramp key
+confirmed the reported failure: `gpt-6-luna` / accessibility / `channel-topic`,
+seed 42, stopped after two actions on a 2.5-second `page.screenshot` timeout.
+The run was `d51ac958-ca89-49d8-b94a-39882528b081`, with two provider requests,
+$0.0010997 estimated spend and a verified event chain. This is a failed development
+smoke, not a model task failure or reliability estimate. Its private raw evidence
+remains under ignored `.runtime/hosted-smokes/`; no key is published.
+
+The observer capture inherited the short action deadline and its exception escaped
+into the model loop. The final screenshot could also overwrite an already valid
+grade. New failure-injection regressions failed before the fix. The runner now
+separates optional observer captures from required observations, records evidence
+gaps, avoids a discarded setup PNG, and uses explicit capture deadlines. Pixel
+observation failures still stop the policy. See [the capture contract](hosting.md#capture-failures).
+
+The sidebar now has one compact model row and a small live-action strip. Terminal
+results replace that strip rather than duplicating it, empty failed-action lists
+are omitted, and the top bar reports the episode outcome rather than calling
+every finished schedule “Complete.” Desktop/mobile browser checks cover the
+compact idle geometry, result title fit, and terminal status consistency. Fake
+transport screenshots remain rendering evidence, not real model results.
+
+The release gate passes **98 backend/harness checks and 67 browser checks**.
+New regressions inject initial, mid-run and final observer failures, verify
+continued task success and visible audit gaps, and separately verify fatal pixel
+observation failures and explicit deadlines. Post-deployment real-model results
+are recorded separately below when available.
+
 ## Compact result typography — 2026-09-30
 
 Result titles now stay on one line, use Camber semibold (600) at 18px, and

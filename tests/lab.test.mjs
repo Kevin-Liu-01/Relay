@@ -525,6 +525,65 @@ const fakeRouter = (respond) => ({
   models: async () => ({ at: 'test', hash: 'test-catalog', models: [{ id: 'test-model' }] }),
   respond,
 });
+for (const failure of ['initial', 'during-run', 'final']) {
+  test(`operator screenshot timeout ${failure} preserves task execution and records the evidence gap`, () =>
+    fixture(async ({ dir, environment }) => {
+      let screenshots = 0;
+      const run = new Experiment({
+        config: { ...DEFAULT_CONFIG, tasks: ['channel-topic'], interfaces: ['a11y'] },
+        root: ROOT,
+        runRoot: join(dir, 'runs'),
+        operatorVisuals: true,
+        environment: {
+          ...environment,
+          onPage: async (page) => {
+            const screenshot = page.screenshot.bind(page);
+            page.screenshot = async (...args) => {
+              screenshots++;
+              if (screenshots >= { initial: 1, 'during-run': 2, final: 5 }[failure]) {
+                const error = new Error('page.screenshot: Timeout 2500ms exceeded.');
+                error.name = 'TimeoutError';
+                throw error;
+              }
+              return screenshot(...args);
+            };
+          },
+        },
+      });
+      const result = await run.run();
+      const e = result.episodes[0];
+      assert.equal(e.status, 'completed', e.error);
+      assert.equal(e.evaluation.success, true);
+      assert.equal(e.steps, 4);
+      assert.ok(e.captureWarnings.length > 0);
+      const audit = buildAudit({ runRoot: join(dir, 'runs'), id: run.id });
+      assert.equal(audit.integrity.status, 'verified');
+      assert.ok(audit.episodes[0].trace.some((r) => r.kind === 'capture_warning'));
+      assert.ok(audit.episodes[0].trace.some((r) => r.kind === 'replay_final' && r.replay));
+    }));
+}
+test('pixel policy screenshot failure remains fatal rather than reusing a stale observation', async () => {
+  const env = new InterfaceEnvironment({ mode: 'pixels', controlToken: 'test-control' });
+  env.base.page = {
+    screenshot: async () => {
+      throw new Error('capture failed');
+    },
+  };
+  await assert.rejects(env.observe(), /capture failed/);
+});
+test('screenshot deadlines do not inherit the short action timeout', async () => {
+  const env = new InterfaceEnvironment({ mode: 'pixels', controlToken: 'test-control' });
+  const deadlines = [];
+  env.base.page = {
+    screenshot: async (options) => {
+      deadlines.push(options.timeout);
+      return Buffer.from('screenshot-test');
+    },
+  };
+  await env.observe();
+  await env.screenshot();
+  assert.deepEqual(deadlines, [10000, 5000]);
+});
 test('paired factorial schedule is complete, unique, reproducible and shuffled', () => {
   const c = liveConfig({
     tasks: ['thread-reply', 'edit-message'],
