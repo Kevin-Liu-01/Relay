@@ -6,6 +6,7 @@ import { TypeSafeRouter, actionCandidates } from '../runner/typesafe.mjs';
 import { DEFAULT_CONFIG, validateConfig } from '../runner/design.mjs';
 import { hostedConfig } from '../hosted/service.mjs';
 import { createLiveServer } from '../hosted/local.mjs';
+import { testPricing } from './fixtures/pricing.mjs';
 
 const observation = {
   interface: 'json-ui',
@@ -162,6 +163,7 @@ test('hosted limits reject free public compute, arbitrary endpoints, large matri
 test('public HTTP boundary requires same origin, correct provider and bounded JSON before transport', async () => {
   let calls = 0;
   const server = createLiveServer({
+    pricingResolver: testPricing,
     routerFactory: () => ({
       models: async () => {
         calls++;

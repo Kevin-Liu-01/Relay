@@ -8,7 +8,7 @@ The reference example is a deterministic script, explicitly not model inference.
 Two older real GPT-4o mini recordings retain both a success and a failure.
 
 For a live match, select the task and text interface on the main screen, then
-**1v1**. Connect two account-discovered models, confirm their prices, and choose
+**1v1**. Saved connections and published prices load automatically. Pick two models and choose
 **Start 1v1**. A and B can use the same provider/key or separate Ramp/TypeSafe keys.
 The main Run settings apply to both; the total dollar cap is divided equally.
 Each side has a fresh workspace, action feed, outcome checks, replay and download.

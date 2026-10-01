@@ -972,7 +972,7 @@ details pre {
   .control-bar > .nav-spacer {
     display: none;
   }
-  .control-bar > .primary {
+  .control-bar > .run-actions {
     margin-left: auto;
   }
   .arena {

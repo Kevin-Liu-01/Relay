@@ -1,0 +1,274 @@
+{
+  "source": "https://docs.router.com/supported-models.md",
+  "at": "2026-09-30T23:56:32.117Z",
+  "rates": {
+    "sonnet-5-5": {
+      "input": 2,
+      "output": 10
+    },
+    "sonnet-5": {
+      "input": 2,
+      "output": 10
+    },
+    "sonnet-4-6": {
+      "input": 3,
+      "output": 15
+    },
+    "sonnet-4-5": {
+      "input": 3,
+      "output": 15
+    },
+    "opus-5-5": {
+      "input": 4,
+      "output": 20
+    },
+    "opus-5": {
+      "input": 5,
+      "output": 25
+    },
+    "opus-4-8": {
+      "input": 5,
+      "output": 25
+    },
+    "opus-4-7": {
+      "input": 5,
+      "output": 25
+    },
+    "opus-4-6": {
+      "input": 5,
+      "output": 25
+    },
+    "fable-5-1": {
+      "input": 10,
+      "output": 50
+    },
+    "fable-5": {
+      "input": 10,
+      "output": 50
+    },
+    "haiku-4-5": {
+      "input": 1,
+      "output": 5
+    },
+    "deepseek-ai/DeepSeek-V4.1-Flash": {
+      "input": 0.3,
+      "output": 1.2
+    },
+    "zai-org/GLM-5.3-Flash": {
+      "input": 0.15,
+      "output": 0.5
+    },
+    "deepseek-ai/DeepSeek-V4-Pro-0813": {
+      "input": 1.32,
+      "output": 3.96
+    },
+    "moonshotai/Kimi-K3": {
+      "input": 3,
+      "output": 15
+    },
+    "zai-org/GLM-5.2-Fast": {
+      "input": 2.1,
+      "output": 6.6
+    },
+    "deepseek-ai/DeepSeek-V4-Flash-0731": {
+      "input": 0.13,
+      "output": 0.26
+    },
+    "zai-org/GLM-5.2": {
+      "input": 1.4,
+      "output": 4.4
+    },
+    "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B": {
+      "input": 0.6,
+      "output": 2.4
+    },
+    "openai/gpt-oss-120b": {
+      "input": 0.1,
+      "output": 0.5
+    },
+    "deepseek-v4p1-flash": {
+      "input": 0.22,
+      "output": 0.66
+    },
+    "deepseek-v4-flash": {
+      "input": 0.14,
+      "output": 0.28
+    },
+    "glm-5p3": {
+      "input": 1.4,
+      "output": 4.4
+    },
+    "glm-5p3-flash": {
+      "input": 0.15,
+      "output": 0.5
+    },
+    "glm-5p2-fast": {
+      "input": 2.1,
+      "output": 6.6
+    },
+    "nemotron-lightning-3p5-30b-a3b": {
+      "input": 0.05,
+      "output": 0.2
+    },
+    "nemotron-3-ultra-nvfp4": {
+      "input": 0.6,
+      "output": 2.4
+    },
+    "qwen3p8-max": {
+      "input": 2,
+      "output": 6
+    },
+    "kimi-k3": {
+      "input": 3,
+      "output": 15
+    },
+    "kimi-k3-fast": {
+      "input": 4.5,
+      "output": 22.5
+    },
+    "minimax-m3": {
+      "input": 0.3,
+      "output": 1.2
+    },
+    "gpt-oss-120b": {
+      "input": 0.15,
+      "output": 0.6
+    },
+    "gpt-6-luna": {
+      "input": 0.1,
+      "output": 0.5
+    },
+    "gpt-6-sol": {
+      "input": 2,
+      "output": 10
+    },
+    "gpt-6-astra": {
+      "input": 10,
+      "output": 50
+    },
+    "gpt-5.6-luna": {
+      "input": 0.2,
+      "output": 1.2
+    },
+    "gpt-5.6-terra": {
+      "input": 2,
+      "output": 12
+    },
+    "gpt-5.6-sol": {
+      "input": 4,
+      "output": 20
+    },
+    "gpt-5.5-pro": {
+      "input": 30,
+      "output": 180
+    },
+    "gpt-5.5": {
+      "input": 5,
+      "output": 30
+    },
+    "gpt-5.4-mini": {
+      "input": 0.75,
+      "output": 4.5
+    },
+    "gpt-5.4-nano": {
+      "input": 0.2,
+      "output": 1.25
+    },
+    "gpt-5.4": {
+      "input": 2.5,
+      "output": 15
+    },
+    "gpt-5.4-pro": {
+      "input": 30,
+      "output": 180
+    },
+    "gpt-5.3-codex": {
+      "input": 1.75,
+      "output": 14
+    },
+    "gpt-5.2-pro": {
+      "input": 21,
+      "output": 168
+    },
+    "gpt-5.2": {
+      "input": 1.75,
+      "output": 14
+    },
+    "gpt-5.1": {
+      "input": 1.25,
+      "output": 10
+    },
+    "gpt-5-pro": {
+      "input": 15,
+      "output": 120
+    },
+    "gpt-5-nano": {
+      "input": 0.05,
+      "output": 0.4
+    },
+    "gpt-5-mini": {
+      "input": 0.25,
+      "output": 2
+    },
+    "gpt-5": {
+      "input": 1.25,
+      "output": 10
+    },
+    "o3-pro": {
+      "input": 20,
+      "output": 80
+    },
+    "o3": {
+      "input": 2,
+      "output": 8
+    },
+    "gpt-4.1-mini": {
+      "input": 0.4,
+      "output": 1.6
+    },
+    "gpt-4.1": {
+      "input": 2,
+      "output": 8
+    },
+    "gpt-4o-mini": {
+      "input": 0.15,
+      "output": 0.6
+    },
+    "gpt-4o": {
+      "input": 2.5,
+      "output": 10
+    },
+    "grok-4.7": {
+      "input": 2,
+      "output": 6
+    },
+    "grok-4.6": {
+      "input": 2,
+      "output": 6
+    },
+    "grok-4.5": {
+      "input": 2,
+      "output": 6
+    },
+    "grok-4.3": {
+      "input": 1.25,
+      "output": 2.5
+    },
+    "grok-build-0.1": {
+      "input": 1,
+      "output": 2
+    },
+    "grok-4.20-0309-reasoning": {
+      "input": 1.25,
+      "output": 2.5
+    },
+    "grok-4.20-0309-non-reasoning": {
+      "input": 1.25,
+      "output": 2.5
+    },
+    "grok-4.20-multi-agent-0309": {
+      "input": 1.25,
+      "output": 2.5
+    }
+  }
+}

@@ -1,5 +1,25 @@
 # Verification and evidence
 
+## One-click Live setup — 2026-09-30
+
+Published prices and saved connections now load automatically across solo,
+Compare and 1v1. The manual pricing form is gone. Run/Start respond immediately,
+remain single-flight under double clicks, expose loading/cancellation states and
+keep Stop separate. Startup no longer labels the reference screenshot as live.
+See [the interaction contract](interface-controls.md) for pricing provenance,
+bounded fallback, key-scoped cache, opt-out races and reduced-motion behavior.
+
+All **71 backend/harness and 39 browser checks** pass. New cases cover exact-ID
+pricing, expiry, metadata deduplication, server replacement of manipulated client
+prices, debounced pastes, shared lanes, opt-out during debounce, double-click
+launches and cancellation before browser allocation. These use fake transports,
+not paid model inference. Public pricing parsers were also checked against the
+current provider documents (67 Ramp entries and three documented Jev IDs/aliases).
+
+The UI was inspected interactively with a local fake provider. The new
+`relay-one-click-arena.png` and `relay-starting.png` images show setup/pending
+states, not model performance. Existing real-model recordings are unchanged.
+
 ## Custom icon menus — 2026-09-30
 
 Relay Live now uses styled, icon-led menus across its run controls, settings,

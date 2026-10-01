@@ -31,6 +31,8 @@ claiming “done” does not make a task pass—the final workspace state does.
 **[Try Relay Live →](https://relay.kevinliu.studio)** Bring a **TypeSafe key for Jev**
 or a **Ramp Router key**. Choose a model and task, then watch its real browser.
 No GPU setup. Keys are kept out of saved history; runs stay in your browser.
+Paste a key once: Relay connects automatically, loads published pricing, and
+reuses the connection for solo runs and both 1v1 lanes. No pricing form.
 [Privacy, budgets and hosting limits →](docs/hosting.md)
 
 **No key? Open Replays.** Play a recorded run inside the actual Slack interface,

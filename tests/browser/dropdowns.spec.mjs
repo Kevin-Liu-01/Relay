@@ -4,6 +4,10 @@ import { createLiveServer } from '../../hosted/local.mjs';
 
 async function preview(run) {
   const server = createLiveServer({
+    pricingResolver: async (_provider, catalog) => ({
+      ...catalog,
+      models: catalog.models.map((m) => ({ ...m, rates: { input: 0.1, output: 0.5 } })),
+    }),
     routerFactory: (provider) => ({
       models: async () => ({
         models:

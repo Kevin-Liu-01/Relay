@@ -532,3 +532,42 @@ button:focus-visible {
   transition: none;
   transform: none;
 }
+/* Launch stays in place while Stop appears beside it; a double click cannot cancel. */
+.run-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.run-trigger {
+  min-width: 112px;
+}
+.run-trigger[aria-busy='true'] {
+  opacity: 1;
+  cursor: progress;
+}
+.busy-spinner {
+  animation: relay-spin 800ms linear infinite;
+}
+.model-price {
+  display: block;
+  color: var(--muted, #777180);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.frame-unavailable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+@keyframes relay-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .busy-spinner {
+    animation: none;
+  }
+}

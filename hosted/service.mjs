@@ -9,6 +9,7 @@ import { Experiment } from '../runner/experiment.mjs';
 import { DEFAULT_CONFIG, validateConfig } from '../runner/design.mjs';
 import { RampRouter } from '../runner/router.mjs';
 import { TypeSafeRouter } from '../runner/typesafe.mjs';
+import { createPricingResolver, applyCatalogRates } from './pricing.mjs';
 import { buildAudit } from '../runner/audit.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
 
@@ -99,6 +100,7 @@ export function checkOrigin(req) {
 export function createHostedHandler({
   root = ROOT,
   routerFactory = routerFor,
+  pricingResolver = createPricingResolver(),
   launchOptions = async () => ({}),
 } = {}) {
   let active = 0;
@@ -141,7 +143,8 @@ export function createHostedHandler({
       )
         throw Error('Enter your provider API key.');
       router = routerFactory(body.provider, body.key);
-      if (op === 'models') return json(res, 200, await router.models());
+      if (op === 'models')
+        return json(res, 200, await pricingResolver(body.provider, await router.models()));
       if (body.config?.provider !== body.provider) throw Error('Provider/config mismatch.');
       body.config = hostedConfig(body.config);
       if (active >= 2)
@@ -179,10 +182,13 @@ export function createHostedHandler({
     };
     try {
       // Validate credentials before allocating the browser, even on cold starts.
-      const catalog = await router.models({ signal: abort.signal, timeoutMs: 15000 });
-      for (const m of body.config.models)
-        if (!catalog.models.some((c) => c.id === m.id))
-          throw Error('Selected model is not in your account catalog.');
+      const catalog = await pricingResolver(
+        body.provider,
+        await router.models({ signal: abort.signal, timeoutMs: 15000 }),
+      );
+      // The server re-resolves rates; the browser cannot lower its own budget accounting.
+      body.config = hostedConfig(applyCatalogRates(body.config, catalog));
+      if (abort.signal.aborted) return;
       router.models = async () => catalog;
       res.writeHead(200, {
         'content-type': 'application/x-ndjson',

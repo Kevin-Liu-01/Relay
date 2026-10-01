@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "session": {
-    "id": "65fb4d9b-fe54-4e88-93d2-b5368c3521e0",
+    "id": "4b3bfffb-d845-431f-9a34-f1f55936464c",
     "taskId": "handoff-dm",
     "seed": 43,
     "mode": "evaluation",
-    "createdAt": 1790810567742,
-    "expiresAt": 1790896967742
+    "createdAt": 1790813448722,
+    "expiresAt": 1790899848722
   },
   "task": {
     "id": "handoff-dm",
@@ -694,7 +694,7 @@
     "finalHash": "b2fe426a2a08dac0ff47612fa12780f4afe3bd3df8313a74e8f639824ff8a642",
     "graderVersion": "state-contract-v1",
     "revision": 1,
-    "sessionId": "65fb4d9b-fe54-4e88-93d2-b5368c3521e0"
+    "sessionId": "4b3bfffb-d845-431f-9a34-f1f55936464c"
   },
   "events": [
     {
@@ -705,7 +705,7 @@
       "key": "Enter",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.896Z"
+      "at": "2026-10-01T00:10:48.816Z"
     },
     {
       "seq": 2,
@@ -715,7 +715,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.897Z"
+      "at": "2026-10-01T00:10:48.817Z"
     },
     {
       "seq": 3,
@@ -725,7 +725,7 @@
       "key": "Ctrl+Control",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.941Z"
+      "at": "2026-10-01T00:10:48.851Z"
     },
     {
       "seq": 4,
@@ -735,7 +735,7 @@
       "key": "Ctrl+k",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.943Z"
+      "at": "2026-10-01T00:10:48.852Z"
     },
     {
       "seq": 5,
@@ -745,7 +745,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.962Z"
+      "at": "2026-10-01T00:10:48.865Z"
     },
     {
       "seq": 6,
@@ -755,7 +755,7 @@
       "key": "Enter",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.964Z"
+      "at": "2026-10-01T00:10:48.867Z"
     },
     {
       "seq": 7,
@@ -768,7 +768,7 @@
       },
       "beforeHash": "1180c0288f01444f7d9698c104efcdd3b6b044a653f44f67db428e9fbbaa6056",
       "afterHash": "b2fe426a2a08dac0ff47612fa12780f4afe3bd3df8313a74e8f639824ff8a642",
-      "at": "2026-09-30T23:22:47.980Z"
+      "at": "2026-10-01T00:10:48.878Z"
     },
     {
       "seq": 8,
@@ -778,7 +778,7 @@
       "key": "Enter",
       "x": null,
       "y": null,
-      "at": "2026-09-30T23:22:47.982Z"
+      "at": "2026-10-01T00:10:48.879Z"
     }
   ],
   "evidenceKind": "scripted-browser-reference"

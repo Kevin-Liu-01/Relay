@@ -1,5 +1,51 @@
 # Relay menus
 
+## One-click connections and launches
+
+Pasting a valid-looking key connects after 600ms without further typing. The
+Connect button can submit immediately; both routes share the same in-flight
+request. Only a successful account discovery saves the key, respecting the latest
+Remember preference even if it changes during the debounce. Discovery never starts
+inference. A failed request is not automatically retried.
+
+`connections.js` shares account metadata across solo, Compare and both 1v1 lanes
+for five minutes, scoped to the exact provider/key pair and held only in tab
+memory. Switching providers reconnects a saved key automatically. Both arena
+lanes start ready from the current connection; an empty sibling inherits a newly
+connected key of the same provider. Distinct keys remain distinct. Forget cancels
+pending discovery and invalidates all cached keys for that provider. Late replies
+cannot resurrect a forgotten or edited connection.
+
+`hosted/pricing.mjs` joins account-discovered IDs to exact IDs in the current
+[Ramp model table](https://docs.router.com/supported-models) or
+[TypeSafe model documentation](https://docs.typesafe.ai/models). Public docs are
+fetched without credentials, deduplicated and cached for five minutes. A checked-in
+2026-09-30 snapshot covers temporary documentation outages for at most seven days;
+expired, unknown and undocumented provider/tier aliases are unavailable, never
+assigned a guessed or zero price. Jev's documented aliases resolve through the
+documented version. Rates are USD per million tokens, with source, date and hash
+preserved in the run catalog. Costs use published base rates, not account invoices;
+special tiers, caching and contractual discounts can differ. The server binds
+freshly resolved rates before browser allocation; client-edited rates cannot lower
+budget accounting. The local CLI/Lab retains its explicit experiment rate config.
+
+Run and Start 1v1 acquire a synchronous lock before any request, show Starting…
+immediately, stay disabled through execution and history saving, and absorb a
+600ms post-completion double-click tail. Stop is a separate adjacent control: the
+same second click cannot accidentally cancel. There are no automatic inference
+retries. Pending startup clears the reference screenshot rather than presenting
+it as a live frame. Status text and `aria-busy` accompany the CSS spinner;
+reduced-motion users get static status without rotation. Keyboard operation uses
+native buttons, not a pointer-only gesture.
+
+`tests/pricing.test.mjs` checks exact-ID parsing, units, expiry, cache sharing,
+forget/error recovery and authoritative rate binding. `tests/browser/one-click.spec.mjs`
+checks debounced key entry, auto prices, shared lanes, opt-out timing, actual
+double clicks, pending states and cancellation with fake transports. No paid
+inference or independent model-performance claim is involved.
+
+## Custom menus
+
 Relay Live uses one `RelaySelect` component for tasks, models, interfaces,
 context, both arena connections, replay episodes and playback speed. It replaces
 visible native select menus, not the Slack application or its replay renderer.

@@ -1,10 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Swords, Square, Trophy, KeyRound, Film, Download, Layers, Workflow } from 'lucide-react';
+import {
+  Swords,
+  Trophy,
+  KeyRound,
+  Film,
+  Download,
+  Layers,
+  Workflow,
+  LoaderCircle,
+} from 'lucide-react';
 import { ModelMark } from '../lab/model-mark.jsx';
 import { ActionSpotlight, ResultCard } from './feedback.jsx';
 import { saveRun, downloadEvidence } from './storage.js';
 import { duelVerdict } from './duel-policy.js';
 import { RelaySelect } from './select.jsx';
+import { preferredModel, validKey } from './connections.js';
+import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
 
 async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
   const record = { run: null, events: [], artifacts: {}, audit: null };
@@ -71,6 +82,7 @@ export function Duel({
   steps,
   connection,
   providerKeys,
+  connections,
   rememberKeys,
   onRememberChange,
   onConnectedKey,
@@ -85,73 +97,79 @@ export function Duel({
     catalog: connection.catalog,
     rates: connection.rates,
   };
-  const [lanes, setLanes] = useState([
-    initial,
-    { ...initial, model: '', rates: { input: 0, output: 0 } },
-  ]);
+  const [lanes, setLanes] = useState([initial, { ...initial }]);
   const [busy, setBusy] = useState(false),
     [records, setRecords] = useState([null, null]),
     [frames, setFrames] = useState([null, null]),
     [errors, setErrors] = useState(['', '']),
-    [connecting, setConnecting] = useState(null);
+    [connecting, setConnecting] = useState([false, false]);
+  const launch = useLaunchLock();
   const controllers = useRef([]);
-  const connectionAbort = useRef(null);
-  useEffect(
-    () => () => {
+  const versions = useRef([0, 0]),
+    timers = useRef([]);
+  useEffect(() => {
+    lanes.forEach((lane, i) => {
+      if (!lane.model && validKey(lane.key)) connect(i, lane, true);
+    });
+    return () => {
       controllers.current.forEach((c) => c.abort());
-      connectionAbort.current?.abort();
-    },
-    [],
-  );
+      versions.current = versions.current.map((v) => v + 1);
+      timers.current.forEach(clearTimeout);
+    };
+  }, []);
   const change = (i, patch) =>
     setLanes((old) => old.map((x, j) => (i === j ? { ...x, ...patch } : x)));
   const setAt = (fn, i, v) => fn((old) => old.map((x, j) => (i === j ? v : x)));
   const pick = (i, id) => {
-    const rates =
-      lanes[i].provider === 'typesafe'
-        ? { input: 0.042, output: 0 }
-        : id === 'gpt-4o-mini'
-          ? { input: 0.15, output: 0.6 }
-          : id === 'gpt-5-nano'
-            ? { input: 0.05, output: 0.4 }
-            : { input: 0, output: 0 };
+    const rates = lanes[i].catalog.find((m) => m.id === id)?.rates ?? null;
     change(i, { model: id, rates });
   };
-  async function connect(i) {
-    const controller = new AbortController();
-    connectionAbort.current?.abort();
-    connectionAbort.current = controller;
-    setConnecting(i);
+  async function connect(i, lane = lanes[i], restoring = false) {
+    clearTimeout(timers.current[i]);
+    const version = ++versions.current[i];
+    setAt(setConnecting, i, true);
     setAt(setErrors, i, '');
     try {
-      const l = { ...lanes[i], key: lanes[i].key.trim() },
-        r = await fetch('/api/relay?op=models', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ provider: l.provider, key: l.key }),
-          signal: controller.signal,
-        });
-      const data = await r.json();
-      if (controller.signal.aborted) return;
-      if (!r.ok) throw Error(data.error);
-      const id = data.models[0]?.id ?? '';
-      change(i, {
-        key: l.key,
-        catalog: data.models,
-        model: id,
-        rates: l.provider === 'typesafe' ? { input: 0.042, output: 0 } : { input: 0, output: 0 },
-      });
-      setAt(setErrors, i, onConnectedKey(l.provider, l.key));
+      const l = { ...lane, key: lane.key.trim() };
+      const data = await connections.get(l.provider, l.key);
+      if (version !== versions.current[i]) return;
+      // Share a connection with an empty/same-key sibling, but never overwrite a different account.
+      setLanes((old) =>
+        old.map((other, j) => {
+          if (
+            j !== i &&
+            (other.provider !== l.provider || (other.key && other.key.trim() !== l.key))
+          )
+            return other;
+          const model = data.models.some((m) => m.id === other.model && m.rates)
+            ? other.model
+            : preferredModel(data.models, l.provider);
+          return {
+            ...other,
+            key: l.key,
+            catalog: data.models,
+            model,
+            rates: data.models.find((m) => m.id === model)?.rates ?? null,
+          };
+        }),
+      );
+      if (!restoring) setAt(setErrors, i, onConnectedKey(l.provider, l.key, data.models));
     } catch (e) {
-      if (!controller.signal.aborted) setAt(setErrors, i, e.message);
+      if (version === versions.current[i] && e.name !== 'AbortError')
+        setAt(setErrors, i, e.message);
     } finally {
-      if (connectionAbort.current === controller) setConnecting(null);
+      if (version === versions.current[i]) setAt(setConnecting, i, false);
     }
   }
   function forget(i) {
-    connectionAbort.current?.abort();
-    setConnecting(null);
     const provider = lanes[i].provider;
+    lanes.forEach((l, j) => {
+      if (l.provider === provider) {
+        versions.current[j]++;
+        clearTimeout(timers.current[j]);
+        setAt(setConnecting, j, false);
+      }
+    });
     setLanes((old) =>
       old.map((lane) =>
         lane.provider === provider
@@ -162,18 +180,19 @@ export function Duel({
     setAt(setErrors, i, onForgetKey(provider));
   }
   async function start() {
+    if (busy || connecting.some(Boolean)) return;
     if (
       lanes.some(
         (l) =>
           !l.key ||
           !l.model ||
-          !Number.isFinite(l.rates.input) ||
-          !Number.isFinite(l.rates.output) ||
+          !Number.isFinite(l.rates?.input) ||
+          !Number.isFinite(l.rates?.output) ||
           l.rates.input <= 0 ||
           (l.provider === 'ramp' && l.rates.output <= 0),
       )
     ) {
-      setErrors(['Connect both models and confirm pricing.', '']);
+      setErrors(['Choose two available models. Saved keys connect automatically.', '']);
       return;
     }
     if (
@@ -190,56 +209,61 @@ export function Duel({
       ]);
       return;
     }
+    if (!launch.acquire()) return;
     setBusy(true);
     setRecords([null, null]);
     setFrames([null, null]);
     setErrors(['', '']);
     controllers.current = [new AbortController(), new AbortController()];
     const id = crypto.randomUUID();
-    await Promise.all(
-      lanes.map(async (l, i) => {
-        const config = {
-          ...setup.defaults,
-          provider: l.provider,
-          models: [{ id: l.model, rates: l.rates }],
-          tasks: [task],
-          interfaces: [mode],
-          guides: [guide],
-          histories: [context],
-          maxSteps: steps,
-          maxEstimatedUSD: cap / 2,
-        };
-        const record = await streamRun({
-          ...l,
-          config,
-          signal: controllers.current[i].signal,
-          onUpdate: (r) => setAt(setRecords, i, r),
-          onFrame: (f) => setAt(setFrames, i, f),
-        });
-        record.duel = {
-          id,
-          side: i,
-          task,
-          seed: config.seeds[0],
-          mode,
-          guide,
-          history: context,
-          capUSD: cap,
-          execution: 'concurrent',
-        };
-        setAt(setRecords, i, { ...record });
-        if (record.error) setAt(setErrors, i, record.error);
-        if (record.run) {
-          try {
-            await saveRun(record);
-          } catch {
-            setAt(setErrors, i, 'History unavailable; download this run below to keep it.');
+    try {
+      await Promise.all(
+        lanes.map(async (l, i) => {
+          const config = {
+            ...setup.defaults,
+            provider: l.provider,
+            models: [{ id: l.model, rates: l.rates }],
+            tasks: [task],
+            interfaces: [mode],
+            guides: [guide],
+            histories: [context],
+            maxSteps: steps,
+            maxEstimatedUSD: cap / 2,
+          };
+          const record = await streamRun({
+            ...l,
+            config,
+            signal: controllers.current[i].signal,
+            onUpdate: (r) => setAt(setRecords, i, r),
+            onFrame: (f) => setAt(setFrames, i, f),
+          });
+          record.duel = {
+            id,
+            side: i,
+            task,
+            seed: config.seeds[0],
+            mode,
+            guide,
+            history: context,
+            capUSD: cap,
+            execution: 'concurrent',
+          };
+          setAt(setRecords, i, { ...record });
+          if (record.error) setAt(setErrors, i, record.error);
+          if (record.run) {
+            try {
+              await saveRun(record);
+            } catch {
+              setAt(setErrors, i, 'History unavailable; download this run below to keep it.');
+            }
           }
-        }
-      }),
-    );
-    setBusy(false);
-    onSaved();
+        }),
+      );
+      await onSaved();
+    } finally {
+      setBusy(false);
+      launch.release();
+    }
   }
   const verdict = duelVerdict(records);
   return (
@@ -248,7 +272,7 @@ export function Duel({
         <input
           type="checkbox"
           checked={rememberKeys}
-          disabled={busy || connecting !== null}
+          disabled={busy || connecting.some(Boolean)}
           onChange={(e) => setAt(setErrors, 0, onRememberChange(e.target.checked))}
         />
         Remember keys on this device
@@ -267,13 +291,16 @@ export function Duel({
             {mode} · seed {setup.defaults.seeds[0]} · ${(cap / 2).toFixed(3)} cap per model
           </p>
         </div>
-        <button
-          className="primary"
-          disabled={connecting !== null}
-          onClick={() => (busy ? controllers.current.forEach((c) => c.abort()) : start())}
-        >
-          {busy ? <Square size={14} /> : <Swords size={16} />} {busy ? 'Stop both' : 'Start 1v1'}
-        </button>
+        <RunButton
+          label="Start 1v1"
+          stopLabel="Stop both"
+          icon={Swords}
+          busy={busy}
+          starting={!frames.some(Boolean)}
+          disabled={connecting.some(Boolean) || lanes.some((l) => !l.model || !l.rates)}
+          onStart={start}
+          onStop={() => controllers.current.forEach((c) => c.abort())}
+        />
       </div>
       <div className={`duel-verdict ${verdict.kind}`} role="status">
         <Trophy size={19} />
@@ -300,17 +327,22 @@ export function Duel({
                 <summary>Model connection</summary>
                 <RelaySelect
                   label={`Provider ${i ? 'B' : 'A'}`}
-                  disabled={busy || connecting !== null}
+                  disabled={busy}
                   value={lane.provider}
-                  onChange={(provider) =>
-                    change(i, {
+                  onChange={(provider) => {
+                    versions.current[i]++;
+                    clearTimeout(timers.current[i]);
+                    setAt(setConnecting, i, false);
+                    const next = {
                       provider,
                       key: providerKeys[provider] ?? '',
                       model: '',
                       catalog: [],
-                      rates: { input: 0, output: 0 },
-                    })
-                  }
+                      rates: null,
+                    };
+                    change(i, next);
+                    if (validKey(next.key)) connect(i, next, true);
+                  }}
                   options={[
                     { value: 'ramp', label: 'Ramp Router', icon: <Layers size={17} /> },
                     { value: 'typesafe', label: 'Jev · TypeSafe', icon: <Workflow size={17} /> },
@@ -322,16 +354,34 @@ export function Duel({
                     autoComplete="off"
                     aria-label={`API key ${i ? 'B' : 'A'}`}
                     value={lane.key}
-                    disabled={busy || connecting !== null}
+                    disabled={busy}
                     placeholder="Provider API key"
-                    onChange={(e) => change(i, { key: e.target.value, catalog: [], model: '' })}
+                    onChange={(e) => {
+                      versions.current[i]++;
+                      clearTimeout(timers.current[i]);
+                      setAt(setConnecting, i, false);
+                      const next = {
+                        ...lane,
+                        key: e.target.value,
+                        catalog: [],
+                        model: '',
+                        rates: null,
+                      };
+                      change(i, next);
+                      if (validKey(next.key))
+                        timers.current[i] = setTimeout(() => connect(i, next), 600);
+                    }}
                   />
                   <button
-                    disabled={busy || connecting !== null || !lane.key}
+                    disabled={busy || connecting[i] || !lane.key || !!lane.model}
                     onClick={() => connect(i)}
                   >
-                    <KeyRound size={14} />
-                    Connect
+                    {connecting[i] ? (
+                      <LoaderCircle className="busy-spinner" size={14} />
+                    ) : (
+                      <KeyRound size={14} />
+                    )}
+                    {connecting[i] ? 'Connecting…' : lane.model ? 'Connected' : 'Connect'}
                   </button>
                   <button
                     disabled={busy}
@@ -344,9 +394,9 @@ export function Duel({
                 <RelaySelect
                   label={`Model ${i ? 'B' : 'A'}`}
                   value={lane.model}
-                  disabled={busy}
+                  disabled={busy || connecting[i]}
                   onChange={(id) => pick(i, id)}
-                  placeholder="Choose a model"
+                  placeholder={connecting[i] ? 'Loading models…' : 'Choose a model'}
                   placeholderIcon={<ModelMark />}
                   emptyText="Connect a key to see models"
                   wide
@@ -354,38 +404,11 @@ export function Duel({
                     value: m.id,
                     label: m.id,
                     icon: <ModelMark id={m.id} />,
+                    disabled: !m.rates,
+                    disabledReason: 'Published pricing unavailable for this exact model ID.',
                   }))}
                 />
-                <div className="duel-rates">
-                  <label>
-                    Input $/M
-                    <input
-                      aria-label={`Input rate ${i ? 'B' : 'A'}`}
-                      type="number"
-                      min="0"
-                      step="0.001"
-                      value={lane.rates.input}
-                      disabled={busy}
-                      onChange={(e) =>
-                        change(i, { rates: { ...lane.rates, input: Number(e.target.value) } })
-                      }
-                    />
-                  </label>
-                  <label>
-                    Output $/M
-                    <input
-                      aria-label={`Output rate ${i ? 'B' : 'A'}`}
-                      type="number"
-                      min="0"
-                      step="0.001"
-                      value={lane.rates.output}
-                      disabled={busy || lane.provider === 'typesafe'}
-                      onChange={(e) =>
-                        change(i, { rates: { ...lane.rates, output: Number(e.target.value) } })
-                      }
-                    />
-                  </label>
-                </div>
+                <ModelPrice rates={lane.rates} />
               </details>
               {errors[i] && (
                 <p role="alert" className="duel-error">
@@ -397,7 +420,12 @@ export function Duel({
                   <img src={frames[i]} alt={`Live workspace ${i ? 'B' : 'A'}`} />
                 ) : (
                   <span>
-                    <Film size={22} />A fresh Slack workspace
+                    {busy ? (
+                      <LoaderCircle className="busy-spinner" size={22} aria-hidden="true" />
+                    ) : (
+                      <Film size={22} />
+                    )}
+                    {busy ? 'Preparing a fresh workspace…' : 'A fresh Slack workspace'}
                   </span>
                 )}
               </div>

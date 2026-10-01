@@ -3,6 +3,7 @@ import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
 import { TypeSafeRouter } from '../../runner/typesafe.mjs';
 import { expectRelayBrand } from './brand-assertions.mjs';
+import { testPricing } from '../fixtures/pricing.mjs';
 
 function fakeRouter(provider, key) {
   if (provider === 'typesafe')
@@ -60,7 +61,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
   page,
   request,
 }) => {
-  const server = createLiveServer({ routerFactory: fakeRouter });
+  const server = createLiveServer({ routerFactory: fakeRouter, pricingResolver: testPricing });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   const url = `http://127.0.0.1:${server.address().port}`;
@@ -284,7 +285,7 @@ test('no-key replay: real UI, play/pause/seek, no run requests, legacy fallback 
 test('1v1: concurrent matched systems, separate history, visible outcome and replay', async ({
   page,
 }) => {
-  const server = createLiveServer({ routerFactory: fakeRouter });
+  const server = createLiveServer({ routerFactory: fakeRouter, pricingResolver: testPricing });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   const url = `http://127.0.0.1:${server.address().port}`;
@@ -317,8 +318,7 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
     expect(await openaiMark.evaluate((el) => getComputedStyle(el).fill)).not.toBe(
       'rgb(255, 255, 255)',
     );
-    await page.getByLabel('Input rate B').fill('0.15');
-    await page.getByLabel('Output rate B').fill('0.6');
+    await expect(arena.locator('.model-price').last()).toContainText('$0.15 in · $0.6 out');
     await page.getByRole('button', { name: 'Start 1v1', exact: true }).click();
     await expect(arena.locator('.duel-verdict')).toContainText('A completed the task', {
       timeout: 20000,
@@ -363,8 +363,6 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
       await expect(page.getByRole('combobox', { name: `Model ${side}`, exact: true })).toHaveText(
         'gpt-4o-mini',
       );
-      await page.getByLabel(`Input rate ${side}`).fill('0.15');
-      await page.getByLabel(`Output rate ${side}`).fill('0.6');
     }
     await page.getByRole('button', { name: 'Start 1v1', exact: true }).click();
     await page.getByRole('button', { name: 'Stop both', exact: true }).click();
@@ -378,7 +376,7 @@ test('1v1: concurrent matched systems, separate history, visible outcome and rep
 test('two hosted requests have isolated browser sessions and no shared history API', async ({
   request,
 }) => {
-  const server = createLiveServer({ routerFactory: fakeRouter });
+  const server = createLiveServer({ routerFactory: fakeRouter, pricingResolver: testPricing });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   const url = `http://127.0.0.1:${server.address().port}`;
@@ -387,7 +385,8 @@ test('two hosted requests have isolated browser sessions and no shared history A
     const config = {
       ...setup.defaults,
       provider: 'ramp',
-      models: [{ id: 'gpt-4o-mini', rates: { input: 0.15, output: 0.6 } }],
+      // A modified client cannot understate the server's budget accounting.
+      models: [{ id: 'gpt-4o-mini', rates: { input: 0.000001, output: 0.000001 } }],
       interfaces: ['a11y'],
     };
     const responses = await Promise.all(
@@ -408,6 +407,9 @@ test('two hosted requests have isolated browser sessions and no shared history A
     expect(audits.every(Boolean)).toBe(true);
     expect(audits[0].run.id).not.toBe(audits[1].run.id);
     for (const [i, audit] of audits.entries()) {
+      expect(audit.run.config.models[0].rates).toEqual({ input: 0.15, output: 0.6 });
+      expect(audit.run.catalog.pricing.source).toBe('https://docs.router.com/supported-models.md');
+      expect(audit.run.catalog.pricing.hash).toMatch(/^[a-f0-9]{64}$/);
       expect(audit.integrity.status).toBe('verified');
       expect(audit.episodes[0].outcome.evaluation.success).toBe(false);
       expect(JSON.stringify(streams[i])).not.toMatch(

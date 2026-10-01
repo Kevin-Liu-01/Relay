@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
+import { testPricing } from '../fixtures/pricing.mjs';
 
 async function serve(
   run,
@@ -10,6 +11,7 @@ async function serve(
 ) {
   const calls = [];
   const server = createLiveServer({
+    pricingResolver: testPricing,
     routerFactory: (provider, key) => ({
       apiKey: key,
       models: async () => {
@@ -70,6 +72,10 @@ test('saved provider keys restore, prefill 1v1, forget independently and support
     await page.getByRole('option', { name: 'Ramp Router', exact: true }).click();
     await expect(page.getByLabel('API key B', { exact: true })).toHaveValue('fake-remembered-ramp');
     await expect(page.getByLabel('API key B', { exact: true })).toHaveAttribute('type', 'password');
+    await expect(page.getByRole('combobox', { name: 'Model B', exact: true })).toHaveText(
+      'gpt-4o-mini',
+    );
+    await expect(page.getByRole('button', { name: 'Start 1v1', exact: true })).toBeEnabled();
     await page.getByRole('button', { name: 'Forget key A', exact: true }).click();
     await expect(page.getByLabel('API key A', { exact: true })).toHaveValue('');
     expect((await stored(page)).keys).toEqual({ ramp: 'fake-remembered-ramp', typesafe: '' });

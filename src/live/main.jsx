@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   Play,
-  Square,
   KeyRound,
   Settings2,
   History,
@@ -25,6 +24,7 @@ import {
   Search,
   Film,
   Swords,
+  LoaderCircle,
 } from 'lucide-react';
 import Github from '@thesvg/react/github';
 import { ModelMark } from '../lab/model-mark.jsx';
@@ -43,18 +43,13 @@ import { ReplayPlayer, ReplayLibrary } from './replay.jsx';
 import { Duel } from './duel.jsx';
 import { RelaySelect } from './select.jsx';
 import { TaskIcon, ModeIcon } from './select-icons.jsx';
+import { createConnections, preferredModel, validKey } from './connections.js';
+import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const elapsed = (n) =>
   n == null ? '—' : n < 1000 ? `${Math.round(n)} ms` : `${(n / 1000).toFixed(1)} s`;
 const money = (n) => (n == null ? '—' : `$${n.toFixed(5)}`);
-const hints = {
-  'gpt-4o-mini': [0.15, 0.6],
-  'gpt-5-nano': [0.05, 0.4],
-  'gpt-6-luna': [0.1, 0.5],
-  'deepseek-v4-flash': [0.14, 0.28],
-  'nemotron-lightning-3p5-30b-a3b': [0.05, 0.2],
-};
 async function api(op, body, signal) {
   const r = await fetch(
     `/api/relay?op=${op}`,
@@ -101,12 +96,13 @@ function Modal({ title, close, children, wide = false }) {
 function App() {
   const [remembered] = useState(() => readCredentials());
   const [rememberKeys, setRememberKeys] = useState(remembered.remember);
+  const rememberPreference = useRef(remembered.remember);
   const [setup, setSetup] = useState(null),
     [provider, setProvider] = useState(remembered.provider),
     [keys, setKeys] = useState(remembered.keys),
     [catalog, setCatalog] = useState([]),
     [model, setModel] = useState(''),
-    [rates, setRates] = useState({ input: 0.15, output: 0.6 }),
+    [rates, setRates] = useState(null),
     [task, setTask] = useState('channel-topic'),
     [mode, setMode] = useState('a11y'),
     [guide, setGuide] = useState(false),
@@ -128,12 +124,14 @@ function App() {
     [allOptions, setAllOptions] = useState(false),
     [demo, setDemo] = useState(false);
   const [replayRecord, setReplayRecord] = useState(null);
+  const [connections] = useState(createConnections);
+  const launch = useLaunchLock();
+  const connectTimer = useRef(null);
   function openReplay(value) {
     setReplayRecord(value);
     setModal('replay-player');
   }
   const abort = useRef(null),
-    connectionAbort = useRef(null),
     connectionVersion = useRef(0),
     current = useRef(null),
     follow = useRef(true);
@@ -147,7 +145,8 @@ function App() {
       connect(remembered.provider, remembered.keys[remembered.provider], true);
     return () => {
       abort.current?.abort();
-      connectionAbort.current?.abort();
+      connections.close();
+      clearTimeout(connectTimer.current);
       connectionVersion.current++;
     };
   }, []);
@@ -158,32 +157,37 @@ function App() {
       setError('Browser storage unavailable. Download evidence before leaving.');
     }
   }
-  function chooseModel(id, p = provider) {
+  function chooseModel(id, models = catalog) {
     setModel(id);
-    const price = p === 'typesafe' ? [0.042, 0] : (hints[id] ?? [0, 0]);
-    setRates({ input: price[0], output: price[1] });
+    setRates(models.find((m) => m.id === id)?.rates ?? null);
     setVision(false);
   }
   function chooseProvider(p) {
+    clearTimeout(connectTimer.current);
+    connectionVersion.current++;
+    setConnecting(false);
     setProvider(p);
     setCatalog([]);
     setModel('');
+    setRates(null);
     if (p === 'typesafe') {
       if (['pixels', 'api'].includes(mode)) setMode('json-ui');
       if (task === 'handoff-dm') setTask('channel-topic');
     }
     setError('');
+    if (validKey(keys[p])) connect(p, keys[p], true);
   }
   function rememberConnectedKey(p, key) {
     setKeys((old) => ({ ...old, [p]: key }));
     try {
-      saveCredential(p, key, rememberKeys);
+      saveCredential(p, key, rememberPreference.current);
       return '';
     } catch {
       return 'Connected for this tab, but browser storage is unavailable. The key could not be saved.';
     }
   }
   function changeRemember(remember) {
+    rememberPreference.current = remember;
     setRememberKeys(remember);
     try {
       setRememberCredentials(remember);
@@ -197,12 +201,14 @@ function App() {
     }
   }
   function forgetKey(p = provider) {
+    connections.forget(p);
+    clearTimeout(connectTimer.current);
     if (p === provider) {
       connectionVersion.current++;
-      connectionAbort.current?.abort();
       setConnecting(false);
       setModel('');
       setCatalog([]);
+      setRates(null);
     }
     setKeys((old) => ({ ...old, [p]: '' }));
     try {
@@ -217,30 +223,28 @@ function App() {
     }
   }
   async function connect(p = provider, inputKey = keys[p], restoring = false) {
+    clearTimeout(connectTimer.current);
     const key = inputKey.trim();
     const version = ++connectionVersion.current;
-    connectionAbort.current?.abort();
-    connectionAbort.current = new AbortController();
     setConnecting(true);
     setError('');
     setModel('');
     setCatalog([]);
+    setRates(null);
     try {
-      const c = await (
-        await api('models', { provider: p, key }, connectionAbort.current.signal)
-      ).json();
+      const c = await connections.get(p, key);
       if (version !== connectionVersion.current) return;
       setCatalog(c.models);
-      chooseModel(
-        c.models.find((m) => m.id === (p === 'typesafe' ? 'jev-latest' : 'gpt-4o-mini'))?.id ??
-          c.models[0]?.id,
-        p,
-      );
+      const selected = preferredModel(c.models, p);
+      chooseModel(selected, c.models);
+      const pricingWarning = selected
+        ? ''
+        : 'Connected, but published pricing is unavailable for these models. Try again later.';
       // Restoring never writes a key back: another tab may have forgotten it.
       if (!restoring) {
-        setError(rememberConnectedKey(p, key));
-        setModal(null);
-      }
+        setError(rememberConnectedKey(p, key) || pricingWarning);
+        setModal((open) => (open === 'connect' ? null : open));
+      } else setError(pricingWarning);
     } catch (e) {
       if (version === connectionVersion.current && e.name !== 'AbortError')
         setError(
@@ -253,19 +257,20 @@ function App() {
     }
   }
   async function start(compare = false) {
+    if (busy || connecting) return;
     if (!setup || !model || !keys[provider]) {
       setModal('connect');
       return;
     }
     if (
-      !Number.isFinite(rates.input) ||
+      !Number.isFinite(rates?.input) ||
       rates.input <= 0 ||
       (provider === 'ramp' && rates.output <= 0)
     ) {
-      setError('Confirm positive model pricing before a live run.');
-      setModal('settings');
+      setError('Pricing is temporarily unavailable for this model. Choose another model.');
       return;
     }
+    if (!launch.acquire()) return;
     setError('');
     setBusy(true);
     setDemo(false);
@@ -351,7 +356,6 @@ function App() {
         setRecord({ ...current.current });
       }
     } finally {
-      setBusy(false);
       abort.current = null;
       if (current.current.run) {
         setRecord({ ...current.current });
@@ -362,6 +366,8 @@ function App() {
           setError('History could not be saved. Download this evidence before leaving.');
         }
       }
+      setBusy(false);
+      launch.release();
     }
   }
   async function openRun(id) {
@@ -402,7 +408,7 @@ function App() {
           ? frame.image
           : (record?.artifacts[`${episodeId}/final.png`] ??
             (frame?.episodeId === episodeId ? frame.image : null))) ??
-        (run ? null : '/demo/workspace.png'));
+        (run || busy ? null : '/demo/workspace.png'));
   const lastResponse =
     selectedStep == null
       ? events.filter((e) => e.kind === 'response').at(-1)?.response
@@ -459,8 +465,12 @@ function App() {
           <Github width={19} height={19} />
         </a>
         <button className="connect" onClick={() => setModal('connect')}>
-          <KeyRound size={14} />
-          {connecting ? 'Connecting…' : model ? 'Connected' : 'Connect a key'}
+          {connecting ? (
+            <LoaderCircle className="busy-spinner" size={14} />
+          ) : (
+            <KeyRound size={14} />
+          )}
+          {connecting ? 'Connecting…' : catalog.length ? 'Connected' : 'Connect a key'}
         </button>
       </header>
       {error && (
@@ -493,7 +503,7 @@ function App() {
           disabled={busy || connecting}
           value={model}
           onChange={(id) => chooseModel(id)}
-          placeholder="Choose a model"
+          placeholder={connecting ? 'Loading models…' : 'Choose a model'}
           placeholderIcon={<ModelMark />}
           emptyText="Connect a key to see models"
           wide
@@ -501,6 +511,8 @@ function App() {
             value: m.id,
             label: m.id,
             icon: <ModelMark id={m.id} />,
+            disabled: !m.rates,
+            disabledReason: 'Published pricing unavailable for this exact model ID.',
           }))}
         />
         <RelaySelect
@@ -520,23 +532,25 @@ function App() {
           <Settings2 size={17} />
         </button>
         <div className="nav-spacer" />
-        {busy ? (
-          <button className="primary stop" onClick={() => abort.current?.abort()}>
-            <Square size={12} />
-            Stop
-          </button>
-        ) : (
-          <button className="primary" onClick={() => start()} disabled={!setup}>
-            <Play size={13} />
-            Run
-          </button>
-        )}
+        <RunButton
+          busy={busy}
+          starting={!frame && !actions.length}
+          disabled={!setup || connecting || (!!catalog.length && !rates)}
+          onStart={() => start()}
+          onStop={() => abort.current?.abort()}
+        />
       </section>
       <main className="arena">
         <section className="viewport-column" aria-label="Live Slack workspace">
           <div className="workspace-top">
             <span className={`state-dot ${busy ? 'running' : ''}`} />
-            <span>{state}</span>
+            <span role="status">
+              {busy && !frame && !actions.length
+                ? 'Starting workspace…'
+                : connecting
+                  ? 'Loading models…'
+                  : state}
+            </span>
             <span className="workspace-task">
               {episode?.instruction ?? 'A fresh workspace for every episode.'}
             </span>
@@ -550,23 +564,28 @@ function App() {
               <img src={image} alt={busy ? 'Live agent workspace' : 'Recorded workspace'} />
             ) : (
               <div className="frame-unavailable" role="status">
-                {busy ? 'Waiting for the workspace…' : 'No frame recorded for this step.'}
+                {busy && <LoaderCircle className="busy-spinner" size={22} aria-hidden="true" />}
+                {busy ? 'Preparing a fresh workspace…' : 'No frame recorded for this step.'}
               </div>
             )}
-            {!run && (
+            {!run && !busy && (
               <div className="welcome">
                 <h1>
                   Try out <span className="welcome-accent">Computer Use</span>
                 </h1>
                 <p>
-                  Connect a model. Give it a task.
+                  {model ? 'Your model is ready. Pick a task.' : 'Connect a model. Give it a task.'}
                   <br />
                   See every action, and what changed.
                 </p>
                 <div>
-                  <button className="primary" onClick={() => setModal('connect')}>
-                    <KeyRound size={14} />
-                    Bring your own key
+                  <button
+                    className="primary"
+                    disabled={connecting}
+                    onClick={() => (model ? start() : setModal('connect'))}
+                  >
+                    {model ? <Play size={14} /> : <KeyRound size={14} />}
+                    {model ? 'Run this task' : 'Bring your own key'}
                   </button>
                   <button onClick={() => setModal('replays')}>
                     <Play size={13} />
@@ -578,7 +597,9 @@ function App() {
             <div className="viewport-tag">
               <Radio size={12} />
               {busy
-                ? 'Live stream'
+                ? image
+                  ? 'Live stream'
+                  : 'Connecting'
                 : run
                   ? image
                     ? 'Recorded replay'
@@ -728,7 +749,11 @@ function App() {
           {busy && (
             <div className="thinking" role="status">
               <span className="state-dot running" />
-              {episode?.inFlight ? 'Model is deciding…' : 'Interacting with the workspace…'}
+              {!frame && !actions.length
+                ? 'Preparing a fresh workspace…'
+                : episode?.inFlight
+                  ? 'Model is deciding…'
+                  : 'Interacting with the workspace…'}
             </div>
           )}
           <div className="panel-bottom">
@@ -762,12 +787,16 @@ function App() {
             steps={steps}
             connection={{ provider, key: keys[provider], model, catalog, rates }}
             providerKeys={keys}
+            connections={connections}
             rememberKeys={rememberKeys}
             onRememberChange={changeRemember}
-            onConnectedKey={(p, key) => {
-              if (p === provider && key !== keys[p]) {
-                setModel('');
-                setCatalog([]);
+            onConnectedKey={(p, key, models) => {
+              if (p === provider) {
+                setCatalog(models);
+                chooseModel(
+                  models.some((m) => m.id === model) ? model : preferredModel(models, p),
+                  models,
+                );
               }
               return rememberConnectedKey(p, key);
             }}
@@ -827,8 +856,12 @@ function App() {
       </section>
       <footer>
         <span>
-          <span className={`state-dot ${model ? 'connected' : ''}`} />
-          {model ? (provider === 'typesafe' ? 'TypeSafe' : 'Ramp Router') : 'No key connected'}
+          <span className={`state-dot ${catalog.length ? 'connected' : ''}`} />
+          {catalog.length
+            ? provider === 'typesafe'
+              ? 'TypeSafe'
+              : 'Ramp Router'
+            : 'No key connected'}
         </span>
         <div className="nav-spacer" />
         <span className="numeric">
@@ -872,11 +905,19 @@ function App() {
               autoComplete="off"
               spellCheck={false}
               value={keys[provider]}
-              disabled={busy || connecting}
+              disabled={busy}
               onChange={(e) => {
-                setKeys({ ...keys, [provider]: e.target.value });
+                const key = e.target.value;
+                connectionVersion.current++;
+                connections.forget(provider);
+                clearTimeout(connectTimer.current);
+                setConnecting(false);
+                setKeys({ ...keys, [provider]: key });
                 setModel('');
                 setCatalog([]);
+                setRates(null);
+                if (validKey(key))
+                  connectTimer.current = setTimeout(() => connect(provider, key), 600);
               }}
               placeholder="Paste your key"
             />
@@ -920,41 +961,22 @@ function App() {
               disabled={connecting || busy || !keys[provider]}
               onClick={() => connect()}
             >
+              {connecting ? (
+                <LoaderCircle className="busy-spinner" size={14} />
+              ) : (
+                <ChevronRight size={14} />
+              )}
               {connecting ? 'Connecting…' : 'Connect'}
-              <ChevronRight size={14} />
             </button>
           </div>
         </Modal>
       )}
       {modal === 'settings' && (
         <Modal title="Run settings" close={() => setModal(null)}>
-          <div className="two-fields">
-            <label className="field">
-              Input $ / 1M tokens
-              <input
-                type="number"
-                min="0.001"
-                step="0.001"
-                aria-label="Input price"
-                value={rates.input}
-                onChange={(e) => setRates({ ...rates, input: Number(e.target.value) })}
-              />
-            </label>
-            <label className="field">
-              Output $ / 1M tokens
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                aria-label="Output price"
-                disabled={provider === 'typesafe'}
-                value={rates.output}
-                onChange={(e) => setRates({ ...rates, output: Number(e.target.value) })}
-              />
-            </label>
-          </div>
+          <ModelPrice rates={rates} />
           <p className="hint">
-            Dated hints, not a bill. Confirm your current provider rates before running.
+            Pricing loads automatically from your provider’s published base rates. Costs are
+            estimates, not a bill.
           </p>
           <div className="two-fields">
             <label className="field">

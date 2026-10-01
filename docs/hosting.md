@@ -60,6 +60,14 @@ flowchart LR
 
 The UI starts below these limits. Estimates use the recorded rates, not invoices. Missing usage stays unknown and stops further calls. Set provider-side spend caps. Stopping or losing the connection can leave one already-sent request billable; there are no hidden retries or model substitutions.
 
+Pricing now loads automatically; there is no confirmation form. The worker joins
+account-discovered model IDs to official published pricing, rechecks it before
+execution and records source/date/hash with the catalog. Unknown or expired rates
+disable that model instead of guessing. Public documentation requests carry no
+credentials. Saved connections work across solo and 1v1; key entry is debounced
+and run launches are single-flight. See the [interaction contract](interface-controls.md)
+for cache, fallback and cancellation details.
+
 **These are not global abuse controls.** Autoscaled workers each have their own concurrency counter. A valid provider key is required before browser allocation, but is not Relay user authentication. The operator still pays hosting compute/egress. Before promoting this beyond a bounded demo, configure hosting spend alerts/limits, global rate limiting or authenticated access, and measure sustained browser load. Those controls are not claimed by this release. The function time limit is 240 seconds; graceful cleanup is attempted before it.
 
 ## Deployment and operations
