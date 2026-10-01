@@ -49,6 +49,19 @@ stays failed for that worker, rather than retrying against a partial file. Two n
 red-to-green regressions exercise concurrent initialization and retained rejection.
 This guard is worker-local, not a cross-process filesystem lock.
 
+Post-fix simultaneous production checks on `e196c16` both launched browsers and
+returned verified audits, with no capture gaps. GPT-6 Luna passed again in two
+calls (10.601 s, $0.0002291 estimated, six live frames, three PNGs; run
+`8fa6b351-6e1e-4926-97f7-c963ea002752`). Gemini reached Router and received
+provider-unavailable HTTP 403, not a Relay cap: request
+`430e3158-ea55-4fed-8439-ebda95b826a1`, run
+`95ba6c92-d762-4c12-ab18-b40229741379`, four live frames and two PNGs. Its single
+request has unknown usage; $0.01816575 is retained reservation, **not a billed
+cost**. No retry or provider substitution followed. Both GPT checks together
+used $0.0004377 in known-usage base-rate estimates. The catalog counts were also
+confirmed through the deployed endpoint. Vercel reported Ready; its short error-log
+scan was empty, which does not override the application-level provider failure.
+
 ## Hands-on Slack sandbox — 2026-10-01
 
 `/play` opens the actual interactive Slack components without a key or a model.
