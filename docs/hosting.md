@@ -120,6 +120,10 @@ Required pixel observations have an explicit 10-second deadline; a failure stops
 the episode, without substituting an older frame or a text interface. Text-mode
 setup does not capture a discarded initial PNG. Observer PNGs have a separate
 5-second deadline instead of inheriting the 2.5-second action deadline.
+The hosted live screencast pauses during each exact PNG capture and restarts
+afterwards, including failed captures. Each pause/resume command is bounded to
+one second. It never substitutes the last streamed JPEG for a new PNG. The two
+extra stream-control deadlines are separate from the screenshot deadline.
 
 Observer PNG/replay failures record `capture_warning` in the hash-chained audit
 and `captureWarnings` in the episode. They do not abort a text policy or overwrite

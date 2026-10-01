@@ -13,6 +13,7 @@ import { createPricingResolver, applyCatalogRates } from './pricing.mjs';
 import { buildAudit } from '../runner/audit.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
 import { TASK_CATALOG, TASK_LABELS } from '../shared/task-catalog.mjs';
+import { startSpectator } from './spectator.mjs';
 export { TASK_LABELS };
 
 export const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -210,26 +211,14 @@ export function createHostedHandler({
       await once(servers.control, 'listening');
       const options = await launchOptions();
       let activeEpisode = 'episode-001';
+      const captures = new WeakMap();
       const onPage = async (page) => {
-        const session = await page.context().newCDPSession(page);
-        let last = 0;
-        session.on('Page.screencastFrame', ({ data, sessionId }) => {
-          session.send('Page.screencastFrameAck', { sessionId }).catch(() => {});
-          if (Date.now() - last < 220) return;
-          last = Date.now();
-          emit('frame', {
-            episodeId: activeEpisode,
-            image: `data:image/jpeg;base64,${data}`,
-            at: Date.now(),
-          });
-        });
-        await session.send('Page.startScreencast', {
-          format: 'jpeg',
-          quality: 65,
-          maxWidth: 1440,
-          maxHeight: 900,
-          everyNthFrame: 1,
-        });
+        captures.set(
+          page,
+          await startSpectator(page, (frame) =>
+            emit('frame', { episodeId: activeEpisode, ...frame }),
+          ),
+        );
       };
       run = new Experiment({
         config: body.config,
@@ -243,6 +232,7 @@ export function createHostedHandler({
           controlToken: servers.controlToken,
           launchOptions: options,
           onPage,
+          captureScreenshot: (page, options) => captures.get(page)(options),
         },
         onChange: (data) => {
           activeEpisode =

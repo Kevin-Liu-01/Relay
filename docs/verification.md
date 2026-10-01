@@ -47,6 +47,19 @@ transport test verifies allowlisted incomplete reasons, validated usage and no
 partial-action execution; arbitrary provider strings are not copied to errors.
 The combined gate passes **99 backend/harness checks and 67 browser checks**.
 
+With the larger allowance, run `89716590-78b9-4090-bb37-fec1192e6a0a` completed
+the same accessibility task in four actions/four calls (39.7 seconds, $0.0035369
+estimated, usage reported, both outcome checks passed). It still had two observer
+PNG timeouts, so the smoke correctly exited nonzero for incomplete image evidence.
+This confirms that capture failure no longer kills the text policy, not complete
+capture reliability. Twenty live frames and the actual-UI replay state survived.
+
+The next targeted change pauses Chromium's live screencast around each exact
+PNG capture and resumes it even on failure. Unit tests enforce that ordering;
+the full hosted browser tests exercise real screencast plus PNG behavior. A live
+post-deployment run is still required to test the cloud-contention hypothesis.
+The coordination release gate passes **101 backend/harness and 67 browser checks**.
+
 ## Compact result typography — 2026-09-30
 
 Result titles now stay on one line, use Camber semibold (600) at 18px, and

@@ -12,6 +12,7 @@ export class RelayEnvironment {
     controlTimeoutMs = 10000,
     launchOptions = {},
     onPage,
+    captureScreenshot,
   } = {}) {
     if (!controlToken) throw Error('A trainer control token is required.');
     if (!['screenshot', 'dom'].includes(observation)) throw Error('Unknown observation mode.');
@@ -29,6 +30,7 @@ export class RelayEnvironment {
       controlTimeoutMs,
       launchOptions,
       onPage,
+      captureScreenshot,
     };
   }
   async control(path, method = 'GET', body) {
@@ -77,8 +79,13 @@ export class RelayEnvironment {
     await this.page.getByRole('textbox', { name: 'Search Northstar' }).waitFor({ timeout: 10000 });
     await this.options.onPage?.(this.page);
   }
+  async captureScreenshot(options) {
+    return this.options.captureScreenshot
+      ? this.options.captureScreenshot(this.page, options)
+      : this.page.screenshot(options);
+  }
   async observe() {
-    const screenshot = (await this.page.screenshot({ type: 'png', timeout: 10000 })).toString(
+    const screenshot = (await this.captureScreenshot({ type: 'png', timeout: 10000 })).toString(
       'base64',
     );
     return {

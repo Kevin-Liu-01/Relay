@@ -102,7 +102,9 @@ export class InterfaceEnvironment {
     const page = this.base.page;
     if (this.mode === 'pixels')
       return {
-        image: (await page.screenshot({ type: 'png', timeout: 10000 })).toString('base64'),
+        image: (await this.base.captureScreenshot({ type: 'png', timeout: 10000 })).toString(
+          'base64',
+        ),
         viewport: this.base.options.viewport,
       };
     const ui = await page.evaluate(() => {
@@ -313,7 +315,7 @@ export class InterfaceEnvironment {
     }
     // Observer captures have their own finite deadline, not the 2.5s action timeout.
     return this.base.page
-      ? (await this.base.page.screenshot({ type: 'png', timeout: 5000 })).toString('base64')
+      ? (await this.base.captureScreenshot({ type: 'png', timeout: 5000 })).toString('base64')
       : null;
   }
   async close() {
