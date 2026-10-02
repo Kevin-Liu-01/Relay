@@ -10,6 +10,14 @@ workspace; the live view also supports expand/Escape, with Stop always available
 The reference example is a deterministic script, explicitly not model inference.
 Two older real GPT-4o mini recordings retain both a success and a failure.
 
+The onsite campaign adds **GPT-6 Luna · thread reply passed**, **decision record
+incomplete**, and **decision record via API**. These are selected original
+episodes, not new inference. Each excerpt preserves actions, snapshots, grades and
+timestamps and identifies its original run/episode and complete archive hash.
+The [full campaign inventory](../evidence/campaigns/onsite-2026-10-01/README.md)
+includes all failures and unattempted cells; excerpts are presentation examples,
+not a complete success-rate sample. API playback is not GUI-policy evidence.
+
 For a live match, select the task and text interface on the main screen, then
 **1v1**. Saved connections and published prices load automatically. Pick two models and choose
 **Start 1v1**. A and B can use the same provider/key or separate Ramp/TypeSafe keys.

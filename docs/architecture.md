@@ -76,6 +76,12 @@ Final-state equivalence is the present policy: a reversible unintended action th
 
 ## Scaling choices and honest limits
 
+Current bounded measurements are in [benchmark-2026-10-01.json](../evidence/benchmark-2026-10-01.json):
+100 sessions; create p50 17.34 ms, reset p50 1.50 ms, screenshot p50 84.15 ms;
+10 sequential browser contexts and 400 loopback reads at concurrency 16. The
+older table below records historical measurements, not unchanged current timings.
+Neither measurement establishes sustained browser-agent capacity or full process-tree memory.
+
 | Component        | Current implementation                                                                                | Scale-up path / cost                                                     |
 | ---------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Frontend assets  | Shared build plus locally hosted fonts/photos; initial ~273 KB measurement predates the visual update | Cache immutable assets; same bytes across sessions                       |

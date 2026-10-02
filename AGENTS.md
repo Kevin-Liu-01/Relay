@@ -1,5 +1,16 @@
 # Relay handoff
 
+For the onsite deliverable, start with `docs/onsite-readiness.md`, the frozen
+`docs/campaigns/onsite-2026-10-01.md` plan and the complete campaign inventory.
+That campaign stopped on an incomplete output-limited receipt: 20 attempted,
+8 passed, 11 incorrect/step-limited, 1 blocked, 10 unattempted. Never resume it,
+relax its grader or present curated replay excerpts as the full matrix.
+Original trajectories live in hash-checked compressed bundles; `npm run
+inspect:campaign -- workflows` verifies them without a key. `npm run presentation`
+builds the 12-slide HTML/PDF from evidence and its editable template; keep headers,
+bullets and diagrams, with no marketing claims. MIT covers original code and
+documentation, not third-party fonts or brand assets.
+
 Relay is a standalone CUA/RL environment, extracted from `cotcodec/cua-slack` into `Kevin-Liu-01/Relay`. Keep unrelated memory research and private local runs out of this repository. The user-facing name is **Relay** (capital R).
 
 Read `README.md`, `docs/architecture.md`, `docs/verification.md`, and `docs/research.md`. The application, trainer and evaluator are deliberately separate interfaces. The browser may never receive control-plane credentials, task answers or evaluator code.

@@ -1,0 +1,51 @@
+{
+  "id": "onsite-2026-10-01",
+  "maxEstimatedUSD": 3,
+  "models": {
+    "gpt-4o-mini": {
+      "id": "gpt-4o-mini",
+      "rates": { "input": 0.15, "output": 0.6 },
+      "vision": true
+    },
+    "gpt-6-luna": { "id": "gpt-6-luna", "rates": { "input": 0.1, "output": 0.5 } }
+  },
+  "common": {
+    "provider": "ramp",
+    "seeds": [42],
+    "repeats": 1,
+    "guides": [false],
+    "histories": ["recent-4"],
+    "orderSeed": 20261001,
+    "maxSteps": 50,
+    "maxRequests": 500,
+    "maxOutputTokens": 1024,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 240,
+    "runSeconds": 1800
+  },
+  "phases": [
+    {
+      "id": "pilot",
+      "models": ["gpt-4o-mini"],
+      "tasks": ["channel-topic"],
+      "interfaces": ["a11y", "json-ui", "pixels"],
+      "maxEstimatedUSD": 0.25,
+      "maxSteps": 20,
+      "runSeconds": 600
+    },
+    {
+      "id": "workflows",
+      "models": ["gpt-4o-mini", "gpt-6-luna"],
+      "tasks": ["thread-reply", "edit-message", "incident-triage", "decision-record"],
+      "interfaces": ["a11y", "json-ui", "api"],
+      "maxEstimatedUSD": 2
+    },
+    {
+      "id": "pixels",
+      "models": ["gpt-4o-mini"],
+      "tasks": ["thread-reply", "edit-message", "incident-triage"],
+      "interfaces": ["pixels"],
+      "maxEstimatedUSD": 0.75
+    }
+  ]
+}

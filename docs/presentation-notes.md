@@ -1,48 +1,110 @@
-# Presentation notes and discussion guide
+# Presentation and demonstration notes
 
-Suggested timing: 10 minutes of slides, 3 minutes live demo, then open discussion. Do not read the source survey aloud; lead with the environment and the decision it illustrates.
+## Format and timing
 
-## Slide-by-slide notes
+- 12 slides; 10–12 minutes, followed by a three-minute demonstration and discussion.
+- Technical headings, bullets and diagrams. HTML works offline; PDF is the portable fallback.
+- Regenerate with `npm run presentation` after updating verified evidence. Do not type improved results into the deck.
+- Do not claim a new benchmark standard, secure sandbox, trained RL agent or model leaderboard.
 
-1. **Outcome first (45 sec).** “Relay is a runnable Slack-like browser environment. The UI is real enough to support search, threads, edits and decisions; every evaluated change lands in isolated persistent state.” Explain the narrow scope and synthetic workspace.
-2. **Prior art (90 sec).** Start with the surprising important finding: Cua already has a literal Slack environment. Distinguish it from UI clone repos, env0's much broader API surface and Agent-Diff's evaluation architecture. Say that external implementations were inspected, not benchmarked. The value of this work is its inspectable tradeoff, not novelty.
-3. **Architecture (90 sec).** Walk actor → browser → app → private state, then trusted trainer → grader. State that both listeners currently share a process. Say “data isolation and a separate operator interface,” not “secure sandbox.” Explain capability routing and no shared session cookie.
-4. **Task design (60 sec).** Choose two examples: correct text in the wrong thread fails; sending a replacement instead of editing fails. Each task is an outcome contract. Exact wording is deliberate so the grader can be deterministic without an LLM judge.
-5. **Evidence (75 sec).** Separate 24 domain/backend tests, 16 scripted app/browser checks (plus one presentation check) and 3 interactive model episodes. Avoid “100% agent success” language. The implementing agent already knew the app. Discuss the typed-edit focus bug as a concrete verification finding. Original interactive screenshots predate the font/icon/avatar update.
-6. **Visual episode (30 sec).** Show the old incident and the correct one. The agent used screenshots and coordinates; the terminal grade came from state, not a screenshot classifier. Link the event export if asked.
-7. **Performance (75 sec).** Reset p50 0.37 ms, screenshot p50 69.49 ms on this machine. Explain direct-store vs HTTP vs browser measurement boundaries. Do not turn the 148 ms read burst into a production throughput promise. Chromium child RSS remains unmeasured.
-8. **Tradeoffs (90 sec).** Single-process SQLite is inspectable and cheap for small states; synchronous work and whole-state JSON are limits. Scale by partitioning sessions, isolating control, bounding browser pools and measuring resource usage. Add diverse held-out templates before claiming evaluation generalization.
-9. **Transition to demo (30 sec).** Invite discussion on fidelity, modality, recovery and isolation. A good answer may depend on whether the target policy is screenshot-only, DOM-enabled or full-computer-access.
+## Slide 1 — Environment
 
-## Live demo rehearsal
+- An agent must change a realistic workspace, not merely describe a solution.
+- 18 tasks, synthetic data, independent terminal checks and actual browser interaction.
+- Point to the runnable code, manual sandbox and evidence first.
 
-1. Before the call, use Node 24.13, `npm ci`, `npm run build`, install Chromium, and run `npm run verify`. Start the app separately.
-2. Create two `thread-reply` sessions with seed 47. Keep each printed URL in its own tab. Never screen-share the operator key.
-3. In the first, search `in:proj-orbit ORBIT-288`. Open Maya's thread. Reply `QA checklist complete. Ready for review.`
-4. Grade the first: reward 1. Reload the second: no new reply. Grade it: reward 0.
-5. Export the first to a fresh artifact directory. Reset it, reload, then grade: reward 0. Explain why a fresh browser context is preferable in automated runs.
-6. If time permits: ArrowUp in the empty channel composer edits the latest own message; show that the independent customer-preview message remains unchanged.
+## Slide 2 — Scope and prior work
 
-If a live demo stalls, show the recorded screenshot sequence and state export. Do not pretend it is live. Do not reset all sessions globally to recover one demo.
+- React, SQLite and Playwright keep state and interactions inspectable.
+- Review covered mockups, functional clones, Cua Slack, env0 and Agent-Diff; external projects were inspected, not executed comparatively.
+- MIT covers original code; proprietary fonts and third-party marks remain separate.
 
-## Questions to prepare for
+## Slide 3 — Interfaces
 
-**Why not use an existing Slack clone?** Many solve production chat, not reset and reward. Cua/env0 are closer and worth evaluating if requirements expand. Here a small original state model makes every contract easy to inspect and keeps setup local.
+- Pixels use screenshot input and coordinates; text gateways use disclosed controls and references.
+- API changes both information access and action granularity; do not combine it into a CUA score.
+- Observer replay state and final grader diagnostics never enter the policy input.
+- Guide/history controls are implemented but fixed in this campaign; no measured benefit is claimed.
 
-**Is this genuinely RL-ready?** It provides reset, observation, bounded action steps, terminal reward, truncation, exports and cleanup. It does not ship an optimizer, training run, held-out benchmark or OpenEnv/BrowserGym compatibility claim. A trainer supplies the policy and outer budgets.
+## Slide 4 — Isolation
 
-**Can the agent cheat?** A screenshot policy cannot call the evaluator through the provided action bridge. An agent with shell access to this repository can read the grader and key; production evaluation must hide them behind OS/network isolation. Frontend API access must be governed by the intended modality.
+- Private SQLite file and fresh browser context per episode; no shared session cookie.
+- Revisions fence stale writes; request IDs prevent duplication; reset retains audit history.
+- Actor/control listeners share a process. Shell-capable policies need separate process/network isolation.
+- Forced termination can prevent cleanup. No multi-host durability or tenant resource quotas are claimed.
 
-**How do you know the grader is right?** Positive and adversarial negative states across multiple seeds; UI reference episodes; complete expected-state comparisons. That is evidence, not proof for arbitrary future task families. Add independently authored graders and mutation tests as the suite grows.
+## Slide 5 — Tasks and grading
 
-**Why exact text?** It removes semantic-judge uncertainty for selected procedural tasks. For natural-language synthesis tasks, define a richer semantic contract and validate its false-positive/false-negative behavior separately.
+- Decision-record combines fact retrieval, channel description, pin, saved reply and in-thread acknowledgement.
+- Wrong target, stale fact, duplicate post and collateral changes fail even if the model says done.
+- Expected states are independent contracts, not reference-policy replay or an LLM judge.
+- Exact text is deliberate; fully undone collateral actions can pass under final-state grading.
 
-**Does reset exactly reproduce an episode?** Fresh sessions reproduce fixture state and action-derived timestamps. Reset-in-place intentionally increases revisions to reject stale requests. Browser state also needs a fresh context. Model stochasticity is independent.
+## Slide 6 — Verification
 
-**What does isolation mean here?** Private data files and browser contexts, tested across sessions. Not CPU/memory quotas per tenant, kernel isolation or multi-host guarantees. Docker wraps the app, not each policy.
+- Software tests verify transitions, isolation, persistence and UI paths; grader challenges test false passes.
+- Backend/browser counts come from test reports. The 84 positive and 2,583 negative grader states are a separate denominator.
+- Real-model episodes are distinct from scripts, fake transport tests and three historical builder-informed Codex smokes.
 
-**How would you support 1,000 agents?** First measure the full browser/model worker footprint, not just SQLite. Use sharded session ownership, immutable shared assets, bounded browser pools, external evidence storage, an isolated control plane and active cleanup. Choose context/process/container/VM tiers from the threat model, then run a soak test.
+## Slide 7 — Campaign design
 
-**How do you prevent benchmark memorization?** Current cosmetic seeds do not. Next split at task-template/semantic-structure level, randomize facts and distractors, hold out compositions, and keep private evaluator data outside the actor filesystem.
+- Freeze tasks, model routes, seed, prompts, budgets and source before inference.
+- Three pilot cells, 24 matched workflow cells, three pixel follow-ups; one seed/repetition, no ranking.
+- $3 total estimated allowance; no hidden retry, fallback model or cap increase.
+- Exact requested/returned model receipts are retained.
 
-**What would you cut under a tighter deadline?** Keep search, threads and edit, one state engine and strong evidence. Cut decorative features before independent grading or lifecycle tests.
+## Slide 8 — Results
+
+- 20 attempted: 8 passes, 11 incorrect/step-limited, 1 blocked; 10 unattempted.
+- Accessibility 2/6, page JSON 2/7 including one blocked, pixels 0/1; API control 4/6.
+- Unequal task/model coverage makes this an inventory, not a causal comparison.
+- 126 calls; $0.14987395 estimate/reservation, not an invoice; $0.0014902 remains reserved.
+- No new incident-triage cells ran. Older scripted and builder-informed incident evidence stays separate.
+
+## Slide 9 — Findings
+
+- Luna passed thread reply through all three matched text/API interfaces; Mini failed those cells. One task does not establish broad superiority.
+- UI decision-record failures copied literal `DESIGN`; API retrieved “Willow” and passed. Pin/save actions alone were insufficient.
+- Pixel outputs contained malformed multiple actions; the parser rejected all 20 without mutation.
+- Stop was an incomplete output-limited response, not 403: 1,024 output tokens, including 915 reasoning tokens.
+- Hosted defaults already allow 4,096; this campaign froze a smaller allowance. A changed budget requires a new plan, not rewritten results.
+
+## Slide 10 — Performance
+
+- Current p50 measurements: create 17.34 ms, reset 1.50 ms, screenshot 84.15 ms.
+- Distinguish direct-store reset, HTTP, page-ready and screenshot timing.
+- 100 sessions and 16 concurrent API reads do not establish 16 concurrent agents.
+- Browser child memory and sustained concurrency remain unmeasured; historical runs are not a controlled speed comparison.
+
+## Slide 11 — Scaling
+
+- Proposed path: admission queue, bounded workers, private state, separate control and evidence storage.
+- Share immutable assets; partition synchronous state work; recycle workers and enforce limits.
+- Use process/container/VM tiers according to policy privileges.
+- Next measurement: 1/4/8/16 workers, full process-tree RSS, CPU, p95 step latency, failures and cleanup over a soak period.
+
+## Slide 12 — Demonstration
+
+- Open `/play`; search `in:design navigation`, open the decision thread and inspect final approval. Label it a manual synthetic sandbox.
+- Relay → Replays → `GPT-6 Luna · thread reply passed`; play to the final state and show the exact reply.
+- Open `GPT-6 Luna · decision record incomplete`; scrub to the end and show literal `DESIGN` and the failed outcome.
+- Optionally show the API decision-record pass as a retrieval/action control, not mouse-and-keyboard CUA.
+- Open the full campaign inventory, including failures and unattempted cells. Curated examples are not the complete result set.
+- Replay uses no inference or workspace writes. If a live service stalls, use recorded evidence and say so.
+
+## Rehearsal
+
+- Run `npm ci`, install Chromium, then `npm run verify`, `npm run test:graders`, `npm run inspect:campaign -- workflows` and `npm run presentation`.
+- Run `npm run build:hosted && npm run live`, or use the public site. Keep the PDF/evidence locally available.
+- Never screen-share keys. A paid live demo needs a provider-side cap and model availability check.
+- Show cross-session noninterference/reset if asked; the committed isolation test is the reproducible fallback.
+
+## Discussion answers
+
+- Why a focused clone? Selected tasks need state, reset and reward; enterprise auth, uploads and calls add unrelated complexity.
+- RL-ready? Reset/step/reward exist; training, standardized trainer adapters and held-out evaluation are not delivered results.
+- Can policies cheat? Bounded gateways hide grader/control data. Shell access to this repository does not; serious evaluation must isolate and withhold them.
+- How trustworthy are grades? Independent positive/adversarial challenges and UI recipes support tested contracts, not every future grader.
+- What is replay fidelity? UI boundary states and pointer samples through the current renderer, not lossless video. Original PNGs remain the reference.
+- Main gaps? Successful pixel policies, semantic holdouts and sustained worker measurements.
+- Main finding? Plausible activity can use the wrong fact or destination; strict grading and complete traces expose it.

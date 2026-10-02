@@ -4,6 +4,10 @@ import { tmpdir, cpus, totalmem, platform, arch, release } from 'node:os';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { chromium } from '@playwright/test';
+import { sourceFingerprint } from '../runner/experiment.mjs';
+const outputPath = process.argv[2] ?? 'evidence/benchmark.json';
+if (!/^evidence\/benchmark(?:-[0-9-]+)?\.json$/.test(outputPath))
+  throw Error('Use an evidence/benchmark[-date].json output path.');
 const dir = mkdtempSync(join(tmpdir(), 'relay-bench-')),
   servers = createServers({
     dataDir: dir,
@@ -98,6 +102,7 @@ try {
   );
   const out = {
     schemaVersion: 1,
+    sourceHash: sourceFingerprint(process.cwd()),
     at: new Date().toISOString(),
     machine: {
       platform: platform(),
@@ -137,7 +142,7 @@ try {
     rawSamplesMs: samples,
   };
   mkdirSync('evidence', { recursive: true });
-  writeFileSync('evidence/benchmark.json', JSON.stringify(out, null, 2) + '\n');
+  writeFileSync(outputPath, JSON.stringify(out, null, 2) + '\n');
   console.log(JSON.stringify({ ...out, rawSamplesMs: undefined }, null, 2));
 } finally {
   await browser?.close();

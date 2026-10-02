@@ -29,12 +29,18 @@ Reference scripts, fake transport tests and real model results must stay distinc
 
 ## Ready now
 
+Start with [Onsite readiness](onsite-readiness.md): the 12-slide deck/PDF,
+20 real-model attempts, full inventory, three replay excerpts, current measurements
+and limitations. The campaign stopped on an incomplete output-limited response;
+do not resume it or count its ten unattempted cells as failures. Original code is
+MIT; third-party assets retain their restrictions.
+
 The current catalog has **18 tasks**. Read [the task suite](task-suite.md) for the
 12 new multi-step contracts, richer fixtures, 24 browser recipes, grader challenge
-report and bounded model-pilot plan. The following original handoff context and
-presentation describe the earlier six-control baseline, not new model evidence.
+report and bounded model-pilot plan. Older evidence is retained as historical
+context; the current assessment distinguishes it from the new campaign.
 
-The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, six task contracts, trainer bridge, tests, interactive trajectory JSON, research provenance, local measurements, a Docker recipe and a nine-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for the reference scripts.
+The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, 18 task contracts, trainer bridge, tests, trajectory evidence, research provenance, measurements, a Docker recipe and a twelve-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for reference scripts and saved replays.
 
 Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the original environment discussion. The hosted BYOK release now adds the screen-first console and TypeSafe decision transport; real Jev inference still requires an authenticated pilot.
 
@@ -46,7 +52,7 @@ Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task wit
 - Keep the private assignment PDF, `.runtime`, operator tokens and raw Playwright replay/video folders out of the submission.
 - Rehearse a fresh-session demo, outcome grade, cross-session noninterference and reset.
 - State the limitations plainly: focused Slack-like subset; no training; builder-informed model smokes; no sustained multi-browser scale claim.
-- Decide explicitly on a license for original work; public visibility does not itself grant an open-source license. Upstream dependency/asset notices remain in force.
+- Original code is MIT, authorized by Kevin on 2026-10-01. Upstream dependency/asset notices remain in force.
 
 ## Code map
 

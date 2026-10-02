@@ -3,736 +3,685 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Relay — Slack-like CUA environment</title>
+    <title>Relay — Slack-like computer-use environment</title>
     <style>
-      :root {
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-        color: #24202b;
-        background: #f4f2f6;
-        font-synthesis: none;
-      }
       * {
         box-sizing: border-box;
+      }
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #20232a;
+        background: #fafafa;
       }
       body {
         margin: 0;
       }
-      header {
-        height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 4vw;
-        border-bottom: 1px solid #ddd6e4;
-        background: #fff;
-      }
-      header strong {
-        font-size: 20px;
-        letter-spacing: -0.7px;
-      }
-      header span {
-        font-size: 12px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: #746980;
-      }
-      .mark {
-        display: inline-grid;
-        place-items: center;
-        background: #40224e;
-        color: white;
-        width: 32px;
-        height: 32px;
-        border-radius: 9px;
-        margin-right: 10px;
-      }
       main {
-        max-width: 1320px;
-        margin: 0 auto;
-        padding: 36px 48px 76px;
+        max-width: 1280px;
+        margin: auto;
       }
       .slide {
         display: none;
-        min-height: calc(100vh - 180px);
+        padding: 48px 64px 84px;
+        min-height: calc(100vh - 64px);
       }
       .slide.active {
         display: block;
       }
-      .eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #7f608f;
-        font-weight: 750;
-        margin: 0 0 18px;
-      }
-      h1 {
-        font-size: clamp(40px, 5vw, 72px);
-        letter-spacing: -3px;
-        line-height: 1.06;
-        margin: 0 0 24px;
-        max-width: 850px;
-      }
+      h1,
       h2 {
-        font-size: clamp(32px, 4vw, 48px);
-        letter-spacing: -1.8px;
-        line-height: 1.12;
-        margin: 0 0 20px;
+        font-size: clamp(30px, 3.2vw, 44px);
+        line-height: 1.15;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+        margin: 0 0 36px;
+        padding-bottom: 22px;
+        border-bottom: 2px solid #705484;
       }
       h3 {
-        font-size: 21px;
-        margin: 0 0 12px;
-        letter-spacing: -0.5px;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 28px 0 16px;
       }
-      p {
-        font-size: 20px;
-        line-height: 1.5;
-        color: #655c6e;
-        margin: 12px 0 24px;
+      ul {
+        padding-left: 27px;
+        margin: 20px 0;
       }
-      strong {
-        color: #302738;
+      li {
+        font-size: clamp(19px, 2vw, 27px);
+        line-height: 1.45;
+        margin: 14px 0;
+      }
+      li::marker {
+        color: #705484;
       }
       a {
-        color: #694380;
+        color: #654675;
         text-underline-offset: 4px;
       }
-      .lead {
-        max-width: 850px;
+      .sources li {
+        font-size: 15px;
+        color: #59606a;
+        margin: 6px 0;
       }
-      .split {
-        display: grid;
-        grid-template-columns: 1fr 1.12fr;
-        gap: 36px;
-        align-items: center;
-      }
-      .split > div {
-        min-width: 0;
-      }
-      .hero {
-        width: 100%;
-        border: 1px solid #cfc6d6;
-        border-radius: 12px;
-        box-shadow: 0 20px 50px #30133d12;
-      }
-      .wide {
-        max-height: 55vh;
-        object-fit: contain;
-        background: white;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-        margin: 28px 0;
-      }
-      .card {
+      .diagram {
+        margin: 32px 0;
+        border: 1px solid #ccd0d5;
         padding: 25px;
-        background: #fff;
-        border: 1px solid #e0d9e5;
-        border-radius: 14px;
-      }
-      .card p {
-        font-size: 16px;
-        margin: 0;
-      }
-      .number {
-        font-size: 44px;
-        font-weight: 750;
-        letter-spacing: -2px;
-        color: #593769;
-      }
-      .tag {
-        display: inline-block;
-        font-size: 12px;
-        background: #e9e1ef;
-        color: #644777;
-        padding: 6px 10px;
-        border-radius: 20px;
-        margin: 0 6px 8px 0;
-      }
-      .note {
-        font-size: 13px;
-        color: #817588;
-        line-height: 1.5;
-      }
-      .callout {
-        background: #e9e1ef;
-        border-left: 3px solid #765289;
-        padding: 17px 23px;
-        border-radius: 0 12px 12px 0;
-        font-size: 18px;
-        color: #4f365f;
+        border-radius: 4px;
+        background: white;
       }
       .flow {
         display: flex;
-        gap: 12px;
         align-items: center;
         justify-content: center;
-        margin: 24px 0;
+        gap: 18px;
       }
       .node {
-        border: 1px solid #d9cfdf;
-        background: white;
-        border-radius: 14px;
-        padding: 22px;
-        font-weight: 650;
-        min-width: 155px;
+        border: 1px solid #98a0aa;
+        padding: 20px 16px;
         text-align: center;
-      }
-      .node small {
-        display: block;
-        font-size: 12px;
-        color: #85748e;
-        margin-top: 8px;
-        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.3;
+        flex: 1;
       }
       .arrow {
-        font-size: 26px;
-        color: #9879a9;
+        font-size: 28px;
+        color: #705484;
       }
-      .trusted {
-        background: #e5eee7;
-        border-color: #bbd4c2;
-      }
-      .actors {
-        background: #f0e8f5;
-      }
-      .boundary {
-        border: 1px dashed #947ca4;
-        padding: 18px;
-        border-radius: 16px;
-        margin: 18px 0;
-      }
-      .boundary .note {
-        margin: 0;
-        text-align: center;
-      }
-      .table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        margin: 24px 0;
-      }
-      .table th,
-      .table td {
-        text-align: left;
-        padding: 16px 18px;
-        border-bottom: 1px solid #e9e3ed;
-        font-size: 16px;
-      }
-      .table th {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #86728e;
-        background: #eee7f3;
-      }
-      .table td:last-child {
-        color: #6b5777;
-      }
-      .metrics {
+      .stack {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin: 24px 0;
+        gap: 12px;
+        flex: 1;
       }
-      .metrics .card {
-        padding: 20px;
+      .stack .node {
+        padding: 12px;
+        font-size: 20px;
       }
-      .metrics p {
-        font-size: 14px;
+      .subflow {
+        border-top: 1px dashed #b4bbc5;
+        padding-top: 20px;
+        margin-top: 22px;
       }
-      .metrics .number {
-        font-size: 36px;
-      }
-      .limits {
+      .two {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .two li {
+        font-size: 23px;
+      }
+      .results {
+        display: grid;
+        gap: 20px;
+      }
+      .result-row {
+        display: grid;
+        grid-template-columns: 170px 1fr 240px;
+        gap: 20px;
+        align-items: center;
+        font-size: 19px;
+      }
+      .bar {
+        display: flex;
+        height: 30px;
+        gap: 4px;
+      }
+      .segment {
+        min-width: 2px;
+        border: 1px solid transparent;
+      }
+      .passed {
+        background: #35785a;
+      }
+      .incomplete {
+        background: #c58b34;
+      }
+      .blocked {
+        background: #875677;
+      }
+      .unattempted {
+        background: #e0e3e8;
+        border-color: #bbc2cb;
+      }
+      .legend {
+        display: flex;
         gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+        font-size: 16px;
       }
-      .limits ul {
-        padding-left: 22px;
-        font-size: 18px;
-        line-height: 1.7;
-        color: #66596e;
+      .legend span {
+        display: flex;
+        gap: 8px;
+        align-items: center;
       }
-      .shot-caption {
-        font-size: 12px;
-        margin-top: 10px;
+      .legend i {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
       }
       nav {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        height: 54px;
-        background: #ffffffed;
-        border-top: 1px solid #ddd6e4;
+        height: 64px;
         display: flex;
+        justify-content: center;
+        gap: 24px;
         align-items: center;
-        justify-content: space-between;
-        padding: 0 4vw;
-        backdrop-filter: blur(12px);
+        background: #fafafa;
+        border-top: 1px solid #d8dbe0;
       }
-      nav button {
-        background: #40224e;
-        color: white;
-        border: 0;
-        border-radius: 7px;
-        padding: 9px 18px;
+      button {
         font: inherit;
+        background: white;
+        border: 1px solid #b4bbc5;
+        padding: 9px 15px;
+        border-radius: 4px;
         cursor: pointer;
       }
-      nav button:disabled {
-        opacity: 0.3;
+      button:disabled {
+        opacity: 0.4;
         cursor: default;
       }
-      .counter {
-        font-size: 13px;
-        color: #7d6a88;
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #705484;
+        outline-offset: 4px;
       }
-      .navhint {
-        font-size: 12px;
-        color: #908099;
+      #counter {
+        font-size: 15px;
+        color: #515967;
+        min-width: 210px;
+        text-align: center;
       }
-      code {
-        background: #eae5ee;
-        padding: 3px 6px;
-        border-radius: 4px;
-        font-size: 0.86em;
-      }
-      .check {
-        color: #2d7856;
-      }
-      .bar {
-        height: 10px;
-        background: #795789;
-        border-radius: 5px;
-        margin: 12px 0 0;
-      }
-      .caption {
-        font-size: 14px;
-        color: #8b7c95;
-      }
-      .links {
-        display: flex;
-        gap: 20px;
-        font-size: 14px;
-        margin-top: 24px;
-      }
-      @media (max-width: 850px) {
-        main {
-          padding: 28px 24px 80px;
+      @media (max-width: 760px) {
+        .slide {
+          padding: 28px 24px 84px;
         }
-        .split,
-        .limits {
+        .two {
           grid-template-columns: 1fr;
-        }
-        .grid,
-        .metrics {
-          grid-template-columns: repeat(2, 1fr);
         }
         .flow {
           flex-wrap: wrap;
         }
-        .navhint {
-          display: none;
+        .node {
+          flex-basis: 140px;
+          font-size: 17px;
         }
-        .table td,
-        .table th {
-          padding: 10px;
-          font-size: 13px;
+        .result-row {
+          grid-template-columns: 110px 1fr;
+          gap: 10px;
+          font-size: 15px;
+        }
+        .result-row > :last-child {
+          grid-column: 2;
+        }
+        .diagram {
+          padding: 15px;
+        }
+        #counter {
+          min-width: 100px;
+        }
+        nav {
+          gap: 12px;
         }
       }
+      @page {
+        size: 13.333in 7.5in;
+        margin: 0;
+      }
       @media print {
-        header,
+        body,
+        main {
+          width: 1280px;
+          max-width: none;
+          background: white;
+        }
+        .slide,
+        .slide.active {
+          display: block;
+          width: 1280px;
+          height: 720px;
+          min-height: 0;
+          padding: 42px 60px;
+          break-after: page;
+          overflow: hidden;
+        }
+        .slide:last-child {
+          break-after: auto;
+        }
         nav {
           display: none;
         }
-        main {
-          padding: 0;
-          max-width: none;
-        }
-        .slide {
-          display: block !important;
-          page-break-after: always;
-          min-height: 0;
-          padding: 20mm 12mm;
-        }
-        h1 {
-          font-size: 42px;
-        }
+        h1,
         h2 {
-          font-size: 32px;
+          font-size: 38px;
+          margin-bottom: 25px;
+          padding-bottom: 18px;
         }
-        p {
-          font-size: 16px;
+        li {
+          font-size: 25px;
+          margin: 12px 0;
         }
-        .card {
-          break-inside: avoid;
+        .diagram {
+          margin: 24px 0;
         }
-        .hero {
-          box-shadow: none;
-        }
-        .wide {
-          max-height: 120mm;
-        }
-        .table td,
-        .table th {
-          padding: 10px;
-          font-size: 13px;
-        }
-        .note {
-          font-size: 10px;
-        }
-        @page {
-          size: A4 landscape;
-          margin: 0;
+        * {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <strong><span class="mark">R</span>Relay</strong
-      ><span>Computer-use environment · September 2026</span>
-    </header>
     <main>
-      <section class="slide active" data-title="Overview">
-        <div class="split">
-          <div>
-            <div class="eyebrow">01 / Build something agents can actually use</div>
-            <h1>A familiar workspace.<br />A measurable environment.</h1>
-            <p>
-              Slack-like workflows with persistent state, isolated episodes, and outcomes we can
-              verify.
-            </p>
-            <span class="tag">Local-first</span><span class="tag">Six task contracts</span
-            ><span class="tag">No model key required</span>
-            <p class="note">
-              Relay / fictional Northstar workspace. Focused assignment implementation—not Slack
-              affiliation or API compatibility.
-            </p>
-          </div>
-          <div>
-            <img
-              class="hero"
-              src="../evidence/visual/relay-lab.png"
-              alt="Relay's public operator console with a Slack-like workspace and action history"
-            />
-            <p class="shot-caption">Current public build · scripted reference replay</p>
-          </div>
+      <section class="slide active" data-title="Environment">
+        <h1>Relay: a Slack-like computer-use environment</h1>
+        <ul>
+          <li>Runnable web application with persistent, synthetic workspace state.</li>
+          <li>
+            18 tasks covering search, threads, edits, DMs, pins, saved messages and channel details.
+          </li>
+          <li>Independent terminal-state evaluation and inspectable agent trajectories.</li>
+          <li>Kevin Liu · CUA implementation exercise · October 2026.</li>
+        </ul>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="Task to isolated workspace to agent interaction to state evaluation"
+        >
+          <div class="node">Task + seed</div>
+          <div class="arrow">→</div>
+          <div class="node">Private workspace</div>
+          <div class="arrow">→</div>
+          <div class="node">Agent actions</div>
+          <div class="arrow">→</div>
+          <div class="node">State evaluation</div>
         </div>
       </section>
-      <section class="slide" data-title="Research">
-        <div class="eyebrow">02 / Start with the landscape</div>
-        <h2>A Slack mockup is not an RL environment.</h2>
-        <p class="lead">The useful prior work falls into three different categories.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>UI & full-app clones</h3>
-            <p>
-              Sirneij, Clask, Chatcn, Next/Convex tutorial family. Great interaction references;
-              usually no task reset or reward contract.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Existing Slack environments</h3>
-            <p>
-              Cua's browser-native <code>slack_env</code>; env0's API replica plus UI. These are the
-              closest systems, not just inspiration screenshots.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Evaluation infrastructure</h3>
-            <p>
-              Agent-Diff, BrowserGym, OpenEnv, WebArena. Learn from outcome grading, lifecycle
-              boundaries and reusable interfaces.
-            </p>
-          </div>
-        </div>
-        <div class="callout">
-          Decision: original focused UI + small transactional state engine. Own the evaluation
-          boundary; do not claim novelty.
-        </div>
-        <p class="note">
-          Repository heads and licenses recorded. External systems reviewed, not independently
-          executed or benchmarked. No benchmark code copied; official visual assets are separately
-          attributed.
-        </p>
-        <div class="links">
-          <a href="research.md">Full sourced survey</a
-          ><a href="../evidence/research/repositories.json">Pinned source metadata</a>
-        </div>
+      <section class="slide" data-title="Implementation scope">
+        <h2>Implementation scope and prior work</h2>
+        <ul>
+          <li>
+            React UI, deterministic transition engine, SQLite persistence and Playwright runner.
+          </li>
+          <li>
+            Static Slack mockups supply appearance, but not reset, reward or durable outcomes.
+          </li>
+          <li>
+            Cua Slack, env0 and Agent-Diff already address related environments; this is not a
+            novelty claim.
+          </li>
+          <li>
+            Original focused implementation keeps task contracts and failure traces easy to inspect.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>MIT for original code; third-party asset restrictions remain separate.</li>
+          <li>
+            Source review, not comparative execution:
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
+              >prior-work survey and pinned references</a
+            >.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Architecture">
-        <div class="eyebrow">03 / Keep the oracle out of the actor's hands</div>
-        <h2>Two interfaces. One explicit state contract.</h2>
-        <div class="boundary">
+      <section class="slide" data-title="Agent interfaces">
+        <h2>Four observation and action interfaces</h2>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="One workspace exposes pixels, accessibility, page JSON or actor API to a bounded policy; actions return through validation"
+        >
+          <div class="node">Fresh workspace</div>
+          <div class="arrow">→</div>
+          <div class="stack">
+            <div class="node">Pixels → mouse + keyboard</div>
+            <div class="node">Accessibility → element actions</div>
+            <div class="node">Page JSON → element actions</div>
+            <div class="node">Actor API → domain actions</div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node">Model policy<br />One validated action</div>
+        </div>
+        <ul>
+          <li>The actor never receives grader answers or control credentials.</li>
+          <li>
+            API access changes information and action granularity; it is not a computer-use score.
+          </li>
+          <li>
+            Optional documentation and bounded history are explicit conditions, not hidden prompt
+            changes.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Isolation">
+        <h2>Episode lifecycle and session isolation</h2>
+        <div
+          class="diagram"
+          role="img"
+          aria-label="Episode A owns browser A and SQLite A; episode B owns browser B and SQLite B. A separate trusted control interface grades both."
+        >
           <div class="flow">
-            <div class="node actors">Policy<small>Screenshot / visible DOM</small></div>
-            <span class="arrow">→</span>
-            <div class="node actors">Browser context<small>Mouse + keyboard only</small></div>
-            <span class="arrow">→</span>
-            <div class="node">Actor server<small>Port 4318</small></div>
-            <span class="arrow">→</span>
-            <div class="node">SQLite / session<small>State + revision + audit</small></div>
+            <div class="node">Episode A</div>
+            <div class="arrow">→</div>
+            <div class="node">Browser context A</div>
+            <div class="arrow">→</div>
+            <div class="node">SQLite file A</div>
           </div>
-          <p class="note">A token routes to one private file. No shared session cookie.</p>
-        </div>
-        <div class="flow">
-          <div class="node trusted">
-            Trusted trainer<small>Create / reset / step / close</small>
-          </div>
-          <span class="arrow">↔</span>
-          <div class="node trusted">Control server<small>Loopback + secret · 4319</small></div>
-          <span class="arrow">↔</span>
-          <div class="node trusted">
-            Outcome grader<small>Final state, not claimed success</small>
+          <div class="flow subflow">
+            <div class="node">Episode B</div>
+            <div class="arrow">→</div>
+            <div class="node">Browser context B</div>
+            <div class="arrow">→</div>
+            <div class="node">SQLite file B</div>
           </div>
         </div>
-        <p class="note">
-          Today, both HTTP listeners share one process. Interface separation is not a hostile-code
-          sandbox. Production requires a separate control network and isolated actor workers.
-        </p>
+        <ul>
+          <li>Fresh contexts and private files prevent cross-episode state contamination.</li>
+          <li>
+            Transactional writes, revisions and request IDs enforce atomicity and idempotency.
+          </li>
+          <li>
+            Actor and control listeners share a process: this is data isolation, not a hostile-code
+            sandbox.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Task design">
-        <div class="eyebrow">04 / Small surface, meaningful interactions</div>
-        <h2>Six workflows. Six ways to get it wrong.</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Find → reply</h3>
-            <p>Search for the right release and respond inside its thread—not the channel.</p>
-          </div>
-          <div class="card">
-            <h3>Edit the original</h3>
-            <p>
-              Change your earlier message without posting a duplicate or touching someone else's.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Triage an incident</h3>
-            <p>Distinguish the current incident, acknowledge it, and pin the same message.</p>
-          </div>
-          <div class="card">
-            <h3>Read → hand off</h3>
-            <p>
-              Use current facts, ignore a superseded draft, and send one DM to the right person.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Delete carefully</h3>
-            <p>Remove your placeholder draft while preserving the approved announcement.</p>
-          </div>
-          <div class="card">
-            <h3>Set a topic</h3>
-            <p>Navigate to the intended channel and update its topic through the dialog.</p>
-          </div>
+      <section class="slide" data-title="Task and reward">
+        <h2>Tasks require correct state, not a “done” response</h2>
+        <ul>
+          <li>Six control tasks; 12 deeper workflows with 3–6 coordinated mutations.</li>
+          <li>
+            Decision record: retrieve final approval, update description, pin the root, save the
+            reply and acknowledge in-thread.
+          </li>
+          <li>
+            Check content, identity, author, destination, uniqueness and all unchanged workspace
+            state.
+          </li>
+          <li>Wrong thread, replacement instead of edit, stale fact or collateral change fails.</li>
+        </ul>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="Final state is compared with an independently declared expected state, producing a binary reward"
+        >
+          <div class="node">Final workspace</div>
+          <div class="arrow">+</div>
+          <div class="node">Independent expected state</div>
+          <div class="arrow">→</div>
+          <div class="node">All checks pass<br />Reward 1; otherwise 0</div>
         </div>
-        <div class="callout">
-          Reward = 1 only if the requested outcome is present and the complete final state has no
-          extra changes.
-        </div>
+        <ul class="sources">
+          <li>
+            Exact text is deliberate. Fully undone actions may pass; path-level safety is not
+            currently graded.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Verification">
-        <div class="eyebrow">05 / Evidence, not a success-rate headline</div>
-        <h2>Three layers of verification.</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="number">24</div>
-            <h3>Backend checks</h3>
-            <p>
-              Ownership, false-positive graders, stale writes, idempotency, isolation, reset and
-              fresh-process recovery.
-            </p>
-          </div>
-          <div class="card">
-            <div class="number">16</div>
-            <h3>Browser checks</h3>
-            <p>
-              Six tasks × two seeds, plus focus/inert HTML, same-context isolation and the trainer
-              bridge. Scripted references.
-            </p>
-          </div>
-          <div class="card">
-            <div class="number">3</div>
-            <h3>Interactive model episodes</h3>
-            <p>
-              Search/DOM; keyboard edit + reload; screenshot-only incident triage. Each passed its
-              state contract.
-            </p>
-          </div>
-        </div>
-        <p>
-          <strong>Important:</strong> the interactive episodes were builder-informed smoke tests.
-          They are not a blind model comparison, trained-policy result or statistical success
-          estimate.
-        </p>
-        <p class="note">
-          A real typing-focus defect was found and fixed. A fill-only test would have missed it.
-          Shareable evidence includes screenshots, event logs, state hashes and terminal checks.
-        </p>
-        <div class="links">
-          <a href="verification.md">Verification report</a
-          ><a href="../evidence/agent/summary.json">Interactive episodes</a
-          ><a href="../evidence/reference/summary.json">Reference test results</a>
+      <section class="slide" data-title="Verification layers">
+        <h2>Verification separates software checks from model runs</h2>
+        <ul>
+          <li>121 backend/harness checks and 77 browser checks.</li>
+          <li>
+            84 valid states and 2,583 adversarial invalid states for the 12 deep-task graders.
+          </li>
+          <li>
+            Scripted UI recipes exercise interaction paths; they do not measure model capability.
+          </li>
+          <li>
+            20 newly attempted real-model episodes; original builder-informed episodes remain
+            labeled separately.
+          </li>
+        </ul>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="Software tests check implementation; grader challenges check reward; model episodes test policy behavior"
+        >
+          <div class="node">Software tests<br />Does the app work?</div>
+          <div class="node">Grader challenges<br />Does reward mean success?</div>
+          <div class="node">Model episodes<br />Can the policy do the task?</div>
         </div>
       </section>
-      <section class="slide" data-title="Live visual trajectory">
-        <div class="eyebrow">06 / Demonstrate the complete interaction</div>
-        <h2>A visible workspace. A verifiable outcome.</h2>
-        <img
-          class="hero wide"
-          src="../evidence/visual/slack-assets.png"
-          alt="Current public Slack-like workspace with local Lato typography and fictional initials"
-        />
-        <p class="caption">
-          Current public UI capture. Historical coordinate-based incident-triage evidence is
-          preserved as trajectory JSON; its private-prototype screenshots are not distributed.
-        </p>
+      <section class="slide" data-title="Run design">
+        <h2>A bounded, matched development campaign</h2>
+        <ul>
+          <li>
+            GPT-4o mini and GPT-6 Luna through Ramp Router; exact requested/returned model receipts
+            retained.
+          </li>
+          <li>30 planned cells: pilot, matched workflow matrix and separate pixel follow-up.</li>
+          <li>
+            Fresh sessions; seed 42; seeded cell order; recent-four history; no supplied guide.
+          </li>
+          <li>$3 ceiling; fixed action, token and time limits; no retry or model substitution.</li>
+          <li>
+            One seed and one repetition on public tasks: descriptive evidence, not a model ranking.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/onsite-2026-10-01.md"
+              >Frozen plan, exact configuration and pilot review</a
+            >.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Measurements">
-        <div class="eyebrow">07 / Optimize what actually costs time</div>
-        <h2>The browser costs more than the reset.</h2>
-        <div class="metrics">
-          <div class="card">
-            <p>CREATE / p50</p>
-            <div class="number">5.19<span class="caption"> ms</span></div>
-            <div class="bar" style="width: 8%"></div>
+      <section class="slide" data-title="Observed outcomes">
+        <h2>Observed outcomes, including incomplete coverage</h2>
+        <ul>
+          <li>20 attempted: 8 passed, 11 incorrect/step-limited, 1 blocked; 10 unattempted.</li>
+          <li>
+            126 requests; $0.149874 estimated including $0.001490 reserved for the blocked response.
+          </li>
+        </ul>
+        <div
+          class="diagram results"
+          role="img"
+          aria-label="Episode outcomes by interface; task and model coverage differ across rows"
+        >
+          <div class="result-row">
+            <span>Accessibility</span>
+            <div class="bar">
+              <span class="segment passed" style="flex: 2" title="2 passed"></span
+              ><span class="segment incomplete" style="flex: 4" title="4 incomplete"></span
+              ><span class="segment unattempted" style="flex: 3" title="3 unattempted"></span>
+            </div>
+            <span>2 pass / 6 tried · 3 not run</span>
           </div>
-          <div class="card">
-            <p>RESET / p50</p>
-            <div class="number">0.37<span class="caption"> ms</span></div>
-            <div class="bar" style="width: 1%"></div>
+          <div class="result-row">
+            <span>Page JSON</span>
+            <div class="bar">
+              <span class="segment passed" style="flex: 2" title="2 passed"></span
+              ><span class="segment incomplete" style="flex: 4" title="4 incomplete"></span
+              ><span class="segment blocked" style="flex: 1" title="1 blocked"></span
+              ><span class="segment unattempted" style="flex: 2" title="2 unattempted"></span>
+            </div>
+            <span>2 pass / 7 tried · 2 not run</span>
           </div>
-          <div class="card">
-            <p>WRITE HTTP / p50</p>
-            <div class="number">1.35<span class="caption"> ms</span></div>
-            <div class="bar" style="width: 2%"></div>
+          <div class="result-row">
+            <span>Pixels</span>
+            <div class="bar">
+              <span class="segment incomplete" style="flex: 1" title="1 incomplete"></span
+              ><span class="segment unattempted" style="flex: 3" title="3 unattempted"></span>
+            </div>
+            <span>0 pass / 1 tried · 3 not run</span>
           </div>
-          <div class="card">
-            <p>SCREENSHOT / p50</p>
-            <div class="number">69.49<span class="caption"> ms</span></div>
-            <div class="bar" style="width: 100%"></div>
+          <div class="result-row">
+            <span>Actor API</span>
+            <div class="bar">
+              <span class="segment passed" style="flex: 4" title="4 passed"></span
+              ><span class="segment incomplete" style="flex: 2" title="2 incomplete"></span
+              ><span class="segment unattempted" style="flex: 2" title="2 unattempted"></span>
+            </div>
+            <span>4 pass / 6 tried · 2 not run</span>
+          </div>
+          <div class="legend">
+            <span><i class="passed"></i>Passed</span
+            ><span><i class="incomplete"></i>Incorrect / step limit</span
+            ><span><i class="blocked"></i>Blocked</span
+            ><span><i class="unattempted"></i>Unattempted</span>
           </div>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Measured</th>
-              <th>Bounded experiment</th>
-              <th>Not established</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>100 stored sessions</td>
-              <td>~48 KiB per post-mutation SQLite fixture</td>
-              <td>100 simultaneous browser agents</td>
-            </tr>
-            <tr>
-              <td>400 reads / concurrency 16</td>
-              <td>p95 8.37 ms; short loopback burst</td>
-              <td>Sustained production throughput</td>
-            </tr>
-            <tr>
-              <td>10 fresh browser contexts</td>
-              <td>Page-ready p50 67.29 ms, sequential</td>
-              <td>Multi-hour memory stability</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="note">
-          Apple M5 Max / 128 GiB / Node 24.13 / Chromium 153. Store calls exclude HTTP; screenshots
-          include capture. Client/server share benchmark process. Browser child memory not measured.
-          Raw samples included.
-        </p>
+        <ul class="sources">
+          <li>
+            Unequal task/model coverage; these totals are not causal interface comparisons. Cost is
+            not an invoice.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
+              >Complete inventory, exact trajectories and hashes</a
+            >.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Tradeoffs">
-        <div class="eyebrow">08 / Know where the prototype stops</div>
-        <h2>Scale the episode boundary, not the whole app.</h2>
-        <div class="limits">
-          <div class="card">
-            <h3>Good fit today</h3>
-            <ul>
-              <li>Shared immutable frontend assets</li>
-              <li>Private deterministic state per episode</li>
-              <li>Revision fencing and retry-safe writes</li>
-              <li>Fresh browser context, explicit close</li>
-              <li>Small Linux image, no hosted backend</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Next engineering gate</h3>
-            <ul>
-              <li>Separate actor/control processes and networks</li>
-              <li>Bounded browser pools, quotas and janitor</li>
-              <li>Process-tree memory and concurrency soak</li>
-              <li>Template-level held-out tasks</li>
-              <li>Independent agents and fidelity checks</li>
-            </ul>
-          </div>
-        </div>
-        <p class="note">
-          No realtime coworkers, uploads, OAuth or Slack API parity. Seed variation is cosmetic, not
-          a genuine train/test split. Reversible detours may pass final-state grading; path-level
-          safety requires event constraints.
-        </p>
+      <section class="slide" data-title="Trace findings">
+        <h2>What the trajectories explain</h2>
+        <ul>
+          <li>
+            Thread reply: GPT-6 Luna passed through accessibility, page JSON and API; GPT-4o mini
+            failed those matched cells.
+          </li>
+          <li>
+            Decision record: Luna pinned and saved correctly in the UI, but copied the placeholder
+            “DESIGN” instead of the approved fact. API execution passed.
+          </li>
+          <li>
+            Pixel pilot: 20 malformed multi-action responses were rejected; no state mutation
+            occurred.
+          </li>
+          <li>
+            Stop condition: Luna hit the 1,024-output-token limit. The incomplete response executed
+            no action; remaining cells were not launched.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            The runner retained the incomplete response's reservation conservatively. This was not
+            HTTP 403 or proof of missing provider access.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Discussion">
-        <div class="eyebrow">09 / Demo & discussion</div>
-        <h2>Runnable now.<br />Clear experiments next.</h2>
-        <div class="split">
-          <div>
-            <h3>Live demo · three minutes</h3>
-            <p>
-              Open a fresh task. Show search and a thread reply. Grade it. Reset it. Show a second
-              session stayed unchanged.
-            </p>
-            <p>
-              <code>npm ci</code> → <code>npm run dev</code><br /><code
-                >npm run session -- create thread-reply 47</code
-              >
-            </p>
+      <section class="slide" data-title="Speed and resources">
+        <h2>Speed and resource measurements</h2>
+        <ul>
+          <li>
+            Current local measurement: create p50 17.34 ms; reset p50 1.50 ms; screenshot p50 84.15
+            ms.
+          </li>
+          <li>
+            100 persisted sessions, 400 reads at concurrency 16, and 10 sequential browser contexts.
+          </li>
+          <li>Machine: Apple M5 Max, Node 24; timings include the stated operation only.</li>
+          <li>
+            Browser child-process memory, sustained agent concurrency and multi-host capacity are
+            not measured.
+          </li>
+          <li>
+            Model calls and visual evidence add latency; API throughput is not agent throughput.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
+              >Raw samples, machine details and measurement boundaries</a
+            >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Scaling tradeoffs">
+        <h2>Scaling path and tradeoffs</h2>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="Proposed scaling: admission queue to bounded isolated workers with private sessions, then external evidence storage"
+        >
+          <div class="node">Admission queue<br />Per-run budgets</div>
+          <div class="arrow">→</div>
+          <div class="stack">
+            <div class="node">Worker A: browser + private state</div>
+            <div class="node">Worker B: browser + private state</div>
+            <div class="node">Worker N: browser + private state</div>
           </div>
-          <div class="card">
-            <h3>Questions worth brainstorming</h3>
-            <p>
-              Where is fidelity worth its reset cost?<br />What observation boundary best matches
-              the target policy?<br />When should recovery count as success?<br />Which task splits
-              actually prevent memorization?<br />How much isolation does the threat model require?
-            </p>
-          </div>
+          <div class="arrow">→</div>
+          <div class="node">Evidence storage<br />Separate control service</div>
         </div>
-        <div class="links">
-          <a href="../README.md">Setup</a><a href="research.md">Research</a
-          ><a href="architecture.md">Architecture</a><a href="handoff.md">Handoff</a
-          ><a href="presentation-notes.md">Speaker notes</a>
-        </div>
-        <p class="note">
-          All demonstrated data is synthetic. No private assignment document or live credentials are
-          in the shareable archive.
-        </p>
+        <ul>
+          <li>Proposed architecture, not a measured deployment at scale.</li>
+          <li>
+            Partition synchronous SQLite work; pool bounded browser processes and recycle workers.
+          </li>
+          <li>
+            Use containers/VMs and network isolation before allowing shell-capable or hostile
+            policies.
+          </li>
+          <li>
+            Measure full worker memory, p95 latency, failure rate and cleanup under a sustained
+            load.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Demonstration and discussion">
+        <h2>Demonstration and discussion</h2>
+        <ul>
+          <li>
+            <a href="https://relay.kevinliu.studio/play">Open the workspace</a>: search, reply in a
+            thread, and edit your own message.
+          </li>
+          <li>
+            <a href="https://relay.kevinliu.studio/">Open Replays</a>: compare the successful thread
+            reply and the incomplete decision record.
+          </li>
+          <li>
+            Inspect the exact request, action, state change and terminal checks; replay requires no
+            model calls.
+          </li>
+          <li>
+            Discuss: required Slack fidelity, observation contract, security boundary and
+            cost/throughput target.
+          </li>
+          <li>
+            Next gates: successful pixel policies, task-template holdouts, trainer integration and
+            concurrent-worker measurements.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Reset/step/reward are implemented; no RL training or BrowserGym/OpenEnv compatibility is
+            claimed.
+          </li>
+          <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay">Code and setup</a> ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/onsite-readiness.md"
+              >Submission assessment and limitations</a
+            >.
+          </li>
+        </ul>
       </section>
     </main>
-    <nav aria-label="Slide navigation">
+    <nav aria-label="Presentation controls">
       <button id="prev" aria-label="Previous slide">← Previous</button
-      ><span class="navhint">Arrow keys to navigate · Print to PDF for handout</span
-      ><span class="counter" id="counter" aria-live="polite"></span
+      ><span id="counter" aria-live="polite"></span
       ><button id="next" aria-label="Next slide">Next →</button>
     </nav>
     <script>
       const slides = [...document.querySelectorAll('.slide')];
-      let index = Math.max(
-        0,
-        Math.min(slides.length - 1, (Number(location.hash.slice(1)) || 1) - 1),
-      );
+      let index = 0;
       function show(i) {
         index = Math.max(0, Math.min(slides.length - 1, i));
-        slides.forEach((s, n) => s.classList.toggle('active', n === index));
+        slides.forEach((s, n) => {
+          s.classList.toggle('active', n === index);
+          s.setAttribute('aria-hidden', n !== index);
+        });
         document.getElementById('counter').textContent =
           `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
         document.getElementById('prev').disabled = index === 0;
@@ -742,17 +691,20 @@
       }
       document.getElementById('prev').onclick = () => show(index - 1);
       document.getElementById('next').onclick = () => show(index + 1);
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      document.addEventListener('keydown', (e) => {
+        if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
           e.preventDefault();
           show(index + 1);
         }
-        if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (['ArrowLeft', 'PageUp'].includes(e.key)) {
           e.preventDefault();
           show(index - 1);
         }
+        if (e.key === 'Home') show(0);
+        if (e.key === 'End') show(slides.length - 1);
       });
-      show(index);
+      window.addEventListener('hashchange', () => show((Number(location.hash.slice(1)) || 1) - 1));
+      show((Number(location.hash.slice(1)) || 1) - 1);
     </script>
   </body>
 </html>

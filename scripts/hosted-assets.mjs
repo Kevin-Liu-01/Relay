@@ -17,6 +17,24 @@ writeFileSync(
 );
 const recordings = [
   {
+    source: 'evidence/replay/campaign-thread-pass.json',
+    name: 'campaign-thread-pass.json',
+    title: 'GPT-6 Luna · thread reply passed',
+    kind: 'Real model · accessibility · campaign excerpt',
+  },
+  {
+    source: 'evidence/replay/campaign-decision-fail.json',
+    name: 'campaign-decision-fail.json',
+    title: 'GPT-6 Luna · decision record incomplete',
+    kind: 'Real model · accessibility · campaign excerpt',
+  },
+  {
+    source: 'evidence/replay/campaign-decision-api-pass.json',
+    name: 'campaign-decision-api-pass.json',
+    title: 'GPT-6 Luna · decision record via API',
+    kind: 'Real model · API, not computer use · campaign excerpt',
+  },
+  {
     source: 'evidence/replay/reference-topic.json',
     name: 'reference-topic.json',
     title: 'Watch a topic update',
@@ -42,3 +60,14 @@ writeFileSync(
     recordings.map((r) => ({ title: r.title, kind: r.kind, path: `/demo/${r.name}` })),
   ),
 );
+// Keep the downloadable HTML standalone; serve controls externally under the site's CSP.
+const presentation = readFileSync('docs/presentation.html', 'utf8');
+const controls = presentation.match(/<script>([\s\S]*?)<\/script>/);
+if (!controls) throw Error('Presentation controls missing.');
+writeFileSync('dist/presentation-controls.js', controls[1]);
+writeFileSync(
+  'dist/presentation.html',
+  presentation.replace(controls[0], '<script src="./presentation-controls.js"></script>'),
+);
+if (existsSync('docs/presentation.pdf'))
+  copyFileSync('docs/presentation.pdf', 'dist/presentation.pdf');

@@ -123,8 +123,11 @@ makes no provider requests and spends $0. Never relabel it as live inference.
    Screenshot runs are a distinct, typically more expensive pilot. API is a
    different information/action condition—not a cheaper equivalent CUA score.
 
-No paid model campaign was run for this expansion. The committed evidence proves
-the tested contracts and interaction paths, not that cheap models can solve them.
+The initial expansion was verified without inference. The later
+[October 1 campaign](campaigns/onsite-2026-10-01.md) adds real model attempts,
+including decision-record. One API cell passed that task; the UI cells did not.
+This is development evidence, not proof that cheap models solve the expanded suite.
+See the [complete inventory](../evidence/campaigns/onsite-2026-10-01/README.md).
 
 ## Workspace improvements and bounds
 
@@ -136,11 +139,11 @@ Menus support arrows/Home/End/Escape, dialogs contain focus and restore it,
 mutations/sends are single-flight, and stale search replies cannot replace newer
 results. Keyboard and focus regressions are not a full screen-reader certification.
 
-Selecting a new workflow in Live chooses up to **40 actions / 90 seconds**; the
-hosted ceiling is **80 calls per run**. The default $0.25 and maximum $0.50 spend
-caps, 150-second run limit and no-retry policy remain unchanged. Complex workflows
-can legitimately time out; use explicitly budgeted local runs for longer tests.
-Compare shares the run cap across three interfaces; 1v1 splits its cap equally.
+Live defaults to **40 actions / 180 seconds per model** and **$2 estimated
+allowance**, adjustable to $5 and 80 actions. The hosted model-loop limit is
+190 seconds; output allowance is 4,096 tokens/request, including reasoning.
+Complex workflows can still time out. Compare uses separate requests and full
+per-cell budgets; 1v1 gives each lane its own full allowance and shows the total.
 Jev's bounded Choice menu cannot compose the new fact-dependent outputs, so these
 tasks are disabled for Jev in the UI and rejected server-side before inference.
 

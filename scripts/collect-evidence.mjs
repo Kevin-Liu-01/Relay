@@ -99,6 +99,7 @@ const sourceFiles = [
   'Dockerfile',
   'compose.yaml',
   'README.md',
+  'LICENSE',
   'AGENTS.md',
   'THIRD_PARTY_NOTICES.md',
   '.gitignore',

@@ -17,6 +17,16 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 ---
 
+## Onsite submission
+
+- **[Presentation](https://relay.kevinliu.studio/presentation.html)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
+- **[20 new real-model episodes](evidence/campaigns/onsite-2026-10-01/README.md)** across two models and four interfaces: 8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted after the declared stop rule.
+- **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
+- **No key required to inspect:** Replays includes the real thread pass, decision-record failure and API control. Original trajectories are downloadable and hash-verifiable.
+
+The campaign recorded about **$0.15 in estimated allowance**, including an unresolved
+reservation—not a billing total. These are development tasks, not a leaderboard.
+
 ## The idea
 
 Give an agent a realistic, multi-step Slack workflow. Watch what it sees, what it tries,
@@ -172,10 +182,11 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **119 backend checks and 74 browser checks**. Historical
+The expanded suite has **121 backend checks and 77 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
-New workflow evidence is scripted, with no paid inference. No RL training or GPU
+The new [model campaign](docs/campaigns/onsite-2026-10-01.md) includes real workflow
+attempts and preserved failures alongside scripted evidence. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
 Hosted text policies now survive optional screenshot failures, but cloud PNG
@@ -212,3 +223,6 @@ Built by **[Kevin Liu](https://github.com/Kevin-Liu-01)**.<br />
 A focused environment for studying agents—not an official Slack product.
 
 </div>
+
+Original code and documentation: [MIT](LICENSE). Dependencies, fonts and brand
+assets retain their [own licenses and restrictions](THIRD_PARTY_NOTICES.md).

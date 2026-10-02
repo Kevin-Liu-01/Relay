@@ -5,6 +5,7 @@ mkdirSync('artifacts', { recursive: true });
 if (existsSync('.env')) process.loadEnvFile('.env');
 const roots = [
   'README.md',
+  'LICENSE',
   'AGENTS.md',
   'package.json',
   'package-lock.json',

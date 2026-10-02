@@ -1,5 +1,54 @@
 # Verification and evidence
 
+## Onsite evidence and presentation — 2026-10-01
+
+The [frozen model campaign](campaigns/onsite-2026-10-01.md) planned 30 cells and
+attempted 20: **8 strict passes, 11 incorrect/step-limited, 1 blocked and 10
+unattempted**. It used GPT-4o mini and GPT-6 Luna through Ramp, four interfaces,
+fresh local Chromium contexts and fixed source hash
+`4823d0671d035e2759cd0bb7f01c4ddba63a45a04fd6c4c92cdf8bf4e74161d8`.
+The accepted receipts estimate $0.14838375; the rejected incomplete response
+retains $0.0014902, for $0.14987395 recorded allowance across 126 calls. Not an invoice.
+
+Workflow episode 017 hit the frozen 1,024-output-token allowance, including 915
+reasoning tokens. The response was HTTP 200 but incomplete; no action executed.
+Its allowlisted usage is preserved, while run accounting remains conservatively
+unknown. This triggered the declared stop rule. The remaining edit/incident cells
+and pixel follow-ups were not launched. No retries, changed prompts or increased
+allowances were used to improve the reported result.
+
+All attempted episodes have verified local hash chains/artifact bindings and zero
+capture warnings. [Full inventory and compressed originals](../evidence/campaigns/onsite-2026-10-01/README.md)
+retain requests, receipts, actions, failures, initial/final states and PNGs. Verify
+without a key using `npm run inspect:campaign -- workflows`. Hash consistency is
+not independent authentication. Browser totals are 2/6 accessibility, 2/7 page JSON
+(including one blocked), 0/1 pixels; API is a separate 4/6 control. Different
+coverage prevents treating pooled totals as causal interface comparisons.
+
+The public replay library adds three explicit excerpts: thread pass, decision-record
+failure and API decision-record pass. Each records its original episode and archive
+hash; the full matrix remains the evidence source. A browser regression confirms
+the pass/failure outcomes and recorded Slack text without inference or actor writes.
+The first new replay test incorrectly expected a terminal label at the initial
+frame; it was corrected to seek the final frame, not by changing application behavior.
+
+The 12-slide deck contains technical headers, bullets and diagrams only. Model
+counts and timing figures are generated from evidence. Tests check all slides,
+keyboard navigation, no external requests, mobile containment and print clipping.
+The fresh [local benchmark](../evidence/benchmark-2026-10-01.json) preserves raw
+samples and source provenance; old timings remain unchanged. It does not measure
+sustained browser-agent concurrency or Chromium child memory.
+
+See [the readiness assessment](onsite-readiness.md) for requirement coverage,
+trace findings and unresolved gates. This is development evidence, not a trained
+policy, held-out benchmark or statistical leaderboard.
+
+Release checks: **121 backend/harness checks, 77 browser checks**, 84 positive
+and 2,583 adversarial-negative grader states; all passed with no test retries.
+The PDF contains 12 pages. The deployed presentation uses same-origin external
+controls under the existing content-security policy; the offline HTML remains
+standalone. Both compressed phase bundles pass key-free hash-chain verification.
+
 ## Continuous viewing, cursor evidence and paced replay — 2026-10-01
 
 A deterministic regression reproduced dropped final frames: three changes inside

@@ -21,7 +21,9 @@ These are installed using `package-lock.json`; their upstream license files rema
 
 Public repositories were used as research references only. The survey distinguishes permissive projects, missing/undetected licenses, and env0's AGPL-3.0 license. Detected GitHub metadata is a screening aid; it is not a substitute for reviewing full license terms before reuse. See `docs/research.md` and `evidence/research/repositories.json`.
 
-No new open-source license is imposed on Kevin's original work by this deliverable. Choose one explicitly before public release if desired.
+Kevin's original code and documentation are available under the [MIT license](LICENSE),
+authorized by Kevin on 2026-10-01. This does not relicense dependencies, proprietary
+fonts or third-party brand assets. Their notices and restrictions below remain in force.
 
 ## Public release assets
 

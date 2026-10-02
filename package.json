@@ -2,6 +2,7 @@
   "name": "relay-slack-env",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=24.13.0 <25"
@@ -26,7 +27,9 @@
     "verify": "npm run build:hosted && npm test && npm run test:browser",
     "package": "node scripts/package.mjs",
     "lab": "node runner/lab-server.mjs",
-    "experiment": "node scripts/experiment.mjs"
+    "experiment": "node scripts/experiment.mjs",
+    "presentation": "node scripts/build-presentation.mjs && node scripts/export-presentation.mjs",
+    "inspect:campaign": "node scripts/inspect-campaign.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "2.3.7",
