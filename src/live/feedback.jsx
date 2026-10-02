@@ -1,5 +1,5 @@
 import React from 'react';
-import { episodeOutcome } from '../../shared/run-outcome.mjs';
+import { episodeOutcome, outcomePresentation } from '../../shared/run-outcome.mjs';
 import {
   MousePointer2,
   Type,
@@ -10,7 +10,34 @@ import {
   LoaderCircle,
   CircleCheck,
   Clock3,
+  CircleMinus,
+  OctagonPause,
+  Square,
 } from 'lucide-react';
+
+export function OutcomeBadge({ episode, partial = false }) {
+  const outcome = outcomePresentation(episode);
+  const Icon = {
+    passed: CircleCheck,
+    incomplete: CircleMinus,
+    blocked: OctagonPause,
+    limit: Clock3,
+    stopped: Square,
+    pending: Clock3,
+  }[outcome.tone];
+  return (
+    <div className="outcome-summary" data-outcome={outcome.kind}>
+      <span className={`outcome-badge outcome-${outcome.tone}`}>
+        <Icon size={14} aria-hidden="true" />
+        {outcome.title}
+      </span>
+      <span className="outcome-detail">
+        {outcome.detail}
+        {partial ? ' · Partial capture' : ''}
+      </span>
+    </div>
+  );
+}
 
 export function describeAction(action, observation) {
   if (!action) return 'Waiting for a decision';

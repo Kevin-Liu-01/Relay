@@ -240,6 +240,7 @@ export function ReplayPlayer({ record }) {
         />
       </div>
       <WorkspaceReplay
+        key={`${eid}/${frame?.snapshot ? 'ui' : 'image'}`}
         frame={frame}
         pointer={pointer}
         recordedPointer={timeline.pointers.length > 0}
@@ -339,20 +340,34 @@ export function ReplayPlayer({ record }) {
 }
 export function ReplayLibrary({ saved, onSaved, onRecording }) {
   const [demos, setDemos] = useState([]),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [loading, setLoading] = useState(null);
+  const loadVersion = useRef(0);
   useEffect(() => {
-    fetch('/demo/replays.json')
+    const controller = new AbortController();
+    fetch('/demo/replays.json', { signal: controller.signal })
       .then((r) => r.json())
       .then(setDemos)
-      .catch(() => setError('Example recordings unavailable.'));
+      .catch(() => {
+        if (!controller.signal.aborted) setError('Example recordings unavailable.');
+      });
+    return () => {
+      controller.abort();
+      loadVersion.current++;
+    };
   }, []);
   async function load(item) {
+    const version = ++loadVersion.current;
+    setLoading(item.path);
     try {
       const r = await fetch(item.path);
       if (!r.ok) throw Error();
-      onRecording(await r.json());
+      const record = await r.json();
+      if (version === loadVersion.current) onRecording(record);
     } catch {
-      setError('Could not load this recording.');
+      if (version === loadVersion.current) setError('Could not load this recording.');
+    } finally {
+      if (version === loadVersion.current) setLoading(null);
     }
   }
   return (
@@ -378,11 +393,17 @@ export function ReplayLibrary({ saved, onSaved, onRecording }) {
       )}
       <h3>Example recordings</h3>
       {demos.map((d) => (
-        <button className="replay-library-row" key={d.path} onClick={() => load(d)}>
+        <button
+          className="replay-library-row"
+          key={d.path}
+          onClick={() => load(d)}
+          disabled={!!loading}
+          aria-busy={loading === d.path}
+        >
           <Film size={23} />
           <span>
             <b>{d.title}</b>
-            <small>{d.kind}</small>
+            <small>{loading === d.path ? 'Loading recording…' : d.kind}</small>
           </span>
           <Play size={17} />
         </button>

@@ -1,5 +1,27 @@
 # Verification and evidence
 
+## Consecutive run handoff and readable outcomes — 2026-10-02
+
+Three deterministic regressions reproduced the reported behavior before the
+corresponding fixes: a dismissed replay's delayed fetch reopened over a running
+workspace; an enabled Run silently rejected a consecutive launch during its
+post-completion cooldown; and a decoded image node remained beside the next
+queue item's loading state even after record/frame state reset. The viewer now
+replaces its entire host stage at each handoff. The queue test gates request two
+until the old image, cursor and outcome card are absent, and measures one active
+hosted request at most across two real isolated browser runs with fake providers.
+
+History and Compare now distinguish passed checks, incomplete changes, provider
+blocks, limits and interrupted capture through icons, short explanations and
+color. Filters and View links target the exact episode; mobile uses cards.
+Successful diagnostic checks on blocked runs deliberately remain blocked in the
+test fixtures. Original grades, traces and frozen model campaigns are unchanged.
+Interactive local-browser review covered Compare and actual-UI replay; the main
+workspace is unmounted while replay/1v1 is shown. No paid inference was used.
+
+The release gate passes **122 backend checks and 80 browser checks**. The new
+desktop/mobile outcome screenshots are synthetic UI fixtures, not model results.
+
 ## Onsite evidence and presentation — 2026-10-01
 
 The [frozen model campaign](campaigns/onsite-2026-10-01.md) planned 30 cells and

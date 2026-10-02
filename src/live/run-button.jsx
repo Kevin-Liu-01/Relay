@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { LoaderCircle, Play, Square } from 'lucide-react';
 
 // Acquire synchronously: React's next render is too late for duplicate events.
-// Lock through cleanup/history writes, then absorb the tail of a double click.
+// Lock through cleanup/history writes and at least the initial double-click window.
+// Never show an enabled button while an invisible post-run cooldown rejects it.
 export function useLaunchLock() {
   const held = useRef(false),
     until = useRef(0);
@@ -10,11 +11,13 @@ export function useLaunchLock() {
     acquire() {
       if (held.current || Date.now() < until.current) return false;
       held.current = true;
+      until.current = Date.now() + 600;
       return true;
     },
-    release() {
+    async release() {
+      const remaining = until.current - Date.now();
+      if (remaining > 0) await new Promise((resolve) => setTimeout(resolve, remaining));
       held.current = false;
-      until.current = Date.now() + 600;
     },
   };
 }

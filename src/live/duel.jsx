@@ -102,6 +102,7 @@ export function Duel({
     rates: connection.rates,
   };
   const [lanes, setLanes] = useState([initial, { ...initial }]);
+  const [workspaceVersion, setWorkspaceVersion] = useState(0);
   const [busy, setBusy] = useState(false),
     [records, setRecords] = useState([null, null]),
     [frames, setFrames] = useState([null, null]),
@@ -235,6 +236,7 @@ export function Duel({
     }
     if (!launch.acquire()) return;
     setBusy(true);
+    setWorkspaceVersion((version) => version + 1);
     setRecords([null, null]);
     setFrames([null, null]);
     setErrors(['', '']);
@@ -276,8 +278,8 @@ export function Duel({
       );
       await onSaved();
     } finally {
+      await launch.release();
       setBusy(false);
-      launch.release();
     }
   }
   const verdict = duelVerdict(records);
@@ -434,7 +436,7 @@ export function Duel({
                   {errors[i]}
                 </p>
               )}
-              <div className="duel-screen">
+              <div className="duel-screen" key={`${workspaceVersion}/${i}`}>
                 {frames[i] ? (
                   <>
                     <StreamImage

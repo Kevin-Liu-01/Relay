@@ -7,6 +7,7 @@ import { createPricingResolver } from '../../hosted/pricing.mjs';
 async function fixture(page, run, { missingUsage = false } = {}) {
   const requests = [];
   const calls = [];
+  const concurrency = { active: 0, max: 0 };
   const models = [
     'claude-sonnet-5-5',
     'gemini-3.8-flash',
@@ -46,6 +47,12 @@ async function fixture(page, run, { missingUsage = false } = {}) {
       return router;
     },
   });
+  server.on('request', (req, res) => {
+    if (!req.url.includes('op=run')) return;
+    concurrency.active++;
+    concurrency.max = Math.max(concurrency.max, concurrency.active);
+    res.once('finish', () => concurrency.active--);
+  });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   page.on('request', (r) => {
@@ -56,7 +63,7 @@ async function fixture(page, run, { missingUsage = false } = {}) {
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-model-queue-key');
     await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
-    await run({ requests, calls });
+    await run({ requests, calls, concurrency });
   } finally {
     server.closeAllConnections();
     await new Promise((r) => server.close(r));
@@ -67,7 +74,19 @@ test('catalog-priced models run sequentially with independent budgets, audits, h
   page,
 }) => {
   test.setTimeout(60000);
-  await fixture(page, async ({ requests, calls }) => {
+  await fixture(page, async ({ requests, calls, concurrency }) => {
+    let launches = 0;
+    await page.route('**/api/relay?op=run', async (route) => {
+      if (++launches === 2) {
+        // The first run's decoded frame/cursor/results must be gone before
+        // the second request can produce any frame (both use episode-001).
+        await expect(page.locator('.viewport')).toHaveAttribute('data-run-id', '');
+        await expect(page.locator('.viewport > img')).toHaveCount(0);
+        await expect(page.locator('.viewport .agent-cursor')).toHaveCount(0);
+        await expect(page.getByRole('region', { name: 'Run result' })).toHaveCount(0);
+      }
+      await route.continue();
+    });
     await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveAttribute(
       'title',
       'claude-sonnet-5-5',
@@ -96,6 +115,9 @@ test('catalog-priced models run sequentially with independent budgets, audits, h
     });
     expect(calls).toEqual(['claude-sonnet-5-5', 'gemini-3.8-flash']);
     expect(requests).toHaveLength(2);
+    expect(concurrency).toEqual({ active: 0, max: 1 });
+    expect(launches).toBe(2);
+    await expect(page.locator('.viewport > img')).toHaveCount(1);
     for (const c of requests) {
       expect(c.models).toHaveLength(1);
       expect(c.maxEstimatedUSD).toBe(2);

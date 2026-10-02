@@ -42,3 +42,43 @@ export function episodeOutcome(episode) {
     ? { kind: 'passed', title: 'Task passed', symbol: '✓' }
     : { kind: 'incomplete', title: 'Task incomplete', symbol: '×' };
 }
+
+// Short, non-sensitive explanations for history/comparison. Raw provider errors
+// stay in the audit; diagnostic checks on blocked runs must never imply success.
+export function outcomePresentation(episode) {
+  const outcome = episodeOutcome(episode);
+  if (outcome.kind === 'passed' || outcome.kind === 'incomplete') {
+    const checks = episode.evaluation?.checks;
+    const detail =
+      Array.isArray(checks) && checks.length
+        ? `${checks.filter((c) => c.passed).length}/${checks.length} checks passed`
+        : outcome.kind === 'passed'
+          ? 'All required changes verified'
+          : 'Required changes not met';
+    return {
+      ...outcome,
+      tone: outcome.kind,
+      detail: episode.status === 'step_limit' ? `Action limit · ${detail}` : detail,
+    };
+  }
+  const explanations = {
+    'Provider unavailable': ['blocked', 'Provider did not accept the run'],
+    'Key needs attention': ['blocked', 'Check your API key'],
+    'Router credit required': ['blocked', 'Provider credit exhausted'],
+    'Model unavailable': ['blocked', 'Choose another model'],
+    'Run limit reached': ['limit', 'Spend or request allowance reached'],
+    'Time limit reached': ['limit', 'Time allowance reached'],
+    'Run stopped': ['stopped', 'Stopped by you'],
+    'Run blocked': [
+      'blocked',
+      episode?.status === 'interrupted'
+        ? 'Connection or capture interrupted'
+        : 'Execution could not complete',
+    ],
+  };
+  const [tone, detail] = explanations[outcome.title] ?? [
+    'pending',
+    outcome.title === 'Running' ? 'In progress' : 'No scored result yet',
+  ];
+  return { ...outcome, tone, detail };
+}

@@ -42,7 +42,7 @@ import {
 } from './credentials.js';
 import './style.css';
 import './experience.css';
-import { ActionSpotlight, ResultCard, describeAction } from './feedback.jsx';
+import { ActionSpotlight, OutcomeBadge, ResultCard, describeAction } from './feedback.jsx';
 import { ReplayPlayer, ReplayLibrary } from './replay.jsx';
 import { Duel } from './duel.jsx';
 import { RelaySelect } from './select.jsx';
@@ -119,7 +119,7 @@ function App() {
     [vision, setVision] = useState(false),
     [cap, setCap] = useState(2),
     [steps, setSteps] = useState(40),
-    [modal, setModal] = useState(null),
+    [modal, setModalState] = useState(null),
     [error, setError] = useState(''),
     [connecting, setConnecting] = useState(false),
     [busy, setBusy] = useState(false),
@@ -136,9 +136,16 @@ function App() {
   const [batchModels, setBatchModels] = useState([]);
   const [modelSearch, setModelSearch] = useState('');
   const [queue, setQueue] = useState(null);
+  const [outcomeFilter, setOutcomeFilter] = useState('all');
+  const [workspaceVersion, setWorkspaceVersion] = useState(0);
   const [connections] = useState(createConnections);
   const launch = useLaunchLock();
   const connectTimer = useRef(null);
+  const navigation = useRef(0);
+  function setModal(value) {
+    navigation.current++;
+    setModalState(value);
+  }
   useEffect(() => {
     if (!workspaceFocus) return;
     const escape = (e) => {
@@ -153,12 +160,21 @@ function App() {
     };
   }, [workspaceFocus, modal]);
   function openReplay(value) {
+    if (abort.current) return;
     setReplayRecord(value);
     setModal('replay-player');
   }
+  async function loadReplay(id) {
+    const version = ++navigation.current;
+    try {
+      const value = await readRun(id);
+      if (version === navigation.current && !abort.current) openReplay(value);
+    } catch {
+      if (version === navigation.current) setError('Could not load this recording.');
+    }
+  }
   const abort = useRef(null),
     connectionVersion = useRef(0),
-    current = useRef(null),
     follow = useRef(true);
   useEffect(() => {
     api('config')
@@ -343,18 +359,26 @@ function App() {
         }
       }
     } finally {
+      await launch.release();
       abort.current = null;
       setBusy(false);
-      launch.release();
     }
   }
   async function executeRun(config, signal, batch) {
+    // Replace the host stage, not only the image component: decoded media from
+    // a completed request must not survive beside the next loading state.
+    setWorkspaceVersion((version) => version + 1);
     setDemo(false);
     setRecord(null);
     setFrame(null);
+    setEpisodeId('episode-001');
     setSelectedStep(null);
+    setReplayRecord(null);
+    setAuditIndex(0);
+    setEventFilter('');
     follow.current = true;
-    current.current = { run: null, events: [], artifacts: {}, audit: null, batch };
+    // Each request owns its evidence. A queued successor never mutates this object.
+    const current = { run: null, events: [], artifacts: {}, audit: null, batch };
     try {
       const response = await api('run', { provider, key: keys[provider], config }, signal);
       const reader = response.body.getReader(),
@@ -373,24 +397,24 @@ function App() {
           if (!line) continue;
           const { type, data } = JSON.parse(line);
           if (type === 'run') {
-            current.current.run = data;
+            current.run = data;
             const active =
               data.episodes.find((e) => e.status === 'running') ??
               data.episodes.filter((e) => e.status !== 'queued').at(-1);
             if (follow.current && active) setEpisodeId(active.cell.episodeId);
-            setRecord({ ...current.current });
+            setRecord({ ...current });
           }
           if (type === 'frame' && follow.current) {
             setFrame((old) => acceptFrame(old, data));
           }
           if (type === 'event') {
-            current.current.events.push(data);
-            setRecord({ ...current.current });
+            current.events.push(data);
+            setRecord({ ...current });
           }
-          if (type === 'artifact') current.current.artifacts[data.path] = data.image;
+          if (type === 'artifact') current.artifacts[data.path] = data.image;
           if (type === 'audit') {
-            current.current.audit = data;
-            setRecord({ ...current.current });
+            current.audit = data;
+            setRecord({ ...current });
           }
           if (type === 'error') throw Error(data.message);
           if (type === 'done') complete = true;
@@ -402,43 +426,52 @@ function App() {
       const message =
         e.name === 'AbortError' ? 'Stopped. In-flight provider usage may be unknown.' : e.message;
       setError(message);
-      current.current.error = message;
-      if (current.current.run) {
-        current.current.run = {
-          ...current.current.run,
+      current.error = message;
+      if (current.run) {
+        current.run = {
+          ...current.run,
           status: 'interrupted',
-          budget: { ...current.current.run.budget, usageKnown: false },
+          budget: { ...current.run.budget, usageKnown: false },
+          episodes: current.run.episodes.map((e) =>
+            ['running', 'queued'].includes(e.status) ? { ...e, status: 'interrupted' } : e,
+          ),
         };
-        setRecord({ ...current.current });
+        setRecord({ ...current });
       }
     } finally {
-      if (current.current.run) {
-        setRecord({ ...current.current });
+      if (current.run) {
+        setRecord({ ...current });
         try {
-          await saveRun(current.current);
+          await saveRun(current);
           await refreshHistory();
         } catch {
-          current.current.error = 'History could not be saved.';
+          current.error = 'History could not be saved.';
           setError('History could not be saved. Download this evidence before leaving.');
         }
       }
     }
-    return current.current;
+    return current;
   }
-  async function openRun(id) {
+  async function openRun(id, selectedEpisode) {
+    if (abort.current) return;
+    const version = ++navigation.current;
     try {
       const r = await readRun(id);
+      if (version !== navigation.current || abort.current) return;
+      setWorkspaceVersion((value) => value + 1);
       setRecord(r);
       setFrame(null);
       setDemo(false);
       setEpisodeId(
-        r.run.episodes.find((e) => e.status !== 'queued')?.cell.episodeId ?? 'episode-001',
+        selectedEpisode ??
+          r.run.episodes.find((e) => e.status !== 'queued')?.cell.episodeId ??
+          'episode-001',
       );
       setSelectedStep(null);
       follow.current = false;
       setModal(null);
     } catch {
-      setError('Could not load this run.');
+      if (version === navigation.current) setError('Could not load this run.');
     }
   }
   const run = record?.run,
@@ -489,6 +522,11 @@ function App() {
         : demo
           ? 'Recorded demo'
           : 'Ready';
+  const comparisonRows = saved.flatMap((s) =>
+    s.run.episodes
+      .filter((e) => e.status !== 'queued')
+      .map((e) => ({ s, e, outcome: episodeOutcome(e) })),
+  );
   return (
     <div
       className={`live-shell ${run || busy ? 'workspace-expanded' : ''} ${workspaceFocus ? 'workspace-focus' : ''}`}
@@ -636,285 +674,304 @@ function App() {
         </span>
         {queue && (
           <span role="status" className="queue-progress">
-            {queue.stopped ? 'Queue paused' : busy ? 'Model queue' : 'Queue finished'} ·{' '}
-            {queue.completed} / {queue.total}
+            <progress aria-label="Completed queue runs" value={queue.completed} max={queue.total} />
+            <span>
+              {queue.stopped ? 'Queue paused' : busy ? 'Model queue' : 'Queue finished'} ·{' '}
+              {queue.completed} / {queue.total}
+            </span>
+            <span className="queue-detail">
+              {busy ? 'One workspace at a time' : 'Saved to History'}
+            </span>
           </span>
         )}
       </div>
-      <main className="arena">
-        <section className="viewport-column" aria-label="Live Slack workspace">
-          <div className="workspace-top">
-            <span className={`state-dot ${busy ? 'running' : ''}`} />
-            <span role="status">
-              {busy && !frame && !actions.length
-                ? 'Starting workspace…'
-                : connecting
-                  ? 'Loading models…'
-                  : state}
-            </span>
-            <span className="workspace-task" title={episode?.instruction}>
-              {workspaceFocus && episode
-                ? `${episode.cell.model.id} · ${busy && episode.inFlight ? 'Choosing the next move' : latestAction ? describeAction(latestAction.action, episode.currentObservation) : state}`
-                : (episode?.instruction ?? 'A fresh workspace for every episode.')}
-            </span>
-            <span className="read-only">
-              <Eye size={12} />
-              Read-only
-            </span>
-            {workspaceFocus && busy && (
-              <button className="focus-stop" onClick={() => abort.current?.abort()}>
-                Stop run
-              </button>
-            )}
-            <button
-              className="icon workspace-focus-button"
-              aria-label={workspaceFocus ? 'Exit workspace focus' : 'Expand workspace'}
-              aria-pressed={workspaceFocus}
-              onClick={() => setWorkspaceFocus(!workspaceFocus)}
-            >
-              {workspaceFocus ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
-            </button>
-          </div>
-          <div className="viewport">
-            {image ? (
-              <StreamImage
-                key={`${run?.id ?? 'welcome'}/${episodeId}`}
-                image={image}
-                alt={busy ? 'Live agent workspace' : 'Recorded workspace'}
-              />
-            ) : (
-              <div className="frame-unavailable" role="status">
-                {busy && <LoaderCircle className="busy-spinner" size={22} aria-hidden="true" />}
-                {busy ? 'Preparing a fresh workspace…' : 'No frame recorded for this step.'}
-              </div>
-            )}
-            {image && run && (
-              <AgentCursor
-                key={`${run.id}/${episodeId}`}
-                point={pointer}
-                viewport={frame?.viewport}
-                smooth={busy}
-              />
-            )}
-            {!run && !busy && (
-              <div className="welcome">
-                <h1>
-                  Try out <span className="welcome-accent">Computer Use</span>
-                </h1>
-                <p>
-                  {model ? 'Your model is ready. Pick a task.' : 'Connect a model. Give it a task.'}
-                  <br />
-                  See every action, and what changed.
-                </p>
-                <div>
-                  <button
-                    className="primary"
-                    disabled={connecting}
-                    onClick={() => (model ? start() : setModal('connect'))}
-                  >
-                    {model ? <Play size={14} /> : <KeyRound size={14} />}
-                    {model ? 'Run this task' : 'Bring your own key'}
-                  </button>
-                  <button onClick={() => setModal('replays')}>
-                    <Play size={13} />
-                    Watch a replay
-                  </button>
-                  <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
-                    <ArrowUpRight size={14} />
-                    Try Slack yourself
-                  </a>
-                </div>
-              </div>
-            )}
-            <StreamBadge
-              live={busy}
-              frame={frame?.episodeId === episodeId ? frame : null}
-              label={
-                run ? (image ? 'Recorded workspace' : 'Frame unavailable') : 'Reference screenshot'
-              }
-            />
-            {pointer && (
-              <span
-                className="cursor-disclosure"
-                title="Positions captured from browser events. Movement between positions is visually smoothed."
-              >
-                Recorded cursor · smoothed
+      {!['duel', 'replay-player'].includes(modal) && (
+        <main className="arena">
+          <section className="viewport-column" aria-label="Live Slack workspace">
+            <div className="workspace-top">
+              <span className={`state-dot ${busy ? 'running' : ''}`} />
+              <span role="status">
+                {busy && !frame && !actions.length
+                  ? 'Starting workspace…'
+                  : connecting
+                    ? 'Loading models…'
+                    : state}
               </span>
-            )}
-          </div>
-          <div className="timeline">
-            <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>
-              <Play size={14} />
-              Play replay
-            </button>
-            <button
-              title="Follow latest"
-              onClick={() => {
-                setSelectedStep(null);
-                follow.current = true;
-              }}
-            >
-              <RefreshCw size={13} />
-              <span>Latest</span>
-            </button>
-            <input
-              type="range"
-              aria-label="Replay step"
-              min={0}
-              max={Math.max(0, actions.length - 1)}
-              disabled={busy || !actions.length}
-              value={selectedStep ?? Math.max(0, actions.length - 1)}
-              onChange={(e) => {
-                follow.current = false;
-                setSelectedStep(Number(e.target.value));
-              }}
-            />
-            <span className="numeric">
-              {actions.length ? (selectedStep ?? actions.length - 1) + 1 : 0} / {actions.length}
-            </span>
-            <button disabled={!record} onClick={() => setModal('audit')}>
-              <ShieldCheck size={14} />
-              Audit
-              <ArrowUpRight size={12} />
-            </button>
-          </div>
-        </section>
-        <aside className="decision-panel" aria-label="Agent decisions">
-          <div className="model-heading">
-            <ModelMark id={episode?.cell.model.id ?? model} size={20} />
-            <div>
-              <h2>{(episode?.cell.model.id ?? model) || 'Your model'}</h2>
-            </div>
-            <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
-          </div>
-          {((!episode?.evaluation && !episode?.error) || busy) && (
-            <ActionSpotlight
-              events={events}
-              busy={busy}
-              selected={selectedStep == null ? null : activeStep}
-              episode={episode}
-            />
-          )}
-          {decision ? (
-            <>
-              <div className="section-label">
-                <h3>Action probabilities</h3>
-                <span>{ranked.length} options</span>
-              </div>
-              <div className="options-list">
-                {(allOptions ? ranked : ranked.slice(0, 8)).map((c) => (
-                  <div
-                    className={`option ${c.name === decision.choice ? 'chosen' : ''}`}
-                    key={c.name}
-                  >
-                    <div>
-                      <span>{c.label}</span>
-                      <b className="numeric">{(c.p * 100).toFixed(1)}%</b>
-                    </div>
-                    <div className="probability-track">
-                      <i
-                        style={{
-                          width: '100%',
-                          transform: `scaleX(${c.p})`,
-                          transformOrigin: 'left',
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {ranked.length > 8 && (
-                <button className="small-link" onClick={() => setAllOptions(!allOptions)}>
-                  {allOptions ? 'Fewer options' : `All ${ranked.length} options`}
+              <span className="workspace-task" title={episode?.instruction}>
+                {workspaceFocus && episode
+                  ? `${episode.cell.model.id} · ${busy && episode.inFlight ? 'Choosing the next move' : latestAction ? describeAction(latestAction.action, episode.currentObservation) : state}`
+                  : (episode?.instruction ?? 'A fresh workspace for every episode.')}
+              </span>
+              <span className="read-only">
+                <Eye size={12} />
+                Read-only
+              </span>
+              {workspaceFocus && busy && (
+                <button className="focus-stop" onClick={() => abort.current?.abort()}>
+                  Stop run
                 </button>
               )}
-              <p className="probability-note">
-                Probabilities over this offered menu. Not a measured chance of task success.
-              </p>
-            </>
-          ) : actions.length || (!episode?.evaluation && !episode?.error) || busy ? (
-            <>
-              <div className="section-label">
-                <h3>Actions</h3>
-                <span>{actions.length} recorded</span>
-              </div>
-              <div className="actions">
-                {actions.length ? (
-                  actions.map((s, i) => (
-                    <button
-                      key={i}
-                      disabled={busy}
-                      className={`action ${s.error ? 'rejected' : ''} ${selectedStep === i ? 'selected' : ''}`}
-                      onClick={() => {
-                        setSelectedStep(i);
-                        follow.current = false;
-                      }}
-                    >
-                      <span className="action-number">{String(i + 1).padStart(2, '0')}</span>
-                      <span>
-                        <b>{s.action?.type ?? 'Rejected action'}</b>
-                        <small>
-                          {s.action?.text ?? s.action?.topic ?? s.error ?? s.action?.ref ?? ' '}
-                        </small>
-                      </span>
-                      <span className="action-time">{elapsed(s.response?.latencyMs)}</span>
-                    </button>
-                  ))
-                ) : (
-                  <div className="action-placeholder">
-                    <Workflow size={24} />
-                    <p>
-                      {episode?.error ? 'No decisions returned.' : 'Decisions will appear here.'}
-                    </p>
-                    <span>
-                      {provider === 'typesafe'
-                        ? 'Jev returns a ranked choice, not generated text.'
-                        : 'Exact actions, timing and outcomes.'}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </>
-          ) : null}
-          {busy && (
-            <div className="thinking" role="status">
-              <span className="state-dot running" />
-              {!frame && !actions.length
-                ? 'Preparing a fresh workspace…'
-                : episode?.inFlight
-                  ? 'Model is deciding…'
-                  : 'Interacting with the workspace…'}
+              <button
+                className="icon workspace-focus-button"
+                aria-label={workspaceFocus ? 'Exit workspace focus' : 'Expand workspace'}
+                aria-pressed={workspaceFocus}
+                onClick={() => setWorkspaceFocus(!workspaceFocus)}
+              >
+                {workspaceFocus ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+              </button>
             </div>
-          )}
-          <div className="panel-bottom">
-            {episode?.evaluation || episode?.error ? (
-              <ResultCard
-                episode={episode}
-                onReplay={!busy ? () => openReplay(record) : undefined}
-                onChooseModel={
-                  !busy
-                    ? () => {
-                        document
-                          .getElementById('relay-model-selector')
-                          ?.scrollIntoView({ block: 'center' });
-                        setModelMenuOpen(true);
-                      }
-                    : undefined
+            <div
+              key={`${workspaceVersion}/${episodeId}`}
+              className="viewport"
+              data-run-id={run?.id ?? ''}
+              data-episode-id={episodeId}
+            >
+              {image ? (
+                <StreamImage
+                  key={`${run?.id ?? 'welcome'}/${episodeId}`}
+                  image={image}
+                  alt={busy ? 'Live agent workspace' : 'Recorded workspace'}
+                />
+              ) : (
+                <div className="frame-unavailable" role="status">
+                  {busy && <LoaderCircle className="busy-spinner" size={22} aria-hidden="true" />}
+                  {busy ? 'Preparing a fresh workspace…' : 'No frame recorded for this step.'}
+                </div>
+              )}
+              {image && run && (
+                <AgentCursor
+                  key={`${run.id}/${episodeId}`}
+                  point={pointer}
+                  viewport={frame?.viewport}
+                  smooth={busy}
+                />
+              )}
+              {!run && !busy && (
+                <div className="welcome">
+                  <h1>
+                    Try out <span className="welcome-accent">Computer Use</span>
+                  </h1>
+                  <p>
+                    {model
+                      ? 'Your model is ready. Pick a task.'
+                      : 'Connect a model. Give it a task.'}
+                    <br />
+                    See every action, and what changed.
+                  </p>
+                  <div>
+                    <button
+                      className="primary"
+                      disabled={connecting}
+                      onClick={() => (model ? start() : setModal('connect'))}
+                    >
+                      {model ? <Play size={14} /> : <KeyRound size={14} />}
+                      {model ? 'Run this task' : 'Bring your own key'}
+                    </button>
+                    <button onClick={() => setModal('replays')}>
+                      <Play size={13} />
+                      Watch a replay
+                    </button>
+                    <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
+                      <ArrowUpRight size={14} />
+                      Try Slack yourself
+                    </a>
+                  </div>
+                </div>
+              )}
+              <StreamBadge
+                live={busy}
+                frame={frame?.episodeId === episodeId ? frame : null}
+                label={
+                  run
+                    ? image
+                      ? 'Recorded workspace'
+                      : 'Frame unavailable'
+                    : 'Reference screenshot'
                 }
               />
-            ) : (
-              <span className="quiet-note">
-                <ShieldCheck size={14} />
-                Outcome checked independently
+              {pointer && (
+                <span
+                  className="cursor-disclosure"
+                  title="Positions captured from browser events. Movement between positions is visually smoothed."
+                >
+                  Recorded cursor · smoothed
+                </span>
+              )}
+            </div>
+            <div className="timeline">
+              <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>
+                <Play size={14} />
+                Play replay
+              </button>
+              <button
+                title="Follow latest"
+                onClick={() => {
+                  setSelectedStep(null);
+                  follow.current = true;
+                }}
+              >
+                <RefreshCw size={13} />
+                <span>Latest</span>
+              </button>
+              <input
+                type="range"
+                aria-label="Replay step"
+                min={0}
+                max={Math.max(0, actions.length - 1)}
+                disabled={busy || !actions.length}
+                value={selectedStep ?? Math.max(0, actions.length - 1)}
+                onChange={(e) => {
+                  follow.current = false;
+                  setSelectedStep(Number(e.target.value));
+                }}
+              />
+              <span className="numeric">
+                {actions.length ? (selectedStep ?? actions.length - 1) + 1 : 0} / {actions.length}
               </span>
+              <button disabled={!record} onClick={() => setModal('audit')}>
+                <ShieldCheck size={14} />
+                Audit
+                <ArrowUpRight size={12} />
+              </button>
+            </div>
+          </section>
+          <aside className="decision-panel" aria-label="Agent decisions">
+            <div className="model-heading">
+              <ModelMark id={episode?.cell.model.id ?? model} size={20} />
+              <div>
+                <h2>{(episode?.cell.model.id ?? model) || 'Your model'}</h2>
+              </div>
+              <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
+            </div>
+            {((!episode?.evaluation && !episode?.error) || busy) && (
+              <ActionSpotlight
+                events={events}
+                busy={busy}
+                selected={selectedStep == null ? null : activeStep}
+                episode={episode}
+              />
             )}
-            <button className="full-width" disabled={!record} onClick={() => setModal('audit')}>
-              Inspect the evidence
-              <ArrowUpRight size={14} />
-            </button>
-          </div>
-        </aside>
-      </main>
+            {decision ? (
+              <>
+                <div className="section-label">
+                  <h3>Action probabilities</h3>
+                  <span>{ranked.length} options</span>
+                </div>
+                <div className="options-list">
+                  {(allOptions ? ranked : ranked.slice(0, 8)).map((c) => (
+                    <div
+                      className={`option ${c.name === decision.choice ? 'chosen' : ''}`}
+                      key={c.name}
+                    >
+                      <div>
+                        <span>{c.label}</span>
+                        <b className="numeric">{(c.p * 100).toFixed(1)}%</b>
+                      </div>
+                      <div className="probability-track">
+                        <i
+                          style={{
+                            width: '100%',
+                            transform: `scaleX(${c.p})`,
+                            transformOrigin: 'left',
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {ranked.length > 8 && (
+                  <button className="small-link" onClick={() => setAllOptions(!allOptions)}>
+                    {allOptions ? 'Fewer options' : `All ${ranked.length} options`}
+                  </button>
+                )}
+                <p className="probability-note">
+                  Probabilities over this offered menu. Not a measured chance of task success.
+                </p>
+              </>
+            ) : actions.length || (!episode?.evaluation && !episode?.error) || busy ? (
+              <>
+                <div className="section-label">
+                  <h3>Actions</h3>
+                  <span>{actions.length} recorded</span>
+                </div>
+                <div className="actions">
+                  {actions.length ? (
+                    actions.map((s, i) => (
+                      <button
+                        key={i}
+                        disabled={busy}
+                        className={`action ${s.error ? 'rejected' : ''} ${selectedStep === i ? 'selected' : ''}`}
+                        onClick={() => {
+                          setSelectedStep(i);
+                          follow.current = false;
+                        }}
+                      >
+                        <span className="action-number">{String(i + 1).padStart(2, '0')}</span>
+                        <span>
+                          <b>{s.action?.type ?? 'Rejected action'}</b>
+                          <small>
+                            {s.action?.text ?? s.action?.topic ?? s.error ?? s.action?.ref ?? ' '}
+                          </small>
+                        </span>
+                        <span className="action-time">{elapsed(s.response?.latencyMs)}</span>
+                      </button>
+                    ))
+                  ) : (
+                    <div className="action-placeholder">
+                      <Workflow size={24} />
+                      <p>
+                        {episode?.error ? 'No decisions returned.' : 'Decisions will appear here.'}
+                      </p>
+                      <span>
+                        {provider === 'typesafe'
+                          ? 'Jev returns a ranked choice, not generated text.'
+                          : 'Exact actions, timing and outcomes.'}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : null}
+            {busy && (
+              <div className="thinking" role="status">
+                <span className="state-dot running" />
+                {!frame && !actions.length
+                  ? 'Preparing a fresh workspace…'
+                  : episode?.inFlight
+                    ? 'Model is deciding…'
+                    : 'Interacting with the workspace…'}
+              </div>
+            )}
+            <div className="panel-bottom">
+              {episode?.evaluation || episode?.error ? (
+                <ResultCard
+                  episode={episode}
+                  onReplay={!busy ? () => openReplay(record) : undefined}
+                  onChooseModel={
+                    !busy
+                      ? () => {
+                          document
+                            .getElementById('relay-model-selector')
+                            ?.scrollIntoView({ block: 'center' });
+                          setModelMenuOpen(true);
+                        }
+                      : undefined
+                  }
+                />
+              ) : (
+                <span className="quiet-note">
+                  <ShieldCheck size={14} />
+                  Outcome checked independently
+                </span>
+              )}
+              <button className="full-width" disabled={!record} onClick={() => setModal('audit')}>
+                Inspect the evidence
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
+          </aside>
+        </main>
+      )}
       {modal === 'duel' && setup && (
         <Modal title="1v1 arena" wide close={() => setModal(null)}>
           <Duel
@@ -948,16 +1005,12 @@ function App() {
       )}
       {modal === 'replays' && (
         <Modal title="Replays" wide close={() => setModal(null)}>
-          <ReplayLibrary
-            saved={saved}
-            onRecording={openReplay}
-            onSaved={async (id) => openReplay(await readRun(id))}
-          />
+          <ReplayLibrary saved={saved} onRecording={openReplay} onSaved={loadReplay} />
         </Modal>
       )}
       {modal === 'replay-player' && replayRecord && (
         <Modal title="Replay studio" wide close={() => setModal(null)}>
-          <ReplayPlayer record={replayRecord} />
+          <ReplayPlayer key={replayRecord.run.id} record={replayRecord} />
         </Modal>
       )}
       <section className="episode-bar" aria-label="Episodes">
@@ -1273,7 +1326,18 @@ function App() {
                     {new Date(s.capturedAt).toLocaleString()}
                   </span>
                 </button>
-                <span className="status-pill">{s.run.status}</span>
+                {s.run.episodes.length === 1 ? (
+                  <OutcomeBadge episode={s.run.episodes[0]} partial={!s.completeAudit} />
+                ) : (
+                  <span className="history-multi-outcome">
+                    {s.run.episodes.filter((e) => episodeOutcome(e).kind === 'passed').length}/
+                    {s.run.episodes.length} passed
+                    <small>
+                      {s.run.episodes.filter((e) => episodeOutcome(e).kind === 'blocked').length}{' '}
+                      blocked
+                    </small>
+                  </span>
+                )}
                 <button
                   className="icon"
                   aria-label={`Download run ${s.id.slice(0, 8)}`}
@@ -1305,8 +1369,8 @@ function App() {
       {modal === 'compare' && (
         <Modal title="Compare runs" close={() => setModal(null)} wide>
           <p className="hint">
-            Same task, seed, guide and history make useful comparisons. Interfaces change visibility
-            and action granularity. These are development tasks, not a general leaderboard.
+            Compare matched tasks and seeds. Keep guide and history settings the same; interfaces
+            change what agents can see and do.
           </p>
           <button
             className="primary"
@@ -1323,7 +1387,31 @@ function App() {
             Each interface gets ${cap.toFixed(2)} allowance and its own time limit · up to $
             {(cap * (provider === 'typesafe' ? 2 : 3)).toFixed(2)} total.
           </p>
-          <div className="table-scroll">
+          <div className="compare-filters" aria-label="Filter outcomes">
+            {[
+              ['all', 'All runs'],
+              ['passed', 'Passed'],
+              ['incomplete', 'Incomplete'],
+              ['blocked', 'Blocked'],
+              ['pending', 'Unscored'],
+            ].map(([kind, label]) => {
+              const count = comparisonRows.filter(
+                (r) => kind === 'all' || r.outcome.kind === kind,
+              ).length;
+              return (
+                <button
+                  key={kind}
+                  aria-pressed={outcomeFilter === kind}
+                  disabled={kind !== 'all' && !count}
+                  onClick={() => setOutcomeFilter(kind)}
+                >
+                  {label}
+                  <span>{count}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="table-scroll comparison-table">
             <table>
               <thead>
                 <tr>
@@ -1336,51 +1424,68 @@ function App() {
                     'Actions',
                     'Latency',
                     'Est. cost',
+                    'Evidence',
                   ].map((x) => (
                     <th key={x}>{x}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {saved.flatMap((s) =>
-                  s.run.episodes
-                    .filter((e) => e.status !== 'queued')
-                    .map((e) => (
-                      <tr key={`${s.id}/${e.cell.episodeId}`}>
-                        <td>
-                          <span className="model-cell">
-                            <ModelMark id={e.cell.model.id} />
-                            {e.cell.model.id}
-                          </span>
-                          <small>
-                            {s.run.config.provider === 'typesafe'
-                              ? 'Candidate selection'
-                              : 'Action generation'}
-                          </small>
-                        </td>
-                        <td>
-                          {setup?.tasks[e.cell.taskId]}
-                          <small>Seed {e.cell.seed}</small>
-                        </td>
-                        <td>{MODES[e.cell.mode]}</td>
-                        <td>
-                          {e.cell.guide ? 'Guide' : 'No guide'}
-                          <small>{e.cell.history}</small>
-                        </td>
-                        <td>
-                          {episodeOutcome(e).title}
-                          {!s.completeAudit && <small>Partial capture</small>}
-                        </td>
-                        <td>{e.steps}</td>
-                        <td>{elapsed(e.durationMs)}</td>
-                        <td>{e.usageKnown === false ? 'Unknown' : money(e.estimatedUSD)}</td>
-                      </tr>
-                    )),
-                )}
+                {comparisonRows
+                  .filter((r) => outcomeFilter === 'all' || r.outcome.kind === outcomeFilter)
+                  .map(({ s, e }) => (
+                    <tr key={`${s.id}/${e.cell.episodeId}`}>
+                      <td data-label="Model / policy">
+                        <span className="model-cell">
+                          <ModelMark id={e.cell.model.id} />
+                          {e.cell.model.id}
+                        </span>
+                        <small>
+                          {s.run.config.provider === 'typesafe'
+                            ? 'Candidate selection'
+                            : 'Action generation'}
+                        </small>
+                      </td>
+                      <td data-label="Task / seed">
+                        {setup?.tasks[e.cell.taskId]}
+                        <small>Seed {e.cell.seed}</small>
+                      </td>
+                      <td data-label="Interface">{MODES[e.cell.mode]}</td>
+                      <td data-label="Context">
+                        {e.cell.guide ? 'Guide' : 'No guide'}
+                        <small>{e.cell.history}</small>
+                      </td>
+                      <td data-label="Outcome">
+                        <OutcomeBadge episode={e} partial={!s.completeAudit} />
+                      </td>
+                      <td data-label="Actions">{e.steps}</td>
+                      <td data-label="Latency">{elapsed(e.durationMs)}</td>
+                      <td data-label="Est. cost">
+                        {e.usageKnown === false ? 'Unknown' : money(e.estimatedUSD)}
+                      </td>
+                      <td data-label="Evidence">
+                        <button
+                          className="compare-inspect"
+                          disabled={busy}
+                          aria-label={`Inspect ${e.cell.model.id} ${e.cell.episodeId} ${s.id.slice(0, 8)}`}
+                          onClick={() => openRun(s.id, e.cell.episodeId)}
+                        >
+                          View
+                          <ArrowUpRight size={13} aria-hidden="true" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
           {!saved.length && <p className="hint">Your completed runs will appear here.</p>}
+          {!!saved.length && (
+            <p className="hint">
+              Development runs, not a leaderboard. Blocked runs are not task failures. View the
+              checks and evidence.
+            </p>
+          )}
         </Modal>
       )}
       {modal === 'audit' && record && (

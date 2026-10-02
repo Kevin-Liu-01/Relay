@@ -71,12 +71,44 @@ budget accounting. The local CLI/Lab retains its explicit experiment rate config
 
 Run and Start 1v1 acquire a synchronous lock before any request, show Starting…
 immediately, stay disabled through execution and history saving, and absorb a
-600ms post-completion double-click tail. Stop is a separate adjacent control: the
+600ms double-click window measured from launch. They stay visibly busy for any
+remaining part of that window; there is no hidden cooldown after Run becomes
+enabled. Stop is a separate adjacent control: the
 same second click cannot accidentally cancel. There are no automatic inference
 retries. Pending startup clears the reference screenshot rather than presenting
 it as a live frame. Status text and `aria-busy` accompany the CSS spinner;
 reduced-motion users get static status without rotation. Keyboard operation uses
 native buttons, not a pointer-only gesture.
+
+## Consecutive runs and outcome clarity
+
+Each solo/queued launch replaces the entire observer stage with a fresh keyed
+host element, clearing decoded images, cursor, selected step, episode and audit
+selection. Evidence is request-local. Normal queued requests wait for the
+previous stream to close (after worker cleanup) and history to save before
+starting the next. Unknown usage, missing audit or failed storage still stops the
+queue; cancellation is not an inference retry and in-flight usage may be unknown.
+1v1 deliberately retains two isolated lanes, each with a new stage per match.
+
+History/replay loads are navigation-versioned or invalidated on unmount. A slow
+recording cannot reopen over a later run or overwrite a newer selection. Replay
+and 1v1 unmount the main spectator while open, so another workspace is not left
+behind them. Closing restores the saved/main view without launching a model.
+
+Compare and History use the same outcome badges: green verified pass, amber
+incomplete checks, rose execution block, purple time/spend/request limit and a
+neutral stopped/pending state. Icons and text accompany color. Blocked diagnostic
+checks never become a pass; unknown cost stays unknown. Compare filters retain
+that distinction and open the exact episode's evidence. On phones its rows
+become cards, with outcome and model first. No stored reward or historical trace
+is rewritten by this presentation layer.
+
+`tests/browser/run-handoff.spec.mjs` reproduces delayed replay navigation and
+immediate re-launch with deterministic fake receipts, and checks desktop/mobile
+outcomes. The real-browser queue test gates the second request until the old
+frame, cursor and result disappear, verifies at most one active request, and
+checks separate run IDs, budgets, histories and verified audits. These checks
+make no paid provider calls or model-performance claims.
 
 `tests/pricing.test.mjs` checks exact-ID parsing, units, expiry, cache sharing,
 forget/error recovery and authoritative rate binding. `tests/browser/one-click.spec.mjs`

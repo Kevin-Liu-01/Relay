@@ -55,6 +55,11 @@ source/date/hash, bounded fallback expiry and server-side rate binding intact.
 requests and full per-cell budgets. Queue up to eight models; one runs at a time.
 Stop cancels remaining jobs; unknown usage, interrupted evidence or failed history
 save halts the queue. Do not resume on reload or retry inference automatically.
+Replace the host viewer stage on every launch/episode handoff, not only its image
+child. Late history/replay loads must not replace a newer run or reopen a closed
+dialog. An enabled Run must accept a new launch: duplicate-click protection stays
+visibly busy, never an invisible post-completion cooldown. Keep the handoff browser
+regressions, including the gated second request and no retained old media.
 The default $2 allowance is per model, including both 1v1 lanes; show total exposure
 before launching multiple cells. Shared connections are key-scoped and tab-local; launches acquire
 a synchronous lock. See `docs/interface-controls.md` for debounce/cancellation rules.
