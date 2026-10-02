@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
+import { expectNorthstarBrand } from './brand-assertions.mjs';
 
 async function withSandbox(fn) {
   let providerCalls = 0;
@@ -36,6 +37,7 @@ test('no-key Try Slack opens a usable workspace: send, edit, thread, search, DM,
     });
     slack.on('pageerror', (e) => errors.push(e.message));
     await expect(slack.getByRole('heading', { name: 'proj-meridian', exact: true })).toBeVisible();
+    await expectNorthstarBrand(slack);
     await expect
       .poll(() =>
         slack

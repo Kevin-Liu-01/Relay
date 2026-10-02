@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
-import { expectRelayBrand } from './brand-assertions.mjs';
+import { expectRelayBrand, expectNorthstarBrand } from './brand-assertions.mjs';
 
 test('OFL typography, open UI glyphs and fictional portraits load without third-party requests', async ({
   page,
@@ -18,6 +18,11 @@ test('OFL typography, open UI glyphs and fictional portraits load without third-
   await page.goto(`/s/${session.token}`);
   await expect(page.getByRole('heading', { level: 1, name: 'proj-meridian' })).toBeVisible();
   await expectRelayBrand(page, request, { logo: false });
+  await expectNorthstarBrand(page);
+  const workspaceMark = await request.get(
+    await page.locator('.workspace-mark > img').getAttribute('src'),
+  );
+  expect(workspaceMark.headers()['content-type']).toContain('image/svg+xml');
   const fonts = await page.evaluate(async () => {
     await document.fonts.ready;
     return [...document.fonts].map((f) => ({
@@ -96,4 +101,54 @@ test('a missing portrait falls back to initials without hiding other people or D
     page.getByRole('heading', { name: 'Maya Chen', level: 1, exact: true }),
   ).toBeVisible();
   await expect(page.getByRole('textbox', { name: 'Message Maya Chen', exact: true })).toBeVisible();
+});
+
+test('Northstar identity stays consistent during loading and errors, then home navigation works', async ({
+  page,
+  request,
+}) => {
+  const response = await request.post('http://127.0.0.1:4321/sessions', {
+    headers: { authorization: 'Bearer browser-test-only' },
+    data: { taskId: 'thread-reply', seed: 42 },
+  });
+  const session = await response.json();
+  let release;
+  const gate = new Promise((resolve) => {
+    release = resolve;
+  });
+  await page.route('**/api/state', async (route) => {
+    await gate;
+    await route.fulfill({
+      status: 503,
+      contentType: 'application/json',
+      body: JSON.stringify({ error: 'Workspace temporarily unavailable.' }),
+    });
+  });
+  try {
+    await page.goto(`/s/${session.token}`, { waitUntil: 'domcontentloaded' });
+    await expect(page.getByRole('heading', { name: 'Opening Northstar…' })).toBeVisible();
+    const mark = page.locator('.loading .workspace-mark > img');
+    await expect(mark).toHaveAttribute('src', /^\/assets\/northstar-mark-[\w-]+\.svg$/);
+    await expect
+      .poll(() => mark.evaluate((img) => img.complete && img.naturalWidth === 64))
+      .toBe(true);
+    const src = await mark.getAttribute('src');
+    release();
+    await expect(page.getByRole('heading', { name: 'Unable to open workspace' })).toBeVisible();
+    await expect(mark).toHaveAttribute('src', src);
+    await page.unroute('**/api/state');
+    await page.reload();
+    await expectNorthstarBrand(page);
+    await expect(page.locator('.workspace-mark > img')).toHaveAttribute('src', src);
+    await page.getByRole('button', { name: 'Direct message Maya Chen', exact: true }).click();
+    await expect(
+      page.getByRole('heading', { name: 'Maya Chen', exact: true, level: 1 }),
+    ).toBeVisible();
+    await page.getByRole('button', { name: 'Northstar home', exact: true }).click();
+    await expect(
+      page.getByRole('heading', { name: 'proj-meridian', exact: true, level: 1 }),
+    ).toBeVisible();
+  } finally {
+    release();
+  }
 });

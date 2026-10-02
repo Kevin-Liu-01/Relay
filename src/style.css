@@ -196,23 +196,19 @@ p {
   width: 40px;
   height: 40px;
   border-radius: 11px;
-  background: #e9d8eb !important;
-  color: #432048;
-  font-size: 25px;
-  font-weight: 800;
+  background: #f7f1e4 !important;
+  padding: 0;
   position: relative;
   display: grid;
   place-items: center;
-  letter-spacing: -2px;
+  flex-shrink: 0;
   margin-bottom: 9px;
 }
-.workspace-mark span {
-  position: absolute;
-  right: 5px;
-  top: 1px;
-  font-size: 14px;
-  letter-spacing: 0;
-  color: #755280;
+.workspace-mark > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 .rail-item {
   display: flex;
@@ -424,9 +420,11 @@ p {
   align-items: center;
   color: #ba9fc2;
 }
-.tiny-star {
-  font-size: 28px;
-  color: #b8a0bf;
+.northstar-signature {
+  display: block;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
 }
 .sidebar-foot strong {
   font-size: 10px;

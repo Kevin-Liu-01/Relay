@@ -35,6 +35,7 @@ import {
   ArrowUpRight,
 } from './icons.jsx';
 import { portraits } from './portraits.js';
+import northstarMark from './assets/northstar-mark.svg';
 import './style.css';
 import { REPLAY_MODE, readVisibleUI, validSnapshot } from './replay-bridge.js';
 
@@ -551,7 +552,9 @@ function App() {
   if (!data)
     return (
       <div className="loading">
-        <div className="workspace-mark">N</div>
+        <div className="workspace-mark">
+          <img src={northstarMark} alt="" width="64" height="64" draggable="false" />
+        </div>
         <h1>{error ? 'Unable to open workspace' : 'Opening Northstar…'}</h1>
         <p>{error || 'A little space for good work.'}</p>
         {error && (
@@ -858,7 +861,7 @@ function App() {
           aria-label="Northstar home"
           onClick={() => navigate('project')}
         >
-          N<span>✦</span>
+          <img src={northstarMark} alt="" width="64" height="64" draggable="false" />
         </button>
         <button
           className={view === 'channel' ? 'rail-item active' : 'rail-item'}
@@ -991,7 +994,14 @@ function App() {
           <kbd>K</kbd>
         </button>
         <div className="sidebar-foot">
-          <span className="tiny-star">✦</span>
+          <img
+            className="northstar-signature"
+            src={northstarMark}
+            alt=""
+            width="64"
+            height="64"
+            draggable="false"
+          />
           <div>
             <strong>Thoughtful work, together.</strong>
             <span>Your team's shared space.</span>

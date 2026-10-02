@@ -2,7 +2,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     // Real, cache-busted icon URLs also work under the hosted same-origin CSP.
-    assetsInlineLimit: (path) => (path.includes('/relay-') ? false : undefined),
+    assetsInlineLimit: (path) =>
+      path.includes('/relay-') || path.includes('/northstar-') ? false : undefined,
     sourcemap: false,
     rolldownOptions: {
       input: {

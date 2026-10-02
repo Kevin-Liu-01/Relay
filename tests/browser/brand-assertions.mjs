@@ -1,5 +1,23 @@
 import { expect } from '@playwright/test';
 
+export async function expectNorthstarBrand(surface) {
+  const mark = surface.getByRole('button', { name: 'Northstar home', exact: true }).locator('img');
+  await expect(mark).toBeVisible();
+  await expect(mark).toHaveAttribute('alt', '');
+  await expect(mark).toHaveAttribute('src', /^\/assets\/northstar-mark-[\w-]+\.svg$/);
+  await expect
+    .poll(() => mark.evaluate((img) => img.complete && img.naturalWidth === 64))
+    .toBe(true);
+  await expect(surface.locator('img.northstar-signature')).toHaveAttribute(
+    'src',
+    await mark.getAttribute('src'),
+  );
+  // Replay scales the entire iframe; check its native layout, not the host's zoom.
+  const size = await mark.evaluate((img) => ({ width: img.clientWidth, height: img.clientHeight }));
+  expect(size.width).toBe(40);
+  expect(size.height).toBe(40);
+}
+
 export async function expectRelayBrand(page, request, { logo = true } = {}) {
   const svgLink = page.locator('link[rel="icon"][type="image/svg+xml"]');
   await expect(svgLink).toHaveAttribute('href', /^\/assets\/relay-mark-[\w-]+\.svg$/);

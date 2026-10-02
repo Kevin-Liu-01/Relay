@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
+import { expectNorthstarBrand } from './brand-assertions.mjs';
 
 test('published campaign replays show real pass/failure evidence with no inference or actor writes', async ({
   page,
@@ -26,6 +27,7 @@ test('published campaign replays show real pass/failure evidence with no inferen
     await dialog.getByRole('slider', { name: 'Playback position' }).fill('4');
     await expect(dialog).toContainText('Task passed');
     const frame = page.frameLocator('iframe[title="Recorded Slack workspace"]');
+    await expectNorthstarBrand(frame);
     await expect
       .poll(() =>
         frame

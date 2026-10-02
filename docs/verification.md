@@ -1,5 +1,19 @@
 # Verification and evidence
 
+## Northstar workspace identity — 2026-10-02
+
+The fictional team's N badge is replaced by an original eight-point compass
+mark with a gold north facet. The rail, loading/error state and sidebar signature
+share one local SVG; Relay's own logo and favicon are unchanged. Browser checks
+verify decoded assets, stable native dimensions, no external requests, loading
+and error continuity, home navigation, the practice sandbox and scaled actual-UI
+replay. The replay assertion measures native layout rather than host-scaled bounds.
+
+The full gate passes **123 backend checks and 82 browser checks**. Manual browser
+review checked the mark in the real workspace. Scripted reference images are
+refreshed; historical model captures, graders and task state remain untouched.
+No model inference or generated bitmap is needed for this original SVG identity.
+
 ## Fictional portraits and Relay handoff identity — 2026-10-02
 
 Six generated fictional portraits now appear in messages, threads, member stacks,

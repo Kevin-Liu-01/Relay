@@ -28,3 +28,17 @@ The fictional workspace portraits have [separate provenance](portraits.md).
 Browser checks verify decoded header images, matching favicon/logo URLs, MIME
 types, ICO dimensions, the touch icon size and the replay entry. The normal mobile
 layout checks still apply.
+
+## Northstar workspace
+
+Northstar is the fictional team inside Slack, not the Relay operator brand.
+Its [editable compass-star master](../src/assets/northstar-mark.svg) uses an
+eight-point plum rose (`#42234d`), a gold north facet (`#bb8439`) and an ivory
+tile (`#f7f1e4`). The diamond counter keeps the center open at small sizes.
+This original vector replaces the N/Unicode-star badge without a font dependency.
+
+The workspace rail, loading/error screen and small sidebar signature use the
+same bundled, content-hashed SVG. The home button keeps its accessible name and
+navigation behavior; decorative images have empty alt text. Practice and current-
+renderer replay share it. Relay's favicon stays Relay's own handoff mark.
+Historical captured model screenshots are not rewritten to show the new identity.
