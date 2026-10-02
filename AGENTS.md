@@ -13,6 +13,12 @@ documentation, not third-party fonts or brand assets.
 
 Relay is a standalone CUA/RL environment, extracted from `cotcodec/cua-slack` into `Kevin-Liu-01/Relay`. Keep unrelated memory research and private local runs out of this repository. The user-facing name is **Relay** (capital R).
 
+The brand master is `src/assets/relay-mark.svg`; keep favicon, touch icon, README
+and presentation synchronized (see `docs/brand.md`). The six fictional portraits
+are bundled under `src/assets/portraits/`, mapped by stable user IDs, with prompts
+and hashes in `docs/portraits.md`. Never replace them with remote/random image
+URLs or alter historical captured evidence to imitate new-renderer fidelity.
+
 Read `README.md`, `docs/architecture.md`, `docs/verification.md`, and `docs/research.md`. The application, trainer and evaluator are deliberately separate interfaces. The browser may never receive control-plane credentials, task answers or evaluator code.
 
 For Relay Lab, read `docs/benchmark-lab.md` and `docs/lab-plan.md`. `npm run lab`

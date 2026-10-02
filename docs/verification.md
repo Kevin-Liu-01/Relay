@@ -1,5 +1,29 @@
 # Verification and evidence
 
+## Fictional portraits and Relay handoff identity — 2026-10-02
+
+Six generated fictional portraits now appear in messages, threads, member stacks,
+the DM list/directory and the signed-in avatar. The shared renderer carries them
+into the no-key sandbox and actual-UI replay. Images are 256×256 same-origin WebP,
+39,880 bytes total, with initials on load failure and independent presence dots.
+[Prompts and output hashes](portraits.md) document their origin. No stock photos
+or private-prototype photographs were reintroduced.
+
+The custom two-ribbon handoff mark replaces the earlier R tile across Live, Lab,
+the sandbox, favicon/touch exports, README header and regenerated slide deck.
+Browser checks cover all six decoded images, correct MIME types, distinct stable
+sources, zero third-party requests, missing-image fallback, sandbox and replay.
+An asset contract checks the hashes, size budget and README/master geometry.
+Initial test assertions were corrected to test an image rather than text content
+and to disambiguate the DM's two headings; application behavior was not weakened.
+
+The release gate passes **123 backend checks and 81 browser checks**. Manual
+browser review covered the home logo, people thumbnails and DM navigation.
+No model inference was used. Task state, rewards, graders and frozen model
+campaigns are unchanged. Current scripted reference screenshots are refreshed;
+historical model PNGs and evidence hashes are preserved. Future pixel inputs
+include the new portraits; actual-UI replay remains a current-renderer view.
+
 ## Consecutive run handoff and readable outcomes — 2026-10-02
 
 Three deterministic regressions reproduced the reported behavior before the

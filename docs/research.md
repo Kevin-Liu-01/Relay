@@ -29,7 +29,7 @@ Relay's choice is an original, focused UI with a small transactional backend, in
 
 One additional search lead, `farhanmasood-se/slack-clone`, was not accessible through the GitHub API at snapshot time (404). It is retained as a failed retrieval in the provenance file, **not** relied upon as an available dependency. This matters because search-index results are not proof a project is still retrievable.
 
-Visual patterns adopted conceptually: a persistent workspace rail, channel/DM list, compact message rows, contextual hover controls, a separate thread pane, global search, and familiar keyboard entry points. No clone's code or task text was copied. The private prototype explored Slack's icon font and sample photographs. The public release uses OFL Lato, Lucide controls, theSVG provider marks and fictional initials; proprietary icons and stock photos are excluded. Sources and restrictions are recorded in `THIRD_PARTY_NOTICES.md` and `src/assets/provenance.json`.
+Visual patterns adopted conceptually: a persistent workspace rail, channel/DM list, compact message rows, contextual hover controls, a separate thread pane, global search, and familiar keyboard entry points. No clone's code or task text was copied. The private prototype explored Slack's icon font and sample photographs. The public release uses OFL Lato, Lucide controls, theSVG provider marks and locally generated fictional portraits with initials fallback; proprietary icons and stock photos are excluded. Sources and restrictions are recorded in `THIRD_PARTY_NOTICES.md`, `src/assets/provenance.json` and [portrait provenance](portraits.md).
 
 ## 2. Slack-specific agent and RL environments
 

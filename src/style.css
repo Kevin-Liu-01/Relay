@@ -376,6 +376,16 @@ p {
 }
 .dm-list > button {
   gap: 11px;
+  padding-block: 5px;
+}
+.dm-list .avatar.with-presence > i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-color: #411b48;
+}
+.dm-list > button.selected .avatar.with-presence > i {
+  border-color: #fff;
 }
 .presence {
   display: inline-block;

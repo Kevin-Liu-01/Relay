@@ -151,6 +151,7 @@ export function createServers({
           '.ico': 'image/x-icon',
           '.jpg': 'image/jpeg',
           '.png': 'image/png',
+          '.webp': 'image/webp',
           '.woff2': 'font/woff2',
         }[extname(path)] ?? 'application/octet-stream';
       res.writeHead(200, {

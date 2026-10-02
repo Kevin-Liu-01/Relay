@@ -26,6 +26,20 @@ test('published campaign replays show real pass/failure evidence with no inferen
     await dialog.getByRole('slider', { name: 'Playback position' }).fill('4');
     await expect(dialog).toContainText('Task passed');
     const frame = page.frameLocator('iframe[title="Recorded Slack workspace"]');
+    await expect
+      .poll(() =>
+        frame
+          .locator('img[data-avatar]')
+          .evaluateAll(
+            (images) =>
+              new Set(
+                images
+                  .filter((image) => image.complete && image.naturalWidth === 256)
+                  .map((image) => image.dataset.avatar),
+              ).size,
+          ),
+      )
+      .toBe(6);
     await expect(
       frame.getByText('QA checklist complete. Ready for review.', { exact: true }),
     ).toBeVisible();

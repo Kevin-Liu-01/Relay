@@ -30,7 +30,10 @@ fonts or third-party brand assets. Their notices and restrictions below remain i
 The public Relay release retains Lato under the included SIL Open Font License,
 uses Lucide (ISC) for interface glyphs, and theSVG for provider/technology marks.
 Brand marks identify integrations, not sponsorship; each owner's trademark rules
-still apply. Fixture avatars use original colored initials, not stock photographs.
+still apply. Fixture avatars use six locally bundled, AI-generated portraits of
+fictional adults, with colored initials as a loading-error fallback. No real
+person's identity or stock photograph is used. [Prompts and provenance](docs/portraits.md)
+record the generated assets; these are separate from the excluded private photos.
 Model-family marks from [theSVG](https://thesvg.org) cover OpenAI, Anthropic,
 DeepSeek, Qwen, Gemini, NVIDIA, Mistral, Meta, xAI, Cohere and Moonshot. Unrecognized
 families use a generic agent glyph rather than a fabricated company logo.

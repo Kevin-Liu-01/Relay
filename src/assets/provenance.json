@@ -1,6 +1,11 @@
 {
   "retrievedAt": "2026-09-29T18:52:22.374Z",
   "referencePage": "https://slack.com/signin",
+  "portraits": {
+    "origin": "Generated fictional adults, not stock photographs or private-prototype assets",
+    "manifest": "portraits/provenance.json",
+    "prompts": "../../docs/portraits.md"
+  },
   "note": "Unmodified OFL Lato for Slack and fallback text; user-provided proprietary Camber for Relay chrome. Camber is not OFL or sublicensed. Proprietary Slack icon font and sample photographs from the private prototype are excluded.",
   "camber": {
     "source": "User-provided mailroom/src/app/fonts/Camber-*.woff2",

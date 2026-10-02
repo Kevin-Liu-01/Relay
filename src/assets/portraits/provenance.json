@@ -1,0 +1,62 @@
+{
+  "generatedOn": "2026-10-02",
+  "origin": "OpenAI built-in image generation; six separate fictional adult portraits",
+  "prompts": "../../../docs/portraits.md",
+  "transform": "256×256 WebP, quality 82; no creative edits",
+  "assets": [
+    {
+      "id": "alex",
+      "file": "alex.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 7466,
+      "sha256": "b321f39365e0143f35b12f115572ea98c5ecc75333a593aa0012ac5da893a2ae",
+      "originalSha256": "0934e8b19eb226f9fdd665a4885d529589f314bae6a619ed604d786172c3c745"
+    },
+    {
+      "id": "maya",
+      "file": "maya.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 5576,
+      "sha256": "b30dc0133d8eaa9dc2c51ddc9eff716ca78aa8bf564d587734935049c9c06cf3",
+      "originalSha256": "b336ef9e20f2aed7135b5e4a76b9869cf42e92ae76eb1906b42b0a57c9eab9d8"
+    },
+    {
+      "id": "jordan",
+      "file": "jordan.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 6702,
+      "sha256": "dba4c81fef19662b16ea93004a22c8f07c0c99e3a29b623a149f773e96b1c26a",
+      "originalSha256": "9098b5d30ebfd0754f65f5c04ffab53fd242399b7a307129721123409f1cf24f"
+    },
+    {
+      "id": "sam",
+      "file": "sam.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 7714,
+      "sha256": "f6d9a3680a93c4a27d09623e42d8167af01e9c70df75abd04b3b835fe271f907",
+      "originalSha256": "d75953095a619b02f1256d6314139393372e835bb53100dd3af7b5361a3dec07"
+    },
+    {
+      "id": "priya",
+      "file": "priya.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 7058,
+      "sha256": "3cc7f8080a3f8023912f21bcc1bbcbe3a559d05c6784cd79e06ace884cb27d3f",
+      "originalSha256": "0a02834a795ebd5cc6cd965621b76fd6b13417e1445c3b384b3f7b37ff90da73"
+    },
+    {
+      "id": "leo",
+      "file": "leo.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 5364,
+      "sha256": "1b50a70c132d2a7ff07eb9b848331946e5c8236aaa2d6e9616cc4be4ccc5a3d5",
+      "originalSha256": "b77b525da451b0d54ba8e8df607d9529b2c4848305742a0344871b2676c93f23"
+    }
+  ]
+}

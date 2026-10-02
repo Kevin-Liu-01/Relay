@@ -45,6 +45,7 @@ export function createLiveServer(options = {}) {
           '.js': 'application/javascript',
           '.css': 'text/css',
           '.png': 'image/png',
+          '.webp': 'image/webp',
           '.svg': 'image/svg+xml',
           '.ico': 'image/x-icon',
           '.json': 'application/json',

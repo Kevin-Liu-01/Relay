@@ -79,21 +79,24 @@ function IconButton({ label, children, onClick, ...props }) {
     </button>
   );
 }
-function Avatar({ user, small = false }) {
-  const [failed, setFailed] = useState(false);
+function Avatar({ user, small = false, presence = false }) {
+  const src = portraits[user.id];
+  const [failedSrc, setFailedSrc] = useState(null);
   return (
     <span
-      className={`avatar ${small ? 'small' : ''}`}
+      className={`avatar ${small ? 'small' : ''} ${presence ? 'with-presence' : ''}`}
       style={{ background: user.color }}
       aria-hidden="true"
     >
-      {portraits[user.id] && !failed ? (
+      {src && failedSrc !== src ? (
         <img
           data-avatar={user.id}
-          src={portraits[user.id]}
+          src={src}
           alt=""
+          width="256"
+          height="256"
           draggable="false"
-          onError={() => setFailed(true)}
+          onError={() => setFailedSrc(src)}
         />
       ) : (
         <span>{user.initials}</span>
@@ -977,7 +980,7 @@ function App() {
                 className={view === 'channel' && channelId === `dm-${u.id}` ? 'selected' : ''}
                 onClick={() => navigate(`dm-${u.id}`)}
               >
-                <span className={`presence ${u.status}`} />
+                <Avatar user={u} small presence />
                 <span>{u.name}</span>
               </button>
             ))}

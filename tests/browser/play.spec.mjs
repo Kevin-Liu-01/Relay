@@ -36,6 +36,20 @@ test('no-key Try Slack opens a usable workspace: send, edit, thread, search, DM,
     });
     slack.on('pageerror', (e) => errors.push(e.message));
     await expect(slack.getByRole('heading', { name: 'proj-meridian', exact: true })).toBeVisible();
+    await expect
+      .poll(() =>
+        slack
+          .locator('img[data-avatar]')
+          .evaluateAll(
+            (images) =>
+              new Set(
+                images
+                  .filter((image) => image.complete && image.naturalWidth === 256)
+                  .map((image) => image.dataset.avatar),
+              ).size,
+          ),
+      )
+      .toBe(6);
     await expect(slack.getByText('resets on refresh', { exact: false })).toBeVisible();
     const composer = slack.getByRole('textbox', { name: 'Message #proj-meridian', exact: true });
     await composer.fill('Trying Slack by hand');
