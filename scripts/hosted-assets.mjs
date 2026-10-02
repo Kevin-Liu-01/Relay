@@ -1,5 +1,6 @@
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { makeWorkflowSeed } from '../server/workflow-seed.mjs';
+import { createHash } from 'node:crypto';
 // Vercel serves an existing index before fallback rewrites. Keep the private
 // workspace entry separate, and make the actual public index the BYOK console.
 copyFileSync('dist/index.html', 'dist/workspace.html');
@@ -61,7 +62,17 @@ writeFileSync(
   ),
 );
 // Keep the downloadable HTML standalone; serve controls externally under the site's CSP.
-const presentation = readFileSync('docs/presentation.html', 'utf8');
+// The offline document embeds fonts. Publish those exact bytes as same-origin
+// assets without relaxing the production font-src policy.
+const presentation = readFileSync('docs/presentation.html', 'utf8').replace(
+  /data:font\/woff2;base64,([A-Za-z0-9+/=]+)/g,
+  (_, data) => {
+    const font = Buffer.from(data, 'base64');
+    const name = `presentation-${createHash('sha256').update(font).digest('hex').slice(0, 16)}.woff2`;
+    writeFileSync(`dist/assets/${name}`, font);
+    return `./assets/${name}`;
+  },
+);
 const controls = presentation.match(/<script>([\s\S]*?)<\/script>/);
 if (!controls) throw Error('Presentation controls missing.');
 writeFileSync('dist/presentation-controls.js', controls[1]);

@@ -4,6 +4,11 @@
 
 - 12 slides; 10–12 minutes, followed by a three-minute demonstration and discussion.
 - Technical headings, bullets and diagrams. HTML works offline; PDF is the portable fallback.
+- Camber matches Relay's interface; Lato supplies missing glyphs. Relay's mark,
+  theSVG Slack/OpenAI marks and Lucide diagrams are bundled without external asset
+  requests. Original asset restrictions still apply. `presentation.css` and
+  `presentation.template.html` own the visual design; the builder embeds fonts for
+  offline use, while hosting serves the same font bytes under the existing CSP.
 - Regenerate with `npm run presentation` after updating verified evidence. Do not type improved results into the deck.
 - Do not claim a new benchmark standard, secure sandbox, trained RL agent or model leaderboard.
 

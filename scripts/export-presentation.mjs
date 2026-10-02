@@ -7,6 +7,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   await page.goto(pathToFileURL(resolve('docs/presentation.html')).href);
   await page.emulateMedia({ media: 'print' });
+  await page.evaluate(() => document.fonts.ready);
   const clipped = await page
     .locator('.slide')
     .evaluateAll((slides) =>
