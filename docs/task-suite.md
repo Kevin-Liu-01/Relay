@@ -29,7 +29,7 @@ and original graders are unchanged. New tasks use `northstar-workflows-v2` and
 rollback owner/window, approved design and estimate, in addition to project names.
 This is **public development variation, not a held-out task split**.
 
-## Why the reward is trustworthy—and its limits
+## Outcome contract and its limits
 
 The trusted evaluator constructs expected final state declaratively. It does
 **not** replay the reference policy or call the application's mutation engine to
@@ -55,6 +55,22 @@ transition engine and contract.
 An open-source contract can be memorized. Credible generalization measurements
 need separately authored, withheld semantic task families and actor isolation
 from repository files. More seeds of these templates do not solve that problem.
+
+Trace review of the one-pass campaign identified two **instruction-contract
+ambiguities**, separate from deterministic grading correctness:
+
+- `release-sync` ambiguously groups the handoff and QA source locations.
+- `design-handoff` quotes a `DESIGN` placeholder without explicitly requiring its
+  substitution; the grader expects the retrieved design name.
+
+The [trace observations](campaigns/model-breadth-2026-10-03-observations.md)
+document concrete examples. These 34 cells retain their original instructions,
+traces and raw outcomes, with visible caveats in the report and replay viewer.
+Do not use their failures as clean model-capability evidence. Scripted positive
+paths and adversarial state checks establish executability and contract behavior,
+not independently validated task-language clarity. A future task version needs
+an instruction-only review of source locations, placeholders and exact-text
+requirements before collection; it must not retroactively relabel these trials.
 
 ## Verification that costs no model credits
 

@@ -177,8 +177,8 @@
             Scripted UI recipes exercise interaction paths; they do not measure model capability.
           </li>
           <li>
-            {{ATTEMPTED}} newly attempted real-model episodes; original builder-informed episodes
-            remain labeled separately.
+            {{COMPARISON_ATTEMPTED}} / {{COMPARISON_PLANNED}} recorded model/task attempts in the
+            one-pass comparison; earlier interface trials remain separate.
           </li>
         </ul>
         <div
@@ -196,34 +196,40 @@
         </div>
       </section>
       <section class="slide" data-title="Run design">
-        <h2>Initial campaign: matched interaction approaches</h2>
+        <h2>One attempt per model and task</h2>
         <div class="brand-row" aria-label="Models in the campaign">
-          <span class="brand-chip">{{OPENAI_MARK}}GPT-4o mini</span
-          ><span class="brand-chip">{{OPENAI_MARK}}GPT-6 Luna</span
-          ><span class="brand-chip">{{ICON_API}}Ramp Router<small>one provider</small></span>
+          <span class="brand-chip">{{ICON_POLICY}}17 model routes</span
+          ><span class="brand-chip">{{ICON_TASK}}18 tasks</span
+          ><span class="brand-chip">{{ICON_CHECK}}1 attempt per cell</span>
         </div>
         <ul>
-          <li>Exact requested/returned model receipts retained for both routes.</li>
-          <li>30 planned cells: pilot, matched workflow matrix and separate pixel follow-up.</li>
+          <li>Flagship, standard and efficient routes across nine model families.</li>
           <li>
-            Fresh sessions; seed 42; seeded cell order; recent-four history; no supplied guide.
+            Fresh workspaces; seed 1042; accessibility control; recent-four history; no guide.
           </li>
-          <li>$3 ceiling; fixed action, token and time limits; no retry or model substitution.</li>
+          <li>40 actions; 4,096 output tokens per call; 180 seconds and $5 maximum per trial.</li>
           <li>
-            One seed and one repetition on public tasks: descriptive evidence, not a model ranking.
+            105 prior attempts retained; only 201 untouched cells continued. No repeats or dropped
+            failures.
+          </li>
+          <li>
+            $300 cumulative ceiling, including prior pilots. A trial spend stop stays blocked.
+          </li>
+          <li>
+            Public tasks and temporal cohorts: coverage evidence, not a reliable model ranking.
           </li>
         </ul>
         <ul class="sources">
           <li>
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/onsite-2026-10-01.md"
-              >Frozen plan, exact configuration and pilot review</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
+              >Frozen plan, preserved origins and explicit scheduling amendment</a
             >.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Observed outcomes">
-        <h2>Initial campaign: outcomes and incomplete coverage</h2>
+        <h2>Earlier interface study · separate from the 306 cells</h2>
         <ul>
           <li>
             {{ATTEMPTED}} attempted: {{PASSED}} passed, {{INCOMPLETE}} incorrect/step-limited,
@@ -268,6 +274,9 @@
         <div class="comparison-toolbar">
           <span>{{COMPARISON_COUNTS}}</span>
           <div class="comparison-controls">
+            <a class="review-library-link" href="https://relay.kevinliu.studio/demo/review.html"
+              >Watch replays ↗</a
+            >
             {{COMPARISON_FILTER}}<button type="button" id="open-trials">
               All {{COMPARISON_PLANNED}} trials ↗
             </button>
@@ -281,7 +290,10 @@
         </div>
         <ul class="sources">
           <li>{{COMPARISON_SCOPE}}</li>
-          <li>{{COMPARISON_PROVENANCE}} Descriptive results, not a held-out ranking.</li>
+          <li>
+            {{COMPARISON_PROVENANCE}} Raw outcomes; release-sync and design-handoff have wording
+            caveats.
+          </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
@@ -306,29 +318,31 @@
         </ul>
       </section>
       <section class="slide" data-title="Trace findings">
-        <h2>What the trajectories explain</h2>
+        <h2>What the current trajectories explain</h2>
         <ul>
           <li>
-            Thread reply: GPT-6 Luna passed through accessibility, page JSON and API; GPT-4o mini
-            failed those matched cells.
+            Thread repair: {{THREAD_REPAIR_RESULT}} passed; handoff DM: {{HANDOFF_RESULT}}. Thread
+            repair combines fact retrieval, an original-message edit, a reaction and a reply.
           </li>
           <li>
-            Decision record: Luna pinned and saved correctly in the UI, but copied the placeholder
-            “DESIGN” instead of the approved fact. API execution passed.
+            Saved-item cleanup: {{SAVED_RESULT}} strict passes. A further diagnostic workspace pass
+            ended at an output limit and remains blocked.
           </li>
           <li>
-            Pixel pilot: 20 malformed multi-action responses were rejected; no state mutation
-            occurred.
+            Design handoff: {{DESIGN_RESULT}}. Six completed runs copied the quoted “DESIGN”; the
+            grader expected the retrieved name. The substitution instruction was implicit.
           </li>
           <li>
-            Stop condition: Luna hit the 1,024-output-token limit. The incomplete response executed
-            no action; remaining cells were not launched.
+            Release-sync: {{RELEASE_RESULT}}, with an ambiguous source-location hint—not clean
+            capability evidence. Sol made partial changes, then repeated edit/cancel actions.
           </li>
         </ul>
         <ul class="sources">
           <li>
-            The runner retained the incomplete response's reservation conservatively. This was not
-            HTTP 403 or proof of missing provider access.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
+              >Trace identities and outcome details</a
+            >. One attempt per public task; no claim of repeatability or a causal model ranking.
           </li>
         </ul>
       </section>
@@ -416,8 +430,8 @@
             thread, and edit your own message.
           </li>
           <li>
-            <a href="https://relay.kevinliu.studio/">Open Replays</a>: compare the successful thread
-            reply and the incomplete decision record.
+            <a href="https://relay.kevinliu.studio/demo/review.html">Open trial review</a>: choose a
+            recorded model/task, play a success, and inspect an incomplete or blocked attempt.
           </li>
           <li>
             Inspect the exact request, action, state change and terminal checks; replay requires no

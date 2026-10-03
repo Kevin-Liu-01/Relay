@@ -21,6 +21,11 @@ function visit(s) {
       mkdirSync(target, { recursive: true });
       const attached = {};
       for (const a of result.attachments ?? []) {
+        if (a.name === 'replay-coverage.json') {
+          const body = a.body ? Buffer.from(a.body, 'base64') : readFileSync(a.path);
+          writeFileSync(join(target, 'replay-coverage.json'), body);
+          attached.replayCoverage = `${key}/replay-coverage.json`;
+        }
         if (a.name === 'trajectory.json') {
           const body = a.body ? Buffer.from(a.body, 'base64') : readFileSync(a.path);
           writeFileSync(join(target, 'trajectory.json'), body);
@@ -91,6 +96,7 @@ const sourceFiles = [
   'live.html',
   'replay.html',
   'play.html',
+  'demo/review.html',
   'vercel.json',
   '.vercelignore',
   '.env.example',

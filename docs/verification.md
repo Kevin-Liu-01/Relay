@@ -1,5 +1,55 @@
 # Verification and evidence
 
+## Every recorded trial review — 2026-10-03
+
+- **249 recorded attempts, not 306 completed trials:** 123 passed, 50 incomplete,
+  76 blocked; 57 unattempted. The collector stopped safely between cells when
+  free disk fell below its unchanged 10 GB reserve. No active trial was discarded.
+  [Resume state and immutable checkpoint](campaigns/model-breadth-2026-10-03-disk-stop.md).
+- All 249 structured episode records are public in the [trial library](trial-review.md).
+  Each retains complete ordered events, exact prepared requests, visible responses,
+  UI snapshots, original outcome checks and archive identity. PNG bytes are omitted;
+  original image hashes remain. The library is 66.67 MB compressed, lazy-loaded
+  one trial at a time. No key or new model call is needed.
+- Read-only verification reopened 220 original archives: **21,422 integrity checks
+  and 1,649 saved-state grading checks agree**. All episodes have matching recorded
+  backend and served-build receipts, with zero capture gaps. The checked snapshot
+  is `e0e24a1816c339cc3e795bfaba443daa156227f94e2a28908832413168d77126`.
+  This is partial verification, not a 306-cell completion certificate.
+- **169 backend checks and 90 browser tests pass, with no test retries.** The full
+  browser suite used an isolated production build. It opened all 249 public records,
+  hash-checked them, and rendered each final captured workspace (first state for
+  zero-action runs), with zero inference calls. The [per-record playback receipt](../evidence/reference/every-published-trial-opens-and-renders-its-final-captured-workspace-without-inference/replay-coverage.json)
+  lists every checked trial and its original archive hash.
+- The strict production-CSP test passes replay/cursor controls, expansion/Escape,
+  exact requests, readable model output, parsed actions, checks, state changes,
+  provenance and JSON download with an empty browser-error list. Additional tests
+  cover zero-action/diagnostic blocks, cancelled late loads, Back, tampered bytes,
+  invalid IDs, keyboard selection, mobile layout and reduced motion. No console
+  errors were filtered to turn the earlier development-only failure into a pass.
+- After refreshing the displayed test counts and 13-slide PDF, all four presentation
+  tests passed again. The original full 90-test report is retained separately from
+  that focused check. Formatting and credential-screened submission packaging pass.
+  The Docker build recipe includes the new entry files, but no new container smoke
+  was performed in this storage-constrained session.
+- The preparation helper copied only public project inputs to a temporary validation
+  workspace; it did not copy credentials/private runs. Its post-check confirmed the
+  original actor source and dist remained byte-identical. Generated observer assets
+  must not replace that frozen local build while collection remains resumable.
+- Release-sync and design-handoff wording caveats are visible in the review page,
+  report and slides. Raw results remain unchanged. Protocol-format rejections are
+  separated from successful UI mutations; these are bounded-system development
+  results, not causal model rankings or evidence of repeatability.
+
+## All-trial review development checks — 2026-10-03
+
+- Added a static, key-free [trial reviewer](trial-review.md), derived structured-record exporter and per-trial trace/replay links in the results table. The implementation is outside the frozen actor/harness directories; the campaign source hash remains `f559a61066ae76d3d8a6bc10d9c0fe3e6c09c9b0b12b18a62f1c1113aefd415c`.
+- First export: 207 recorded attempts, including failures and blocked outcomes. Every compressed record passed byte/hash checks, secret screening, full event-chain checks and exact request-body checks. The full backend suite passed 168 checks. These counts are development checkpoints, not final campaign coverage.
+- The real-browser preview sweep opened all 207 records and rendered each final captured workspace (first captured state for zero-action runs), with zero model API calls. Four additional preview tests passed for zero-action/diagnostic handling, cancelled/late loads and browser Back, invalid IDs/tampered files, and mobile/keyboard/reduced-motion behavior.
+- A fifth preview test reached all replay/trace/check/download assertions but failed its strict empty-console assertion on Vite's development WebSocket warnings and the existing workspace's development-only `filled` attribute warning. The final production build must pass this strict check without filtering these errors. It is not counted as passed at this checkpoint.
+- Interactive in-app review caught and fixed an initial-null loading error, then verified actual topic-dialog playback, exact input inspection and Escape from expanded replay. Presentation readability and 13-page/mobile containment checks both pass with the added library link.
+- No new model inference was used for these checks. Software verification shares the local machine with collection; timings are operational diagnostics, not a controlled speed benchmark. Final full-library export, archive verification, production-build browser suite and deployment verification remain release gates.
+
 ## One-pass breadth inventory — 2026-10-03
 
 - The user replaced repeated trials with multiple model families, all tasks and no repeats. [New frozen plan](campaigns/model-breadth-2026-10-03.md): 17 exact routes × 18 tasks × seed 1042 = 306 cells. Preserve all 37 attempted cells from the closed Qwen campaign (28 passed, five incomplete, four blocked), including the terminal 401. Run only the 269 missing cells. No historical data are rewritten.

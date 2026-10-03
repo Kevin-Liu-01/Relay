@@ -1,6 +1,111 @@
 # Relay handoff
 
+## Current collection stop — 2026-10-03 19:46 UTC
+
+Disk space fell below the unchanged 10 GB reserve again. PID 44210 exited safely
+after block-212. Current coverage is **249/306: 123 passed, 50 incomplete, 76
+blocked; 57 unattempted**. All 144 continuation phases are terminal/safe. The next
+untouched cell is block-213 (Sol / incident-closeout); the deadline remains
+2026-10-04T08:21:43.494Z. Shared recorded allowance is $159.63298283, leaving
+$140.36701717. The user was asked to restore another 10–15 GB; do not delete
+unrelated files or cycle on transient headroom. Read the latest disk-stop note.
+
+Keep the original `dist` untouched even while paused: all recorded episodes have
+the same served-app receipt. `scripts/prepare-review-validation.mjs` creates a
+credential-free temporary validation copy with a dependency symlink; run builds
+and tests there, then use its `check PATH` mode to prove the original actor source
+and `dist` stayed byte-identical. Never copy its generated dist into this checkout
+before collection ends. A partial observer release must say 249/306, not complete.
+
+## All-recorded-trial review surface (verified)
+
+The user requested trace review and actual-UI replay for every comparison trial.
+Read `docs/trial-review.md`. The new static entry is `demo/review.html`, implemented
+under `docs/review-app` to leave the collection fingerprint unchanged. It reuses
+the frozen Slack replay components. `scripts/export-trial-library.mjs --partial`
+exports recorded attempts without claiming completion; its default requires the
+matching final verification certificate. `evidence/trial-library/catalog.json`
+reports actual export coverage. Do not publish a completed deck until its catalog
+matches the completed summary and includes every trial. Raw PNG bytes are omitted
+from public structured records; original hashes and archives remain intact.
+
+`scripts/preview-trial-review.mjs` serves a read-only preview on 4352 without
+rebuilding `dist`. Check the process ledger before starting another preview.
+New tests: `tests/trial-library.test.mjs` and `tests/browser/trial-review.spec.mjs`.
+The browser sweep must open every final record, not just selected passes. Current
+release receipts are in `docs/verification.md`: 169 backend checks and all 90
+production-build browser checks pass, including the all-249-record sweep. Tests
+ran in an isolated copy; the original actor source and dist stayed byte-identical.
+Never mistake focused-test reports in `artifacts/browser-results.json` for the
+full suite. Future collection requires a refreshed export, audit and coverage test.
+
+## Historical resumption — 2026-10-03 17:48 UTC
+
+The user cleared disk space and explicitly requested continuation. Free space
+was about 41 GB (decimal). The same frozen worker resumed from untouched
+block-127 as PID 44210. Check its current status/lock before acting; do not start
+another collector. No limits, source, graders, seeds or prior results changed.
+The historical disk-stop checkpoint below is not a claim that it is still stopped.
+
+## Historical disk-space stop
+
+The continuation worker previously stopped between cells after
+block-126 at **163/306 attempted: 93 passed, 30 incomplete, 40 blocked; 143
+unattempted**. The machine fell below the frozen 10,000,000,000-byte free-disk
+reserve. No inference request or in-flight cell was abandoned at this boundary;
+all 58 continuation phases are terminal and `safeToContinue: true`, and the
+worker lock was released. Read `docs/campaigns/model-breadth-2026-10-03-disk-stop.md`.
+After an earlier stop at 162, free space briefly rose above the reserve without
+any deletion by this agent. The same frozen worker restarted as PID 98324, ran
+only untouched block-126, and stopped again. Both worker PIDs are dead. Do not
+keep relaunching on transient disk headroom; restore useful free space first.
+The user was asked to free 10–15 GB or identify a disposable folder. Do not delete
+unrelated files, lower the reserve, or claim the remaining cells were attempted.
+The same frozen worker checks all bindings and prior
+phases before sending any request. Do not run `prepare`, repeat a cell or reset
+the 24-hour clock. The next untouched phase is block-127 (MiniMax/on-call).
+Final verification/publication remains outstanding.
+
 ## Current comparison request
+
+The original breadth worker stopped at **105/306** on a known-cost Astra cell
+spend limit ($4.16782 accepted; the next reservation could not fit under $5).
+It is closed, not resumable. The user reiterated completion of all 306 cells.
+The successor is `model-breadth-2026-10-03-continuation`: read its campaign
+Markdown/JSON, `scripts/run-breadth-continuation.mjs`, and
+`scripts/lib/breadth-continuation.mjs`. It preserves all 105 attempts and runs
+only the 201 untouched cells in their original order (block-069 through 269).
+The same source, graders, per-cell limits and shared $300 ceiling remain.
+Its new scheduler may advance after a verified, known-use cell spend stop;
+it never sends another request in that stopped cell. Authentication, bad
+receipts/evidence, cleanup, source drift and shared limits still stop it.
+The cumulative prior allowance is $35.34935278; no budget reset. The original
+24-hour clock and remaining request/archive allowances are retained.
+
+Never edit either frozen worker/helper/JSON, original summaries or actor source
+while collecting. The continuation binds the old breadth helper too.
+Read live status with `node scripts/run-breadth-continuation.mjs status`.
+Do not relaunch it while its lock exists. The active comparison selector now
+points at the continuation; original stopped summaries remain historical.
+Before declaring completion, run
+`node scripts/verify-breadth-completion.mjs model-breadth-2026-10-03-continuation`.
+It requires 306 attempted unique cells, reopens every original archive across
+all origin campaigns, recomputes the summary/accounting and regrades saved
+states. `--partial` never writes a completion certificate. Final slide/report
+builders require that certificate to bind the exact completed summary.
+
+Trace review identified a release-sync wording caveat: its trailing engineering
+location ambiguously scopes the handoff as well as QA, while the handoff is in
+the project channel. Read `docs/campaigns/model-breadth-2026-10-03-observations.md`.
+Keep those 17 raw outcomes with the caveat; do not claim they cleanly measure
+model capability. Do not fix the frozen task mid-collection or repeat its cells.
+Task-language location checks are a future, separately versioned suite gate.
+Design-handoff has a second language caveat: its quoted DESIGN placeholder lacks
+an explicit substitution instruction. Six completed runs copied it literally while
+the grader expects the approved name. The report, slides and trial viewer must
+disclose this, preserve the raw failures and avoid capability-ranking claims.
+
+## Original breadth worker (closed)
 
 The user superseded repeats with **multiple flagship/popular-family models, all
 tasks, one attempt each**. Current owner: `docs/campaigns/model-breadth-2026-10-03.md`
@@ -29,7 +134,7 @@ The 36-cell admission stage finished: 34 passes, one incomplete, one output limi
 all 1,178 archive checks passed with no gaps. Read its `-pilot-review.md` before
 bulk operations. The combined checkpoint is 73/306 attempted, 62 passes, six
 incomplete and five blocked; $16.78501708 total recorded under the shared ceiling.
-Bulk is launched; query runtime status for current progress. Only blocks 009
+Bulk subsequently stopped at 105/306; use the successor above. Only blocks 009
 (Astra topic pass) and 019 (Luna thread failure) are public exact-byte archive
 examples; all other new originals remain local. Never conflate them with a full
 public trajectory release or silently relaunch any completed cell.

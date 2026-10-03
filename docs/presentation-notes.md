@@ -51,14 +51,15 @@
 - Backend/browser counts come from test reports. The 84 positive and 2,583 negative grader states are a separate denominator.
 - Real-model episodes are distinct from scripts, fake transport tests and three historical builder-informed Codex smokes.
 
-## Slide 7 — Campaign design
+## Slide 7 — One-pass campaign design
 
-- Freeze tasks, model routes, seed, prompts, budgets and source before inference.
-- Three pilot cells, 24 matched workflow cells, three pixel follow-ups; one seed/repetition, no ranking.
-- $3 total estimated allowance; no hidden retry, fallback model or cap increase.
-- Exact requested/returned model receipts are retained.
+- 17 routes across nine model families × 18 public tasks × one attempt; seed 1042, accessibility control, recent-four history and no guide.
+- Fixed 40-action, 4,096-output-token, 180-second and $5 trial ceilings; $300 cumulative allowance includes every prior pilot/probe.
+- Preserve 37 earlier attempts plus 68 from the stopped first breadth worker. Continue only the 201 untouched cells; no repeats or hidden exclusions.
+- The new scheduler can advance after a fully accounted cell-spend stop, but that cell remains blocked. This amendment and temporal cohorts are disclosed; no causal ranking or repeatability claim.
+- Same source, fixtures and deterministic grader; exact requested/returned model receipts retained.
 
-## Slide 8 — Results
+## Slide 8 — Earlier interface results (separate denominator)
 
 - 20 attempted: 8 passes, 11 incorrect/step-limited, 1 blocked; 10 unattempted.
 - Accessibility 2/6, page JSON 2/7 including one blocked, pixels 0/1; API control 4/6.
@@ -69,20 +70,25 @@
 ## Slide 9 — Sortable model comparison
 
 - Latest scope: **one attempt per task/model**, no repeats. All 18 tasks × 17 routes = 306 cells. Accessibility only, 40 actions, recent-four history, no guide, fixed grader. Family/flagship/efficient coverage is not a measured popularity ranking.
-- The previous Qwen-inclusive study closed at 37 attempts: 28 passed, five incomplete, four blocked. Every attempt is preserved, including a 401 block, with source/seed/initial-state bindings; only the 269 missing cells are newly scheduled. The slide reports actual collection and exposes cohort/origin metadata. Google still requires a separate provider key.
-- The four simpler pilot tasks passed for all models. On decision-record, GPT passed; Qwen and DeepSeek used literal DESIGN, Sonnet posted three acknowledgements, and GLM used literal DESIGN before an output limit. Preserve the failures. This is one seed per pilot task, not a model ranking.
+- The previous Qwen-inclusive study supplied 37 attempts, including a 401 block. The first breadth worker added 68 and stopped on Astra's $5 cell-spend boundary. All 105 attempts remain preserved; the continuation collects only the 201 untouched cells. Each row exposes its original campaign/run identity. Google still requires a separate provider key.
+- In the original five-route pilot, four simpler tasks passed across all five routes. On decision-record, GPT passed; Qwen and DeepSeek used literal DESIGN, Sonnet posted three acknowledgements, and GLM used literal DESIGN before an output limit. This describes that earlier pilot, not all 17 routes or repeatability.
 - Custom task menu selects one task's 17-model comparison, one planned cell each. All-tasks view shows 18 markers per model. Click column headers for raw-value sorting; unknown costs sort last. All 306 cells remain inspectable, including unattempted cells. A single observation per task cannot establish repeatability or statistical ranking.
+- Open **All 306 trials**, then **Watch replay** or **Review trace** on a recorded row. The public library contains each exported attempt, including incomplete and blocked outcomes. Show a successful action sequence, its exact input/response, and a blocked zero-action record. Switch models without starting new inference. Checks, initial/final Changes and Provenance are separate views; JSON downloads the structured episode.
+- State the fidelity boundary: recorded UI snapshots and pointer samples, not video. PNG bytes remain in original archives; their hashes are retained publicly. A blocked run's diagnostic state checks do not make it a completed pass.
+- This is one shared JSON-text action contract, not each provider's native tool protocol. The report separates rejected steps and outputs without a parsed action. Inspect the original response before attributing a failure to UI reasoning; the parser was not adapted after seeing a route's output.
 - The earlier 36-attempt pilot is linked separately: GLM and DeepSeek each passed 10/12, Nano 0/12. Four output limits and one missing-receipt connection failure remain blocks. This is not a global ranking; the action budget/model set differ from the new plan.
 - Valid output-limit receipts now count reported usage without executing partial output. CLI-only continuation rules retain unknown timeout/connection reservations. Public defaults stay conservative.
 - The $300 shared ceiling includes earlier model pilots. Receipts/reservations are estimates, not invoices. Source and launch plans stay immutable; no retries, substitutions or relaxed graders after looking at scores.
 
 ## Slide 10 — Findings
 
-- Luna passed thread reply through all three matched text/API interfaces; Mini failed those cells. One task does not establish broad superiority.
-- UI decision-record failures copied literal `DESIGN`; API retrieved “Willow” and passed. Pin/save actions alone were insufficient.
-- Pixel outputs contained malformed multiple actions; the parser rejected all 20 without mutation.
-- Stop was an incomplete output-limited response, not 403: 1,024 output tokens, including 915 reasoning tokens.
-- Hosted defaults already allow 4,096; this campaign froze a smaller allowance. A changed budget requires a new plan, not rewritten results.
+- Design-handoff is 0/17 with an instruction-contract ambiguity: six completed attempts copied literal DESIGN from both quoted messages, while the grader expects Willow at this seed. The task lacks an explicit substitution instruction. Keep those raw outcomes and show the exact input/actions; no retrospective regrading or reruns. Scripted execution tests do not validate natural-language clarity.
+- Thread repair passed 13/17: agents had to retrieve the reviewed estimate, edit their existing reply, react to the review and post a confirmation. Three attempts were incomplete and one had a connection failure. This is one attempt per model, not a reliability estimate.
+- The completed handoff slice passed 16/17, while release synchronization passed 0/17 under the fixed trial limits. Release-sync ambiguously locates the handoff and QA in engineering, although the handoff is in the project channel. Flag the 17 cells as diagnostic with a task-wording caveat, not clean capability evidence; no mid-run repair or rerun is performed.
+- Saved-item cleanup passed 4/17. One extra diagnostic final-state pass ended at an output limit and correctly remains blocked.
+- Fable's saved-cleanup trace passed in 15 actions. Nemotron's 40-action attempt missed the required message despite valid navigation/save actions.
+- Sol set the release topic and posted QA, then repeated edit/cancel navigation and never completed the required original-message edit. The gateway accepted its actions; the state grader still rejected the outcome.
+- Read the [original trace identities](campaigns/model-breadth-2026-10-03-observations.md). No hidden-reasoning inference, causal ranking or selection of successful retries.
 
 ## Slide 11 — Performance
 
@@ -101,8 +107,9 @@
 ## Slide 13 — Demonstration
 
 - Open `/play`; search `in:design navigation`, open the decision thread and inspect final approval. Label it a manual synthetic sandbox.
-- Relay → Replays → `GPT-6 Luna · thread reply passed`; play to the final state and show the exact reply.
-- Open `GPT-6 Luna · decision record incomplete`; scrub to the end and show literal `DESIGN` and the failed outcome.
+- Open the trial library from slide 9 or 13. Select Fable / saved cleanup; play the 15-action pass, then inspect its exact request and outcome checks.
+- Select Grok / release retrospective; scrub to the end and show the missing stale-save removal alongside the changes it completed. Open Trace, Changes and Provenance. The complete 17-model task slice remains in the table; these two are demonstration examples, not a curated denominator.
+- The main site's older Replays menu still contains Luna's thread pass, decision-record failure and API control, labeled as earlier campaign excerpts.
 - Optionally show the API decision-record pass as a retrieval/action control, not mouse-and-keyboard CUA.
 - Open the full campaign inventory, including failures and unattempted cells. Curated examples are not the complete result set.
 - Replay uses no inference or workspace writes. If a live service stalls, use recorded evidence and say so.

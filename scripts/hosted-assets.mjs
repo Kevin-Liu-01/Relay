@@ -1,11 +1,33 @@
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { makeWorkflowSeed } from '../server/workflow-seed.mjs';
 import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
+import { validateCatalog, validateRecord } from '../docs/review-app/data.mjs';
+import { assertSafeEvidence } from '../runner/export.mjs';
 // Vercel serves an existing index before fallback rewrites. Keep the private
 // workspace entry separate, and make the actual public index the BYOK console.
 copyFileSync('dist/index.html', 'dist/workspace.html');
 copyFileSync('dist/live.html', 'dist/index.html');
 mkdirSync('dist/demo', { recursive: true });
+// Static, lazy-loaded trial records. Never expose private runtime directories.
+if (existsSync('evidence/trial-library/catalog.json')) {
+  const catalog = validateCatalog(JSON.parse(readFileSync('evidence/trial-library/catalog.json')));
+  for (const item of catalog.trials) {
+    const source = `evidence/trial-library/${item.path.split('/').at(-1)}`;
+    const bytes = readFileSync(source);
+    if (
+      bytes.length !== item.bytes ||
+      createHash('sha256').update(bytes).digest('hex') !== item.sha256
+    )
+      throw Error('Public recording hash mismatch.');
+    const text = gunzipSync(bytes, { maxOutputLength: 80e6 }).toString('utf8');
+    if (Buffer.byteLength(text) !== item.jsonBytes) throw Error('Public recording size mismatch.');
+    assertSafeEvidence(text, [process.env.RAMP_ROUTER_API_KEY, process.env.TYPESAFE_API_KEY]);
+    validateRecord(JSON.parse(text), item);
+    copyFileSync(source, `dist${item.path}`);
+  }
+  copyFileSync('evidence/trial-library/catalog.json', 'dist/demo/trial-catalog.json');
+}
 // Actor-visible fictional fixture only. No task instructions, grader or answers.
 writeFileSync('dist/demo/sandbox.json', JSON.stringify(makeWorkflowSeed(42)));
 const source = 'evidence/reference/channel-topic-through-dialog-seed-42';

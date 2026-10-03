@@ -1,9 +1,9 @@
 {
   "evidenceKind": "scripted-browser-reference",
   "stats": {
-    "startTime": "2026-10-03T08:26:45.807Z",
-    "duration": 79311.451,
-    "expected": 84,
+    "startTime": "2026-10-03T19:51:52.920Z",
+    "duration": 144476.346,
+    "expected": 90,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
@@ -12,7 +12,7 @@
     {
       "title": "trainer bridge: reset, screenshots, terminal reward, caps and cleanup",
       "status": "passed",
-      "durationMs": 2442,
+      "durationMs": 4932,
       "attachments": {
         "screenshot": "trainer-bridge-reset-screenshots-terminal-reward-caps-and-cleanup/final.png"
       }
@@ -20,7 +20,7 @@
     {
       "title": "replay readiness resends the latest seek when startup snapshot delivery was too early",
       "status": "passed",
-      "durationMs": 1884,
+      "durationMs": 4222,
       "attachments": {
         "screenshot": "replay-readiness-resends-the-latest-seek-when-startup-snapshot-delivery-was-too-early/final.png"
       }
@@ -28,7 +28,7 @@
     {
       "title": "published campaign replays show real pass/failure evidence with no inference or actor writes",
       "status": "passed",
-      "durationMs": 2904,
+      "durationMs": 5520,
       "attachments": {
         "screenshot": "published-campaign-replays-show-real-pass-failure-evidence-with-no-inference-or-actor-writes/final.png"
       }
@@ -36,7 +36,7 @@
     {
       "title": "saved provider keys restore, prefill 1v1, forget independently and support opt-out",
       "status": "passed",
-      "durationMs": 3187,
+      "durationMs": 3961,
       "attachments": {
         "screenshot": "saved-provider-keys-restore-prefill-1v1-forget-independently-and-support-opt-out/final.png"
       }
@@ -44,7 +44,7 @@
     {
       "title": "failed, corrupt and revoked credentials never silently reconnect or save a replacement",
       "status": "passed",
-      "durationMs": 1677,
+      "durationMs": 1803,
       "attachments": {
         "screenshot": "failed-corrupt-and-revoked-credentials-never-silently-reconnect-or-save-a-replacement/final.png"
       }
@@ -52,7 +52,7 @@
     {
       "title": "blocked local storage allows an in-memory connection and shows the persistence failure",
       "status": "passed",
-      "durationMs": 1540,
+      "durationMs": 1763,
       "attachments": {
         "screenshot": "blocked-local-storage-allows-an-in-memory-connection-and-shows-the-persistence-failure/final.png"
       }
@@ -60,7 +60,7 @@
     {
       "title": "forget during connection cancels the late response so it cannot restore or persist the key",
       "status": "passed",
-      "durationMs": 1284,
+      "durationMs": 1568,
       "attachments": {
         "screenshot": "forget-during-connection-cancels-the-late-response-so-it-cannot-restore-or-persist-the-key/final.png"
       }
@@ -68,7 +68,7 @@
     {
       "title": "deep workflow release-sync seed 42",
       "status": "passed",
-      "durationMs": 2114,
+      "durationMs": 3975,
       "attachments": {
         "trajectory": "deep-workflow-release-sync-seed-42/trajectory.json",
         "screenshot": "deep-workflow-release-sync-seed-42/final.png"
@@ -77,7 +77,7 @@
     {
       "title": "deep workflow incident-closeout seed 42",
       "status": "passed",
-      "durationMs": 2371,
+      "durationMs": 3605,
       "attachments": {
         "trajectory": "deep-workflow-incident-closeout-seed-42/trajectory.json",
         "screenshot": "deep-workflow-incident-closeout-seed-42/final.png"
@@ -86,7 +86,7 @@
     {
       "title": "deep workflow saved-cleanup seed 42",
       "status": "passed",
-      "durationMs": 2316,
+      "durationMs": 3235,
       "attachments": {
         "trajectory": "deep-workflow-saved-cleanup-seed-42/trajectory.json",
         "screenshot": "deep-workflow-saved-cleanup-seed-42/final.png"
@@ -95,7 +95,7 @@
     {
       "title": "deep workflow decision-record seed 42",
       "status": "passed",
-      "durationMs": 2122,
+      "durationMs": 2966,
       "attachments": {
         "trajectory": "deep-workflow-decision-record-seed-42/trajectory.json",
         "screenshot": "deep-workflow-decision-record-seed-42/final.png"
@@ -104,7 +104,7 @@
     {
       "title": "deep workflow handoff-repair seed 42",
       "status": "passed",
-      "durationMs": 1888,
+      "durationMs": 2192,
       "attachments": {
         "trajectory": "deep-workflow-handoff-repair-seed-42/trajectory.json",
         "screenshot": "deep-workflow-handoff-repair-seed-42/final.png"
@@ -113,7 +113,7 @@
     {
       "title": "deep workflow qa-signoff seed 42",
       "status": "passed",
-      "durationMs": 2115,
+      "durationMs": 2319,
       "attachments": {
         "trajectory": "deep-workflow-qa-signoff-seed-42/trajectory.json",
         "screenshot": "deep-workflow-qa-signoff-seed-42/final.png"
@@ -122,7 +122,7 @@
     {
       "title": "deep workflow publish-update seed 42",
       "status": "passed",
-      "durationMs": 1600,
+      "durationMs": 2378,
       "attachments": {
         "trajectory": "deep-workflow-publish-update-seed-42/trajectory.json",
         "screenshot": "deep-workflow-publish-update-seed-42/final.png"
@@ -131,7 +131,7 @@
     {
       "title": "deep workflow oncall-briefing seed 42",
       "status": "passed",
-      "durationMs": 1605,
+      "durationMs": 2100,
       "attachments": {
         "trajectory": "deep-workflow-oncall-briefing-seed-42/trajectory.json",
         "screenshot": "deep-workflow-oncall-briefing-seed-42/final.png"
@@ -140,7 +140,7 @@
     {
       "title": "deep workflow thread-repair seed 42",
       "status": "passed",
-      "durationMs": 2163,
+      "durationMs": 2284,
       "attachments": {
         "trajectory": "deep-workflow-thread-repair-seed-42/trajectory.json",
         "screenshot": "deep-workflow-thread-repair-seed-42/final.png"
@@ -149,7 +149,7 @@
     {
       "title": "deep workflow pin-refresh seed 42",
       "status": "passed",
-      "durationMs": 1992,
+      "durationMs": 2352,
       "attachments": {
         "trajectory": "deep-workflow-pin-refresh-seed-42/trajectory.json",
         "screenshot": "deep-workflow-pin-refresh-seed-42/final.png"
@@ -158,7 +158,7 @@
     {
       "title": "deep workflow design-handoff seed 42",
       "status": "passed",
-      "durationMs": 1899,
+      "durationMs": 2150,
       "attachments": {
         "trajectory": "deep-workflow-design-handoff-seed-42/trajectory.json",
         "screenshot": "deep-workflow-design-handoff-seed-42/final.png"
@@ -167,7 +167,7 @@
     {
       "title": "deep workflow release-retrospective seed 42",
       "status": "passed",
-      "durationMs": 2554,
+      "durationMs": 3305,
       "attachments": {
         "trajectory": "deep-workflow-release-retrospective-seed-42/trajectory.json",
         "screenshot": "deep-workflow-release-retrospective-seed-42/final.png"
@@ -176,7 +176,7 @@
     {
       "title": "deep workflow release-sync seed 43",
       "status": "passed",
-      "durationMs": 1798,
+      "durationMs": 2696,
       "attachments": {
         "trajectory": "deep-workflow-release-sync-seed-43/trajectory.json",
         "screenshot": "deep-workflow-release-sync-seed-43/final.png"
@@ -185,7 +185,7 @@
     {
       "title": "deep workflow incident-closeout seed 43",
       "status": "passed",
-      "durationMs": 2467,
+      "durationMs": 2990,
       "attachments": {
         "trajectory": "deep-workflow-incident-closeout-seed-43/trajectory.json",
         "screenshot": "deep-workflow-incident-closeout-seed-43/final.png"
@@ -194,7 +194,7 @@
     {
       "title": "deep workflow saved-cleanup seed 43",
       "status": "passed",
-      "durationMs": 3300,
+      "durationMs": 2208,
       "attachments": {
         "trajectory": "deep-workflow-saved-cleanup-seed-43/trajectory.json",
         "screenshot": "deep-workflow-saved-cleanup-seed-43/final.png"
@@ -203,7 +203,7 @@
     {
       "title": "deep workflow decision-record seed 43",
       "status": "passed",
-      "durationMs": 3235,
+      "durationMs": 2161,
       "attachments": {
         "trajectory": "deep-workflow-decision-record-seed-43/trajectory.json",
         "screenshot": "deep-workflow-decision-record-seed-43/final.png"
@@ -212,7 +212,7 @@
     {
       "title": "deep workflow handoff-repair seed 43",
       "status": "passed",
-      "durationMs": 2299,
+      "durationMs": 1830,
       "attachments": {
         "trajectory": "deep-workflow-handoff-repair-seed-43/trajectory.json",
         "screenshot": "deep-workflow-handoff-repair-seed-43/final.png"
@@ -221,7 +221,7 @@
     {
       "title": "deep workflow qa-signoff seed 43",
       "status": "passed",
-      "durationMs": 2824,
+      "durationMs": 2478,
       "attachments": {
         "trajectory": "deep-workflow-qa-signoff-seed-43/trajectory.json",
         "screenshot": "deep-workflow-qa-signoff-seed-43/final.png"
@@ -230,7 +230,7 @@
     {
       "title": "deep workflow publish-update seed 43",
       "status": "passed",
-      "durationMs": 2639,
+      "durationMs": 2267,
       "attachments": {
         "trajectory": "deep-workflow-publish-update-seed-43/trajectory.json",
         "screenshot": "deep-workflow-publish-update-seed-43/final.png"
@@ -239,7 +239,7 @@
     {
       "title": "deep workflow oncall-briefing seed 43",
       "status": "passed",
-      "durationMs": 2779,
+      "durationMs": 2161,
       "attachments": {
         "trajectory": "deep-workflow-oncall-briefing-seed-43/trajectory.json",
         "screenshot": "deep-workflow-oncall-briefing-seed-43/final.png"
@@ -248,7 +248,7 @@
     {
       "title": "deep workflow thread-repair seed 43",
       "status": "passed",
-      "durationMs": 3897,
+      "durationMs": 2835,
       "attachments": {
         "trajectory": "deep-workflow-thread-repair-seed-43/trajectory.json",
         "screenshot": "deep-workflow-thread-repair-seed-43/final.png"
@@ -257,7 +257,7 @@
     {
       "title": "deep workflow pin-refresh seed 43",
       "status": "passed",
-      "durationMs": 3510,
+      "durationMs": 2809,
       "attachments": {
         "trajectory": "deep-workflow-pin-refresh-seed-43/trajectory.json",
         "screenshot": "deep-workflow-pin-refresh-seed-43/final.png"
@@ -266,7 +266,7 @@
     {
       "title": "deep workflow design-handoff seed 43",
       "status": "passed",
-      "durationMs": 2602,
+      "durationMs": 2596,
       "attachments": {
         "trajectory": "deep-workflow-design-handoff-seed-43/trajectory.json",
         "screenshot": "deep-workflow-design-handoff-seed-43/final.png"
@@ -275,7 +275,7 @@
     {
       "title": "deep workflow release-retrospective seed 43",
       "status": "passed",
-      "durationMs": 3464,
+      "durationMs": 3374,
       "attachments": {
         "trajectory": "deep-workflow-release-retrospective-seed-43/trajectory.json",
         "screenshot": "deep-workflow-release-retrospective-seed-43/final.png"
@@ -284,7 +284,7 @@
     {
       "title": "workspace details focus, nested Escape, pins, saved-thread navigation and cancellation",
       "status": "passed",
-      "durationMs": 1607,
+      "durationMs": 2200,
       "attachments": {
         "screenshot": "workspace-details-focus-nested-escape-pins-saved-thread-navigation-and-cancellation/final.png"
       }
@@ -292,7 +292,7 @@
     {
       "title": "composer drafts stay conversation-scoped, formatting works and rapid sends commit once",
       "status": "passed",
-      "durationMs": 3019,
+      "durationMs": 2907,
       "attachments": {
         "screenshot": "composer-drafts-stay-conversation-scoped-formatting-works-and-rapid-sends-commit-once/final.png"
       }
@@ -300,7 +300,7 @@
     {
       "title": "out-of-order search cannot overwrite newer results; dialogs cancel without mutations",
       "status": "passed",
-      "durationMs": 1639,
+      "durationMs": 1378,
       "attachments": {
         "screenshot": "out-of-order-search-cannot-overwrite-newer-results-dialogs-cancel-without-mutations/final.png"
       }
@@ -308,7 +308,7 @@
     {
       "title": "custom menus: task icons, pointer, keyboard, typeahead, dismissal and dialog focus",
       "status": "passed",
-      "durationMs": 3309,
+      "durationMs": 2721,
       "attachments": {
         "screenshot": "custom-menus-task-icons-pointer-keyboard-typeahead-dismissal-and-dialog-focus/final.png"
       }
@@ -316,7 +316,7 @@
     {
       "title": "model menus use lab marks, scroll long catalogs and preserve Jev restrictions",
       "status": "passed",
-      "durationMs": 3205,
+      "durationMs": 2476,
       "attachments": {
         "screenshot": "model-menus-use-lab-marks-scroll-long-catalogs-and-preserve-jev-restrictions/final.png"
       }
@@ -324,7 +324,7 @@
     {
       "title": "touch menus and replay controls stay inside the viewport with reduced motion",
       "status": "passed",
-      "durationMs": 2524,
+      "durationMs": 1496,
       "attachments": {
         "screenshot": "touch-menus-and-replay-controls-stay-inside-the-viewport-with-reduced-motion/final.png"
       }
@@ -332,7 +332,7 @@
     {
       "title": "hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection and key-free history",
       "status": "passed",
-      "durationMs": 10816,
+      "durationMs": 11816,
       "attachments": {
         "screenshot": "hosted-ui-byok-live-jev-decisions-audit-replay-remembered-connection-and-key-free-history/final.png"
       }
@@ -340,7 +340,7 @@
     {
       "title": "no-key replay: real UI, play/pause/seek, no run requests, legacy fallback and reduced motion",
       "status": "passed",
-      "durationMs": 5232,
+      "durationMs": 5530,
       "attachments": {
         "screenshot": "no-key-replay-real-ui-play-pause-seek-no-run-requests-legacy-fallback-and-reduced-motion/final.png"
       }
@@ -348,7 +348,7 @@
     {
       "title": "1v1: concurrent matched systems, separate history, visible outcome and replay",
       "status": "passed",
-      "durationMs": 9256,
+      "durationMs": 8705,
       "attachments": {
         "screenshot": "1v1-concurrent-matched-systems-separate-history-visible-outcome-and-replay/final.png"
       }
@@ -356,7 +356,7 @@
     {
       "title": "two hosted requests have isolated browser sessions and no shared history API",
       "status": "passed",
-      "durationMs": 2078,
+      "durationMs": 2102,
       "attachments": {
         "screenshot": "two-hosted-requests-have-isolated-browser-sessions-and-no-shared-history-api/final.png"
       }
@@ -364,7 +364,7 @@
     {
       "title": "connected Router defaults are actionable; a model run is never labeled as a script",
       "status": "passed",
-      "durationMs": 3073,
+      "durationMs": 2611,
       "attachments": {
         "screenshot": "connected-router-defaults-are-actionable-a-model-run-is-never-labeled-as-a-script/final.png"
       }
@@ -372,7 +372,7 @@
     {
       "title": "lab launches genuine reference episodes, compares results and replays evidence",
       "status": "passed",
-      "durationMs": 6504,
+      "durationMs": 7553,
       "attachments": {
         "screenshot": "lab-launches-genuine-reference-episodes-compares-results-and-replays-evidence/final.png"
       }
@@ -380,7 +380,7 @@
     {
       "title": "API spectator follows the same session without changing state or model input",
       "status": "passed",
-      "durationMs": 887,
+      "durationMs": 911,
       "attachments": {
         "screenshot": "api-spectator-follows-the-same-session-without-changing-state-or-model-input/final.png"
       }
@@ -388,7 +388,7 @@
     {
       "title": "interface gateway pixels: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 730,
+      "durationMs": 692,
       "attachments": {
         "screenshot": "interface-gateway-pixels-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -396,7 +396,7 @@
     {
       "title": "interface gateway a11y: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 864,
+      "durationMs": 995,
       "attachments": {
         "screenshot": "interface-gateway-a11y-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -404,7 +404,7 @@
     {
       "title": "interface gateway json-ui: observation boundary and forbidden actions",
       "status": "passed",
-      "durationMs": 850,
+      "durationMs": 906,
       "attachments": {
         "screenshot": "interface-gateway-json-ui-observation-boundary-and-forbidden-actions/final.png"
       }
@@ -412,7 +412,7 @@
     {
       "title": "page JSON omits offscreen and scroll-clipped text until it is visible",
       "status": "passed",
-      "durationMs": 667,
+      "durationMs": 808,
       "attachments": {
         "screenshot": "page-json-omits-offscreen-and-scroll-clipped-text-until-it-is-visible/final.png"
       }
@@ -420,7 +420,7 @@
     {
       "title": "catalog-priced models run sequentially with independent budgets, audits, history and comparisons",
       "status": "passed",
-      "durationMs": 4901,
+      "durationMs": 5914,
       "attachments": {
         "screenshot": "catalog-priced-models-run-sequentially-with-independent-budgets-audits-history-and-comparisons/final.png"
       }
@@ -428,7 +428,7 @@
     {
       "title": "unknown usage stops the queue without calling another selected model",
       "status": "passed",
-      "durationMs": 3241,
+      "durationMs": 3371,
       "attachments": {
         "screenshot": "unknown-usage-stops-the-queue-without-calling-another-selected-model/final.png"
       }
@@ -436,7 +436,7 @@
     {
       "title": "queue picker is keyboard/mobile usable and limits selection without losing hidden choices",
       "status": "passed",
-      "durationMs": 2134,
+      "durationMs": 2307,
       "attachments": {
         "screenshot": "queue-picker-is-keyboard-mobile-usable-and-limits-selection-without-losing-hidden-choices/final.png"
       }
@@ -444,7 +444,7 @@
     {
       "title": "key entry is debounced; automatic prices and a shared connection make both lanes ready",
       "status": "passed",
-      "durationMs": 1656,
+      "durationMs": 1797,
       "attachments": {
         "screenshot": "key-entry-is-debounced-automatic-prices-and-a-shared-connection-make-both-lanes-ready/final.png"
       }
@@ -452,7 +452,7 @@
     {
       "title": "solo launch: immediate loading, duplicate click protection, separate cancellation",
       "status": "passed",
-      "durationMs": 2084,
+      "durationMs": 2052,
       "attachments": {
         "screenshot": "solo-launch-immediate-loading-duplicate-click-protection-separate-cancellation/final.png"
       }
@@ -460,7 +460,7 @@
     {
       "title": "1v1 launch: immediate loading, duplicate click protection, separate cancellation",
       "status": "passed",
-      "durationMs": 2637,
+      "durationMs": 2465,
       "attachments": {
         "screenshot": "1v1-launch-immediate-loading-duplicate-click-protection-separate-cancellation/final.png"
       }
@@ -468,7 +468,7 @@
     {
       "title": "opting out during the auto-connect debounce never persists the pasted key",
       "status": "passed",
-      "durationMs": 1109,
+      "durationMs": 893,
       "attachments": {
         "screenshot": "opting-out-during-the-auto-connect-debounce-never-persists-the-pasted-key/final.png"
       }
@@ -476,7 +476,7 @@
     {
       "title": "no-key Try Slack opens a usable workspace: send, edit, thread, search, DM, topic and reset",
       "status": "passed",
-      "durationMs": 2700,
+      "durationMs": 2464,
       "attachments": {
         "screenshot": "no-key-try-slack-opens-a-usable-workspace-send-edit-thread-search-dm-topic-and-reset/final.png"
       }
@@ -484,7 +484,7 @@
     {
       "title": "hands-on tabs stay separate; reset and narrow screens never affect another tab",
       "status": "passed",
-      "durationMs": 969,
+      "durationMs": 890,
       "attachments": {
         "screenshot": "hands-on-tabs-stay-separate-reset-and-narrow-screens-never-affect-another-tab/final.png"
       }
@@ -492,7 +492,7 @@
     {
       "title": "real pointer observer retains trailing motion and click coordinates without changing actor pixels",
       "status": "passed",
-      "durationMs": 694,
+      "durationMs": 687,
       "attachments": {
         "screenshot": "real-pointer-observer-retains-trailing-motion-and-click-coordinates-without-changing-actor-pixels/final.png"
       }
@@ -500,7 +500,7 @@
     {
       "title": "screencast follows consecutive real screen changes and retains native image dimensions",
       "status": "passed",
-      "durationMs": 458,
+      "durationMs": 419,
       "attachments": {
         "screenshot": "screencast-follows-consecutive-real-screen-changes-and-retains-native-image-dimensions/final.png"
       }
@@ -508,7 +508,7 @@
     {
       "title": "presentation: thirteen readable technical slides, evidence-backed counts and keyboard navigation",
       "status": "passed",
-      "durationMs": 2748,
+      "durationMs": 3016,
       "attachments": {
         "screenshot": "presentation-thirteen-readable-technical-slides-evidence-backed-counts-and-keyboard-navigation/final.png"
       }
@@ -516,7 +516,7 @@
     {
       "title": "presentation: print has thirteen unclipped pages and mobile has no horizontal overflow",
       "status": "passed",
-      "durationMs": 1509,
+      "durationMs": 1536,
       "attachments": {
         "screenshot": "presentation-print-has-thirteen-unclipped-pages-and-mobile-has-no-horizontal-overflow/final.png"
       }
@@ -524,7 +524,7 @@
     {
       "title": "published presentation controls work under the production content-security policy",
       "status": "passed",
-      "durationMs": 1309,
+      "durationMs": 1336,
       "attachments": {
         "screenshot": "published-presentation-controls-work-under-the-production-content-security-policy/final.png"
       }
@@ -532,7 +532,7 @@
     {
       "title": "comparison slide sorts raw values, preserves missing values, supports keyboard and exposes every trial",
       "status": "passed",
-      "durationMs": 2190,
+      "durationMs": 2799,
       "attachments": {
         "screenshot": "comparison-slide-sorts-raw-values-preserves-missing-values-supports-keyboard-and-exposes-every-trial/final.png"
       }
@@ -540,7 +540,7 @@
     {
       "title": "Router 403 is blocked, not task failure or verified success; unknown usage and manual recovery",
       "status": "passed",
-      "durationMs": 4453,
+      "durationMs": 5245,
       "attachments": {
         "screenshot": "router-403-is-blocked-not-task-failure-or-verified-success-unknown-usage-and-manual-recovery/final.png"
       }
@@ -548,7 +548,7 @@
     {
       "title": "a dismissed replay load cannot reopen over the next running workspace",
       "status": "passed",
-      "durationMs": 1852,
+      "durationMs": 2084,
       "attachments": {
         "screenshot": "a-dismissed-replay-load-cannot-reopen-over-the-next-running-workspace/final.png"
       }
@@ -556,7 +556,7 @@
     {
       "title": "an enabled Run accepts the next run immediately after completion, with no hidden cooldown",
       "status": "passed",
-      "durationMs": 1495,
+      "durationMs": 1589,
       "attachments": {
         "screenshot": "an-enabled-run-accepts-the-next-run-immediately-after-completion-with-no-hidden-cooldown/final.png"
       }
@@ -564,15 +564,64 @@
     {
       "title": "outcomes show distinct badges, check counts, filters and episode-specific evidence",
       "status": "passed",
-      "durationMs": 2122,
+      "durationMs": 2250,
       "attachments": {
         "screenshot": "outcomes-show-distinct-badges-check-counts-filters-and-episode-specific-evidence/final.png"
       }
     },
     {
+      "title": "real UI replay, cursor, requests, checks and download need no model calls under CSP",
+      "status": "passed",
+      "durationMs": 2448,
+      "attachments": {
+        "screenshot": "real-ui-replay-cursor-requests-checks-and-download-need-no-model-calls-under-csp/final.png"
+      }
+    },
+    {
+      "title": "blocked zero-action runs never invent playback and diagnostic passes remain blocked",
+      "status": "passed",
+      "durationMs": 774,
+      "attachments": {
+        "screenshot": "blocked-zero-action-runs-never-invent-playback-and-diagnostic-passes-remain-blocked/final.png"
+      }
+    },
+    {
+      "title": "switching trials removes the old workspace immediately and rejects late loads",
+      "status": "passed",
+      "durationMs": 1024,
+      "attachments": {
+        "screenshot": "switching-trials-removes-the-old-workspace-immediately-and-rejects-late-loads/final.png"
+      }
+    },
+    {
+      "title": "bad IDs never fetch recordings; tampered files fail closed with a visible error",
+      "status": "passed",
+      "durationMs": 477,
+      "attachments": {
+        "screenshot": "bad-ids-never-fetch-recordings-tampered-files-fail-closed-with-a-visible-error/final.png"
+      }
+    },
+    {
+      "title": "keyboard selection, reduced motion and mobile layout remain usable",
+      "status": "passed",
+      "durationMs": 855,
+      "attachments": {
+        "screenshot": "keyboard-selection-reduced-motion-and-mobile-layout-remain-usable/final.png"
+      }
+    },
+    {
+      "title": "every published trial opens and renders its final captured workspace without inference",
+      "status": "passed",
+      "durationMs": 52050,
+      "attachments": {
+        "replayCoverage": "every-published-trial-opens-and-renders-its-final-captured-workspace-without-inference/replay-coverage.json",
+        "screenshot": "every-published-trial-opens-and-renders-its-final-captured-workspace-without-inference/final.png"
+      }
+    },
+    {
       "title": "OFL typography, open UI glyphs and fictional portraits load without third-party requests",
       "status": "passed",
-      "durationMs": 765,
+      "durationMs": 1085,
       "attachments": {
         "screenshot": "ofl-typography-open-ui-glyphs-and-fictional-portraits-load-without-third-party-requests/final.png"
       }
@@ -580,7 +629,7 @@
     {
       "title": "a missing portrait falls back to initials without hiding other people or DM presence",
       "status": "passed",
-      "durationMs": 551,
+      "durationMs": 602,
       "attachments": {
         "screenshot": "a-missing-portrait-falls-back-to-initials-without-hiding-other-people-or-dm-presence/final.png"
       }
@@ -588,7 +637,7 @@
     {
       "title": "Northstar identity stays consistent during loading and errors, then home navigation works",
       "status": "passed",
-      "durationMs": 943,
+      "durationMs": 794,
       "attachments": {
         "screenshot": "northstar-identity-stays-consistent-during-loading-and-errors-then-home-navigation-works/final.png"
       }
@@ -596,7 +645,7 @@
     {
       "title": "thread reply via search and semantic controls seed 42",
       "status": "passed",
-      "durationMs": 903,
+      "durationMs": 867,
       "attachments": {
         "trajectory": "thread-reply-via-search-and-semantic-controls-seed-42/trajectory.json",
         "screenshot": "thread-reply-via-search-and-semantic-controls-seed-42/final.png"
@@ -605,7 +654,7 @@
     {
       "title": "edit original via keyboard shortcut seed 42",
       "status": "passed",
-      "durationMs": 822,
+      "durationMs": 784,
       "attachments": {
         "trajectory": "edit-original-via-keyboard-shortcut-seed-42/trajectory.json",
         "screenshot": "edit-original-via-keyboard-shortcut-seed-42/final.png"
@@ -614,7 +663,7 @@
     {
       "title": "incident triage via pointer and menus seed 42",
       "status": "passed",
-      "durationMs": 923,
+      "durationMs": 996,
       "attachments": {
         "trajectory": "incident-triage-via-pointer-and-menus-seed-42/trajectory.json",
         "screenshot": "incident-triage-via-pointer-and-menus-seed-42/final.png"
@@ -623,7 +672,7 @@
     {
       "title": "cross-channel handoff via quick switcher seed 42",
       "status": "passed",
-      "durationMs": 673,
+      "durationMs": 699,
       "attachments": {
         "trajectory": "cross-channel-handoff-via-quick-switcher-seed-42/trajectory.json",
         "screenshot": "cross-channel-handoff-via-quick-switcher-seed-42/final.png"
@@ -632,7 +681,7 @@
     {
       "title": "delete only own draft seed 42",
       "status": "passed",
-      "durationMs": 837,
+      "durationMs": 926,
       "attachments": {
         "trajectory": "delete-only-own-draft-seed-42/trajectory.json",
         "screenshot": "delete-only-own-draft-seed-42/final.png"
@@ -641,7 +690,7 @@
     {
       "title": "channel topic through dialog seed 42",
       "status": "passed",
-      "durationMs": 759,
+      "durationMs": 834,
       "attachments": {
         "trajectory": "channel-topic-through-dialog-seed-42/trajectory.json",
         "screenshot": "channel-topic-through-dialog-seed-42/final.png"
@@ -650,7 +699,7 @@
     {
       "title": "thread reply via search and semantic controls seed 43",
       "status": "passed",
-      "durationMs": 841,
+      "durationMs": 777,
       "attachments": {
         "trajectory": "thread-reply-via-search-and-semantic-controls-seed-43/trajectory.json",
         "screenshot": "thread-reply-via-search-and-semantic-controls-seed-43/final.png"
@@ -659,7 +708,7 @@
     {
       "title": "edit original via keyboard shortcut seed 43",
       "status": "passed",
-      "durationMs": 829,
+      "durationMs": 800,
       "attachments": {
         "trajectory": "edit-original-via-keyboard-shortcut-seed-43/trajectory.json",
         "screenshot": "edit-original-via-keyboard-shortcut-seed-43/final.png"
@@ -668,7 +717,7 @@
     {
       "title": "incident triage via pointer and menus seed 43",
       "status": "passed",
-      "durationMs": 1041,
+      "durationMs": 1010,
       "attachments": {
         "trajectory": "incident-triage-via-pointer-and-menus-seed-43/trajectory.json",
         "screenshot": "incident-triage-via-pointer-and-menus-seed-43/final.png"
@@ -677,7 +726,7 @@
     {
       "title": "cross-channel handoff via quick switcher seed 43",
       "status": "passed",
-      "durationMs": 778,
+      "durationMs": 678,
       "attachments": {
         "trajectory": "cross-channel-handoff-via-quick-switcher-seed-43/trajectory.json",
         "screenshot": "cross-channel-handoff-via-quick-switcher-seed-43/final.png"
@@ -686,7 +735,7 @@
     {
       "title": "delete only own draft seed 43",
       "status": "passed",
-      "durationMs": 1005,
+      "durationMs": 1064,
       "attachments": {
         "trajectory": "delete-only-own-draft-seed-43/trajectory.json",
         "screenshot": "delete-only-own-draft-seed-43/final.png"
@@ -695,7 +744,7 @@
     {
       "title": "channel topic through dialog seed 43",
       "status": "passed",
-      "durationMs": 961,
+      "durationMs": 943,
       "attachments": {
         "trajectory": "channel-topic-through-dialog-seed-43/trajectory.json",
         "screenshot": "channel-topic-through-dialog-seed-43/final.png"
@@ -704,7 +753,7 @@
     {
       "title": "browser sessions remain isolated in the same browser context",
       "status": "passed",
-      "durationMs": 1057,
+      "durationMs": 951,
       "attachments": {
         "screenshot": "browser-sessions-remain-isolated-in-the-same-browser-context/final.png"
       }
@@ -712,7 +761,7 @@
     {
       "title": "typed edits preserve focus; markup cannot execute",
       "status": "passed",
-      "durationMs": 903,
+      "durationMs": 880,
       "attachments": {
         "screenshot": "typed-edits-preserve-focus-markup-cannot-execute/final.png"
       }

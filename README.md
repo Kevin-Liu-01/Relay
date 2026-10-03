@@ -20,14 +20,15 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 ## Onsite submission
 
 - **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
-- **[20 new real-model episodes](evidence/campaigns/onsite-2026-10-01/README.md)** across two models and four interfaces: 8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted after the declared stop rule.
+- **[One-pass model coverage](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)**: **249/306 recorded**—123 passed, 50 incomplete, 76 blocked. Collection stopped at the disk-space safeguard; 57 cells remain untouched. Seventeen routes × all 18 tasks, with no repeated cells.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
+- **[Earlier interface study](evidence/campaigns/onsite-2026-10-01/README.md)**: 20 real-model episodes across two models and four interfaces—8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted. This is separate from the one-pass comparison.
 - **[36-attempt model pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)**: 20 passes, 11 incomplete and five blocked/truncated outcomes, with original trajectories preserved.
-- **[One-pass model coverage](docs/campaigns/model-breadth-2026-10-03.md)**: 17 model routes, all 18 tasks, one attempt per cell. The 306-cell inventory preserves 37 existing attempts and schedules only 269 missing cells. [Actual collection status](evidence/campaigns/model-breadth-2026-10-03/README.md); planned does not mean completed.
-- **No key required to inspect:** Replays includes the real thread pass, decision-record failure and API control. Original trajectories are downloadable and hash-verifiable.
+- **[Review traces and watch replays](https://relay.kevinliu.studio/demo/review.html)**: all 249 recorded attempts have a key-free review page, including failures and blocked runs. Inspect exact requests, responses, action attempts, state changes and outcome checks. The 57 unattempted cells have no invented recording. [Fidelity and evidence format](docs/trial-review.md).
 
-The campaign recorded about **$0.15 in estimated allowance**, including an unresolved
-reservation—not a billing total. These are development tasks, not a leaderboard.
+The earlier interface study recorded about **$0.15 in estimated allowance**;
+the separate breadth report records its full shared ledger, including unresolved
+reservations. Neither is an invoice. These are development tasks, not a leaderboard.
 
 ## The idea
 
@@ -52,9 +53,10 @@ No key or model required. Send messages, edit, reply in threads, search, use DMs
 pins, saved messages and channel details. Changes stay in that tab and reset on
 refresh. This is a personal practice workspace, not a scored agent run.
 
-**No key? Open Replays.** Play a recorded run inside the actual Slack interface,
+**No key? [Browse the trial library](https://relay.kevinliu.studio/demo/review.html).** Play a recorded run inside the actual Slack interface,
 with the dialog, typed text and action target restored at each step. Try the
-labeled reference example or inspect a real model's earlier success and failure.
+model/task selectors to inspect both successes and failures. The main site's
+**Replays** menu also retains the separately labeled reference examples.
 New browser runs include recorded cursor positions and click feedback. **Smart pace**
 makes fast actions readable and shortens long waits; **Recorded timing** preserves
 capture intervals. Use the expand icon to focus on either the live workspace or replay.
@@ -99,6 +101,11 @@ Open **[Relay Live → localhost:4340](http://localhost:4340)**. Connect your ow
 in the UI. **History**, **Compare**, and **Audit** keep outcomes, exact requests,
 actions and screenshots accessible without cluttering the workspace. Download
 important runs; browser storage is not a cloud backup.
+
+The published comparison records are separate from private browser history. Open
+**[Trial review → localhost:4340/demo/review.html](http://localhost:4340/demo/review.html)**
+to inspect them without a key. Original PNG bytes are not included in this compact
+structured library; their hashes remain, and original archives are retained.
 
 Connected keys are remembered on this device by default. Uncheck **Remember keys
 on this device** for memory-only use; **Forget key** removes that provider's saved
@@ -184,10 +191,11 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **150 backend checks and 84 browser checks**. Historical
+The expanded suite has **169 backend checks and 90 browser checks**. The browser
+sweep opens every one of the 249 public trial records without inference. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
-The new [model campaign](docs/campaigns/onsite-2026-10-01.md) includes real workflow
+The [one-pass campaign](docs/campaigns/model-breadth-2026-10-03-continuation.md) includes real workflow
 attempts and preserved failures alongside scripted evidence. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
@@ -198,13 +206,29 @@ includes OpenAI, Anthropic, xAI, Qwen, DeepSeek, GLM, Kimi, MiniMax and NVIDIA;
 this is not a measured popularity ranking. Gemini needs a separate Google key;
 Llama/Mistral are absent from the account catalog.
 
-The earlier repeated-trial study stopped at 37 attempts (28 passes, five
-incomplete, four blocked). Every matching attempt is preserved; only the 269
-missing cells are newly scheduled. A CSV origin field distinguishes cohorts.
+The earlier repeated-trial study stopped at 37 attempts. The first breadth worker
+added 68 unique attempts before a known-cost cell spend limit stopped its scheduler.
+The separately recorded continuation preserves all 105 and schedules only the 201
+untouched cells. It may advance to the next cell after a verified, fully accounted
+per-cell spend stop; it never retries that cell or raises its limits. CSV origin
+fields distinguish the cohorts.
 Same actor source, fixtures, observations and grader; one task seed, not a holdout
 or repeatability estimate. The original $300 shared ceiling still includes every
-prior campaign and probe. [Plan and limits](docs/campaigns/model-breadth-2026-10-03.md)
-· [Current collection status →](evidence/campaigns/model-breadth-2026-10-03/README.md)
+prior campaign and probe. [Plan and limits](docs/campaigns/model-breadth-2026-10-03-continuation.md)
+· [Current collection status →](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)
+
+Current shared recorded allowance is **$159.63298283**, including retained
+reservations and earlier campaigns—not an invoice. At the disk stop, all 249
+attempts were independently reopened from 220 original archives: 21,422 integrity
+checks and 1,649 saved-state grading checks agreed. No completion certificate is
+issued for the unfinished 306-cell inventory.
+
+The `release-sync` instruction has an ambiguous source location; `design-handoff`
+leaves substitution of its quoted DESIGN placeholder implicit. Both 17-cell slices
+are retained with these [task-quality caveats](docs/campaigns/model-breadth-2026-10-03-observations.md),
+not presented as clean evidence of model capability. No task wording, grade or
+trial was changed after observing results.
+
 The separately preserved [36-attempt pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)
 has 20 passes, 11 incomplete, four output limits and one connection failure.
 Different model set/action allowance: its results are not pooled with the new matrix.

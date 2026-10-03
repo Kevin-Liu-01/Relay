@@ -1,3 +1,4 @@
+import { reviewURL, trialId } from '../../docs/review-app/data.mjs';
 export const escapeHTML = (value) =>
   String(value ?? '').replace(
     /[&<>"']/g,
@@ -64,7 +65,7 @@ function modelRows(summary, logos) {
     })
     .join('');
 }
-export function comparisonSlide(summary, logos = {}) {
+export function comparisonSlide(summary, logos = {}, reviewIds = new Set()) {
   const rows = modelRows(summary, logos);
   const filters = summary.byTask
     ? [
@@ -90,7 +91,7 @@ export function comparisonSlide(summary, logos = {}) {
     ${cell(r.actionAttempts, r.actionAttempts)}
     ${cell(r.durationMs, r.durationMs == null ? '—' : `${(r.durationMs / 1000).toFixed(1)}s`)}
     ${cell(r.usageKnown ? r.estimatedUSD : null, r.estimatedUSD == null ? '—' : r.usageKnown ? `$${r.estimatedUSD.toFixed(4)}` : `Unknown ($${r.estimatedUSD.toFixed(4)} incl. reservation)`)}
-    <td>${escapeHTML(r.error || r.failedChecks.join(', ') || (r.outcome === 'passed' ? 'All state checks passed' : 'Not launched'))}${r.cohort ? `<small class="trial-origin">${escapeHTML(r.cohort)} · ${escapeHTML(r.originCampaign)} · ${escapeHTML(r.phase)}${r.runId ? ` · ${escapeHTML(r.runId)}` : ''}</small>` : ''}</td>
+    <td>${escapeHTML(r.error || r.failedChecks.join(', ') || (r.outcome === 'passed' ? 'All state checks passed' : 'Not launched'))}${r.cohort ? `<small class="trial-origin">${escapeHTML(r.cohort)} · ${escapeHTML(r.originCampaign)} · ${escapeHTML(r.phase)}${r.runId ? ` · ${escapeHTML(r.runId)}` : ''}</small>` : ''}${reviewIds.has(trialId(r)) && reviewURL(r) ? `<span class="trial-review-links"><a href="https://relay.kevinliu.studio${escapeHTML(reviewURL(r, 'trace'))}">Review trace ↗</a><a href="https://relay.kevinliu.studio${escapeHTML(reviewURL(r, 'replay'))}">Watch replay ↗</a></span>` : ''}</td>
   </tr>`,
     )
     .join('');

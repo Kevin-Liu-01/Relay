@@ -1,0 +1,5992 @@
+{
+  "id": "model-breadth-2026-10-03-continuation",
+  "schemaVersion": 1,
+  "authorization": "Finish the existing 306-cell one-attempt coverage request. Only the 201 untouched cells run; no retries, new model/task cells, higher trial caps or additional shared allowance.",
+  "selectionBasis": "Breadth across currently catalog-listed model families and flagship/standard/efficient tiers; not a measured popularity ranking. No duplicate hosting aliases or historical generations.",
+  "planned": 306,
+  "trialsPerTaskModel": 1,
+  "seed": 1042,
+  "newPlanned": 201,
+  "maxEstimatedUSD": 300,
+  "pilotBlocks": 0,
+  "maxWallSeconds": 86400,
+  "maxTotalRequests": 11305,
+  "maxArchiveBytes": 9843881588,
+  "minimumFreeBytes": 10000000000,
+  "sourceHash": "f559a61066ae76d3d8a6bc10d9c0fe3e6c09c9b0b12b18a62f1c1113aefd415c",
+  "initialHashes": {
+    "thread-reply": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "edit-message": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "incident-triage": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "handoff-dm": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "delete-draft": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "channel-topic": "d9dec58860f44a826d4035f105a8d2bff42898abef74052c8d438750d87cc647",
+    "release-sync": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "incident-closeout": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "saved-cleanup": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "decision-record": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "handoff-repair": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "qa-signoff": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "publish-update": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "oncall-briefing": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "thread-repair": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "pin-refresh": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "design-handoff": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0",
+    "release-retrospective": "4753f39a8176c751f9bf267a3ccc34f089073b0a1dc1626f3a474a6e1519cef0"
+  },
+  "priorCampaigns": [
+    {
+      "id": "model-comparison-2026-10-02",
+      "recordedUSD": 0.042986049999999984,
+      "summaryHash": "00a484941943b4be80860e9ad946ecb145b316cb924cdb027ab292b2782dd8d0"
+    },
+    {
+      "id": "model-comparison-2026-10-02-followup",
+      "recordedUSD": 0.10937740000000003,
+      "summaryHash": "2f544458ad22d43d24aa78746406bf945ef1cbb6dbe723d78fd3e043d2aad557"
+    },
+    {
+      "id": "model-comparison-2026-10-02-reserved",
+      "recordedUSD": 0.15668229999999997,
+      "summaryHash": "5e2be0b83be632c7d77f17da98e7f2c750fabf68da18b6b182d767eaa5ace004"
+    },
+    {
+      "id": "model-comparison-2026-10-02-final",
+      "recordedUSD": 0.6789905499999996,
+      "summaryHash": "a4b2cdaea0c028f9a0bb2cad31ca94dc908ab8d711ec8d82e283e71a54427215"
+    },
+    {
+      "id": "all-tasks-2026-10-02",
+      "recordedUSD": 0.026841,
+      "summaryHash": "87297eeaf0ade9d76d2a130a8768c24d7af1880f3694bf59ad33194efaa09b85"
+    },
+    {
+      "id": "campaign-access-2026-10-03",
+      "path": "evidence/campaign-access-2026-10-03.json",
+      "recordedUSD": 0.00026105000000000003,
+      "summaryHash": "e7577b366e3497aa9d54c72383bed0e0318cf1eb36e9f8d26fae565fad460dcb"
+    },
+    {
+      "id": "qwen-access-2026-10-03",
+      "path": "evidence/qwen-access-2026-10-03.json",
+      "recordedUSD": 0.000284,
+      "summaryHash": "f863b7789a93a77dc1a9d5cb0a82e9e99df873ffac71b1e9b52ab46c551832be"
+    },
+    {
+      "id": "evidence/campaigns/all-tasks-2026-10-03/summary.json",
+      "path": "evidence/campaigns/all-tasks-2026-10-03/summary.json",
+      "recordedUSD": 9.409339750000001,
+      "summaryHash": "676c52e45f8c167acb11a471048cf70bfba6b3733acff54bdb1e22250d0df4d3"
+    },
+    {
+      "id": "evidence/breadth-access-2026-10-03.json",
+      "path": "evidence/breadth-access-2026-10-03.json",
+      "recordedUSD": 0.0000042999999999999995,
+      "summaryHash": "009c59a74ff0ee6382cc9d552d11ac39bc7074ec49e7fa272da1c662e114563f"
+    },
+    {
+      "id": "model-breadth-2026-10-03",
+      "path": "evidence/campaigns/model-breadth-2026-10-03/summary.json",
+      "summaryHash": "945871c525a825c2d661911cc3605cc0b77d28a96590558fdf46eea99ccf6f2f",
+      "recordedUSD": 24.924586379999997
+    }
+  ],
+  "carryoverRows": [
+    {
+      "phase": "block-001",
+      "episodeId": "episode-001",
+      "runId": "494d2818-2343-41fb-beaa-f369acf9c897",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10546,
+      "estimatedUSD": 0.074676,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-001",
+      "episodeId": "episode-002",
+      "runId": "494d2818-2343-41fb-beaa-f369acf9c897",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 5410,
+      "estimatedUSD": 0.005432799999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-001",
+      "episodeId": "episode-003",
+      "runId": "494d2818-2343-41fb-beaa-f369acf9c897",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8641,
+      "estimatedUSD": 0.06981200000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-001",
+      "episodeId": "episode-004",
+      "runId": "494d2818-2343-41fb-beaa-f369acf9c897",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7179,
+      "estimatedUSD": 0.1131,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-001",
+      "episodeId": "episode-005",
+      "runId": "494d2818-2343-41fb-beaa-f369acf9c897",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 5318,
+      "estimatedUSD": 0.0111804,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-001",
+      "runId": "fa29bc25-b85b-4275-a599-c8e51fca8a02",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7154,
+      "estimatedUSD": 0.12521600000000002,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-002",
+      "runId": "fa29bc25-b85b-4275-a599-c8e51fca8a02",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8094,
+      "estimatedUSD": 0.077348,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-003",
+      "runId": "fa29bc25-b85b-4275-a599-c8e51fca8a02",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10888,
+      "estimatedUSD": 0.08230599999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-004",
+      "runId": "fa29bc25-b85b-4275-a599-c8e51fca8a02",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7223,
+      "estimatedUSD": 0.0059337,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash",
+        "accounts/fireworks/models/glm-5p3-flash"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-005",
+      "runId": "fa29bc25-b85b-4275-a599-c8e51fca8a02",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 5510,
+      "estimatedUSD": 0.012325800000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash",
+        "accounts/fireworks/models/deepseek-v4p1-flash"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-001",
+      "runId": "af5b6116-5b65-47cf-944c-c45f5a62bee3",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 8914,
+      "estimatedUSD": 0.028128,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 8,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-002",
+      "runId": "af5b6116-5b65-47cf-944c-c45f5a62bee3",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 26075,
+      "estimatedUSD": 0.15048199999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-003",
+      "runId": "af5b6116-5b65-47cf-944c-c45f5a62bee3",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10118,
+      "estimatedUSD": 0.0108512,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-004",
+      "runId": "af5b6116-5b65-47cf-944c-c45f5a62bee3",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 11536,
+      "estimatedUSD": 0.226808,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-005",
+      "runId": "af5b6116-5b65-47cf-944c-c45f5a62bee3",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 11682,
+      "estimatedUSD": 0.13966999999999996,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-001",
+      "runId": "0fbb511c-42f2-495a-9893-d1f354eaa534",
+      "task": "incident-triage",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10056,
+      "estimatedUSD": 0.00966485,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "pointerEvents": 16,
+      "replaySnapshots": 8,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-002",
+      "runId": "0fbb511c-42f2-495a-9893-d1f354eaa534",
+      "task": "incident-triage",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 12070,
+      "estimatedUSD": 0.12488999999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 16,
+      "replaySnapshots": 8,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-003",
+      "runId": "0fbb511c-42f2-495a-9893-d1f354eaa534",
+      "task": "incident-triage",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 15283,
+      "estimatedUSD": 0.020338499999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash",
+        "accounts/fireworks/models/deepseek-v4p1-flash"
+      ],
+      "pointerEvents": 16,
+      "replaySnapshots": 8,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-004",
+      "runId": "0fbb511c-42f2-495a-9893-d1f354eaa534",
+      "task": "incident-triage",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 55476,
+      "estimatedUSD": 0.133818,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 16,
+      "replaySnapshots": 8,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-005",
+      "runId": "0fbb511c-42f2-495a-9893-d1f354eaa534",
+      "task": "incident-triage",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 8,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 13333,
+      "estimatedUSD": 0.23771999999999996,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 16,
+      "replaySnapshots": 9,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-001",
+      "runId": "11dd134c-57d9-4004-8a55-caa0f3cf2962",
+      "task": "decision-record",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 14,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 86234,
+      "estimatedUSD": 0.03585935000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request 327fc382-af41-4736-9c76-f485e8b4e0b3. No action executed.",
+      "failedChecks": [
+        "change_1_design",
+        "new_message_destination_and_content",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "pointerEvents": 32,
+      "replaySnapshots": 16,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-002",
+      "runId": "11dd134c-57d9-4004-8a55-caa0f3cf2962",
+      "task": "decision-record",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 15,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 128504,
+      "estimatedUSD": 0.44453799999999993,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_1_design",
+        "new_message_destination_and_content",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 34,
+      "replaySnapshots": 16,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-003",
+      "runId": "11dd134c-57d9-4004-8a55-caa0f3cf2962",
+      "task": "decision-record",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 23,
+      "rejectedActions": 6,
+      "invalidJSON": 6,
+      "durationMs": 82101,
+      "estimatedUSD": 1.142668,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "exact_new_message_count",
+        "new_message_destination_and_content",
+        "new_message_destination_and_content",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 32,
+      "replaySnapshots": 24,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-004",
+      "runId": "11dd134c-57d9-4004-8a55-caa0f3cf2962",
+      "task": "decision-record",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 13,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 23682,
+      "estimatedUSD": 0.34555199999999986,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 26,
+      "replaySnapshots": 14,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-005",
+      "runId": "11dd134c-57d9-4004-8a55-caa0f3cf2962",
+      "task": "decision-record",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 29,
+      "rejectedActions": 10,
+      "invalidJSON": 9,
+      "durationMs": 139328,
+      "estimatedUSD": 0.15227190000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_1_design",
+        "new_message_destination_and_content",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash",
+        "accounts/fireworks/models/deepseek-v4p1-flash"
+      ],
+      "pointerEvents": 43,
+      "replaySnapshots": 30,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-001",
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "task": "publish-update",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 19,
+      "invalidJSON": 19,
+      "durationMs": 141041,
+      "estimatedUSD": 2.044786,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 54,
+      "replaySnapshots": 41,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-002",
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "task": "publish-update",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 19,
+      "invalidJSON": 19,
+      "durationMs": 124337,
+      "estimatedUSD": 0.21624269999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_2_deleted",
+        "exact_new_message_count",
+        "new_message_destination_and_content",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash",
+        "accounts/fireworks/models/deepseek-v4p1-flash"
+      ],
+      "pointerEvents": 51,
+      "replaySnapshots": 41,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-003",
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "task": "publish-update",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": true,
+      "actionAttempts": 25,
+      "rejectedActions": 11,
+      "invalidJSON": 11,
+      "durationMs": 77725,
+      "estimatedUSD": 0.062223799999999996,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request e32c7db5-bfd3-4c16-aa73-b8fdb60ae280. No action executed.",
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash",
+        "accounts/fireworks/models/glm-5p3-flash"
+      ],
+      "pointerEvents": 35,
+      "replaySnapshots": 27,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-004",
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "task": "publish-update",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": true,
+      "actionAttempts": 20,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 180148,
+      "estimatedUSD": 0.7667480000000001,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 46,
+      "replaySnapshots": 22,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-005",
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "task": "publish-update",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 29,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 62439,
+      "estimatedUSD": 0.7566740000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 53,
+      "replaySnapshots": 30,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-001",
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 5,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 11701,
+      "estimatedUSD": 0.139292,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 6,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-002",
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9265,
+      "estimatedUSD": 0.004197949999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "zai-org/GLM-5.3-Flash",
+        "accounts/fireworks/models/glm-5p3-flash"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-003",
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 24299,
+      "estimatedUSD": 0.053888000000000005,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-004",
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 13635,
+      "estimatedUSD": 0.021436799999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "pointerEvents": 9,
+      "replaySnapshots": 7,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-005",
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8264,
+      "estimatedUSD": 0.04905000000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-008",
+      "episodeId": "episode-001",
+      "runId": "f428bfc3-ec90-497b-8cf9-b142568f6d58",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 19,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 38160,
+      "estimatedUSD": 0.44089599999999984,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 45,
+      "replaySnapshots": 20,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-008",
+      "episodeId": "episode-002",
+      "runId": "f428bfc3-ec90-497b-8cf9-b142568f6d58",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "credentials_invalid",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 22,
+      "rejectedActions": 8,
+      "invalidJSON": 8,
+      "durationMs": 73755,
+      "estimatedUSD": 1.0733139999999999,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "Router rejected this key. Check that it is active and within its spend limits, then reconnect. HTTP 401; request 765ac858-ef10-4d4d-b856-649caab2cec2. No automatic retry.",
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 33,
+      "replaySnapshots": 24,
+      "originCampaign": "all-tasks-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-001",
+      "episodeId": "episode-001",
+      "runId": "00ce77d9-d164-4600-8caa-9c99e34c9fc8",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 5,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 10282,
+      "estimatedUSD": 0.005417100000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 6,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-002",
+      "episodeId": "episode-001",
+      "runId": "fb2838fd-6b63-4893-9a1c-8ba46c91b06f",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "kimi-k3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8685,
+      "estimatedUSD": 0.10916099999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "moonshotai/Kimi-K3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-003",
+      "episodeId": "episode-001",
+      "runId": "6ab1ff14-17d5-4c82-a19e-e91407c5a408",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "claude-opus-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10166,
+      "estimatedUSD": 0.2262,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-opus-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-004",
+      "episodeId": "episode-001",
+      "runId": "4831031f-a293-4560-b08b-026021cf534b",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "minimax-m3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7045,
+      "estimatedUSD": 0.0111348,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/minimax-m3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-005",
+      "episodeId": "episode-001",
+      "runId": "503d2e9e-fd81-4800-a41b-a8b6570b5f95",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 6883,
+      "estimatedUSD": 0.09009199999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-006",
+      "episodeId": "episode-001",
+      "runId": "0122a589-21d2-4c97-b276-59172d08bda7",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "gpt-oss-120b",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 12406,
+      "estimatedUSD": 0.005956050000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/gpt-oss-120b"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-007",
+      "episodeId": "episode-001",
+      "runId": "e5439e31-1c16-47bc-b29f-57b26a5736fb",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 6970,
+      "estimatedUSD": 0.04954488,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-008",
+      "episodeId": "episode-001",
+      "runId": "3a7ad826-281b-4ad4-8db1-c34ec9863781",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "claude-haiku-4-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 2,
+      "invalidJSON": 2,
+      "durationMs": 10772,
+      "estimatedUSD": 0.07822300000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-009",
+      "episodeId": "episode-001",
+      "runId": "f5ed20cb-63fd-41eb-85c6-60a7365b071e",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9937,
+      "estimatedUSD": 0.34906000000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-010",
+      "episodeId": "episode-001",
+      "runId": "c9656022-3854-4ab5-bc6e-ccd42da53a6a",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 12702,
+      "estimatedUSD": 0.049809199999999984,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-011",
+      "episodeId": "episode-001",
+      "runId": "53cf11af-4b70-4f41-888b-7029938494df",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "nemotron-3-ultra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 6453,
+      "estimatedUSD": 0.023312399999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-012",
+      "episodeId": "episode-001",
+      "runId": "2757ba73-cd0b-4563-b2ee-05f784dfa8da",
+      "task": "channel-topic",
+      "seed": 1042,
+      "model": "claude-fable-5-1",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 14772,
+      "estimatedUSD": 0.5655000000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-fable-5-1"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-013",
+      "episodeId": "episode-001",
+      "runId": "0356bfc9-570b-40e9-aa36-11e8f136867f",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "claude-haiku-4-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 8,
+      "rejectedActions": 3,
+      "invalidJSON": 3,
+      "durationMs": 14870,
+      "estimatedUSD": 0.131298,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "pointerEvents": 9,
+      "replaySnapshots": 9,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-014",
+      "episodeId": "episode-001",
+      "runId": "a09e1d9a-50df-4c01-96b7-8b9639c634b8",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8560,
+      "estimatedUSD": 0.3867400000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-015",
+      "episodeId": "episode-001",
+      "runId": "20233857-29e1-4ade-a703-d798c3fddcf3",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "kimi-k3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8648,
+      "estimatedUSD": 0.12078,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "moonshotai/Kimi-K3",
+        "accounts/fireworks/models/kimi-k3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-016",
+      "episodeId": "episode-001",
+      "runId": "27638935-5cef-4e37-b231-32415fb4f242",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10802,
+      "estimatedUSD": 0.05532379999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-017",
+      "episodeId": "episode-001",
+      "runId": "b0a48e02-aacc-415b-9c18-bb86026aec45",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "claude-opus-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9750,
+      "estimatedUSD": 0.25032800000000005,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-opus-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-018",
+      "episodeId": "episode-001",
+      "runId": "08629b39-f2d8-4c56-9f94-71ae579c253c",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8292,
+      "estimatedUSD": 0.0552618,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-019",
+      "episodeId": "episode-001",
+      "runId": "c76b1a26-41a6-416b-a0b7-a34844fa01f6",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 2,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 16184,
+      "estimatedUSD": 0.0025745000000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "exactly_one_new_message",
+        "correct_message_and_destination"
+      ],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 3,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-020",
+      "episodeId": "episode-001",
+      "runId": "ce8f866c-0f88-4532-8879-2ea22b1e1343",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9653,
+      "estimatedUSD": 0.09991399999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-021",
+      "episodeId": "episode-001",
+      "runId": "da67e465-865e-48aa-8d5f-7a925f6b8467",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "claude-fable-5-1",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10349,
+      "estimatedUSD": 0.6258199999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-fable-5-1"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-022",
+      "episodeId": "episode-001",
+      "runId": "c15b1b65-1371-41f4-a586-ad09e7a75e12",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "minimax-m3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 16134,
+      "estimatedUSD": 0.014025899999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/minimax-m3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-023",
+      "episodeId": "episode-001",
+      "runId": "e7451be2-df64-4fef-b804-f80df6ee150f",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "gpt-oss-120b",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 5,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 18089,
+      "estimatedUSD": 0.009846599999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/gpt-oss-120b"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 6,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-024",
+      "episodeId": "episode-001",
+      "runId": "f82b055f-7e09-4a0e-addf-3601f78bb317",
+      "task": "thread-reply",
+      "seed": 1042,
+      "model": "nemotron-3-ultra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8740,
+      "estimatedUSD": 0.0260856,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-025",
+      "episodeId": "episode-001",
+      "runId": "53d879f6-aca0-4ee0-9ff2-822271f7ee6c",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 13405,
+      "estimatedUSD": 0.17648999999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-026",
+      "episodeId": "episode-001",
+      "runId": "4c0975cb-4fc2-48e8-a793-0f291622a548",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 19650,
+      "estimatedUSD": 0.09999160000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-027",
+      "episodeId": "episode-001",
+      "runId": "3c7c0d05-701b-4d2b-9199-8b64a2922466",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9195,
+      "estimatedUSD": 0.007029000000000002,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-028",
+      "episodeId": "episode-001",
+      "runId": "477743ad-cd76-41ab-a3d3-943d26f235ca",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "nemotron-3-ultra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9103,
+      "estimatedUSD": 0.0468978,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4"
+      ],
+      "pointerEvents": 12,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-029",
+      "episodeId": "episode-001",
+      "runId": "af83951e-7228-4f4e-970d-02463b9abb6c",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "minimax-m3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 20441,
+      "estimatedUSD": 0.023991899999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/minimax-m3"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-030",
+      "episodeId": "episode-001",
+      "runId": "372c2888-e3dc-4a63-b4fd-5fbde7a2a30c",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "kimi-k3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 15228,
+      "estimatedUSD": 0.21894299999999994,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "moonshotai/Kimi-K3",
+        "accounts/fireworks/models/kimi-k3"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-031",
+      "episodeId": "episode-001",
+      "runId": "b9c14eff-373b-4f06-95e2-e60fa7815195",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "claude-haiku-4-5",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 2,
+      "rejectedActions": 2,
+      "invalidJSON": 2,
+      "durationMs": 28979,
+      "estimatedUSD": 0.04535800000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request a5a13e1d-4672-4241-8011-dafb70423a52. No action executed.",
+      "failedChecks": [
+        "edited_original",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 4,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-032",
+      "episodeId": "episode-001",
+      "runId": "3260bc10-8c88-4efd-9a8b-e87cf0962d1a",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "claude-fable-5-1",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 29178,
+      "estimatedUSD": 1.13334,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-fable-5-1"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-033",
+      "episodeId": "episode-001",
+      "runId": "b1f20dae-52be-429c-bd80-a2c583de8383",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "claude-opus-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 14067,
+      "estimatedUSD": 0.453256,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-opus-5-5"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-034",
+      "episodeId": "episode-001",
+      "runId": "49a9dd83-ab55-42c0-a20a-8d1fb5e9b615",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "gpt-oss-120b",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 21241,
+      "estimatedUSD": 0.011884950000000003,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/gpt-oss-120b"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-035",
+      "episodeId": "episode-001",
+      "runId": "ba134bc5-2e4b-49be-a399-3483339807f8",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 21163,
+      "estimatedUSD": 0.1033098,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-036",
+      "episodeId": "episode-001",
+      "runId": "742f8c3b-c972-4afd-af85-1e27c3edb3fb",
+      "task": "edit-message",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 6,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 13546,
+      "estimatedUSD": 0.69835,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 10,
+      "replaySnapshots": 7,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-037",
+      "episodeId": "episode-001",
+      "runId": "802c2966-6f9f-42fd-b5d7-d15c2e7adca3",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 19,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 41052,
+      "estimatedUSD": 2.20278,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 45,
+      "replaySnapshots": 20,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-038",
+      "episodeId": "episode-001",
+      "runId": "dccd2bf3-8dee-4d82-b288-ac21333391fe",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": true,
+      "actionAttempts": 17,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 77918,
+      "estimatedUSD": 0.036363849999999996,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request 1d327547-758a-4849-869c-2cc9599b71b5. No action executed.",
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3-flash",
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "pointerEvents": 40,
+      "replaySnapshots": 19,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-039",
+      "episodeId": "episode-001",
+      "runId": "490f1a32-a852-493b-a82e-2e8d0e69f346",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "nemotron-3-ultra",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 139274,
+      "estimatedUSD": 0.34760159999999984,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+        "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B"
+      ],
+      "pointerEvents": 115,
+      "replaySnapshots": 41,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-040",
+      "episodeId": "episode-001",
+      "runId": "b013f067-3aeb-4113-a80e-d717d075086d",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "claude-opus-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 20,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 67392,
+      "estimatedUSD": 1.4683680000000006,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-opus-5-5"
+      ],
+      "pointerEvents": 46,
+      "replaySnapshots": 21,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-041",
+      "episodeId": "episode-001",
+      "runId": "a72d6e5c-ec75-4f32-a06e-0c47b4bf6320",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "kimi-k3",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 17,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 135232,
+      "estimatedUSD": 0.867501,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "moonshotai/Kimi-K3",
+        "accounts/fireworks/models/kimi-k3"
+      ],
+      "pointerEvents": 40,
+      "replaySnapshots": 19,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-042",
+      "episodeId": "episode-001",
+      "runId": "6062a155-3e7a-4802-a7ca-db0274e9b8e0",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 11,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 103241,
+      "estimatedUSD": 0.049266000000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request cfde9b9e-7fc8-4393-9ba1-b8742a8aad63. No action executed.",
+      "failedChecks": [
+        "change_4_qa-matrix",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/deepseek-v4p1-flash",
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "pointerEvents": 23,
+      "replaySnapshots": 13,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-043",
+      "episodeId": "episode-001",
+      "runId": "5e4fc789-2627-4772-b568-a08617b67644",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "gpt-oss-120b",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 22,
+      "rejectedActions": 11,
+      "invalidJSON": 11,
+      "durationMs": 180145,
+      "estimatedUSD": 0.07010729999999998,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "change_3_handoff-target",
+        "change_4_qa-matrix",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/gpt-oss-120b",
+        "openai/gpt-oss-120b"
+      ],
+      "pointerEvents": 32,
+      "replaySnapshots": 24,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-044",
+      "episodeId": "episode-001",
+      "runId": "ccc15cd0-2d60-4bd6-ac2e-dc34b4400535",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 21,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 180105,
+      "estimatedUSD": 0.70195,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 51,
+      "replaySnapshots": 23,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-045",
+      "episodeId": "episode-001",
+      "runId": "f72f9732-de8d-42d6-a0b7-64e381b6eb75",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "claude-fable-5-1",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 15,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 80860,
+      "estimatedUSD": 2.8028999999999993,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-fable-5-1"
+      ],
+      "pointerEvents": 33,
+      "replaySnapshots": 16,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-046",
+      "episodeId": "episode-001",
+      "runId": "1d7ef708-b93b-4731-90cb-36c0642f2cbd",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "claude-haiku-4-5",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 34492,
+      "estimatedUSD": 0.024663,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request 52e46aa5-a371-4034-8684-df63829fe28e. No action executed.",
+      "failedChecks": [
+        "change_1_handoff-distractor",
+        "change_2_incident-old",
+        "change_3_handoff-target",
+        "change_4_qa-matrix",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 2,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-047",
+      "episodeId": "episode-001",
+      "runId": "e82ce73f-892a-4d16-8d14-afcb1632035d",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "minimax-m3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 8,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 22202,
+      "estimatedUSD": 0.026242199999999993,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_1_handoff-distractor",
+        "change_2_incident-old",
+        "change_3_handoff-target",
+        "change_4_qa-matrix",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/minimax-m3"
+      ],
+      "pointerEvents": 19,
+      "replaySnapshots": 9,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-048",
+      "episodeId": "episode-001",
+      "runId": "a8728996-4c5c-43a4-aeaf-d6c17b2cfb5b",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 14,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 180102,
+      "estimatedUSD": 0.3489288000000001,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "change_4_qa-matrix",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 40,
+      "replaySnapshots": 16,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-049",
+      "episodeId": "episode-001",
+      "runId": "756f078c-f2eb-4e9b-b41f-5fc3e72621bf",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 13,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 180181,
+      "estimatedUSD": 0.3547578,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 29,
+      "replaySnapshots": 15,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-050",
+      "episodeId": "episode-001",
+      "runId": "93988c24-ee4e-4eed-af58-0a9a0d48f0f2",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 100882,
+      "estimatedUSD": 0.0469481,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "new_message_destination_and_content",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 97,
+      "replaySnapshots": 41,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-051",
+      "episodeId": "episode-001",
+      "runId": "3fc4884b-5226-40e1-b354-b898f32a5eee",
+      "task": "saved-cleanup",
+      "seed": 1042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 142486,
+      "estimatedUSD": 1.2929299999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "new_message_destination_and_content",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 93,
+      "replaySnapshots": 41,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-052",
+      "episodeId": "episode-001",
+      "runId": "4c821bf6-0e11-4032-9982-19c56afea42e",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "gpt-oss-120b",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 29,
+      "rejectedActions": 1,
+      "invalidJSON": 0,
+      "durationMs": 76436,
+      "estimatedUSD": 0.059140349999999994,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "exactly_one_new_message",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/gpt-oss-120b",
+        "openai/gpt-oss-120b"
+      ],
+      "pointerEvents": 39,
+      "replaySnapshots": 30,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-053",
+      "episodeId": "episode-001",
+      "runId": "72aa8101-323a-4793-806b-19c1c2ba0d83",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 5674,
+      "estimatedUSD": 0.0024850000000000002,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-054",
+      "episodeId": "episode-001",
+      "runId": "693b3466-6498-47a8-86ea-e1c5eacf0aa0",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "claude-haiku-4-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 5,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 6998,
+      "estimatedUSD": 0.04698,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 6,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-055",
+      "episodeId": "episode-001",
+      "runId": "d7cca1a3-1e68-4d4c-b345-fd2cff663ae0",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8996,
+      "estimatedUSD": 0.24524999999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-056",
+      "episodeId": "episode-001",
+      "runId": "c1d834cb-2d7a-45d2-a03f-241da75194cf",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "kimi-k3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 6387,
+      "estimatedUSD": 0.080124,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "moonshotai/Kimi-K3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-057",
+      "episodeId": "episode-001",
+      "runId": "16af2bbc-5842-4877-a905-675a0ac16a9d",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "nemotron-3-ultra",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8057,
+      "estimatedUSD": 0.017803200000000005,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+        "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-058",
+      "episodeId": "episode-001",
+      "runId": "90cfc97c-9b86-4eac-bd8f-9e5a94d0654f",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 5,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 18238,
+      "estimatedUSD": 0.11880199999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 9,
+      "replaySnapshots": 6,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-059",
+      "episodeId": "episode-001",
+      "runId": "4b43bfbd-5fbf-4e12-9ecd-7666f0ab0e15",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 7,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 31315,
+      "estimatedUSD": 0.116372,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 12,
+      "replaySnapshots": 8,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-060",
+      "episodeId": "episode-001",
+      "runId": "1c161cc9-6c80-47b1-ba6b-02b4234ae782",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9270,
+      "estimatedUSD": 0.03632508000000001,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-061",
+      "episodeId": "episode-001",
+      "runId": "689f5859-abca-447f-bbf6-81deb45c57cc",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "claude-fable-5-1",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9549,
+      "estimatedUSD": 0.39801,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-fable-5-1"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-062",
+      "episodeId": "episode-001",
+      "runId": "91a2a13e-e091-4bef-ac14-e7c1ecbe6122",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "claude-opus-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 10078,
+      "estimatedUSD": 0.16150399999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-opus-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-063",
+      "episodeId": "episode-001",
+      "runId": "00e46a2f-a5e2-45d1-93ac-2998cc048f42",
+      "task": "handoff-dm",
+      "seed": 1042,
+      "model": "minimax-m3",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 9646,
+      "estimatedUSD": 0.008646,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/minimax-m3"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-064",
+      "episodeId": "episode-001",
+      "runId": "8143939a-a88c-48ae-a9d3-f6798992793e",
+      "task": "release-sync",
+      "seed": 1042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 90013,
+      "estimatedUSD": 1.3996239999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_1_edit_timestamp",
+        "change_1_launch-old",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 105,
+      "replaySnapshots": 41,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-065",
+      "episodeId": "episode-001",
+      "runId": "f8a39ba8-9cfb-44ee-b665-cc4f153394ae",
+      "task": "release-sync",
+      "seed": 1042,
+      "model": "glm-5p3",
+      "interface": "a11y",
+      "status": "timeout",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 15,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 180107,
+      "estimatedUSD": 0.49606439999999996,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "The operation was aborted due to timeout",
+      "failedChecks": [
+        "change_1_edit_timestamp",
+        "change_1_launch-old",
+        "change_2_project",
+        "exact_new_message_count",
+        "all_requested_messages",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/glm-5p3"
+      ],
+      "pointerEvents": 36,
+      "replaySnapshots": 17,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-066",
+      "episodeId": "episode-001",
+      "runId": "0ec80658-7631-4833-92c4-31e508a7ed07",
+      "task": "release-sync",
+      "seed": 1042,
+      "model": "gpt-6-luna",
+      "interface": "a11y",
+      "status": "step_limit",
+      "outcome": "incomplete",
+      "diagnosticSuccess": false,
+      "actionAttempts": 40,
+      "rejectedActions": 4,
+      "invalidJSON": 4,
+      "durationMs": 84886,
+      "estimatedUSD": 0.06876030000000002,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [
+        "change_1_edit_timestamp",
+        "change_1_launch-old",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "gpt-6-luna"
+      ],
+      "pointerEvents": 83,
+      "replaySnapshots": 41,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-067",
+      "episodeId": "episode-001",
+      "runId": "7929a7c4-6f92-4bf1-85e5-a6c8a23cc6f4",
+      "task": "release-sync",
+      "seed": 1042,
+      "model": "deepseek-v4-pro-0813",
+      "interface": "a11y",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 18,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 179519,
+      "estimatedUSD": 0.4993177199999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request b38b63d4-d81f-4c83-b71a-b5680d335ae1. No action executed.",
+      "failedChecks": [
+        "exact_new_message_count",
+        "all_requested_messages"
+      ],
+      "returnedModels": [
+        "deepseek-ai/DeepSeek-V4-Pro-0813"
+      ],
+      "pointerEvents": 46,
+      "replaySnapshots": 20,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    },
+    {
+      "phase": "block-068",
+      "episodeId": "episode-001",
+      "runId": "d48907ae-2905-4f10-a1b5-cd12628d8b9a",
+      "task": "release-sync",
+      "seed": 1042,
+      "model": "gpt-6-astra",
+      "interface": "a11y",
+      "status": "budget",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 26,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 60121,
+      "estimatedUSD": 4.16782,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "Next request needs $0.9771 of estimated allowance; $0.8322 remains of the $5.00 run cap. Raise the allowance in Run settings. This reservation is not a charge.",
+      "failedChecks": [
+        "change_1_edit_timestamp",
+        "change_1_launch-old",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "gpt-6-astra"
+      ],
+      "pointerEvents": 63,
+      "replaySnapshots": 28,
+      "originCampaign": "model-breadth-2026-10-03",
+      "cohort": "preserved"
+    }
+  ],
+  "carryover": {
+    "id": "model-breadth-2026-10-03",
+    "estimatedUSD": 34.333926129999995,
+    "reservedUSD": 0.94903191,
+    "auditChecks": 6495,
+    "requests": 1118,
+    "inputTokens": 15334138,
+    "outputTokens": 299289
+  },
+  "unavailable": [
+    {
+      "family": "Google Gemini",
+      "reason": "Requires a Google provider key in Router; prior 403. Not silently replaced or counted as task failures."
+    },
+    {
+      "family": "Meta Llama / Mistral",
+      "reason": "No eligible route in the account catalog at preparation."
+    },
+    {
+      "family": "Jev",
+      "reason": "Requires a different API and action contract; excluded from this matched accessibility-policy comparison."
+    }
+  ],
+  "catalog": {
+    "at": "2026-10-03T08:21:12.735Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79"
+  },
+  "models": {
+    "gpt-6-astra": {
+      "id": "gpt-6-astra",
+      "rates": {
+        "input": 10,
+        "output": 50
+      }
+    },
+    "gpt-6.1-sol": {
+      "id": "gpt-6.1-sol",
+      "rates": {
+        "input": 2,
+        "output": 10
+      }
+    },
+    "gpt-6-luna": {
+      "id": "gpt-6-luna",
+      "rates": {
+        "input": 0.1,
+        "output": 0.5
+      }
+    },
+    "gpt-oss-120b": {
+      "id": "gpt-oss-120b",
+      "rates": {
+        "input": 0.15,
+        "output": 0.6
+      }
+    },
+    "claude-fable-5-1": {
+      "id": "claude-fable-5-1",
+      "rates": {
+        "input": 10,
+        "output": 50
+      }
+    },
+    "claude-opus-5-5": {
+      "id": "claude-opus-5-5",
+      "rates": {
+        "input": 4,
+        "output": 20
+      }
+    },
+    "claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": {
+        "input": 2,
+        "output": 10
+      }
+    },
+    "claude-haiku-4-5": {
+      "id": "claude-haiku-4-5",
+      "rates": {
+        "input": 1,
+        "output": 5
+      }
+    },
+    "grok-4.7": {
+      "id": "grok-4.7",
+      "rates": {
+        "input": 2,
+        "output": 6
+      }
+    },
+    "qwen3p8-max": {
+      "id": "qwen3p8-max",
+      "rates": {
+        "input": 2,
+        "output": 6
+      }
+    },
+    "deepseek-v4-pro-0813": {
+      "id": "deepseek-v4-pro-0813",
+      "rates": {
+        "input": 1.32,
+        "output": 3.96
+      }
+    },
+    "deepseek-v4.1-flash": {
+      "id": "deepseek-v4.1-flash",
+      "rates": {
+        "input": 0.3,
+        "output": 1.2
+      }
+    },
+    "glm-5p3": {
+      "id": "glm-5p3",
+      "rates": {
+        "input": 1.4,
+        "output": 4.4
+      }
+    },
+    "glm-5p3-flash": {
+      "id": "glm-5p3-flash",
+      "rates": {
+        "input": 0.15,
+        "output": 0.5
+      }
+    },
+    "kimi-k3": {
+      "id": "kimi-k3",
+      "rates": {
+        "input": 3,
+        "output": 15
+      }
+    },
+    "minimax-m3": {
+      "id": "minimax-m3",
+      "rates": {
+        "input": 0.3,
+        "output": 1.2
+      }
+    },
+    "nemotron-3-ultra": {
+      "id": "nemotron-3-ultra",
+      "rates": {
+        "input": 0.6,
+        "output": 2.4
+      }
+    }
+  },
+  "common": {
+    "provider": "ramp",
+    "tasks": [
+      "thread-reply",
+      "edit-message",
+      "incident-triage",
+      "handoff-dm",
+      "delete-draft",
+      "channel-topic",
+      "release-sync",
+      "incident-closeout",
+      "saved-cleanup",
+      "decision-record",
+      "handoff-repair",
+      "qa-signoff",
+      "publish-update",
+      "oncall-briefing",
+      "thread-repair",
+      "pin-refresh",
+      "design-handoff",
+      "release-retrospective"
+    ],
+    "repeats": 1,
+    "interfaces": [
+      "a11y"
+    ],
+    "guides": [
+      false
+    ],
+    "histories": [
+      "recent-4"
+    ],
+    "maxSteps": 40,
+    "maxRequests": 40,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 180,
+    "runSeconds": 240,
+    "maxEstimatedUSD": 5,
+    "requestTimeoutSeconds": 90,
+    "continueAfterRequestTimeout": true,
+    "continueAfterOutputLimit": true,
+    "continueAfterConnectionFailure": true,
+    "continueAfterEpisodeTimeout": true
+  },
+  "phases": [
+    {
+      "id": "block-069",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262068
+    },
+    {
+      "id": "block-070",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262069
+    },
+    {
+      "id": "block-071",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262070
+    },
+    {
+      "id": "block-072",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262071
+    },
+    {
+      "id": "block-073",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262072
+    },
+    {
+      "id": "block-074",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262073
+    },
+    {
+      "id": "block-075",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262074
+    },
+    {
+      "id": "block-076",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262075
+    },
+    {
+      "id": "block-077",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262076
+    },
+    {
+      "id": "block-078",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262077
+    },
+    {
+      "id": "block-079",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262078
+    },
+    {
+      "id": "block-080",
+      "tasks": [
+        "release-sync"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262079
+    },
+    {
+      "id": "block-081",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262080
+    },
+    {
+      "id": "block-082",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262081
+    },
+    {
+      "id": "block-083",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262082
+    },
+    {
+      "id": "block-084",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262083
+    },
+    {
+      "id": "block-085",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262084
+    },
+    {
+      "id": "block-086",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262085
+    },
+    {
+      "id": "block-087",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262086
+    },
+    {
+      "id": "block-088",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262087
+    },
+    {
+      "id": "block-089",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262088
+    },
+    {
+      "id": "block-090",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262089
+    },
+    {
+      "id": "block-091",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262090
+    },
+    {
+      "id": "block-092",
+      "tasks": [
+        "incident-triage"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262091
+    },
+    {
+      "id": "block-093",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262092
+    },
+    {
+      "id": "block-094",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262093
+    },
+    {
+      "id": "block-095",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262094
+    },
+    {
+      "id": "block-096",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262095
+    },
+    {
+      "id": "block-097",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262096
+    },
+    {
+      "id": "block-098",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262097
+    },
+    {
+      "id": "block-099",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262098
+    },
+    {
+      "id": "block-100",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262099
+    },
+    {
+      "id": "block-101",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262100
+    },
+    {
+      "id": "block-102",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262101
+    },
+    {
+      "id": "block-103",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262102
+    },
+    {
+      "id": "block-104",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262103
+    },
+    {
+      "id": "block-105",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262104
+    },
+    {
+      "id": "block-106",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262105
+    },
+    {
+      "id": "block-107",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262106
+    },
+    {
+      "id": "block-108",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262107
+    },
+    {
+      "id": "block-109",
+      "tasks": [
+        "release-retrospective"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262108
+    },
+    {
+      "id": "block-110",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262109
+    },
+    {
+      "id": "block-111",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262110
+    },
+    {
+      "id": "block-112",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262111
+    },
+    {
+      "id": "block-113",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262112
+    },
+    {
+      "id": "block-114",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262113
+    },
+    {
+      "id": "block-115",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262114
+    },
+    {
+      "id": "block-116",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262115
+    },
+    {
+      "id": "block-117",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262116
+    },
+    {
+      "id": "block-118",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262117
+    },
+    {
+      "id": "block-119",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262118
+    },
+    {
+      "id": "block-120",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262119
+    },
+    {
+      "id": "block-121",
+      "tasks": [
+        "publish-update"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262120
+    },
+    {
+      "id": "block-122",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262121
+    },
+    {
+      "id": "block-123",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262122
+    },
+    {
+      "id": "block-124",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262123
+    },
+    {
+      "id": "block-125",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262124
+    },
+    {
+      "id": "block-126",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262125
+    },
+    {
+      "id": "block-127",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262126
+    },
+    {
+      "id": "block-128",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262127
+    },
+    {
+      "id": "block-129",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262128
+    },
+    {
+      "id": "block-130",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262129
+    },
+    {
+      "id": "block-131",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262130
+    },
+    {
+      "id": "block-132",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262131
+    },
+    {
+      "id": "block-133",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262132
+    },
+    {
+      "id": "block-134",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262133
+    },
+    {
+      "id": "block-135",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262134
+    },
+    {
+      "id": "block-136",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262135
+    },
+    {
+      "id": "block-137",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262136
+    },
+    {
+      "id": "block-138",
+      "tasks": [
+        "oncall-briefing"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262137
+    },
+    {
+      "id": "block-139",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262138
+    },
+    {
+      "id": "block-140",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262139
+    },
+    {
+      "id": "block-141",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262140
+    },
+    {
+      "id": "block-142",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262141
+    },
+    {
+      "id": "block-143",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262142
+    },
+    {
+      "id": "block-144",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262143
+    },
+    {
+      "id": "block-145",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262144
+    },
+    {
+      "id": "block-146",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262145
+    },
+    {
+      "id": "block-147",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262146
+    },
+    {
+      "id": "block-148",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262147
+    },
+    {
+      "id": "block-149",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262148
+    },
+    {
+      "id": "block-150",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262149
+    },
+    {
+      "id": "block-151",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262150
+    },
+    {
+      "id": "block-152",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262151
+    },
+    {
+      "id": "block-153",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262152
+    },
+    {
+      "id": "block-154",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262153
+    },
+    {
+      "id": "block-155",
+      "tasks": [
+        "thread-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262154
+    },
+    {
+      "id": "block-156",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262155
+    },
+    {
+      "id": "block-157",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262156
+    },
+    {
+      "id": "block-158",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262157
+    },
+    {
+      "id": "block-159",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262158
+    },
+    {
+      "id": "block-160",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262159
+    },
+    {
+      "id": "block-161",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262160
+    },
+    {
+      "id": "block-162",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262161
+    },
+    {
+      "id": "block-163",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262162
+    },
+    {
+      "id": "block-164",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262163
+    },
+    {
+      "id": "block-165",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262164
+    },
+    {
+      "id": "block-166",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262165
+    },
+    {
+      "id": "block-167",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262166
+    },
+    {
+      "id": "block-168",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262167
+    },
+    {
+      "id": "block-169",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262168
+    },
+    {
+      "id": "block-170",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262169
+    },
+    {
+      "id": "block-171",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262170
+    },
+    {
+      "id": "block-172",
+      "tasks": [
+        "qa-signoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262171
+    },
+    {
+      "id": "block-173",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262172
+    },
+    {
+      "id": "block-174",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262173
+    },
+    {
+      "id": "block-175",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262174
+    },
+    {
+      "id": "block-176",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262175
+    },
+    {
+      "id": "block-177",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262176
+    },
+    {
+      "id": "block-178",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262177
+    },
+    {
+      "id": "block-179",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262178
+    },
+    {
+      "id": "block-180",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262179
+    },
+    {
+      "id": "block-181",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262180
+    },
+    {
+      "id": "block-182",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262181
+    },
+    {
+      "id": "block-183",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262182
+    },
+    {
+      "id": "block-184",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262183
+    },
+    {
+      "id": "block-185",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262184
+    },
+    {
+      "id": "block-186",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262185
+    },
+    {
+      "id": "block-187",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262186
+    },
+    {
+      "id": "block-188",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262187
+    },
+    {
+      "id": "block-189",
+      "tasks": [
+        "design-handoff"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262188
+    },
+    {
+      "id": "block-190",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262189
+    },
+    {
+      "id": "block-191",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262190
+    },
+    {
+      "id": "block-192",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262191
+    },
+    {
+      "id": "block-193",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262192
+    },
+    {
+      "id": "block-194",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262193
+    },
+    {
+      "id": "block-195",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262194
+    },
+    {
+      "id": "block-196",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262195
+    },
+    {
+      "id": "block-197",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262196
+    },
+    {
+      "id": "block-198",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262197
+    },
+    {
+      "id": "block-199",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262198
+    },
+    {
+      "id": "block-200",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262199
+    },
+    {
+      "id": "block-201",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262200
+    },
+    {
+      "id": "block-202",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262201
+    },
+    {
+      "id": "block-203",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262202
+    },
+    {
+      "id": "block-204",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262203
+    },
+    {
+      "id": "block-205",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262204
+    },
+    {
+      "id": "block-206",
+      "tasks": [
+        "pin-refresh"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262205
+    },
+    {
+      "id": "block-207",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262206
+    },
+    {
+      "id": "block-208",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262207
+    },
+    {
+      "id": "block-209",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262208
+    },
+    {
+      "id": "block-210",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262209
+    },
+    {
+      "id": "block-211",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262210
+    },
+    {
+      "id": "block-212",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262211
+    },
+    {
+      "id": "block-213",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262212
+    },
+    {
+      "id": "block-214",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262213
+    },
+    {
+      "id": "block-215",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262214
+    },
+    {
+      "id": "block-216",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262215
+    },
+    {
+      "id": "block-217",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262216
+    },
+    {
+      "id": "block-218",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262217
+    },
+    {
+      "id": "block-219",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262218
+    },
+    {
+      "id": "block-220",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262219
+    },
+    {
+      "id": "block-221",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262220
+    },
+    {
+      "id": "block-222",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262221
+    },
+    {
+      "id": "block-223",
+      "tasks": [
+        "incident-closeout"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262222
+    },
+    {
+      "id": "block-224",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262223
+    },
+    {
+      "id": "block-225",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262224
+    },
+    {
+      "id": "block-226",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262225
+    },
+    {
+      "id": "block-227",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262226
+    },
+    {
+      "id": "block-228",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262227
+    },
+    {
+      "id": "block-229",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262228
+    },
+    {
+      "id": "block-230",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262229
+    },
+    {
+      "id": "block-231",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262230
+    },
+    {
+      "id": "block-232",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262231
+    },
+    {
+      "id": "block-233",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262232
+    },
+    {
+      "id": "block-234",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262233
+    },
+    {
+      "id": "block-235",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262234
+    },
+    {
+      "id": "block-236",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262235
+    },
+    {
+      "id": "block-237",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262236
+    },
+    {
+      "id": "block-238",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262237
+    },
+    {
+      "id": "block-239",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262238
+    },
+    {
+      "id": "block-240",
+      "tasks": [
+        "delete-draft"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262239
+    },
+    {
+      "id": "block-241",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4.1-flash"
+      ],
+      "orderSeed": 20262240
+    },
+    {
+      "id": "block-242",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262241
+    },
+    {
+      "id": "block-243",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262242
+    },
+    {
+      "id": "block-244",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20262243
+    },
+    {
+      "id": "block-245",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "orderSeed": 20262244
+    },
+    {
+      "id": "block-246",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262245
+    },
+    {
+      "id": "block-247",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262246
+    },
+    {
+      "id": "block-248",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "qwen3p8-max"
+      ],
+      "orderSeed": 20262247
+    },
+    {
+      "id": "block-249",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262248
+    },
+    {
+      "id": "block-250",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262249
+    },
+    {
+      "id": "block-251",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "orderSeed": 20262250
+    },
+    {
+      "id": "block-252",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262251
+    },
+    {
+      "id": "block-253",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262252
+    },
+    {
+      "id": "block-254",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262253
+    },
+    {
+      "id": "block-255",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262254
+    },
+    {
+      "id": "block-256",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262255
+    },
+    {
+      "id": "block-257",
+      "tasks": [
+        "handoff-repair"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262256
+    },
+    {
+      "id": "block-258",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "orderSeed": 20262257
+    },
+    {
+      "id": "block-259",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-haiku-4-5"
+      ],
+      "orderSeed": 20262258
+    },
+    {
+      "id": "block-260",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "deepseek-v4-pro-0813"
+      ],
+      "orderSeed": 20262259
+    },
+    {
+      "id": "block-261",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-astra"
+      ],
+      "orderSeed": 20262260
+    },
+    {
+      "id": "block-262",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "claude-fable-5-1"
+      ],
+      "orderSeed": 20262261
+    },
+    {
+      "id": "block-263",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "minimax-m3"
+      ],
+      "orderSeed": 20262262
+    },
+    {
+      "id": "block-264",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-oss-120b"
+      ],
+      "orderSeed": 20262263
+    },
+    {
+      "id": "block-265",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "nemotron-3-ultra"
+      ],
+      "orderSeed": 20262264
+    },
+    {
+      "id": "block-266",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "glm-5p3"
+      ],
+      "orderSeed": 20262265
+    },
+    {
+      "id": "block-267",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "kimi-k3"
+      ],
+      "orderSeed": 20262266
+    },
+    {
+      "id": "block-268",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "grok-4.7"
+      ],
+      "orderSeed": 20262267
+    },
+    {
+      "id": "block-269",
+      "tasks": [
+        "decision-record"
+      ],
+      "seeds": [
+        1042
+      ],
+      "models": [
+        "gpt-6-luna"
+      ],
+      "orderSeed": 20262268
+    }
+  ],
+  "predecessor": "model-breadth-2026-10-03",
+  "continuationReason": "Original worker stopped at 105/306 when Astra release-sync could not reserve its next request under the unchanged $5 cell ceiling. That attempt stays blocked. A separately recorded worker may advance after a verified, receipt-complete cell-spend stop, not send another request in that cell.",
+  "pilotAdmission": {
+    "source": "docs/campaigns/model-breadth-2026-10-03-pilot-review.md",
+    "sha256": "ffe09589e1efcf26e5ba0e84b949e005f5868fb606ce3519351182b10316a551",
+    "originalPilotCells": 36,
+    "repeated": false
+  },
+  "collectionStartedAt": "2026-10-03T08:21:43.494Z",
+  "aggregateOrigins": [
+    "all-tasks-2026-10-03",
+    "model-breadth-2026-10-03",
+    "model-breadth-2026-10-03-continuation"
+  ]
+}

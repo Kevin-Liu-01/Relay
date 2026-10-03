@@ -468,6 +468,22 @@ a:focus-visible {
   margin-top: 5px;
   overflow-wrap: anywhere;
 }
+.trial-review-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 9px;
+  font-size: 12px;
+}
+.trial-review-links a {
+  color: var(--purple);
+  padding: 5px 0;
+}
+.review-library-link {
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--purple);
+}
 .table-scroll {
   width: 100%;
   overflow-x: auto;

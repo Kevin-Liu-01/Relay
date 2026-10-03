@@ -4,17 +4,19 @@
 
 - Relay meets the focused implementation brief: runnable Slack-like workflows, private episode state, several interaction approaches, deterministic evaluation and inspectable trajectories.
 - This supports an engineering demonstration, not a leaderboard or an RL training result.
+- Current one-pass coverage is **249/306: 123 passed, 50 incomplete, 76 blocked**. All 249 attempts have public structured traces and UI-state replays. The disk-space safeguard stopped collection; the remaining 57 are unattempted, not failed or replayable.
 - Strongest demonstration: a model replies in the correct thread, then a deeper run performs plausible actions but fails the exact task contract. Show both.
-- Remaining weaknesses: no successful new screenshot-only policy, incomplete matrix coverage, no semantic task holdout and no sustained browser-worker scaling measurement.
+- Remaining weaknesses: no successful new screenshot-only policy, incomplete matrix coverage, wording ambiguities in two tasks, no semantic task holdout and no sustained browser-worker scaling measurement.
 
 ## What to submit
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
 - [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
-- [One-pass model coverage](../evidence/campaigns/model-breadth-2026-10-03/README.md): 17 routes × all 18 tasks × one attempt = 306 cells, no repeats. Preserve 37 existing attempts (28 passes, five incomplete, four blocked); schedule only 269 new cells. The shared $300 ceiling includes prior campaigns/probes. The repeated-trial plan is closed. The linked summary reports actual collection, not the target as completed work; Google remains unavailable without a separate key.
+- [One-pass model coverage](../evidence/campaigns/model-breadth-2026-10-03-continuation/README.md): 17 routes × all 18 tasks × one attempt = 306 cells, no repeats. The first breadth worker preserved 37 earlier attempts and added 68. Its continuation preserves all 105 and collects only the 201 untouched cells. The shared $300 ceiling includes prior campaigns/probes. The linked report distinguishes actual collection from the target; Google remains unavailable without a separate key.
 - [Completed pilot evidence](../evidence/campaigns/model-comparison-2026-10-02-final/README.md): 36 attempted, 20 passed, 11 incomplete, four output-limited and one connection failure. All 1,971 archive checks passed; the closed plan retains 24 unattempted cells. Slide 9 links this evidence and exposes the new per-task inventory without pooling the campaigns.
 - [Complete model-run inventory](../evidence/campaigns/onsite-2026-10-01/README.md), compressed original trajectories, readable manifests and audit receipts.
 - [Software verification](verification.md), [task contracts](task-suite.md), [architecture](architecture.md) and [prior-work review](research.md).
+- [All-trial review library](https://relay.kevinliu.studio/demo/review.html): per-model/task replays, exact requests, responses, actions, outcome checks, state differences and JSON downloads. [Public evidence contents and limits](trial-review.md).
 - Credential-screened archive from `npm run package`. Exclude private runtime files, keys and the assignment PDF.
 
 ## Runnable environment and harness
@@ -45,11 +47,13 @@
 
 ## Evaluation correctness and integrity
 
+- [Task-quality caveat](campaigns/model-breadth-2026-10-03-observations.md): release-sync ambiguously locates both the handoff and QA in engineering, although the handoff is in the project channel. Keep all 17 unchanged raw outcomes with this caveat; do not interpret them as clean capability evidence. A task-wording fix/content-location gate belongs to a future version, not a post-result repair.
+- Design-handoff also leaves substitution of its quoted DESIGN placeholder implicit. Six completed attempts copied the literal quoted strings while the grader expects the approved name. Retain their original failures, but do not attribute that task's score solely to model capability. A separately versioned instruction-language gate is needed.
 - Deep-task challenges: 84 valid and 2,583 invalid states across 12 templates and seven seeds, plus scripted browser reference paths.
 - Grading checks intended state, identity, ownership and collateral changes; it does not trust model completion claims or judge screenshots.
-- All 20 attempted episodes have verified local event chains and artifact bindings, with no capture warnings. Hash consistency is not an external authenticity signature.
+- All 20 attempted episodes in the earlier interface study have verified local event chains and artifact bindings, with no capture warnings. The separate breadth report records its own archive verification and denominator. Hash consistency is not an external authenticity signature.
 - Requests, returned output/usage, rejected actions, timestamps, initial/final state and PNGs are in byte-preserving compressed bundles. `node scripts/inspect-campaign.mjs workflows` verifies them without a key.
-- Three labeled replay excerpts show a thread pass, decision-record failure and API control. The full inventory retains all failures and unattempted cells.
+- Three earlier labeled replay excerpts show a thread pass, decision-record failure and API control. The new breadth library exposes every published attempt rather than only selected successes, with explicit zero-action and blocked-result handling. Its compact records omit PNG bytes but preserve image hashes and all structured evidence.
 
 ## Isolation, speed and resource efficiency
 

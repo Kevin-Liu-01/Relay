@@ -1,6 +1,8 @@
 import { mkdirSync, readdirSync, statSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
+import { assertSafeEvidence } from '../runner/export.mjs';
 mkdirSync('artifacts', { recursive: true });
 if (existsSync('.env')) process.loadEnvFile('.env');
 const roots = [
@@ -14,6 +16,7 @@ const roots = [
   'live.html',
   'replay.html',
   'play.html',
+  'demo/review.html',
   'vercel.json',
   '.vercelignore',
   '.env.example',
@@ -47,6 +50,11 @@ const files = roots.flatMap(function walk(p) {
 // A submission should not carry capability URLs, operator secrets or raw browser traces.
 // browser-test-only is the public, disposable test-server credential, not a live secret.
 for (const p of files) {
+  if (p.startsWith('evidence/trial-library/') && p.endsWith('.json.gz'))
+    assertSafeEvidence(gunzipSync(readFileSync(p), { maxOutputLength: 80e6 }).toString('utf8'), [
+      process.env.RAMP_ROUTER_API_KEY,
+      process.env.TYPESAFE_API_KEY,
+    ]);
   if (
     /\.(json|jsonl|md|html|js|mjs|jsx|yml|yaml)$/.test(p) &&
     (/\/s\/[a-f0-9]{64}|"token"\s*:\s*"[a-f0-9]{64}"|Bearer\s+(?!browser-test-only\b)[A-Za-z0-9._~+/-]{16,}|sk-routgw-[A-Za-z0-9]{16,}/.test(

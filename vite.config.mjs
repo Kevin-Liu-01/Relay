@@ -12,6 +12,7 @@ export default defineConfig({
         live: 'live.html',
         replay: 'replay.html',
         play: 'play.html',
+        review: 'demo/review.html',
       },
     },
   },

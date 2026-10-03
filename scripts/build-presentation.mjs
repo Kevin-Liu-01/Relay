@@ -1,6 +1,9 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
 import { modelComparison } from './lib/model-comparison.mjs';
 import { comparisonSlide } from './lib/comparison-slide.mjs';
+import { validateCatalog, trialId } from '../docs/review-app/data.mjs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
@@ -96,6 +99,36 @@ const comparisonPath = `evidence/campaigns/${comparisonId}/summary.json`;
 const comparison = existsSync(comparisonPath)
   ? JSON.parse(readFileSync(comparisonPath))
   : modelComparison(JSON.parse(readFileSync(`docs/campaigns/${comparisonId}.json`)), []);
+const reviewCatalog = existsSync('evidence/trial-library/catalog.json')
+  ? validateCatalog(JSON.parse(readFileSync('evidence/trial-library/catalog.json')))
+  : null;
+const reviewIds = new Set(reviewCatalog?.trials.map((r) => r.id) ?? []);
+if (comparisonId.startsWith('model-breadth-2026-10-03') && comparison.status === 'completed') {
+  const verification = JSON.parse(
+    readFileSync(`evidence/campaigns/${comparisonId}/verification.json`),
+  );
+  assert.equal(
+    verification.status,
+    'complete-verified',
+    'Final slides require archive verification',
+  );
+  assert.equal(verification.attemptsVerified, 306, 'Every planned cell must be verified');
+  assert.equal(reviewCatalog?.complete, true, 'Every final trial needs a public recording');
+  assert.equal(
+    reviewCatalog.summaryHash,
+    verification.summaryHash,
+    'Replay library binds final results',
+  );
+  assert.ok(
+    comparison.rows.every((r) => reviewIds.has(trialId(r))),
+    'No missing trial reviews',
+  );
+  assert.equal(
+    verification.summaryHash,
+    createHash('sha256').update(readFileSync(comparisonPath)).digest('hex'),
+    'Verification must bind this exact result snapshot',
+  );
+}
 const bench = JSON.parse(readFileSync('evidence/benchmark-2026-10-01.json'));
 const backend = readFileSync('evidence/backend-tests.xml', 'utf8');
 const browser = JSON.parse(readFileSync('evidence/reference/summary.json'));
@@ -122,6 +155,12 @@ const bars = Object.entries(summary.byInterface)
 const values = {
   COMPARISON_ID: comparisonId,
   COMPARISON_PLANNED: comparison.totals.planned,
+  COMPARISON_ATTEMPTED: comparison.totals.attempted,
+  HANDOFF_RESULT: `${comparison.byTask.find((t) => t.task === 'handoff-dm').passed} / ${comparison.byTask.find((t) => t.task === 'handoff-dm').attempted}`,
+  THREAD_REPAIR_RESULT: `${comparison.byTask.find((t) => t.task === 'thread-repair').passed} / ${comparison.byTask.find((t) => t.task === 'thread-repair').attempted}`,
+  RELEASE_RESULT: `${comparison.byTask.find((t) => t.task === 'release-sync').passed} / ${comparison.byTask.find((t) => t.task === 'release-sync').attempted}`,
+  SAVED_RESULT: `${comparison.byTask.find((t) => t.task === 'saved-cleanup').passed} / ${comparison.byTask.find((t) => t.task === 'saved-cleanup').attempted}`,
+  DESIGN_RESULT: `${comparison.byTask.find((t) => t.task === 'design-handoff').passed} / ${comparison.byTask.find((t) => t.task === 'design-handoff').attempted}`,
   ...comparisonSlide(
     comparison,
     Object.fromEntries(
@@ -149,6 +188,7 @@ const values = {
         ['nemotron-lightning-3p5-30b-a3b', Nvidia],
       ].map(([id, icon]) => [id, mark(icon)]),
     ),
+    reviewIds,
   ),
   PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}`,
   OPENAI_MARK: mark(Openai),
@@ -210,6 +250,7 @@ console.log(
     slides: 13,
     backendChecks: values.BACKEND_TESTS,
     browserChecks: values.BROWSER_TESTS,
-    attemptedModelEpisodes: values.ATTEMPTED,
+    earlierInterfaceEpisodes: values.ATTEMPTED,
+    onePassAttempted: comparison.totals.attempted,
   }),
 );

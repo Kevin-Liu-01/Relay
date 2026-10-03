@@ -2,6 +2,11 @@
 
 ## Try it
 
+The one-pass comparison now has a dedicated [all-trial review surface](https://relay.kevinliu.studio/demo/review.html).
+Every published attempt is selectable by model/task and has its own replay and
+trace links, including failures and blocks. [Coverage, public-record contents,
+original-archive limits and verification](trial-review.md).
+
 **Replays → Watch a topic update** needs no key. Play, pause, change speed, scrub,
 or move one action at a time. New browser recordings show actual pointer positions,
 with smoothed movement and click feedback. Older captures use a dashed action
