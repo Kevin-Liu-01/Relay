@@ -1,6 +1,42 @@
 # Verification and evidence
 
-## Every recorded trial review — 2026-10-03
+## Completed 306-cell inventory — 2026-10-03
+
+- **306/306 unique attempts: 152 passed, 61 incomplete, 93 blocked; none unattempted.**
+  The final worker exited successfully after block-269. One attempt per task/model;
+  no repeats, replacements, grader edits or hidden exclusions. The original 105
+  attempts retain their identities, outcomes and accounting.
+- The [completion certificate](../evidence/campaigns/model-breadth-2026-10-03-continuation/verification.json)
+  reopens **277 original archives**: **26,403 integrity checks and 2,007 saved-state
+  grading checks agree**. All recorded backend/build receipts match, with zero
+  capture gaps. It binds summary
+  `6618f7f2041bf3d9334ba70f47716380b1495a5bf0d51ba68fc6fd144d71211f`.
+- There are **4,662 action attempts and 506 rejected steps**. Rejections include
+  malformed output and unsupported action schemas, not just incorrect UI clicks.
+  Terminal provider/output/resource blocks are retained, even when diagnostic
+  state checks pass. Task-language caveats for release-sync and design-handoff
+  remain disclosed; this is not a validated model ranking or repeatability study.
+- Shared estimates/reservations total **$194.10583757** under the original $300
+  cap, including prior campaigns and probes. Unknown charges remain reserved;
+  the amount is not an invoice. No extra inference is used for verification,
+  replay exports or software tests.
+- All **306 public structured records** are exported (81.04 MB compressed,
+  lazy-loaded one at a time). The earlier 249 compressed records remain
+  byte-identical. Every trial has trace/replay links on slide 9; zero-action runs
+  show their original initial workspace without invented playback.
+- **169 backend checks and all 90 browser tests pass**, with no test retries.
+  The full production-build sweep opened, hash-checked and rendered every one of
+  the 306 records. The [per-record receipt](../evidence/reference/every-published-trial-opens-and-renders-its-final-captured-workspace-without-inference/replay-coverage.json)
+  binds all 306 archive identities to the final summary; there were no model API
+  requests or browser page errors. Other checks cover strict production CSP,
+  cancelled late loads, cursor/playback controls, downloads, mobile layouts,
+  separate run workspaces and all 13 unclipped slides.
+- Tests used a credential-free temporary workspace, not the frozen collection
+  build. Post-checks confirm original actor source and dist stayed byte-identical.
+  Raw Playwright traces/videos remain private; only portable token-free evidence
+  is included. No new Docker or scale benchmark is claimed by this release.
+
+## Historical 249-record trial review release — 2026-10-03
 
 - **249 recorded attempts, not 306 completed trials:** 123 passed, 50 incomplete,
   76 blocked; 57 unattempted. The collector stopped safely between cells when

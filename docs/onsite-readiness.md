@@ -4,9 +4,9 @@
 
 - Relay meets the focused implementation brief: runnable Slack-like workflows, private episode state, several interaction approaches, deterministic evaluation and inspectable trajectories.
 - This supports an engineering demonstration, not a leaderboard or an RL training result.
-- Current one-pass coverage is **249/306: 123 passed, 50 incomplete, 76 blocked**. All 249 attempts have public structured traces and UI-state replays. The disk-space safeguard stopped collection; the remaining 57 are unattempted, not failed or replayable.
+- Completed one-pass coverage is **306/306: 152 passed, 61 incomplete, 93 blocked**. All 306 attempts have public structured traces and UI-state replays; zero cells are unattempted. The final verifier reopened all 277 archives, with 26,403 integrity checks and 2,007 grading checks in agreement.
 - Strongest demonstration: a model replies in the correct thread, then a deeper run performs plausible actions but fails the exact task contract. Show both.
-- Remaining weaknesses: no successful new screenshot-only policy, incomplete matrix coverage, wording ambiguities in two tasks, no semantic task holdout and no sustained browser-worker scaling measurement.
+- Remaining weaknesses: no successful new screenshot-only policy, wording ambiguities in two tasks, no semantic task holdout or repeatability estimate, and no sustained browser-worker scaling measurement.
 
 ## What to submit
 
@@ -70,4 +70,4 @@
 - Start in the no-key sandbox. Use saved pass/failure replays to avoid provider availability and spending during the onsite.
 - A new live run needs a provider-side spend cap and verified model. Hosted settings already allow 4,096 output tokens; the frozen campaign's smaller allowance is not the hosted default.
 - Discuss Slack fidelity, observation contracts, final-state versus path-level safety, isolation and required throughput.
-- Next: finish the separately approved all-task comparison within its shared cap, successful pixel-policy runs, template-level holdouts, trainer compatibility tests and sustained worker measurements. Do not resume any closed historical campaign or silently change the active frozen plan.
+- Next research gates: successful pixel-policy runs, explicit language checks for task instructions, template-level holdouts, trainer compatibility tests and sustained worker measurements. The one-pass comparison is complete at $194.10583757 in shared estimates/reservations under the $300 cap; do not resume closed campaigns or repeat their cells.

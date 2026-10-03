@@ -6,6 +6,10 @@ These are descriptive observations from completed cells, not statistical model r
 
 | Task                    | Attempted | Passed | Incomplete | Blocked |
 | ----------------------- | --------: | -----: | ---------: | ------: |
+| Channel topic           |        17 |     17 |          0 |       0 |
+| Thread reply            |        17 |     16 |          1 |       0 |
+| Message editing         |        17 |     16 |          0 |       1 |
+| Incident triage         |        17 |     17 |          0 |       0 |
 | Handoff DM              |        17 |     16 |          1 |       0 |
 | Saved-item cleanup      |        17 |      4 |          4 |       9 |
 | Release synchronization |        17 |      0 |          7 |      10 |
@@ -16,6 +20,10 @@ These are descriptive observations from completed cells, not statistical model r
 | Release retrospective   |        17 |      0 |          6 |      11 |
 | Design handoff          |        17 |      0 |          8 |       9 |
 | Pin refresh             |        17 |      6 |          3 |       8 |
+| Incident closeout       |        17 |      5 |          4 |       8 |
+| Draft deletion          |        17 |     16 |          1 |       0 |
+| Handoff repair          |        17 |      5 |          3 |       9 |
+| Decision record         |        17 |      5 |          8 |       4 |
 
 - Handoff DM is a simpler workflow; this slice does not establish reliability on other workflows or repetitions.
 - Saved-item cleanup has four strict passes. A fifth final workspace satisfied diagnostic checks, but that trial ended at an output limit and remains blocked. Do not promote diagnostic success to a completed-policy result.
@@ -26,7 +34,11 @@ These are descriptive observations from completed cells, not statistical model r
 - Publish update has four strict passes, five action-limited incomplete attempts, one completed-but-incorrect result, three output limits, three timeouts and one spend limit. Four blocked final states satisfy diagnostic checks; they are not promoted.
 - Release retrospective has no full-contract pass in these 17 attempts: six action limits, five output limits, four timeouts and two spend limits. This is bounded-system evidence, not proof the task is impossible or a model capability ceiling.
 - Pin refresh has six strict passes, two completed-but-incorrect attempts, one action limit, two timeouts and six output limits. Three blocked final workspaces satisfy diagnostic checks (Grok, DeepSeek V4 Pro and GLM Flash); all three remain blocked. The task requires preserving the current handoff pin while replacing the obsolete plan pin, saving the current handoff and updating the topic with retrieved facts.
-- This does not isolate the cause of model differences: provider defaults, finite observation/history contracts, temporal cohorts and resource limits remain part of the measured system.
+- Incident closeout has five strict passes, one completed-but-incorrect attempt, three action limits, three timeouts and five output limits. It requires retrieving the confirmed (not provisional) resolution, replacing the old incident pin, acknowledging the current root, posting in its thread and updating the topic. Astra, Sol, Fable, Opus and Grok passed their single attempts; this is not a repeatability estimate. No blocked final workspace satisfied the full diagnostic contract.
+- Draft deletion has 16 strict passes and one action-limited incomplete attempt, with no blocked attempts. MiniMax's 40 outputs were rejected (31 unsupported action schemas and nine malformed JSON outputs). This separates a protocol mismatch from failure after accepted UI actions; the frozen parser was not changed.
+- Handoff repair has five strict passes, one completed-but-incorrect attempt, two action limits, six output limits, one timeout and two per-cell spending stops. It requires editing the existing DM rather than posting a replacement, while acknowledging and saving the current handoff. DeepSeek Pro, Kimi, Luna, Nemotron and Grok passed their single attempts. Sol's inspected failure exposes an edit-versus-cancel loop rather than incorrect source facts.
+- Decision record has five strict passes, eight completed-but-incorrect attempts, two output limits and two timeouts. Sol, Opus, Astra, Fable and Kimi passed. Unlike design-handoff, its instruction explicitly requires substituting the approved design; the inspected DeepSeek Pro failure below is therefore a distinct case. No blocked final state satisfied the full diagnostic contract.
+- The full inventory is **306/306 recorded: 152 passed, 61 incomplete and 93 blocked**. All 277 original archives pass verification, with 2,007 saved-state grade checks in agreement. This does not isolate the cause of model differences: provider defaults, finite observation/history contracts, temporal cohorts and resource limits remain part of the measured system.
 
 ## Task-wording caveat discovered during trace review
 
@@ -52,6 +64,9 @@ These are descriptive observations from completed cells, not statistical model r
 - **Sol / release synchronization**: original breadth block-064, 40 actions, incomplete. It set the topic and posted a QA reply, then repeatedly opened and cancelled message editing. The requested original-message edit and exact message/collateral-state checks failed. No action was rejected by the gateway; semantic task completion still failed.
 - **Astra / release synchronization**: original breadth block-068, 26 actions, spend-limited. $4.16782 accepted estimate; the next reservation would not fit under $5. The attempt was preserved and not repeated by the separate continuation.
 - **Grok / release retrospective**: continuation run `c7f67efa-f064-4a0a-ad03-98d03a0efbfa`, 40 actions, incomplete. The retrospective reply, root pin, current-source saves and Priya DM satisfy their checks. Removing the obsolete saved handoff does not; the exact final-state contract rejects the incomplete cleanup. The final actions navigate Later/project/the retrospective thread without completing that removal. This is an inspectable partial-completion case, not a claimed success.
+- **MiniMax / delete draft**: continuation run `090c11c9-0aa2-49bf-bb36-cb2159c01044`, 40 rejected action attempts, incomplete. Its first response was `{"type":"ACTION","action":"click","ref":"e18"}` rather than the specified `type: click` contract; the gateway rejected it. Other responses include malformed JSON. This is a concrete protocol-format failure, not evidence that 40 valid clicks failed to delete the draft. Original outputs and rejection errors are retained without parser adaptation or a repeat.
+- **Sol / handoff repair**: continuation run `251d089d-18a6-4808-a268-53621e955316`, 40 accepted actions, incomplete. It acknowledged and saved the correct handoff, but did not persist the requested DM edit. At steps 30/37 it filled the correct replacement text, then at steps 31/38 clicked the element explicitly labeled **Cancel**; **Save changes** was a separate visible element. The final-state grader rejected the unchanged DM and missing edit timestamp. Accepted actions and correct draft text did not establish completion.
+- **DeepSeek Pro / decision record**: continuation run `69ea32db-2460-4fb5-aed4-e992fb6f0b7e`, 12 actions, completed-but-incomplete. It pinned the decision and saved the final approval, but entered literal `DESIGN` in the description and acknowledgement. Unlike design-handoff, this task explicitly says to substitute the approved design. The content and exact-state checks failed; the two correctly targeted mutations remain visible as partial progress.
 
 ## Action-contract interpretation
 

@@ -1,6 +1,38 @@
 # Between-cell disk-space stop
 
-## Current stopped checkpoint — 2026-10-03 19:46 UTC
+## Completed after resumption — 2026-10-03 21:14 UTC
+
+- **306/306 recorded: 152 passed, 61 incomplete, 93 blocked; zero unattempted.**
+  The same frozen worker finished block-269 and exited successfully. No repeats,
+  changed graders or relaxed limits were used. Do not resume this closed collector.
+- The final completion verifier reopened all **277 archives / 306 attempts**:
+  **26,403 integrity checks and 2,007 saved-state grading checks agree**, with zero
+  capture gaps and identical recorded backend/build receipts.
+- Final summary SHA-256: `6618f7f2041bf3d9334ba70f47716380b1495a5bf0d51ba68fc6fd144d71211f`.
+  See the [completion certificate](../../evidence/campaigns/model-breadth-2026-10-03-continuation/verification.json).
+- Shared recorded allowance: **$194.10583757**, leaving **$105.89416243** under
+  the original $300 cap. This includes prior campaigns and retained reservations;
+  it is not an invoice. Original archives and negative evidence are preserved.
+- All stop/resumption instructions below are historical records, not a request
+  to launch the worker again. Final release verification is in [verification](../verification.md).
+
+## User-authorized cleanup and resumption — 2026-10-03 20:13 UTC
+
+- The user explicitly identified Desktop screen recordings for deletion to free
+  space. The 13 largest exact `Screen Recording … .mov` files (all July–August)
+  were checked as regular, non-symlink movie files with unchanged sizes before
+  permanent deletion. They totaled 16,154,591,985 bytes. All September recordings,
+  51 remaining recordings in total, screenshots, other videos and research evidence
+  were retained. Deletion was permanent, not a move to Trash.
+- Available space recovered to about 28.7 GB. Preflight confirmed no worker lock,
+  all 144 continuation phases terminal/safe, unchanged actor source and an open
+  original deadline. PID 33633 resumed the same frozen worker at untouched
+  block-213. No trial was repeated, and no policy or budget changed.
+- The production trace/replay viewer and presentation already expose the verified
+  249-record checkpoint (commit `bc34ba7`). They must be refreshed and independently
+  checked against the final summary before claiming all 306 attempts are published.
+
+## Historical stopped checkpoint — 2026-10-03 19:46 UTC
 
 - **249/306 attempts: 123 passed, 50 incomplete, 76 blocked; 57 unattempted.**
 - The user-restored run finished 86 additional untouched cells, then free space

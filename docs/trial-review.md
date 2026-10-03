@@ -1,5 +1,14 @@
 # Review traces and replay trials
 
+## Complete inventory
+
+**306/306 attempts** are available: 17 model routes × 18 tasks × one attempt,
+with 152 passes, 61 incomplete outcomes and 93 blocks. The
+[completion certificate](../evidence/campaigns/model-breadth-2026-10-03-continuation/verification.json)
+binds every row to the original archives and final grades. All earlier 249 public
+records remain byte-identical; the last 57 were added without replacing failures.
+The complete library is 81.04 MB compressed, loaded one selected trial at a time.
+
 ## Open a trial
 
 - Open [the trial library](https://relay.kevinliu.studio/demo/review.html), or **All 306 trials** on [slide 9](https://relay.kevinliu.studio/presentation#9).

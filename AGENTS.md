@@ -1,6 +1,38 @@
 # Relay handoff
 
-## Current collection stop — 2026-10-03 19:46 UTC
+## Collection complete — 2026-10-03 21:14 UTC
+
+All **306/306 unique cells** are recorded: **152 passed, 61 incomplete, 93 blocked**;
+zero unattempted, 4,662 action attempts, 506 rejected steps and zero capture gaps.
+PID 33633 exited successfully. Do not launch another collector or repeat a cell.
+The final read-only verifier reopened all 277 original archives: 26,403 integrity
+checks and 2,007 saved-state grade checks agree. The completion certificate binds
+summary `6618f7f2041bf3d9334ba70f47716380b1495a5bf0d51ba68fc6fd144d71211f`.
+Shared estimated allowance is $194.10583757 including prior campaigns/reservations,
+not an invoice; the original ceiling remains $300. Both task-language caveats below
+remain in force. All 306 structured records are exported. The fresh isolated
+production build passes 169 backend checks and 90 browser tests, including the
+all-306-record replay sweep; original actor source and dist are unchanged.
+Use `docs/verification.md` for the release receipt and the public review library
+for every trial. Historical stop/resumption instructions below are not authority
+to restart a completed campaign. Pause the completion heartbeat after publication.
+
+## Historical resumption — 2026-10-03 20:13 UTC
+
+The user authorized deleting Desktop screen recordings to restore space. Only
+13 exact, validated July–August recordings were permanently deleted (16.1546 GB);
+all 51 other recordings, screenshots and original research evidence were retained.
+Free space recovered to about 28.7 GB. The same frozen worker resumed at untouched
+block-213 as PID 33633, starting from 249/306. Check its lock/status before acting;
+never start a second collector or repeat a cell. All source, grading, budget and
+deadline bindings remain unchanged. The live review release is the verified
+249-record snapshot at commit bc34ba7; refresh and reverify it after collection.
+The thread heartbeat `finish-relay-coverage-and-publish-every-replay` checks every
+five minutes and owns final verification/publication. It must not launch another
+collector or bypass a stop. Pause it after verified publication or a stop needing
+new user authority. The active worker is the only remaining agent-owned service.
+
+## Historical collection stop — 2026-10-03 19:46 UTC
 
 Disk space fell below the unchanged 10 GB reserve again. PID 44210 exited safely
 after block-212. Current coverage is **249/306: 123 passed, 50 incomplete, 76
@@ -17,7 +49,7 @@ and tests there, then use its `check PATH` mode to prove the original actor sour
 and `dist` stayed byte-identical. Never copy its generated dist into this checkout
 before collection ends. A partial observer release must say 249/306, not complete.
 
-## All-recorded-trial review surface (verified)
+## All-recorded-trial review surface (249-record release)
 
 The user requested trace review and actual-UI replay for every comparison trial.
 Read `docs/trial-review.md`. The new static entry is `demo/review.html`, implemented
