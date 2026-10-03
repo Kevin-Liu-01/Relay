@@ -10,7 +10,8 @@
 ## What to submit
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
-- [12-slide HTML deck](presentation.html), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
+- [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
+- [Six-model comparison](../evidence/campaigns/model-comparison-2026-10-02/README.md): 120 planned, 4 attempted before a provider timeout; sortable slide 9 and complete trial inventory. Twenty trials per model are **not yet completed**.
 - [Complete model-run inventory](../evidence/campaigns/onsite-2026-10-01/README.md), compressed original trajectories, readable manifests and audit receipts.
 - [Software verification](verification.md), [task contracts](task-suite.md), [architecture](architecture.md) and [prior-work review](research.md).
 - Credential-screened archive from `npm run package`. Exclude private runtime files, keys and the assignment PDF.

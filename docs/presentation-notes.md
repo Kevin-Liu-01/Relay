@@ -2,7 +2,7 @@
 
 ## Format and timing
 
-- 12 slides; 10–12 minutes, followed by a three-minute demonstration and discussion.
+- 13 slides; 10–12 minutes, followed by a three-minute demonstration and discussion.
 - Technical headings, bullets and diagrams. HTML works offline; PDF is the portable fallback.
 - Camber matches Relay's interface; Lato supplies missing glyphs. Relay's mark,
   theSVG Slack/OpenAI marks and Lucide diagrams are bundled without external asset
@@ -66,7 +66,15 @@
 - 126 calls; $0.14987395 estimate/reservation, not an invoice; $0.0014902 remains reserved.
 - No new incident-triage cells ran. Older scripted and builder-informed incident evidence stays separate.
 
-## Slide 9 — Findings
+## Slide 9 — Sortable model comparison
+
+- New, separately preregistered six-model campaign: five tasks × four seeds, 20 planned trials per model, accessibility control only. This does not pool in the first campaign.
+- Collection stopped after four attempts: GLM Flash and DeepSeek Flash passed topic editing; GPT-4.1 nano exhausted 16 actions incorrectly; Nemotron's first request timed out after 30 seconds without usage. Luna and Gemini were not attempted.
+- $0.04140145 from accepted receipts plus $0.00158460 retained reservation = $0.04298605 recorded allowance, not an invoice. Unknown cost sorts last, not as a cheap or free run.
+- Click headers to animate numeric sorting. “All 120 trials” opens the complete table, including 116 not run. Every row's 20 markers shows coverage.
+- Two 1/1 passes cannot rank models. Four seeds are repeated public templates, not 20 independent held-out reasoning problems. Read the frozen plan and archive before any follow-up.
+
+## Slide 10 — Findings
 
 - Luna passed thread reply through all three matched text/API interfaces; Mini failed those cells. One task does not establish broad superiority.
 - UI decision-record failures copied literal `DESIGN`; API retrieved “Willow” and passed. Pin/save actions alone were insufficient.
@@ -74,21 +82,21 @@
 - Stop was an incomplete output-limited response, not 403: 1,024 output tokens, including 915 reasoning tokens.
 - Hosted defaults already allow 4,096; this campaign froze a smaller allowance. A changed budget requires a new plan, not rewritten results.
 
-## Slide 10 — Performance
+## Slide 11 — Performance
 
 - Current p50 measurements: create 17.34 ms, reset 1.50 ms, screenshot 84.15 ms.
 - Distinguish direct-store reset, HTTP, page-ready and screenshot timing.
 - 100 sessions and 16 concurrent API reads do not establish 16 concurrent agents.
 - Browser child memory and sustained concurrency remain unmeasured; historical runs are not a controlled speed comparison.
 
-## Slide 11 — Scaling
+## Slide 12 — Scaling
 
 - Proposed path: admission queue, bounded workers, private state, separate control and evidence storage.
 - Share immutable assets; partition synchronous state work; recycle workers and enforce limits.
 - Use process/container/VM tiers according to policy privileges.
 - Next measurement: 1/4/8/16 workers, full process-tree RSS, CPU, p95 step latency, failures and cleanup over a soak period.
 
-## Slide 12 — Demonstration
+## Slide 13 — Demonstration
 
 - Open `/play`; search `in:design navigation`, open the decision thread and inspect final approval. Label it a manual synthetic sandbox.
 - Relay → Replays → `GPT-6 Luna · thread reply passed`; play to the final state and show the exact reply.

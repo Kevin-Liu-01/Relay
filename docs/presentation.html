@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Relay — Slack-like computer-use environment</title>
+    <link rel="canonical" href="https://relay.kevinliu.studio/presentation" />
     <style>
       @font-face {
         font-family: 'Relay Camber';
@@ -421,6 +422,215 @@
         min-width: 265px;
         text-align: center;
       }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      .comparison-heading h2 {
+        margin-bottom: 10px;
+      }
+      .comparison-status {
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .comparison-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0 12px;
+        font-size: 16px;
+      }
+      .comparison-toolbar > span {
+        color: var(--plum);
+      }
+      .comparison-toolbar button {
+        font-size: 14px;
+      }
+      .table-scroll {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .comparison-table,
+      .trials-table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 16px;
+        font-variant-numeric: tabular-nums;
+        text-align: left;
+      }
+      .comparison-table {
+        min-width: 960px;
+        font-size: 14px;
+      }
+      .comparison-table th,
+      .comparison-table td,
+      .trials-table th,
+      .trials-table td {
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 400;
+      }
+      .comparison-table tr:last-child > *,
+      .trials-table tr:last-child > * {
+        border-bottom: 0;
+      }
+      .comparison-table thead,
+      .trials-table thead {
+        background: #f7f5f9;
+      }
+      .comparison-table thead button,
+      .trials-table thead button {
+        padding: 4px 0;
+        border: 0;
+        border-radius: 3px;
+        background: transparent;
+        font-size: 13px;
+        white-space: nowrap;
+        color: var(--muted);
+      }
+      .sort-arrow {
+        margin-left: 6px;
+        display: inline-block;
+      }
+      [aria-sort='ascending'] button,
+      [aria-sort='descending'] button {
+        color: var(--plum) !important;
+        font-weight: 500;
+      }
+      .comparison-table tbody tr {
+        background: white;
+      }
+      .comparison-table tbody tr:hover {
+        background: #fbfafc;
+      }
+      .model-identity {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .model-identity svg {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .comparison-table small {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 400;
+      }
+      .trial-count {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .trial-strip {
+        display: flex;
+        gap: 2px;
+        margin-top: 7px;
+      }
+      .trial-cell {
+        width: 5px;
+        height: 13px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+      }
+      .trial-cell.unattempted {
+        border-color: #c9c2d0;
+      }
+      .pass-count {
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--green);
+      }
+      .comparison-legend {
+        gap: 16px;
+        font-size: 12px;
+        padding-top: 13px;
+      }
+      #sort-status {
+        margin-left: auto;
+        color: var(--plum);
+      }
+      .comparison-slide .sources {
+        margin-top: 15px;
+        padding-top: 10px;
+      }
+      .comparison-slide .sources li {
+        font-size: 13px;
+      }
+      #trials-dialog {
+        width: min(1320px, 95vw);
+        max-height: 88vh;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        color: #28262c;
+        box-shadow: 0 30px 100px #21132733;
+      }
+      #trials-dialog::backdrop {
+        background: #21132766;
+        backdrop-filter: blur(4px);
+      }
+      #trials-dialog > header {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: start;
+        margin-bottom: 20px;
+      }
+      #trials-dialog h2 {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      #trials-dialog header span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      #trials-dialog .table-scroll {
+        max-height: 65vh;
+      }
+      .trials-table {
+        font-size: 13px;
+        min-width: 1050px;
+      }
+      .trials-table thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .trials-table td:last-child {
+        max-width: 320px;
+        overflow-wrap: anywhere;
+      }
+      .outcome-label {
+        white-space: nowrap;
+        border-radius: 5px;
+        padding: 4px 6px;
+        background: #efedf2;
+        color: #6f6877;
+      }
+      .outcome-label[data-outcome='passed'] {
+        color: #246247;
+        background: #e9f4ef;
+      }
+      .outcome-label[data-outcome='incomplete'] {
+        color: #8a6024;
+        background: #fcf4e7;
+      }
+      .outcome-label[data-outcome='blocked'] {
+        color: var(--plum);
+        background: #f1eaf6;
+      }
       @keyframes reveal {
         from {
           opacity: 0.5;
@@ -440,6 +650,19 @@
         }
       }
       @media (max-width: 760px) {
+        .comparison-toolbar {
+          align-items: start;
+          font-size: 13px;
+        }
+        .comparison-toolbar button {
+          white-space: nowrap;
+        }
+        #sort-status {
+          margin-left: 0;
+        }
+        #trials-dialog {
+          padding: 16px;
+        }
         main {
           margin: 0 0 75px;
         }
@@ -541,6 +764,35 @@
         margin: 0;
       }
       @media print {
+        .comparison-slide.slide {
+          padding: 24px 54px;
+        }
+        .comparison-slide .masthead {
+          margin-bottom: 16px;
+        }
+        .comparison-slide h2 {
+          font-size: 34px;
+        }
+        .comparison-toolbar {
+          margin: 12px 0;
+        }
+        #trials-dialog {
+          display: none;
+        }
+        .comparison-toolbar button {
+          display: none;
+        }
+        .comparison-table th,
+        .comparison-table td {
+          padding: 4px 10px;
+        }
+        .comparison-slide .sources li {
+          font-size: 13px;
+          margin: 6px 0;
+        }
+        .comparison-legend #sort-status {
+          display: none;
+        }
         body,
         main {
           width: 1280px;
@@ -630,7 +882,7 @@
               <path d="M10 4v4"></path>
               <path d="M2 8h20"></path>
               <path d="M6 4v4"></path></svg
-            >Environment<span class="section-number">01 / 12</span></span
+            >Environment<span class="section-number">01 / 13</span></span
           >
         </header>
         <h1>A Slack-like environment<br />for <em>computer-use agents.</em></h1>
@@ -876,7 +1128,7 @@
               <path
                 d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
               ></path></svg
-            >Implementation scope<span class="section-number">02 / 12</span></span
+            >Implementation scope<span class="section-number">02 / 13</span></span
           >
         </header>
         <h2>Implementation scope and prior work</h2>
@@ -942,7 +1194,7 @@
               <path
                 d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"
               ></path></svg
-            >Agent interfaces<span class="section-number">03 / 12</span></span
+            >Agent interfaces<span class="section-number">03 / 13</span></span
           >
         </header>
         <h2>Four observation and action interfaces</h2>
@@ -1165,7 +1417,7 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >Isolation<span class="section-number">04 / 12</span></span
+            >Isolation<span class="section-number">04 / 13</span></span
           >
         </header>
         <h2>Episode lifecycle and session isolation</h2>
@@ -1416,7 +1668,7 @@
               <path d="M13 19h8"></path>
               <path d="m3 17 2 2 4-4"></path>
               <path d="m3 7 2 2 4-4"></path></svg
-            >Task and reward<span class="section-number">05 / 12</span></span
+            >Task and reward<span class="section-number">05 / 13</span></span
           >
         </header>
         <h2>Tasks require correct state, not a “done” response</h2>
@@ -1576,12 +1828,12 @@
               ></path>
               <path d="M6.453 15h11.094"></path>
               <path d="M8.5 2h7"></path></svg
-            >Verification layers<span class="section-number">06 / 12</span></span
+            >Verification layers<span class="section-number">06 / 13</span></span
           >
         </header>
         <h2>Verification separates software checks from model runs</h2>
         <ul>
-          <li>123 backend/harness checks and 82 browser checks.</li>
+          <li>127 backend/harness checks and 84 browser checks.</li>
           <li>
             84 valid states and 2,583 adversarial invalid states for the 12 deep-task graders.
           </li>
@@ -1698,10 +1950,10 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >Run design<span class="section-number">07 / 12</span></span
+            >Run design<span class="section-number">07 / 13</span></span
           >
         </header>
-        <h2>A bounded, matched development campaign</h2>
+        <h2>Initial campaign: matched interaction approaches</h2>
         <div class="brand-row" aria-label="Models in the campaign">
           <span class="brand-chip"
             ><svg
@@ -1812,10 +2064,10 @@
               ></path>
               <path d="M4 18.463V21"></path>
               <path d="M8 14.656V21"></path></svg
-            >Observed outcomes<span class="section-number">08 / 12</span></span
+            >Observed outcomes<span class="section-number">08 / 13</span></span
           >
         </header>
-        <h2>Observed outcomes, including incomplete coverage</h2>
+        <h2>Initial campaign: outcomes and incomplete coverage</h2>
         <ul>
           <li>20 attempted: 8 passed, 11 incorrect/step-limited, 1 blocked; 10 unattempted.</li>
           <li>
@@ -1968,6 +2220,1003 @@
           </li>
         </ul>
       </section>
+      <section class="slide comparison-slide" data-title="Model comparison">
+        <header class="masthead">
+          <span class="wordmark"
+            ><svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+            >
+              <rect width="64" height="64" rx="18" fill="#35263f" />
+              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+            </svg>
+            Relay</span
+          ><span class="section-label"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chart-no-axes-combined glyph"
+              aria-hidden="true"
+            >
+              <path d="M12 16v5"></path>
+              <path d="M16 14.639V21"></path>
+              <path d="M20 10.656V21"></path>
+              <path
+                d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"
+              ></path>
+              <path d="M4 18.463V21"></path>
+              <path d="M8 14.656V21"></path></svg
+            >Model comparison<span class="section-number">09 / 13</span></span
+          >
+        </header>
+        <div class="comparison-heading">
+          <h2>Six models. The same workspace tasks.</h2>
+          <span class="comparison-status">Campaign stopped · incomplete coverage</span>
+        </div>
+        <div class="comparison-toolbar">
+          <span>4 / 120 attempted · 2 passed · 1 blocked</span
+          ><button type="button" id="open-trials">All 120 trials ↗</button>
+        </div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable model results">
+          <table class="comparison-table sortable" id="model-results">
+            <caption class="sr-only">
+              Six-model development comparison. Activate column headers to sort. Missing values
+              always sort last.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="text" data-direction="ascending">
+                    Model<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="ascending">
+                    Trials<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="descending">
+                    Passed<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="ascending">
+                    Incomplete<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="ascending">
+                    Blocked<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="ascending">
+                    Median time<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" data-type="number" data-direction="ascending">
+                    Est. cost<span class="sort-arrow" aria-hidden="true">↕</span>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-model="gpt-6-luna">
+                <th scope="row" data-sort="GPT-6 Luna">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="0 0 256 260"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"
+                      ></path></svg
+                    ><span>GPT-6 Luna<small>OpenAI</small></span></span
+                  >
+                </th>
+                <td data-sort="0">
+                  <span class="trial-count">0 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="0 passed, 0 incomplete, 0 blocked, 20 unattempted"
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort=""><strong class="pass-count">—</strong><small>Not run</small></td>
+                <td data-sort="0">0</td>
+                <td data-sort="0">0</td>
+                <td data-sort="">—</td>
+                <td data-sort="">—</td>
+              </tr>
+              <tr data-model="gpt-4.1-nano">
+                <th scope="row" data-sort="GPT-4.1 nano">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="0 0 256 260"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"
+                      ></path></svg
+                    ><span>GPT-4.1 nano<small>OpenAI</small></span></span
+                  >
+                </th>
+                <td data-sort="1">
+                  <span class="trial-count">1 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="0 passed, 1 incomplete, 0 blocked, 19 unattempted"
+                    ><span
+                      class="trial-cell incomplete"
+                      title="channel-topic · seed 42 · incomplete"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort="0"><strong class="pass-count">0 / 1</strong><small>0%</small></td>
+                <td data-sort="1">1</td>
+                <td data-sort="0">0</td>
+                <td data-sort="47.612">47.6s</td>
+                <td data-sort="0.024940799999999985">$0.025</td>
+              </tr>
+              <tr data-model="gemini-2.5-flash-lite">
+                <th scope="row" data-sort="Gemini 2.5 Flash-Lite">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="0 0 296 298"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <mask
+                        id="tsvgR0-a"
+                        width="296"
+                        height="298"
+                        x="0"
+                        y="0"
+                        maskUnits="userSpaceOnUse"
+                        style="mask-type: alpha"
+                      >
+                        <path
+                          fill="#3186FF"
+                          d="M141.201 4.886c2.282-6.17 11.042-6.071 13.184.148l5.985 17.37a184.004 184.004 0 0 0 111.257 113.049l19.304 6.997c6.143 2.227 6.156 10.91.02 13.155l-19.35 7.082a184.001 184.001 0 0 0-109.495 109.385l-7.573 20.629c-2.241 6.105-10.869 6.121-13.133.025l-7.908-21.296a184 184 0 0 0-109.02-108.658l-19.698-7.239c-6.102-2.243-6.118-10.867-.025-13.132l20.083-7.467A183.998 183.998 0 0 0 133.291 26.28l7.91-21.394Z"
+                        ></path>
+                      </mask>
+                      <g mask="url(#tsvgR0-a)">
+                        <g filter="url(#tsvgR0-b)">
+                          <ellipse cx="163" cy="149" fill="#3689FF" rx="196" ry="159"></ellipse>
+                        </g>
+                        <g filter="url(#tsvgR0-c)">
+                          <ellipse
+                            cx="33.5"
+                            cy="142.5"
+                            fill="#F6C013"
+                            rx="68.5"
+                            ry="72.5"
+                          ></ellipse>
+                        </g>
+                        <g filter="url(#tsvgR0-d)">
+                          <ellipse
+                            cx="19.5"
+                            cy="148.5"
+                            fill="#F6C013"
+                            rx="68.5"
+                            ry="72.5"
+                          ></ellipse>
+                        </g>
+                        <g filter="url(#tsvgR0-e)">
+                          <path
+                            fill="#FA4340"
+                            d="M194 10.5C172 82.5 65.5 134.333 22.5 135L144-66l50 76.5Z"
+                          ></path>
+                        </g>
+                        <g filter="url(#tsvgR0-f)">
+                          <path
+                            fill="#FA4340"
+                            d="M190.5-12.5C168.5 59.5 62 111.333 19 112L140.5-89l50 76.5Z"
+                          ></path>
+                        </g>
+                        <g filter="url(#tsvgR0-g)">
+                          <path
+                            fill="#14BB69"
+                            d="M194.5 279.5C172.5 207.5 66 155.667 23 155l121.5 201 50-76.5Z"
+                          ></path>
+                        </g>
+                        <g filter="url(#tsvgR0-h)">
+                          <path
+                            fill="#14BB69"
+                            d="M196.5 320.5C174.5 248.5 68 196.667 25 196l121.5 201 50-76.5Z"
+                          ></path>
+                        </g>
+                      </g>
+                      <defs>
+                        <filter
+                          id="tsvgR0-b"
+                          width="464"
+                          height="390"
+                          x="-69"
+                          y="-46"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="18"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-c"
+                          width="265"
+                          height="273"
+                          x="-99"
+                          y="6"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-d"
+                          width="265"
+                          height="273"
+                          x="-113"
+                          y="12"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-e"
+                          width="299.5"
+                          height="329"
+                          x="-41.5"
+                          y="-130"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-f"
+                          width="299.5"
+                          height="329"
+                          x="-45"
+                          y="-153"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-g"
+                          width="299.5"
+                          height="329"
+                          x="-41"
+                          y="91"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="tsvgR0-h"
+                          width="299.5"
+                          height="329"
+                          x="-39"
+                          y="132"
+                          color-interpolation-filters="sRGB"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                          <feBlend
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            result="effect1_foregroundBlur_69_17998"
+                            stdDeviation="32"
+                          ></feGaussianBlur>
+                        </filter>
+                      </defs></svg
+                    ><span>Gemini 2.5 Flash-Lite<small>Google</small></span></span
+                  >
+                </th>
+                <td data-sort="0">
+                  <span class="trial-count">0 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="0 passed, 0 incomplete, 0 blocked, 20 unattempted"
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort=""><strong class="pass-count">—</strong><small>Not run</small></td>
+                <td data-sort="0">0</td>
+                <td data-sort="0">0</td>
+                <td data-sort="">—</td>
+                <td data-sort="">—</td>
+              </tr>
+              <tr data-model="deepseek-v4.1-flash">
+                <th scope="row" data-sort="DeepSeek V4.1 Flash">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="#4D6BFE"
+                        d="M23.748 4.482c-.254-.124-.364.113-.512.234-.051.039-.094.09-.137.136-.372.397-.806.657-1.373.626-.829-.046-1.537.214-2.163.848-.133-.782-.575-1.248-1.247-1.548-.352-.156-.708-.311-.955-.65-.172-.241-.219-.51-.305-.774-.055-.16-.11-.323-.293-.35-.2-.031-.278.136-.356.276-.313.572-.434 1.202-.422 1.84.027 1.436.633 2.58 1.838 3.393.137.093.172.187.129.323-.082.28-.18.552-.266.833-.055.179-.137.217-.329.14a5.526 5.526 0 0 1-1.736-1.18c-.857-.828-1.631-1.742-2.597-2.458a11.365 11.365 0 0 0-.689-.471c-.985-.957.13-1.743.388-1.836.27-.098.093-.432-.779-.428-.872.004-1.67.295-2.687.684a3.055 3.055 0 0 1-.465.137 9.597 9.597 0 0 0-2.883-.102c-1.885.21-3.39 1.102-4.497 2.623C.082 8.606-.231 10.684.152 12.85c.403 2.284 1.569 4.175 3.36 5.653 1.858 1.533 3.997 2.284 6.438 2.14 1.482-.085 3.133-.284 4.994-1.86.47.234.962.327 1.78.397.63.059 1.236-.03 1.705-.128.735-.156.684-.837.419-.961-2.155-1.004-1.682-.595-2.113-.926 1.096-1.296 2.746-2.642 3.392-7.003.05-.347.007-.565 0-.845-.004-.17.035-.237.23-.256a4.173 4.173 0 0 0 1.545-.475c1.396-.763 1.96-2.015 2.093-3.517.02-.23-.004-.467-.247-.588zM11.581 18c-2.089-1.642-3.102-2.183-3.52-2.16-.392.024-.321.471-.235.763.09.288.207.486.371.739.114.167.192.416-.113.603-.673.416-1.842-.14-1.897-.167-1.361-.802-2.5-1.86-3.301-3.307-.774-1.393-1.224-2.887-1.298-4.482-.02-.386.093-.522.477-.592a4.696 4.696 0 0 1 1.529-.039c2.132.312 3.946 1.265 5.468 2.774.868.86 1.525 1.887 2.202 2.891.72 1.066 1.494 2.082 2.48 2.914.348.292.625.514.891.677-.802.09-2.14.11-3.054-.614zm1-6.44a.306.306 0 0 1 .415-.287.302.302 0 0 1 .2.288.306.306 0 0 1-.31.307.303.303 0 0 1-.304-.308zm3.11 1.596c-.2.081-.399.151-.59.16a1.245 1.245 0 0 1-.798-.254c-.274-.23-.47-.358-.552-.758a1.73 1.73 0 0 1 .016-.588c.07-.327-.008-.537-.239-.727-.187-.156-.426-.199-.688-.199a.559.559 0 0 1-.254-.078.253.253 0 0 1-.114-.358c.028-.054.16-.186.192-.21.356-.202.767-.136 1.146.016.352.144.618.408 1.001.782.391.451.462.576.685.914.176.265.336.537.445.848.067.195-.019.354-.25.452z"
+                      ></path></svg
+                    ><span>DeepSeek V4.1 Flash<small>DeepSeek</small></span></span
+                  >
+                </th>
+                <td data-sort="1">
+                  <span class="trial-count">1 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="1 passed, 0 incomplete, 0 blocked, 19 unattempted"
+                    ><span class="trial-cell passed" title="channel-topic · seed 42 · passed"></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort="1"><strong class="pass-count">1 / 1</strong><small>100%</small></td>
+                <td data-sort="0">0</td>
+                <td data-sort="0">0</td>
+                <td data-sort="7.22">7.2s</td>
+                <td data-sort="0.011088">$0.011</td>
+              </tr>
+              <tr data-model="glm-5p3-flash">
+                <th scope="row" data-sort="GLM 5.3 Flash">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <title>Zhipu (智谱)</title>
+                      <path
+                        d="M11.991 23.503a.24.24 0 00-.244.248.24.24 0 00.244.249.24.24 0 00.245-.249.24.24 0 00-.22-.247l-.025-.001zM9.671 5.365a1.697 1.697 0 011.099 2.132l-.071.172-.016.04-.018.054c-.07.16-.104.32-.104.498-.035.71.47 1.279 1.186 1.314h.366c1.309.053 2.338 1.173 2.286 2.523-.052 1.332-1.152 2.38-2.478 2.327h-.174c-.715.018-1.274.64-1.239 1.368 0 .124.018.23.053.337.209.373.54.658.96.8.75.23 1.517-.125 1.9-.782l.018-.035c.402-.64 1.17-.96 1.92-.711.854.284 1.378 1.226 1.099 2.167a1.661 1.661 0 01-2.077 1.102 1.711 1.711 0 01-.907-.711l-.017-.035c-.2-.323-.463-.58-.851-.711l-.056-.018a1.646 1.646 0 00-1.954.746 1.66 1.66 0 01-1.065.764 1.677 1.677 0 01-1.989-1.279c-.209-.906.332-1.83 1.257-2.043a1.51 1.51 0 01.296-.035h.018c.68-.071 1.151-.622 1.116-1.333a1.307 1.307 0 00-.227-.693 2.515 2.515 0 01-.366-1.403 2.39 2.39 0 01.366-1.208c.14-.195.21-.444.227-.693.018-.71-.506-1.261-1.186-1.332l-.07-.018a1.43 1.43 0 01-.299-.07l-.05-.019a1.7 1.7 0 01-1.047-2.114 1.68 1.68 0 012.094-1.101zm-5.575 10.11c.26-.264.639-.367.994-.27.355.096.633.379.728.74.095.362-.007.748-.267 1.013-.402.41-1.053.41-1.455 0a1.062 1.062 0 010-1.482zm14.845-.294c.359-.09.738.024.992.297.254.274.344.665.237 1.025-.107.36-.396.634-.756.718-.551.128-1.1-.22-1.23-.781a1.05 1.05 0 01.757-1.26zm-.064-4.39c.314.32.49.753.49 1.206 0 .452-.176.886-.49 1.206-.315.32-.74.5-1.185.5-.444 0-.87-.18-1.184-.5a1.727 1.727 0 010-2.412 1.654 1.654 0 012.369 0zm-11.243.163c.364.484.447 1.128.218 1.691a1.665 1.665 0 01-2.188.923c-.855-.36-1.26-1.358-.907-2.228a1.68 1.68 0 011.33-1.038c.593-.08 1.183.169 1.547.652zm11.545-4.221c.368 0 .708.2.892.524.184.324.184.724 0 1.048a1.026 1.026 0 01-.892.524c-.568 0-1.03-.47-1.03-1.048 0-.579.462-1.048 1.03-1.048zm-14.358 0c.368 0 .707.2.891.524.184.324.184.724 0 1.048a1.026 1.026 0 01-.891.524c-.569 0-1.03-.47-1.03-1.048 0-.579.461-1.048 1.03-1.048zm10.031-1.475c.925 0 1.675.764 1.675 1.706s-.75 1.705-1.675 1.705-1.674-.763-1.674-1.705c0-.942.75-1.706 1.674-1.706zm-2.626-.684c.362-.082.653-.356.761-.718a1.062 1.062 0 00-.238-1.028 1.017 1.017 0 00-.996-.294c-.547.14-.881.7-.752 1.257.13.558.675.907 1.225.783zm0 16.876c.359-.087.644-.36.75-.72a1.062 1.062 0 00-.237-1.019 1.018 1.018 0 00-.985-.301 1.037 1.037 0 00-.762.717c-.108.361-.017.754.239 1.028.245.263.606.377.953.305l.043-.01zM17.19 3.5a.631.631 0 00.628-.64c0-.355-.279-.64-.628-.64a.631.631 0 00-.628.64c0 .355.28.64.628.64zm-10.38 0a.631.631 0 00.628-.64c0-.355-.28-.64-.628-.64a.631.631 0 00-.628.64c0 .355.279.64.628.64zm-5.182 7.852a.631.631 0 00-.628.64c0 .354.28.639.628.639a.63.63 0 00.627-.606l.001-.034a.62.62 0 00-.628-.64zm5.182 9.13a.631.631 0 00-.628.64c0 .355.279.64.628.64a.631.631 0 00.628-.64c0-.355-.28-.64-.628-.64zm10.38.018a.631.631 0 00-.628.64c0 .355.28.64.628.64a.631.631 0 00.628-.64c0-.355-.279-.64-.628-.64zm5.182-9.148a.631.631 0 00-.628.64c0 .354.279.639.628.639a.631.631 0 00.628-.64c0-.355-.28-.64-.628-.64zm-.384-4.992a.24.24 0 00.244-.249.24.24 0 00-.244-.249.24.24 0 00-.244.249c0 .142.122.249.244.249zM11.991.497a.24.24 0 00.245-.248A.24.24 0 0011.99 0a.24.24 0 00-.244.249c0 .133.108.236.223.247l.021.001zM2.011 6.36a.24.24 0 00.245-.249.24.24 0 00-.244-.249.24.24 0 00-.244.249.24.24 0 00.244.249zm0 11.263a.24.24 0 00-.243.248.24.24 0 00.244.249.24.24 0 00.244-.249.252.252 0 00-.244-.248zm19.995-.018a.24.24 0 00-.245.248.24.24 0 00.245.25.24.24 0 00.244-.25.252.252 0 00-.244-.248z"
+                        fill="#3859FF"
+                        fill-rule="nonzero"
+                      ></path></svg
+                    ><span>GLM 5.3 Flash<small>Zhipu</small></span></span
+                  >
+                </th>
+                <td data-sort="1">
+                  <span class="trial-count">1 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="1 passed, 0 incomplete, 0 blocked, 19 unattempted"
+                    ><span class="trial-cell passed" title="channel-topic · seed 42 · passed"></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort="1"><strong class="pass-count">1 / 1</strong><small>100%</small></td>
+                <td data-sort="0">0</td>
+                <td data-sort="0">0</td>
+                <td data-sort="7.901">7.9s</td>
+                <td data-sort="0.005372650000000001">$0.005</td>
+              </tr>
+              <tr data-model="nemotron-lightning-3p5-30b-a3b">
+                <th scope="row" data-sort="Nemotron Lightning">
+                  <span class="model-identity"
+                    ><svg
+                      viewBox="35.188 31.512 351.46 258.785"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M384.195 282.109c0 3.771-2.769 6.302-6.047 6.302v-.023c-3.371.023-6.089-2.508-6.089-6.278 0-3.769 2.718-6.293 6.089-6.293 3.279-.001 6.047 2.523 6.047 6.292zm2.453 0c0-5.175-4.02-8.179-8.5-8.179-4.511 0-8.531 3.004-8.531 8.179 0 5.172 4.021 8.188 8.531 8.188 4.481 0 8.5-3.016 8.5-8.188m-9.91.692h.91l2.109 3.703h2.316l-2.336-3.859c1.207-.086 2.2-.661 2.2-2.286 0-2.019-1.392-2.668-3.75-2.668h-3.411v8.813h1.961v-3.703m.001-1.492v-2.122h1.364c.742 0 1.753.06 1.753.965 0 .985-.523 1.157-1.398 1.157h-1.719M329.406 237.027l10.598 28.993H318.48l10.926-28.993zm-11.35-11.289-24.423 61.88h17.246l3.863-10.934h28.903l3.656 10.934h18.722l-24.605-61.888-23.362.008zm-49.033 61.903h17.497v-61.922l-17.5-.004.003 61.926zm-121.467-61.926-14.598 49.078-13.984-49.074-18.879-.004 19.972 61.926h25.207l20.133-61.926h-17.851zm70.725 13.484h7.52c10.91 0 17.966 4.898 17.966 17.609 0 12.714-7.056 17.613-17.966 17.613h-7.52v-35.222zm-17.35-13.484v61.926h28.366c15.113 0 20.048-2.512 25.384-8.148 3.769-3.957 6.207-12.641 6.207-22.134 0-8.707-2.063-16.468-5.66-21.304-6.481-8.649-15.817-10.34-29.75-10.34h-24.547zm-165.743-.086v62.012h17.645v-47.086l13.672.004c4.527 0 7.754 1.128 9.934 3.457 2.765 2.945 3.894 7.699 3.894 16.395v27.23h17.098v-34.262c0-24.453-15.586-27.75-30.836-27.75H35.188zm137.583.086.007 61.926h17.489v-61.926h-17.496z"
+                      ></path>
+                      <path
+                        fill="#77B900"
+                        d="M82.211 102.414s22.504-33.203 67.437-36.638V53.73c-49.769 3.997-92.867 46.149-92.867 46.149s24.41 70.565 92.867 77.026v-12.804c-50.237-6.32-67.437-61.687-67.437-61.687zm67.437 36.223v11.726c-37.968-6.769-48.507-46.237-48.507-46.237s18.23-20.195 48.507-23.47v12.867c-.023 0-.039-.007-.058-.007-15.891-1.907-28.305 12.938-28.305 12.938s6.958 24.991 28.363 32.183m0-107.125V53.73c1.461-.112 2.922-.207 4.391-.257 56.582-1.907 93.449 46.406 93.449 46.406s-42.343 51.488-86.457 51.488c-4.043 0-7.828-.375-11.383-1.005v13.739c3.04.386 6.192.613 9.481.613 41.051 0 70.738-20.965 99.484-45.778 4.766 3.817 24.278 13.103 28.289 17.168-27.332 22.883-91.031 41.329-127.144 41.329-3.481 0-6.824-.211-10.11-.528v19.306H305.68V31.512H149.648zm0 49.144V65.777c1.446-.101 2.903-.179 4.391-.226 40.688-1.278 67.382 34.965 67.382 34.965s-28.832 40.043-59.746 40.043c-4.449 0-8.438-.715-12.028-1.922V93.523c15.84 1.914 19.028 8.911 28.551 24.786l21.18-17.859s-15.461-20.277-41.524-20.277c-2.833-.001-5.544.198-8.206.483"
+                      ></path></svg
+                    ><span>Nemotron Lightning<small>NVIDIA · 3.5 30B A3B</small></span></span
+                  >
+                </th>
+                <td data-sort="1">
+                  <span class="trial-count">1 / 20</span
+                  ><span
+                    class="trial-strip"
+                    role="img"
+                    aria-label="0 passed, 0 incomplete, 1 blocked, 19 unattempted"
+                    ><span
+                      class="trial-cell blocked"
+                      title="channel-topic · seed 42 · blocked"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 42 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 43 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 44 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="decision-record · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="incident-triage · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="edit-message · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="channel-topic · seed 45 · unattempted"
+                    ></span
+                    ><span
+                      class="trial-cell unattempted"
+                      title="thread-reply · seed 45 · unattempted"
+                    ></span
+                  ></span>
+                </td>
+                <td data-sort="0"><strong class="pass-count">0 / 1</strong><small>0%</small></td>
+                <td data-sort="0">0</td>
+                <td data-sort="1">1</td>
+                <td data-sort="30.743">30.7s</td>
+                <td data-sort="">Unknown<small>$0.002 incl. reservation</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="legend comparison-legend">
+          <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
+          ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
+          ><span id="sort-status" role="status">Click a column to sort</span>
+        </div>
+        <ul class="sources">
+          <li>
+            Five public tasks × four seeds · accessibility control · 16 actions · 4,096 output
+            tokens · $6 total ceiling.
+          </li>
+          <li>
+            Passes / attempted. Median includes early stops. Costs are estimates; unknown usage
+            retains reservations. Descriptive, not a held-out ranking.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-comparison-2026-10-02.md"
+              >Frozen design</a
+            >
+            ·
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02/summary.json"
+              >Complete results and traces</a
+            >
+            ·
+            <a
+              href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/model-comparison-2026-10-02/trials.csv"
+              >Download all trials (CSV)</a
+            >
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Trace findings">
         <header class="masthead">
           <span class="wordmark"
@@ -2000,7 +3249,7 @@
               <circle cx="6" cy="19" r="3"></circle>
               <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path>
               <circle cx="18" cy="5" r="3"></circle></svg
-            >Trace findings<span class="section-number">09 / 12</span></span
+            >Trace findings<span class="section-number">10 / 13</span></span
           >
         </header>
         <h2>What the trajectories explain</h2>
@@ -2060,7 +3309,7 @@
             >
               <path d="m12 14 4-4"></path>
               <path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg
-            >Speed and resources<span class="section-number">10 / 12</span></span
+            >Speed and resources<span class="section-number">11 / 13</span></span
           >
         </header>
         <h2>Speed and resource measurements</h2>
@@ -2189,7 +3438,7 @@
               <rect x="9" y="2" width="6" height="6" rx="1"></rect>
               <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
               <path d="M12 12V8"></path></svg
-            >Scaling tradeoffs<span class="section-number">11 / 12</span></span
+            >Scaling tradeoffs<span class="section-number">12 / 13</span></span
           >
         </header>
         <h2>Scaling path and tradeoffs</h2>
@@ -2390,7 +3639,7 @@
               <path
                 d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"
               ></path></svg
-            >Demonstration and discussion<span class="section-number">12 / 12</span></span
+            >Demonstration and discussion<span class="section-number">13 / 13</span></span
           >
         </header>
         <h2>Demonstration and discussion</h2>
@@ -2430,6 +3679,1505 @@
         </ul>
       </section>
     </main>
+    <dialog id="trials-dialog" aria-labelledby="trials-title">
+      <header>
+        <div>
+          <h2 id="trials-title">Every trial, including the failures.</h2>
+          <span>4 / 120 attempted · 2 passed · 1 blocked</span>
+        </div>
+        <button type="button" id="close-trials" aria-label="Close trial results">Close ×</button>
+      </header>
+      <div class="table-scroll">
+        <table class="trials-table sortable" id="trial-results">
+          <caption class="sr-only">
+            Every planned trial, including unattempted cells.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="text" data-direction="ascending">
+                  Model<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="text" data-direction="ascending">
+                  Task<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="number" data-direction="ascending">
+                  Seed<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="text" data-direction="ascending">
+                  Outcome<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="number" data-direction="ascending">
+                  Actions<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="number" data-direction="ascending">
+                  Time<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" data-type="number" data-direction="ascending">
+                  Est. cost<span class="sort-arrow" aria-hidden="true">↕</span>
+                </button>
+              </th>
+              <th scope="col">Checks / stop reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="passed">
+                <span class="outcome-label" data-outcome="passed">passed</span>
+              </td>
+              <td data-sort="4">4</td>
+              <td data-sort="7901">7.9s</td>
+              <td data-sort="0.005372650000000001">$0.0054</td>
+              <td>All state checks passed</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="passed">
+                <span class="outcome-label" data-outcome="passed">passed</span>
+              </td>
+              <td data-sort="4">4</td>
+              <td data-sort="7220">7.2s</td>
+              <td data-sort="0.011088">$0.0111</td>
+              <td>All state checks passed</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="incomplete">
+                <span class="outcome-label" data-outcome="incomplete">incomplete</span>
+              </td>
+              <td data-sort="16">16</td>
+              <td data-sort="47612">47.6s</td>
+              <td data-sort="0.024940799999999985">$0.0249</td>
+              <td>topic_correct, no_unrequested_state_changes</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="blocked">
+                <span class="outcome-label" data-outcome="blocked">blocked</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="30743">30.7s</td>
+              <td data-sort="">Unknown ($0.0016 reserved)</td>
+              <td>The operation was aborted due to timeout</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="42">42</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="43">43</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="44">44</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="decision-record">decision-record</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="incident-triage">incident-triage</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="edit-message">edit-message</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="channel-topic">channel-topic</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="glm-5p3-flash">GLM 5.3 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="deepseek-v4.1-flash">DeepSeek V4.1 Flash</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-6-luna">GPT-6 Luna</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="nemotron-lightning-3p5-30b-a3b">Nemotron Lightning</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+            <tr>
+              <th scope="row" data-sort="gpt-4.1-nano">GPT-4.1 nano</th>
+              <td data-sort="thread-reply">thread-reply</td>
+              <td data-sort="45">45</td>
+              <td data-sort="unattempted">
+                <span class="outcome-label" data-outcome="unattempted">unattempted</span>
+              </td>
+              <td data-sort="0">0</td>
+              <td data-sort="">—</td>
+              <td data-sort="">—</td>
+              <td>Not launched</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="sr-only" id="trial-sort-status" role="status"></span>
+    </dialog>
     <nav aria-label="Presentation controls">
       <button id="prev" aria-label="Previous slide">← Previous</button
       ><span id="counter" aria-live="polite"></span
@@ -2454,6 +5202,11 @@
       document.getElementById('prev').onclick = () => show(index - 1);
       document.getElementById('next').onclick = () => show(index + 1);
       document.addEventListener('keydown', (e) => {
+        if (
+          e.target.closest('dialog, input, select, textarea, .table-scroll') ||
+          (e.key === ' ' && e.target.closest('button, a'))
+        )
+          return;
         if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
           e.preventDefault();
           show(index + 1);
@@ -2467,6 +5220,60 @@
       });
       window.addEventListener('hashchange', () => show((Number(location.hash.slice(1)) || 1) - 1));
       show((Number(location.hash.slice(1)) || 1) - 1);
+      const trialDialog = document.getElementById('trials-dialog');
+      document.getElementById('open-trials').onclick = () => trialDialog.showModal();
+      document.getElementById('close-trials').onclick = () => trialDialog.close();
+      for (const table of document.querySelectorAll('.sortable')) {
+        const body = table.tBodies[0];
+        const original = new Map([...body.rows].map((row, i) => [row, i]));
+        for (const button of table.querySelectorAll('thead button'))
+          button.onclick = () => {
+            const header = button.closest('th');
+            const column = header.cellIndex;
+            const direction =
+              header.getAttribute('aria-sort') === 'ascending'
+                ? 'descending'
+                : header.getAttribute('aria-sort') === 'descending'
+                  ? 'ascending'
+                  : button.dataset.direction;
+            const rows = [...body.rows];
+            for (const row of rows) row.getAnimations().forEach((animation) => animation.cancel());
+            const before = new Map(rows.map((row) => [row, row.getBoundingClientRect().top]));
+            rows.sort((a, b) => {
+              const x = a.cells[column].dataset.sort,
+                y = b.cells[column].dataset.sort;
+              if (x === '' || y === '')
+                return x === y ? original.get(a) - original.get(b) : x === '' ? 1 : -1;
+              const order =
+                button.dataset.type === 'number' ? Number(x) - Number(y) : x.localeCompare(y);
+              return (
+                (direction === 'ascending' ? order : -order) || original.get(a) - original.get(b)
+              );
+            });
+            for (const th of table.querySelectorAll('thead th')) {
+              th.setAttribute('aria-sort', th === header ? direction : 'none');
+              const arrow = th.querySelector('.sort-arrow');
+              if (arrow)
+                arrow.textContent = th === header ? (direction === 'ascending' ? '↑' : '↓') : '↕';
+            }
+            body.append(...rows);
+            if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+              for (const row of rows) {
+                const delta = before.get(row) - row.getBoundingClientRect().top;
+                if (delta)
+                  row.animate(
+                    [
+                      { transform: `translateY(${delta}px)`, opacity: 0.55 },
+                      { transform: 'translateY(0)', opacity: 1 },
+                    ],
+                    { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' },
+                  );
+              }
+            document.getElementById(
+              table.id === 'model-results' ? 'sort-status' : 'trial-sort-status',
+            ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
+          };
+      }
     </script>
   </body>
 </html>

@@ -35,7 +35,7 @@ fictional adults, with colored initials as a loading-error fallback. No real
 person's identity or stock photograph is used. [Prompts and provenance](docs/portraits.md)
 record the generated assets; these are separate from the excluded private photos.
 Model-family marks from [theSVG](https://thesvg.org) cover OpenAI, Anthropic,
-DeepSeek, Qwen, Gemini, NVIDIA, Mistral, Meta, xAI, Cohere and Moonshot. Unrecognized
+DeepSeek, Qwen, Gemini, NVIDIA, Zhipu, Mistral, Meta, xAI, Cohere and Moonshot. Unrecognized
 families use a generic agent glyph rather than a fabricated company logo.
 The proprietary icon font and sample photos from the private prototype are not
 included in this repository or deployment. Historical evidence JSON may describe

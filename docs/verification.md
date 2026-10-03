@@ -1,5 +1,40 @@
 # Verification and evidence
 
+## Sortable comparison and canonical presentation — 2026-10-02
+
+The new [six-model plan](campaigns/model-comparison-2026-10-02.md) specifies 20
+trials per route, five tasks and four seeds, accessibility-only control, fixed
+limits and a $6 estimated ceiling. It stopped after **4/120 attempted**: two
+passes, one incorrect/step-limited and one provider block. Nemotron's first
+request timed out without usage. The complete 120-row inventory preserves 116
+unattempted cells. This does not fulfill the requested 20 trials per model.
+
+The compressed original evidence passes 157 audit checks with no gaps. The
+recorded $0.04298605 includes a $0.00158460 unresolved reservation; no invoice or
+complete usage claim is made. No subsequent inference or automatic replacement
+was run. The previous onsite campaign is unchanged.
+
+Slide 9 renders the new summary with model-family logos, twenty outcome markers
+per model, numeric column sorting and a sortable all-trials dialog. Missing values
+sort last in both directions; blocked diagnostic grades cannot become passes.
+Keyboard activation, focus return, reduced-motion cancellation, mobile overflow,
+all 13 printed pages and same-origin CSP behavior have committed regressions.
+`/presentation` is canonical; old HTML URLs retain fragments through a 308 redirect.
+
+The full-suite run also exposed a replay readiness race. A seek could arrive before
+the iframe's React receiver even though its load handler had marked it ready. A
+deterministic regression drops pre-ready messages and fails on the old implementation;
+the fix explicitly resends the latest snapshot on the trusted same-origin readiness
+message. This is observer-only delivery, not new agent inference or a rewrite of
+recorded trajectories. The initial test expectation was corrected from “Loading”
+to the application's actual “Opening Northstar” copy before the negative proof.
+
+The final full gate passes **127 backend checks and 84 browser checks**, with no
+test retries. A presentation test locator was changed to use its accessible button
+name after HTML formatting added leading whitespace; the sorting assertion was
+not weakened. PDF export verifies 13 unclipped pages. Source manifests and
+scripted screenshots are refreshed; neither historical model campaign is rewritten.
+
 ## Northstar workspace identity — 2026-10-02
 
 The fictional team's N badge is replaced by an original eight-point compass

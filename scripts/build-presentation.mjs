@@ -1,4 +1,6 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { modelComparison } from './lib/model-comparison.mjs';
+import { comparisonSlide } from './lib/comparison-slide.mjs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
@@ -27,6 +29,10 @@ import {
 } from 'lucide-react';
 import Openai from '@thesvg/react/openai';
 import Slack from '@thesvg/react/slack';
+import Gemini from '@thesvg/react/gemini';
+import Deepseek from '@thesvg/react/deepseek';
+import Nvidia from '@thesvg/react/nvidia';
+import Zhipu from '@thesvg/react/zhipu';
 
 const glyph = (component) =>
   renderToStaticMarkup(
@@ -42,7 +48,7 @@ const mark = (component) =>
     createElement(component, {
       width: 28,
       height: 28,
-      variant: component === Openai ? 'light' : undefined,
+      variant: 'light',
       'aria-hidden': true,
     }),
   );
@@ -58,6 +64,7 @@ const sectionIcons = [
   ListChecks,
   FlaskConical,
   Bot,
+  ChartNoAxesCombined,
   ChartNoAxesCombined,
   Route,
   Gauge,
@@ -78,6 +85,13 @@ const fontStyles = fonts
   })
   .join('\n');
 const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
+const comparisonPath = 'evidence/campaigns/model-comparison-2026-10-02/summary.json';
+const comparison = existsSync(comparisonPath)
+  ? JSON.parse(readFileSync(comparisonPath))
+  : modelComparison(
+      JSON.parse(readFileSync('docs/campaigns/model-comparison-2026-10-02.json')),
+      [],
+    );
 const bench = JSON.parse(readFileSync('evidence/benchmark-2026-10-01.json'));
 const backend = readFileSync('evidence/backend-tests.xml', 'utf8');
 const browser = JSON.parse(readFileSync('evidence/reference/summary.json'));
@@ -102,6 +116,19 @@ const bars = Object.entries(summary.byInterface)
   )
   .join('\n');
 const values = {
+  ...comparisonSlide(
+    comparison,
+    Object.fromEntries(
+      [
+        ['gpt-6-luna', Openai],
+        ['gpt-4.1-nano', Openai],
+        ['gemini-2.5-flash-lite', Gemini],
+        ['deepseek-v4.1-flash', Deepseek],
+        ['glm-5p3-flash', Zhipu],
+        ['nemotron-lightning-3p5-30b-a3b', Nvidia],
+      ].map(([id, icon]) => [id, mark(icon)]),
+    ),
+  ),
   PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}`,
   OPENAI_MARK: mark(Openai),
   SLACK_MARK: mark(Slack),
@@ -153,13 +180,13 @@ let sectionIndex = 0;
 html = html.replace(/(<section\b[^>]*data-title="([^"]+)"[^>]*>)/g, (_, tag, title) => {
   const icon = sectionIcons[sectionIndex++];
   if (!icon) throw Error('Missing presentation section icon.');
-  return `${tag}<header class="masthead"><span class="wordmark">${relay}Relay</span><span class="section-label">${glyph(icon)}${title}<span class="section-number">${String(sectionIndex).padStart(2, '0')} / 12</span></span></header>`;
+  return `${tag}<header class="masthead"><span class="wordmark">${relay}Relay</span><span class="section-label">${glyph(icon)}${title}<span class="section-number">${String(sectionIndex).padStart(2, '0')} / 13</span></span></header>`;
 });
-if (sectionIndex !== 12) throw Error('Expected twelve presentation sections.');
+if (sectionIndex !== 13) throw Error('Expected thirteen presentation sections.');
 writeFileSync('docs/presentation.html', html);
 console.log(
   JSON.stringify({
-    slides: 12,
+    slides: 13,
     backendChecks: values.BACKEND_TESTS,
     browserChecks: values.BROWSER_TESTS,
     attemptedModelEpisodes: values.ATTEMPTED,

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Relay — Slack-like computer-use environment</title>
+    <link rel="canonical" href="https://relay.kevinliu.studio/presentation" />
     <style>
       {{PRESENTATION_STYLES}}
     </style>
@@ -195,7 +196,7 @@
         </div>
       </section>
       <section class="slide" data-title="Run design">
-        <h2>A bounded, matched development campaign</h2>
+        <h2>Initial campaign: matched interaction approaches</h2>
         <div class="brand-row" aria-label="Models in the campaign">
           <span class="brand-chip">{{OPENAI_MARK}}GPT-4o mini</span
           ><span class="brand-chip">{{OPENAI_MARK}}GPT-6 Luna</span
@@ -222,7 +223,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Observed outcomes">
-        <h2>Observed outcomes, including incomplete coverage</h2>
+        <h2>Initial campaign: outcomes and incomplete coverage</h2>
         <ul>
           <li>
             {{ATTEMPTED}} attempted: {{PASSED}} passed, {{INCOMPLETE}} incorrect/step-limited,
@@ -256,6 +257,48 @@
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
               >Complete inventory, exact trajectories and hashes</a
             >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide comparison-slide" data-title="Model comparison">
+        <div class="comparison-heading">
+          <h2>Six models. The same workspace tasks.</h2>
+          <span class="comparison-status">{{COMPARISON_STATUS}}</span>
+        </div>
+        <div class="comparison-toolbar">
+          <span>{{COMPARISON_COUNTS}}</span
+          ><button type="button" id="open-trials">All 120 trials ↗</button>
+        </div>
+        {{COMPARISON_TABLE}}
+        <div class="legend comparison-legend">
+          <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
+          ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
+          ><span id="sort-status" role="status">Click a column to sort</span>
+        </div>
+        <ul class="sources">
+          <li>
+            Five public tasks × four seeds · accessibility control · 16 actions · 4,096 output
+            tokens · $6 total ceiling.
+          </li>
+          <li>
+            Passes / attempted. Median includes early stops. Costs are estimates; unknown usage
+            retains reservations. Descriptive, not a held-out ranking.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-comparison-2026-10-02.md"
+              >Frozen design</a
+            >
+            ·
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02/summary.json"
+              >Complete results and traces</a
+            >
+            ·
+            <a
+              href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/model-comparison-2026-10-02/trials.csv"
+              >Download all trials (CSV)</a
+            >
           </li>
         </ul>
       </section>
@@ -400,6 +443,16 @@
         </ul>
       </section>
     </main>
+    <dialog id="trials-dialog" aria-labelledby="trials-title">
+      <header>
+        <div>
+          <h2 id="trials-title">Every trial, including the failures.</h2>
+          <span>{{COMPARISON_COUNTS}}</span>
+        </div>
+        <button type="button" id="close-trials" aria-label="Close trial results">Close ×</button>
+      </header>
+      {{COMPARISON_TRIALS}}<span class="sr-only" id="trial-sort-status" role="status"></span>
+    </dialog>
     <nav aria-label="Presentation controls">
       <button id="prev" aria-label="Previous slide">← Previous</button
       ><span id="counter" aria-live="polite"></span
@@ -424,6 +477,11 @@
       document.getElementById('prev').onclick = () => show(index - 1);
       document.getElementById('next').onclick = () => show(index + 1);
       document.addEventListener('keydown', (e) => {
+        if (
+          e.target.closest('dialog, input, select, textarea, .table-scroll') ||
+          (e.key === ' ' && e.target.closest('button, a'))
+        )
+          return;
         if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
           e.preventDefault();
           show(index + 1);
@@ -437,6 +495,60 @@
       });
       window.addEventListener('hashchange', () => show((Number(location.hash.slice(1)) || 1) - 1));
       show((Number(location.hash.slice(1)) || 1) - 1);
+      const trialDialog = document.getElementById('trials-dialog');
+      document.getElementById('open-trials').onclick = () => trialDialog.showModal();
+      document.getElementById('close-trials').onclick = () => trialDialog.close();
+      for (const table of document.querySelectorAll('.sortable')) {
+        const body = table.tBodies[0];
+        const original = new Map([...body.rows].map((row, i) => [row, i]));
+        for (const button of table.querySelectorAll('thead button'))
+          button.onclick = () => {
+            const header = button.closest('th');
+            const column = header.cellIndex;
+            const direction =
+              header.getAttribute('aria-sort') === 'ascending'
+                ? 'descending'
+                : header.getAttribute('aria-sort') === 'descending'
+                  ? 'ascending'
+                  : button.dataset.direction;
+            const rows = [...body.rows];
+            for (const row of rows) row.getAnimations().forEach((animation) => animation.cancel());
+            const before = new Map(rows.map((row) => [row, row.getBoundingClientRect().top]));
+            rows.sort((a, b) => {
+              const x = a.cells[column].dataset.sort,
+                y = b.cells[column].dataset.sort;
+              if (x === '' || y === '')
+                return x === y ? original.get(a) - original.get(b) : x === '' ? 1 : -1;
+              const order =
+                button.dataset.type === 'number' ? Number(x) - Number(y) : x.localeCompare(y);
+              return (
+                (direction === 'ascending' ? order : -order) || original.get(a) - original.get(b)
+              );
+            });
+            for (const th of table.querySelectorAll('thead th')) {
+              th.setAttribute('aria-sort', th === header ? direction : 'none');
+              const arrow = th.querySelector('.sort-arrow');
+              if (arrow)
+                arrow.textContent = th === header ? (direction === 'ascending' ? '↑' : '↓') : '↕';
+            }
+            body.append(...rows);
+            if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+              for (const row of rows) {
+                const delta = before.get(row) - row.getBoundingClientRect().top;
+                if (delta)
+                  row.animate(
+                    [
+                      { transform: `translateY(${delta}px)`, opacity: 0.55 },
+                      { transform: 'translateY(0)', opacity: 1 },
+                    ],
+                    { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' },
+                  );
+              }
+            document.getElementById(
+              table.id === 'model-results' ? 'sort-status' : 'trial-sort-status',
+            ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
+          };
+      }
     </script>
   </body>
 </html>

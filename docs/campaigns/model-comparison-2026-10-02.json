@@ -1,0 +1,101 @@
+{
+  "id": "model-comparison-2026-10-02",
+  "maxEstimatedUSD": 6,
+  "catalogHash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+  "catalogCheckedAt": "2026-10-03T04:44:51.997Z",
+  "models": {
+    "gpt-6-luna": { "id": "gpt-6-luna", "rates": { "input": 0.1, "output": 0.5 } },
+    "gpt-4.1-nano": { "id": "gpt-4.1-nano", "rates": { "input": 0.1, "output": 0.4 } },
+    "gemini-2.5-flash-lite": {
+      "id": "gemini-2.5-flash-lite",
+      "rates": { "input": 0.1, "output": 0.4 }
+    },
+    "deepseek-v4.1-flash": {
+      "id": "deepseek-v4.1-flash",
+      "rates": { "input": 0.3, "output": 1.2 }
+    },
+    "glm-5p3-flash": { "id": "glm-5p3-flash", "rates": { "input": 0.15, "output": 0.5 } },
+    "nemotron-lightning-3p5-30b-a3b": {
+      "id": "nemotron-lightning-3p5-30b-a3b",
+      "rates": { "input": 0.05, "output": 0.2 }
+    }
+  },
+  "common": {
+    "provider": "ramp",
+    "tasks": [
+      "channel-topic",
+      "thread-reply",
+      "edit-message",
+      "incident-triage",
+      "decision-record"
+    ],
+    "interfaces": ["a11y"],
+    "repeats": 1,
+    "guides": [false],
+    "histories": ["recent-4"],
+    "maxSteps": 16,
+    "maxRequests": 480,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 120,
+    "runSeconds": 3600
+  },
+  "phases": [
+    {
+      "id": "seed-42",
+      "models": [
+        "gpt-6-luna",
+        "gpt-4.1-nano",
+        "gemini-2.5-flash-lite",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash",
+        "nemotron-lightning-3p5-30b-a3b"
+      ],
+      "seeds": [42],
+      "orderSeed": 20261002,
+      "maxEstimatedUSD": 1.5
+    },
+    {
+      "id": "seed-43",
+      "models": [
+        "gpt-6-luna",
+        "gpt-4.1-nano",
+        "gemini-2.5-flash-lite",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash",
+        "nemotron-lightning-3p5-30b-a3b"
+      ],
+      "seeds": [43],
+      "orderSeed": 20261003,
+      "maxEstimatedUSD": 1.5
+    },
+    {
+      "id": "seed-44",
+      "models": [
+        "gpt-6-luna",
+        "gpt-4.1-nano",
+        "gemini-2.5-flash-lite",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash",
+        "nemotron-lightning-3p5-30b-a3b"
+      ],
+      "seeds": [44],
+      "orderSeed": 20261004,
+      "maxEstimatedUSD": 1.5
+    },
+    {
+      "id": "seed-45",
+      "models": [
+        "gpt-6-luna",
+        "gpt-4.1-nano",
+        "gemini-2.5-flash-lite",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash",
+        "nemotron-lightning-3p5-30b-a3b"
+      ],
+      "seeds": [45],
+      "orderSeed": 20261005,
+      "maxEstimatedUSD": 1.5
+    }
+  ]
+}

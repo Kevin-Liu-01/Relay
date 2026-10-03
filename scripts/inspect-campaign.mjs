@@ -4,12 +4,16 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { buildAudit } from '../runner/audit.mjs';
-const root = 'evidence/campaigns/onsite-2026-10-01';
+const campaign = process.argv[3] ?? 'onsite-2026-10-01';
+if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(campaign)) throw Error('Invalid campaign slug.');
+const root = `evidence/campaigns/${campaign}`;
 const summary = JSON.parse(readFileSync(join(root, 'summary.json')));
 const phase = summary.phases.find((p) => p.id === process.argv[2]);
-if (!phase) throw Error('Specify a published phase: pilot, workflows or pixels.');
-const archive = summary.archives.find((a) => a.phase === phase.id);
-if (!/^[a-z]+\.tar\.gz$/.test(archive.path) || !/^[a-f0-9-]{36}$/.test(phase.runId))
+if (!phase) throw Error('Specify a published phase and optional campaign slug.');
+const archive = summary.archives.find(
+  (a) => a.phase === phase.id || a.path === `${phase.id}.tar.gz`,
+);
+if (!archive || !/^[a-z0-9-]+\.tar\.gz$/.test(archive.path) || !/^[a-f0-9-]{36}$/.test(phase.runId))
   throw Error('Invalid archive identity.');
 const path = join(root, archive.path);
 if (createHash('sha256').update(readFileSync(path)).digest('hex') !== archive.sha256)

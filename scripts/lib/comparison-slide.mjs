@@ -1,0 +1,64 @@
+export const escapeHTML = (value) =>
+  String(value ?? '').replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
+  );
+const attr = (value) => (value == null ? '' : escapeHTML(value));
+const cell = (value, display) => `<td data-sort="${attr(value)}">${display}</td>`;
+const names = {
+  'gpt-6-luna': ['GPT-6 Luna', 'OpenAI'],
+  'gpt-4.1-nano': ['GPT-4.1 nano', 'OpenAI'],
+  'gemini-2.5-flash-lite': ['Gemini 2.5 Flash-Lite', 'Google'],
+  'deepseek-v4.1-flash': ['DeepSeek V4.1 Flash', 'DeepSeek'],
+  'glm-5p3-flash': ['GLM 5.3 Flash', 'Zhipu'],
+  'nemotron-lightning-3p5-30b-a3b': ['Nemotron Lightning', 'NVIDIA · 3.5 30B A3B'],
+};
+const heading = (name, type = 'number', direction = 'ascending') =>
+  `<th scope="col" aria-sort="none"><button type="button" data-type="${type}" data-direction="${direction}">${name}<span class="sort-arrow" aria-hidden="true">↕</span></button></th>`;
+
+export function comparisonSlide(summary, logos = {}) {
+  const rows = summary.byModel
+    .map((m) => {
+      const [name, family] = names[m.model] ?? [m.model, 'Model route'];
+      const trials = summary.rows.filter((r) => r.model === m.model);
+      const strip = trials
+        .map(
+          (r) =>
+            `<span class="trial-cell ${r.outcome}" title="${escapeHTML(`${r.task} · seed ${r.seed} · ${r.outcome}`)}"></span>`,
+        )
+        .join('');
+      return `<tr data-model="${escapeHTML(m.model)}">
+      <th scope="row" data-sort="${escapeHTML(name)}"><span class="model-identity">${logos[m.model] ?? ''}<span>${escapeHTML(name)}<small>${escapeHTML(family)}</small></span></span></th>
+      ${cell(m.attempted, `<span class="trial-count">${m.attempted} / ${m.planned}</span><span class="trial-strip" role="img" aria-label="${m.passed} passed, ${m.incomplete} incomplete, ${m.blocked} blocked, ${m.unattempted} unattempted">${strip}</span>`)}
+      ${cell(m.successRate, `<strong class="pass-count">${m.attempted ? `${m.passed} / ${m.attempted}` : '—'}</strong><small>${m.successRate == null ? 'Not run' : `${Math.round(m.successRate * 100)}%`}</small>`)}
+      ${cell(m.incomplete, m.incomplete)}${cell(m.blocked, m.blocked)}
+      ${cell(m.medianSeconds, m.medianSeconds == null ? '—' : `${m.medianSeconds.toFixed(1)}s`)}
+      ${cell(m.usageKnown ? m.estimatedUSD : null, m.estimatedUSD == null ? '—' : m.usageKnown ? `$${m.estimatedUSD.toFixed(3)}` : `Unknown<small>$${m.estimatedUSD.toFixed(3)} incl. reservation</small>`)}
+    </tr>`;
+    })
+    .join('');
+  const trials = summary.rows
+    .map(
+      (r) => `<tr>
+    <th scope="row" data-sort="${escapeHTML(r.model)}">${escapeHTML(names[r.model]?.[0] ?? r.model)}</th>
+    ${cell(r.task, escapeHTML(r.task))}${cell(r.seed, r.seed)}
+    ${cell(r.outcome, `<span class="outcome-label" data-outcome="${r.outcome}">${escapeHTML(r.outcome)}</span>`)}
+    ${cell(r.actionAttempts, r.actionAttempts)}
+    ${cell(r.durationMs, r.durationMs == null ? '—' : `${(r.durationMs / 1000).toFixed(1)}s`)}
+    ${cell(r.usageKnown ? r.estimatedUSD : null, r.estimatedUSD == null ? '—' : r.usageKnown ? `$${r.estimatedUSD.toFixed(4)}` : `Unknown ($${r.estimatedUSD.toFixed(4)} reserved)`)}
+    <td>${escapeHTML(r.error || r.failedChecks.join(', ') || (r.outcome === 'passed' ? 'All state checks passed' : 'Not launched'))}</td>
+  </tr>`,
+    )
+    .join('');
+  return {
+    COMPARISON_TABLE: `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable model results"><table class="comparison-table sortable" id="model-results"><caption class="sr-only">Six-model development comparison. Activate column headers to sort. Missing values always sort last.</caption><thead><tr>${heading('Model', 'text')}${heading('Trials')}${heading('Passed', 'number', 'descending')}${heading('Incomplete')}${heading('Blocked')}${heading('Median time')}${heading('Est. cost')}</tr></thead><tbody>${rows}</tbody></table></div>`,
+    COMPARISON_TRIALS: `<div class="table-scroll"><table class="trials-table sortable" id="trial-results"><caption class="sr-only">Every planned trial, including unattempted cells.</caption><thead><tr>${heading('Model', 'text')}${heading('Task', 'text')}${heading('Seed')}${heading('Outcome', 'text')}${heading('Actions')}${heading('Time')}${heading('Est. cost')}<th scope="col">Checks / stop reason</th></tr></thead><tbody>${trials}</tbody></table></div>`,
+    COMPARISON_COUNTS: `${summary.totals.attempted} / ${summary.totals.planned} attempted · ${summary.totals.passed} passed · ${summary.totals.blocked} blocked`,
+    COMPARISON_STATUS:
+      summary.status === 'completed'
+        ? '20 trials per model completed'
+        : summary.status === 'stopped'
+          ? 'Campaign stopped · incomplete coverage'
+          : 'Planned: 20 trials per model · collection incomplete',
+  };
+}

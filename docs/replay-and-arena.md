@@ -56,6 +56,12 @@ and its Content Security Policy forbids network connections. Parent messages mus
 come from the same-origin parent window. The public console remains unframeable;
 only the replay entry permits same-origin framing.
 
+The iframe's application-ready handshake resends the most recent seek snapshot,
+even if the native load event fired first. This closes the early-load delivery
+race without polling, replaying actions or making model calls. A deterministic
+browser test drops startup messages, seeks to the final recorded state and then
+releases the receiver; the final state must arrive after readiness.
+
 New browser runs also hash-chain observer-only `pointer` events: trusted move,
 down/up and wheel coordinates, viewport and host receipt time. Move samples are
 coalesced to about 31 Hz with the trailing sample retained; clicks flush pending

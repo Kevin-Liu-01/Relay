@@ -1,0 +1,3607 @@
+{
+  "schemaVersion": 1,
+  "auditVersion": 2,
+  "id": "1235edb7-644f-4f9c-b496-6e937b0786b6",
+  "launcher": "cli",
+  "operatorVisuals": true,
+  "status": "stopped",
+  "createdAt": "2026-10-03T04:47:24.225Z",
+  "evidenceKind": "live-model-evaluation",
+  "protocolVersion": "relay-interface-v1",
+  "config": {
+    "provider": "ramp",
+    "tasks": [
+      "channel-topic",
+      "thread-reply",
+      "edit-message",
+      "incident-triage",
+      "decision-record"
+    ],
+    "interfaces": [
+      "a11y"
+    ],
+    "repeats": 1,
+    "guides": [
+      false
+    ],
+    "histories": [
+      "recent-4"
+    ],
+    "maxSteps": 16,
+    "maxRequests": 480,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 120,
+    "runSeconds": 3600,
+    "seeds": [
+      42
+    ],
+    "orderSeed": 20261002,
+    "maxEstimatedUSD": 1.5,
+    "models": [
+      {
+        "id": "gpt-6-luna",
+        "rates": {
+          "input": 0.1,
+          "output": 0.5
+        }
+      },
+      {
+        "id": "gpt-4.1-nano",
+        "rates": {
+          "input": 0.1,
+          "output": 0.4
+        }
+      },
+      {
+        "id": "gemini-2.5-flash-lite",
+        "rates": {
+          "input": 0.1,
+          "output": 0.4
+        }
+      },
+      {
+        "id": "deepseek-v4.1-flash",
+        "rates": {
+          "input": 0.3,
+          "output": 1.2
+        }
+      },
+      {
+        "id": "glm-5p3-flash",
+        "rates": {
+          "input": 0.15,
+          "output": 0.5
+        }
+      },
+      {
+        "id": "nemotron-lightning-3p5-30b-a3b",
+        "rates": {
+          "input": 0.05,
+          "output": 0.2
+        }
+      }
+    ]
+  },
+  "configHash": "c914b80c0c3cd83e7265cf317e90e851d5f67892480d3c59df5e53ed3e6183e5",
+  "sourceHash": "92119a6038a55c198675d5f6d03f5ed2c087623d853552318d73e8a4c4363e35",
+  "guideHash": "f2e85e83e1c21c04efa2be31b22a23da9f0d2afa2f862774e8c9c5f251cb1422",
+  "catalog": {
+    "at": "2026-10-03T04:47:24.405Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+    "models": [
+      {
+        "id": "gpt-6.1-sol",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-sonnet-5-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "global.anthropic.claude-sonnet-5-5",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-6-luna",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.1,
+          "output": 0.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-6-sol",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-opus-5-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 4,
+          "output": 20
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "global.anthropic.claude-opus-5-5",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 4,
+          "output": 20
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-6-luna",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 0.11,
+          "output": 0.55
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-6-sol",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 2.2,
+          "output": 11
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.7",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "jev-1.13.0",
+        "owned_by": "typesafe",
+        "catalogRates": null,
+        "unavailableReason": "This model needs a different API. For Jev, connect TypeSafe."
+      },
+      {
+        "id": "deepseek-v4.1-flash",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.3,
+          "output": 1.2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-6-astra",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 11,
+          "output": 55
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-6-astra",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 10,
+          "output": 50
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.8-flash",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.75,
+          "output": 3.75
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-fable-5-1",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 10,
+          "output": 50
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "glm-5p3",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 1.4,
+          "output": 4.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "glm-5p3-flash",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.15,
+          "output": 0.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.7-flash",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.75,
+          "output": 3.75
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "deepseek-v4-pro-0813",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 1.32,
+          "output": 3.96
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.6",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "nemotron-lightning-3p5-30b-a3b",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.05,
+          "output": 0.2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "qwen3p8-max",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-opus-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 5,
+          "output": 25
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.anthropic.claude-opus-5",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 5.5,
+          "output": 27.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.5-flash-lite",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.3,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.6-flash",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.75,
+          "output": 3.75
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "kimi-k3",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 3,
+          "output": 15
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "kimi-k3-fast",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 4.5,
+          "output": 22.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-5.6-luna",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 0.22,
+          "output": 1.32
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-5.6-sol",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 4.4,
+          "output": 22
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.openai.gpt-5.6-terra",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 2.2,
+          "output": 13.2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "deepseek-v4-flash-0731",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.13,
+          "output": 0.26
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.anthropic.claude-sonnet-5",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 2.2,
+          "output": 11
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-sonnet-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.5",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.6-luna",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.2,
+          "output": 1.2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.6-terra",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 12
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.6-sol",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 4,
+          "output": 20
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "glm-5p2-fast",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 2.1,
+          "output": 6.6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "glm-5p2",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 1.4,
+          "output": 4.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "minimax-m3",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.3,
+          "output": 1.2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-fable-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 10,
+          "output": 50
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "nemotron-3-ultra",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.6,
+          "output": 2.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "nemotron-3-ultra-nvfp4",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.6,
+          "output": 2.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-opus-4-8",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 5,
+          "output": 25
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.anthropic.claude-opus-4-8",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 5.5,
+          "output": 27.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.5-flash",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 1.5,
+          "output": 9
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.1-flash-lite",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.25,
+          "output": 1.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "deepseek-v4-flash",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.14,
+          "output": 0.28
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.5-pro",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 30,
+          "output": 180
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.5",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 5,
+          "output": 30
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.3",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "us.anthropic.claude-opus-4-7",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 5.5,
+          "output": 27.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-build-0.1",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 1,
+          "output": 2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-opus-4-7",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 5,
+          "output": 25
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.4-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.75,
+          "output": 4.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.4-nano",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.2,
+          "output": 1.25
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.20-0309-reasoning",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.20-0309-non-reasoning",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "grok-4.20-multi-agent-0309",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.4",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2.5,
+          "output": 15
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.4-pro",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 30,
+          "output": 180
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-sonnet-4-6",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 3,
+          "output": 15
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.3-codex",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.75,
+          "output": 14
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-opus-4-6",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 5,
+          "output": 25
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.2-pro",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 21,
+          "output": 168
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.2",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.75,
+          "output": 14
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5.1",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "owned_by": "bedrock",
+        "catalogRates": {
+          "input": 1,
+          "output": 5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5-pro",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 15,
+          "output": 120
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5-nano",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.05,
+          "output": 0.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.25,
+          "output": 2
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-5",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-oss-120b",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 0.15,
+          "output": 0.6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-2.5-flash-lite",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-2.5-flash",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.3,
+          "output": 2.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-2.5-pro",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 1.25,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "o3-pro",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 20,
+          "output": 80
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4.1-nano",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4.1-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.4,
+          "output": 1.6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4.1",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 8
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "o4-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.1,
+          "output": 4.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "o3",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 8
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "o3-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 1.1,
+          "output": 4.4
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "o1",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 15,
+          "output": 60
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4o-mini",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.15,
+          "output": 0.6
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4o",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2.5,
+          "output": 10
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4-turbo",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 10,
+          "output": 30
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-4",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 30,
+          "output": 60
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gpt-3.5-turbo",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 0.5,
+          "output": 1.5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-haiku-4-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 1,
+          "output": 5
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "claude-sonnet-4-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 3,
+          "output": 15
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3-flash-preview",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 0.5,
+          "output": 3
+        },
+        "unavailableReason": null
+      },
+      {
+        "id": "gemini-3.1-pro-preview",
+        "owned_by": "vertex",
+        "catalogRates": {
+          "input": 2,
+          "output": 12
+        },
+        "unavailableReason": null
+      }
+    ]
+  },
+  "budget": {
+    "requests": 25,
+    "inputTokens": 319911,
+    "outputTokens": 619,
+    "estimatedUSD": 0.042986049999999984,
+    "usageKnown": false
+  },
+  "episodes": [
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "glm-5p3-flash",
+          "rates": {
+            "input": 0.15,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-001"
+      },
+      "status": "completed",
+      "steps": 4,
+      "startedAt": "2026-10-03T04:47:24.408Z",
+      "estimatedUSD": 0.005372650000000001,
+      "usageKnown": true,
+      "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+      "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "398a7a6e44a66c56c14b3c7a7d6629bafb82e5db786a576f7505fbc112d0b154"
+      },
+      "operatorScreenshot": "visual-003.png",
+      "currentObservation": {
+        "interface": "a11y",
+        "scope": "rendered-document-tree; viewport action refs",
+        "tree": "- banner:\n  - button \"Back to project\"\n  - button \"Go to general\"\n  - button \"Open quick switcher\"\n  - search:\n    - textbox \"Search Northstar\"\n    - text: ⌘ G\n  - text: Local workspace\n  - button \"Keyboard shortcuts and help\"\n- navigation \"Workspace navigation\":\n  - button \"Northstar home\"\n  - button \"Home\"\n  - button \"DMs\"\n  - button \"Threads\"\n  - button \"Later\"\n  - button \"Switch conversation\"\n- complementary:\n  - button \"Northstar\"\n  - text: A little space for good work\n  - button \"Threads\"\n  - button \"Saved for later\"\n  - text: Channels\n  - button \"Find a channel\"\n  - button \"Channel general\": general\n  - button \"Channel proj-meridian\": proj-meridian\n  - button \"Channel engineering\": engineering\n  - button \"Channel design\": design\n  - button \"Channel incidents\": incidents\n  - button \"Channel random\": random\n  - text: Direct messages\n  - button \"Find a person\"\n  - button \"Direct message Maya Chen\": Maya Chen\n  - button \"Direct message Jordan Lee\": Jordan Lee\n  - button \"Direct message Sam Rivera\": Sam Rivera\n  - button \"Direct message Priya Shah\": Priya Shah\n  - button \"Direct message Leo Park\": Leo Park\n  - button \"Jump to a conversation K\"\n  - strong: Thoughtful work, together.\n  - text: Your team's shared space.\n- main:\n  - heading \"proj-meridian\" [level=1]\n  - button \"Launch review · 15:00 UTC · Bring the final checklist\"\n  - button \"Channel details, 5 members\"\n  - text: \"5\"\n  - button \"Edit channel topic\"\n  - button \"Messages\" [pressed]\n  - button \"Pins 0\"\n  - button \"Channel details\": Details\n  - 'heading \"This is #proj-meridian\" [level=2]'\n  - paragraph: Our next big thing, built together.\n  - text: Monday, September 28\n  - 'article \"Message from Priya Shah: Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineer\"':\n    - button \"Priya Shah\"\n    - time: 9:15 AM\n    - paragraph: \"Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.\"\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi\"':\n    - button \"Jordan Lee\"\n    - time: 9:18 AM\n    - paragraph: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.\n    - button \"✨ reaction, 2, selected\" [pressed]: ✨ 2\n    - button \"Add reaction to Jordan Lee's message\"\n    - button \"Open 2 replies to Jordan Lee's message\":\n      - strong: 2 replies\n      - text: Last reply 9:24 AM\n    - button \"React to Jordan Lee's message\"\n    - button \"Reply to Jordan Lee's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Jordan Lee's message\"\n  - 'article \"Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.\"':\n    - button \"Alex Morgan\"\n    - time: 9:27 AM\n    - text: you\n    - paragraph: Launch review is at 14:00 UTC. Please bring the final checklist.\n    - button \"React to Alex Morgan's message\"\n    - button \"Reply to Alex Morgan's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Alex Morgan's message\"\n  - 'article \"Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.\"':\n    - button \"Priya Shah\"\n    - time: 9:30 AM\n    - paragraph: The customer preview remains at 14:00 UTC. That is separate from the launch review.\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi\"':\n    - button \"Maya Chen\"\n    - time: 9:33 AM\n    - paragraph: \"MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.\"\n    - button \"👀 reaction, 1\": 👀 1\n    - button \"Add reaction to Maya Chen's message\"\n    - button \"Open 1 replies to Maya Chen's message\":\n      - strong: 1 reply\n      - text: Last reply 9:36 AM\n    - button \"React to Maya Chen's message\"\n    - button \"Reply to Maya Chen's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Maya Chen's message\"\n  - 'article \"Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT\"':\n    - button \"Sam Rivera\"\n    - time: 9:39 AM\n    - paragraph: \"Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UTC. Please use these details for today’s handoff.\"\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details\"':\n    - button \"Sam Rivera\"\n    - time: 9:42 AM\n    - paragraph: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\"':\n    - button \"Priya Shah\"\n    - time: 9:45 AM\n    - paragraph: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'form \"Message #proj-meridian\"':\n    - button \"Bold text\"\n    - button \"Italic text\"\n    - button \"Insert code\"\n    - button \"Insert list\"\n    - 'textbox \"Message #proj-meridian\"'\n    - button \"Add smile emoji\"\n    - button \"Mention someone\"\n    - text: Shift + Enter for a new line\n    - button \"Send message\" [disabled]\n  - text: You're all caught up\n  - strong: Enter\n  - text: to send\n- status: Channel topic updated",
+        "elements": [
+          {
+            "ref": "e1",
+            "role": "button",
+            "name": "Back to project",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e2",
+            "role": "button",
+            "name": "Go to general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e3",
+            "role": "button",
+            "name": "Open quick switcher",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e4",
+            "role": "textbox",
+            "name": "Search Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e5",
+            "role": "button",
+            "name": "Keyboard shortcuts and help",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e6",
+            "role": "button",
+            "name": "Northstar home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e7",
+            "role": "button",
+            "name": "Home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e8",
+            "role": "button",
+            "name": "DMs",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e9",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e10",
+            "role": "button",
+            "name": "Later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e11",
+            "role": "button",
+            "name": "Switch conversation",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e12",
+            "role": "button",
+            "name": "Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e13",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e14",
+            "role": "button",
+            "name": "Saved for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e15",
+            "role": "button",
+            "name": "Find a channel",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e16",
+            "role": "button",
+            "name": "Channel general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e17",
+            "role": "button",
+            "name": "Channel proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e18",
+            "role": "button",
+            "name": "Channel engineering",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e19",
+            "role": "button",
+            "name": "Channel design",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e20",
+            "role": "button",
+            "name": "Channel incidents",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e21",
+            "role": "button",
+            "name": "Channel random",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e22",
+            "role": "button",
+            "name": "Find a person",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e23",
+            "role": "button",
+            "name": "Direct message Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e24",
+            "role": "button",
+            "name": "Direct message Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e25",
+            "role": "button",
+            "name": "Direct message Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e26",
+            "role": "button",
+            "name": "Direct message Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e27",
+            "role": "button",
+            "name": "Direct message Leo Park",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e28",
+            "role": "button",
+            "name": "Jump to a conversation\nK",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e29",
+            "role": "button",
+            "name": "Launch review · 15:00 UTC · Bring the final checklist",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e30",
+            "role": "button",
+            "name": "Channel details, 5 members",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e31",
+            "role": "button",
+            "name": "Edit channel topic",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e32",
+            "role": "button",
+            "name": "Messages",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e33",
+            "role": "button",
+            "name": "Pins\n0",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e34",
+            "role": "button",
+            "name": "Channel details",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e35",
+            "role": "article",
+            "name": "Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi",
+            "disabled": false
+          },
+          {
+            "ref": "e36",
+            "role": "button",
+            "name": "Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e37",
+            "role": "button",
+            "name": "✨ reaction, 2, selected",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e38",
+            "role": "button",
+            "name": "Add reaction to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e39",
+            "role": "button",
+            "name": "Open 2 replies to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e40",
+            "role": "article",
+            "name": "Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.",
+            "disabled": false
+          },
+          {
+            "ref": "e41",
+            "role": "button",
+            "name": "Alex Morgan",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e42",
+            "role": "article",
+            "name": "Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+            "disabled": false
+          },
+          {
+            "ref": "e43",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e44",
+            "role": "article",
+            "name": "Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi",
+            "disabled": false
+          },
+          {
+            "ref": "e45",
+            "role": "button",
+            "name": "Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e46",
+            "role": "button",
+            "name": "👀 reaction, 1",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e47",
+            "role": "button",
+            "name": "Add reaction to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e48",
+            "role": "button",
+            "name": "Open 1 replies to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e49",
+            "role": "button",
+            "name": "React to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e50",
+            "role": "button",
+            "name": "Reply to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e51",
+            "role": "button",
+            "name": "Save message for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e52",
+            "role": "button",
+            "name": "More actions for Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e53",
+            "role": "article",
+            "name": "Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT",
+            "disabled": false
+          },
+          {
+            "ref": "e54",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e55",
+            "role": "article",
+            "name": "Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details",
+            "disabled": false
+          },
+          {
+            "ref": "e56",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e57",
+            "role": "article",
+            "name": "Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+            "disabled": false
+          },
+          {
+            "ref": "e58",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e59",
+            "role": "button",
+            "name": "Bold text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e60",
+            "role": "button",
+            "name": "Italic text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e61",
+            "role": "button",
+            "name": "Insert code",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e62",
+            "role": "button",
+            "name": "Insert list",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e63",
+            "role": "textbox",
+            "name": "Message #proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e64",
+            "role": "button",
+            "name": "Add smile emoji",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e65",
+            "role": "button",
+            "name": "Mention someone",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e66",
+            "role": "button",
+            "name": "Send message",
+            "value": "",
+            "disabled": true
+          }
+        ]
+      },
+      "currentStep": 4,
+      "inFlight": false,
+      "lastAction": {
+        "type": "finish"
+      },
+      "lastError": null,
+      "evaluation": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "success": true,
+        "reward": 1,
+        "checks": [
+          {
+            "name": "topic_correct",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_state_changes",
+            "passed": true
+          }
+        ],
+        "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+        "finalHash": "31733a52c04311c4c8baf6ea3a7f827bc3b43977a5a7dbdfb05db2b9c0cc075d",
+        "graderVersion": "state-contract-v1",
+        "revision": 1,
+        "sessionId": "e1dde376-eda7-482c-8283-9fc4282e614b"
+      },
+      "finalScreenshot": "final.png",
+      "durationMs": 7901,
+      "finishedAt": "2026-10-03T04:47:32.309Z",
+      "traceRoot": "640761d7ee27a91bacc16dd7d0ce371beb690e1e47a292fa8bd84e7bfceec451"
+    },
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "rates": {
+            "input": 0.3,
+            "output": 1.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-002"
+      },
+      "status": "completed",
+      "steps": 4,
+      "startedAt": "2026-10-03T04:47:32.311Z",
+      "estimatedUSD": 0.011088,
+      "usageKnown": true,
+      "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+      "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "398a7a6e44a66c56c14b3c7a7d6629bafb82e5db786a576f7505fbc112d0b154"
+      },
+      "operatorScreenshot": "visual-003.png",
+      "currentObservation": {
+        "interface": "a11y",
+        "scope": "rendered-document-tree; viewport action refs",
+        "tree": "- banner:\n  - button \"Back to project\"\n  - button \"Go to general\"\n  - button \"Open quick switcher\"\n  - search:\n    - textbox \"Search Northstar\"\n    - text: ⌘ G\n  - text: Local workspace\n  - button \"Keyboard shortcuts and help\"\n- navigation \"Workspace navigation\":\n  - button \"Northstar home\"\n  - button \"Home\"\n  - button \"DMs\"\n  - button \"Threads\"\n  - button \"Later\"\n  - button \"Switch conversation\"\n- complementary:\n  - button \"Northstar\"\n  - text: A little space for good work\n  - button \"Threads\"\n  - button \"Saved for later\"\n  - text: Channels\n  - button \"Find a channel\"\n  - button \"Channel general\": general\n  - button \"Channel proj-meridian\": proj-meridian\n  - button \"Channel engineering\": engineering\n  - button \"Channel design\": design\n  - button \"Channel incidents\": incidents\n  - button \"Channel random\": random\n  - text: Direct messages\n  - button \"Find a person\"\n  - button \"Direct message Maya Chen\": Maya Chen\n  - button \"Direct message Jordan Lee\": Jordan Lee\n  - button \"Direct message Sam Rivera\": Sam Rivera\n  - button \"Direct message Priya Shah\": Priya Shah\n  - button \"Direct message Leo Park\": Leo Park\n  - button \"Jump to a conversation K\"\n  - strong: Thoughtful work, together.\n  - text: Your team's shared space.\n- main:\n  - heading \"proj-meridian\" [level=1]\n  - button \"Launch review · 15:00 UTC · Bring the final checklist\"\n  - button \"Channel details, 5 members\"\n  - text: \"5\"\n  - button \"Edit channel topic\"\n  - button \"Messages\" [pressed]\n  - button \"Pins 0\"\n  - button \"Channel details\": Details\n  - 'heading \"This is #proj-meridian\" [level=2]'\n  - paragraph: Our next big thing, built together.\n  - text: Monday, September 28\n  - 'article \"Message from Priya Shah: Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineer\"':\n    - button \"Priya Shah\"\n    - time: 9:15 AM\n    - paragraph: \"Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.\"\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi\"':\n    - button \"Jordan Lee\"\n    - time: 9:18 AM\n    - paragraph: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.\n    - button \"✨ reaction, 2, selected\" [pressed]: ✨ 2\n    - button \"Add reaction to Jordan Lee's message\"\n    - button \"Open 2 replies to Jordan Lee's message\":\n      - strong: 2 replies\n      - text: Last reply 9:24 AM\n    - button \"React to Jordan Lee's message\"\n    - button \"Reply to Jordan Lee's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Jordan Lee's message\"\n  - 'article \"Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.\"':\n    - button \"Alex Morgan\"\n    - time: 9:27 AM\n    - text: you\n    - paragraph: Launch review is at 14:00 UTC. Please bring the final checklist.\n    - button \"React to Alex Morgan's message\"\n    - button \"Reply to Alex Morgan's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Alex Morgan's message\"\n  - 'article \"Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.\"':\n    - button \"Priya Shah\"\n    - time: 9:30 AM\n    - paragraph: The customer preview remains at 14:00 UTC. That is separate from the launch review.\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi\"':\n    - button \"Maya Chen\"\n    - time: 9:33 AM\n    - paragraph: \"MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.\"\n    - button \"👀 reaction, 1\": 👀 1\n    - button \"Add reaction to Maya Chen's message\"\n    - button \"Open 1 replies to Maya Chen's message\":\n      - strong: 1 reply\n      - text: Last reply 9:36 AM\n    - button \"React to Maya Chen's message\"\n    - button \"Reply to Maya Chen's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Maya Chen's message\"\n  - 'article \"Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT\"':\n    - button \"Sam Rivera\"\n    - time: 9:39 AM\n    - paragraph: \"Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UTC. Please use these details for today’s handoff.\"\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details\"':\n    - button \"Sam Rivera\"\n    - time: 9:42 AM\n    - paragraph: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\"':\n    - button \"Priya Shah\"\n    - time: 9:45 AM\n    - paragraph: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'form \"Message #proj-meridian\"':\n    - button \"Bold text\"\n    - button \"Italic text\"\n    - button \"Insert code\"\n    - button \"Insert list\"\n    - 'textbox \"Message #proj-meridian\"'\n    - button \"Add smile emoji\"\n    - button \"Mention someone\"\n    - text: Shift + Enter for a new line\n    - button \"Send message\" [disabled]\n  - text: You're all caught up\n  - strong: Enter\n  - text: to send\n- status: Channel topic updated",
+        "elements": [
+          {
+            "ref": "e1",
+            "role": "button",
+            "name": "Back to project",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e2",
+            "role": "button",
+            "name": "Go to general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e3",
+            "role": "button",
+            "name": "Open quick switcher",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e4",
+            "role": "textbox",
+            "name": "Search Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e5",
+            "role": "button",
+            "name": "Keyboard shortcuts and help",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e6",
+            "role": "button",
+            "name": "Northstar home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e7",
+            "role": "button",
+            "name": "Home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e8",
+            "role": "button",
+            "name": "DMs",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e9",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e10",
+            "role": "button",
+            "name": "Later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e11",
+            "role": "button",
+            "name": "Switch conversation",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e12",
+            "role": "button",
+            "name": "Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e13",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e14",
+            "role": "button",
+            "name": "Saved for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e15",
+            "role": "button",
+            "name": "Find a channel",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e16",
+            "role": "button",
+            "name": "Channel general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e17",
+            "role": "button",
+            "name": "Channel proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e18",
+            "role": "button",
+            "name": "Channel engineering",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e19",
+            "role": "button",
+            "name": "Channel design",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e20",
+            "role": "button",
+            "name": "Channel incidents",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e21",
+            "role": "button",
+            "name": "Channel random",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e22",
+            "role": "button",
+            "name": "Find a person",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e23",
+            "role": "button",
+            "name": "Direct message Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e24",
+            "role": "button",
+            "name": "Direct message Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e25",
+            "role": "button",
+            "name": "Direct message Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e26",
+            "role": "button",
+            "name": "Direct message Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e27",
+            "role": "button",
+            "name": "Direct message Leo Park",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e28",
+            "role": "button",
+            "name": "Jump to a conversation\nK",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e29",
+            "role": "button",
+            "name": "Launch review · 15:00 UTC · Bring the final checklist",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e30",
+            "role": "button",
+            "name": "Channel details, 5 members",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e31",
+            "role": "button",
+            "name": "Edit channel topic",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e32",
+            "role": "button",
+            "name": "Messages",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e33",
+            "role": "button",
+            "name": "Pins\n0",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e34",
+            "role": "button",
+            "name": "Channel details",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e35",
+            "role": "article",
+            "name": "Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi",
+            "disabled": false
+          },
+          {
+            "ref": "e36",
+            "role": "button",
+            "name": "Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e37",
+            "role": "button",
+            "name": "✨ reaction, 2, selected",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e38",
+            "role": "button",
+            "name": "Add reaction to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e39",
+            "role": "button",
+            "name": "Open 2 replies to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e40",
+            "role": "article",
+            "name": "Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.",
+            "disabled": false
+          },
+          {
+            "ref": "e41",
+            "role": "button",
+            "name": "Alex Morgan",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e42",
+            "role": "article",
+            "name": "Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+            "disabled": false
+          },
+          {
+            "ref": "e43",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e44",
+            "role": "article",
+            "name": "Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi",
+            "disabled": false
+          },
+          {
+            "ref": "e45",
+            "role": "button",
+            "name": "Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e46",
+            "role": "button",
+            "name": "👀 reaction, 1",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e47",
+            "role": "button",
+            "name": "Add reaction to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e48",
+            "role": "button",
+            "name": "Open 1 replies to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e49",
+            "role": "button",
+            "name": "React to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e50",
+            "role": "button",
+            "name": "Reply to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e51",
+            "role": "button",
+            "name": "Save message for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e52",
+            "role": "button",
+            "name": "More actions for Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e53",
+            "role": "article",
+            "name": "Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT",
+            "disabled": false
+          },
+          {
+            "ref": "e54",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e55",
+            "role": "article",
+            "name": "Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details",
+            "disabled": false
+          },
+          {
+            "ref": "e56",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e57",
+            "role": "article",
+            "name": "Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+            "disabled": false
+          },
+          {
+            "ref": "e58",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e59",
+            "role": "button",
+            "name": "Bold text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e60",
+            "role": "button",
+            "name": "Italic text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e61",
+            "role": "button",
+            "name": "Insert code",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e62",
+            "role": "button",
+            "name": "Insert list",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e63",
+            "role": "textbox",
+            "name": "Message #proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e64",
+            "role": "button",
+            "name": "Add smile emoji",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e65",
+            "role": "button",
+            "name": "Mention someone",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e66",
+            "role": "button",
+            "name": "Send message",
+            "value": "",
+            "disabled": true
+          }
+        ]
+      },
+      "currentStep": 4,
+      "inFlight": false,
+      "lastAction": {
+        "type": "finish"
+      },
+      "lastError": null,
+      "evaluation": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "success": true,
+        "reward": 1,
+        "checks": [
+          {
+            "name": "topic_correct",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_state_changes",
+            "passed": true
+          }
+        ],
+        "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+        "finalHash": "31733a52c04311c4c8baf6ea3a7f827bc3b43977a5a7dbdfb05db2b9c0cc075d",
+        "graderVersion": "state-contract-v1",
+        "revision": 1,
+        "sessionId": "c7ec3464-6911-4fbb-9c5a-5ebb9421d877"
+      },
+      "finalScreenshot": "final.png",
+      "durationMs": 7220,
+      "finishedAt": "2026-10-03T04:47:39.531Z",
+      "traceRoot": "a916b657ad24ae907a802f00d006e08380de4f5a62777bdc0af7646b071c0823"
+    },
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-4.1-nano",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-003"
+      },
+      "status": "step_limit",
+      "steps": 16,
+      "startedAt": "2026-10-03T04:47:39.541Z",
+      "estimatedUSD": 0.024940799999999985,
+      "usageKnown": true,
+      "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+      "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "398a7a6e44a66c56c14b3c7a7d6629bafb82e5db786a576f7505fbc112d0b154"
+      },
+      "operatorScreenshot": "visual-015.png",
+      "currentObservation": {
+        "interface": "a11y",
+        "scope": "rendered-document-tree; viewport action refs",
+        "tree": "- banner:\n  - button \"Back to project\"\n  - button \"Go to general\"\n  - button \"Open quick switcher\"\n  - search:\n    - textbox \"Search Northstar\"\n    - text: ⌘ G\n  - text: Local workspace\n  - button \"Keyboard shortcuts and help\"\n- navigation \"Workspace navigation\":\n  - button \"Northstar home\"\n  - button \"Home\"\n  - button \"DMs\"\n  - button \"Threads\"\n  - button \"Later\"\n  - button \"Switch conversation\"\n- complementary:\n  - button \"Northstar\"\n  - text: A little space for good work\n  - button \"Threads\"\n  - button \"Saved for later\"\n  - text: Channels\n  - button \"Find a channel\"\n  - button \"Channel general\": general\n  - button \"Channel proj-meridian\": proj-meridian\n  - button \"Channel engineering\": engineering\n  - button \"Channel design\": design\n  - button \"Channel incidents\": incidents\n  - button \"Channel random\": random\n  - text: Direct messages\n  - button \"Find a person\"\n  - button \"Direct message Maya Chen\": Maya Chen\n  - button \"Direct message Jordan Lee\": Jordan Lee\n  - button \"Direct message Sam Rivera\": Sam Rivera\n  - button \"Direct message Priya Shah\": Priya Shah\n  - button \"Direct message Leo Park\": Leo Park\n  - button \"Jump to a conversation K\"\n  - strong: Thoughtful work, together.\n  - text: Your team's shared space.\n- main:\n  - heading \"proj-meridian\" [level=1]\n  - button \"Building a calmer way to work. Launch planning and product decisions.\"\n  - button \"Channel details, 5 members\"\n  - text: \"5\"\n  - button \"Edit channel topic\"\n  - button \"Messages\" [pressed]\n  - button \"Pins 0\"\n  - button \"Channel details\": Details\n  - 'heading \"This is #proj-meridian\" [level=2]'\n  - paragraph: Our next big thing, built together.\n  - text: Monday, September 28\n  - 'article \"Message from Priya Shah: Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineer\"':\n    - button \"Priya Shah\"\n    - time: 9:15 AM\n    - paragraph: \"Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.\"\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi\"':\n    - button \"Jordan Lee\"\n    - time: 9:18 AM\n    - paragraph: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.\n    - button \"✨ reaction, 2, selected\" [pressed]: ✨ 2\n    - button \"Add reaction to Jordan Lee's message\"\n    - button \"Open 2 replies to Jordan Lee's message\":\n      - strong: 2 replies\n      - text: Last reply 9:24 AM\n    - button \"React to Jordan Lee's message\"\n    - button \"Reply to Jordan Lee's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Jordan Lee's message\"\n  - 'article \"Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.\"':\n    - button \"Alex Morgan\"\n    - time: 9:27 AM\n    - text: you\n    - paragraph: Launch review is at 14:00 UTC. Please bring the final checklist.\n    - button \"React to Alex Morgan's message\"\n    - button \"Reply to Alex Morgan's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Alex Morgan's message\"\n  - 'article \"Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.\"':\n    - button \"Priya Shah\"\n    - time: 9:30 AM\n    - paragraph: The customer preview remains at 14:00 UTC. That is separate from the launch review.\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi\"':\n    - button \"Maya Chen\"\n    - time: 9:33 AM\n    - paragraph: \"MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.\"\n    - button \"👀 reaction, 1\": 👀 1\n    - button \"Add reaction to Maya Chen's message\"\n    - button \"Open 1 replies to Maya Chen's message\":\n      - strong: 1 reply\n      - text: Last reply 9:36 AM\n    - button \"React to Maya Chen's message\"\n    - button \"Reply to Maya Chen's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Maya Chen's message\"\n  - 'article \"Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT\"':\n    - button \"Sam Rivera\"\n    - time: 9:39 AM\n    - paragraph: \"Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UTC. Please use these details for today’s handoff.\"\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details\"':\n    - button \"Sam Rivera\"\n    - time: 9:42 AM\n    - paragraph: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\"':\n    - button \"Priya Shah\"\n    - time: 9:45 AM\n    - paragraph: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - text: Tuesday, September 29\n  - 'article \"Message from Alex Morgan: Launch review · 15:00 UTC · Bring the final checklist\"':\n    - button \"Alex Morgan\"\n    - time: 10:00 AM\n    - text: you\n    - paragraph: Launch review · 15:00 UTC · Bring the final checklist\n    - button \"React to Alex Morgan's message\"\n    - button \"Reply to Alex Morgan's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Alex Morgan's message\"\n  - 'form \"Message #proj-meridian\"':\n    - button \"Bold text\"\n    - button \"Italic text\"\n    - button \"Insert code\"\n    - button \"Insert list\"\n    - 'textbox \"Message #proj-meridian\"'\n    - button \"Add smile emoji\"\n    - button \"Mention someone\"\n    - text: Shift + Enter for a new line\n    - button \"Send message\" [disabled]\n  - text: You're all caught up\n  - strong: Enter\n  - text: to send",
+        "elements": [
+          {
+            "ref": "e1",
+            "role": "button",
+            "name": "Back to project",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e2",
+            "role": "button",
+            "name": "Go to general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e3",
+            "role": "button",
+            "name": "Open quick switcher",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e4",
+            "role": "textbox",
+            "name": "Search Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e5",
+            "role": "button",
+            "name": "Keyboard shortcuts and help",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e6",
+            "role": "button",
+            "name": "Northstar home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e7",
+            "role": "button",
+            "name": "Home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e8",
+            "role": "button",
+            "name": "DMs",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e9",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e10",
+            "role": "button",
+            "name": "Later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e11",
+            "role": "button",
+            "name": "Switch conversation",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e12",
+            "role": "button",
+            "name": "Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e13",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e14",
+            "role": "button",
+            "name": "Saved for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e15",
+            "role": "button",
+            "name": "Find a channel",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e16",
+            "role": "button",
+            "name": "Channel general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e17",
+            "role": "button",
+            "name": "Channel proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e18",
+            "role": "button",
+            "name": "Channel engineering",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e19",
+            "role": "button",
+            "name": "Channel design",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e20",
+            "role": "button",
+            "name": "Channel incidents",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e21",
+            "role": "button",
+            "name": "Channel random",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e22",
+            "role": "button",
+            "name": "Find a person",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e23",
+            "role": "button",
+            "name": "Direct message Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e24",
+            "role": "button",
+            "name": "Direct message Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e25",
+            "role": "button",
+            "name": "Direct message Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e26",
+            "role": "button",
+            "name": "Direct message Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e27",
+            "role": "button",
+            "name": "Direct message Leo Park",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e28",
+            "role": "button",
+            "name": "Jump to a conversation\nK",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e29",
+            "role": "button",
+            "name": "Building a calmer way to work. Launch planning and product decisions.",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e30",
+            "role": "button",
+            "name": "Channel details, 5 members",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e31",
+            "role": "button",
+            "name": "Edit channel topic",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e32",
+            "role": "button",
+            "name": "Messages",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e33",
+            "role": "button",
+            "name": "Pins\n0",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e34",
+            "role": "button",
+            "name": "Channel details",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e35",
+            "role": "article",
+            "name": "Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.",
+            "disabled": false
+          },
+          {
+            "ref": "e36",
+            "role": "button",
+            "name": "Alex Morgan",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e37",
+            "role": "article",
+            "name": "Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+            "disabled": false
+          },
+          {
+            "ref": "e38",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e39",
+            "role": "article",
+            "name": "Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi",
+            "disabled": false
+          },
+          {
+            "ref": "e40",
+            "role": "button",
+            "name": "Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e41",
+            "role": "button",
+            "name": "👀 reaction, 1",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e42",
+            "role": "button",
+            "name": "Add reaction to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e43",
+            "role": "button",
+            "name": "Open 1 replies to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e44",
+            "role": "article",
+            "name": "Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT",
+            "disabled": false
+          },
+          {
+            "ref": "e45",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e46",
+            "role": "article",
+            "name": "Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details",
+            "disabled": false
+          },
+          {
+            "ref": "e47",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e48",
+            "role": "article",
+            "name": "Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+            "disabled": false
+          },
+          {
+            "ref": "e49",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e50",
+            "role": "article",
+            "name": "Message from Alex Morgan: Launch review · 15:00 UTC · Bring the final checklist",
+            "disabled": false
+          },
+          {
+            "ref": "e51",
+            "role": "button",
+            "name": "Alex Morgan",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e52",
+            "role": "button",
+            "name": "Bold text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e53",
+            "role": "button",
+            "name": "Italic text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e54",
+            "role": "button",
+            "name": "Insert code",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e55",
+            "role": "button",
+            "name": "Insert list",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e56",
+            "role": "textbox",
+            "name": "Message #proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e57",
+            "role": "button",
+            "name": "Add smile emoji",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e58",
+            "role": "button",
+            "name": "Mention someone",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e59",
+            "role": "button",
+            "name": "Send message",
+            "value": "",
+            "disabled": true
+          }
+        ]
+      },
+      "currentStep": 16,
+      "inFlight": false,
+      "lastAction": {
+        "type": "click",
+        "ref": "e59"
+      },
+      "lastError": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-relay-ref=\"e59\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"submit\" class=\"send-button\" data-relay-ref=\"e59\" aria-label=\"Send message\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m   ",
+      "evaluation": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "success": false,
+        "reward": 0,
+        "checks": [
+          {
+            "name": "topic_correct",
+            "passed": false
+          },
+          {
+            "name": "no_unrequested_state_changes",
+            "passed": false
+          }
+        ],
+        "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+        "finalHash": "2336e93334db8df1e3220302b9682261e0af9867268ec8bc1fbb16a38db76776",
+        "graderVersion": "state-contract-v1",
+        "revision": 1,
+        "sessionId": "8a6daed1-0f65-4c15-a375-4e5cdea7426c"
+      },
+      "finalScreenshot": "final.png",
+      "durationMs": 47612,
+      "finishedAt": "2026-10-03T04:48:27.153Z",
+      "traceRoot": "1c259974da5e4f48c548d56210aeb2f016464f3514c26e105325613650f06861"
+    },
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "nemotron-lightning-3p5-30b-a3b",
+          "rates": {
+            "input": 0.05,
+            "output": 0.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-004"
+      },
+      "status": "timeout",
+      "steps": 0,
+      "startedAt": "2026-10-03T04:48:27.159Z",
+      "estimatedUSD": 0.0015846000000000002,
+      "usageKnown": false,
+      "instruction": "Set the topic of #proj-meridian to exactly “Launch review · 15:00 UTC · Bring the final checklist”. Make no other changes.",
+      "initialHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "398a7a6e44a66c56c14b3c7a7d6629bafb82e5db786a576f7505fbc112d0b154"
+      },
+      "operatorScreenshot": "visual-000.png",
+      "currentObservation": {
+        "interface": "a11y",
+        "scope": "rendered-document-tree; viewport action refs",
+        "tree": "- banner:\n  - button \"Back to project\"\n  - button \"Go to general\"\n  - button \"Open quick switcher\"\n  - search:\n    - textbox \"Search Northstar\"\n    - text: ⌘ G\n  - text: Local workspace\n  - button \"Keyboard shortcuts and help\"\n- navigation \"Workspace navigation\":\n  - button \"Northstar home\"\n  - button \"Home\"\n  - button \"DMs\"\n  - button \"Threads\"\n  - button \"Later\"\n  - button \"Switch conversation\"\n- complementary:\n  - button \"Northstar\"\n  - text: A little space for good work\n  - button \"Threads\"\n  - button \"Saved for later\"\n  - text: Channels\n  - button \"Find a channel\"\n  - button \"Channel general\": general\n  - button \"Channel proj-meridian\": proj-meridian\n  - button \"Channel engineering\": engineering\n  - button \"Channel design\": design\n  - button \"Channel incidents\": incidents\n  - button \"Channel random\": random\n  - text: Direct messages\n  - button \"Find a person\"\n  - button \"Direct message Maya Chen\": Maya Chen\n  - button \"Direct message Jordan Lee\": Jordan Lee\n  - button \"Direct message Sam Rivera\": Sam Rivera\n  - button \"Direct message Priya Shah\": Priya Shah\n  - button \"Direct message Leo Park\": Leo Park\n  - button \"Jump to a conversation K\"\n  - strong: Thoughtful work, together.\n  - text: Your team's shared space.\n- main:\n  - heading \"proj-meridian\" [level=1]\n  - button \"Building a calmer way to work. Launch planning and product decisions.\"\n  - button \"Channel details, 5 members\"\n  - text: \"5\"\n  - button \"Edit channel topic\"\n  - button \"Messages\" [pressed]\n  - button \"Pins 0\"\n  - button \"Channel details\": Details\n  - 'heading \"This is #proj-meridian\" [level=2]'\n  - paragraph: Our next big thing, built together.\n  - text: Monday, September 28\n  - 'article \"Message from Priya Shah: Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineer\"':\n    - button \"Priya Shah\"\n    - time: 9:15 AM\n    - paragraph: \"Welcome to #proj-meridian. This is where the next chapter comes together. Design, engineering, and launch — all in one place.\"\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi\"':\n    - button \"Jordan Lee\"\n    - time: 9:18 AM\n    - paragraph: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and giving the content a little more room to breathe.\n    - button \"✨ reaction, 2, selected\" [pressed]: ✨ 2\n    - button \"Add reaction to Jordan Lee's message\"\n    - button \"Open 2 replies to Jordan Lee's message\":\n      - strong: 2 replies\n      - text: Last reply 9:24 AM\n    - button \"React to Jordan Lee's message\"\n    - button \"Reply to Jordan Lee's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Jordan Lee's message\"\n  - 'article \"Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.\"':\n    - button \"Alex Morgan\"\n    - time: 9:27 AM\n    - text: you\n    - paragraph: Launch review is at 14:00 UTC. Please bring the final checklist.\n    - button \"React to Alex Morgan's message\"\n    - button \"Reply to Alex Morgan's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Alex Morgan's message\"\n  - 'article \"Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.\"':\n    - button \"Priya Shah\"\n    - time: 9:30 AM\n    - paragraph: The customer preview remains at 14:00 UTC. That is separate from the launch review.\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'article \"Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi\"':\n    - button \"Maya Chen\"\n    - time: 9:33 AM\n    - paragraph: \"MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in this thread once it’s complete.\"\n    - button \"👀 reaction, 1\": 👀 1\n    - button \"Add reaction to Maya Chen's message\"\n    - button \"Open 1 replies to Maya Chen's message\":\n      - strong: 1 reply\n      - text: Last reply 9:36 AM\n    - button \"React to Maya Chen's message\"\n    - button \"Reply to Maya Chen's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Maya Chen's message\"\n  - 'article \"Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT\"':\n    - button \"Sam Rivera\"\n    - time: 9:39 AM\n    - paragraph: \"Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UTC. Please use these details for today’s handoff.\"\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details\"':\n    - button \"Sam Rivera\"\n    - time: 9:42 AM\n    - paragraph: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details are superseded.\n    - button \"React to Sam Rivera's message\"\n    - button \"Reply to Sam Rivera's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Sam Rivera's message\"\n  - 'article \"Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\"':\n    - button \"Priya Shah\"\n    - time: 9:45 AM\n    - paragraph: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱\n    - button \"React to Priya Shah's message\"\n    - button \"Reply to Priya Shah's message\"\n    - button \"Save message for later\"\n    - button \"More actions for Priya Shah's message\"\n  - 'form \"Message #proj-meridian\"':\n    - button \"Bold text\"\n    - button \"Italic text\"\n    - button \"Insert code\"\n    - button \"Insert list\"\n    - 'textbox \"Message #proj-meridian\"'\n    - button \"Add smile emoji\"\n    - button \"Mention someone\"\n    - text: Shift + Enter for a new line\n    - button \"Send message\" [disabled]\n  - text: You're all caught up\n  - strong: Enter\n  - text: to send",
+        "elements": [
+          {
+            "ref": "e1",
+            "role": "button",
+            "name": "Back to project",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e2",
+            "role": "button",
+            "name": "Go to general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e3",
+            "role": "button",
+            "name": "Open quick switcher",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e4",
+            "role": "textbox",
+            "name": "Search Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e5",
+            "role": "button",
+            "name": "Keyboard shortcuts and help",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e6",
+            "role": "button",
+            "name": "Northstar home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e7",
+            "role": "button",
+            "name": "Home",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e8",
+            "role": "button",
+            "name": "DMs",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e9",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e10",
+            "role": "button",
+            "name": "Later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e11",
+            "role": "button",
+            "name": "Switch conversation",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e12",
+            "role": "button",
+            "name": "Northstar",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e13",
+            "role": "button",
+            "name": "Threads",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e14",
+            "role": "button",
+            "name": "Saved for later",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e15",
+            "role": "button",
+            "name": "Find a channel",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e16",
+            "role": "button",
+            "name": "Channel general",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e17",
+            "role": "button",
+            "name": "Channel proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e18",
+            "role": "button",
+            "name": "Channel engineering",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e19",
+            "role": "button",
+            "name": "Channel design",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e20",
+            "role": "button",
+            "name": "Channel incidents",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e21",
+            "role": "button",
+            "name": "Channel random",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e22",
+            "role": "button",
+            "name": "Find a person",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e23",
+            "role": "button",
+            "name": "Direct message Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e24",
+            "role": "button",
+            "name": "Direct message Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e25",
+            "role": "button",
+            "name": "Direct message Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e26",
+            "role": "button",
+            "name": "Direct message Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e27",
+            "role": "button",
+            "name": "Direct message Leo Park",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e28",
+            "role": "button",
+            "name": "Jump to a conversation\nK",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e29",
+            "role": "button",
+            "name": "Building a calmer way to work. Launch planning and product decisions.",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e30",
+            "role": "button",
+            "name": "Channel details, 5 members",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e31",
+            "role": "button",
+            "name": "Edit channel topic",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e32",
+            "role": "button",
+            "name": "Messages",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e33",
+            "role": "button",
+            "name": "Pins\n0",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e34",
+            "role": "button",
+            "name": "Channel details",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e35",
+            "role": "article",
+            "name": "Message from Jordan Lee: The refreshed navigation is ready for a look. I’ve focused on reducing visual noise and gi",
+            "disabled": false
+          },
+          {
+            "ref": "e36",
+            "role": "button",
+            "name": "Jordan Lee",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e37",
+            "role": "button",
+            "name": "✨ reaction, 2, selected",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e38",
+            "role": "button",
+            "name": "Add reaction to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e39",
+            "role": "button",
+            "name": "Open 2 replies to Jordan Lee's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e40",
+            "role": "article",
+            "name": "Message from Alex Morgan: Launch review is at 14:00 UTC. Please bring the final checklist.",
+            "disabled": false
+          },
+          {
+            "ref": "e41",
+            "role": "button",
+            "name": "Alex Morgan",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e42",
+            "role": "article",
+            "name": "Message from Priya Shah: The customer preview remains at 14:00 UTC. That is separate from the launch review.",
+            "disabled": false
+          },
+          {
+            "ref": "e43",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e44",
+            "role": "article",
+            "name": "Message from Maya Chen: MERIDIAN-283: the release candidate is ready. Alex, please confirm the QA checklist in thi",
+            "disabled": false
+          },
+          {
+            "ref": "e45",
+            "role": "button",
+            "name": "Maya Chen",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e46",
+            "role": "button",
+            "name": "👀 reaction, 1",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e47",
+            "role": "button",
+            "name": "Add reaction to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e48",
+            "role": "button",
+            "name": "Open 1 replies to Maya Chen's message",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e49",
+            "role": "article",
+            "name": "Message from Sam Rivera: Handoff for MERIDIAN-283: the rollback owner is Priya Shah. The release window is 16:30 UT",
+            "disabled": false
+          },
+          {
+            "ref": "e50",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e51",
+            "role": "article",
+            "name": "Message from Sam Rivera: Yesterday’s draft listed Maya as rollback owner and 17:00 UTC as the window. Those details",
+            "disabled": false
+          },
+          {
+            "ref": "e52",
+            "role": "button",
+            "name": "Sam Rivera",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e53",
+            "role": "article",
+            "name": "Message from Priya Shah: Thanks for keeping decisions in threads, everyone. Future us will be grateful. 🌱",
+            "disabled": false
+          },
+          {
+            "ref": "e54",
+            "role": "button",
+            "name": "Priya Shah",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e55",
+            "role": "button",
+            "name": "Bold text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e56",
+            "role": "button",
+            "name": "Italic text",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e57",
+            "role": "button",
+            "name": "Insert code",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e58",
+            "role": "button",
+            "name": "Insert list",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e59",
+            "role": "textbox",
+            "name": "Message #proj-meridian",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e60",
+            "role": "button",
+            "name": "Add smile emoji",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e61",
+            "role": "button",
+            "name": "Mention someone",
+            "value": "",
+            "disabled": false
+          },
+          {
+            "ref": "e62",
+            "role": "button",
+            "name": "Send message",
+            "value": "",
+            "disabled": true
+          }
+        ]
+      },
+      "currentStep": 1,
+      "inFlight": false,
+      "error": "The operation was aborted due to timeout",
+      "evaluation": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "success": false,
+        "reward": 0,
+        "checks": [
+          {
+            "name": "topic_correct",
+            "passed": false
+          },
+          {
+            "name": "no_unrequested_state_changes",
+            "passed": false
+          }
+        ],
+        "baselineHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+        "finalHash": "37d476be0d55e9e78e55ff36e8ff8b06e48e10b988979c6f5c8bdf5bd6062c4b",
+        "graderVersion": "state-contract-v1",
+        "revision": 0,
+        "sessionId": "b32af971-0830-4eff-8072-73b677cfeae1"
+      },
+      "finalScreenshot": "final.png",
+      "durationMs": 30743,
+      "finishedAt": "2026-10-03T04:48:57.901Z",
+      "traceRoot": "9b09969158343d96d1ec8595cb8d3ff94e4d0d10c6ae7d50b9a6e9ca4945d476"
+    },
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gemini-2.5-flash-lite",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-005"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "channel-topic",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-6-luna",
+          "rates": {
+            "input": 0.1,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "channel-topic:42:0",
+        "episodeId": "episode-006"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "glm-5p3-flash",
+          "rates": {
+            "input": 0.15,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-007"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gemini-2.5-flash-lite",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-008"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-4.1-nano",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-009"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "rates": {
+            "input": 0.3,
+            "output": 1.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-010"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "nemotron-lightning-3p5-30b-a3b",
+          "rates": {
+            "input": 0.05,
+            "output": 0.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-011"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "decision-record",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-6-luna",
+          "rates": {
+            "input": 0.1,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "decision-record:42:0",
+        "episodeId": "episode-012"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "nemotron-lightning-3p5-30b-a3b",
+          "rates": {
+            "input": 0.05,
+            "output": 0.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-013"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-4.1-nano",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-014"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "glm-5p3-flash",
+          "rates": {
+            "input": 0.15,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-015"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gemini-2.5-flash-lite",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-016"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "rates": {
+            "input": 0.3,
+            "output": 1.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-017"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "incident-triage",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-6-luna",
+          "rates": {
+            "input": 0.1,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "incident-triage:42:0",
+        "episodeId": "episode-018"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "nemotron-lightning-3p5-30b-a3b",
+          "rates": {
+            "input": 0.05,
+            "output": 0.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-019"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-6-luna",
+          "rates": {
+            "input": 0.1,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-020"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gemini-2.5-flash-lite",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-021"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "rates": {
+            "input": 0.3,
+            "output": 1.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-022"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "glm-5p3-flash",
+          "rates": {
+            "input": 0.15,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-023"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "thread-reply",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-4.1-nano",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "thread-reply:42:0",
+        "episodeId": "episode-024"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-4.1-nano",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-025"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "nemotron-lightning-3p5-30b-a3b",
+          "rates": {
+            "input": 0.05,
+            "output": 0.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-026"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "rates": {
+            "input": 0.3,
+            "output": 1.2
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-027"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "glm-5p3-flash",
+          "rates": {
+            "input": 0.15,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-028"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gpt-6-luna",
+          "rates": {
+            "input": 0.1,
+            "output": 0.5
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-029"
+      },
+      "status": "queued",
+      "steps": 0
+    },
+    {
+      "cell": {
+        "taskId": "edit-message",
+        "seed": 42,
+        "repeat": 0,
+        "model": {
+          "id": "gemini-2.5-flash-lite",
+          "rates": {
+            "input": 0.1,
+            "output": 0.4
+          }
+        },
+        "mode": "a11y",
+        "guide": false,
+        "history": "recent-4",
+        "block": "edit-message:42:0",
+        "episodeId": "episode-030"
+      },
+      "status": "queued",
+      "steps": 0
+    }
+  ],
+  "limitations": [
+    "Development task templates; seeds do not form a reasoning holdout.",
+    "API changes both visibility and action granularity.",
+    "Local application isolation, not a hostile-code sandbox.",
+    "Local cost estimates are not billing guarantees; use provider key caps.",
+    "No statistical significance or novelty claim."
+  ],
+  "summary": [
+    {
+      "model": "glm-5p3-flash",
+      "interface": "a11y",
+      "guide": false,
+      "history": "recent-4",
+      "attempted": 1,
+      "passed": 1,
+      "errors": 0,
+      "steps": 4,
+      "latencyMs": 7901,
+      "estimatedUSD": 0.005372650000000001,
+      "usageKnown": true,
+      "successRate": 1,
+      "meanSteps": 4,
+      "meanLatencyMs": 7901
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "interface": "a11y",
+      "guide": false,
+      "history": "recent-4",
+      "attempted": 1,
+      "passed": 1,
+      "errors": 0,
+      "steps": 4,
+      "latencyMs": 7220,
+      "estimatedUSD": 0.011088,
+      "usageKnown": true,
+      "successRate": 1,
+      "meanSteps": 4,
+      "meanLatencyMs": 7220
+    },
+    {
+      "model": "gpt-4.1-nano",
+      "interface": "a11y",
+      "guide": false,
+      "history": "recent-4",
+      "attempted": 1,
+      "passed": 0,
+      "errors": 0,
+      "steps": 16,
+      "latencyMs": 47612,
+      "estimatedUSD": 0.024940799999999985,
+      "usageKnown": true,
+      "successRate": 0,
+      "meanSteps": 16,
+      "meanLatencyMs": 47612
+    },
+    {
+      "model": "nemotron-lightning-3p5-30b-a3b",
+      "interface": "a11y",
+      "guide": false,
+      "history": "recent-4",
+      "attempted": 1,
+      "passed": 0,
+      "errors": 1,
+      "steps": 0,
+      "latencyMs": 30743,
+      "estimatedUSD": 0.0015846000000000002,
+      "usageKnown": false,
+      "successRate": 0,
+      "meanSteps": 0,
+      "meanLatencyMs": 30743
+    }
+  ],
+  "paired": [],
+  "startedAt": "2026-10-03T04:47:24.231Z",
+  "stopReason": {
+    "code": "provider_stop",
+    "message": "Stopped after a budget limit, provider failure or missing usage. Other cells remain unattempted."
+  },
+  "finishedAt": "2026-10-03T04:48:57.903Z"
+}

@@ -19,7 +19,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 ## Onsite submission
 
-- **[Presentation](https://relay.kevinliu.studio/presentation.html)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
+- **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
 - **[20 new real-model episodes](evidence/campaigns/onsite-2026-10-01/README.md)** across two models and four interfaces: 8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted after the declared stop rule.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
 - **No key required to inspect:** Replays includes the real thread pass, decision-record failure and API control. Original trajectories are downloadable and hash-verifiable.
@@ -182,12 +182,18 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **123 backend checks and 82 browser checks**. Historical
+The expanded suite has **127 backend checks and 84 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 The new [model campaign](docs/campaigns/onsite-2026-10-01.md) includes real workflow
 attempts and preserved failures alongside scripted evidence. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
+
+[Slide 9](https://relay.kevinliu.studio/presentation#9) adds sortable model results
+and the full trial table. The separately planned six-model, 20-trial-per-model
+comparison stopped after four attempts on a provider timeout: two passed, one
+incorrect/step-limited and one blocked; 116 were not run. **It is not a completed
+120-trial benchmark.** [Complete inventory and original traces →](evidence/campaigns/model-comparison-2026-10-02/README.md)
 
 Hosted text policies now survive optional screenshot failures, but cloud PNG
 capture still has intermittent gaps. Live viewing and actual-UI replay remain

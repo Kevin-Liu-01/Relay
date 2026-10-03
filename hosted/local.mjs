@@ -8,9 +8,13 @@ export function createLiveServer(options = {}) {
   return http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
     if (url.pathname === '/api/relay') return handler(req, res);
+    if (['/presentation.html', '/presentation/'].includes(url.pathname)) {
+      res.writeHead(308, { location: `/presentation${url.search}` });
+      return res.end();
+    }
     if (
       req.method !== 'GET' ||
-      !/^\/(?:|live.html|replay.html|play\/?|play.html|presentation\.(?:html|pdf)|presentation-controls\.js|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(
+      !/^\/(?:|live.html|replay.html|play\/?|play.html|presentation|presentation\.pdf|presentation-controls\.js|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(
         url.pathname,
       )
     ) {
@@ -24,7 +28,9 @@ export function createLiveServer(options = {}) {
         ? 'live.html'
         : /^\/play\/?$/.test(url.pathname)
           ? 'play.html'
-          : url.pathname,
+          : url.pathname === '/presentation'
+            ? 'presentation.html'
+            : url.pathname,
     );
     if (!existsSync(file)) {
       res.writeHead(404);

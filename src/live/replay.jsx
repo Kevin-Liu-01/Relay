@@ -76,6 +76,8 @@ export function WorkspaceReplay({
   const [width, setWidth] = useState(900),
     [ready, setReady] = useState(false);
   const snapshot = frame?.snapshot;
+  const latestSnapshot = useRef(snapshot);
+  latestSnapshot.current = snapshot;
   const viewport = snapshot?.viewport ?? { width: 1440, height: 900 };
   useEffect(() => {
     const ro = new ResizeObserver(([e]) => setWidth(e.contentRect.width));
@@ -88,8 +90,16 @@ export function WorkspaceReplay({
         e.origin === location.origin &&
         e.source === iframe.current?.contentWindow &&
         e.data?.type === 'relay-replay-ready'
-      )
+      ) {
         setReady(true);
+        // iframe load can precede its React message listener. Readiness must
+        // resend the newest seek even when onLoad already set ready=true.
+        if (latestSnapshot.current)
+          iframe.current.contentWindow.postMessage(
+            { type: 'relay-replay', snapshot: latestSnapshot.current },
+            location.origin,
+          );
+      }
     };
     window.addEventListener('message', listener);
     return () => window.removeEventListener('message', listener);

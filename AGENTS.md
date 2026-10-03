@@ -7,9 +7,15 @@ That campaign stopped on an incomplete output-limited receipt: 20 attempted,
 relax its grader or present curated replay excerpts as the full matrix.
 Original trajectories live in hash-checked compressed bundles; `npm run
 inspect:campaign -- workflows` verifies them without a key. `npm run presentation`
-builds the 12-slide HTML/PDF from evidence and its editable template; keep headers,
+builds the 13-slide HTML/PDF from evidence and its editable template; keep headers,
 bullets and diagrams, with no marketing claims. MIT covers original code and
 documentation, not third-party fonts or brand assets.
+
+The six-model comparison `model-comparison-2026-10-02` is also closed: Nemotron's
+first request timed out without usage; 4/120 attempted, 2 passes, 1 incomplete,
+1 blocked. Do not resume or disguise the 116 unattempted cells. The new slide
+reads its summary, uses raw numeric sorting with unknowns last, and exposes all
+planned trials. `/presentation` is canonical; `/presentation.html` redirects.
 
 Relay is a standalone CUA/RL environment, extracted from `cotcodec/cua-slack` into `Kevin-Liu-01/Relay`. Keep unrelated memory research and private local runs out of this repository. The user-facing name is **Relay** (capital R).
 

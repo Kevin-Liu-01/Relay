@@ -128,6 +128,12 @@ for cache, fallback and cancellation details.
 
 ## Deployment and operations
 
+The deck's canonical URL is `/presentation`. Legacy `/presentation.html` links
+redirect permanently, preserving slide fragments in the browser. Hosted controls
+and fonts remain same-origin under the production CSP. Slide 9 sorts recorded
+model results without making provider calls; its full-trial dialog includes
+unattempted rows and keeps unknown costs distinct from zero.
+
 ### If Router rejects a run
 
 Router [documents HTTP 403](https://docs.router.com/api/errors-and-limits) as
