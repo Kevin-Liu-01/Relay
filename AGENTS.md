@@ -1,5 +1,40 @@
 # Relay handoff
 
+## Current comparison request
+
+The user clarified **20 trials per task per model**, then approved **all 18 tasks,
+five models and a $300 total estimated-spend ceiling**: 1,800 new episodes.
+Read `docs/campaigns/all-tasks-2026-10-02.md` and the frozen JSON. It stopped on
+its first cell: Gemini 3.8 Flash returned 403; no actions, $0.026841 reservation,
+1,799 unattempted. Router documents Gemini as requiring a separate Google key.
+Do not resume/edit that frozen plan. The other four requested routes answered
+one tiny diagnostic request each; `evidence/campaign-access-2026-10-03.json`
+records $0.00026105, not scored trials. The user chose Qwen 3.8 Max; its separate
+access probe answered ($0.000284). The active successor is
+`docs/campaigns/all-tasks-2026-10-03.md` / JSON, using
+`scripts/run-task-campaign-v2.mjs` and `scripts/lib/task-campaign-v2.mjs`.
+Both original files remain hash-bound to the stopped attempt; never edit them.
+The new ledger includes $1.01542235 in all prior model pilots and access probes;
+$298.98457765 was available for the new 1,800 episodes. The 25-trial pilot finished:
+21 passed, three incorrect, one output limit, $3.78059050 known usage, no unknown
+reservations; 1,214 archive checks verified. Read
+`docs/campaigns/all-tasks-2026-10-03-pilot-review.md`. Inspect the actual runtime
+manifest/status before doing anything. Bulk admission is trace-based, not a
+performance filter. Do not restart an in-flight block or change frozen source.
+
+The task-campaign workers implement sequential, locked, budget-shared
+worker with a 25-episode pilot gate, immutable block archives and full planned
+denominators. Bulk archives are local under `.runtime`, not yet published.
+`docs/current-comparison.json` selects the presentation dataset. The slide has
+custom per-task filters and raw-value sorting; 20 per task, 360 per model.
+
+The previous final cheap-model attempt is closed at 36/60: 20 passed, 11
+incomplete, four output limits and one connection failure. All three archives
+verify (1,971 checks). Its historical `harness_error` is not rewritten by the
+new allowlisted `provider_connection_error` classification. The proposed
+remaining-24 continuation was superseded before launch. Preserve all pilot costs
+and reservations when binding any successor to the $300 ceiling.
+
 For the onsite deliverable, start with `docs/onsite-readiness.md`, the frozen
 `docs/campaigns/onsite-2026-10-01.md` plan and the complete campaign inventory.
 That campaign stopped on an incomplete output-limited receipt: 20 attempted,
@@ -16,6 +51,27 @@ first request timed out without usage; 4/120 attempted, 2 passes, 1 incomplete,
 1 blocked. Do not resume or disguise the 116 unattempted cells. The new slide
 reads its summary, uses raw numeric sorting with unknowns last, and exposes all
 planned trials. `/presentation` is canonical; `/presentation.html` redirects.
+
+The strict three-model `model-comparison-2026-10-02-followup` is closed too:
+4/60 attempted, 2 passes, 1 incomplete, 1 DeepSeek request timeout; 56 unattempted.
+The user explicitly approved the separately frozen
+`model-comparison-2026-10-02-reserved` plan: 90-second requests and continue only
+past provider-request timeouts with their complete reservations retained. No
+retries. Its $2.88 allowance plus the prior $0.10937740 stays within the original
+$3 ceiling. `runner/campaign-policy.mjs` owns this CLI-only exception; other
+missing receipts/errors still stop. Hosted and console runs reject the overrides.
+Never apply that exception retroactively to closed campaigns or public queues.
+The reserved-timeout plan is now closed at 7/60: DeepSeek returned an incomplete
+output-limit receipt (HTTP 200, 4,096 output tokens), not a TimeoutError. Its
+timeout-only exception correctly did not continue. The record retains a
+$0.02595030 reservation; do not retroactively reconcile it or relaunch a phase.
+
+The user next approved `model-comparison-2026-10-02-final`: 60 fresh cells,
+$2.72 new allowance plus both prior recorded allowances within $3. A validated
+output-limit receipt is now accounted but its partial output is never executed.
+Only the reviewed CLI plan may continue to the next cell after `output_limit`;
+default/hosted behavior still stops. `acceptedOutputLimit` requires known usage
+and successful cleanup. Preserve each campaign's original totals and source hash.
 
 Relay is a standalone CUA/RL environment, extracted from `cotcodec/cua-slack` into `Kevin-Liu-01/Relay`. Keep unrelated memory research and private local runs out of this repository. The user-facing name is **Relay** (capital R).
 
@@ -98,6 +154,7 @@ invoices. Router 403 recovery is manual model selection, never hidden retries.
 - `npm run bench`: bounded local measurements; overwrites the benchmark evidence.
 - `node scripts/collect-evidence.mjs`: exports portable reference evidence after browser tests.
 - `npm run package`: checks for capability URLs and builds the submission archive.
+- `npm run inspect:campaign -- seed-42 model-comparison-2026-10-02-reserved`: key-free trajectory integrity check.
 
 Keep scripted tests distinct from interactive model trajectories. Never describe the three builder-informed Codex episodes as an independent agent benchmark, RL training result, or population success rate. Preserve the original trajectory evidence when changing fixtures. New task templates need positive and adversarial-negative grader tests, a browser reference trajectory, and an explicit outcome contract. Cosmetic seed changes are not a train/test split.
 

@@ -15,6 +15,12 @@ import { TypeSafeRouter } from './typesafe.mjs';
 import { validateConfig, schedule, aggregate, pairedComparisons } from './design.mjs';
 import { buildInput, parseAction, PROTOCOL_VERSION, LLMS_TXT, SITE_GUIDE } from './protocol.mjs';
 import { referenceAction } from './reference.mjs';
+import {
+  retainedRequestTimeout,
+  acceptedOutputLimit,
+  retainedConnectionFailure,
+  acceptedEpisodeDeadline,
+} from './campaign-policy.mjs';
 const hash = (v) =>
   createHash('sha256')
     .update(typeof v === 'string' || Buffer.isBuffer(v) ? v : JSON.stringify(v))
@@ -48,6 +54,15 @@ export class Experiment {
   }) {
     if (!['console', 'cli', 'library'].includes(launcher)) throw Error('Unknown run launcher.');
     this.config = validateConfig(config);
+    if (
+      launcher !== 'cli' &&
+      (config.requestTimeoutSeconds !== undefined ||
+        config.continueAfterRequestTimeout !== undefined ||
+        config.continueAfterOutputLimit !== undefined ||
+        config.continueAfterConnectionFailure !== undefined ||
+        config.continueAfterEpisodeTimeout !== undefined)
+    )
+      throw Error('Request-timeout overrides require an explicitly reviewed CLI campaign.');
     this.router =
       router ??
       (this.config.provider === 'typesafe'
@@ -121,10 +136,28 @@ export class Experiment {
         this.checkRunBudget();
         await this.runEpisode(episode);
         if (
+          (this.config.continueAfterRequestTimeout ||
+            this.config.continueAfterOutputLimit ||
+            this.config.continueAfterConnectionFailure ||
+            this.config.continueAfterEpisodeTimeout) &&
+          !['completed', 'step_limit'].includes(episode.status) &&
+          !retainedRequestTimeout(this.config, episode) &&
+          !acceptedOutputLimit(this.config, episode) &&
+          !retainedConnectionFailure(this.config, episode) &&
+          !acceptedEpisodeDeadline(this.config, episode)
+        )
+          throw new RunStop(
+            'campaign_stop',
+            'Failure outside the reviewed continuation policy; other cells remain unattempted.',
+          );
+        if (
           episode.status === 'provider_error' ||
           episode.status === 'unsupported_capability' ||
           episode.status === 'budget' ||
-          episode.usageKnown === false
+          (episode.status === 'output_limit' && !acceptedOutputLimit(this.config, episode)) ||
+          (episode.usageKnown === false &&
+            !retainedRequestTimeout(this.config, episode) &&
+            !retainedConnectionFailure(this.config, episode))
         )
           throw new RunStop(
             'provider_stop',
@@ -360,7 +393,7 @@ export class Experiment {
               timeoutMs: Math.max(
                 1,
                 Math.min(
-                  30000,
+                  (c.requestTimeoutSeconds ?? 30) * 1000,
                   c.episodeSeconds * 1000 - (Date.now() - start),
                   c.runSeconds * 1000 - (Date.now() - this.start),
                 ),
@@ -369,6 +402,23 @@ export class Experiment {
           } catch (err) {
             e.inFlight = false;
             e.usageKnown = false;
+            if (err.name === 'TimeoutError' && !this.abort.signal.aborted)
+              e.requestTimeoutReservationUSD = reservation.usd;
+            if (err.code === 'provider_connection_error' && !this.abort.signal.aborted)
+              e.connectionFailureReservationUSD = reservation.usd;
+            if (err.code === 'output_limit' && err.receipt?.usage) {
+              const usage = err.receipt.usage;
+              const cost =
+                (usage.inputTokens * cell.model.rates.input +
+                  usage.outputTokens * cell.model.rates.output) /
+                1e6;
+              e.estimatedUSD += cost - reservation.usd;
+              this.data.budget.estimatedUSD += cost - reservation.usd;
+              this.data.budget.inputTokens += usage.inputTokens;
+              this.data.budget.outputTokens += usage.outputTokens;
+              e.usageKnown = true;
+              e.outputLimitUsageAccepted = true;
+            }
             if (err.receipt)
               e.providerFailure = {
                 code: err.code,
@@ -377,13 +427,14 @@ export class Experiment {
                 clientRequestId: err.receipt.clientRequestId,
                 traceId: err.receipt.traceId,
               };
-            this.data.budget.usageKnown = false;
+            this.data.budget.usageKnown = this.data.episodes.every((x) => x.usageKnown !== false);
             record({
               kind: 'provider_error',
               step: i + 1,
               error: this.safeError(err),
               receipt: err.receipt ?? null,
               reservedUSD: reservation.usd,
+              usageAccepted: e.outputLimitUsageAccepted === true,
             });
             throw err;
           }

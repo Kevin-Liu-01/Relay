@@ -28,9 +28,13 @@ export function episodeOutcome(episode) {
                   ? 'Run stopped'
                   : episode.status === 'budget'
                     ? 'Run limit reached'
-                    : episode.status === 'timeout'
-                      ? 'Time limit reached'
-                      : 'Run blocked',
+                    : episode.status === 'output_limit'
+                      ? 'Output limit reached'
+                      : episode.status === 'timeout'
+                        ? 'Time limit reached'
+                        : episode.status === 'provider_connection_error'
+                          ? 'Connection interrupted'
+                          : 'Run blocked',
       changeModel:
         [403, 404, 501].includes(status) ||
         ['provider_unavailable', 'model_unavailable', 'unsupported_capability'].includes(
@@ -68,6 +72,8 @@ export function outcomePresentation(episode) {
     'Model unavailable': ['blocked', 'Choose another model'],
     'Run limit reached': ['limit', 'Spend or request allowance reached'],
     'Time limit reached': ['limit', 'Time allowance reached'],
+    'Output limit reached': ['limit', 'Response truncated · no partial action executed'],
+    'Connection interrupted': ['blocked', 'Receipt missing · usage unknown'],
     'Run stopped': ['stopped', 'Stopped by you'],
     'Run blocked': [
       'blocked',

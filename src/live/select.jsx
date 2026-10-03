@@ -64,6 +64,10 @@ export function RelaySelect({
           collisionPadding={12}
           data-keyboard={keyboard ? '' : undefined}
           aria-label={label}
+          onKeyDownCapture={() => setKeyboard(true)}
+          onPointerMoveCapture={(event) => {
+            if (event.movementX || event.movementY) setKeyboard(false);
+          }}
           onEscapeKeyDown={(event) => {
             // One Escape dismisses this menu, not the enclosing native dialog.
             event.preventDefault();
@@ -84,6 +88,11 @@ export function RelaySelect({
                   textValue={option.label}
                   disabled={option.disabled}
                   title={option.disabled ? option.disabledReason : option.label}
+                  onPointerLeave={(event) => {
+                    // Keyboard scrolling can move the hovered row under a still
+                    // pointer. That layout event must not erase keyboard focus.
+                    if (keyboard) event.preventDefault();
+                  }}
                 >
                   <span className="relay-select-option-glyph" aria-hidden="true">
                     {option.icon}

@@ -144,6 +144,13 @@ using CSS transitions and the primitive's collision-aware transform origin.
 Closure is immediate. Keyboard entry and reduced-motion mode skip transitions;
 rapid reopen cannot leave a delayed exit overlay. No animation library was added.
 
+The October 3 regression fix preserves keyboard focus when Home/End scrolling
+moves a row underneath a stationary pointer. Radix's resulting pointer-leave
+event previously moved focus to the listbox. Pointer-leave is ignored during
+keyboard navigation; real pointer movement switches back to pointer behavior.
+The original assertion was retained and passed five repeated runs before the
+complete browser suite. This changes operator menus only, not the agent workspace.
+
 `tests/browser/dropdowns.spec.mjs` covers desktop 1440×900 and emulated touch
 390×844, option icons/brand diversity, pointer and keyboard selection, focus,
 outside dismissal, nested-dialog Escape, long catalogs, disabled options, replay

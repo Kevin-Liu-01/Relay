@@ -1,0 +1,84 @@
+{
+  "id": "model-comparison-2026-10-02-reserved",
+  "maxEstimatedUSD": 2.88,
+  "catalogHash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+  "catalogCheckedAt": "2026-10-03T05:53:24.945Z",
+  "models": {
+    "gpt-4.1-nano": {
+      "id": "gpt-4.1-nano",
+      "rates": {
+        "input": 0.1,
+        "output": 0.4
+      }
+    },
+    "glm-5p3-flash": {
+      "id": "glm-5p3-flash",
+      "rates": {
+        "input": 0.15,
+        "output": 0.5
+      }
+    },
+    "deepseek-v4.1-flash": {
+      "id": "deepseek-v4.1-flash",
+      "rates": {
+        "input": 0.3,
+        "output": 1.2
+      }
+    }
+  },
+  "common": {
+    "provider": "ramp",
+    "tasks": [
+      "channel-topic",
+      "thread-reply",
+      "edit-message",
+      "incident-triage",
+      "decision-record"
+    ],
+    "interfaces": ["a11y"],
+    "repeats": 1,
+    "guides": [false],
+    "histories": ["recent-4"],
+    "maxSteps": 16,
+    "maxRequests": 240,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 120,
+    "runSeconds": 3600,
+    "requestTimeoutSeconds": 90,
+    "continueAfterRequestTimeout": true
+  },
+  "phases": [
+    {
+      "id": "seed-42",
+      "models": ["gpt-4.1-nano", "glm-5p3-flash", "deepseek-v4.1-flash"],
+      "seeds": [42],
+      "orderSeed": 20261022,
+      "maxEstimatedUSD": 0.72
+    },
+    {
+      "id": "seed-43",
+      "models": ["gpt-4.1-nano", "glm-5p3-flash", "deepseek-v4.1-flash"],
+      "seeds": [43],
+      "orderSeed": 20261023,
+      "maxEstimatedUSD": 0.72
+    },
+    {
+      "id": "seed-44",
+      "models": ["gpt-4.1-nano", "glm-5p3-flash", "deepseek-v4.1-flash"],
+      "seeds": [44],
+      "orderSeed": 20261024,
+      "maxEstimatedUSD": 0.72
+    },
+    {
+      "id": "seed-45",
+      "models": ["gpt-4.1-nano", "glm-5p3-flash", "deepseek-v4.1-flash"],
+      "seeds": [45],
+      "orderSeed": 20261025,
+      "maxEstimatedUSD": 0.72
+    }
+  ],
+  "priorCampaign": "model-comparison-2026-10-02-followup",
+  "priorRecordedUSD": 0.10937740000000003,
+  "combinedCeilingUSD": 3
+}

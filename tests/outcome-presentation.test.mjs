@@ -8,6 +8,7 @@ test('outcome explanations distinguish verified checks, execution blocks and lim
     ['completed', 'Task passed', 'passed'],
     ['budget', 'Run limit reached', 'limit'],
     ['timeout', 'Time limit reached', 'limit'],
+    ['output_limit', 'Output limit reached', 'limit'],
     ['provider_unavailable', 'Provider unavailable', 'blocked'],
     ['credentials_invalid', 'Key needs attention', 'blocked'],
     ['credits_exhausted', 'Router credit required', 'blocked'],

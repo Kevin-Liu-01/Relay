@@ -1,0 +1,85 @@
+{
+  "kind": "provider-access-diagnostic-not-a-task-trial",
+  "at": "2026-10-03T06:58:41.616Z",
+  "catalog": {
+    "at": "2026-10-03T06:58:41.613Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79"
+  },
+  "maxEstimatedUSD": 0.05,
+  "estimatedUSD": 0.00026105000000000003,
+  "requests": [
+    {
+      "model": "gpt-6.1-sol",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "reservedUSD": 0.001622,
+      "estimatedUSD": 0.000086,
+      "usageKnown": true,
+      "status": "response-received",
+      "returnedModel": "gpt-6.1-sol",
+      "usage": {
+        "inputTokens": 18,
+        "outputTokens": 5,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "reservedUSD": 0.001634,
+      "estimatedUSD": 0.000102,
+      "usageKnown": true,
+      "status": "response-received",
+      "returnedModel": "claude-sonnet-5-5",
+      "usage": {
+        "inputTokens": 26,
+        "outputTokens": 5,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "rates": {
+        "input": 0.3,
+        "output": 1.2
+      },
+      "reservedUSD": 0.00020729999999999997,
+      "estimatedUSD": 0.0000474,
+      "usageKnown": true,
+      "status": "response-received",
+      "returnedModel": "accounts/fireworks/models/deepseek-v4p1-flash",
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 30,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "model": "glm-5p3-flash",
+      "rates": {
+        "input": 0.15,
+        "output": 0.5
+      },
+      "reservedUSD": 0.00008995,
+      "estimatedUSD": 0.00002565,
+      "usageKnown": true,
+      "status": "response-received",
+      "returnedModel": "accounts/fireworks/models/glm-5p3-flash",
+      "usage": {
+        "inputTokens": 21,
+        "outputTokens": 45,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 0
+      }
+    }
+  ],
+  "omitted": "Gemini 3.8 Flash already returned 403 in all-tasks-2026-10-02; not retried."
+}

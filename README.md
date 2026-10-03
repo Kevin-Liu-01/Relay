@@ -22,6 +22,8 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 - **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
 - **[20 new real-model episodes](evidence/campaigns/onsite-2026-10-01/README.md)** across two models and four interfaces: 8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted after the declared stop rule.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
+- **[36-attempt model pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)**: 20 passes, 11 incomplete and five blocked/truncated outcomes, with original trajectories preserved.
+- **[Full task comparison](docs/campaigns/all-tasks-2026-10-03.md)**: 20 trials per task/model, five models and all 18 tasks. The Qwen-inclusive pilot completed 25 trials: 21 passed, three incorrect and one output-limited. The 1,800-trial target is not a claim of completion.
 - **No key required to inspect:** Replays includes the real thread pass, decision-record failure and API control. Original trajectories are downloadable and hash-verifiable.
 
 The campaign recorded about **$0.15 in estimated allowance**, including an unresolved
@@ -182,18 +184,29 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **127 backend checks and 84 browser checks**. Historical
+The expanded suite has **144 backend checks and 84 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 The new [model campaign](docs/campaigns/onsite-2026-10-01.md) includes real workflow
 attempts and preserved failures alongside scripted evidence. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
-[Slide 9](https://relay.kevinliu.studio/presentation#9) adds sortable model results
-and the full trial table. The separately planned six-model, 20-trial-per-model
-comparison stopped after four attempts on a provider timeout: two passed, one
-incorrect/step-limited and one blocked; 116 were not run. **It is not a completed
-120-trial benchmark.** [Complete inventory and original traces →](evidence/campaigns/model-comparison-2026-10-02/README.md)
+[Slide 9](https://relay.kevinliu.studio/presentation#9) has sortable model results
+and a custom per-task filter. The new target is **20 trials for every task/model**,
+not 20 total: 18 tasks × five models × 20 seeds = **1,800 planned trials**.
+After Gemini's access-gate 403, the user approved **Qwen 3.8 Max** as its replacement.
+The separately frozen successor compares GPT-6.1 Sol, Claude Sonnet 5.5, Qwen,
+DeepSeek V4.1 Flash and GLM 5.3 Flash. All five routes answered access probes;
+the new benchmark passed its 25-trial trace-inspection gate with 1,214 integrity
+checks. [Pilot findings](docs/campaigns/all-tasks-2026-10-03-pilot-review.md)
+retain both successes and failures; bulk collection uses the unchanged plan.
+[Current collection status →](evidence/campaigns/all-tasks-2026-10-03/README.md)
+The separately preserved [36-attempt pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)
+has 20 passes, 11 incomplete, four output limits and one connection failure.
+Different model set/action allowance: its results are not pooled with the new matrix.
+Earlier [six-model](evidence/campaigns/model-comparison-2026-10-02/README.md) and
+[strict follow-up](evidence/campaigns/model-comparison-2026-10-02-followup/README.md)
+campaigns stay separate and immutable, including their failures.
 
 Hosted text policies now survive optional screenshot failures, but cloud PNG
 capture still has intermittent gaps. Live viewing and actual-UI replay remain

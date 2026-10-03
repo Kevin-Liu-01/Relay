@@ -498,6 +498,58 @@ a:focus-visible {
   gap: 2px;
   margin-top: 7px;
 }
+.trial-strip.dense {
+  display: flex;
+  height: 6px;
+}
+.trial-strip.dense .trial-cell {
+  min-width: 0;
+}
+.task-filter {
+  position: relative;
+  width: fit-content;
+  margin: 0 0 14px;
+  font-size: 15px;
+}
+.task-filter summary {
+  cursor: pointer;
+  border: 1px solid #d9cfdf;
+  border-radius: 9px;
+  padding: 9px 13px;
+  color: #644373;
+  background: #faf7fc;
+  text-transform: capitalize;
+}
+.task-filter > div {
+  position: absolute;
+  z-index: 12;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  gap: 4px;
+  padding: 8px;
+  width: min(470px, 80vw);
+  max-height: 350px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #d9cfdf;
+  border-radius: 10px;
+  box-shadow: 0 14px 35px #38234424;
+}
+.task-filter button {
+  font: inherit;
+  text-align: left;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fff;
+  color: #514459;
+}
+.task-filter button:hover,
+.task-filter button[aria-pressed='true'] {
+  background: #efe6f4;
+}
 .trial-cell {
   width: 5px;
   height: 13px;

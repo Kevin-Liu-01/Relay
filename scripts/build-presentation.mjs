@@ -33,6 +33,8 @@ import Gemini from '@thesvg/react/gemini';
 import Deepseek from '@thesvg/react/deepseek';
 import Nvidia from '@thesvg/react/nvidia';
 import Zhipu from '@thesvg/react/zhipu';
+import Anthropic from '@thesvg/react/anthropic';
+import Qwen from '@thesvg/react/qwen';
 
 const glyph = (component) =>
   renderToStaticMarkup(
@@ -85,13 +87,12 @@ const fontStyles = fonts
   })
   .join('\n');
 const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
-const comparisonPath = 'evidence/campaigns/model-comparison-2026-10-02/summary.json';
+const comparisonId = JSON.parse(readFileSync('docs/current-comparison.json')).campaign;
+if (!/^[a-z0-9-]+$/.test(comparisonId)) throw Error('Invalid current campaign ID.');
+const comparisonPath = `evidence/campaigns/${comparisonId}/summary.json`;
 const comparison = existsSync(comparisonPath)
   ? JSON.parse(readFileSync(comparisonPath))
-  : modelComparison(
-      JSON.parse(readFileSync('docs/campaigns/model-comparison-2026-10-02.json')),
-      [],
-    );
+  : modelComparison(JSON.parse(readFileSync(`docs/campaigns/${comparisonId}.json`)), []);
 const bench = JSON.parse(readFileSync('evidence/benchmark-2026-10-01.json'));
 const backend = readFileSync('evidence/backend-tests.xml', 'utf8');
 const browser = JSON.parse(readFileSync('evidence/reference/summary.json'));
@@ -116,11 +117,17 @@ const bars = Object.entries(summary.byInterface)
   )
   .join('\n');
 const values = {
+  COMPARISON_ID: comparisonId,
+  COMPARISON_PLANNED: comparison.totals.planned,
   ...comparisonSlide(
     comparison,
     Object.fromEntries(
       [
         ['gpt-6-luna', Openai],
+        ['gpt-6.1-sol', Openai],
+        ['claude-sonnet-5-5', Anthropic],
+        ['gemini-3.8-flash', Gemini],
+        ['qwen3p8-max', Qwen],
         ['gpt-4.1-nano', Openai],
         ['gemini-2.5-flash-lite', Gemini],
         ['deepseek-v4.1-flash', Deepseek],

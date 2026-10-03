@@ -262,14 +262,14 @@
       </section>
       <section class="slide comparison-slide" data-title="Model comparison">
         <div class="comparison-heading">
-          <h2>Six models. The same workspace tasks.</h2>
+          <h2>Five models. Every task.</h2>
           <span class="comparison-status">{{COMPARISON_STATUS}}</span>
         </div>
         <div class="comparison-toolbar">
           <span>{{COMPARISON_COUNTS}}</span
-          ><button type="button" id="open-trials">All 120 trials ↗</button>
+          ><button type="button" id="open-trials">All {{COMPARISON_PLANNED}} trials ↗</button>
         </div>
-        {{COMPARISON_TABLE}}
+        {{COMPARISON_FILTER}} {{COMPARISON_TABLE}}
         <div class="legend comparison-legend">
           <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
           ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
@@ -277,27 +277,32 @@
         </div>
         <ul class="sources">
           <li>
-            Five public tasks × four seeds · accessibility control · 16 actions · 4,096 output
-            tokens · $6 total ceiling.
+            18 public tasks × 20 seeds per model · accessibility control · 40 actions · 4,096 output
+            tokens · $300 total ceiling including pilots. Choose a task above.
           </li>
           <li>
-            Passes / attempted. Median includes early stops. Costs are estimates; unknown usage
-            retains reservations. Descriptive, not a held-out ranking.
+            Passes / attempted. Truncated output is not executed; no retries. Median includes
+            blocks. Descriptive public-task results, not a held-out ranking.
           </li>
           <li>
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-comparison-2026-10-02.md"
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
               >Frozen design</a
             >
             ·
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02/summary.json"
-              >Complete results and traces</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/{{COMPARISON_ID}}/README.md"
+              >Collection status and evidence</a
             >
             ·
             <a
-              href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/model-comparison-2026-10-02/trials.csv"
+              href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/{{COMPARISON_ID}}/trials.csv"
               >Download all trials (CSV)</a
+            >
+            ·
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02-final/README.md"
+              >Earlier 36-trial pilot: 20 passed</a
             >
           </li>
         </ul>
@@ -498,7 +503,7 @@
       const trialDialog = document.getElementById('trials-dialog');
       document.getElementById('open-trials').onclick = () => trialDialog.showModal();
       document.getElementById('close-trials').onclick = () => trialDialog.close();
-      for (const table of document.querySelectorAll('.sortable')) {
+      function wireSortable(table) {
         const body = table.tBodies[0];
         const original = new Map([...body.rows].map((row, i) => [row, i]));
         for (const button of table.querySelectorAll('thead button'))
@@ -547,6 +552,41 @@
             document.getElementById(
               table.id === 'model-results' ? 'sort-status' : 'trial-sort-status',
             ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
+          };
+      }
+      for (const table of document.querySelectorAll('.sortable')) wireSortable(table);
+      const taskFilter = document.getElementById('task-filter');
+      if (taskFilter) {
+        taskFilter.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            taskFilter.open = false;
+            taskFilter.querySelector('summary').focus();
+          }
+        });
+        for (const button of taskFilter.querySelectorAll('button'))
+          button.onclick = () => {
+            const template = [...document.querySelectorAll('template[data-task]')].find(
+              (t) => t.dataset.task === button.dataset.task,
+            );
+            const table = document.getElementById('model-results');
+            table.tBodies[0].replaceChildren(
+              ...template.content.querySelector('tbody').cloneNode(true).children,
+            );
+            for (const th of table.querySelectorAll('thead th')) {
+              th.setAttribute('aria-sort', 'none');
+              const arrow = th.querySelector('.sort-arrow');
+              if (arrow) arrow.textContent = '↕';
+            }
+            for (const item of taskFilter.querySelectorAll('button'))
+              item.setAttribute('aria-pressed', String(item === button));
+            taskFilter.querySelector('summary').textContent = button.textContent;
+            taskFilter.open = false;
+            taskFilter.querySelector('summary').focus();
+            document.getElementById('sort-status').textContent =
+              button.dataset.task === 'all'
+                ? 'All tasks · 360 planned per model'
+                : 'Selected task · 20 planned per model';
+            wireSortable(table);
           };
       }
     </script>

@@ -1,0 +1,4797 @@
+{
+  "id": "all-tasks-2026-10-02",
+  "schemaVersion": 1,
+  "authorization": "User approved all 18 tasks, five listed models, 20 fresh trials per task/model and $300 total estimated allowance.",
+  "trialsPerTaskModel": 20,
+  "planned": 1800,
+  "maxEstimatedUSD": 300,
+  "pilotBlocks": 5,
+  "maxWallSeconds": 172800,
+  "maxTotalRequests": 72000,
+  "maxArchiveBytes": 20000000000,
+  "minimumFreeBytes": 10000000000,
+  "priorCampaigns": [
+    {
+      "id": "model-comparison-2026-10-02",
+      "recordedUSD": 0.042986049999999984,
+      "summaryHash": "00a484941943b4be80860e9ad946ecb145b316cb924cdb027ab292b2782dd8d0"
+    },
+    {
+      "id": "model-comparison-2026-10-02-followup",
+      "recordedUSD": 0.10937740000000003,
+      "summaryHash": "2f544458ad22d43d24aa78746406bf945ef1cbb6dbe723d78fd3e043d2aad557"
+    },
+    {
+      "id": "model-comparison-2026-10-02-reserved",
+      "recordedUSD": 0.15668229999999997,
+      "summaryHash": "5e2be0b83be632c7d77f17da98e7f2c750fabf68da18b6b182d767eaa5ace004"
+    },
+    {
+      "id": "model-comparison-2026-10-02-final",
+      "recordedUSD": 0.6789905499999996,
+      "summaryHash": "a4b2cdaea0c028f9a0bb2cad31ca94dc908ab8d711ec8d82e283e71a54427215"
+    }
+  ],
+  "catalog": {
+    "at": "2026-10-03T06:53:58.803Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79"
+  },
+  "models": {
+    "gpt-6.1-sol": {
+      "id": "gpt-6.1-sol",
+      "rates": {
+        "input": 2,
+        "output": 10
+      }
+    },
+    "claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": {
+        "input": 2,
+        "output": 10
+      }
+    },
+    "gemini-3.8-flash": {
+      "id": "gemini-3.8-flash",
+      "rates": {
+        "input": 0.75,
+        "output": 3.75
+      }
+    },
+    "deepseek-v4.1-flash": {
+      "id": "deepseek-v4.1-flash",
+      "rates": {
+        "input": 0.3,
+        "output": 1.2
+      }
+    },
+    "glm-5p3-flash": {
+      "id": "glm-5p3-flash",
+      "rates": {
+        "input": 0.15,
+        "output": 0.5
+      }
+    }
+  },
+  "common": {
+    "provider": "ramp",
+    "tasks": [
+      "thread-reply",
+      "edit-message",
+      "incident-triage",
+      "handoff-dm",
+      "delete-draft",
+      "channel-topic",
+      "release-sync",
+      "incident-closeout",
+      "saved-cleanup",
+      "decision-record",
+      "handoff-repair",
+      "qa-signoff",
+      "publish-update",
+      "oncall-briefing",
+      "thread-repair",
+      "pin-refresh",
+      "design-handoff",
+      "release-retrospective"
+    ],
+    "repeats": 1,
+    "interfaces": ["a11y"],
+    "guides": [false],
+    "histories": ["recent-4"],
+    "maxSteps": 40,
+    "maxRequests": 200,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 180,
+    "runSeconds": 1200,
+    "maxEstimatedUSD": 5,
+    "requestTimeoutSeconds": 90,
+    "continueAfterRequestTimeout": true,
+    "continueAfterOutputLimit": true,
+    "continueAfterConnectionFailure": true,
+    "continueAfterEpisodeTimeout": true
+  },
+  "phases": [
+    {
+      "id": "block-001",
+      "tasks": ["channel-topic"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261100
+    },
+    {
+      "id": "block-002",
+      "tasks": ["thread-reply"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261101
+    },
+    {
+      "id": "block-003",
+      "tasks": ["edit-message"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261102
+    },
+    {
+      "id": "block-004",
+      "tasks": ["incident-triage"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261103
+    },
+    {
+      "id": "block-005",
+      "tasks": ["decision-record"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261104
+    },
+    {
+      "id": "block-006",
+      "tasks": ["publish-update"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261105
+    },
+    {
+      "id": "block-007",
+      "tasks": ["handoff-dm"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261106
+    },
+    {
+      "id": "block-008",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261107
+    },
+    {
+      "id": "block-009",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261108
+    },
+    {
+      "id": "block-010",
+      "tasks": ["pin-refresh"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261109
+    },
+    {
+      "id": "block-011",
+      "tasks": ["thread-repair"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261110
+    },
+    {
+      "id": "block-012",
+      "tasks": ["design-handoff"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261111
+    },
+    {
+      "id": "block-013",
+      "tasks": ["release-retrospective"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261112
+    },
+    {
+      "id": "block-014",
+      "tasks": ["release-sync"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261113
+    },
+    {
+      "id": "block-015",
+      "tasks": ["incident-closeout"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261114
+    },
+    {
+      "id": "block-016",
+      "tasks": ["delete-draft"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261115
+    },
+    {
+      "id": "block-017",
+      "tasks": ["qa-signoff"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261116
+    },
+    {
+      "id": "block-018",
+      "tasks": ["handoff-repair"],
+      "seeds": [1042],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261117
+    },
+    {
+      "id": "block-019",
+      "tasks": ["release-retrospective"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261118
+    },
+    {
+      "id": "block-020",
+      "tasks": ["pin-refresh"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261119
+    },
+    {
+      "id": "block-021",
+      "tasks": ["channel-topic"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261120
+    },
+    {
+      "id": "block-022",
+      "tasks": ["delete-draft"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261121
+    },
+    {
+      "id": "block-023",
+      "tasks": ["publish-update"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261122
+    },
+    {
+      "id": "block-024",
+      "tasks": ["thread-repair"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261123
+    },
+    {
+      "id": "block-025",
+      "tasks": ["design-handoff"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261124
+    },
+    {
+      "id": "block-026",
+      "tasks": ["incident-closeout"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261125
+    },
+    {
+      "id": "block-027",
+      "tasks": ["incident-triage"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261126
+    },
+    {
+      "id": "block-028",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261127
+    },
+    {
+      "id": "block-029",
+      "tasks": ["release-sync"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261128
+    },
+    {
+      "id": "block-030",
+      "tasks": ["thread-reply"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261129
+    },
+    {
+      "id": "block-031",
+      "tasks": ["qa-signoff"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261130
+    },
+    {
+      "id": "block-032",
+      "tasks": ["decision-record"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261131
+    },
+    {
+      "id": "block-033",
+      "tasks": ["handoff-dm"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261132
+    },
+    {
+      "id": "block-034",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261133
+    },
+    {
+      "id": "block-035",
+      "tasks": ["handoff-repair"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261134
+    },
+    {
+      "id": "block-036",
+      "tasks": ["edit-message"],
+      "seeds": [1043],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261135
+    },
+    {
+      "id": "block-037",
+      "tasks": ["release-sync"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261136
+    },
+    {
+      "id": "block-038",
+      "tasks": ["release-retrospective"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261137
+    },
+    {
+      "id": "block-039",
+      "tasks": ["thread-reply"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261138
+    },
+    {
+      "id": "block-040",
+      "tasks": ["thread-repair"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261139
+    },
+    {
+      "id": "block-041",
+      "tasks": ["publish-update"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261140
+    },
+    {
+      "id": "block-042",
+      "tasks": ["channel-topic"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261141
+    },
+    {
+      "id": "block-043",
+      "tasks": ["handoff-repair"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261142
+    },
+    {
+      "id": "block-044",
+      "tasks": ["qa-signoff"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261143
+    },
+    {
+      "id": "block-045",
+      "tasks": ["edit-message"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261144
+    },
+    {
+      "id": "block-046",
+      "tasks": ["incident-triage"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261145
+    },
+    {
+      "id": "block-047",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261146
+    },
+    {
+      "id": "block-048",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261147
+    },
+    {
+      "id": "block-049",
+      "tasks": ["delete-draft"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261148
+    },
+    {
+      "id": "block-050",
+      "tasks": ["pin-refresh"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261149
+    },
+    {
+      "id": "block-051",
+      "tasks": ["handoff-dm"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261150
+    },
+    {
+      "id": "block-052",
+      "tasks": ["decision-record"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261151
+    },
+    {
+      "id": "block-053",
+      "tasks": ["design-handoff"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261152
+    },
+    {
+      "id": "block-054",
+      "tasks": ["incident-closeout"],
+      "seeds": [1044],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261153
+    },
+    {
+      "id": "block-055",
+      "tasks": ["pin-refresh"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261154
+    },
+    {
+      "id": "block-056",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261155
+    },
+    {
+      "id": "block-057",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261156
+    },
+    {
+      "id": "block-058",
+      "tasks": ["release-retrospective"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261157
+    },
+    {
+      "id": "block-059",
+      "tasks": ["delete-draft"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261158
+    },
+    {
+      "id": "block-060",
+      "tasks": ["incident-triage"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261159
+    },
+    {
+      "id": "block-061",
+      "tasks": ["edit-message"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261160
+    },
+    {
+      "id": "block-062",
+      "tasks": ["decision-record"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261161
+    },
+    {
+      "id": "block-063",
+      "tasks": ["thread-repair"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261162
+    },
+    {
+      "id": "block-064",
+      "tasks": ["qa-signoff"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261163
+    },
+    {
+      "id": "block-065",
+      "tasks": ["design-handoff"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261164
+    },
+    {
+      "id": "block-066",
+      "tasks": ["channel-topic"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261165
+    },
+    {
+      "id": "block-067",
+      "tasks": ["release-sync"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261166
+    },
+    {
+      "id": "block-068",
+      "tasks": ["handoff-dm"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261167
+    },
+    {
+      "id": "block-069",
+      "tasks": ["handoff-repair"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261168
+    },
+    {
+      "id": "block-070",
+      "tasks": ["publish-update"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261169
+    },
+    {
+      "id": "block-071",
+      "tasks": ["incident-closeout"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261170
+    },
+    {
+      "id": "block-072",
+      "tasks": ["thread-reply"],
+      "seeds": [1045],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261171
+    },
+    {
+      "id": "block-073",
+      "tasks": ["edit-message"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261172
+    },
+    {
+      "id": "block-074",
+      "tasks": ["incident-closeout"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261173
+    },
+    {
+      "id": "block-075",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261174
+    },
+    {
+      "id": "block-076",
+      "tasks": ["handoff-repair"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261175
+    },
+    {
+      "id": "block-077",
+      "tasks": ["thread-reply"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261176
+    },
+    {
+      "id": "block-078",
+      "tasks": ["pin-refresh"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261177
+    },
+    {
+      "id": "block-079",
+      "tasks": ["delete-draft"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261178
+    },
+    {
+      "id": "block-080",
+      "tasks": ["release-sync"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261179
+    },
+    {
+      "id": "block-081",
+      "tasks": ["release-retrospective"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261180
+    },
+    {
+      "id": "block-082",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261181
+    },
+    {
+      "id": "block-083",
+      "tasks": ["design-handoff"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261182
+    },
+    {
+      "id": "block-084",
+      "tasks": ["qa-signoff"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261183
+    },
+    {
+      "id": "block-085",
+      "tasks": ["channel-topic"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261184
+    },
+    {
+      "id": "block-086",
+      "tasks": ["decision-record"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261185
+    },
+    {
+      "id": "block-087",
+      "tasks": ["handoff-dm"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261186
+    },
+    {
+      "id": "block-088",
+      "tasks": ["publish-update"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261187
+    },
+    {
+      "id": "block-089",
+      "tasks": ["thread-repair"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261188
+    },
+    {
+      "id": "block-090",
+      "tasks": ["incident-triage"],
+      "seeds": [1046],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261189
+    },
+    {
+      "id": "block-091",
+      "tasks": ["publish-update"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261190
+    },
+    {
+      "id": "block-092",
+      "tasks": ["delete-draft"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261191
+    },
+    {
+      "id": "block-093",
+      "tasks": ["handoff-repair"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261192
+    },
+    {
+      "id": "block-094",
+      "tasks": ["design-handoff"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261193
+    },
+    {
+      "id": "block-095",
+      "tasks": ["release-retrospective"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261194
+    },
+    {
+      "id": "block-096",
+      "tasks": ["handoff-dm"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261195
+    },
+    {
+      "id": "block-097",
+      "tasks": ["thread-reply"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261196
+    },
+    {
+      "id": "block-098",
+      "tasks": ["decision-record"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261197
+    },
+    {
+      "id": "block-099",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261198
+    },
+    {
+      "id": "block-100",
+      "tasks": ["release-sync"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261199
+    },
+    {
+      "id": "block-101",
+      "tasks": ["incident-triage"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261200
+    },
+    {
+      "id": "block-102",
+      "tasks": ["incident-closeout"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261201
+    },
+    {
+      "id": "block-103",
+      "tasks": ["qa-signoff"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261202
+    },
+    {
+      "id": "block-104",
+      "tasks": ["thread-repair"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261203
+    },
+    {
+      "id": "block-105",
+      "tasks": ["pin-refresh"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261204
+    },
+    {
+      "id": "block-106",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261205
+    },
+    {
+      "id": "block-107",
+      "tasks": ["edit-message"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261206
+    },
+    {
+      "id": "block-108",
+      "tasks": ["channel-topic"],
+      "seeds": [1047],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261207
+    },
+    {
+      "id": "block-109",
+      "tasks": ["qa-signoff"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261208
+    },
+    {
+      "id": "block-110",
+      "tasks": ["handoff-dm"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261209
+    },
+    {
+      "id": "block-111",
+      "tasks": ["thread-reply"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261210
+    },
+    {
+      "id": "block-112",
+      "tasks": ["channel-topic"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261211
+    },
+    {
+      "id": "block-113",
+      "tasks": ["design-handoff"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261212
+    },
+    {
+      "id": "block-114",
+      "tasks": ["incident-triage"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261213
+    },
+    {
+      "id": "block-115",
+      "tasks": ["pin-refresh"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261214
+    },
+    {
+      "id": "block-116",
+      "tasks": ["release-sync"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261215
+    },
+    {
+      "id": "block-117",
+      "tasks": ["edit-message"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261216
+    },
+    {
+      "id": "block-118",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261217
+    },
+    {
+      "id": "block-119",
+      "tasks": ["decision-record"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261218
+    },
+    {
+      "id": "block-120",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261219
+    },
+    {
+      "id": "block-121",
+      "tasks": ["publish-update"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261220
+    },
+    {
+      "id": "block-122",
+      "tasks": ["release-retrospective"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261221
+    },
+    {
+      "id": "block-123",
+      "tasks": ["handoff-repair"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261222
+    },
+    {
+      "id": "block-124",
+      "tasks": ["incident-closeout"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261223
+    },
+    {
+      "id": "block-125",
+      "tasks": ["thread-repair"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261224
+    },
+    {
+      "id": "block-126",
+      "tasks": ["delete-draft"],
+      "seeds": [1048],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261225
+    },
+    {
+      "id": "block-127",
+      "tasks": ["channel-topic"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261226
+    },
+    {
+      "id": "block-128",
+      "tasks": ["release-sync"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261227
+    },
+    {
+      "id": "block-129",
+      "tasks": ["pin-refresh"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261228
+    },
+    {
+      "id": "block-130",
+      "tasks": ["delete-draft"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261229
+    },
+    {
+      "id": "block-131",
+      "tasks": ["incident-triage"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261230
+    },
+    {
+      "id": "block-132",
+      "tasks": ["release-retrospective"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261231
+    },
+    {
+      "id": "block-133",
+      "tasks": ["thread-repair"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261232
+    },
+    {
+      "id": "block-134",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261233
+    },
+    {
+      "id": "block-135",
+      "tasks": ["handoff-dm"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261234
+    },
+    {
+      "id": "block-136",
+      "tasks": ["design-handoff"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261235
+    },
+    {
+      "id": "block-137",
+      "tasks": ["qa-signoff"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261236
+    },
+    {
+      "id": "block-138",
+      "tasks": ["publish-update"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261237
+    },
+    {
+      "id": "block-139",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261238
+    },
+    {
+      "id": "block-140",
+      "tasks": ["decision-record"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261239
+    },
+    {
+      "id": "block-141",
+      "tasks": ["thread-reply"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261240
+    },
+    {
+      "id": "block-142",
+      "tasks": ["incident-closeout"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261241
+    },
+    {
+      "id": "block-143",
+      "tasks": ["edit-message"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261242
+    },
+    {
+      "id": "block-144",
+      "tasks": ["handoff-repair"],
+      "seeds": [1049],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261243
+    },
+    {
+      "id": "block-145",
+      "tasks": ["edit-message"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261244
+    },
+    {
+      "id": "block-146",
+      "tasks": ["design-handoff"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261245
+    },
+    {
+      "id": "block-147",
+      "tasks": ["thread-reply"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261246
+    },
+    {
+      "id": "block-148",
+      "tasks": ["pin-refresh"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261247
+    },
+    {
+      "id": "block-149",
+      "tasks": ["release-retrospective"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261248
+    },
+    {
+      "id": "block-150",
+      "tasks": ["delete-draft"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261249
+    },
+    {
+      "id": "block-151",
+      "tasks": ["qa-signoff"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261250
+    },
+    {
+      "id": "block-152",
+      "tasks": ["incident-closeout"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261251
+    },
+    {
+      "id": "block-153",
+      "tasks": ["release-sync"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261252
+    },
+    {
+      "id": "block-154",
+      "tasks": ["publish-update"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261253
+    },
+    {
+      "id": "block-155",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261254
+    },
+    {
+      "id": "block-156",
+      "tasks": ["handoff-repair"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261255
+    },
+    {
+      "id": "block-157",
+      "tasks": ["channel-topic"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261256
+    },
+    {
+      "id": "block-158",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261257
+    },
+    {
+      "id": "block-159",
+      "tasks": ["handoff-dm"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261258
+    },
+    {
+      "id": "block-160",
+      "tasks": ["thread-repair"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261259
+    },
+    {
+      "id": "block-161",
+      "tasks": ["incident-triage"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261260
+    },
+    {
+      "id": "block-162",
+      "tasks": ["decision-record"],
+      "seeds": [1050],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261261
+    },
+    {
+      "id": "block-163",
+      "tasks": ["publish-update"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261262
+    },
+    {
+      "id": "block-164",
+      "tasks": ["handoff-dm"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261263
+    },
+    {
+      "id": "block-165",
+      "tasks": ["channel-topic"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261264
+    },
+    {
+      "id": "block-166",
+      "tasks": ["pin-refresh"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261265
+    },
+    {
+      "id": "block-167",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261266
+    },
+    {
+      "id": "block-168",
+      "tasks": ["incident-triage"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261267
+    },
+    {
+      "id": "block-169",
+      "tasks": ["thread-repair"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261268
+    },
+    {
+      "id": "block-170",
+      "tasks": ["design-handoff"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261269
+    },
+    {
+      "id": "block-171",
+      "tasks": ["decision-record"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261270
+    },
+    {
+      "id": "block-172",
+      "tasks": ["thread-reply"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261271
+    },
+    {
+      "id": "block-173",
+      "tasks": ["release-sync"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261272
+    },
+    {
+      "id": "block-174",
+      "tasks": ["handoff-repair"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261273
+    },
+    {
+      "id": "block-175",
+      "tasks": ["release-retrospective"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261274
+    },
+    {
+      "id": "block-176",
+      "tasks": ["delete-draft"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261275
+    },
+    {
+      "id": "block-177",
+      "tasks": ["edit-message"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261276
+    },
+    {
+      "id": "block-178",
+      "tasks": ["incident-closeout"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261277
+    },
+    {
+      "id": "block-179",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261278
+    },
+    {
+      "id": "block-180",
+      "tasks": ["qa-signoff"],
+      "seeds": [1051],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261279
+    },
+    {
+      "id": "block-181",
+      "tasks": ["design-handoff"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261280
+    },
+    {
+      "id": "block-182",
+      "tasks": ["incident-triage"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261281
+    },
+    {
+      "id": "block-183",
+      "tasks": ["release-sync"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261282
+    },
+    {
+      "id": "block-184",
+      "tasks": ["channel-topic"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261283
+    },
+    {
+      "id": "block-185",
+      "tasks": ["release-retrospective"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261284
+    },
+    {
+      "id": "block-186",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261285
+    },
+    {
+      "id": "block-187",
+      "tasks": ["thread-reply"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261286
+    },
+    {
+      "id": "block-188",
+      "tasks": ["qa-signoff"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261287
+    },
+    {
+      "id": "block-189",
+      "tasks": ["edit-message"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261288
+    },
+    {
+      "id": "block-190",
+      "tasks": ["handoff-dm"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261289
+    },
+    {
+      "id": "block-191",
+      "tasks": ["publish-update"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261290
+    },
+    {
+      "id": "block-192",
+      "tasks": ["pin-refresh"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261291
+    },
+    {
+      "id": "block-193",
+      "tasks": ["delete-draft"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261292
+    },
+    {
+      "id": "block-194",
+      "tasks": ["incident-closeout"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261293
+    },
+    {
+      "id": "block-195",
+      "tasks": ["handoff-repair"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261294
+    },
+    {
+      "id": "block-196",
+      "tasks": ["decision-record"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261295
+    },
+    {
+      "id": "block-197",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261296
+    },
+    {
+      "id": "block-198",
+      "tasks": ["thread-repair"],
+      "seeds": [1052],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261297
+    },
+    {
+      "id": "block-199",
+      "tasks": ["incident-closeout"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261298
+    },
+    {
+      "id": "block-200",
+      "tasks": ["channel-topic"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261299
+    },
+    {
+      "id": "block-201",
+      "tasks": ["release-retrospective"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261300
+    },
+    {
+      "id": "block-202",
+      "tasks": ["release-sync"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261301
+    },
+    {
+      "id": "block-203",
+      "tasks": ["handoff-dm"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261302
+    },
+    {
+      "id": "block-204",
+      "tasks": ["thread-reply"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261303
+    },
+    {
+      "id": "block-205",
+      "tasks": ["incident-triage"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261304
+    },
+    {
+      "id": "block-206",
+      "tasks": ["delete-draft"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261305
+    },
+    {
+      "id": "block-207",
+      "tasks": ["pin-refresh"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261306
+    },
+    {
+      "id": "block-208",
+      "tasks": ["decision-record"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261307
+    },
+    {
+      "id": "block-209",
+      "tasks": ["handoff-repair"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261308
+    },
+    {
+      "id": "block-210",
+      "tasks": ["thread-repair"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261309
+    },
+    {
+      "id": "block-211",
+      "tasks": ["design-handoff"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261310
+    },
+    {
+      "id": "block-212",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261311
+    },
+    {
+      "id": "block-213",
+      "tasks": ["qa-signoff"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261312
+    },
+    {
+      "id": "block-214",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261313
+    },
+    {
+      "id": "block-215",
+      "tasks": ["edit-message"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261314
+    },
+    {
+      "id": "block-216",
+      "tasks": ["publish-update"],
+      "seeds": [1053],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261315
+    },
+    {
+      "id": "block-217",
+      "tasks": ["edit-message"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261316
+    },
+    {
+      "id": "block-218",
+      "tasks": ["incident-closeout"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261317
+    },
+    {
+      "id": "block-219",
+      "tasks": ["publish-update"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261318
+    },
+    {
+      "id": "block-220",
+      "tasks": ["pin-refresh"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261319
+    },
+    {
+      "id": "block-221",
+      "tasks": ["release-sync"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261320
+    },
+    {
+      "id": "block-222",
+      "tasks": ["channel-topic"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261321
+    },
+    {
+      "id": "block-223",
+      "tasks": ["thread-reply"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261322
+    },
+    {
+      "id": "block-224",
+      "tasks": ["design-handoff"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261323
+    },
+    {
+      "id": "block-225",
+      "tasks": ["handoff-dm"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261324
+    },
+    {
+      "id": "block-226",
+      "tasks": ["handoff-repair"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261325
+    },
+    {
+      "id": "block-227",
+      "tasks": ["qa-signoff"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261326
+    },
+    {
+      "id": "block-228",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261327
+    },
+    {
+      "id": "block-229",
+      "tasks": ["release-retrospective"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261328
+    },
+    {
+      "id": "block-230",
+      "tasks": ["thread-repair"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261329
+    },
+    {
+      "id": "block-231",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261330
+    },
+    {
+      "id": "block-232",
+      "tasks": ["incident-triage"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261331
+    },
+    {
+      "id": "block-233",
+      "tasks": ["decision-record"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261332
+    },
+    {
+      "id": "block-234",
+      "tasks": ["delete-draft"],
+      "seeds": [1054],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261333
+    },
+    {
+      "id": "block-235",
+      "tasks": ["pin-refresh"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261334
+    },
+    {
+      "id": "block-236",
+      "tasks": ["design-handoff"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261335
+    },
+    {
+      "id": "block-237",
+      "tasks": ["decision-record"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261336
+    },
+    {
+      "id": "block-238",
+      "tasks": ["thread-repair"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261337
+    },
+    {
+      "id": "block-239",
+      "tasks": ["handoff-dm"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261338
+    },
+    {
+      "id": "block-240",
+      "tasks": ["delete-draft"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261339
+    },
+    {
+      "id": "block-241",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261340
+    },
+    {
+      "id": "block-242",
+      "tasks": ["channel-topic"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261341
+    },
+    {
+      "id": "block-243",
+      "tasks": ["release-retrospective"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261342
+    },
+    {
+      "id": "block-244",
+      "tasks": ["edit-message"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261343
+    },
+    {
+      "id": "block-245",
+      "tasks": ["thread-reply"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261344
+    },
+    {
+      "id": "block-246",
+      "tasks": ["qa-signoff"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261345
+    },
+    {
+      "id": "block-247",
+      "tasks": ["handoff-repair"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261346
+    },
+    {
+      "id": "block-248",
+      "tasks": ["publish-update"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261347
+    },
+    {
+      "id": "block-249",
+      "tasks": ["release-sync"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261348
+    },
+    {
+      "id": "block-250",
+      "tasks": ["incident-closeout"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261349
+    },
+    {
+      "id": "block-251",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261350
+    },
+    {
+      "id": "block-252",
+      "tasks": ["incident-triage"],
+      "seeds": [1055],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261351
+    },
+    {
+      "id": "block-253",
+      "tasks": ["publish-update"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261352
+    },
+    {
+      "id": "block-254",
+      "tasks": ["thread-repair"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261353
+    },
+    {
+      "id": "block-255",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261354
+    },
+    {
+      "id": "block-256",
+      "tasks": ["channel-topic"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261355
+    },
+    {
+      "id": "block-257",
+      "tasks": ["release-sync"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261356
+    },
+    {
+      "id": "block-258",
+      "tasks": ["incident-closeout"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261357
+    },
+    {
+      "id": "block-259",
+      "tasks": ["delete-draft"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261358
+    },
+    {
+      "id": "block-260",
+      "tasks": ["handoff-dm"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261359
+    },
+    {
+      "id": "block-261",
+      "tasks": ["release-retrospective"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261360
+    },
+    {
+      "id": "block-262",
+      "tasks": ["pin-refresh"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261361
+    },
+    {
+      "id": "block-263",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261362
+    },
+    {
+      "id": "block-264",
+      "tasks": ["qa-signoff"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261363
+    },
+    {
+      "id": "block-265",
+      "tasks": ["incident-triage"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261364
+    },
+    {
+      "id": "block-266",
+      "tasks": ["decision-record"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261365
+    },
+    {
+      "id": "block-267",
+      "tasks": ["edit-message"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261366
+    },
+    {
+      "id": "block-268",
+      "tasks": ["thread-reply"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261367
+    },
+    {
+      "id": "block-269",
+      "tasks": ["design-handoff"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261368
+    },
+    {
+      "id": "block-270",
+      "tasks": ["handoff-repair"],
+      "seeds": [1056],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261369
+    },
+    {
+      "id": "block-271",
+      "tasks": ["incident-closeout"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261370
+    },
+    {
+      "id": "block-272",
+      "tasks": ["thread-reply"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261371
+    },
+    {
+      "id": "block-273",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261372
+    },
+    {
+      "id": "block-274",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261373
+    },
+    {
+      "id": "block-275",
+      "tasks": ["handoff-dm"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261374
+    },
+    {
+      "id": "block-276",
+      "tasks": ["handoff-repair"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261375
+    },
+    {
+      "id": "block-277",
+      "tasks": ["channel-topic"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261376
+    },
+    {
+      "id": "block-278",
+      "tasks": ["design-handoff"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261377
+    },
+    {
+      "id": "block-279",
+      "tasks": ["release-retrospective"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261378
+    },
+    {
+      "id": "block-280",
+      "tasks": ["edit-message"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261379
+    },
+    {
+      "id": "block-281",
+      "tasks": ["publish-update"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261380
+    },
+    {
+      "id": "block-282",
+      "tasks": ["qa-signoff"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261381
+    },
+    {
+      "id": "block-283",
+      "tasks": ["incident-triage"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261382
+    },
+    {
+      "id": "block-284",
+      "tasks": ["release-sync"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261383
+    },
+    {
+      "id": "block-285",
+      "tasks": ["decision-record"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261384
+    },
+    {
+      "id": "block-286",
+      "tasks": ["pin-refresh"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261385
+    },
+    {
+      "id": "block-287",
+      "tasks": ["delete-draft"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261386
+    },
+    {
+      "id": "block-288",
+      "tasks": ["thread-repair"],
+      "seeds": [1057],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261387
+    },
+    {
+      "id": "block-289",
+      "tasks": ["delete-draft"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261388
+    },
+    {
+      "id": "block-290",
+      "tasks": ["release-retrospective"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261389
+    },
+    {
+      "id": "block-291",
+      "tasks": ["qa-signoff"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261390
+    },
+    {
+      "id": "block-292",
+      "tasks": ["decision-record"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261391
+    },
+    {
+      "id": "block-293",
+      "tasks": ["thread-reply"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261392
+    },
+    {
+      "id": "block-294",
+      "tasks": ["publish-update"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261393
+    },
+    {
+      "id": "block-295",
+      "tasks": ["release-sync"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261394
+    },
+    {
+      "id": "block-296",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261395
+    },
+    {
+      "id": "block-297",
+      "tasks": ["channel-topic"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261396
+    },
+    {
+      "id": "block-298",
+      "tasks": ["handoff-repair"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261397
+    },
+    {
+      "id": "block-299",
+      "tasks": ["handoff-dm"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261398
+    },
+    {
+      "id": "block-300",
+      "tasks": ["edit-message"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261399
+    },
+    {
+      "id": "block-301",
+      "tasks": ["thread-repair"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261400
+    },
+    {
+      "id": "block-302",
+      "tasks": ["pin-refresh"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261401
+    },
+    {
+      "id": "block-303",
+      "tasks": ["incident-closeout"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261402
+    },
+    {
+      "id": "block-304",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261403
+    },
+    {
+      "id": "block-305",
+      "tasks": ["design-handoff"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261404
+    },
+    {
+      "id": "block-306",
+      "tasks": ["incident-triage"],
+      "seeds": [1058],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261405
+    },
+    {
+      "id": "block-307",
+      "tasks": ["qa-signoff"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261406
+    },
+    {
+      "id": "block-308",
+      "tasks": ["decision-record"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261407
+    },
+    {
+      "id": "block-309",
+      "tasks": ["release-retrospective"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261408
+    },
+    {
+      "id": "block-310",
+      "tasks": ["thread-reply"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261409
+    },
+    {
+      "id": "block-311",
+      "tasks": ["design-handoff"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261410
+    },
+    {
+      "id": "block-312",
+      "tasks": ["thread-repair"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261411
+    },
+    {
+      "id": "block-313",
+      "tasks": ["handoff-dm"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261412
+    },
+    {
+      "id": "block-314",
+      "tasks": ["publish-update"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261413
+    },
+    {
+      "id": "block-315",
+      "tasks": ["incident-triage"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261414
+    },
+    {
+      "id": "block-316",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261415
+    },
+    {
+      "id": "block-317",
+      "tasks": ["channel-topic"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261416
+    },
+    {
+      "id": "block-318",
+      "tasks": ["release-sync"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261417
+    },
+    {
+      "id": "block-319",
+      "tasks": ["incident-closeout"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261418
+    },
+    {
+      "id": "block-320",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261419
+    },
+    {
+      "id": "block-321",
+      "tasks": ["handoff-repair"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261420
+    },
+    {
+      "id": "block-322",
+      "tasks": ["edit-message"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261421
+    },
+    {
+      "id": "block-323",
+      "tasks": ["delete-draft"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261422
+    },
+    {
+      "id": "block-324",
+      "tasks": ["pin-refresh"],
+      "seeds": [1059],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261423
+    },
+    {
+      "id": "block-325",
+      "tasks": ["incident-triage"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261424
+    },
+    {
+      "id": "block-326",
+      "tasks": ["qa-signoff"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261425
+    },
+    {
+      "id": "block-327",
+      "tasks": ["incident-closeout"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261426
+    },
+    {
+      "id": "block-328",
+      "tasks": ["decision-record"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261427
+    },
+    {
+      "id": "block-329",
+      "tasks": ["thread-reply"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261428
+    },
+    {
+      "id": "block-330",
+      "tasks": ["handoff-repair"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261429
+    },
+    {
+      "id": "block-331",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261430
+    },
+    {
+      "id": "block-332",
+      "tasks": ["design-handoff"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261431
+    },
+    {
+      "id": "block-333",
+      "tasks": ["edit-message"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261432
+    },
+    {
+      "id": "block-334",
+      "tasks": ["handoff-dm"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261433
+    },
+    {
+      "id": "block-335",
+      "tasks": ["channel-topic"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261434
+    },
+    {
+      "id": "block-336",
+      "tasks": ["delete-draft"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261435
+    },
+    {
+      "id": "block-337",
+      "tasks": ["pin-refresh"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261436
+    },
+    {
+      "id": "block-338",
+      "tasks": ["release-retrospective"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261437
+    },
+    {
+      "id": "block-339",
+      "tasks": ["thread-repair"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261438
+    },
+    {
+      "id": "block-340",
+      "tasks": ["publish-update"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261439
+    },
+    {
+      "id": "block-341",
+      "tasks": ["release-sync"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261440
+    },
+    {
+      "id": "block-342",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1060],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261441
+    },
+    {
+      "id": "block-343",
+      "tasks": ["saved-cleanup"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261442
+    },
+    {
+      "id": "block-344",
+      "tasks": ["channel-topic"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261443
+    },
+    {
+      "id": "block-345",
+      "tasks": ["qa-signoff"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261444
+    },
+    {
+      "id": "block-346",
+      "tasks": ["publish-update"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261445
+    },
+    {
+      "id": "block-347",
+      "tasks": ["oncall-briefing"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261446
+    },
+    {
+      "id": "block-348",
+      "tasks": ["release-sync"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261447
+    },
+    {
+      "id": "block-349",
+      "tasks": ["pin-refresh"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261448
+    },
+    {
+      "id": "block-350",
+      "tasks": ["thread-repair"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261449
+    },
+    {
+      "id": "block-351",
+      "tasks": ["release-retrospective"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261450
+    },
+    {
+      "id": "block-352",
+      "tasks": ["edit-message"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261451
+    },
+    {
+      "id": "block-353",
+      "tasks": ["incident-triage"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261452
+    },
+    {
+      "id": "block-354",
+      "tasks": ["incident-closeout"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261453
+    },
+    {
+      "id": "block-355",
+      "tasks": ["handoff-dm"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261454
+    },
+    {
+      "id": "block-356",
+      "tasks": ["design-handoff"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261455
+    },
+    {
+      "id": "block-357",
+      "tasks": ["handoff-repair"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261456
+    },
+    {
+      "id": "block-358",
+      "tasks": ["delete-draft"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261457
+    },
+    {
+      "id": "block-359",
+      "tasks": ["decision-record"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261458
+    },
+    {
+      "id": "block-360",
+      "tasks": ["thread-reply"],
+      "seeds": [1061],
+      "models": [
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5",
+        "gemini-3.8-flash",
+        "deepseek-v4.1-flash",
+        "glm-5p3-flash"
+      ],
+      "orderSeed": 20261459
+    }
+  ]
+}

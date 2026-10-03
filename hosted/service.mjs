@@ -35,6 +35,14 @@ export const LIMITS = {
 };
 export function hostedConfig(input) {
   const c = validateConfig(input);
+  if (
+    c.requestTimeoutSeconds !== undefined ||
+    c.continueAfterRequestTimeout !== undefined ||
+    c.continueAfterOutputLimit !== undefined ||
+    c.continueAfterConnectionFailure !== undefined ||
+    c.continueAfterEpisodeTimeout !== undefined
+  )
+    throw Error('Request-timeout overrides are local CLI campaign settings, not hosted settings.');
   if (!['ramp', 'typesafe'].includes(c.provider))
     throw Error(
       'Live hosted runs require your provider key. The reference demo is a recorded replay.',

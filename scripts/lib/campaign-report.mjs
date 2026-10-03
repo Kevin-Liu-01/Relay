@@ -53,8 +53,8 @@ export function campaignSummary(plan, phases) {
         returnedModels: [
           ...new Set(
             trace
-              .filter((t) => t.kind === 'response')
-              .map((t) => t.response.returnedModel)
+              .filter((t) => t.kind === 'response' || t.kind === 'provider_error')
+              .map((t) => t.response?.returnedModel ?? t.receipt?.returnedModel)
               .filter(Boolean),
           ),
         ],

@@ -43,6 +43,19 @@ const config = (provider = 'ramp') => ({
   maxEstimatedUSD: 0.25,
 });
 
+test('hosted runs reject local campaign timeout policy overrides', () => {
+  assert.throws(() => hostedConfig({ ...config(), continueAfterOutputLimit: true }), /local CLI/);
+  assert.throws(
+    () => hostedConfig({ ...config(), continueAfterConnectionFailure: true }),
+    /local CLI/,
+  );
+  assert.throws(() => hostedConfig({ ...config(), requestTimeoutSeconds: 90 }), /local CLI/);
+  assert.throws(
+    () => hostedConfig({ ...config(), continueAfterRequestTimeout: true }),
+    /local CLI/,
+  );
+});
+
 test('hosted evidence delivery drains between large artifacts and honors cancellation', async () => {
   let flushed = 0;
   const res = new Writable({

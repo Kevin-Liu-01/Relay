@@ -25,12 +25,44 @@ export function validateConfig(c) {
     'episodeSeconds',
     'runSeconds',
     'maxEstimatedUSD',
+    'requestTimeoutSeconds',
+    'continueAfterRequestTimeout',
+    'continueAfterOutputLimit',
+    'continueAfterConnectionFailure',
+    'continueAfterEpisodeTimeout',
   ];
   check(
     Object.keys(c).every((k) => allowedKeys.includes(k)),
     'Unknown configuration fields are rejected; never place credentials in run configs.',
   );
   check(['reference', 'ramp', 'typesafe'].includes(c.provider), 'Unknown provider.');
+  if (c.requestTimeoutSeconds !== undefined)
+    check(
+      Number.isInteger(c.requestTimeoutSeconds) &&
+        c.requestTimeoutSeconds >= 1 &&
+        c.requestTimeoutSeconds <= 90,
+      'requestTimeoutSeconds must be 1..90.',
+    );
+  if (c.continueAfterRequestTimeout !== undefined)
+    check(
+      typeof c.continueAfterRequestTimeout === 'boolean' && c.provider === 'ramp',
+      'Timeout continuation is a boolean Ramp CLI campaign policy.',
+    );
+  if (c.continueAfterOutputLimit !== undefined)
+    check(
+      typeof c.continueAfterOutputLimit === 'boolean' && c.provider === 'ramp',
+      'Output-limit continuation is a boolean Ramp CLI campaign policy.',
+    );
+  if (c.continueAfterConnectionFailure !== undefined)
+    check(
+      typeof c.continueAfterConnectionFailure === 'boolean' && c.provider === 'ramp',
+      'Connection continuation is a boolean Ramp CLI campaign policy.',
+    );
+  if (c.continueAfterEpisodeTimeout !== undefined)
+    check(
+      typeof c.continueAfterEpisodeTimeout === 'boolean' && c.provider === 'ramp',
+      'Episode deadline continuation is a boolean Ramp CLI campaign policy.',
+    );
   for (const [key, allowed] of [
     ['tasks', TASK_IDS],
     ['interfaces', INTERFACES],

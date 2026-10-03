@@ -8,6 +8,32 @@ export class RunStop extends Error {
 }
 const hash = (v) => createHash('sha256').update(JSON.stringify(v)).digest('hex');
 
+// Classify only known transport errors, never an arbitrary exception or an HTTP
+// rejection. Preserve fixed metadata, not upstream messages/URLs/headers.
+const connectionCodes = new Set([
+  'ECONNRESET',
+  'ECONNREFUSED',
+  'EPIPE',
+  'ENOTFOUND',
+  'EAI_AGAIN',
+  'ETIMEDOUT',
+  'UND_ERR_SOCKET',
+  'UND_ERR_CONNECT_TIMEOUT',
+  'UND_ERR_HEADERS_TIMEOUT',
+  'UND_ERR_BODY_TIMEOUT',
+]);
+function connectionFailure(error, receipt, signal) {
+  if (signal?.aborted || ['AbortError', 'TimeoutError'].includes(error.name)) return error;
+  const code = error.cause?.code ?? error.code;
+  if (!connectionCodes.has(code)) return error;
+  const failure = new RunStop(
+    'provider_connection_error',
+    'Router connection interrupted before a complete receipt. Usage is unknown; reservation retained. No automatic retry.',
+  );
+  failure.receipt = { ...receipt, failureCode: 'provider_connection_error', transportCode: code };
+  return failure;
+}
+
 // Only keep the catalog fields used for admission. Do not serialize arbitrary
 // provider metadata. Base rates use the same USD/M-token units as Router's table.
 export function catalogModel(model) {
@@ -153,6 +179,12 @@ export class RampRouter {
     const requestId = randomUUID();
     const payload = responsePayload({ model, instructions, input, maxOutputTokens, reasoning });
     const start = performance.now();
+    const requestReceipt = {
+      requestedModel: model,
+      clientRequestId: requestId,
+      requestId,
+      requestHash: hash(payload),
+    };
     const r = await this.fetchImpl(`${this.baseURL}/responses`, {
       method: 'POST',
       redirect: 'error',
@@ -163,6 +195,8 @@ export class RampRouter {
       },
       body: JSON.stringify(payload),
       signal: AbortSignal.any([...(signal ? [signal] : []), AbortSignal.timeout(timeoutMs)]),
+    }).catch((error) => {
+      throw connectionFailure(error, requestReceipt, signal);
     });
     const receipt = {
       requestedModel: model,
@@ -187,7 +221,9 @@ export class RampRouter {
         { failureCode: code },
       );
     }
-    const d = await r.json();
+    const d = await r.json().catch((error) => {
+      throw connectionFailure(error, receipt, signal);
+    });
     const metadata = {
       responseHash: hash(d),
       responseId: typeof d.id === 'string' ? d.id : null,
@@ -224,6 +260,19 @@ export class RampRouter {
           reasoningTokens: d.usage.output_tokens_details?.reasoning_tokens ?? null,
         }
       : null;
+    // A truncated answer is unusable, but validated token usage is still a receipt.
+    // Never expose or execute its partial text. Other invalid responses stay fail-closed.
+    if (
+      d.status === 'incomplete' &&
+      metadata.incompleteReason === 'max_output_tokens' &&
+      Array.isArray(d.output) &&
+      usage
+    )
+      throw rejectReceipt(
+        'output_limit',
+        `The model reached its output-token limit. Request ${receipt.requestId}. No action executed.`,
+        { ...metadata, usage },
+      );
     if (d.status !== 'completed' || !Array.isArray(d.output))
       throw rejectReceipt(
         'provider_receipt_invalid',

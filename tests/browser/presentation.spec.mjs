@@ -141,12 +141,25 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
   page,
 }) => {
   const summary = JSON.parse(
-    readFileSync('evidence/campaigns/model-comparison-2026-10-02/summary.json'),
+    readFileSync(
+      `evidence/campaigns/${JSON.parse(readFileSync('docs/current-comparison.json')).campaign}/summary.json`,
+    ),
   );
   await page.goto(`${pathToFileURL(resolve('docs/presentation.html')).href}#9`);
   const table = page.locator('#model-results');
   await expect(table.locator('tbody tr')).toHaveCount(summary.byModel.length);
-  await expect(table.locator('.trial-cell')).toHaveCount(summary.totals.planned);
+  await expect(table.locator('.trial-strip.dense')).toHaveCount(summary.byModel.length);
+  await page.locator('#task-filter summary').click();
+  await page.getByRole('button', { name: 'release sync', exact: true }).click();
+  await expect(table.locator('.trial-cell')).toHaveCount(100);
+  await expect(table.locator('.trial-count')).toHaveText(
+    summary.byTask.find((t) => t.task === 'release-sync').byModel.map((m) => `${m.attempted} / 20`),
+  );
+  await table.getByRole('button', { name: /^Passed/ }).click();
+  await expect(page.locator('#sort-status')).toContainText('Passed, descending');
+  await page.locator('#task-filter summary').click();
+  await page.getByRole('button', { name: 'All 18 tasks', exact: true }).click();
+  await expect(table.locator('.trial-strip.dense')).toHaveCount(5);
   for (const [label, index, direction] of [
     ['Passed', 2, 'descending'],
     ['Est. cost', 6, 'ascending'],
@@ -172,14 +185,16 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
     .locator('tbody tr th')
     .evaluateAll((rows) => rows.map((r) => r.dataset.sort));
   expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
-  await page.getByRole('button', { name: 'All 120 trials' }).click();
+  await page.getByRole('button', { name: `All ${summary.totals.planned} trials` }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.locator('#trial-results tbody tr')).toHaveCount(summary.totals.planned);
   await page.locator('#trial-results thead button').filter({ hasText: 'Seed' }).click();
   await expect(page.locator('#trial-sort-status')).toContainText('Seed, ascending');
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).not.toBeVisible();
-  await expect(page.getByRole('button', { name: 'All 120 trials' })).toBeFocused();
+  await expect(
+    page.getByRole('button', { name: `All ${summary.totals.planned} trials` }),
+  ).toBeFocused();
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await model.click();
   expect(await table.evaluate((t) => t.getAnimations({ subtree: true }).length)).toBe(0);

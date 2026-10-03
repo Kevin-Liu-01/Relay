@@ -34,8 +34,14 @@ export function modelComparison(plan, phases) {
     'Identical harness settings; provider-default sampling/reasoning may differ. Requested routes are not pinned model weights.',
     'Pass rate uses all attempted episodes. Show unattempted and blocked counts; incomplete coverage cannot establish model ordering.',
     'Median wall time includes early blocked episodes and observer overhead; not time-to-success or hosted latency.',
-    'Estimates use catalog base rates, not invoices. Unknown receipts retain reservations and stop further inference.',
+    plan.common.continueAfterRequestTimeout
+      ? 'Estimates use catalog base rates, not invoices. Individual request timeouts retain their full reservations and permit the next planned cell; no retry. Other unknown receipts stop the campaign.'
+      : 'Estimates use catalog base rates, not invoices. Unknown receipts retain reservations and stop further inference.',
   ];
+  if (plan.common.continueAfterOutputLimit)
+    summary.limitations.push(
+      'Validated output-limit receipts count as blocked/truncated trials with known usage. Partial actions are never executed; only the next planned cell can run.',
+    );
   return summary;
 }
 

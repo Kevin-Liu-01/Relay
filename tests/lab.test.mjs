@@ -525,6 +525,106 @@ const fakeRouter = (respond) => ({
   models: async () => ({ at: 'test', hash: 'test-catalog', models: [{ id: 'test-model' }] }),
   respond,
 });
+
+test('reviewed CLI timeout policy continues only the next cell, keeps reservations and never retries', () =>
+  fixture(async ({ dir, environment }) => {
+    let calls = 0;
+    const runRoot = join(dir, 'runs');
+    const run = new Experiment({
+      config: liveConfig({
+        seeds: [42, 43],
+        episodeSeconds: 180,
+        runSeconds: 3600,
+        requestTimeoutSeconds: 90,
+        continueAfterRequestTimeout: true,
+      }),
+      launcher: 'cli',
+      root: ROOT,
+      runRoot,
+      environment,
+      router: fakeRouter(async ({ timeoutMs }) => {
+        assert.ok(timeoutMs <= 90000 && timeoutMs > 89000);
+        if (++calls === 1) throw new DOMException('test timeout', 'TimeoutError');
+        return { text: '{"type":"finish"}', usage: { inputTokens: 10, outputTokens: 5 } };
+      }),
+    });
+    const out = await run.run();
+    assert.equal(calls, 2);
+    assert.equal(out.status, 'completed');
+    assert.equal(out.episodes[0].status, 'timeout');
+    assert.equal(out.episodes[0].steps, 0);
+    assert.equal(out.episodes[1].status, 'completed');
+    assert.equal(out.episodes[1].steps, 1);
+    assert.notEqual(out.episodes[0].evaluation.sessionId, out.episodes[1].evaluation.sessionId);
+    assert.equal(out.budget.usageKnown, false);
+    const reservation = out.episodes[0].requestTimeoutReservationUSD;
+    assert.ok(reservation > 0);
+    assert.equal(out.episodes[0].estimatedUSD, reservation);
+    assert.ok(Math.abs(out.budget.estimatedUSD - reservation - 0.0000035) < 1e-10);
+    assert.equal(buildAudit({ runRoot, id: run.id }).integrity.status, 'verified');
+    let limitedCalls = 0;
+    const limited = new Experiment({
+      config: { ...run.config, maxEstimatedUSD: reservation * 1.1 },
+      launcher: 'cli',
+      root: ROOT,
+      runRoot,
+      environment,
+      router: fakeRouter(async () => {
+        limitedCalls++;
+        throw new DOMException('timeout', 'TimeoutError');
+      }),
+    });
+    const capped = await limited.run();
+    assert.equal(limitedCalls, 1);
+    assert.equal(capped.status, 'stopped');
+    assert.equal(capped.episodes[1].status, 'budget');
+    assert.equal(capped.budget.estimatedUSD, reservation);
+  }));
+
+test('default timeouts and non-timeout missing receipts still stop without retries', () =>
+  fixture(async ({ dir, environment }) => {
+    for (const tolerant of [false, true]) {
+      let calls = 0;
+      const run = new Experiment({
+        config: liveConfig({
+          seeds: [42, 43],
+          ...(tolerant ? { continueAfterRequestTimeout: true } : {}),
+        }),
+        launcher: 'cli',
+        root: ROOT,
+        runRoot: join(dir, 'runs'),
+        environment,
+        router: fakeRouter(async () => {
+          calls++;
+          if (!tolerant) throw new DOMException('timeout', 'TimeoutError');
+          return { text: '{"type":"finish"}', usage: null };
+        }),
+      });
+      const out = await run.run();
+      assert.equal(calls, 1);
+      assert.equal(out.status, 'stopped');
+      assert.equal(out.episodes[1].status, 'queued');
+      assert.equal(out.episodes[0].steps, 0);
+      assert.equal(out.budget.usageKnown, false);
+    }
+  }));
+
+test('timeout overrides reject invalid values and non-CLI callers', () => {
+  for (const value of [0, 91, 1.5, '90', null])
+    assert.throws(
+      () => validateConfig(liveConfig({ requestTimeoutSeconds: value })),
+      /requestTimeoutSeconds/,
+    );
+  for (const value of [1, 'yes', null])
+    assert.throws(
+      () => validateConfig(liveConfig({ continueAfterRequestTimeout: value })),
+      /boolean Ramp CLI/,
+    );
+  assert.throws(
+    () => new Experiment({ config: liveConfig({ requestTimeoutSeconds: 90 }) }),
+    /reviewed CLI/,
+  );
+});
 for (const failure of ['initial', 'during-run', 'final']) {
   test(`operator screenshot timeout ${failure} preserves task execution and records the evidence gap`, () =>
     fixture(async ({ dir, environment }) => {
@@ -732,7 +832,10 @@ test('incomplete Router receipts preserve safe reasons and usage without executi
     await assert.rejects(
       router.respond({ model: 'test-model', instructions: '', input: [], maxOutputTokens: 512 }),
       (error) => {
-        assert.equal(error.code, 'provider_receipt_invalid');
+        assert.equal(
+          error.code,
+          reason === 'max_output_tokens' ? 'output_limit' : 'provider_receipt_invalid',
+        );
         assert.equal(error.receipt.incompleteReason, reason === 'secret-sentinel' ? null : reason);
         assert.equal(error.receipt.usage.outputTokens, 512);
         assert.equal(error.receipt.usage.reasoningTokens, 512);
@@ -744,6 +847,72 @@ test('incomplete Router receipts preserve safe reasons and usage without executi
     assert.equal(calls, 1);
   }
 });
+test('valid output limits account usage without partial actions; only reviewed CLI campaigns continue', () =>
+  fixture(async ({ dir, environment }) => {
+    for (const tolerant of [false, true]) {
+      let calls = 0;
+      const router = new RampRouter({
+        apiKey: 'test-key',
+        fetchImpl: async (url) => {
+          if (url.endsWith('/models'))
+            return new Response(JSON.stringify({ data: [{ id: 'test-model' }] }));
+          calls++;
+          return new Response(
+            JSON.stringify({
+              status: calls === 1 ? 'incomplete' : 'completed',
+              incomplete_details: calls === 1 ? { reason: 'max_output_tokens' } : undefined,
+              model: 'test-returned-model',
+              output: [
+                {
+                  type: 'message',
+                  content: [
+                    {
+                      type: 'output_text',
+                      text:
+                        calls === 1
+                          ? '{"type":"message.post","channelId":"project","text":"MUST NOT EXECUTE"}'
+                          : '{"type":"finish"}',
+                    },
+                  ],
+                },
+              ],
+              usage: { input_tokens: 100, output_tokens: 512 },
+            }),
+          );
+        },
+      });
+      const runRoot = join(dir, 'runs');
+      const run = new Experiment({
+        config: liveConfig({
+          seeds: [42, 43],
+          ...(tolerant ? { continueAfterOutputLimit: true } : {}),
+        }),
+        launcher: 'cli',
+        root: ROOT,
+        runRoot,
+        environment,
+        router,
+      });
+      const out = await run.run();
+      assert.equal(calls, tolerant ? 2 : 1);
+      assert.equal(out.status, tolerant ? 'completed' : 'stopped');
+      assert.equal(out.episodes[0].status, 'output_limit');
+      assert.equal(out.episodes[0].steps, 0);
+      assert.equal(out.episodes[0].usageKnown, true);
+      assert.equal(out.episodes[0].outputLimitUsageAccepted, true);
+      assert.equal(out.episodes[0].evaluation.baselineHash, out.episodes[0].evaluation.finalHash);
+      assert.equal(out.budget.usageKnown, true);
+      assert.equal(out.budget.inputTokens, 100 * calls);
+      assert.equal(out.budget.outputTokens, 512 * calls);
+      assert.ok(Math.abs(out.budget.estimatedUSD - 0.000266 * calls) < 1e-10);
+      const audit = buildAudit({ runRoot, id: run.id });
+      assert.equal(audit.integrity.status, 'verified');
+      assert.ok(
+        audit.episodes[0].trace.some((e) => e.kind === 'provider_error' && e.usageAccepted),
+      );
+    }
+  }));
+
 test('request accounting includes guide, history and images; not just generated text', () => {
   const plain = requestEstimate({ input: 'a' }, { input: 1, output: 2 }, 128),
     image = requestEstimate(
@@ -755,6 +924,69 @@ test('request accounting includes guide, history and images; not just generated 
   assert.ok(image.usd > plain.usd);
   assert.equal(plain.usd, (plain.inputUpper + 256) / 1e6);
 });
+
+test('connection failures retain usage reservations; only explicitly reviewed CLI runs advance', () =>
+  fixture(async ({ dir, environment }) => {
+    for (const tolerant of [false, true]) {
+      let calls = 0;
+      const router = new RampRouter({
+        apiKey: 'private-sentinel',
+        fetchImpl: async (url) => {
+          if (url.endsWith('/models'))
+            return new Response(JSON.stringify({ data: [{ id: 'test-model' }] }));
+          if (++calls === 1)
+            throw new TypeError('private-sentinel', { cause: { code: 'ECONNRESET' } });
+          return new Response(
+            JSON.stringify({
+              status: 'completed',
+              output: [
+                { type: 'message', content: [{ type: 'output_text', text: '{"type":"finish"}' }] },
+              ],
+              usage: { input_tokens: 10, output_tokens: 5 },
+            }),
+          );
+        },
+      });
+      const runRoot = join(dir, 'runs');
+      const run = new Experiment({
+        config: liveConfig({
+          seeds: [42, 43],
+          ...(tolerant ? { continueAfterConnectionFailure: true } : {}),
+        }),
+        launcher: 'cli',
+        root: ROOT,
+        runRoot,
+        environment,
+        router,
+      });
+      const out = await run.run();
+      assert.equal(calls, tolerant ? 2 : 1);
+      assert.equal(out.status, tolerant ? 'completed' : 'stopped');
+      const e = out.episodes[0];
+      assert.equal(e.status, 'provider_connection_error');
+      assert.equal(e.steps, 0);
+      assert.equal(e.usageKnown, false);
+      assert.equal(e.estimatedUSD, e.connectionFailureReservationUSD);
+      assert.ok(e.estimatedUSD > 0);
+      assert.equal(out.budget.usageKnown, false);
+      assert.ok(!JSON.stringify(out).includes('private-sentinel'));
+      assert.equal(buildAudit({ runRoot, id: run.id }).integrity.status, 'verified');
+    }
+    const router = new RampRouter({
+      apiKey: 'test-key',
+      fetchImpl: async () => {
+        throw Error('ordinary defect');
+      },
+    });
+    await assert.rejects(
+      router.respond({ model: 'test-model', input: 'test', maxOutputTokens: 512 }),
+      (error) => error.code === undefined,
+    );
+    assert.throws(
+      () => new Experiment({ config: liveConfig({ continueAfterConnectionFailure: true }) }),
+      /reviewed CLI/,
+    );
+  }));
 test('API gateway exposes opaque actor IDs, never evaluator controls, preserves isolation', () =>
   fixture(async ({ environment, servers }) => {
     const a = new InterfaceEnvironment({ ...environment, mode: 'api' }),

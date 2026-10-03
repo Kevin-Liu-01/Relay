@@ -1,0 +1,6028 @@
+{
+  "runId": "bd7fea0d-9e7f-4e7a-aa82-ee4b17501429",
+  "integrity": {
+    "status": "verified",
+    "checks": [
+      {
+        "name": "Configuration hash",
+        "ok": true,
+        "episodeId": null
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 13",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-013.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-014.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 14",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 14",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 14",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-014.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-015.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 15",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 15",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 15",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: visual-015.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: request-016.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Prompt hash: step 16",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Request body: step 16",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Transport request: step 16",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-001"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-002"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-003"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-004"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-005"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-006"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-007"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-008"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 13",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-013.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-014.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 14",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 14",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 14",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-014.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-015.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 15",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 15",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 15",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: visual-015.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: request-016.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Prompt hash: step 16",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Request body: step 16",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Transport request: step 16",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-009"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-010"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 13",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-013.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-014.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 14",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 14",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 14",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-014.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-015.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 15",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 15",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 15",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: visual-015.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: request-016.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Prompt hash: step 16",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Request body: step 16",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Transport request: step 16",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-011"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-012"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-013"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-014"
+      },
+      {
+        "name": "Readable trace records",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Event hash chain",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Terminal record",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Episode trace root",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: initial.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-000.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-001.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 1",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 1",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 1",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-001.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-002.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 2",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 2",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 2",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-002.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-003.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 3",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 3",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 3",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-003.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-004.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 4",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 4",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 4",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-004.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-005.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 5",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 5",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 5",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-005.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-006.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 6",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 6",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 6",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-006.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-007.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 7",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 7",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 7",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-007.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-008.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 8",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 8",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 8",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-008.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-009.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 9",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 9",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 9",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-009.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-010.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 10",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 10",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 10",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-010.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-011.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 11",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 11",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 11",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-011.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-012.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 12",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 12",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 12",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-012.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-013.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 13",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 13",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 13",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-013.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-014.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 14",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 14",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 14",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-014.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-015.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 15",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 15",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 15",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: visual-015.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: request-016.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Prompt hash: step 16",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Request body: step 16",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Transport request: step 16",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: outcome.json",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Recorded artifact: final.png",
+        "ok": true,
+        "episodeId": "episode-015"
+      },
+      {
+        "name": "Episode checkpoint matches manifest",
+        "ok": true,
+        "episodeId": "episode-015"
+      }
+    ],
+    "gaps": [],
+    "scope": "Local hash consistency only; not independently signed or proof against an operator rewriting the complete bundle."
+  },
+  "artifacts": [
+    {
+      "path": "episode-001/episode.json",
+      "bytes": 20059,
+      "sha256": "87f1ba9c6ad97fcd7cb34da308d2d91c8bd146f5181c5859132bdbb18fcbcd55",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/episode.json"
+    },
+    {
+      "path": "episode-001/final.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/final.png"
+    },
+    {
+      "path": "episode-001/initial.json",
+      "bytes": 19560,
+      "sha256": "abd2c8a5116237e9ef4eb26b58dcce77a919afb711f61b4e0e1365c0d059233b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/initial.json"
+    },
+    {
+      "path": "episode-001/outcome.json",
+      "bytes": 19560,
+      "sha256": "abd2c8a5116237e9ef4eb26b58dcce77a919afb711f61b4e0e1365c0d059233b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/outcome.json"
+    },
+    {
+      "path": "episode-001/request-001.json",
+      "bytes": 15663,
+      "sha256": "0ecb000fdc80607c21f6148dd125b7b3e061914b2aafddce2867112b07240f76",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-001.json"
+    },
+    {
+      "path": "episode-001/request-002.json",
+      "bytes": 31243,
+      "sha256": "63c68421699271efd3b137c76d102a3e9b302ab7705a7f3511a636fafdd7cc27",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-002.json"
+    },
+    {
+      "path": "episode-001/request-003.json",
+      "bytes": 46316,
+      "sha256": "17d86b44bb90764ab057f2866b31bb36e72ec88a8003e167da8896b28fecdf8a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-003.json"
+    },
+    {
+      "path": "episode-001/request-004.json",
+      "bytes": 62360,
+      "sha256": "e714ca5f21c59b073c522cc372fd8c87955abbc943c7d5598e0973bced5d3aa4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-004.json"
+    },
+    {
+      "path": "episode-001/request-005.json",
+      "bytes": 78404,
+      "sha256": "fbf0bd89277c21e2927027431edda2c7b01df3cb5af2a5ae824d61230dfabad7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-005.json"
+    },
+    {
+      "path": "episode-001/request-006.json",
+      "bytes": 78868,
+      "sha256": "0ad357cb136761e5df1e1304827e7499bfb7be39efcec07719371d212ae4add6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-006.json"
+    },
+    {
+      "path": "episode-001/request-007.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-007.json"
+    },
+    {
+      "path": "episode-001/request-008.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-008.json"
+    },
+    {
+      "path": "episode-001/request-009.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-009.json"
+    },
+    {
+      "path": "episode-001/request-010.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-010.json"
+    },
+    {
+      "path": "episode-001/request-011.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-011.json"
+    },
+    {
+      "path": "episode-001/request-012.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-012.json"
+    },
+    {
+      "path": "episode-001/request-013.json",
+      "bytes": 80303,
+      "sha256": "c29089fccaaefa485bc87b673f3ca0badc9f39a5dae2dc395a6ffedd1e0d91b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-013.json"
+    },
+    {
+      "path": "episode-001/request-014.json",
+      "bytes": 79473,
+      "sha256": "ceed4ebc31e0cafd80c6dbc0bfe0b69b4c903098d6262fdd704e31befc334e0a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-014.json"
+    },
+    {
+      "path": "episode-001/request-015.json",
+      "bytes": 79473,
+      "sha256": "749d75ec7edc91b44994466607632cf712eb4c8b9eee606760d733b6c8c8a7af",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-015.json"
+    },
+    {
+      "path": "episode-001/request-016.json",
+      "bytes": 79473,
+      "sha256": "65d7148403ed3b959736195bd30512a718c1618b4414d7e18154b885e9a8e69c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/request-016.json"
+    },
+    {
+      "path": "episode-001/steps.jsonl",
+      "bytes": 777764,
+      "sha256": "ec351e5d7a2951095202e809f573a5ac2c309c91a1d908c37eb8ff7cb7dbd786",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/steps.jsonl"
+    },
+    {
+      "path": "episode-001/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-000.png"
+    },
+    {
+      "path": "episode-001/visual-001.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-001.png"
+    },
+    {
+      "path": "episode-001/visual-002.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-002.png"
+    },
+    {
+      "path": "episode-001/visual-003.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-003.png"
+    },
+    {
+      "path": "episode-001/visual-004.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-004.png"
+    },
+    {
+      "path": "episode-001/visual-005.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-005.png"
+    },
+    {
+      "path": "episode-001/visual-006.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-006.png"
+    },
+    {
+      "path": "episode-001/visual-007.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-007.png"
+    },
+    {
+      "path": "episode-001/visual-008.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-008.png"
+    },
+    {
+      "path": "episode-001/visual-009.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-009.png"
+    },
+    {
+      "path": "episode-001/visual-010.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-010.png"
+    },
+    {
+      "path": "episode-001/visual-011.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-011.png"
+    },
+    {
+      "path": "episode-001/visual-012.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-012.png"
+    },
+    {
+      "path": "episode-001/visual-013.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-013.png"
+    },
+    {
+      "path": "episode-001/visual-014.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-014.png"
+    },
+    {
+      "path": "episode-001/visual-015.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-001/visual-015.png"
+    },
+    {
+      "path": "episode-002/episode.json",
+      "bytes": 19252,
+      "sha256": "b6afffed48a83f35590da51312ba29555d8091bee8523304808584549caea721",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/episode.json"
+    },
+    {
+      "path": "episode-002/final.png",
+      "bytes": 229608,
+      "sha256": "eddd136608c6575b1da0b966c9b87720f262e8935f360cc864b48dd19919dc61",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/final.png"
+    },
+    {
+      "path": "episode-002/initial.json",
+      "bytes": 19560,
+      "sha256": "334075873e20271b589d19842f4853da5974fa12ed751a654e91c079e49fa118",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/initial.json"
+    },
+    {
+      "path": "episode-002/outcome.json",
+      "bytes": 20670,
+      "sha256": "1ab9e783405e1b92f009d855f66d0679009305fe3b61dbfdfcac6cba702c61e3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/outcome.json"
+    },
+    {
+      "path": "episode-002/request-001.json",
+      "bytes": 15670,
+      "sha256": "d48bbdfe14f5c26224aa39451b610877c7bb7a7ab277861efd09b42e4526c5ac",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-001.json"
+    },
+    {
+      "path": "episode-002/request-002.json",
+      "bytes": 30743,
+      "sha256": "dce5d43cf69971e5e6fb1660b973fa9fdb95ac9437215a17ded2146ad8e42991",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-002.json"
+    },
+    {
+      "path": "episode-002/request-003.json",
+      "bytes": 46444,
+      "sha256": "d051790e830d6388d99d77bf74961dc07bc214ca219ef6a04fe2c6438b2137dd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-003.json"
+    },
+    {
+      "path": "episode-002/request-004.json",
+      "bytes": 61679,
+      "sha256": "44079479855702a06cf59a79ed532d590077298663993041fce3a237902d1af8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-004.json"
+    },
+    {
+      "path": "episode-002/request-005.json",
+      "bytes": 76991,
+      "sha256": "0c9daf53c21e41492860006cac6729b3a502ef9613971bf33a41fc7c0b0bacfd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-005.json"
+    },
+    {
+      "path": "episode-002/request-006.json",
+      "bytes": 77486,
+      "sha256": "b8740cb86d11f24c43c1cf43a17a60359a892fb4aee12430f9d94de0b5aa09bb",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/request-006.json"
+    },
+    {
+      "path": "episode-002/steps.jsonl",
+      "bytes": 303015,
+      "sha256": "ae4a131fe511927d3ef232e1e601a4f918d099dcc9f2767690de816229e803e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/steps.jsonl"
+    },
+    {
+      "path": "episode-002/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-000.png"
+    },
+    {
+      "path": "episode-002/visual-001.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-001.png"
+    },
+    {
+      "path": "episode-002/visual-002.png",
+      "bytes": 234339,
+      "sha256": "529b6fd57eb0832bb8cfc5701db912aebb32054160c2d0f038d77f0af2a3626d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-002.png"
+    },
+    {
+      "path": "episode-002/visual-003.png",
+      "bytes": 205515,
+      "sha256": "0277f204e9deb88903815f8be45b0fa2b84b995c64c8489b0bf696add4d188a6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-003.png"
+    },
+    {
+      "path": "episode-002/visual-004.png",
+      "bytes": 205620,
+      "sha256": "13dc05478cb1bd3ab1a5b0f6be4cc4b93d14a46fc91bf367afb3b3ada05b4d56",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-004.png"
+    },
+    {
+      "path": "episode-002/visual-005.png",
+      "bytes": 229608,
+      "sha256": "eddd136608c6575b1da0b966c9b87720f262e8935f360cc864b48dd19919dc61",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-002/visual-005.png"
+    },
+    {
+      "path": "episode-003/episode.json",
+      "bytes": 19247,
+      "sha256": "61ef86428932783c30c6e438753701f1ba1918d1d09975809b5e280de82698b5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/episode.json"
+    },
+    {
+      "path": "episode-003/final.png",
+      "bytes": 229608,
+      "sha256": "eddd136608c6575b1da0b966c9b87720f262e8935f360cc864b48dd19919dc61",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/final.png"
+    },
+    {
+      "path": "episode-003/initial.json",
+      "bytes": 19560,
+      "sha256": "1b74a02972cd60c5a60ead660fcbaa6a9f6da0cd3148db9e40c4bd2d4258a24a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/initial.json"
+    },
+    {
+      "path": "episode-003/outcome.json",
+      "bytes": 20670,
+      "sha256": "e08c1971d430ba203daf402934648b2e5e4b7caf55bc7c8905ecac4f83b580df",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/outcome.json"
+    },
+    {
+      "path": "episode-003/request-001.json",
+      "bytes": 15664,
+      "sha256": "0637f41ffc1a12716e19914974ec75cc5401472c421e0338f46b9dc9c5b6e21d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-001.json"
+    },
+    {
+      "path": "episode-003/request-002.json",
+      "bytes": 30737,
+      "sha256": "dc166ae7bbce48d9191256c45f246dd718e63c4a85c2c5a9f5daf2cb4597e8f3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-002.json"
+    },
+    {
+      "path": "episode-003/request-003.json",
+      "bytes": 46438,
+      "sha256": "dc9bc75eb723e516fc1497e4badb449b94878d06d83e1cd139a5c612d7ddbc67",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-003.json"
+    },
+    {
+      "path": "episode-003/request-004.json",
+      "bytes": 61673,
+      "sha256": "5083db27224a53cd57484e28e3cf292eb4970d4bcab54661e025fd95812a9342",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-004.json"
+    },
+    {
+      "path": "episode-003/request-005.json",
+      "bytes": 76985,
+      "sha256": "b1dfb95987fdec807d0c4031cd084952be04f7335ebb577664f6e84a87fd178c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-005.json"
+    },
+    {
+      "path": "episode-003/request-006.json",
+      "bytes": 77480,
+      "sha256": "e53adcd7be75a327fb0f573418cc40e45a7a23902956af4896c466dbea59aac5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/request-006.json"
+    },
+    {
+      "path": "episode-003/steps.jsonl",
+      "bytes": 302827,
+      "sha256": "be96c35ea683054ecf93a6a3757687b0095602b6232b971d4f8040770783b2d7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/steps.jsonl"
+    },
+    {
+      "path": "episode-003/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-000.png"
+    },
+    {
+      "path": "episode-003/visual-001.png",
+      "bytes": 224882,
+      "sha256": "a95993f84d4d8ef16d84cde70a61a369375e53b8a5b529e1ef90273e5a6d3087",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-001.png"
+    },
+    {
+      "path": "episode-003/visual-002.png",
+      "bytes": 234339,
+      "sha256": "529b6fd57eb0832bb8cfc5701db912aebb32054160c2d0f038d77f0af2a3626d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-002.png"
+    },
+    {
+      "path": "episode-003/visual-003.png",
+      "bytes": 205515,
+      "sha256": "0277f204e9deb88903815f8be45b0fa2b84b995c64c8489b0bf696add4d188a6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-003.png"
+    },
+    {
+      "path": "episode-003/visual-004.png",
+      "bytes": 205620,
+      "sha256": "13dc05478cb1bd3ab1a5b0f6be4cc4b93d14a46fc91bf367afb3b3ada05b4d56",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-004.png"
+    },
+    {
+      "path": "episode-003/visual-005.png",
+      "bytes": 229608,
+      "sha256": "eddd136608c6575b1da0b966c9b87720f262e8935f360cc864b48dd19919dc61",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-003/visual-005.png"
+    },
+    {
+      "path": "episode-004/episode.json",
+      "bytes": 19107,
+      "sha256": "5b15b08605a2bcaee6978787e7b625a15d8345acd668c941581e2b46b54492fd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/episode.json"
+    },
+    {
+      "path": "episode-004/final.png",
+      "bytes": 228289,
+      "sha256": "8883ef38300d7702b6cc4dd94de5eabf1e7950528c5b6b77be7ed0cd349ea7d6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/final.png"
+    },
+    {
+      "path": "episode-004/initial.json",
+      "bytes": 19452,
+      "sha256": "26d2967e17a65b023c0f78ce2dcc673afb9d9ecc08b31ca8454562a83b8bab16",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/initial.json"
+    },
+    {
+      "path": "episode-004/outcome.json",
+      "bytes": 20292,
+      "sha256": "8fe2f836a3c952d0cddf491204e34c4bb9c838a658ea8618f1cf555f348ccb19",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/outcome.json"
+    },
+    {
+      "path": "episode-004/request-001.json",
+      "bytes": 15555,
+      "sha256": "db0b8b5ad2c96dcee1aa09d9aeaad7cd5d23b70003db976089a4356f3770724d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/request-001.json"
+    },
+    {
+      "path": "episode-004/request-002.json",
+      "bytes": 30826,
+      "sha256": "4f8c4cc33d2a13b664eb19f512adba338e47ea67d2e0cdf11af9783f7f0c2e95",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/request-002.json"
+    },
+    {
+      "path": "episode-004/request-003.json",
+      "bytes": 46137,
+      "sha256": "5f38411d98c6aafa47324c1030e2f112ecd440a34855abe38d19c635c186cf8b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/request-003.json"
+    },
+    {
+      "path": "episode-004/request-004.json",
+      "bytes": 61210,
+      "sha256": "8b4b8175a1578bb6e976ca187551d7872f629396a1b251f38abb2c1c738bdd97",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/request-004.json"
+    },
+    {
+      "path": "episode-004/steps.jsonl",
+      "bytes": 206601,
+      "sha256": "9d60ef96a2ae32bbc56d27510fe25e7c6a9caada6d500ab8007fc26544c63ea5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/steps.jsonl"
+    },
+    {
+      "path": "episode-004/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/visual-000.png"
+    },
+    {
+      "path": "episode-004/visual-001.png",
+      "bytes": 212321,
+      "sha256": "a46fa3faef84e72f0d60c9ef0328577a92f53602e9fb5ba5fcd6d607167ac222",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/visual-001.png"
+    },
+    {
+      "path": "episode-004/visual-002.png",
+      "bytes": 211377,
+      "sha256": "929a2e6d0af34f5486816d6bdd55859f2d2e4d651bb019f1081901aff7926e46",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/visual-002.png"
+    },
+    {
+      "path": "episode-004/visual-003.png",
+      "bytes": 228289,
+      "sha256": "8883ef38300d7702b6cc4dd94de5eabf1e7950528c5b6b77be7ed0cd349ea7d6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-004/visual-003.png"
+    },
+    {
+      "path": "episode-005/episode.json",
+      "bytes": 18564,
+      "sha256": "007eaa64a16d2f025cb02f15eed78ea668d76e7dc74bd90f13ebb6a123f00f2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/episode.json"
+    },
+    {
+      "path": "episode-005/final.png",
+      "bytes": 224794,
+      "sha256": "b0d6fb311e22d51f55233a433152bb80647dd041c7cd8d8f4e8b4822af5382ec",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/final.png"
+    },
+    {
+      "path": "episode-005/initial.json",
+      "bytes": 19452,
+      "sha256": "ad5fb68f4520002e51fc31f24b9cb328c97e18fa3a25f0c9d063f15a48e24de1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/initial.json"
+    },
+    {
+      "path": "episode-005/outcome.json",
+      "bytes": 19452,
+      "sha256": "ad5fb68f4520002e51fc31f24b9cb328c97e18fa3a25f0c9d063f15a48e24de1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/outcome.json"
+    },
+    {
+      "path": "episode-005/request-001.json",
+      "bytes": 15554,
+      "sha256": "c8dc2a436c76ec742d3fb28d2087d96185a5496d0d831d9235b9d1fd627d3dfa",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/request-001.json"
+    },
+    {
+      "path": "episode-005/request-002.json",
+      "bytes": 30333,
+      "sha256": "1e784297c69be296a725667030511f58f561c11a9b0746c43cf7ad212d2cb57a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/request-002.json"
+    },
+    {
+      "path": "episode-005/steps.jsonl",
+      "bytes": 109731,
+      "sha256": "ac7d36bb0c6192385d125d1ac01f60752f5beb2af1ae6073b1ac62c415641c50",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/steps.jsonl"
+    },
+    {
+      "path": "episode-005/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/visual-000.png"
+    },
+    {
+      "path": "episode-005/visual-001.png",
+      "bytes": 224794,
+      "sha256": "b0d6fb311e22d51f55233a433152bb80647dd041c7cd8d8f4e8b4822af5382ec",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-005/visual-001.png"
+    },
+    {
+      "path": "episode-006/episode.json",
+      "bytes": 19112,
+      "sha256": "56a9efd798c4cd8ac6110e53718c4d11578926da2f675691a78d298356fde566",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/episode.json"
+    },
+    {
+      "path": "episode-006/final.png",
+      "bytes": 228289,
+      "sha256": "8883ef38300d7702b6cc4dd94de5eabf1e7950528c5b6b77be7ed0cd349ea7d6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/final.png"
+    },
+    {
+      "path": "episode-006/initial.json",
+      "bytes": 19452,
+      "sha256": "d208872c3fe0e29be6440cd9c320e8665eb8928f74b55138df4d686e76354bc0",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/initial.json"
+    },
+    {
+      "path": "episode-006/outcome.json",
+      "bytes": 20292,
+      "sha256": "6e0df4627c1e09373f6db2957db981d2d11b7f4ad87ea01c7936c289001167e3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/outcome.json"
+    },
+    {
+      "path": "episode-006/request-001.json",
+      "bytes": 15561,
+      "sha256": "56ff1f79c0db2b0a4f60b53f1310954ee8c9446d9e84ed6ab127a9ab1b778663",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/request-001.json"
+    },
+    {
+      "path": "episode-006/request-002.json",
+      "bytes": 30832,
+      "sha256": "e07d7dbedac67cda1a51ab7a7d5d7e06f5adc87cf96ce93cdb78872381ac7757",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/request-002.json"
+    },
+    {
+      "path": "episode-006/request-003.json",
+      "bytes": 46143,
+      "sha256": "90bb5e2bb73425651c1800d427a8bb47036ccd50b524ee3c33272a78a198e66a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/request-003.json"
+    },
+    {
+      "path": "episode-006/request-004.json",
+      "bytes": 61216,
+      "sha256": "83b61ebb4cb53eeba4968024fdc2389feb9fc8f205e1eae2537757ee04ef26cf",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/request-004.json"
+    },
+    {
+      "path": "episode-006/steps.jsonl",
+      "bytes": 206705,
+      "sha256": "b0aceed8d1fbe415c571476773a3166181a8a9dfdf78a207a46ef5f17fa3b88a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/steps.jsonl"
+    },
+    {
+      "path": "episode-006/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/visual-000.png"
+    },
+    {
+      "path": "episode-006/visual-001.png",
+      "bytes": 212321,
+      "sha256": "a46fa3faef84e72f0d60c9ef0328577a92f53602e9fb5ba5fcd6d607167ac222",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/visual-001.png"
+    },
+    {
+      "path": "episode-006/visual-002.png",
+      "bytes": 211377,
+      "sha256": "929a2e6d0af34f5486816d6bdd55859f2d2e4d651bb019f1081901aff7926e46",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/visual-002.png"
+    },
+    {
+      "path": "episode-006/visual-003.png",
+      "bytes": 228289,
+      "sha256": "8883ef38300d7702b6cc4dd94de5eabf1e7950528c5b6b77be7ed0cd349ea7d6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-006/visual-003.png"
+    },
+    {
+      "path": "episode-007/episode.json",
+      "bytes": 14108,
+      "sha256": "bc596785eba65814ce3e1a61446905b4f5235cb9341c8893d0d87af78b19b0a9",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/episode.json"
+    },
+    {
+      "path": "episode-007/final.png",
+      "bytes": 174843,
+      "sha256": "f06f9da9c5b3311a499d60b00be9e3c9291a207568e77b9278a89092b734eac2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/final.png"
+    },
+    {
+      "path": "episode-007/initial.json",
+      "bytes": 19567,
+      "sha256": "91c62ab56088fd7a1f36fc0ee5d43083ded3c3608d58d8bcedd3e1830114c2ee",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/initial.json"
+    },
+    {
+      "path": "episode-007/outcome.json",
+      "bytes": 21672,
+      "sha256": "f8554d62693a4dd71232b3f388a349a0d151e7b123314996b2144384536ba9ad",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/outcome.json"
+    },
+    {
+      "path": "episode-007/request-001.json",
+      "bytes": 15598,
+      "sha256": "103287efb0e9d86a809b24e0ccf66e2607b6b04a4862d723019534366871e189",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-001.json"
+    },
+    {
+      "path": "episode-007/request-002.json",
+      "bytes": 25040,
+      "sha256": "115fa4d5d109989efed91d5ebe6830ce7c90ef21713582a645416ef8bd1c2ca2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-002.json"
+    },
+    {
+      "path": "episode-007/request-003.json",
+      "bytes": 34943,
+      "sha256": "85948c0360f90a25f0ca2d21c7c16901b974a13e4fdc3a18bafa833be20634db",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-003.json"
+    },
+    {
+      "path": "episode-007/request-004.json",
+      "bytes": 45992,
+      "sha256": "2ca2ac75cd062ba5c77108665c4eea7eaa6060d5a535c3c277c1ec606797662a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-004.json"
+    },
+    {
+      "path": "episode-007/request-005.json",
+      "bytes": 56254,
+      "sha256": "a4f066029e642f5616faaa87d89680bcff99f3e474a0ded82a8b2e32fb20539f",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-005.json"
+    },
+    {
+      "path": "episode-007/request-006.json",
+      "bytes": 52231,
+      "sha256": "e691f384d2c3428e659ae5565738297748fadf4058906411649794cd6d99ad55",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-006.json"
+    },
+    {
+      "path": "episode-007/request-007.json",
+      "bytes": 53093,
+      "sha256": "8e6224b7d09f053c4165e0046f432384833ed1a6ea9454b66d10f8f64d87f455",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/request-007.json"
+    },
+    {
+      "path": "episode-007/steps.jsonl",
+      "bytes": 290275,
+      "sha256": "0ef022a33ff1c66dd3d2423a60400ca446d700fc951e18b5cc651f1a3b79148d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/steps.jsonl"
+    },
+    {
+      "path": "episode-007/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-000.png"
+    },
+    {
+      "path": "episode-007/visual-001.png",
+      "bytes": 169113,
+      "sha256": "e80112df56b1b462264164e89986bbe1bc29a3853b7163b09a6c400c343e2c67",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-001.png"
+    },
+    {
+      "path": "episode-007/visual-002.png",
+      "bytes": 171287,
+      "sha256": "5856e3156d6f6f4269ac7f307ec82435a14a6237075f153e3ca6bc6a722d0c29",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-002.png"
+    },
+    {
+      "path": "episode-007/visual-003.png",
+      "bytes": 180704,
+      "sha256": "44728cfd512c738dab2ba341bbfb71dbaeefc1dff415caee8db2b07d7fcc37fa",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-003.png"
+    },
+    {
+      "path": "episode-007/visual-004.png",
+      "bytes": 173110,
+      "sha256": "e33c7ca9b9120719dce29775e4ca5c77bea29b9c56e54293b41a60d7f7d25696",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-004.png"
+    },
+    {
+      "path": "episode-007/visual-005.png",
+      "bytes": 178751,
+      "sha256": "13344152854893f2926ffc1d884f9b8f0d29c132936f27a93f22eeaf2cca9dd8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-005.png"
+    },
+    {
+      "path": "episode-007/visual-006.png",
+      "bytes": 174843,
+      "sha256": "f06f9da9c5b3311a499d60b00be9e3c9291a207568e77b9278a89092b734eac2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-007/visual-006.png"
+    },
+    {
+      "path": "episode-008/episode.json",
+      "bytes": 14123,
+      "sha256": "860a905a9995c28665927f0723594bd9990cb778ceffe678375bfbc07a2d4d06",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/episode.json"
+    },
+    {
+      "path": "episode-008/final.png",
+      "bytes": 174818,
+      "sha256": "736c1593af69af0eb75406c2ff4d345d8e7afb8abb64cb0a9ba8a9c00802ae6b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/final.png"
+    },
+    {
+      "path": "episode-008/initial.json",
+      "bytes": 19567,
+      "sha256": "c320b7fba43d2748d6825cb4fcbd75f9177f92931016e5c46f2b7bf00977415a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/initial.json"
+    },
+    {
+      "path": "episode-008/outcome.json",
+      "bytes": 21672,
+      "sha256": "39dc81000874a5fcffd529b08c60b5def107f5d277ff0a03ac1b30ccdf32b73e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/outcome.json"
+    },
+    {
+      "path": "episode-008/request-001.json",
+      "bytes": 15604,
+      "sha256": "2e0f2eeb5264341e8502e0141396c066cfbbc678b4aa98a354e6ffccdd1c588a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-001.json"
+    },
+    {
+      "path": "episode-008/request-002.json",
+      "bytes": 25046,
+      "sha256": "df411610fc0fb6ca7e6236391eb6fd3abba8d14821c4b3a863766b784e4edfc4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-002.json"
+    },
+    {
+      "path": "episode-008/request-003.json",
+      "bytes": 34949,
+      "sha256": "2599d417c487f80934b165ba061b4aaea375ae49b7ae7ec837aa055cb9aa9d4d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-003.json"
+    },
+    {
+      "path": "episode-008/request-004.json",
+      "bytes": 45998,
+      "sha256": "5f683ecdc72cc8b76dc2c1be007c85dcce90bd19edd91d539b7bf14b084efee5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-004.json"
+    },
+    {
+      "path": "episode-008/request-005.json",
+      "bytes": 56260,
+      "sha256": "4049d32c161d09ca866244a30ee071c6f392515e52d83e4117b346092dc4f6cf",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-005.json"
+    },
+    {
+      "path": "episode-008/request-006.json",
+      "bytes": 52237,
+      "sha256": "f95708affbbbb540efbc8a22e027cd8707652fd9c847955efe96736028c10a87",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-006.json"
+    },
+    {
+      "path": "episode-008/request-007.json",
+      "bytes": 53099,
+      "sha256": "634385968fc5148708adab4b056652c609749763fa0e9cfef51c1589fd5d6e63",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/request-007.json"
+    },
+    {
+      "path": "episode-008/steps.jsonl",
+      "bytes": 290610,
+      "sha256": "c832cc544387e867e65bd44e80c22b4f32ff07042ca48af95b099b77477fb463",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/steps.jsonl"
+    },
+    {
+      "path": "episode-008/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-000.png"
+    },
+    {
+      "path": "episode-008/visual-001.png",
+      "bytes": 168846,
+      "sha256": "75619595ed84658689ea96fe465a3516f7e170a5670ed780b113648170974b04",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-001.png"
+    },
+    {
+      "path": "episode-008/visual-002.png",
+      "bytes": 171287,
+      "sha256": "5856e3156d6f6f4269ac7f307ec82435a14a6237075f153e3ca6bc6a722d0c29",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-002.png"
+    },
+    {
+      "path": "episode-008/visual-003.png",
+      "bytes": 180704,
+      "sha256": "44728cfd512c738dab2ba341bbfb71dbaeefc1dff415caee8db2b07d7fcc37fa",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-003.png"
+    },
+    {
+      "path": "episode-008/visual-004.png",
+      "bytes": 173110,
+      "sha256": "e33c7ca9b9120719dce29775e4ca5c77bea29b9c56e54293b41a60d7f7d25696",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-004.png"
+    },
+    {
+      "path": "episode-008/visual-005.png",
+      "bytes": 178740,
+      "sha256": "91e3a3a2e38439368b6a73da4221bd111512850c9362f820ae2d284b296af284",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-005.png"
+    },
+    {
+      "path": "episode-008/visual-006.png",
+      "bytes": 174818,
+      "sha256": "736c1593af69af0eb75406c2ff4d345d8e7afb8abb64cb0a9ba8a9c00802ae6b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-008/visual-006.png"
+    },
+    {
+      "path": "episode-009/episode.json",
+      "bytes": 14293,
+      "sha256": "683bbb6eca79808027d74a1178f7d9c067e8a98e5f96461319e08760902c15e2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/episode.json"
+    },
+    {
+      "path": "episode-009/final.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/final.png"
+    },
+    {
+      "path": "episode-009/initial.json",
+      "bytes": 19567,
+      "sha256": "bb93ad9a634b29b972a4c7a514d04d6f23e8dc4dad9466d61dc572a643c0dbc3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/initial.json"
+    },
+    {
+      "path": "episode-009/outcome.json",
+      "bytes": 23411,
+      "sha256": "79c2b8cf476063e08f8825ea14b118b42e5743dedfe536a2069a479b264953e6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/outcome.json"
+    },
+    {
+      "path": "episode-009/request-001.json",
+      "bytes": 15597,
+      "sha256": "e037bc066703f9e2b5379c5e74db7f2b2bd7de1293ae2a0ac68d3b0e3ae502e2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-001.json"
+    },
+    {
+      "path": "episode-009/request-002.json",
+      "bytes": 23315,
+      "sha256": "735e4d0eadfd2d3c44947b04346aa7503a02490d7504dab1a06bb672e3f5fa49",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-002.json"
+    },
+    {
+      "path": "episode-009/request-003.json",
+      "bytes": 31494,
+      "sha256": "bc1fd865c0ff28470903fe6c42d7888edf4b46e0684a0e2f3d2e40c1d2efd29e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-003.json"
+    },
+    {
+      "path": "episode-009/request-004.json",
+      "bytes": 41766,
+      "sha256": "5286d5d3b9bb8137a11320507ccb5901020b591d37c9292cd0e21f63679f4efc",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-004.json"
+    },
+    {
+      "path": "episode-009/request-005.json",
+      "bytes": 52038,
+      "sha256": "02c7656cd1c1f6e633309932d07ba46e7c091ea27e64dc90e92a03c0222fbca7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-005.json"
+    },
+    {
+      "path": "episode-009/request-006.json",
+      "bytes": 47701,
+      "sha256": "757fde544c3653dd5e7eae583c46edbfc7dd27608d8f1bb6fdbb8d13b83fb32c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-006.json"
+    },
+    {
+      "path": "episode-009/request-007.json",
+      "bytes": 50255,
+      "sha256": "d9b1bfb0fa44566f4eaa60f1bbed9d5c82c392b3edf49ef70a2a4410f810d844",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-007.json"
+    },
+    {
+      "path": "episode-009/request-008.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-008.json"
+    },
+    {
+      "path": "episode-009/request-009.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-009.json"
+    },
+    {
+      "path": "episode-009/request-010.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-010.json"
+    },
+    {
+      "path": "episode-009/request-011.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-011.json"
+    },
+    {
+      "path": "episode-009/request-012.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-012.json"
+    },
+    {
+      "path": "episode-009/request-013.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-013.json"
+    },
+    {
+      "path": "episode-009/request-014.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-014.json"
+    },
+    {
+      "path": "episode-009/request-015.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-015.json"
+    },
+    {
+      "path": "episode-009/request-016.json",
+      "bytes": 52348,
+      "sha256": "49f4fde1794ecad0a748738c81defcc1270d6a443016b1f94044b74c092f3f12",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/request-016.json"
+    },
+    {
+      "path": "episode-009/steps.jsonl",
+      "bytes": 627450,
+      "sha256": "60dd5928da44c10bea112d24e19c987f1e393952109ad0cf320cb7695cc17c2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/steps.jsonl"
+    },
+    {
+      "path": "episode-009/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-000.png"
+    },
+    {
+      "path": "episode-009/visual-001.png",
+      "bytes": 142441,
+      "sha256": "7c0c43470bae438325d80a87b4c3358e5cafa0d55c7774a4f83a650225ec303a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-001.png"
+    },
+    {
+      "path": "episode-009/visual-002.png",
+      "bytes": 144601,
+      "sha256": "93a867375f9c23dc7a9150cef6e75d4d6255920baf9e28964030e849dbe325c3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-002.png"
+    },
+    {
+      "path": "episode-009/visual-003.png",
+      "bytes": 162233,
+      "sha256": "1176c7e24008cd3a562dd39a4e49dc0f73883476cc846e73ac1d44f28df6531f",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-003.png"
+    },
+    {
+      "path": "episode-009/visual-004.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-004.png"
+    },
+    {
+      "path": "episode-009/visual-005.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-005.png"
+    },
+    {
+      "path": "episode-009/visual-006.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-006.png"
+    },
+    {
+      "path": "episode-009/visual-007.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-007.png"
+    },
+    {
+      "path": "episode-009/visual-008.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-008.png"
+    },
+    {
+      "path": "episode-009/visual-009.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-009.png"
+    },
+    {
+      "path": "episode-009/visual-010.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-010.png"
+    },
+    {
+      "path": "episode-009/visual-011.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-011.png"
+    },
+    {
+      "path": "episode-009/visual-012.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-012.png"
+    },
+    {
+      "path": "episode-009/visual-013.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-013.png"
+    },
+    {
+      "path": "episode-009/visual-014.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-014.png"
+    },
+    {
+      "path": "episode-009/visual-015.png",
+      "bytes": 162395,
+      "sha256": "3925b50c8a6856ae86d65775fe2c02b875e8ba69e19cb77403dbf27fbceb32e7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-009/visual-015.png"
+    },
+    {
+      "path": "episode-010/episode.json",
+      "bytes": 19794,
+      "sha256": "5fce7156aafc33e880e8af36a3b18a2dbdf955edf8515c6427e2866d6d062620",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/episode.json"
+    },
+    {
+      "path": "episode-010/final.png",
+      "bytes": 223061,
+      "sha256": "c00ff927be6334006189de20d2d6f78ea657419fb901ee7c574b548dfe5527c3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/final.png"
+    },
+    {
+      "path": "episode-010/initial.json",
+      "bytes": 26573,
+      "sha256": "3aa9cf9705132da72bd4ea07799e0bfffe0c1cd9ff269174fdee124bafde7d73",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/initial.json"
+    },
+    {
+      "path": "episode-010/outcome.json",
+      "bytes": 29655,
+      "sha256": "a31c28ef77ef61411304bebbc1bbe4a54f74464cb38cbaef3897d9e805d9bb59",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/outcome.json"
+    },
+    {
+      "path": "episode-010/request-001.json",
+      "bytes": 16674,
+      "sha256": "3e35ce0ed309eaa2bf04cb78763d78b5ef63669e7f95d1506ea10f2884ca69ad",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-001.json"
+    },
+    {
+      "path": "episode-010/request-002.json",
+      "bytes": 32385,
+      "sha256": "5b4a42aa452cb808f50905e52bd259048644e77f0d2ad11b701bdc4ff10344ed",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-002.json"
+    },
+    {
+      "path": "episode-010/request-003.json",
+      "bytes": 42221,
+      "sha256": "3acd06c565e156e1a22bbe302a3783d000e29d09baaef0aee570ea28cdd297f1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-003.json"
+    },
+    {
+      "path": "episode-010/request-004.json",
+      "bytes": 56006,
+      "sha256": "f4957e236e6a76ab2592002fb69ece352b32c868c5954c5012f2c844fc5d80b7",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-004.json"
+    },
+    {
+      "path": "episode-010/request-005.json",
+      "bytes": 69906,
+      "sha256": "93d79159f4d04aebba11720a2274b55d0e786b9138a2043bff7f596677d5b594",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-005.json"
+    },
+    {
+      "path": "episode-010/request-006.json",
+      "bytes": 67980,
+      "sha256": "14994a28df3d5451a2628248c50f98d5d0aebeadc2fb10433866da9081785bae",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-006.json"
+    },
+    {
+      "path": "episode-010/request-007.json",
+      "bytes": 66768,
+      "sha256": "60753c0eedeb0dd51a8abf818172c4650872b664cb258f28c1628543ab1ae5c3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-007.json"
+    },
+    {
+      "path": "episode-010/request-008.json",
+      "bytes": 71221,
+      "sha256": "4ddcea3ba268342b7279292ef03f36f1395174ba3451bea48ec151305660f88c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-008.json"
+    },
+    {
+      "path": "episode-010/request-009.json",
+      "bytes": 71271,
+      "sha256": "525730d52c4ce93c6eb2f4e4190ee39f875aa5c198ec6f6a54eb0dc484cc2784",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-009.json"
+    },
+    {
+      "path": "episode-010/request-010.json",
+      "bytes": 71504,
+      "sha256": "a15e3a1a24581e108944d404e01fa4982c6c474f4c6820da7199f4cbedf0a5dc",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-010.json"
+    },
+    {
+      "path": "episode-010/request-011.json",
+      "bytes": 71635,
+      "sha256": "e2d63a149c1c83f1ecd520b3965456e98b56a62d8418151862da60cb02e3b4fb",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-011.json"
+    },
+    {
+      "path": "episode-010/request-012.json",
+      "bytes": 71308,
+      "sha256": "0a6e51805854193bf03bc8875b29ac8be0dcbfd90c368a93be10c14c30a05e78",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-012.json"
+    },
+    {
+      "path": "episode-010/request-013.json",
+      "bytes": 71384,
+      "sha256": "657eb237d03973d4323a5c22fd6a4fd28351359c62601c558cd7824092069435",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/request-013.json"
+    },
+    {
+      "path": "episode-010/steps.jsonl",
+      "bytes": 650924,
+      "sha256": "875e3510460dfe2a76688025fcac7e4ca45773902302b80c6257ebfd96ffab38",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/steps.jsonl"
+    },
+    {
+      "path": "episode-010/visual-000.png",
+      "bytes": 220146,
+      "sha256": "b59d9eca1b02ead54341a5f199be3c13f568f8985d11ee09929ecca514532d9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-000.png"
+    },
+    {
+      "path": "episode-010/visual-001.png",
+      "bytes": 220146,
+      "sha256": "b59d9eca1b02ead54341a5f199be3c13f568f8985d11ee09929ecca514532d9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-001.png"
+    },
+    {
+      "path": "episode-010/visual-002.png",
+      "bytes": 176822,
+      "sha256": "0c559143f092fe57a74c98b0399bcde8fa467209e6a39205ebc2254fe34fc865",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-002.png"
+    },
+    {
+      "path": "episode-010/visual-003.png",
+      "bytes": 215055,
+      "sha256": "404de8ea5815326338c4d0a624d84fc8282443ebb65efd857646458ca4c5e386",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-003.png"
+    },
+    {
+      "path": "episode-010/visual-004.png",
+      "bytes": 206407,
+      "sha256": "de2f4ede9424fba718faf14ba8b2fa376766f6015ba0632c18ebed1f0df528e4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-004.png"
+    },
+    {
+      "path": "episode-010/visual-005.png",
+      "bytes": 214975,
+      "sha256": "7c5a6d981c37393493ca47c15a02322dda42d5e9a0258056b9f3ac91aa8e966c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-005.png"
+    },
+    {
+      "path": "episode-010/visual-006.png",
+      "bytes": 213586,
+      "sha256": "269374fb0109e67544e4e8530f33d8b2b142939905585a7d49c05f7964f7d8d8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-006.png"
+    },
+    {
+      "path": "episode-010/visual-007.png",
+      "bytes": 213798,
+      "sha256": "a1c3bda11b500dccf7803fe753bd725007f5d6b1166499f7fc2a45e450f354d5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-007.png"
+    },
+    {
+      "path": "episode-010/visual-008.png",
+      "bytes": 219769,
+      "sha256": "9f6d1ad511dbec1a2ccee2a817997c61be67382223dcce5bc30c043e189aab50",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-008.png"
+    },
+    {
+      "path": "episode-010/visual-009.png",
+      "bytes": 215252,
+      "sha256": "f8da7554568a1f68c58a778914429b876b05f3f59edcd6f9f9c287be10d8f1a8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-009.png"
+    },
+    {
+      "path": "episode-010/visual-010.png",
+      "bytes": 217536,
+      "sha256": "9471d8d660e70ca27e83c8136bb03a65f6fbb0e410deaeefe6ac6466ea1f4fe1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-010.png"
+    },
+    {
+      "path": "episode-010/visual-011.png",
+      "bytes": 221218,
+      "sha256": "0673ef1ed5e4139aaad3a3017151dcb316f46d2b61c31183768fb6a38c01fddf",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-011.png"
+    },
+    {
+      "path": "episode-010/visual-012.png",
+      "bytes": 223061,
+      "sha256": "c00ff927be6334006189de20d2d6f78ea657419fb901ee7c574b548dfe5527c3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-010/visual-012.png"
+    },
+    {
+      "path": "episode-011/episode.json",
+      "bytes": 20403,
+      "sha256": "40ea53cabd2668cb4c6d6d66f6659e79d36c910c44d18571f7d9f87cbd0600a0",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/episode.json"
+    },
+    {
+      "path": "episode-011/final.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/final.png"
+    },
+    {
+      "path": "episode-011/initial.json",
+      "bytes": 26573,
+      "sha256": "a566e44e3166eb4bc2aa3aaafc19b2b755f444a30e392558485bcb587acc0998",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/initial.json"
+    },
+    {
+      "path": "episode-011/outcome.json",
+      "bytes": 26573,
+      "sha256": "a566e44e3166eb4bc2aa3aaafc19b2b755f444a30e392558485bcb587acc0998",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/outcome.json"
+    },
+    {
+      "path": "episode-011/request-001.json",
+      "bytes": 16667,
+      "sha256": "3dcb2ebe007082df9e735dc9122748314d954d4c50f2afd502654e9135e17d05",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-001.json"
+    },
+    {
+      "path": "episode-011/request-002.json",
+      "bytes": 32568,
+      "sha256": "a7f0c8b04f5ad22067a74142c01134bcceba6df977d6d1e7fc96a2036050dfa4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-002.json"
+    },
+    {
+      "path": "episode-011/request-003.json",
+      "bytes": 48469,
+      "sha256": "605da484e383b66a0bc43fc17964997d6062fc72f99051e9f46d48cb1d2b34ee",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-003.json"
+    },
+    {
+      "path": "episode-011/request-004.json",
+      "bytes": 64370,
+      "sha256": "5405a8f2ec5bb22b20bdec256a99932f6fa74589b38c17b3db19d6748a2fb747",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-004.json"
+    },
+    {
+      "path": "episode-011/request-005.json",
+      "bytes": 80271,
+      "sha256": "295e344a53e7d497b8463ab3451ffc4ba7a45fb4d68934e085f56f7c1cc9bb95",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-005.json"
+    },
+    {
+      "path": "episode-011/request-006.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-006.json"
+    },
+    {
+      "path": "episode-011/request-007.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-007.json"
+    },
+    {
+      "path": "episode-011/request-008.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-008.json"
+    },
+    {
+      "path": "episode-011/request-009.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-009.json"
+    },
+    {
+      "path": "episode-011/request-010.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-010.json"
+    },
+    {
+      "path": "episode-011/request-011.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-011.json"
+    },
+    {
+      "path": "episode-011/request-012.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-012.json"
+    },
+    {
+      "path": "episode-011/request-013.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-013.json"
+    },
+    {
+      "path": "episode-011/request-014.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-014.json"
+    },
+    {
+      "path": "episode-011/request-015.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-015.json"
+    },
+    {
+      "path": "episode-011/request-016.json",
+      "bytes": 80732,
+      "sha256": "aa2134adbd2540adbbe2712dce3a02a27d444a2718f427c09e9d5f701ed2bc9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/request-016.json"
+    },
+    {
+      "path": "episode-011/steps.jsonl",
+      "bytes": 877888,
+      "sha256": "fd0fb28701a641f3e58d803d66c004932d36b2ce9a21b803a24496861569e746",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/steps.jsonl"
+    },
+    {
+      "path": "episode-011/visual-000.png",
+      "bytes": 220146,
+      "sha256": "b59d9eca1b02ead54341a5f199be3c13f568f8985d11ee09929ecca514532d9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-000.png"
+    },
+    {
+      "path": "episode-011/visual-001.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-001.png"
+    },
+    {
+      "path": "episode-011/visual-002.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-002.png"
+    },
+    {
+      "path": "episode-011/visual-003.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-003.png"
+    },
+    {
+      "path": "episode-011/visual-004.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-004.png"
+    },
+    {
+      "path": "episode-011/visual-005.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-005.png"
+    },
+    {
+      "path": "episode-011/visual-006.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-006.png"
+    },
+    {
+      "path": "episode-011/visual-007.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-007.png"
+    },
+    {
+      "path": "episode-011/visual-008.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-008.png"
+    },
+    {
+      "path": "episode-011/visual-009.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-009.png"
+    },
+    {
+      "path": "episode-011/visual-010.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-010.png"
+    },
+    {
+      "path": "episode-011/visual-011.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-011.png"
+    },
+    {
+      "path": "episode-011/visual-012.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-012.png"
+    },
+    {
+      "path": "episode-011/visual-013.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-013.png"
+    },
+    {
+      "path": "episode-011/visual-014.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-014.png"
+    },
+    {
+      "path": "episode-011/visual-015.png",
+      "bytes": 221768,
+      "sha256": "662d132b81f4f0a15310676a03cb675ee09ecbb3a41a9affcc9b379a0878f767",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-011/visual-015.png"
+    },
+    {
+      "path": "episode-012/episode.json",
+      "bytes": 20106,
+      "sha256": "cd7d00e050e30424c2c73d29e2d9e96bcc8d7d419cc9e46addd4965517f7bed9",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/episode.json"
+    },
+    {
+      "path": "episode-012/final.png",
+      "bytes": 229912,
+      "sha256": "77528726066910080e07bbe9800b979e2e96a758975dc06e6cecc43df38b2427",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/final.png"
+    },
+    {
+      "path": "episode-012/initial.json",
+      "bytes": 26573,
+      "sha256": "a439c7affd78398a9cf93e8371c84e802af5a0478938062eecbe327d2425ae2e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/initial.json"
+    },
+    {
+      "path": "episode-012/outcome.json",
+      "bytes": 30692,
+      "sha256": "9d8b483da550d2bbaa022b978e1e29c0d14e413661b6d52a0e2c6d25dd3d4a01",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/outcome.json"
+    },
+    {
+      "path": "episode-012/request-001.json",
+      "bytes": 16668,
+      "sha256": "e5ca49c222f8530a0b72c2dbd34f4535b055a47a895723a8da4dfb1cdcc1d62a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-001.json"
+    },
+    {
+      "path": "episode-012/request-002.json",
+      "bytes": 26504,
+      "sha256": "02d9c9ddccc0b155f99903e73e1fff547f28f6fa2059dc5b7336f3c446dc7c67",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-002.json"
+    },
+    {
+      "path": "episode-012/request-003.json",
+      "bytes": 40289,
+      "sha256": "809978af3a587f0ca1328f6bf6f22d55bd47b59cf4296e606836f7e28bf1497b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-003.json"
+    },
+    {
+      "path": "episode-012/request-004.json",
+      "bytes": 54420,
+      "sha256": "30b79a0e4906654a5da436029f68ded60eb89b79bb8f522260a9734ce7c884a3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-004.json"
+    },
+    {
+      "path": "episode-012/request-005.json",
+      "bytes": 68094,
+      "sha256": "3defc5315e2ccd08703a4017452b71c74e032bbb81fc44f1a326e60807e10fd9",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-005.json"
+    },
+    {
+      "path": "episode-012/request-006.json",
+      "bytes": 66452,
+      "sha256": "0e1c8dcd0e9df3d2da4ff0fa42c34e9d511d5703c5672917c4df555dac389372",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-006.json"
+    },
+    {
+      "path": "episode-012/request-007.json",
+      "bytes": 70567,
+      "sha256": "30daefb8b4c024210c5a06860e75d4ad9fb76f826dfa1da9d146d9dd8f45de74",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-007.json"
+    },
+    {
+      "path": "episode-012/request-008.json",
+      "bytes": 71079,
+      "sha256": "8ad621a2e5919b9647a9434a95c0f852bcf857bfcb222b15512a0d7bd716fe90",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-008.json"
+    },
+    {
+      "path": "episode-012/request-009.json",
+      "bytes": 72354,
+      "sha256": "9cef79ac93775ae9d25e3cd733a286f5d9e1df112d27aed7a31b5a4fdb127800",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-009.json"
+    },
+    {
+      "path": "episode-012/request-010.json",
+      "bytes": 73011,
+      "sha256": "dcbd78af71984b0fa922d4484dc986ee65098e506621ba42de073b5423c8f8e9",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-010.json"
+    },
+    {
+      "path": "episode-012/request-011.json",
+      "bytes": 73874,
+      "sha256": "f188bd74edf151376e5d5b98c4e0f21bf143f38603e779cc7914ad2a5464ff31",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-011.json"
+    },
+    {
+      "path": "episode-012/request-012.json",
+      "bytes": 74640,
+      "sha256": "05f69e2f93b82a98a28ef5498dbb0a0b74f93d62bcc9422437b90dd321d7d8cb",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-012.json"
+    },
+    {
+      "path": "episode-012/request-013.json",
+      "bytes": 74913,
+      "sha256": "1fcc98ca9e746ac4bb3d0bfaf51b76cf538f3dffdde1a072f603c4510dae87f8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/request-013.json"
+    },
+    {
+      "path": "episode-012/steps.jsonl",
+      "bytes": 657710,
+      "sha256": "3e889b4749cf755fe763384331f42ccf5a2557804b7c9c144b76451b88d7226d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/steps.jsonl"
+    },
+    {
+      "path": "episode-012/visual-000.png",
+      "bytes": 220146,
+      "sha256": "b59d9eca1b02ead54341a5f199be3c13f568f8985d11ee09929ecca514532d9e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-000.png"
+    },
+    {
+      "path": "episode-012/visual-001.png",
+      "bytes": 176799,
+      "sha256": "1736d6ba9ce04c0244cb7f9d663e3a96126e8d31b1497cfab744240881514eaf",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-001.png"
+    },
+    {
+      "path": "episode-012/visual-002.png",
+      "bytes": 215034,
+      "sha256": "4283f44aa609460d79added7222fca76e3ba33cb41fafc793ec47351884dba09",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-002.png"
+    },
+    {
+      "path": "episode-012/visual-003.png",
+      "bytes": 217055,
+      "sha256": "b13eec07a382d8c074e9f4e3bfc0750adc8b7ac7a8462baa33fe412ec19f3b0d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-003.png"
+    },
+    {
+      "path": "episode-012/visual-004.png",
+      "bytes": 214873,
+      "sha256": "adcead0dc867df985a1b40027d90db9e9a2e125f22474f999b2873acf5972efe",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-004.png"
+    },
+    {
+      "path": "episode-012/visual-005.png",
+      "bytes": 217220,
+      "sha256": "867af0bb2ac6f944df8077c74abb3626a3d6414c2c75615aa54a83797d9feb79",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-005.png"
+    },
+    {
+      "path": "episode-012/visual-006.png",
+      "bytes": 221470,
+      "sha256": "f5fe52a63604edded4010eeee132d4057b950d3100ab97082257e79379469e61",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-006.png"
+    },
+    {
+      "path": "episode-012/visual-007.png",
+      "bytes": 223302,
+      "sha256": "eafcffa3854f8798fbc6da6d8e885b4a5ea4d8b0aef04837550ce162eac74073",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-007.png"
+    },
+    {
+      "path": "episode-012/visual-008.png",
+      "bytes": 230401,
+      "sha256": "932172748534c5a644de917b4111cadd5594eaf2193a9836b229a610346437e6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-008.png"
+    },
+    {
+      "path": "episode-012/visual-009.png",
+      "bytes": 227705,
+      "sha256": "5275e08026357ef6c5341141721a0e1be78ad2175e96b9c4d17b342b58834ecd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-009.png"
+    },
+    {
+      "path": "episode-012/visual-010.png",
+      "bytes": 224352,
+      "sha256": "afa545e69dd62ad96179d6a20b1511953a013e181bbd2d414e26700a959d8a76",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-010.png"
+    },
+    {
+      "path": "episode-012/visual-011.png",
+      "bytes": 226327,
+      "sha256": "6eb332b18ad741f282447729e1b4b6475605b35e9d281cd9385d1fbd77f46d0b",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-011.png"
+    },
+    {
+      "path": "episode-012/visual-012.png",
+      "bytes": 233896,
+      "sha256": "27982c312837ea54820d068369b6eb37003d4964263869b9285cc045cff9c43d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-012/visual-012.png"
+    },
+    {
+      "path": "episode-013/episode.json",
+      "bytes": 22827,
+      "sha256": "4fba18ff5aae84c27de83de8b022e4547b68a99ff1d4ea7d6b3fcdd89fc12e97",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/episode.json"
+    },
+    {
+      "path": "episode-013/final.png",
+      "bytes": 252439,
+      "sha256": "11cedebbe3519c98a97c3556c167f4622d554a2a7a573b76b40d9b0f26d59d2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/final.png"
+    },
+    {
+      "path": "episode-013/initial.json",
+      "bytes": 19627,
+      "sha256": "4e6a2c4a985379c9ff42cecda4119f54af7a57a66c88b989d3c378665787e2b1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/initial.json"
+    },
+    {
+      "path": "episode-013/outcome.json",
+      "bytes": 20861,
+      "sha256": "3509ea58320db147fa61794e55cf9edf2a188abc0be6e7a7866ffa1053a192e4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/outcome.json"
+    },
+    {
+      "path": "episode-013/request-001.json",
+      "bytes": 15632,
+      "sha256": "4f2182878b21301c96f19c59aed4a9299bd1022f33eff88690dfb8901b0fc3ef",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/request-001.json"
+    },
+    {
+      "path": "episode-013/request-002.json",
+      "bytes": 33522,
+      "sha256": "290d59ce586e3abc224701cc278ef49db88a96513ffb217867b66cccbbb24956",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/request-002.json"
+    },
+    {
+      "path": "episode-013/request-003.json",
+      "bytes": 51537,
+      "sha256": "ee9b554898c323791a85b5a67dba58cf290cc40024837c968810ca742a71f142",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/request-003.json"
+    },
+    {
+      "path": "episode-013/request-004.json",
+      "bytes": 69777,
+      "sha256": "4df209183a6f9191c56a35a14bfaa6e29542bd5b98c5b8bb52b9a5942977c3f8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/request-004.json"
+    },
+    {
+      "path": "episode-013/steps.jsonl",
+      "bytes": 225039,
+      "sha256": "48559d141708074360ebe2afc34ca74fb5a44f04e489742ac02400740c82f65c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/steps.jsonl"
+    },
+    {
+      "path": "episode-013/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/visual-000.png"
+    },
+    {
+      "path": "episode-013/visual-001.png",
+      "bytes": 248211,
+      "sha256": "362e5408cd204c0a50ac2a5eaf8dbb78b6e5078bab80af25c93409d7cb2f84e4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/visual-001.png"
+    },
+    {
+      "path": "episode-013/visual-002.png",
+      "bytes": 250909,
+      "sha256": "f48a3b61eafd26ce1bcab5c68d70d8302080906499e55e82846f43e59610ead6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/visual-002.png"
+    },
+    {
+      "path": "episode-013/visual-003.png",
+      "bytes": 252439,
+      "sha256": "11cedebbe3519c98a97c3556c167f4622d554a2a7a573b76b40d9b0f26d59d2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-013/visual-003.png"
+    },
+    {
+      "path": "episode-014/episode.json",
+      "bytes": 22832,
+      "sha256": "625d22cee0424642884a7c4b81a81beebdf71ed65fdb1c65c5052d31148422d9",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/episode.json"
+    },
+    {
+      "path": "episode-014/final.png",
+      "bytes": 252439,
+      "sha256": "11cedebbe3519c98a97c3556c167f4622d554a2a7a573b76b40d9b0f26d59d2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/final.png"
+    },
+    {
+      "path": "episode-014/initial.json",
+      "bytes": 19627,
+      "sha256": "f0a3edca2fe855bc5434b757b560447dc0b9452e35afa75d79f1a7f3c031bde2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/initial.json"
+    },
+    {
+      "path": "episode-014/outcome.json",
+      "bytes": 20861,
+      "sha256": "98c050e199f35c66628d1f69ae90751a9d53cc0ee817fe099c6aebc522864cd2",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/outcome.json"
+    },
+    {
+      "path": "episode-014/request-001.json",
+      "bytes": 15638,
+      "sha256": "7f1a32f2f5df04ba31cba89d70bc80afb64ae5f3975e607867a4aa2bfee50237",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/request-001.json"
+    },
+    {
+      "path": "episode-014/request-002.json",
+      "bytes": 33528,
+      "sha256": "36510f44fa17a6e566dfd6fcb3fb654602c5b04c46578b38f247268489b858e1",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/request-002.json"
+    },
+    {
+      "path": "episode-014/request-003.json",
+      "bytes": 51543,
+      "sha256": "b3637d5c6b5c0499ab507c251da8569932010e6cb2108a1a54187c608e643ff0",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/request-003.json"
+    },
+    {
+      "path": "episode-014/request-004.json",
+      "bytes": 69783,
+      "sha256": "40797b36ebc2e978c3f2c63febadbb0d23dacb636fc2f3e4286d1379878d9b38",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/request-004.json"
+    },
+    {
+      "path": "episode-014/steps.jsonl",
+      "bytes": 225189,
+      "sha256": "c1194f7c0f9403151858dc7c63b32d9e27d5ab57ceb5dcb50c6f8cdddcbefbc5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/steps.jsonl"
+    },
+    {
+      "path": "episode-014/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/visual-000.png"
+    },
+    {
+      "path": "episode-014/visual-001.png",
+      "bytes": 248211,
+      "sha256": "362e5408cd204c0a50ac2a5eaf8dbb78b6e5078bab80af25c93409d7cb2f84e4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/visual-001.png"
+    },
+    {
+      "path": "episode-014/visual-002.png",
+      "bytes": 250909,
+      "sha256": "f48a3b61eafd26ce1bcab5c68d70d8302080906499e55e82846f43e59610ead6",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/visual-002.png"
+    },
+    {
+      "path": "episode-014/visual-003.png",
+      "bytes": 252439,
+      "sha256": "11cedebbe3519c98a97c3556c167f4622d554a2a7a573b76b40d9b0f26d59d2a",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-014/visual-003.png"
+    },
+    {
+      "path": "episode-015/episode.json",
+      "bytes": 19425,
+      "sha256": "64b5346e369de81e35158f3ceebcd5e5e2866e59de9c59282917086f767ba69d",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/episode.json"
+    },
+    {
+      "path": "episode-015/final.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/final.png"
+    },
+    {
+      "path": "episode-015/initial.json",
+      "bytes": 19627,
+      "sha256": "04f0b1874ea0be71730e357b0e471369036f94b74e7c8deddc251feb93a9cd7c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/initial.json"
+    },
+    {
+      "path": "episode-015/outcome.json",
+      "bytes": 19627,
+      "sha256": "04f0b1874ea0be71730e357b0e471369036f94b74e7c8deddc251feb93a9cd7c",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/outcome.json"
+    },
+    {
+      "path": "episode-015/request-001.json",
+      "bytes": 15631,
+      "sha256": "c0e65c733c61e9832d70b7ae2a3649d5a1b0a5f71043e17c7864d611a67cd9dd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-001.json"
+    },
+    {
+      "path": "episode-015/request-002.json",
+      "bytes": 30698,
+      "sha256": "183138b448f529a9e617ae399f95489be8c61bff2eb84ee8cd621abb8f989bdd",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-002.json"
+    },
+    {
+      "path": "episode-015/request-003.json",
+      "bytes": 45890,
+      "sha256": "de3d27f5217c873d10e704ee0c84deabe3deeac01d1051fe64a7e97830994027",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-003.json"
+    },
+    {
+      "path": "episode-015/request-004.json",
+      "bytes": 61082,
+      "sha256": "13691bd8f2d64010470fd9d392e1bec6b340dd8293d335e6de9d6728742018f3",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-004.json"
+    },
+    {
+      "path": "episode-015/request-005.json",
+      "bytes": 76274,
+      "sha256": "a3f246a2579caafe7236ece9e20780eee0b72f578562f989f7033cb46ec79241",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-005.json"
+    },
+    {
+      "path": "episode-015/request-006.json",
+      "bytes": 76857,
+      "sha256": "9f601a31f081029ae9648e0d1fc45f34cfaf57112d8abdf9746b1f38ac66d867",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-006.json"
+    },
+    {
+      "path": "episode-015/request-007.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-007.json"
+    },
+    {
+      "path": "episode-015/request-008.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-008.json"
+    },
+    {
+      "path": "episode-015/request-009.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-009.json"
+    },
+    {
+      "path": "episode-015/request-010.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-010.json"
+    },
+    {
+      "path": "episode-015/request-011.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-011.json"
+    },
+    {
+      "path": "episode-015/request-012.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-012.json"
+    },
+    {
+      "path": "episode-015/request-013.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-013.json"
+    },
+    {
+      "path": "episode-015/request-014.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-014.json"
+    },
+    {
+      "path": "episode-015/request-015.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-015.json"
+    },
+    {
+      "path": "episode-015/request-016.json",
+      "bytes": 76929,
+      "sha256": "1aa8f3e949a95a84f55ea21d2d386ba401b2b13bcd9506f22af5f45c395dcab4",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/request-016.json"
+    },
+    {
+      "path": "episode-015/steps.jsonl",
+      "bytes": 768854,
+      "sha256": "b71abc52b87e6c153806c4e4d240e38d7868a3320fc09a5573762c59b9c5775e",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/steps.jsonl"
+    },
+    {
+      "path": "episode-015/visual-000.png",
+      "bytes": 222680,
+      "sha256": "89b5a46e988c8921efe04ad519bdc5b6f68f705ebb047a9224d138e8acabb2f5",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-000.png"
+    },
+    {
+      "path": "episode-015/visual-001.png",
+      "bytes": 225047,
+      "sha256": "7d2d3bb88aa42e726d7d0a9cb3d149ab49733a759184491a7da79a0d611e7095",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-001.png"
+    },
+    {
+      "path": "episode-015/visual-002.png",
+      "bytes": 226868,
+      "sha256": "5c2fda47ca53bee6c8afbc5d153fcf2b5acbdf33b8a6d4b7fcf9f187ee1902c8",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-002.png"
+    },
+    {
+      "path": "episode-015/visual-003.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-003.png"
+    },
+    {
+      "path": "episode-015/visual-004.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-004.png"
+    },
+    {
+      "path": "episode-015/visual-005.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-005.png"
+    },
+    {
+      "path": "episode-015/visual-006.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-006.png"
+    },
+    {
+      "path": "episode-015/visual-007.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-007.png"
+    },
+    {
+      "path": "episode-015/visual-008.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-008.png"
+    },
+    {
+      "path": "episode-015/visual-009.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-009.png"
+    },
+    {
+      "path": "episode-015/visual-010.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-010.png"
+    },
+    {
+      "path": "episode-015/visual-011.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-011.png"
+    },
+    {
+      "path": "episode-015/visual-012.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-012.png"
+    },
+    {
+      "path": "episode-015/visual-013.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-013.png"
+    },
+    {
+      "path": "episode-015/visual-014.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-014.png"
+    },
+    {
+      "path": "episode-015/visual-015.png",
+      "bytes": 226876,
+      "sha256": "b14c9a3e63eabc1c5940f5f61f3a9d170339af7db01b0f262bbc8c408a5a9457",
+      "href": "/api/runs/bd7fea0d-9e7f-4e7a-aa82-ee4b17501429/episode-015/visual-015.png"
+    },
+    {
+      "path": "run.json",
+      "bytes": 337517,
+      "sha256": "99c0680fdb7a5b2b6c66b2c5e21c17b346c2c48c3e94578e282714a301f2562c",
+      "href": null
+    }
+  ],
+  "limits": [
+    "Only externally visible model output is recorded. Hidden model reasoning is not available.",
+    "Provider error bodies and authentication headers are deliberately excluded.",
+    "Estimated cost is not an invoice; unknown usage retains reservations.",
+    "Workspace events and model events are separate ordered streams. Legacy timestamps cannot establish exact cross-stream ordering.",
+    "Artifact inventory hashes are computed at audit-read time; only recorded artifact bindings attest to original capture."
+  ]
+}

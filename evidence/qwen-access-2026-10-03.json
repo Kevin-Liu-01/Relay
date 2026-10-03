@@ -1,0 +1,24 @@
+{
+  "kind": "provider-access-diagnostic-not-a-task-trial",
+  "at": "2026-10-03T07:07:43.744Z",
+  "model": "qwen3p8-max",
+  "rates": {
+    "input": 2,
+    "output": 6
+  },
+  "catalog": {
+    "at": "2026-10-03T07:07:43.738Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79"
+  },
+  "status": "response-received",
+  "reservedUSD": 0.00111,
+  "estimatedUSD": 0.000284,
+  "usageKnown": true,
+  "returnedModel": "accounts/fireworks/models/qwen3p8-max",
+  "usage": {
+    "inputTokens": 61,
+    "outputTokens": 27,
+    "cachedInputTokens": 0,
+    "reasoningTokens": 0
+  }
+}

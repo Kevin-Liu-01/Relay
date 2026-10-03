@@ -1,0 +1,2269 @@
+{
+  "id": "model-comparison-2026-10-02-followup",
+  "createdAt": "2026-10-03T05:54:58.821Z",
+  "planHash": "cf0543df25a6503a5ba7b48c706c3a6ce4dda604d770e7bb0f4b9a5ae1ce19c0",
+  "sourceHash": "e69ff07b04fb9852f9ab591ee17c8de1b4616ab36afb3ceb43cf803a5eb2741d",
+  "launcherHash": "e57da4f0356787d4a7a795798cb23b2c325fd58f35ccabf6adb0b179304d39a0",
+  "phases": [
+    {
+      "id": "seed-42",
+      "config": {
+        "provider": "ramp",
+        "tasks": [
+          "channel-topic",
+          "thread-reply",
+          "edit-message",
+          "incident-triage",
+          "decision-record"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "maxSteps": 16,
+        "maxRequests": 240,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 120,
+        "runSeconds": 3600,
+        "seeds": [
+          42
+        ],
+        "orderSeed": 20261012,
+        "maxEstimatedUSD": 0.75,
+        "models": [
+          {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          }
+        ]
+      },
+      "schedule": [
+        {
+          "taskId": "edit-message",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "edit-message:42:0",
+          "episodeId": "episode-001"
+        },
+        {
+          "taskId": "edit-message",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "edit-message:42:0",
+          "episodeId": "episode-002"
+        },
+        {
+          "taskId": "edit-message",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "edit-message:42:0",
+          "episodeId": "episode-003"
+        },
+        {
+          "taskId": "decision-record",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "decision-record:42:0",
+          "episodeId": "episode-004"
+        },
+        {
+          "taskId": "decision-record",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "decision-record:42:0",
+          "episodeId": "episode-005"
+        },
+        {
+          "taskId": "decision-record",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "decision-record:42:0",
+          "episodeId": "episode-006"
+        },
+        {
+          "taskId": "channel-topic",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "channel-topic:42:0",
+          "episodeId": "episode-007"
+        },
+        {
+          "taskId": "channel-topic",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "channel-topic:42:0",
+          "episodeId": "episode-008"
+        },
+        {
+          "taskId": "channel-topic",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "channel-topic:42:0",
+          "episodeId": "episode-009"
+        },
+        {
+          "taskId": "thread-reply",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "thread-reply:42:0",
+          "episodeId": "episode-010"
+        },
+        {
+          "taskId": "thread-reply",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "thread-reply:42:0",
+          "episodeId": "episode-011"
+        },
+        {
+          "taskId": "thread-reply",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "thread-reply:42:0",
+          "episodeId": "episode-012"
+        },
+        {
+          "taskId": "incident-triage",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "gpt-4.1-nano",
+            "rates": {
+              "input": 0.1,
+              "output": 0.4
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "incident-triage:42:0",
+          "episodeId": "episode-013"
+        },
+        {
+          "taskId": "incident-triage",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "incident-triage:42:0",
+          "episodeId": "episode-014"
+        },
+        {
+          "taskId": "incident-triage",
+          "seed": 42,
+          "repeat": 0,
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          "mode": "a11y",
+          "guide": false,
+          "history": "recent-4",
+          "block": "incident-triage:42:0",
+          "episodeId": "episode-015"
+        }
+      ],
+      "catalog": {
+        "at": "2026-10-03T05:54:59.476Z",
+        "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-sonnet-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-opus-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.11,
+              "output": 0.55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.7",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "jev-1.13.0",
+            "owned_by": "typesafe",
+            "catalogRates": null,
+            "unavailableReason": "This model needs a different API. For Jev, connect TypeSafe."
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-astra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 11,
+              "output": 55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-astra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.8-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5-1",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.7-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-pro-0813",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.32,
+              "output": 3.96
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.6",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-lightning-3p5-30b-a3b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "qwen3p8-max",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.6-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 4.5,
+              "output": 22.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.22,
+              "output": 1.32
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4.4,
+              "output": 22
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-terra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 13.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash-0731",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.13,
+              "output": 0.26
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-sonnet-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.5",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-terra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2.1,
+              "output": 6.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "minimax-m3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra-nvfp4",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-8",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-8",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.5,
+              "output": 9
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.14,
+              "output": 0.28
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 5,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.3",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-7",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-build-0.1",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-7",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 4.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-non-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-multi-agent-0309",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.3-codex",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 21,
+              "output": 168
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 120
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-oss-120b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-pro",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 20,
+              "output": 80
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.4,
+              "output": 1.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-3.5-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-haiku-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3-flash-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 3
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-pro-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          }
+        ]
+      },
+      "startedAt": "2026-10-03T05:54:59.479Z",
+      "safeToContinue": false,
+      "runId": "1076ccfa-f5d2-4a7f-a060-b9bbef1b8141",
+      "status": "stopped",
+      "budget": {
+        "requests": 36,
+        "inputTokens": 470554,
+        "outputTokens": 1865,
+        "estimatedUSD": 0.10937740000000003,
+        "usageKnown": false
+      },
+      "audit": {
+        "status": "verified",
+        "checks": [
+          {
+            "name": "Configuration hash",
+            "ok": true,
+            "episodeId": null
+          },
+          {
+            "name": "Readable trace records",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Event hash chain",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Terminal record",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Episode trace root",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: initial.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-000.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-001.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 1",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 1",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 1",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-001.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-002.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 2",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 2",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 2",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-002.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-003.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 3",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 3",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 3",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-003.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-004.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 4",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 4",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 4",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-004.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-005.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 5",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 5",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 5",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-005.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-006.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 6",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 6",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 6",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-006.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-007.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 7",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 7",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 7",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-007.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-008.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 8",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 8",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 8",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-008.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-009.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 9",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 9",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 9",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-009.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-010.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 10",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 10",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 10",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-010.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-011.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 11",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 11",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 11",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-011.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-012.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 12",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 12",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 12",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-012.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-013.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 13",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 13",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 13",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-013.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-014.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 14",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 14",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 14",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-014.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-015.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 15",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 15",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 15",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: visual-015.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: request-016.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Prompt hash: step 16",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Request body: step 16",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Transport request: step 16",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: outcome.json",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Recorded artifact: final.png",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Episode checkpoint matches manifest",
+            "ok": true,
+            "episodeId": "episode-001"
+          },
+          {
+            "name": "Readable trace records",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Event hash chain",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Terminal record",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Episode trace root",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: initial.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-000.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-001.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 1",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 1",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 1",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-001.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-002.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 2",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 2",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 2",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-002.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-003.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 3",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 3",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 3",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-003.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-004.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 4",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 4",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 4",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-004.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-005.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 5",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 5",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 5",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: visual-005.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: request-006.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Prompt hash: step 6",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Request body: step 6",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Transport request: step 6",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: outcome.json",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Recorded artifact: final.png",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Episode checkpoint matches manifest",
+            "ok": true,
+            "episodeId": "episode-002"
+          },
+          {
+            "name": "Readable trace records",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Event hash chain",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Terminal record",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Episode trace root",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: initial.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-000.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-001.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 1",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 1",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 1",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-001.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-002.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 2",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 2",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 2",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-002.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-003.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 3",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 3",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 3",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-003.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-004.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 4",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 4",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 4",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-004.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-005.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 5",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 5",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 5",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: visual-005.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: request-006.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Prompt hash: step 6",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Request body: step 6",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Transport request: step 6",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: outcome.json",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Recorded artifact: final.png",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Episode checkpoint matches manifest",
+            "ok": true,
+            "episodeId": "episode-003"
+          },
+          {
+            "name": "Readable trace records",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Event hash chain",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Terminal record",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Episode trace root",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: initial.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-000.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-001.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 1",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 1",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 1",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-001.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-002.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 2",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 2",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 2",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-002.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-003.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 3",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 3",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 3",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-003.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-004.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 4",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 4",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 4",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-004.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-005.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 5",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 5",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 5",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-005.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-006.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 6",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 6",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 6",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-006.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-007.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 7",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 7",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Transport request: step 7",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: visual-007.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: request-008.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Prompt hash: step 8",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Request body: step 8",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: outcome.json",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Recorded artifact: final.png",
+            "ok": true,
+            "episodeId": "episode-004"
+          },
+          {
+            "name": "Episode checkpoint matches manifest",
+            "ok": true,
+            "episodeId": "episode-004"
+          }
+        ],
+        "gaps": [],
+        "scope": "Local hash consistency only; not independently signed or proof against an operator rewriting the complete bundle."
+      },
+      "finishedAt": "2026-10-03T05:56:31.280Z",
+      "stopReason": {
+        "code": "provider_stop",
+        "message": "Stopped after a budget limit, provider failure or missing usage. Other cells remain unattempted."
+      },
+      "archive": {
+        "path": "seed-42.tar.gz",
+        "bytes": 9106845,
+        "sha256": "e6be0d295c7f07ad4cfaea31bc801ee9df3bda638116c189045c847069cbd5a5"
+      }
+    }
+  ]
+}

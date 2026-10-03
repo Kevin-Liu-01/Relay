@@ -11,7 +11,8 @@
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
 - [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
-- [Six-model comparison](../evidence/campaigns/model-comparison-2026-10-02/README.md): 120 planned, 4 attempted before a provider timeout; sortable slide 9 and complete trial inventory. Twenty trials per model are **not yet completed**.
+- [Full task comparison](../evidence/campaigns/all-tasks-2026-10-03/README.md): target 20 trials per task/model, all 18 tasks and five models (1,800 total), $300 shared ceiling including prior pilots. The user approved Qwen 3.8 Max in place of access-blocked Gemini. At the 25-trial pilot gate: 21 passed, three incorrect, one output-limited and 1,775 not yet attempted. All 1,214 archive checks passed. The linked summary reports subsequent collection; the target is not a claim of completion.
+- [Completed pilot evidence](../evidence/campaigns/model-comparison-2026-10-02-final/README.md): 36 attempted, 20 passed, 11 incomplete, four output-limited and one connection failure. All 1,971 archive checks passed; the closed plan retains 24 unattempted cells. Slide 9 links this evidence and exposes the new per-task inventory without pooling the campaigns.
 - [Complete model-run inventory](../evidence/campaigns/onsite-2026-10-01/README.md), compressed original trajectories, readable manifests and audit receipts.
 - [Software verification](verification.md), [task contracts](task-suite.md), [architecture](architecture.md) and [prior-work review](research.md).
 - Credential-screened archive from `npm run package`. Exclude private runtime files, keys and the assignment PDF.
@@ -24,7 +25,7 @@
 - Trainer supports reset, observation, bounded step, terminal reward, truncation, export and cleanup. No optimizer or training run is included.
 - Harness: original MIT-licensed JavaScript runner using Playwright and Ramp Responses. No Codex SDK, BrowserGym or OpenEnv integration is claimed.
 
-## Actual agent evidence
+## Earlier onsite campaign evidence
 
 - 30 planned; 20 attempted; 8 strict passes; 11 incorrect/step-limited outcomes; 1 blocked; 10 unattempted.
 - Pixels, accessibility, visible-page JSON and actor API were exercised. Four task templates were attempted: topic, thread reply, message edit and decision record.
@@ -65,4 +66,4 @@
 - Start in the no-key sandbox. Use saved pass/failure replays to avoid provider availability and spending during the onsite.
 - A new live run needs a provider-side spend cap and verified model. Hosted settings already allow 4,096 output tokens; the frozen campaign's smaller allowance is not the hosted default.
 - Discuss Slack fidelity, observation contracts, final-state versus path-level safety, isolation and required throughput.
-- Next: successful pixel-policy runs, template-level holdouts, trainer compatibility tests and sustained worker measurements. Any further campaign requires a new plan and resolution of the stopped run; do not resume this one.
+- Next: finish the separately approved all-task comparison within its shared cap, successful pixel-policy runs, template-level holdouts, trainer compatibility tests and sustained worker measurements. Do not resume any closed historical campaign or silently change the active frozen plan.
