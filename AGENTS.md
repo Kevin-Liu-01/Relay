@@ -2,6 +2,40 @@
 
 ## Current comparison request
 
+The user superseded repeats with **multiple flagship/popular-family models, all
+tasks, one attempt each**. Current owner: `docs/campaigns/model-breadth-2026-10-03.md`
+and its frozen JSON; worker `scripts/run-breadth-campaign.mjs`; helper
+`scripts/lib/breadth-campaign.mjs`. Seventeen routes × 18 tasks = 306 cells.
+All 37 seed-1042 attempts from the closed Qwen study are preserved, including
+four blocks; only 269 missing cells run. No reruns, best-of selection or hidden
+replacement. This is a development coverage inventory with explicit preserved/new
+cohorts, not a fresh randomized study or a measured popularity ranking.
+
+The new plan binds the unchanged source, task hashes and all $10.42476640 prior
+recorded spend/probes; it does not reset the shared $300 ceiling. Twelve new
+routes each run the first three specified tasks (36 cells) before a manual
+trace-quality gate. Read live `status` and the private manifest before acting.
+Once launched, never edit the launcher, its bound helpers, frozen JSON, carried
+summary or actor/harness source. Do not rebuild Vite during inference.
+`node scripts/stage-presentation.mjs` is safe for presentation-only staging.
+Use `scripts/report-breadth-campaign.mjs` for the new report; the old reporter
+hardcodes 20 repeats. `docs/current-comparison.json` selects this 306-cell inventory.
+Slide 9 displays all 17 model rows, one marker per task, task filters and origin
+metadata. No inference key is published. Google requires a separate provider key;
+Llama/Mistral are absent from the account catalog; Jev's different action contract
+is excluded from the matched comparison.
+
+The 36-cell admission stage finished: 34 passes, one incomplete, one output limit;
+all 1,178 archive checks passed with no gaps. Read its `-pilot-review.md` before
+bulk operations. The combined checkpoint is 73/306 attempted, 62 passes, six
+incomplete and five blocked; $16.78501708 total recorded under the shared ceiling.
+Bulk is launched; query runtime status for current progress. Only blocks 009
+(Astra topic pass) and 019 (Luna thread failure) are public exact-byte archive
+examples; all other new originals remain local. Never conflate them with a full
+public trajectory release or silently relaunch any completed cell.
+
+## Superseded repeated-trial campaigns
+
 The user clarified **20 trials per task per model**, then approved **all 18 tasks,
 five models and a $300 total estimated-spend ceiling**: 1,800 new episodes.
 Read `docs/campaigns/all-tasks-2026-10-02.md` and the frozen JSON. It stopped on
@@ -10,7 +44,7 @@ its first cell: Gemini 3.8 Flash returned 403; no actions, $0.026841 reservation
 Do not resume/edit that frozen plan. The other four requested routes answered
 one tiny diagnostic request each; `evidence/campaign-access-2026-10-03.json`
 records $0.00026105, not scored trials. The user chose Qwen 3.8 Max; its separate
-access probe answered ($0.000284). The active successor is
+access probe answered ($0.000284). The now-closed successor is
 `docs/campaigns/all-tasks-2026-10-03.md` / JSON, using
 `scripts/run-task-campaign-v2.mjs` and `scripts/lib/task-campaign-v2.mjs`.
 Both original files remain hash-bound to the stopped attempt; never edit them.
@@ -24,9 +58,10 @@ performance filter. Do not restart an in-flight block or change frozen source.
 
 The task-campaign workers implement sequential, locked, budget-shared
 worker with a 25-episode pilot gate, immutable block archives and full planned
-denominators. Bulk archives are local under `.runtime`, not yet published.
-`docs/current-comparison.json` selects the presentation dataset. The slide has
-custom per-task filters and raw-value sorting; 20 per task, 360 per model.
+denominators. It ultimately stopped at 37/1,800 (28 passes, five incomplete,
+four blocked) on a Router 401. Its eight archives pass 2,415 checks; recorded
+allowance is $9.40933975 including $0.286934 unresolved reservations. Bulk
+archives are local under `.runtime`, not yet published. Never resume this plan.
 
 The previous final cheap-model attempt is closed at 36/60: 20 passed, 11
 incomplete, four output limits and one connection failure. All three archives

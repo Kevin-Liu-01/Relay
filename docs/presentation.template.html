@@ -260,30 +260,28 @@
           </li>
         </ul>
       </section>
-      <section class="slide comparison-slide" data-title="Model comparison">
+      <section class="slide comparison-slide{{COMPARISON_CLASS}}" data-title="Model comparison">
         <div class="comparison-heading">
-          <h2>Five models. Every task.</h2>
+          <h2>{{COMPARISON_TITLE}}</h2>
           <span class="comparison-status">{{COMPARISON_STATUS}}</span>
         </div>
         <div class="comparison-toolbar">
-          <span>{{COMPARISON_COUNTS}}</span
-          ><button type="button" id="open-trials">All {{COMPARISON_PLANNED}} trials ↗</button>
+          <span>{{COMPARISON_COUNTS}}</span>
+          <div class="comparison-controls">
+            {{COMPARISON_FILTER}}<button type="button" id="open-trials">
+              All {{COMPARISON_PLANNED}} trials ↗
+            </button>
+          </div>
         </div>
-        {{COMPARISON_FILTER}} {{COMPARISON_TABLE}}
+        {{COMPARISON_TABLE}}
         <div class="legend comparison-legend">
           <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
           ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
           ><span id="sort-status" role="status">Click a column to sort</span>
         </div>
         <ul class="sources">
-          <li>
-            18 public tasks × 20 seeds per model · accessibility control · 40 actions · 4,096 output
-            tokens · $300 total ceiling including pilots. Choose a task above.
-          </li>
-          <li>
-            Passes / attempted. Truncated output is not executed; no retries. Median includes
-            blocks. Descriptive public-task results, not a held-out ranking.
-          </li>
+          <li>{{COMPARISON_SCOPE}}</li>
+          <li>{{COMPARISON_PROVENANCE}} Descriptive results, not a held-out ranking.</li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
@@ -585,7 +583,7 @@
             document.getElementById('sort-status').textContent =
               button.dataset.task === 'all'
                 ? 'All tasks · 360 planned per model'
-                : 'Selected task · 20 planned per model';
+                : 'Selected task · {{COMPARISON_REPEATS}} planned per model';
             wireSortable(table);
           };
       }

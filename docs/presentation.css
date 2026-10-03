@@ -412,6 +412,62 @@ a:focus-visible {
 .comparison-toolbar button {
   font-size: 14px;
 }
+.comparison-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.comparison-controls .task-filter {
+  margin: 0;
+}
+.comparison-controls .task-filter > div {
+  right: 0;
+}
+.breadth-slide .comparison-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.breadth-slide .comparison-heading h2 {
+  font-size: 34px;
+  margin-bottom: 0;
+}
+.breadth-slide .comparison-table th,
+.breadth-slide .comparison-table td {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+.breadth-slide .model-identity svg {
+  width: 18px;
+  height: 18px;
+}
+.breadth-slide .comparison-table small {
+  display: none;
+}
+.breadth-slide .comparison-table td:last-child small {
+  display: inline;
+  margin-left: 5px;
+}
+.breadth-slide .pass-count {
+  font-size: 14px;
+}
+.breadth-slide .trial-strip {
+  display: inline-flex;
+  margin: 0 0 0 9px;
+  vertical-align: middle;
+}
+.breadth-slide .trial-cell {
+  height: 8px;
+  width: 4px;
+}
+.trial-origin {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
 .table-scroll {
   width: 100%;
   overflow-x: auto;
@@ -662,6 +718,16 @@ a:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  .breadth-slide .comparison-heading {
+    display: block;
+  }
+  .comparison-controls {
+    flex-wrap: wrap;
+  }
+  .comparison-controls .task-filter > div {
+    left: 0;
+    right: auto;
+  }
   .comparison-toolbar {
     align-items: start;
     font-size: 13px;
@@ -776,6 +842,41 @@ a:focus-visible {
   margin: 0;
 }
 @media print {
+  .breadth-slide.slide {
+    padding: 18px 54px;
+  }
+  .breadth-slide .masthead {
+    margin-bottom: 10px;
+  }
+  .breadth-slide .comparison-heading h2 {
+    font-size: 28px;
+  }
+  .breadth-slide .comparison-status {
+    font-size: 12px;
+  }
+  .breadth-slide .comparison-toolbar {
+    margin: 7px 0;
+    font-size: 12px;
+  }
+  .comparison-controls {
+    display: none;
+  }
+  .breadth-slide .comparison-table th,
+  .breadth-slide .comparison-table td {
+    padding: 2px 10px;
+    font-size: 12px;
+  }
+  .breadth-slide .comparison-legend {
+    padding-top: 8px;
+  }
+  .breadth-slide .sources {
+    margin-top: 8px;
+    padding-top: 5px;
+  }
+  .breadth-slide .sources li {
+    font-size: 11px;
+    margin: 3px 0;
+  }
   .comparison-slide.slide {
     padding: 24px 54px;
   }

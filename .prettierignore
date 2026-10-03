@@ -6,3 +6,5 @@ test-results
 playwright-report
 evidence
 package-lock.json
+# Frozen campaign plans are byte-hash bound. Never rewrite for formatting.
+docs/campaigns/*.json

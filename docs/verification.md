@@ -1,5 +1,13 @@
 # Verification and evidence
 
+## One-pass breadth inventory — 2026-10-03
+
+- The user replaced repeated trials with multiple model families, all tasks and no repeats. [New frozen plan](campaigns/model-breadth-2026-10-03.md): 17 exact routes × 18 tasks × seed 1042 = 306 cells. Preserve all 37 attempted cells from the closed Qwen campaign (28 passed, five incomplete, four blocked), including the terminal 401. Run only the 269 missing cells. No historical data are rewritten.
+- The original eight archives pass 2,415 checks, no failed checks or gaps. Original recorded estimate/reservation: $9.40933975, including $0.286934 unresolved. A separately recorded tiny access diagnostic now succeeds for $0.00000430; this does not prove why the previous 401 disappeared. New prior ledger: $10.42476640; remaining $289.57523360 under the existing $300 ceiling.
+- The new worker binds identical source, task initial-state hashes and carried rows. Twelve new routes have a first-three-task admission stage (36 unique cells); traces and accounting, not pass rate, determine admission to bulk. Later task order/model order is seeded. This is a development inventory mixing preserved and later observations, not a fresh randomized comparison or popularity ranking.
+- Six additional zero-inference tests pass: exact 306-cell coverage, unique missing cells, three-task admission coverage, duplicate/carryover-retry rejection, shared accounting and new-result overlay/origin rendering. Full backend suite: 150 tests passed. The full browser suite also passes all 84 tests, including four presentation checks with all 17 logo rows, task filtering, keyboard sorting, origin metadata, mobile/CSP and 13 unclipped print pages. Software tests are not counted as model trials. Some verification ran on the same machine during pilot collection; latency is an operational diagnostic, not a controlled speed benchmark.
+- [Live collection snapshot](../evidence/campaigns/model-breadth-2026-10-03/README.md) reports current attempts, grades, requests, estimates and unresolved reservations. Local original archives remain private; the public table does not pretend unattempted cells are completed failures.
+
 ## Expanded task matrix and accounting — 2026-10-03
 
 - User clarified 20 trials per **task/model**, then approved all 18 tasks, five routes and a $300 total estimated ceiling. The [frozen plan](campaigns/all-tasks-2026-10-02.md) contains 1,800 cells, complete matched five-model blocks, a 25-episode trace-review gate, shared ledger, atomic worker lock and source/plan/launcher bindings. It is not a completed benchmark.

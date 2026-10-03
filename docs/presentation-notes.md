@@ -68,10 +68,10 @@
 
 ## Slide 9 — Sortable model comparison
 
-- Corrected scope: 20 trials **per task/model**. All 18 tasks × five model routes × 20 fixture seeds = 1,800 planned; 360 per model. Accessibility only, 40 actions, recent-four history, no guide, fixed grader.
-- Gemini's original first cell returned HTTP 403. The user approved a separately frozen successor with Qwen 3.8 Max. Its first 25 trials produced 21 passes, three incorrect outcomes and one output limit; the slide's generated counts report the current collection snapshot, not all 1,800 as completed.
+- Latest scope: **one attempt per task/model**, no repeats. All 18 tasks × 17 routes = 306 cells. Accessibility only, 40 actions, recent-four history, no guide, fixed grader. Family/flagship/efficient coverage is not a measured popularity ranking.
+- The previous Qwen-inclusive study closed at 37 attempts: 28 passed, five incomplete, four blocked. Every attempt is preserved, including a 401 block, with source/seed/initial-state bindings; only the 269 missing cells are newly scheduled. The slide reports actual collection and exposes cohort/origin metadata. Google still requires a separate provider key.
 - The four simpler pilot tasks passed for all models. On decision-record, GPT passed; Qwen and DeepSeek used literal DESIGN, Sonnet posted three acknowledgements, and GLM used literal DESIGN before an output limit. Preserve the failures. This is one seed per pilot task, not a model ranking.
-- Custom task menu selects one task's five-model comparison, each with 20 planned markers. All-tasks view uses compact coverage bars. Click column headers for raw-value sorting; unknown costs sort last. All 1,800 trial rows remain inspectable.
+- Custom task menu selects one task's 17-model comparison, one planned cell each. All-tasks view shows 18 markers per model. Click column headers for raw-value sorting; unknown costs sort last. All 306 cells remain inspectable, including unattempted cells. A single observation per task cannot establish repeatability or statistical ranking.
 - The earlier 36-attempt pilot is linked separately: GLM and DeepSeek each passed 10/12, Nano 0/12. Four output limits and one missing-receipt connection failure remain blocks. This is not a global ranking; the action budget/model set differ from the new plan.
 - Valid output-limit receipts now count reported usage without executing partial output. CLI-only continuation rules retain unknown timeout/connection reservations. Public defaults stay conservative.
 - The $300 shared ceiling includes earlier model pilots. Receipts/reservations are estimates, not invoices. Source and launch plans stay immutable; no retries, substitutions or relaxed graders after looking at scores.

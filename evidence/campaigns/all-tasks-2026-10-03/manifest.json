@@ -4779,7 +4779,2886 @@
       "matchedInitialState": true,
       "finishedAt": "2026-10-03T07:22:53.178Z",
       "stopReason": null
+    },
+    {
+      "id": "block-006",
+      "config": {
+        "provider": "ramp",
+        "tasks": [
+          "publish-update"
+        ],
+        "repeats": 1,
+        "interfaces": [
+          "a11y"
+        ],
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "maxSteps": 40,
+        "maxRequests": 200,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 1200,
+        "maxEstimatedUSD": 5,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "seeds": [
+          1042
+        ],
+        "orderSeed": 20261105,
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "qwen3p8-max",
+            "rates": {
+              "input": 2,
+              "output": 6
+            }
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          }
+        ]
+      },
+      "catalog": {
+        "at": "2026-10-03T07:29:52.669Z",
+        "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-sonnet-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-opus-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.11,
+              "output": 0.55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.7",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "jev-1.13.0",
+            "owned_by": "typesafe",
+            "catalogRates": null,
+            "unavailableReason": "This model needs a different API. For Jev, connect TypeSafe."
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-astra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 11,
+              "output": 55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-astra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.8-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5-1",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.7-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-pro-0813",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.32,
+              "output": 3.96
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.6",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-lightning-3p5-30b-a3b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "qwen3p8-max",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.6-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 4.5,
+              "output": 22.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.22,
+              "output": 1.32
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4.4,
+              "output": 22
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-terra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 13.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash-0731",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.13,
+              "output": 0.26
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-sonnet-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.5",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-terra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2.1,
+              "output": 6.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "minimax-m3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra-nvfp4",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-8",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-8",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.5,
+              "output": 9
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.14,
+              "output": 0.28
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 5,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.3",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-7",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-build-0.1",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-7",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 4.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-non-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-multi-agent-0309",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.3-codex",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 21,
+              "output": 168
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 120
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-oss-120b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-pro",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 20,
+              "output": 80
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.4,
+              "output": 1.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-3.5-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-haiku-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3-flash-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 3
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-pro-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          }
+        ]
+      },
+      "startedAt": "2026-10-03T07:29:52.672Z",
+      "safeToContinue": true,
+      "runId": "e46ebbfc-8bf1-4495-b344-e14fbae16492",
+      "archive": {
+        "path": "block-006.tar.gz",
+        "bytes": 34102456,
+        "sha256": "80e41c7cc3b0810c0d814942052d01426527f5223f6602a512ff30610033ab6b",
+        "availability": "local-preserved"
+      },
+      "status": "completed",
+      "budget": {
+        "requests": 156,
+        "inputTokens": 2669601,
+        "outputTokens": 42707,
+        "estimatedUSD": 3.8466745000000007,
+        "usageKnown": false
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 819,
+        "gaps": []
+      },
+      "matchedInitialState": true,
+      "finishedAt": "2026-10-03T07:39:41.135Z",
+      "stopReason": null
+    },
+    {
+      "id": "block-007",
+      "config": {
+        "provider": "ramp",
+        "tasks": [
+          "handoff-dm"
+        ],
+        "repeats": 1,
+        "interfaces": [
+          "a11y"
+        ],
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "maxSteps": 40,
+        "maxRequests": 200,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 1200,
+        "maxEstimatedUSD": 5,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "seeds": [
+          1042
+        ],
+        "orderSeed": 20261106,
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "qwen3p8-max",
+            "rates": {
+              "input": 2,
+              "output": 6
+            }
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          }
+        ]
+      },
+      "catalog": {
+        "at": "2026-10-03T07:39:41.526Z",
+        "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-sonnet-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-opus-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.11,
+              "output": 0.55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.7",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "jev-1.13.0",
+            "owned_by": "typesafe",
+            "catalogRates": null,
+            "unavailableReason": "This model needs a different API. For Jev, connect TypeSafe."
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-astra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 11,
+              "output": 55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-astra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.8-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5-1",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.7-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-pro-0813",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.32,
+              "output": 3.96
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.6",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-lightning-3p5-30b-a3b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "qwen3p8-max",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.6-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 4.5,
+              "output": 22.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.22,
+              "output": 1.32
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4.4,
+              "output": 22
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-terra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 13.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash-0731",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.13,
+              "output": 0.26
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-sonnet-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.5",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-terra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2.1,
+              "output": 6.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "minimax-m3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra-nvfp4",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-8",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-8",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.5,
+              "output": 9
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.14,
+              "output": 0.28
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 5,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.3",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-7",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-build-0.1",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-7",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 4.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-non-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-multi-agent-0309",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.3-codex",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 21,
+              "output": 168
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 120
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-oss-120b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-pro",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 20,
+              "output": 80
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.4,
+              "output": 1.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-3.5-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-haiku-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3-flash-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 3
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-pro-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          }
+        ]
+      },
+      "startedAt": "2026-10-03T07:39:41.528Z",
+      "safeToContinue": true,
+      "runId": "7ede1fae-9891-4a01-8112-fa13d5e76239",
+      "archive": {
+        "path": "block-007.tar.gz",
+        "bytes": 4918734,
+        "sha256": "0da7abce2cd68dbb88e4a4030806ac7057c535f3a81095b68644478424d607b9",
+        "availability": "local-preserved"
+      },
+      "status": "completed",
+      "budget": {
+        "requests": 23,
+        "inputTokens": 204519,
+        "outputTokens": 4172,
+        "estimatedUSD": 0.26786475,
+        "usageKnown": true
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 156,
+        "gaps": []
+      },
+      "matchedInitialState": true,
+      "finishedAt": "2026-10-03T07:40:49.260Z",
+      "stopReason": null
+    },
+    {
+      "id": "block-008",
+      "config": {
+        "provider": "ramp",
+        "tasks": [
+          "saved-cleanup"
+        ],
+        "repeats": 1,
+        "interfaces": [
+          "a11y"
+        ],
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "maxSteps": 40,
+        "maxRequests": 200,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 1200,
+        "maxEstimatedUSD": 5,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "seeds": [
+          1042
+        ],
+        "orderSeed": 20261107,
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            }
+          },
+          {
+            "id": "qwen3p8-max",
+            "rates": {
+              "input": 2,
+              "output": 6
+            }
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "rates": {
+              "input": 0.3,
+              "output": 1.2
+            }
+          },
+          {
+            "id": "glm-5p3-flash",
+            "rates": {
+              "input": 0.15,
+              "output": 0.5
+            }
+          }
+        ]
+      },
+      "catalog": {
+        "at": "2026-10-03T07:40:49.476Z",
+        "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-sonnet-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-opus-5-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.11,
+              "output": 0.55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.7",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "jev-1.13.0",
+            "owned_by": "typesafe",
+            "catalogRates": null,
+            "unavailableReason": "This model needs a different API. For Jev, connect TypeSafe."
+          },
+          {
+            "id": "deepseek-v4.1-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-6-astra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 11,
+              "output": 55
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-6-astra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.8-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5-1",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p3-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.7-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-pro-0813",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.32,
+              "output": 3.96
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.6",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-lightning-3p5-30b-a3b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "qwen3p8-max",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.6-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 3.75
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "kimi-k3-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 4.5,
+              "output": 22.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-luna",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 0.22,
+              "output": 1.32
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-sol",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 4.4,
+              "output": 22
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.openai.gpt-5.6-terra",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 13.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash-0731",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.13,
+              "output": 0.26
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-sonnet-5",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 2.2,
+              "output": 11
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 2,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.5",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 2,
+              "output": 6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-luna",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-terra",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.6-sol",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 4,
+              "output": 20
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2-fast",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 2.1,
+              "output": 6.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "glm-5p2",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 1.4,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "minimax-m3",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 1.2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-fable-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 10,
+              "output": 50
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "nemotron-3-ultra-nvfp4",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.6,
+              "output": 2.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-8",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-8",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.5,
+              "output": 9
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.14,
+              "output": 0.28
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 5,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.3",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "us.anthropic.claude-opus-4-7",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 5.5,
+              "output": 27.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-build-0.1",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-7",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.75,
+              "output": 4.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.2,
+              "output": 1.25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-0309-non-reasoning",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "grok-4.20-multi-agent-0309",
+            "owned_by": "xai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.4-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 180
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.3-codex",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-opus-4-6",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 5,
+              "output": 25
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 21,
+              "output": 168
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.2",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.75,
+              "output": 14
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "owned_by": "bedrock",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 120
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.05,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.25,
+              "output": 2
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-5",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-oss-120b",
+            "owned_by": "router",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash-lite",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-flash",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.3,
+              "output": 2.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-2.5-pro",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 1.25,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-pro",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 20,
+              "output": 80
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-nano",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.1,
+              "output": 0.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.4,
+              "output": 1.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4.1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o4-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2,
+              "output": 8
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o3-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 1.1,
+              "output": 4.4
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "o1",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 15,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o-mini",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.15,
+              "output": 0.6
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4o",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 2.5,
+              "output": 10
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 10,
+              "output": 30
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-4",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 30,
+              "output": 60
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gpt-3.5-turbo",
+            "owned_by": "openai",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 1.5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-haiku-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 1,
+              "output": 5
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "claude-sonnet-4-5",
+            "owned_by": "anthropic",
+            "catalogRates": {
+              "input": 3,
+              "output": 15
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3-flash-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 0.5,
+              "output": 3
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "gemini-3.1-pro-preview",
+            "owned_by": "vertex",
+            "catalogRates": {
+              "input": 2,
+              "output": 12
+            },
+            "unavailableReason": null
+          }
+        ]
+      },
+      "startedAt": "2026-10-03T07:40:49.480Z",
+      "safeToContinue": false,
+      "runId": "f428bfc3-ec90-497b-8cf9-b142568f6d58",
+      "archive": {
+        "path": "block-008.tar.gz",
+        "bytes": 8273557,
+        "sha256": "0a331cd813b9af34b0ae10e31f01b2a5a00ce36e933b3541e961ef765a38e036",
+        "availability": "local-preserved"
+      },
+      "status": "stopped",
+      "budget": {
+        "requests": 42,
+        "inputTokens": 663354,
+        "outputTokens": 5946,
+        "estimatedUSD": 1.51421,
+        "usageKnown": false
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 226,
+        "gaps": []
+      },
+      "matchedInitialState": false,
+      "finishedAt": "2026-10-03T07:42:42.231Z",
+      "stopReason": {
+        "code": "campaign_stop",
+        "message": "Failure outside the reviewed continuation policy; other cells remain unattempted."
+      }
     }
   ],
-  "status": "pilot-review"
+  "status": "stopped",
+  "pilotReview": {
+    "at": "2026-10-03T07:29:52.162Z",
+    "method": "Operator inspected first-five-block receipts, traces, matched initial states and audits; not a performance threshold.",
+    "archives": [
+      "05b758311274099384d171ee6354ed7210ab59739c4a9fc2478f62a58f68d7c3",
+      "c8a7a6c8535531b576b465920a3516cb96dec9329fe4f74d9b6d1d5d410791ed",
+      "edc474cead7c1d6eb73c5b7bde7090d38457904f044aebb78c2d7c68481169d8",
+      "a425ceb1f865bc9dc868bb5b1dd45ad41bc7cddfd88671f0f0089f154fc5c7d7",
+      "426bd6f2348c746756907d1437bf19ad4b01241edb124ab9f2c2757f3fd8e33a"
+    ]
+  }
 }

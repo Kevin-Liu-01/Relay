@@ -23,7 +23,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 - **[20 new real-model episodes](evidence/campaigns/onsite-2026-10-01/README.md)** across two models and four interfaces: 8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted after the declared stop rule.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
 - **[36-attempt model pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)**: 20 passes, 11 incomplete and five blocked/truncated outcomes, with original trajectories preserved.
-- **[Full task comparison](docs/campaigns/all-tasks-2026-10-03.md)**: 20 trials per task/model, five models and all 18 tasks. The Qwen-inclusive pilot completed 25 trials: 21 passed, three incorrect and one output-limited. The 1,800-trial target is not a claim of completion.
+- **[One-pass model coverage](docs/campaigns/model-breadth-2026-10-03.md)**: 17 model routes, all 18 tasks, one attempt per cell. The 306-cell inventory preserves 37 existing attempts and schedules only 269 missing cells. [Actual collection status](evidence/campaigns/model-breadth-2026-10-03/README.md); planned does not mean completed.
 - **No key required to inspect:** Replays includes the real thread pass, decision-record failure and API control. Original trajectories are downloadable and hash-verifiable.
 
 The campaign recorded about **$0.15 in estimated allowance**, including an unresolved
@@ -184,7 +184,7 @@ npm run test:graders             # 84 positives + 2,583 adversarial state challe
 npm run experiment -- plan docs/lab-reference.json
 ```
 
-The expanded suite has **144 backend checks and 84 browser checks**. Historical
+The expanded suite has **150 backend checks and 84 browser checks**. Historical
 live model smokes and their failures are retained as JSON evidence; they do not
 establish a general leaderboard. Cosmetic seeds are not held-out task families.
 The new [model campaign](docs/campaigns/onsite-2026-10-01.md) includes real workflow
@@ -192,15 +192,19 @@ attempts and preserved failures alongside scripted evidence. No RL training or G
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
 [Slide 9](https://relay.kevinliu.studio/presentation#9) has sortable model results
-and a custom per-task filter. The new target is **20 trials for every task/model**,
-not 20 total: 18 tasks × five models × 20 seeds = **1,800 planned trials**.
-After Gemini's access-gate 403, the user approved **Qwen 3.8 Max** as its replacement.
-The separately frozen successor compares GPT-6.1 Sol, Claude Sonnet 5.5, Qwen,
-DeepSeek V4.1 Flash and GLM 5.3 Flash. All five routes answered access probes;
-the new benchmark passed its 25-trial trace-inspection gate with 1,214 integrity
-checks. [Pilot findings](docs/campaigns/all-tasks-2026-10-03-pilot-review.md)
-retain both successes and failures; bulk collection uses the unchanged plan.
-[Current collection status →](evidence/campaigns/all-tasks-2026-10-03/README.md)
+and a custom per-task filter. The current target is **one attempt for every
+task/model**: 18 tasks × 17 routes = **306 cells**, no repeats. Family/tier coverage
+includes OpenAI, Anthropic, xAI, Qwen, DeepSeek, GLM, Kimi, MiniMax and NVIDIA;
+this is not a measured popularity ranking. Gemini needs a separate Google key;
+Llama/Mistral are absent from the account catalog.
+
+The earlier repeated-trial study stopped at 37 attempts (28 passes, five
+incomplete, four blocked). Every matching attempt is preserved; only the 269
+missing cells are newly scheduled. A CSV origin field distinguishes cohorts.
+Same actor source, fixtures, observations and grader; one task seed, not a holdout
+or repeatability estimate. The original $300 shared ceiling still includes every
+prior campaign and probe. [Plan and limits](docs/campaigns/model-breadth-2026-10-03.md)
+· [Current collection status →](evidence/campaigns/model-breadth-2026-10-03/README.md)
 The separately preserved [36-attempt pilot](evidence/campaigns/model-comparison-2026-10-02-final/README.md)
 has 20 passes, 11 incomplete, four output limits and one connection failure.
 Different model set/action allowance: its results are not pooled with the new matrix.

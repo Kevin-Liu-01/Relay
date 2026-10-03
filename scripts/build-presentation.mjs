@@ -35,6 +35,9 @@ import Nvidia from '@thesvg/react/nvidia';
 import Zhipu from '@thesvg/react/zhipu';
 import Anthropic from '@thesvg/react/anthropic';
 import Qwen from '@thesvg/react/qwen';
+import Grok from '@thesvg/react/grok';
+import Kimi from '@thesvg/react/kimi';
+import Minimax from '@thesvg/react/minimax';
 
 const glyph = (component) =>
   renderToStaticMarkup(
@@ -125,6 +128,17 @@ const values = {
       [
         ['gpt-6-luna', Openai],
         ['gpt-6.1-sol', Openai],
+        ['gpt-6-astra', Openai],
+        ['gpt-oss-120b', Openai],
+        ['claude-fable-5-1', Anthropic],
+        ['claude-opus-5-5', Anthropic],
+        ['claude-haiku-4-5', Anthropic],
+        ['grok-4.7', Grok],
+        ['kimi-k3', Kimi],
+        ['minimax-m3', Minimax],
+        ['deepseek-v4-pro-0813', Deepseek],
+        ['glm-5p3', Zhipu],
+        ['nemotron-3-ultra', Nvidia],
         ['claude-sonnet-5-5', Anthropic],
         ['gemini-3.8-flash', Gemini],
         ['qwen3p8-max', Qwen],

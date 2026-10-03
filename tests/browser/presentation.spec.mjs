@@ -148,18 +148,27 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
   await page.goto(`${pathToFileURL(resolve('docs/presentation.html')).href}#9`);
   const table = page.locator('#model-results');
   await expect(table.locator('tbody tr')).toHaveCount(summary.byModel.length);
-  await expect(table.locator('.trial-strip.dense')).toHaveCount(summary.byModel.length);
+  await expect(table.locator('.trial-strip.dense')).toHaveCount(
+    summary.byModel.filter((m) => m.planned > 40).length,
+  );
+  await expect(table.locator('.model-identity svg')).toHaveCount(summary.byModel.length);
   await page.locator('#task-filter summary').click();
   await page.getByRole('button', { name: 'release sync', exact: true }).click();
-  await expect(table.locator('.trial-cell')).toHaveCount(100);
+  await expect(table.locator('.trial-cell')).toHaveCount(
+    summary.byModel.length * summary.trialsPerTaskModel,
+  );
   await expect(table.locator('.trial-count')).toHaveText(
-    summary.byTask.find((t) => t.task === 'release-sync').byModel.map((m) => `${m.attempted} / 20`),
+    summary.byTask
+      .find((t) => t.task === 'release-sync')
+      .byModel.map((m) => `${m.attempted} / ${m.planned}`),
   );
   await table.getByRole('button', { name: /^Passed/ }).click();
   await expect(page.locator('#sort-status')).toContainText('Passed, descending');
   await page.locator('#task-filter summary').click();
   await page.getByRole('button', { name: 'All 18 tasks', exact: true }).click();
-  await expect(table.locator('.trial-strip.dense')).toHaveCount(5);
+  await expect(table.locator('.trial-strip.dense')).toHaveCount(
+    summary.byModel.filter((m) => m.planned > 40).length,
+  );
   for (const [label, index, direction] of [
     ['Passed', 2, 'descending'],
     ['Est. cost', 6, 'ascending'],
@@ -188,6 +197,10 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
   await page.getByRole('button', { name: `All ${summary.totals.planned} trials` }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.locator('#trial-results tbody tr')).toHaveCount(summary.totals.planned);
+  if (summary.preserved)
+    await expect(
+      page.locator('#trial-results .trial-origin').filter({ hasText: /^preserved/ }),
+    ).toHaveCount(summary.preserved);
   await page.locator('#trial-results thead button').filter({ hasText: 'Seed' }).click();
   await expect(page.locator('#trial-sort-status')).toContainText('Seed, ascending');
   await page.keyboard.press('Escape');
