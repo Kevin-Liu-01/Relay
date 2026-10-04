@@ -1,142 +1,198 @@
-# Presentation and demonstration notes
+# Presentation notes
 
-## Format and timing
+## Format
 
-- 13 slides; 10–12 minutes, followed by a three-minute demonstration and discussion.
-- Technical headings, bullets and diagrams. HTML works offline; PDF is the portable fallback.
-- Camber matches Relay's interface; Lato supplies missing glyphs. Relay's mark,
-  theSVG Slack/OpenAI marks and Lucide diagrams are bundled without external asset
-  requests. Original asset restrictions still apply. `presentation.css` and
-  `presentation.template.html` own the visual design; the builder embeds fonts for
-  offline use, while hosting serves the same font bytes under the existing CSP.
-- Regenerate with `npm run presentation` after updating verified evidence. Do not type improved results into the deck.
-- Do not claim a new benchmark standard, secure sandbox, trained RL agent or model leaderboard.
+- Use 13 slides for a 10–12 minute talk, followed by a short demo.
+- Use plain technical English. Keep one idea in each bullet.
+- Explain the implementation first, then the test design, results, and limitations.
+- Keep the HTML and PDF available for the demo.
+- Regenerate both with `npm run presentation`. The builder reads verified results.
+- Do not describe this work as a new benchmark standard or a reliable model ranking.
 
-## Slide 1 — Better computer and tool use
+## Slide 1 — Relay
 
-- An agent must change a realistic workspace, not merely describe a solution.
-- 18 tasks, synthetic data, independent terminal checks and actual browser interaction.
-- Point to the runnable code, manual sandbox and evidence first.
+- Relay is a Slack-like web app for testing computer-use agents.
+- It includes 18 tasks, automatic result checks, and recorded runs.
+- All workspace data is synthetic.
+- The goal is to find changes that reduce errors, time, and cost.
 
-## Slide 2 — Harness and mock Slack
+## Slide 2 — How a run works
 
-- React, SQLite and Playwright keep state and interactions inspectable.
-- Review covered mockups, functional clones, Cua Slack, env0 and Agent-Diff; external projects were inspected, not executed comparatively.
-- MIT covers original code; proprietary fonts and third-party marks remain separate.
+- The harness is the code that controls a test run.
+- It gives the model an observation and asks for one action.
+- It validates the action, executes it, records the result, and takes another observation.
+- The run stops when the model finishes or reaches an action, time, or cost limit.
+- Separate code checks the final workspace. The model cannot grade its own work.
+- React renders the app. SQLite stores the data. Playwright controls the browser.
+- UI actions and API actions use the same code to change workspace data.
+- The research notes cover Cua Slack, env0, Agent-Diff, and related mockups. I reviewed those projects but did not run comparative tests.
 
-## Slide 3 — Interfaces
+## Slide 3 — Four interfaces
 
-- Pixels use screenshot input and coordinates; text gateways use disclosed controls and references.
-- API changes both information access and action granularity; do not combine it into a CUA score.
-- Observer replay state and final grader diagnostics never enter the policy input.
-- Guide/history controls are implemented but fixed in this campaign; no measured benefit is claimed.
+- Screenshot mode gives the model an image. It acts with mouse coordinates and keyboard input.
+- Accessibility mode gives the model labeled controls and element references.
+- Page JSON mode gives the model a structured description of page controls.
+- API mode lets the model read and change workspace data without using the browser.
+- Report API results separately. Direct data access is not the same test as browser interaction.
+- The model does not receive the expected answer, final check results, or control credentials.
+- Documentation and history settings are configurable. Their benefits were not measured here.
+- The 306-run comparison uses accessibility mode only.
 
-## Slide 4 — Isolation
+## Slide 4 — Separate workspaces
 
-- Private SQLite file and fresh browser context per episode; no shared session cookie.
-- Revisions fence stale writes; request IDs prevent duplication; reset retains audit history.
-- Actor/control listeners share a process. Shell-capable policies need separate process/network isolation.
-- Forced termination can prevent cleanup. No multi-host durability or tenant resource quotas are claimed.
+- Each run gets a fresh browser context and its own SQLite file.
+- Cookies and workspace changes are not shared between runs.
+- Version checks reject edits based on an outdated workspace.
+- Request IDs prevent a repeated request from writing the same change twice.
+- Database transactions prevent partially applied writes.
+- The app and grading service share a process. This is data separation, not protection against malicious code.
+- An agent with shell access would need separate process and network restrictions.
+- Forced termination can prevent cleanup. Multi-host recovery and per-user resource quotas have not been demonstrated.
 
-## Slide 5 — Setup and one-pass design
+## Slide 5 — Setup and model settings
 
-- Follow the README: Node 24, install dependencies and Chromium, build, then run Relay Live. Sandbox, results and replays need no key. New inference needs a provider key and an available route.
-- The original MIT-licensed harness uses Playwright and Router Responses. It does not claim Codex SDK, BrowserGym, OpenEnv or native provider computer-use protocol compatibility.
-- 17 routes across nine model families × 18 public tasks × one attempt; seed 1042, accessibility control, recent-four history and no guide.
-- Fixed 40-action, 4,096-output-token, 180-second and $5 trial ceilings; $300 cumulative allowance includes every prior pilot/probe.
-- Preserved 37 earlier attempts plus 68 from the stopped first breadth worker; the continuation collected only the 201 untouched cells. All 306 are now recorded, with no repeats or hidden exclusions.
-- The new scheduler can advance after a fully accounted cell-spend stop, but that cell remains blocked. This amendment and temporal cohorts are disclosed; no causal ranking or repeatability claim.
-- Same source, fixtures and deterministic grader; exact requested/returned model receipts retained.
+- Follow the README to install Node 24 dependencies and Chromium, build the app, and start Relay Live.
+- The manual workspace, results, and recorded replays do not need a key.
+- New model runs need a Router API key and an available model.
+- All 17 models use the same open-source harness and JSON action format.
+- This is not a comparison of each provider's native computer-use protocol.
+- Each model attempted all 18 public tasks once.
+- Each run used seed 1042, accessibility mode, the four most recent history entries, and no guide.
+- Limits were 40 actions, 4,096 output tokens per call, 180 seconds, and $5 estimated cost per run.
+- The $300 shared budget includes earlier tests.
+- The final set includes 105 earlier runs and 201 new runs. No failures were removed or retried.
+- Runs were collected at different times. One attempt per public task cannot establish repeatability or a reliable ranking.
+- The saved records include the requested model and the model returned by the provider.
 
-## Slide 6 — Tasks and grading
+## Slide 6 — Tasks and result checks
 
-- Decision-record combines fact retrieval, channel description, pin, saved reply and in-thread acknowledgement.
-- Wrong target, stale fact, duplicate post and collateral changes fail even if the model says done.
-- Expected states are independent contracts, not reference-policy replay or an LLM judge.
-- Exact text is deliberate; fully undone collateral actions can pass under final-state grading.
+- The suite contains six simple tasks and 12 tasks with several required changes.
+- For the decision-record task, the agent must find an approval, update a description, pin a message, save a reply, and acknowledge the approval.
+- The checks verify content, message identity, author, destination, and the number of messages.
+- They also check that unrelated workspace data remains unchanged.
+- The expected result is declared independently. It is not copied from an agent's proposed solution.
+- Wrong facts, wrong threads, duplicate posts, and unrelated changes fail.
+- Exact text is required where the task specifies it.
+- The checks grade the final state. A wrong action can still pass if the agent fully undoes it.
+- A passing result returns reward 1. A failing result returns reward 0.
 
 ## Slide 7 — Verification
 
-- Software tests verify transitions, isolation, persistence and UI paths; grader challenges test false passes.
-- Backend/browser counts come from test reports. The 84 positive and 2,583 negative grader states are a separate denominator.
-- Real-model episodes are distinct from scripts, fake transport tests and three historical builder-informed Codex smokes.
+- The recorded software test reports contain 174 backend tests and 91 browser tests.
+- Separate tests check 84 valid results and 2,583 deliberately invalid results for the 12 longer tasks.
+- Scripted browser tests show that the UI works. They do not measure model ability.
+- The 306 recorded model runs are a separate source of evidence.
+- Three older builder-informed Codex tests are also separate. They are not independent evaluations.
 
-## Slide 8 — Earlier interface results (separate denominator)
+## Slide 8 — Earlier interface tests
 
-- 20 attempted: 8 passes, 11 incorrect/step-limited, 1 blocked; 10 unattempted.
-- Accessibility 2/6, page JSON 2/7 including one blocked, pixels 0/1; API control 4/6.
-- Unequal task/model coverage makes this an inventory, not a causal comparison.
-- 126 calls; $0.14987395 estimate/reservation, not an invoice; $0.0014902 remains reserved.
-- No new incident-triage cells ran. Older scripted and builder-informed incident evidence stays separate.
+- 20 runs started: 8 passed, 11 were incomplete, and 1 was blocked.
+- 10 planned runs did not start.
+- Accessibility passed 2 of 6. Page JSON passed 2 of 7. Screenshot mode passed 0 of 1. API mode passed 4 of 6.
+- The task and model sets differ across interfaces. These totals cannot establish which interface is better.
+- There were 126 requests.
+- Estimated cost plus reservations was $0.14987395. This includes $0.0014902 reserved for missing usage.
+- These amounts are not invoices.
+- These runs are separate from the 306-run comparison.
 
-## Slide 9 — Sortable model comparison
+## Slide 9 — Model results and costs
 
-- Home → **Results**, or Replays → **All model and task replays**, opens the same table at /results. Model drilldowns expose each task’s exact trace and replay.
-- Usage estimate $189.31101456 + unresolved reservations $3.77939636 (35 calls) = $193.09041092 selected allowance. Shared ledger $194.10583757 includes $1.01542665 outside these cells; $105.89416243 remains under $300.
-- 4,747 calls, 4,712 accepted receipts, 74,861,087 input tokens and 1,400,260 output tokens. Missing tokens remain unknown. CSV/JSON exports include per-trial rates, time and actions. Base-rate estimates are not invoices; no cache discount is assumed.
+- All 306 planned runs are recorded: 152 passed, 61 were incomplete, and 93 were blocked.
+- Passed means that the run completed and every required check passed.
+- Incomplete means that the run did not satisfy the task, including runs stopped at the action limit.
+- Blocked means that a provider, execution, output, time, or cost restriction stopped the run.
+- A blocked run is not a completed pass, even if diagnostic final-state checks happen to pass.
+- There were 4,662 action attempts and no capture gaps.
+- All 277 original archives passed integrity checks. Rechecking 2,007 saved-state checks agreed with the recorded results.
+- Click a column heading or a sort button to reorder the table.
+- Select a task to compare its 17 runs. Click a model to see all 18 of its tasks.
+- Each recorded row links to its trace and replay, including incomplete and blocked runs.
+- Open Results from the home page to see the same table outside the presentation.
+- One run per task is not a repeatability estimate. The tasks are public and runs were collected at different times.
 
-- Latest scope: **one attempt per task/model**, no repeats. All 18 tasks × 17 routes = 306 cells. Accessibility only, 40 actions, recent-four history, no guide, fixed grader. Family/flagship/efficient coverage is not a measured popularity ranking.
-- The previous Qwen-inclusive study supplied 37 attempts, including a 401 block. The first breadth worker added 68 and stopped on Astra's $5 cell-spend boundary. All 105 attempts remain preserved; the continuation collects only the 201 untouched cells. Each row exposes its original campaign/run identity. Google still requires a separate provider key.
-- In the original five-route pilot, four simpler tasks passed across all five routes. On decision-record, GPT passed; Qwen and DeepSeek used literal DESIGN, Sonnet posted three acknowledgements, and GLM used literal DESIGN before an output limit. This describes that earlier pilot, not all 17 routes or repeatability.
-- Completed totals: **306 recorded, 152 passed, 61 incomplete, 93 blocked**; 4,662 action attempts and zero capture gaps. Shared estimates/reservations including earlier campaigns total $194.10583757, not an invoice. All 277 archives passed the completion audit and saved-state regrading.
-- Custom task menu selects one task's 17-model comparison, one recorded cell each. Open a model's trials to see all 18 tasks, or filter to one task first. Click column headers or quick-sort buttons; unknown usage stays distinct from the sortable total allowance. All 306 cells remain inspectable, including failures and blocks. A single observation per task cannot establish repeatability or statistical ranking.
-- Open **All 306 trials**, then **Watch replay** or **Review trace** on a recorded row. The public library contains each exported attempt, including incomplete and blocked outcomes. Show a successful action sequence, its exact input/response, and a blocked zero-action record. Switch models without starting new inference. Checks, initial/final Changes and Provenance are separate views; JSON downloads the structured episode.
-- State the fidelity boundary: recorded UI snapshots and pointer samples, not video. PNG bytes remain in original archives; their hashes are retained publicly. A blocked run's diagnostic state checks do not make it a completed pass.
-- This is one shared JSON-text action contract, not each provider's native tool protocol. The report separates rejected steps and outputs without a parsed action. Inspect the original response before attributing a failure to UI reasoning; the parser was not adapted after seeing a route's output.
-- The earlier 36-attempt pilot is linked separately: GLM and DeepSeek each passed 10/12, Nano 0/12. Four output limits and one missing-receipt connection failure remain blocks. This is not a global ranking; the action budget/model set differ from the new plan.
-- Valid output-limit receipts now count reported usage without executing partial output. CLI-only continuation rules retain unknown timeout/connection reservations. Public defaults stay conservative.
-- The $300 shared ceiling includes earlier model pilots. Receipts/reservations are estimates, not invoices. Source and launch plans stay immutable; no retries, substitutions or relaxed graders after looking at scores.
+### Cost definitions
 
-## Slide 10 — Findings
+- Usage estimate: reported token usage multiplied by the saved base rates.
+- Unresolved: money still reserved for requests without accepted usage information.
+- Total allowance: usage estimate plus unresolved reservations.
+- These are estimates, not provider invoices. No cache discount is assumed.
+- Missing token usage is unknown, not zero.
+- The CSV and JSON downloads contain costs, tokens, rates, time, and actions for every run.
 
-- Design-handoff is 0/17 with an instruction-contract ambiguity: six completed attempts copied literal DESIGN from both quoted messages, while the grader expects Willow at this seed. The task lacks an explicit substitution instruction. Keep those raw outcomes and show the exact input/actions; no retrospective regrading or reruns. Scripted execution tests do not validate natural-language clarity.
-- Thread repair passed 13/17: agents had to retrieve the reviewed estimate, edit their existing reply, react to the review and post a confirmation. Three attempts were incomplete and one had a connection failure. This is one attempt per model, not a reliability estimate.
-- The completed handoff slice passed 16/17, while release synchronization passed 0/17 under the fixed trial limits. Release-sync ambiguously locates the handoff and QA in engineering, although the handoff is in the project channel. Flag the 17 cells as diagnostic with a task-wording caveat, not clean capability evidence; no mid-run repair or rerun is performed.
-- Saved-item cleanup passed 4/17. One extra diagnostic final-state pass ended at an output limit and correctly remains blocked.
-- Fable's saved-cleanup trace passed in 15 actions. Nemotron's 40-action attempt missed the required message despite valid navigation/save actions.
-- Sol set the release topic and posted QA, then repeated edit/cancel navigation and never completed the required original-message edit. The gateway accepted its actions; the state grader still rejected the outcome.
-- Read the [original trace identities](campaigns/model-breadth-2026-10-03-observations.md). No hidden-reasoning inference, causal ranking or selection of successful retries.
+### Exact cost totals
 
-## Slide 11 — Performance
+- Selected 306 runs: $189.31101456 usage estimate.
+- Missing usage: $3.77939636 reserved across 35 requests.
+- Selected total allowance: $193.09041092.
+- There were 4,747 requests with 4,712 accepted usage receipts.
+- Accepted receipts contain 74,861,087 input tokens and 1,400,260 output tokens.
+- The shared ledger totals $194.10583757, including $1.01542665 from earlier tests outside the 306 runs.
+- The remaining allowance is $105.89416243 under the $300 cap.
+- The earlier 36-run pilot stays separate. It had 20 passes and used different limits and models.
 
-- Current p50 measurements: create 17.34 ms, reset 1.50 ms, screenshot 84.15 ms.
-- Distinguish direct-store reset, HTTP, page-ready and screenshot timing.
-- 100 sessions and 16 concurrent API reads do not establish 16 concurrent agents.
-- Browser child memory and sustained concurrency remain unmeasured; historical runs are not a controlled speed comparison.
+## Slide 10 — Why failures need inspection
 
-## Slide 12 — What I learned and scaling
+- Thread repair passed 13 of 17 runs. It requires finding a reviewed estimate, editing an existing reply, adding a reaction, and posting a confirmation.
+- Direct-message handoff passed 16 of 17 runs.
+- Saved-item cleanup passed 4 of 17 runs. One additional run had correct diagnostic state checks but stopped at an output limit, so it remains blocked.
+- Design handoff passed 0 of 17 runs. Six completed runs copied the quoted word DESIGN.
+- The checks expected the retrieved name Willow at this seed. The task did not clearly instruct the model to substitute that name.
+- Release sync passed 0 of 17 runs. The task gives an unclear location for a source message.
+- GPT-6.1 Sol made some required changes, then repeated edit and cancel actions without completing the original-message edit.
+- These two tasks do not provide a clear measure of model ability.
+- Preserve all recorded results. Fix and version the instructions before collecting new results.
+- Scripted tests can verify that a workflow is possible without proving that its written instructions are clear.
+- The exact records are linked in [the failure analysis](campaigns/model-breadth-2026-10-03-observations.md).
 
-- A plausible action is not a successful task. Check intended changes and everything that must stay unchanged.
-- Task wording is part of test validity. Wrong answers, execution blocks and missing receipts are distinct outcomes.
+## Slide 11 — Local speed
 
-- Proposed path: admission queue, bounded workers, private state, separate control and evidence storage.
-- Share immutable assets; partition synchronous state work; recycle workers and enforce limits.
-- Use process/container/VM tiers according to policy privileges.
-- Next measurement: 1/4/8/16 workers, full process-tree RSS, CPU, p95 step latency, failures and cleanup over a soak period.
+- Median times were 17.34 ms to create a session, 1.50 ms to reset state, and 84.15 ms to take a screenshot.
+- The machine was an Apple M5 Max running Node 24.
+- The tests used 100 stored sessions, 400 reads with up to 16 at once, and 10 sequential browser contexts.
+- Each timing measures only the stated operation. It does not include a model call.
+- Concurrent API reads do not demonstrate concurrent agents.
+- Full browser-process memory, sustained agent concurrency, and multi-host capacity remain unmeasured.
 
-## Slide 13 — Demonstration
+## Slide 12 — Lessons and next tests
 
-- Open `/play`; search `in:design navigation`, open the decision thread and inspect final approval. Label it a manual synthetic sandbox.
-- Open the trial library from slide 9 or 13. Select Fable / saved cleanup; play the 15-action pass, then inspect its exact request and outcome checks.
-- Select Grok / release retrospective; scrub to the end and show the missing stale-save removal alongside the changes it completed. Open Trace, Changes and Provenance. The complete 17-model task slice remains in the table; these two are demonstration examples, not a curated denominator.
-- The main site's older Replays menu still contains Luna's thread pass, decision-record failure and API control, labeled as earlier campaign excerpts.
-- Optionally show the API decision-record pass as a retrieval/action control, not mouse-and-keyboard CUA.
-- Open the full campaign inventory, including failures and unattempted cells. Curated examples are not the complete result set.
-- Replay uses no inference or workspace writes. If a live service stalls, use recorded evidence and say so.
+- Valid actions do not guarantee a correct result.
+- Test task instructions with people before using them to compare models.
+- Keep wrong answers, blocked runs, and missing cost data separate.
+- The diagram shows a proposed system, not a measured deployment.
+- A queue would send runs to workers with private browser sessions and databases.
+- Workers would save run records outside their local storage.
+- Test 1, 4, 8, and 16 workers. Measure full process memory, CPU use, action latency, failures, and cleanup.
+- Choose process, container, or VM separation based on the agent's permissions.
 
-## Rehearsal
+## Slide 13 — Demo and discussion
 
-- Run `npm ci`, install Chromium, then `npm run verify`, `npm run test:graders`, `npm run inspect:campaign -- workflows` and `npm run presentation`.
-- Run `npm run build:hosted && npm run live`, or use the public site. Keep the PDF/evidence locally available.
-- Never screen-share keys. A paid live demo needs a provider-side cap and model availability check.
-- Show cross-session noninterference/reset if asked; the committed isolation test is the reproducible fallback.
+- Open /play. Search for `in:design navigation`, open the decision thread, and inspect the approval.
+- Explain that this is a manual workspace with synthetic data.
+- Open the recorded runs. Show Claude Fable's saved-cleanup pass in 15 actions.
+- Then show Grok's release-retrospective run and the stale saved item it did not remove.
+- Open the trace, workspace changes, and result checks.
+- These are demo examples. The table still includes every recorded result.
+- Replays use saved UI states and pointer samples. They are not videos.
+- Original screenshots remain in the archives. Public records retain their hashes.
+- Replay does not call a model or change the saved workspace.
+- Ask which workflows, scoring rules, concurrency level, and cost limits matter most.
+- Relay implements reset, actions, and rewards. No reinforcement learning training has been run.
+- BrowserGym and OpenEnv compatibility have not been demonstrated.
+- Remaining work includes successful screenshot-only agents, unseen task variants, training integration, and sustained multi-worker tests.
 
-## Discussion answers
+## Before presenting
 
-- Why a focused clone? Selected tasks need state, reset and reward; enterprise auth, uploads and calls add unrelated complexity.
-- RL-ready? Reset/step/reward exist; training, standardized trainer adapters and held-out evaluation are not delivered results.
-- Can policies cheat? Bounded gateways hide grader/control data. Shell access to this repository does not; serious evaluation must isolate and withhold them.
-- How trustworthy are grades? Independent positive/adversarial challenges and UI recipes support tested contracts, not every future grader.
-- What is replay fidelity? UI boundary states and pointer samples through the current renderer, not lossless video. Original PNGs remain the reference.
-- Main gaps? Successful pixel policies, semantic holdouts and sustained worker measurements.
-- Main finding? Plausible activity can use the wrong fact or destination; strict grading and complete traces expose it.
+- Verify that the site, PDF, results table, and replay links open.
+- Keep the PDF and saved evidence available if the live service is unavailable.
+- Do not show API keys while sharing the screen.
+- A paid live run needs an available model and a provider-side cost limit.
+- Original code uses MIT. Third-party fonts and brand assets keep their own restrictions.
+
+## Readability update verification — 2026-10-04
+
+- Rewrote the 13 slides and notes in plain technical English. No model runs were added or changed.
+- All 29 targeted comparison, accounting, and replay-library tests passed.
+- All five presentation/results browser tests passed with no retries.
+- Browser tests checked keyboard controls, sorting, replay links, mobile width, and all 13 printed pages.
+- Main narrative bullets contain at most 24 words. Technical settings and full cost totals remain in these notes.
+- The saved campaign results, accounting exports, and original actor build remain unchanged.

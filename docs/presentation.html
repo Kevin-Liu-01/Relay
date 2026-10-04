@@ -1251,7 +1251,7 @@
   </head>
   <body>
     <main>
-      <section class="slide active cover" data-title="Better computer and tool use">
+      <section class="slide active cover" data-title="Relay">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -1284,10 +1284,10 @@
               <path d="M10 4v4"></path>
               <path d="M2 8h20"></path>
               <path d="M6 4v4"></path></svg
-            >Better computer and tool use<span class="section-number">01 / 13</span></span
+            >Relay<span class="section-number">01 / 13</span></span
           >
         </header>
-        <h1>Better computer use.<br /><em>Measure the whole loop.</em></h1>
+        <h1>Test agents in a<br /><em>Slack-like workspace</em></h1>
         <div class="brand-row">
           <span class="brand-chip"
             ><svg
@@ -1335,20 +1335,16 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >Independent evaluation</span
+            >Automatic result checks</span
           >
         </div>
         <ul>
-          <li>Goal: complete useful work with fewer errors, less time and lower cost.</li>
+          <li>Relay tests whether an agent can complete a task in a working web app.</li>
           <li>
-            18 tasks covering search, threads, edits, DMs, pins, saved messages and channel details.
+            18 tasks cover search, threads, message edits, direct messages, and channel settings.
           </li>
-          <li>
-            Relay combines a runnable Slack-like app, a bounded harness and independent checks.
-          </li>
-          <li>
-            Improve the model, interface and harness separately. Keep the evidence for each change.
-          </li>
+          <li>Each run records the actions, checks the result, and estimates the cost.</li>
+          <li>The goal is to complete tasks with fewer errors, less time, and lower cost.</li>
         </ul>
         <div
           class="diagram flow"
@@ -1374,7 +1370,7 @@
               <path d="M13 19h8"></path>
               <path d="m3 17 2 2 4-4"></path>
               <path d="m3 7 2 2 4-4"></path></svg
-            >Task + seed
+            >Task
           </div>
           <div class="arrow">
             <svg
@@ -1490,14 +1486,14 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >State evaluation
+            >Result checks
           </div>
         </div>
         <ul class="sources">
           <li>Kevin Liu · CUA implementation exercise · October 2026.</li>
         </ul>
       </section>
-      <section class="slide" data-title="Harness and mock Slack">
+      <section class="slide" data-title="How a run works">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -1535,33 +1531,25 @@
               <path
                 d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
               ></path></svg
-            >Harness and mock Slack<span class="section-number">02 / 13</span></span
+            >How a run works<span class="section-number">02 / 13</span></span
           >
         </header>
-        <h2>The harness connects action to evidence</h2>
+        <h2>The harness runs and records the test</h2>
         <ul>
-          <li>Observe the workspace. Ask for one action. Validate it before execution.</li>
-          <li>
-            Execute with Playwright or the actor API. Record the request, response and state change.
-          </li>
-          <li>
-            Repeat within time, action and spend limits. Grade the final state and export the trace.
-          </li>
-          <li>
-            React renders the workflows. A shared transition engine writes private SQLite state.
-          </li>
+          <li>The harness is the code that controls each test run.</li>
+          <li>It shows the workspace to the model and asks for one action.</li>
+          <li>It checks the action, executes it, and records what changed.</li>
+          <li>It repeats these steps until the model finishes or reaches a limit.</li>
+          <li>It checks the final workspace against the task requirements.</li>
         </ul>
         <ul class="sources">
-          <li>MIT for original code; third-party asset restrictions remain separate.</li>
           <li>
-            Cua Slack, env0 and Agent-Diff address related environments. This is not a novelty
-            claim.
+            React builds the UI. SQLite stores workspace data. Playwright controls the browser.
           </li>
           <li>
-            Source review, not comparative execution:
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
-              >prior-work survey and pinned references</a
-            >.
+              >Related projects and references</a
+            >. I reviewed their code but did not run a comparison.
           </li>
         </ul>
       </section>
@@ -1605,11 +1593,11 @@
             >Agent interfaces<span class="section-number">03 / 13</span></span
           >
         </header>
-        <h2>Four observation and action interfaces</h2>
+        <h2>Four ways to use the workspace</h2>
         <div
           class="diagram flow"
           role="img"
-          aria-label="One workspace exposes pixels, accessibility, page JSON or actor API to a bounded policy; actions return through validation"
+          aria-label="The model can use screenshots, accessibility elements, page JSON, or an API to act in the same workspace"
         >
           <div class="node">
             <svg
@@ -1667,7 +1655,7 @@
                 <path
                   d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
                 ></path></svg
-              >Pixels → mouse + keyboard
+              >Screenshot → mouse and keyboard
             </div>
             <div class="node">
               <svg
@@ -1688,7 +1676,7 @@
                 <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
                 <path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path>
                 <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg
-              >Accessibility → element actions
+              >Accessibility → labeled controls
             </div>
             <div class="node">
               <svg
@@ -1710,7 +1698,7 @@
                 <path
                   d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"
                 ></path></svg
-              >Page JSON → element actions
+              >Page JSON → structured controls
             </div>
             <div class="node" data-tone="green">
               <svg
@@ -1737,7 +1725,7 @@
                   d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"
                 ></path>
                 <path d="M7 5V3"></path></svg
-              >Actor API → domain actions
+              >API → direct workspace changes
             </div>
           </div>
           <div class="arrow">
@@ -1778,18 +1766,15 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >Model policy<br />One validated action
+            >Model<br />Chooses one action
           </div>
         </div>
         <ul>
-          <li>The actor never receives grader answers or control credentials.</li>
           <li>
-            API access changes information and action granularity; it is not a computer-use score.
+            The model receives the task and workspace information, but not the expected answer.
           </li>
-          <li>
-            Optional documentation and bounded history are explicit conditions, not hidden prompt
-            changes.
-          </li>
+          <li>API runs test tool use without browser interaction. They are reported separately.</li>
+          <li>The 306-run comparison uses accessibility controls for every model.</li>
         </ul>
       </section>
       <section class="slide" data-title="Isolation">
@@ -1828,11 +1813,11 @@
             >Isolation<span class="section-number">04 / 13</span></span
           >
         </header>
-        <h2>Episode lifecycle and session isolation</h2>
+        <h2>Each run has its own workspace</h2>
         <div
           class="diagram"
           role="img"
-          aria-label="Episode A owns browser A and SQLite A; episode B owns browser B and SQLite B. A separate trusted control interface grades both."
+          aria-label="Run A has browser session A and database A. Run B has browser session B and database B."
         >
           <div class="flow">
             <div class="node">
@@ -1854,7 +1839,7 @@
                 <path d="M13 19h8"></path>
                 <path d="m3 17 2 2 4-4"></path>
                 <path d="m3 7 2 2 4-4"></path></svg
-              >Episode A
+              >Run A
             </div>
             <div class="arrow">
               <svg
@@ -1892,7 +1877,7 @@
                 <path d="M10 4v4"></path>
                 <path d="M2 8h20"></path>
                 <path d="M6 4v4"></path></svg
-              >Browser context A
+              >Browser session A
             </div>
             <div class="arrow">
               <svg
@@ -1929,7 +1914,7 @@
                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                 <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                 <path d="M3 12A9 3 0 0 0 21 12"></path></svg
-              >SQLite file A
+              >Database A
             </div>
           </div>
           <div class="flow subflow">
@@ -1952,7 +1937,7 @@
                 <path d="M13 19h8"></path>
                 <path d="m3 17 2 2 4-4"></path>
                 <path d="m3 7 2 2 4-4"></path></svg
-              >Episode B
+              >Run B
             </div>
             <div class="arrow">
               <svg
@@ -1990,7 +1975,7 @@
                 <path d="M10 4v4"></path>
                 <path d="M2 8h20"></path>
                 <path d="M6 4v4"></path></svg
-              >Browser context B
+              >Browser session B
             </div>
             <div class="arrow">
               <svg
@@ -2027,19 +2012,15 @@
                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                 <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                 <path d="M3 12A9 3 0 0 0 21 12"></path></svg
-              >SQLite file B
+              >Database B
             </div>
           </div>
         </div>
         <ul>
-          <li>Fresh contexts and private files prevent cross-episode state contamination.</li>
-          <li>
-            Transactional writes, revisions and request IDs enforce atomicity and idempotency.
-          </li>
-          <li>
-            Actor and control listeners share a process: this is data isolation, not a hostile-code
-            sandbox.
-          </li>
+          <li>Each run starts with a new browser session and a separate SQLite database.</li>
+          <li>Changes in one workspace do not change another workspace.</li>
+          <li>Version checks reject outdated edits. Request IDs prevent duplicate writes.</li>
+          <li>This separates workspace data. It does not safely contain malicious code.</li>
         </ul>
       </section>
       <section class="slide" data-title="Setup and run design">
@@ -2079,7 +2060,7 @@
             >Setup and run design<span class="section-number">05 / 13</span></span
           >
         </header>
-        <h2>Set up once. Change the model route.</h2>
+        <h2>Run Relay with different models</h2>
         <div class="brand-row" aria-label="Models in the campaign">
           <span class="brand-chip"
             ><svg
@@ -2101,7 +2082,7 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >17 model routes</span
+            >17 models</span
           ><span class="brand-chip"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -2140,41 +2121,28 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >1 attempt per cell</span
+            >1 run per task and model</span
           >
         </div>
         <ul>
+          <li>Use Node 24. Follow the README to install, build, and start Relay.</li>
+          <li>Add a Router API key, then choose an available model and a task.</li>
           <li>
-            Node 24: install dependencies and Chromium, build, then run Relay Live. Exact commands
-            are in the README.
+            The comparison uses the same task data, controls, and result checks for every model.
           </li>
-          <li>
-            Connect a Router key and select an available model. The same open-source Playwright
-            harness serves all 17 routes.
-          </li>
-          <li>
-            Fresh workspaces; seed 1042; accessibility control; recent-four history; no guide.
-          </li>
-          <li>40 actions; 4,096 output tokens per call; 180 seconds and $5 maximum per trial.</li>
-          <li>
-            105 prior attempts retained; only 201 untouched cells continued. No repeats or dropped
-            failures.
-          </li>
-          <li>$300 shared cap includes prior pilots. No hidden retry or provider substitution.</li>
-          <li>
-            Public tasks and temporal cohorts: coverage evidence, not a reliable model ranking.
-          </li>
+          <li>Each run allows up to 40 actions, 180 seconds, and a $5 estimated cost.</li>
+          <li>The manual workspace and saved replays do not require an API key.</li>
         </ul>
         <ul class="sources">
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-continuation.md"
-              >Frozen plan, preserved origins and explicit scheduling amendment</a
+              >Exact settings and run history</a
             >.
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Task and reward">
+      <section class="slide" data-title="Tasks and result checks">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -2208,26 +2176,23 @@
               ></path>
               <path d="M6.453 15h11.094"></path>
               <path d="M8.5 2h7"></path></svg
-            >Task and reward<span class="section-number">06 / 13</span></span
+            >Tasks and result checks<span class="section-number">06 / 13</span></span
           >
         </header>
-        <h2>Turn a workflow into a benchmark contract</h2>
+        <h2>Define the task and check the result</h2>
         <ul>
-          <li>Six control tasks; 12 deeper workflows with 3–6 coordinated mutations.</li>
+          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
           <li>
-            Decision record: retrieve final approval, update description, pin the root, save the
-            reply and acknowledge in-thread.
+            Example: find an approval, update the channel description, pin the message, save the
+            reply, and acknowledge it.
           </li>
-          <li>
-            Check content, identity, author, destination, uniqueness and all unchanged workspace
-            state.
-          </li>
-          <li>Wrong thread, replacement instead of edit, stale fact or collateral change fails.</li>
+          <li>The checks verify the text, author, destination, and required changes.</li>
+          <li>A run fails if it leaves a duplicate message or changes unrelated data.</li>
         </ul>
         <div
           class="diagram flow"
           role="img"
-          aria-label="Final state is compared with an independently declared expected state, producing a binary reward"
+          aria-label="Compare the final workspace with the expected result. All checks must pass to receive reward 1."
         >
           <div class="node">
             <svg
@@ -2286,7 +2251,7 @@
               ></path>
               <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
               <path d="m14 20 2 2 4-4"></path></svg
-            >Independent expected state
+            >Expected result
           </div>
           <div class="arrow">
             <svg
@@ -2324,17 +2289,17 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >All checks pass<br />Reward 1; otherwise 0
+            >Reward<br />Pass = 1 · Fail = 0
           </div>
         </div>
         <ul class="sources">
           <li>
-            Exact text is deliberate. Fully undone actions may pass; path-level safety is not
-            currently graded.
+            These checks grade the final state. They do not penalize a wrong action that the agent
+            fully undoes.
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Verification layers">
+      <section class="slide" data-title="Verification">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -2369,27 +2334,23 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >Verification layers<span class="section-number">07 / 13</span></span
+            >Verification<span class="section-number">07 / 13</span></span
           >
         </header>
-        <h2>Verification separates software checks from model runs</h2>
+        <h2>Test the app and the result checks</h2>
         <ul>
-          <li>174 backend/harness checks and 91 browser checks.</li>
+          <li>174 backend tests and 91 browser tests check the software.</li>
           <li>
-            84 valid states and 2,583 adversarial invalid states for the 12 deep-task graders.
+            84 valid results and 2,583 deliberately invalid results test the checks for the 12
+            longer tasks.
           </li>
-          <li>
-            Scripted UI recipes exercise interaction paths; they do not measure model capability.
-          </li>
-          <li>
-            306 / 306 recorded model/task attempts in the one-pass comparison; earlier interface
-            trials remain separate.
-          </li>
+          <li>Scripted tests verify the UI. They do not show what a model can do.</li>
+          <li>306 recorded model runs show how the agents performed.</li>
         </ul>
         <div
           class="diagram flow"
           role="img"
-          aria-label="Software tests check implementation; grader challenges check reward; model episodes test policy behavior"
+          aria-label="Software tests check the app. Result tests check the grading. Model runs test whether an agent completes the task."
         >
           <div class="node">
             <svg
@@ -2430,7 +2391,7 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >Grader challenges<br />Does reward mean success?
+            >Result tests<br />Are incorrect results rejected?
           </div>
           <div class="node" data-tone="blue">
             <svg
@@ -2452,11 +2413,11 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >Model episodes<br />Can the policy do the task?
+            >Model runs<br />Can the agent do the task?
           </div>
         </div>
       </section>
-      <section class="slide" data-title="Observed outcomes">
+      <section class="slide" data-title="Interface test results">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -2493,15 +2454,19 @@
               ></path>
               <path d="M4 18.463V21"></path>
               <path d="M8 14.656V21"></path></svg
-            >Observed outcomes<span class="section-number">08 / 13</span></span
+            >Interface test results<span class="section-number">08 / 13</span></span
           >
         </header>
-        <h2>Earlier interface study · separate from the 306 cells</h2>
+        <h2>Results from the earlier interface tests</h2>
         <ul>
-          <li>20 attempted: 8 passed, 11 incorrect/step-limited, 1 blocked; 10 unattempted.</li>
           <li>
-            126 requests; $0.149874 estimated including $0.001490 reserved for the blocked response.
+            20 attempted: 8 passed, 11 incomplete, and 1 blocked. 10 planned runs did not start.
           </li>
+          <li>
+            These tests used different tasks and models, so they cannot establish which interface is
+            better.
+          </li>
+          <li>These results are separate from the 306-run model comparison.</li>
         </ul>
         <div
           class="diagram results"
@@ -2631,20 +2596,20 @@
           </div>
           <div class="legend">
             <span><i class="passed"></i>Passed</span
-            ><span><i class="incomplete"></i>Incorrect / step limit</span
+            ><span><i class="incomplete"></i>Incomplete</span
             ><span><i class="blocked"></i>Blocked</span
             ><span><i class="unattempted"></i>Unattempted</span>
           </div>
         </div>
         <ul class="sources">
           <li>
-            Unequal task/model coverage; these totals are not causal interface comparisons. Cost is
-            not an invoice.
+            126 requests cost an estimated $0.149874, including a $0.001490 reservation for missing
+            usage. This is not an invoice.
           </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
-              >Complete inventory, exact trajectories and hashes</a
+              >All interface runs and recorded actions</a
             >.
           </li>
         </ul>
@@ -2690,7 +2655,7 @@
           >
         </header>
         <div class="comparison-heading">
-          <h2>17 models. Every task.</h2>
+          <h2>Results for 17 models</h2>
           <span class="comparison-status">1 per task/model · Collection complete</span>
         </div>
         <div class="comparison-toolbar">
@@ -24543,35 +24508,34 @@
           <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
           ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
           ><span id="sort-status" role="status"
-            >Click a header to sort · open a model’s trials for replays</span
+            >Click a header to sort. Click a model to see its runs.</span
           >
         </div>
         <ul class="sources">
           <li>
-            18 public tasks · 1 attempt per task/model · accessibility control · $300 shared
-            ceiling. Median time includes blocks. Snapshot 2026-10-03 21:14 UTC.
+            18 public tasks. 1 run per task and model. All use accessibility controls. Median time
+            includes blocked runs.
           </li>
           <li class="cost-detail">
-            Accepted receipts: 74,861,087 input + 1,400,260 output tokens; 4,712 receipts / 4,747
-            calls. Base-rate estimates, not invoices; missing tokens are unknown. Shared ledger:
-            $194.1058 including $1.0154 outside these 306 cells; $105.8942 remains under $300.
+            Total allowance adds the usage estimate to money reserved for missing usage. These are
+            estimates, not invoices. Including earlier tests: $194.1058 of the $300 budget.
             <a href="https://relay.kevinliu.studio/demo/results-accounting.csv">Full costs CSV</a> ·
             <a href="https://relay.kevinliu.studio/demo/results-accounting.json">JSON</a>
           </li>
           <li>
-            105 prior attempts preserved, including failures. New cells only; no retries.
-            Family/tier coverage, not a popularity ranking. Raw outcomes; release-sync and
-            design-handoff have wording caveats.
+            105 earlier runs are included. No retries. One run per task cannot establish a reliable
+            model ranking. Two tasks have unclear instructions.
+            <a href="https://relay.kevinliu.studio/presentation#10">Read the failure analysis</a>.
           </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-continuation.md"
-              >Frozen design</a
+              >Test plan</a
             >
             ·
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-breadth-2026-10-03-continuation/README.md"
-              >Collection status and evidence</a
+              >Recorded runs</a
             >
             ·
             <a
@@ -24586,7 +24550,7 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Trace findings">
+      <section class="slide" data-title="Findings">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -24618,34 +24582,35 @@
               <circle cx="6" cy="19" r="3"></circle>
               <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path>
               <circle cx="18" cy="5" r="3"></circle></svg
-            >Trace findings<span class="section-number">10 / 13</span></span
+            >Findings<span class="section-number">10 / 13</span></span
           >
         </header>
-        <h2>Why did runs pass, fail or stop?</h2>
+        <h2>Unclear tasks make failures hard to interpret</h2>
         <ul>
           <li>
-            Thread repair: 13 / 17 passed; handoff DM: 16 / 17. Thread repair combines fact
-            retrieval, an original-message edit, a reaction and a reply.
+            Thread repair passed in 13 / 17 runs. It requires finding a fact, editing a reply, and
+            confirming the change.
           </li>
           <li>
-            Saved-item cleanup: 4 / 17 strict passes. A further diagnostic workspace pass ended at
-            an output limit and remains blocked.
+            Design handoff passed in 0 / 17 runs. Six completed runs copied “DESIGN” instead of the
+            required name.
+          </li>
+          <li>The task did not clearly tell the model to replace “DESIGN” with a name.</li>
+          <li>
+            Release sync also passed in 0 / 17 runs. Its instructions give an unclear location for a
+            source message.
           </li>
           <li>
-            Design handoff: 0 / 17. Six completed runs copied the quoted “DESIGN”; the grader
-            expected the retrieved name. The substitution instruction was implicit.
-          </li>
-          <li>
-            Release-sync: 0 / 17, with an ambiguous source-location hint—not clean capability
-            evidence. Sol made partial changes, then repeated edit/cancel actions.
+            Keep these recorded results. Fix the instructions before running a new version of the
+            test.
           </li>
         </ul>
         <ul class="sources">
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
-              >Trace identities and outcome details</a
-            >. One attempt per public task; no claim of repeatability or a causal model ranking.
+              >Recorded actions and failure analysis</a
+            >. These two tasks do not provide a clear measure of model ability.
           </li>
         </ul>
       </section>
@@ -24683,11 +24648,11 @@
             >Speed and resources<span class="section-number">11 / 13</span></span
           >
         </header>
-        <h2>Speed and resource measurements</h2>
+        <h2>Local speed measurements</h2>
         <div
           class="metrics"
           role="img"
-          aria-label="Local p50 timings for create, reset and screenshot; operation-level measurements, not model latency"
+          aria-label="Median local times to create a session, reset state, and capture a screenshot. These exclude model calls."
         >
           <div class="metric">
             <svg
@@ -24708,7 +24673,7 @@
               <path d="M2 8h20"></path>
               <path d="M6 4v4"></path></svg
             ><strong>17.34 <small>ms</small></strong
-            ><span>Create session · p50</span>
+            ><span>Create session · median</span>
           </div>
           <div class="metric">
             <svg
@@ -24729,7 +24694,7 @@
               <path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path>
               <path d="M9 17H4v5"></path></svg
             ><strong>1.50 <small>ms</small></strong
-            ><span>Reset state · p50</span>
+            ><span>Reset state · median</span>
           </div>
           <div class="metric">
             <svg
@@ -24750,27 +24715,22 @@
               ></path>
               <circle cx="12" cy="13" r="3"></circle></svg
             ><strong>84.15 <small>ms</small></strong
-            ><span>Screenshot · p50</span>
+            ><span>Screenshot · median</span>
           </div>
         </div>
         <ul>
+          <li>These measurements used an Apple M5 Max with Node 24.</li>
+          <li>The test created 100 sessions and ran 400 reads, with up to 16 reads at once.</li>
+          <li>The browser test used 10 sessions, one after another.</li>
           <li>
-            100 persisted sessions, 400 reads at concurrency 16, and 10 sequential browser contexts.
-          </li>
-          <li>Machine: Apple M5 Max, Node 24; timings include the stated operation only.</li>
-          <li>
-            Browser child-process memory, sustained agent concurrency and multi-host capacity are
-            not measured.
-          </li>
-          <li>
-            Model calls and visual evidence add latency; API throughput is not agent throughput.
+            These times exclude model calls. They do not measure how many agents can run together.
           </li>
         </ul>
         <ul class="sources">
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
-              >Raw samples, machine details and measurement boundaries</a
+              >Timing samples and test setup</a
             >.
           </li>
         </ul>
@@ -24812,11 +24772,11 @@
             >What I learned<span class="section-number">12 / 13</span></span
           >
         </header>
-        <h2>What I learned · what to build next</h2>
+        <h2>What I learned and what to test next</h2>
         <div
           class="diagram flow"
           role="img"
-          aria-label="Proposed scaling: admission queue to bounded isolated workers with private sessions, then external evidence storage"
+          aria-label="Proposed next step: a queue sends runs to separate workers, which save their records outside the workers. This has not been load-tested."
         >
           <div class="node">
             <svg
@@ -24841,7 +24801,7 @@
               <path
                 d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
               ></path></svg
-            >Admission queue<br />Per-run budgets
+            >Run queue
           </div>
           <div class="arrow">
             <svg
@@ -24902,26 +24862,6 @@
                 <path d="M6 4v4"></path></svg
               >Worker B: browser + private state
             </div>
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-app-window glyph"
-                aria-hidden="true"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="M10 4v4"></path>
-                <path d="M2 8h20"></path>
-                <path d="M6 4v4"></path></svg
-              >Worker N: browser + private state
-            </div>
           </div>
           <div class="arrow">
             <svg
@@ -24960,25 +24900,21 @@
               ></path>
               <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
               <path d="m14 20 2 2 4-4"></path></svg
-            >Evidence storage<br />Separate control service
+            >Saved run records
           </div>
         </div>
         <ul>
+          <li>Check the finished task, not just whether each action was valid.</li>
+          <li>Test the instructions with people before using them to compare models.</li>
+          <li>Report blocked runs separately from completed runs with wrong results.</li>
           <li>
-            A valid click is not task success. Check intended changes and the state that must stay
-            unchanged.
+            Next, run several workers together and measure memory, speed, failures, and cleanup.
           </li>
+        </ul>
+        <ul class="sources">
           <li>
-            Task wording is part of the test. Version ambiguous instructions before collecting new
-            results.
-          </li>
-          <li>
-            Missing receipts, blocked runs and wrong answers mean different things. Preserve all
-            three.
-          </li>
-          <li>
-            Scale with bounded workers and external evidence storage. Measure full worker memory,
-            p95 latency and cleanup first; this diagram is a proposal.
+            The worker design is a proposal. Sustained operation with multiple workers has not been
+            measured.
           </li>
         </ul>
       </section>
@@ -25017,39 +24953,29 @@
             >Demonstration and discussion<span class="section-number">13 / 13</span></span
           >
         </header>
-        <h2>Demo, then questions</h2>
+        <h2>Demo and questions</h2>
         <ul>
           <li>
-            <a href="https://relay.kevinliu.studio/play">Open the workspace</a>: search, reply in a
-            thread, and edit your own message.
+            <a href="https://relay.kevinliu.studio/play">Try the workspace</a>. Search, reply in a
+            thread, and edit a message.
           </li>
           <li>
-            <a href="https://relay.kevinliu.studio/demo/review.html">Open trial review</a>: choose a
-            recorded model/task, play a success, and inspect an incomplete or blocked attempt.
+            <a href="https://relay.kevinliu.studio/demo/review.html">Watch a recorded run</a>.
+            Inspect the actions, workspace changes, and result checks.
           </li>
-          <li>
-            Inspect the exact request, action, state change and terminal checks; replay requires no
-            model calls.
-          </li>
-          <li>Which Slack workflows and visual details matter for the target agent?</li>
-          <li>
-            What should reward penalize beyond final state? What isolation, throughput and cost
-            target do we need?
-          </li>
+          <li>Which workflows should we add next?</li>
+          <li>Should the score penalize wrong actions even when the agent undoes them?</li>
+          <li>How many agents must run at once, and what cost can we allow?</li>
         </ul>
         <ul class="sources">
           <li>
-            Reset/step/reward are implemented; no RL training or BrowserGym/OpenEnv compatibility is
-            claimed.
-          </li>
-          <li>
-            Next gates: successful pixel policies, held-out task templates, trainer integration and
-            sustained worker tests.
+            Relay can reset, execute actions, and return a reward. No reinforcement learning
+            training has been run.
           </li>
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay">Code and setup</a> ·
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/onsite-readiness.md"
-              >Submission assessment and limitations</a
+              >Requirements and remaining work</a
             >.
           </li>
         </ul>
@@ -25058,7 +24984,7 @@
     <dialog id="trials-dialog" aria-labelledby="trials-title">
       <header>
         <div>
-          <h2 id="trials-title">Every trial, including the failures.</h2>
+          <h2 id="trials-title">All recorded runs</h2>
           <span>306 / 306 attempted · 152 passed · 61 incomplete · 93 blocked</span>
         </div>
         <button type="button" id="close-trials" aria-label="Close trial results">Close ×</button>

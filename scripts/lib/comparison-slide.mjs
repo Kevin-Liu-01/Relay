@@ -117,12 +117,12 @@ export function comparisonSlide(summary, logos = {}, reviewIds = new Set(), acco
     .join('');
   return {
     COMPARISON_CLASS: summary.byModel.length > 8 ? ' breadth-slide' : '',
-    COMPARISON_TITLE: `${summary.byModel.length} models. Every task.`,
+    COMPARISON_TITLE: `Results for ${summary.byModel.length} models`,
     COMPARISON_REPEATS: summary.trialsPerTaskModel ?? 20,
-    COMPARISON_SCOPE: `${summary.byTask?.length ?? 18} public tasks · ${summary.trialsPerTaskModel ?? 20} attempt${summary.trialsPerTaskModel === 1 ? '' : 's'} per task/model · accessibility control · $300 shared ceiling. Median time includes blocks.${summary.generatedAt ? ` Snapshot ${escapeHTML(summary.generatedAt.slice(0, 16).replace('T', ' '))} UTC.` : ''}`,
+    COMPARISON_SCOPE: `${summary.byTask?.length ?? 18} public tasks. ${summary.trialsPerTaskModel ?? 20} run${summary.trialsPerTaskModel === 1 ? '' : 's'} per task and model. All use accessibility controls. Median time includes blocked runs.`,
     COMPARISON_PROVENANCE: summary.preserved
-      ? `${summary.preserved} prior attempts preserved, including failures. New cells only; no retries. Family/tier coverage, not a popularity ranking.`
-      : 'Passes / attempted. Truncated output is not executed; no retries. Median includes blocks.',
+      ? `${summary.preserved} earlier runs are included. No retries. One run per task cannot establish a reliable model ranking.`
+      : 'All attempts are included. No retries. Incomplete model responses are not executed.',
     COMPARISON_FILTER: filters.length
       ? `<details class="task-filter" id="task-filter"><summary>All ${summary.byTask.length} tasks</summary><div role="group" aria-label="Choose a task">${filters.map((f) => `<button type="button" data-task="${escapeHTML(f.task)}" aria-pressed="${f.task === 'all'}">${escapeHTML(f.label)}</button>`).join('')}</div></details>${filters.map((f) => `<template data-task="${escapeHTML(f.task)}"><table><tbody>${modelRows(f, logos, reviewIds, accounting)}</tbody></table></template>`).join('')}`
       : '',

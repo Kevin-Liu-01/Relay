@@ -235,7 +235,7 @@ const values = {
     accounting,
   ),
   COST_SUMMARY: `<div class="cost-summary" aria-label="Cost breakdown"><span><strong>$${costs.acceptedUSD.toFixed(4)}</strong>Usage estimate</span><span><strong>$${costs.reservedUSD.toFixed(4)}</strong>Unresolved · ${costs.unknownRequests} calls</span><span><strong>$${costs.recordedUSD.toFixed(4)}</strong>Total allowance · 306 trials</span></div>`,
-  COST_DETAIL: `Accepted receipts: ${costs.inputTokens.toLocaleString('en-US')} input + ${costs.outputTokens.toLocaleString('en-US')} output tokens; ${costs.receipts.toLocaleString('en-US')} receipts / ${costs.requests.toLocaleString('en-US')} calls. Base-rate estimates, not invoices; missing tokens are unknown. Shared ledger: $${comparison.recordedTotalUSD.toFixed(4)} including $${costReport.priorOutsideSelectionUSD.toFixed(4)} outside these 306 cells; $${comparison.remainingUSD.toFixed(4)} remains under $300.`,
+  COST_DETAIL: `Total allowance adds the usage estimate to money reserved for missing usage. These are estimates, not invoices. Including earlier tests: $${comparison.recordedTotalUSD.toFixed(4)} of the $300 budget.`,
   PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}`,
   OPENAI_MARK: mark(Openai),
   SLACK_MARK: mark(Slack),

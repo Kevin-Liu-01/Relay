@@ -28,6 +28,17 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(1);
+  // Keep the main narrative readable. Tables and source notes carry supporting detail.
+  const narrative = await page
+    .locator('.slide:not(.comparison-slide) > ul:not(.sources) > li')
+    .allTextContents();
+  for (const bullet of narrative) {
+    const text = bullet.replace(/\s+/g, ' ').trim();
+    expect(text.split(/\s+/).length, text).toBeLessThanOrEqual(24);
+    expect(text, text).not.toMatch(
+      /[;—()]|\b(?:cohort|mutation|policy|idempotency|atomicity|gateways?)\b/i,
+    );
+  }
   const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
   for (let i = 0; i < 13; i++) {
     const slide = page.locator('.slide.active');
