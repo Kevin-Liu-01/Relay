@@ -540,6 +540,9 @@ function App() {
         <span className="nav-divider" />
         <span className="nav-caption">Agents, in the open.</span>
         <div className="nav-spacer" />
+        <a className="try-slack" href="/results" target="_blank" rel="noreferrer">
+          <GitCompareArrows size={16} /> Results
+        </a>
         <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
           <ArrowUpRight size={16} />
           Try Slack

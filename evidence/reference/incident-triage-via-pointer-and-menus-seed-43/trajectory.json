@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "session": {
-    "id": "9d309492-35ce-4e37-9325-dc42d34dc34e",
+    "id": "bf54bae5-e4d0-4fd7-8a23-a05e93a0ceec",
     "taskId": "incident-triage",
     "seed": 43,
     "mode": "evaluation",
-    "createdAt": 1791062660213,
-    "expiresAt": 1791149060213
+    "createdAt": 1791075412710,
+    "expiresAt": 1791161812710
   },
   "task": {
     "id": "incident-triage",
@@ -686,7 +686,7 @@
     "finalHash": "68ea0e52d3aa5a3d41e625c675a9c69de86080fc32b74e9b2b5e101bba048c84",
     "graderVersion": "state-contract-v1",
     "revision": 2,
-    "sessionId": "9d309492-35ce-4e37-9325-dc42d34dc34e"
+    "sessionId": "bf54bae5-e4d0-4fd7-8a23-a05e93a0ceec"
   },
   "events": [
     {
@@ -697,7 +697,7 @@
       "key": "",
       "x": null,
       "y": null,
-      "at": "2026-10-03T21:24:20.391Z"
+      "at": "2026-10-04T00:56:52.891Z"
     },
     {
       "seq": 2,
@@ -707,7 +707,7 @@
       "key": "",
       "x": 186,
       "y": 403,
-      "at": "2026-10-03T21:24:20.396Z"
+      "at": "2026-10-04T00:56:52.897Z"
     },
     {
       "seq": 3,
@@ -717,7 +717,7 @@
       "key": "",
       "x": 1317,
       "y": 454,
-      "at": "2026-10-03T21:24:20.536Z"
+      "at": "2026-10-04T00:56:53.021Z"
     },
     {
       "seq": 4,
@@ -730,7 +730,7 @@
       },
       "beforeHash": "1180c0288f01444f7d9698c104efcdd3b6b044a653f44f67db428e9fbbaa6056",
       "afterHash": "0db9371f1ef45b99581b2c4890dfff9392a528d797ae247c0b52fb2eef6ad1b3",
-      "at": "2026-10-03T21:24:20.590Z"
+      "at": "2026-10-04T00:56:53.069Z"
     },
     {
       "seq": 5,
@@ -740,7 +740,7 @@
       "key": "",
       "x": 1159,
       "y": 500,
-      "at": "2026-10-03T21:24:20.592Z"
+      "at": "2026-10-04T00:56:53.070Z"
     },
     {
       "seq": 6,
@@ -750,7 +750,7 @@
       "key": "",
       "x": 1401,
       "y": 454,
-      "at": "2026-10-03T21:24:20.778Z"
+      "at": "2026-10-04T00:56:53.220Z"
     },
     {
       "seq": 7,
@@ -762,7 +762,7 @@
       },
       "beforeHash": "0db9371f1ef45b99581b2c4890dfff9392a528d797ae247c0b52fb2eef6ad1b3",
       "afterHash": "68ea0e52d3aa5a3d41e625c675a9c69de86080fc32b74e9b2b5e101bba048c84",
-      "at": "2026-10-03T21:24:20.829Z"
+      "at": "2026-10-04T00:56:53.254Z"
     },
     {
       "seq": 8,
@@ -772,7 +772,7 @@
       "key": "",
       "x": 1305,
       "y": 494,
-      "at": "2026-10-03T21:24:20.834Z"
+      "at": "2026-10-04T00:56:53.257Z"
     }
   ],
   "evidenceKind": "scripted-browser-reference"

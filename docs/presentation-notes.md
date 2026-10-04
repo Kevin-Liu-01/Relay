@@ -12,13 +12,13 @@
 - Regenerate with `npm run presentation` after updating verified evidence. Do not type improved results into the deck.
 - Do not claim a new benchmark standard, secure sandbox, trained RL agent or model leaderboard.
 
-## Slide 1 — Environment
+## Slide 1 — Better computer and tool use
 
 - An agent must change a realistic workspace, not merely describe a solution.
 - 18 tasks, synthetic data, independent terminal checks and actual browser interaction.
 - Point to the runnable code, manual sandbox and evidence first.
 
-## Slide 2 — Scope and prior work
+## Slide 2 — Harness and mock Slack
 
 - React, SQLite and Playwright keep state and interactions inspectable.
 - Review covered mockups, functional clones, Cua Slack, env0 and Agent-Diff; external projects were inspected, not executed comparatively.
@@ -38,26 +38,28 @@
 - Actor/control listeners share a process. Shell-capable policies need separate process/network isolation.
 - Forced termination can prevent cleanup. No multi-host durability or tenant resource quotas are claimed.
 
-## Slide 5 — Tasks and grading
+## Slide 5 — Setup and one-pass design
+
+- Follow the README: Node 24, install dependencies and Chromium, build, then run Relay Live. Sandbox, results and replays need no key. New inference needs a provider key and an available route.
+- The original MIT-licensed harness uses Playwright and Router Responses. It does not claim Codex SDK, BrowserGym, OpenEnv or native provider computer-use protocol compatibility.
+- 17 routes across nine model families × 18 public tasks × one attempt; seed 1042, accessibility control, recent-four history and no guide.
+- Fixed 40-action, 4,096-output-token, 180-second and $5 trial ceilings; $300 cumulative allowance includes every prior pilot/probe.
+- Preserved 37 earlier attempts plus 68 from the stopped first breadth worker; the continuation collected only the 201 untouched cells. All 306 are now recorded, with no repeats or hidden exclusions.
+- The new scheduler can advance after a fully accounted cell-spend stop, but that cell remains blocked. This amendment and temporal cohorts are disclosed; no causal ranking or repeatability claim.
+- Same source, fixtures and deterministic grader; exact requested/returned model receipts retained.
+
+## Slide 6 — Tasks and grading
 
 - Decision-record combines fact retrieval, channel description, pin, saved reply and in-thread acknowledgement.
 - Wrong target, stale fact, duplicate post and collateral changes fail even if the model says done.
 - Expected states are independent contracts, not reference-policy replay or an LLM judge.
 - Exact text is deliberate; fully undone collateral actions can pass under final-state grading.
 
-## Slide 6 — Verification
+## Slide 7 — Verification
 
 - Software tests verify transitions, isolation, persistence and UI paths; grader challenges test false passes.
 - Backend/browser counts come from test reports. The 84 positive and 2,583 negative grader states are a separate denominator.
 - Real-model episodes are distinct from scripts, fake transport tests and three historical builder-informed Codex smokes.
-
-## Slide 7 — One-pass campaign design
-
-- 17 routes across nine model families × 18 public tasks × one attempt; seed 1042, accessibility control, recent-four history and no guide.
-- Fixed 40-action, 4,096-output-token, 180-second and $5 trial ceilings; $300 cumulative allowance includes every prior pilot/probe.
-- Preserved 37 earlier attempts plus 68 from the stopped first breadth worker; the continuation collected only the 201 untouched cells. All 306 are now recorded, with no repeats or hidden exclusions.
-- The new scheduler can advance after a fully accounted cell-spend stop, but that cell remains blocked. This amendment and temporal cohorts are disclosed; no causal ranking or repeatability claim.
-- Same source, fixtures and deterministic grader; exact requested/returned model receipts retained.
 
 ## Slide 8 — Earlier interface results (separate denominator)
 
@@ -69,11 +71,15 @@
 
 ## Slide 9 — Sortable model comparison
 
+- Home → **Results**, or Replays → **All model and task replays**, opens the same table at /results. Model drilldowns expose each task’s exact trace and replay.
+- Usage estimate $189.31101456 + unresolved reservations $3.77939636 (35 calls) = $193.09041092 selected allowance. Shared ledger $194.10583757 includes $1.01542665 outside these cells; $105.89416243 remains under $300.
+- 4,747 calls, 4,712 accepted receipts, 74,861,087 input tokens and 1,400,260 output tokens. Missing tokens remain unknown. CSV/JSON exports include per-trial rates, time and actions. Base-rate estimates are not invoices; no cache discount is assumed.
+
 - Latest scope: **one attempt per task/model**, no repeats. All 18 tasks × 17 routes = 306 cells. Accessibility only, 40 actions, recent-four history, no guide, fixed grader. Family/flagship/efficient coverage is not a measured popularity ranking.
 - The previous Qwen-inclusive study supplied 37 attempts, including a 401 block. The first breadth worker added 68 and stopped on Astra's $5 cell-spend boundary. All 105 attempts remain preserved; the continuation collects only the 201 untouched cells. Each row exposes its original campaign/run identity. Google still requires a separate provider key.
 - In the original five-route pilot, four simpler tasks passed across all five routes. On decision-record, GPT passed; Qwen and DeepSeek used literal DESIGN, Sonnet posted three acknowledgements, and GLM used literal DESIGN before an output limit. This describes that earlier pilot, not all 17 routes or repeatability.
 - Completed totals: **306 recorded, 152 passed, 61 incomplete, 93 blocked**; 4,662 action attempts and zero capture gaps. Shared estimates/reservations including earlier campaigns total $194.10583757, not an invoice. All 277 archives passed the completion audit and saved-state regrading.
-- Custom task menu selects one task's 17-model comparison, one recorded cell each. All-tasks view shows 18 markers per model. Click column headers for raw-value sorting; unknown costs sort last. All 306 cells remain inspectable, including failures and blocks. A single observation per task cannot establish repeatability or statistical ranking.
+- Custom task menu selects one task's 17-model comparison, one recorded cell each. Open a model's trials to see all 18 tasks, or filter to one task first. Click column headers or quick-sort buttons; unknown usage stays distinct from the sortable total allowance. All 306 cells remain inspectable, including failures and blocks. A single observation per task cannot establish repeatability or statistical ranking.
 - Open **All 306 trials**, then **Watch replay** or **Review trace** on a recorded row. The public library contains each exported attempt, including incomplete and blocked outcomes. Show a successful action sequence, its exact input/response, and a blocked zero-action record. Switch models without starting new inference. Checks, initial/final Changes and Provenance are separate views; JSON downloads the structured episode.
 - State the fidelity boundary: recorded UI snapshots and pointer samples, not video. PNG bytes remain in original archives; their hashes are retained publicly. A blocked run's diagnostic state checks do not make it a completed pass.
 - This is one shared JSON-text action contract, not each provider's native tool protocol. The report separates rejected steps and outputs without a parsed action. Inspect the original response before attributing a failure to UI reasoning; the parser was not adapted after seeing a route's output.
@@ -98,7 +104,10 @@
 - 100 sessions and 16 concurrent API reads do not establish 16 concurrent agents.
 - Browser child memory and sustained concurrency remain unmeasured; historical runs are not a controlled speed comparison.
 
-## Slide 12 — Scaling
+## Slide 12 — What I learned and scaling
+
+- A plausible action is not a successful task. Check intended changes and everything that must stay unchanged.
+- Task wording is part of test validity. Wrong answers, execution blocks and missing receipts are distinct outcomes.
 
 - Proposed path: admission queue, bounded workers, private state, separate control and evidence storage.
 - Share immutable assets; partition synchronous state work; recycle workers and enforce limits.

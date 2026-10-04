@@ -1,9 +1,11 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
+import { trialAccounting, sumAccounting } from './lib/report-accounting.mjs';
 import assert from 'node:assert/strict';
 import { modelComparison } from './lib/model-comparison.mjs';
 import { comparisonSlide } from './lib/comparison-slide.mjs';
-import { validateCatalog, trialId } from '../docs/review-app/data.mjs';
+import { validateCatalog, validateRecord, trialId } from '../docs/review-app/data.mjs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
@@ -103,6 +105,47 @@ const reviewCatalog = existsSync('evidence/trial-library/catalog.json')
   ? validateCatalog(JSON.parse(readFileSync('evidence/trial-library/catalog.json')))
   : null;
 const reviewIds = new Set(reviewCatalog?.trials.map((r) => r.id) ?? []);
+const accounting = Object.fromEntries(
+  (reviewCatalog?.trials ?? []).map((item) => {
+    const bytes = readFileSync(`evidence/trial-library/${item.path.split('/').at(-1)}`);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), item.sha256);
+    return [item.id, trialAccounting(validateRecord(JSON.parse(gunzipSync(bytes)), item))];
+  }),
+);
+const costs = sumAccounting(Object.values(accounting));
+assert.ok(Math.abs(costs.recordedUSD - comparison.selectionEstimatedUSD) < 1e-8);
+assert.ok(Math.abs(costs.reservedUSD - comparison.selectionReservedUSD) < 1e-8);
+const costReport = {
+  schema: 'relay-results-accounting-v1',
+  campaign: comparisonId,
+  summaryHash: reviewCatalog.summaryHash,
+  scope:
+    'Selected episodes only. Accepted token receipts at recorded base rates; not an invoice. Missing usage retains its reservation. No cache discount assumed.',
+  totals: costs,
+  sharedAllowanceUSD: comparison.recordedTotalUSD,
+  priorOutsideSelectionUSD: comparison.recordedTotalUSD - costs.recordedUSD,
+  remainingUSD: comparison.remainingUSD,
+  trials: comparison.rows.map((row) => ({
+    model: row.model,
+    task: row.task,
+    outcome: row.outcome,
+    trialId: trialId(row),
+    durationMs: row.durationMs,
+    actionAttempts: row.actionAttempts,
+    ...accounting[trialId(row)],
+  })),
+};
+writeFileSync('docs/results-accounting.json', JSON.stringify(costReport, null, 2) + '\n');
+const csvKeys = Object.keys(costReport.trials[0]);
+writeFileSync(
+  'docs/results-accounting.csv',
+  [
+    csvKeys.join(','),
+    ...costReport.trials.map((row) =>
+      csvKeys.map((key) => JSON.stringify(row[key] ?? '')).join(','),
+    ),
+  ].join('\n') + '\n',
+);
 if (comparisonId.startsWith('model-breadth-2026-10-03') && comparison.status === 'completed') {
   const verification = JSON.parse(
     readFileSync(`evidence/campaigns/${comparisonId}/verification.json`),
@@ -189,7 +232,10 @@ const values = {
       ].map(([id, icon]) => [id, mark(icon)]),
     ),
     reviewIds,
+    accounting,
   ),
+  COST_SUMMARY: `<div class="cost-summary" aria-label="Cost breakdown"><span><strong>$${costs.acceptedUSD.toFixed(4)}</strong>Usage estimate</span><span><strong>$${costs.reservedUSD.toFixed(4)}</strong>Unresolved · ${costs.unknownRequests} calls</span><span><strong>$${costs.recordedUSD.toFixed(4)}</strong>Total allowance · 306 trials</span></div>`,
+  COST_DETAIL: `Accepted receipts: ${costs.inputTokens.toLocaleString('en-US')} input + ${costs.outputTokens.toLocaleString('en-US')} output tokens; ${costs.receipts.toLocaleString('en-US')} receipts / ${costs.requests.toLocaleString('en-US')} calls. Base-rate estimates, not invoices; missing tokens are unknown. Shared ledger: $${comparison.recordedTotalUSD.toFixed(4)} including $${costReport.priorOutsideSelectionUSD.toFixed(4)} outside these 306 cells; $${comparison.remainingUSD.toFixed(4)} remains under $300.`,
   PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}`,
   OPENAI_MARK: mark(Openai),
   SLACK_MARK: mark(Slack),
@@ -245,6 +291,14 @@ html = html.replace(/(<section\b[^>]*data-title="([^"]+)"[^>]*>)/g, (_, tag, tit
 });
 if (sectionIndex !== 13) throw Error('Expected thirteen presentation sections.');
 writeFileSync('docs/presentation.html', html);
+// One table, accounting source and controller for both surfaces.
+const resultSection = html.match(/<section class="slide comparison-slide[\s\S]*?<\/section>/)[0];
+const dialog = html.match(/<dialog id="trials-dialog"[\s\S]*?<\/dialog>/)[0];
+const controls = html.match(/<script>[\s\S]*?<\/script>/)[0];
+writeFileSync(
+  'docs/results.html',
+  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay — Results and replays</title><link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
+);
 console.log(
   JSON.stringify({
     slides: 13,

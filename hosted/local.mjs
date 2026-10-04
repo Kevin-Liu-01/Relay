@@ -14,7 +14,7 @@ export function createLiveServer(options = {}) {
     }
     if (
       req.method !== 'GET' ||
-      !/^\/(?:|live.html|replay.html|play\/?|play.html|presentation|presentation\.pdf|presentation-controls\.js|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(
+      !/^\/(?:|live.html|replay.html|play\/?|play.html|results|presentation|presentation\.pdf|presentation-controls\.js|assets\/[\w.-]+|demo\/[\w.-]+)$/.test(
         url.pathname,
       )
     ) {
@@ -28,8 +28,8 @@ export function createLiveServer(options = {}) {
         ? 'live.html'
         : /^\/play\/?$/.test(url.pathname)
           ? 'play.html'
-          : url.pathname === '/presentation'
-            ? 'presentation.html'
+          : ['/presentation', '/results'].includes(url.pathname)
+            ? `${url.pathname.slice(1)}.html`
             : url.pathname,
     );
     if (!existsSync(file)) {
@@ -37,7 +37,9 @@ export function createLiveServer(options = {}) {
       return res.end();
     }
     res.writeHead(200, {
-      ...(url.pathname === '/replay.html' || url.pathname.startsWith('/presentation')
+      ...(url.pathname === '/replay.html' ||
+      url.pathname === '/results' ||
+      url.pathname.startsWith('/presentation')
         ? Object.fromEntries(
             JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8')).headers[
               url.pathname === '/replay.html' ? 0 : 1
@@ -55,6 +57,7 @@ export function createLiveServer(options = {}) {
           '.svg': 'image/svg+xml',
           '.ico': 'image/x-icon',
           '.json': 'application/json',
+          '.csv': 'text/csv; charset=utf-8',
           '.woff2': 'font/woff2',
         }[extname(file)] ?? 'application/octet-stream',
     });

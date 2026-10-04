@@ -162,7 +162,7 @@ test('new evidence overlays only its missing cell and the slide retains every or
   const html = comparisonSlide(result);
   assert.equal(html.COMPARISON_TITLE, '17 models. Every task.');
   assert.equal(html.COMPARISON_REPEATS, 1);
-  assert.equal((html.COMPARISON_TRIALS.match(/<tr>/g) ?? []).length, 307);
+  assert.equal((html.COMPARISON_TRIALS.match(/<tr(?: |>)/g) ?? []).length, 307);
   assert.equal((html.COMPARISON_TRIALS.match(/class="trial-origin">preserved/g) ?? []).length, 37);
   assert.equal((html.COMPARISON_TABLE.match(/class="trial-cell /g) ?? []).length, 306);
   assert.ok(html.COMPARISON_PROVENANCE.includes('37 prior attempts'));

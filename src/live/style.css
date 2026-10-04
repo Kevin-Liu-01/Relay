@@ -908,7 +908,10 @@ details pre {
   }
   .nav {
     gap: 10px;
-    height: 65px;
+    height: auto;
+    min-height: 65px;
+    flex-wrap: wrap;
+    padding: 10px 0;
   }
   .nav-caption,
   .nav-divider {
@@ -943,7 +946,8 @@ details pre {
     padding: 0 10px;
   }
   .nav {
-    height: 62px;
+    height: auto;
+    min-height: 62px;
     gap: 3px;
     flex-wrap: wrap;
   }

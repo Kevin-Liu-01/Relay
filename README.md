@@ -19,6 +19,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 ## Onsite submission
 
+- **[Results, full costs and all replays](https://relay.kevinliu.studio/results)**: sortable model table, task filters and per-model drilldowns. Every trial links directly to its trace and recorded UI. No key or new inference required.
 - **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
 - **[One-pass model coverage](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)**: **306/306 recorded and verified**—152 passed, 61 incomplete, 93 blocked. Seventeen routes × all 18 tasks, one attempt per cell, with no repeats or hidden exclusions.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
@@ -29,6 +30,13 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 The earlier interface study recorded about **$0.15 in estimated allowance**;
 the separate breadth report records its full shared ledger, including unresolved
 reservations. Neither is an invoice. These are development tasks, not a leaderboard.
+
+The 306-cell inventory contains **$189.31101456** in usage-based estimates and
+**$3.77939636** in unresolved reservations (35 calls), totaling **$193.09041092**.
+The shared ledger, including prior work outside those cells, is **$194.10583757**.
+[Per-trial costs, tokens, calls, rates, actions and time (CSV)](docs/results-accounting.csv)
+· [Accounting and scope (JSON)](docs/results-accounting.json).
+Missing usage is unknown, not free; these are base-rate estimates, not invoices.
 
 ## The idea
 

@@ -171,7 +171,9 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
   );
   for (const [label, index, direction] of [
     ['Passed', 2, 'descending'],
-    ['Est. cost', 6, 'ascending'],
+    ['Usage estimate', 6, 'ascending'],
+    ['Unresolved', 7, 'ascending'],
+    ['Total allowance', 8, 'ascending'],
     ['Median time', 5, 'ascending'],
   ]) {
     const button = table.locator('thead button').filter({ hasText: label });

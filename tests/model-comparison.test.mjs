@@ -19,7 +19,7 @@ test('per-task slide keeps twenty planned trials for every model without crowdin
   assert.equal((result.COMPARISON_TABLE.match(/trial-strip dense/g) ?? []).length, 5);
   assert.equal((result.COMPARISON_FILTER.match(/<template /g) ?? []).length, 19);
   assert.match(result.COMPARISON_FILTER, /0 \/ 20/);
-  assert.equal((result.COMPARISON_TRIALS.match(/<tr>/g) ?? []).length, 1801);
+  assert.equal((result.COMPARISON_TRIALS.match(/<tr(?: |>)/g) ?? []).length, 1801);
 });
 
 const plan = JSON.parse(
@@ -209,7 +209,7 @@ test('comparison rendering: planned cells are not fake failures, HTML is escaped
   const summary = modelComparison(plan, []);
   const html = comparisonSlide(summary);
   assert.equal((html.COMPARISON_TABLE.match(/class="trial-cell unattempted"/g) ?? []).length, 120);
-  assert.equal((html.COMPARISON_TRIALS.match(/<tr>/g) ?? []).length, 121);
+  assert.equal((html.COMPARISON_TRIALS.match(/<tr(?: |>)/g) ?? []).length, 121);
   assert.match(html.COMPARISON_TABLE, /data-sort="">—/);
   assert.equal(trialsCSV(summary.rows).trim().split('\n').length, 121);
   assert.equal(escapeHTML('<img src="x">&'), '&lt;img src=&quot;x&quot;&gt;&amp;');

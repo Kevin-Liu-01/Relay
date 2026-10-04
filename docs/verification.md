@@ -1,5 +1,16 @@
 # Verification and evidence
 
+## Results and assignment handoff — 2026-10-03
+
+- **174 backend tests and 91 browser tests passed**, retries disabled. Coverage includes all 306 public trial records, production-CSP sorting, model/task drilldowns, cost exports, keyboard navigation and narrow-screen layouts.
+- The first full pass caught horizontal overflow at 800 px after adding Results navigation. Wrapping fixed it without weakening the assertion; the next complete run passed. The first failure report remains local in `artifacts/results-initial-regression.json`.
+- `/results` and slide 9 share one table/controller. Homepage Results and Replays expose all model/task traces. Links stay beside model names in the wide trial table.
+- Episode accounting reconciles 4,747 requests: 4,712 accepted receipts and 35 unresolved requests. Usage-based estimates total $189.31101456; reservations total $3.77939636. Selected allowance: $193.09041092; shared ledger: $194.10583757. No invoice, cache discount, unknown-token total or hosting bill is inferred.
+- Accounting tests reject duplicate receipts, impossible tokens and mismatched totals. They distinguish rejected and accepted output-limit usage and prevent run-wide budget duplication.
+- The 13-page PDF passes overflow checks. Slides, notes and `onsite-readiness.md` map the assignment to setup, tasks, four interaction approaches, trajectories and isolation/scaling/resource tradeoffs. RL training, native trainer compatibility and successful pixel-only control remain unclaimed.
+- Interactive visual review covered Results, model drilldowns and the opening slide. The polish/accessibility pass added visible sorting, keyboard-safe controls, sticky evidence links and responsive wrapping. This is targeted testing, not accessibility certification.
+- Tests used an isolated production build. This release changes observer navigation/styles, not historical trials. The campaign summary, certificate, public records and root frozen `dist` remain unchanged. No paid model requests were made.
+
 ## Completed 306-cell inventory — 2026-10-03
 
 - **306/306 unique attempts: 152 passed, 61 incomplete, 93 blocked; none unattempted.**

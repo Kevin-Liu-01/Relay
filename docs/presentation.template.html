@@ -11,18 +11,23 @@
   </head>
   <body>
     <main>
-      <section class="slide active cover" data-title="Environment">
-        <h1>A Slack-like environment<br />for <em>computer-use agents.</em></h1>
+      <section class="slide active cover" data-title="Better computer and tool use">
+        <h1>Better computer use.<br /><em>Measure the whole loop.</em></h1>
         <div class="brand-row">
           <span class="brand-chip">{{SLACK_MARK}}Slack workflows</span
           ><span class="brand-chip">{{ICON_CHECK}}Independent evaluation</span>
         </div>
         <ul>
-          <li>Runnable web application with persistent, synthetic workspace state.</li>
+          <li>Goal: complete useful work with fewer errors, less time and lower cost.</li>
           <li>
             18 tasks covering search, threads, edits, DMs, pins, saved messages and channel details.
           </li>
-          <li>Independent terminal-state evaluation and inspectable agent trajectories.</li>
+          <li>
+            Relay combines a runnable Slack-like app, a bounded harness and independent checks.
+          </li>
+          <li>
+            Improve the model, interface and harness separately. Keep the evidence for each change.
+          </li>
         </ul>
         <div
           class="diagram flow"
@@ -41,25 +46,26 @@
           <li>Kevin Liu · CUA implementation exercise · October 2026.</li>
         </ul>
       </section>
-      <section class="slide" data-title="Implementation scope">
-        <h2>Implementation scope and prior work</h2>
+      <section class="slide" data-title="Harness and mock Slack">
+        <h2>The harness connects action to evidence</h2>
         <ul>
+          <li>Observe the workspace. Ask for one action. Validate it before execution.</li>
           <li>
-            React UI, deterministic transition engine, SQLite persistence and Playwright runner.
+            Execute with Playwright or the actor API. Record the request, response and state change.
           </li>
           <li>
-            Static Slack mockups supply appearance, but not reset, reward or durable outcomes.
+            Repeat within time, action and spend limits. Grade the final state and export the trace.
           </li>
           <li>
-            Cua Slack, env0 and Agent-Diff already address related environments; this is not a
-            novelty claim.
-          </li>
-          <li>
-            Original focused implementation keeps task contracts and failure traces easy to inspect.
+            React renders the workflows. A shared transition engine writes private SQLite state.
           </li>
         </ul>
         <ul class="sources">
           <li>MIT for original code; third-party asset restrictions remain separate.</li>
+          <li>
+            Cua Slack, env0 and Agent-Diff address related environments. This is not a novelty
+            claim.
+          </li>
           <li>
             Source review, not comparative execution:
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
@@ -132,8 +138,46 @@
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="Setup and run design">
+        <h2>Set up once. Change the model route.</h2>
+        <div class="brand-row" aria-label="Models in the campaign">
+          <span class="brand-chip">{{ICON_POLICY}}17 model routes</span
+          ><span class="brand-chip">{{ICON_TASK}}18 tasks</span
+          ><span class="brand-chip">{{ICON_CHECK}}1 attempt per cell</span>
+        </div>
+        <ul>
+          <li>
+            Node 24: install dependencies and Chromium, build, then run Relay Live. Exact commands
+            are in the README.
+          </li>
+          <li>
+            Connect a Router key and select an available model. The same open-source Playwright
+            harness serves all 17 routes.
+          </li>
+          <li>
+            Fresh workspaces; seed 1042; accessibility control; recent-four history; no guide.
+          </li>
+          <li>40 actions; 4,096 output tokens per call; 180 seconds and $5 maximum per trial.</li>
+          <li>
+            105 prior attempts retained; only 201 untouched cells continued. No repeats or dropped
+            failures.
+          </li>
+          <li>$300 shared cap includes prior pilots. No hidden retry or provider substitution.</li>
+          <li>
+            Public tasks and temporal cohorts: coverage evidence, not a reliable model ranking.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
+              >Frozen plan, preserved origins and explicit scheduling amendment</a
+            >.
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Task and reward">
-        <h2>Tasks require correct state, not a “done” response</h2>
+        <h2>Turn a workflow into a benchmark contract</h2>
         <ul>
           <li>Six control tasks; 12 deeper workflows with 3–6 coordinated mutations.</li>
           <li>
@@ -195,39 +239,6 @@
           </div>
         </div>
       </section>
-      <section class="slide" data-title="Run design">
-        <h2>One attempt per model and task</h2>
-        <div class="brand-row" aria-label="Models in the campaign">
-          <span class="brand-chip">{{ICON_POLICY}}17 model routes</span
-          ><span class="brand-chip">{{ICON_TASK}}18 tasks</span
-          ><span class="brand-chip">{{ICON_CHECK}}1 attempt per cell</span>
-        </div>
-        <ul>
-          <li>Flagship, standard and efficient routes across nine model families.</li>
-          <li>
-            Fresh workspaces; seed 1042; accessibility control; recent-four history; no guide.
-          </li>
-          <li>40 actions; 4,096 output tokens per call; 180 seconds and $5 maximum per trial.</li>
-          <li>
-            105 prior attempts retained; only 201 untouched cells continued. No repeats or dropped
-            failures.
-          </li>
-          <li>
-            $300 cumulative ceiling, including prior pilots. A trial spend stop stays blocked.
-          </li>
-          <li>
-            Public tasks and temporal cohorts: coverage evidence, not a reliable model ranking.
-          </li>
-        </ul>
-        <ul class="sources">
-          <li>
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
-              >Frozen plan, preserved origins and explicit scheduling amendment</a
-            >.
-          </li>
-        </ul>
-      </section>
       <section class="slide" data-title="Observed outcomes">
         <h2>Earlier interface study · separate from the 306 cells</h2>
         <ul>
@@ -282,14 +293,28 @@
             </button>
           </div>
         </div>
+        {{COST_SUMMARY}}
+        <div class="sort-tools" role="group" aria-label="Quick sort">
+          <span>Sort models</span><button type="button" data-sort-column="2">Most passes ↓</button
+          ><button type="button" data-sort-column="5">Fastest ↑</button
+          ><button type="button" data-sort-column="8">Lowest allowance ↑</button>
+          <a href="https://relay.kevinliu.studio/results">Full results ↗</a>
+        </div>
         {{COMPARISON_TABLE}}
         <div class="legend comparison-legend">
           <span><i class="passed"></i>Passed</span><span><i class="incomplete"></i>Incomplete</span
           ><span><i class="blocked"></i>Blocked</span><span><i class="unattempted"></i>Not run</span
-          ><span id="sort-status" role="status">Click a column to sort</span>
+          ><span id="sort-status" role="status"
+            >Click a header to sort · open a model’s trials for replays</span
+          >
         </div>
         <ul class="sources">
           <li>{{COMPARISON_SCOPE}}</li>
+          <li class="cost-detail">
+            {{COST_DETAIL}}
+            <a href="https://relay.kevinliu.studio/demo/results-accounting.csv">Full costs CSV</a> ·
+            <a href="https://relay.kevinliu.studio/demo/results-accounting.json">JSON</a>
+          </li>
           <li>
             {{COMPARISON_PROVENANCE}} Raw outcomes; release-sync and design-handoff have wording
             caveats.
@@ -318,7 +343,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Trace findings">
-        <h2>What the current trajectories explain</h2>
+        <h2>Why did runs pass, fail or stop?</h2>
         <ul>
           <li>
             Thread repair: {{THREAD_REPAIR_RESULT}} passed; handoff DM: {{HANDOFF_RESULT}}. Thread
@@ -388,8 +413,8 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Scaling tradeoffs">
-        <h2>Scaling path and tradeoffs</h2>
+      <section class="slide" data-title="What I learned">
+        <h2>What I learned · what to build next</h2>
         <div
           class="diagram flow"
           role="img"
@@ -408,22 +433,26 @@
           </div>
         </div>
         <ul>
-          <li>Proposed architecture, not a measured deployment at scale.</li>
           <li>
-            Partition synchronous SQLite work; pool bounded browser processes and recycle workers.
+            A valid click is not task success. Check intended changes and the state that must stay
+            unchanged.
           </li>
           <li>
-            Use containers/VMs and network isolation before allowing shell-capable or hostile
-            policies.
+            Task wording is part of the test. Version ambiguous instructions before collecting new
+            results.
           </li>
           <li>
-            Measure full worker memory, p95 latency, failure rate and cleanup under a sustained
-            load.
+            Missing receipts, blocked runs and wrong answers mean different things. Preserve all
+            three.
+          </li>
+          <li>
+            Scale with bounded workers and external evidence storage. Measure full worker memory,
+            p95 latency and cleanup first; this diagram is a proposal.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Demonstration and discussion">
-        <h2>Demonstration and discussion</h2>
+        <h2>Demo, then questions</h2>
         <ul>
           <li>
             <a href="https://relay.kevinliu.studio/play">Open the workspace</a>: search, reply in a
@@ -437,19 +466,20 @@
             Inspect the exact request, action, state change and terminal checks; replay requires no
             model calls.
           </li>
+          <li>Which Slack workflows and visual details matter for the target agent?</li>
           <li>
-            Discuss: required Slack fidelity, observation contract, security boundary and
-            cost/throughput target.
-          </li>
-          <li>
-            Next gates: successful pixel policies, task-template holdouts, trainer integration and
-            concurrent-worker measurements.
+            What should reward penalize beyond final state? What isolation, throughput and cost
+            target do we need?
           </li>
         </ul>
         <ul class="sources">
           <li>
             Reset/step/reward are implemented; no RL training or BrowserGym/OpenEnv compatibility is
             claimed.
+          </li>
+          <li>
+            Next gates: successful pixel policies, held-out task templates, trainer integration and
+            sustained worker tests.
           </li>
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay">Code and setup</a> ·
@@ -468,6 +498,13 @@
         </div>
         <button type="button" id="close-trials" aria-label="Close trial results">Close ×</button>
       </header>
+      <div class="trial-filter-bar">
+        <label
+          >Find a model or task
+          <input id="trial-search" type="search" placeholder="Search all trials" /></label
+        ><button id="clear-trial-filter" type="button">Show all trials</button
+        ><span id="trial-filter-status" role="status"></span>
+      </div>
       {{COMPARISON_TRIALS}}<span class="sr-only" id="trial-sort-status" role="status"></span>
     </dialog>
     <nav aria-label="Presentation controls">
@@ -479,6 +516,7 @@
       const slides = [...document.querySelectorAll('.slide')];
       let index = 0;
       function show(i) {
+        if (!slides.length) return;
         index = Math.max(0, Math.min(slides.length - 1, i));
         slides.forEach((s, n) => {
           s.classList.toggle('active', n === index);
@@ -491,11 +529,15 @@
         history.replaceState(null, '', `#${index + 1}`);
         window.scrollTo(0, 0);
       }
-      document.getElementById('prev').onclick = () => show(index - 1);
-      document.getElementById('next').onclick = () => show(index + 1);
+      if (slides.length) {
+        document.getElementById('prev').onclick = () => show(index - 1);
+        document.getElementById('next').onclick = () => show(index + 1);
+      }
       document.addEventListener('keydown', (e) => {
         if (
-          e.target.closest('dialog, input, select, textarea, .table-scroll') ||
+          e.target.closest(
+            'dialog, input, select, textarea, .table-scroll, .sort-tools, .task-filter',
+          ) ||
           (e.key === ' ' && e.target.closest('button, a'))
         )
           return;
@@ -513,13 +555,52 @@
       window.addEventListener('hashchange', () => show((Number(location.hash.slice(1)) || 1) - 1));
       show((Number(location.hash.slice(1)) || 1) - 1);
       const trialDialog = document.getElementById('trials-dialog');
-      document.getElementById('open-trials').onclick = () => trialDialog.showModal();
+      let selectedTask = 'all',
+        selectedModel = '';
+      let trialTask = 'all';
+      const search = document.getElementById('trial-search');
+      function filterTrials() {
+        let visible = 0;
+        for (const row of document.querySelectorAll('#trial-results tbody tr')) {
+          row.hidden = !!(
+            (selectedModel && row.dataset.model !== selectedModel) ||
+            (trialTask !== 'all' && row.dataset.task !== trialTask) ||
+            !row.textContent.toLowerCase().includes(search.value.trim().toLowerCase())
+          );
+          if (!row.hidden) visible++;
+        }
+        document.getElementById('trial-filter-status').textContent =
+          `${visible} trials · ${selectedModel || 'all models'} · ${trialTask === 'all' ? 'all tasks' : trialTask}`;
+      }
+      document.getElementById('open-trials').onclick = () => {
+        selectedModel = '';
+        trialTask = 'all';
+        search.value = '';
+        filterTrials();
+        trialDialog.showModal();
+      };
+      document.addEventListener('click', (e) => {
+        const button = e.target.closest('[data-review-model]');
+        if (!button) return;
+        selectedModel = button.dataset.reviewModel;
+        trialTask = selectedTask;
+        search.value = '';
+        filterTrials();
+        trialDialog.showModal();
+      });
+      search.oninput = filterTrials;
+      document.getElementById('clear-trial-filter').onclick = () => {
+        selectedModel = '';
+        trialTask = 'all';
+        search.value = '';
+        filterTrials();
+      };
       document.getElementById('close-trials').onclick = () => trialDialog.close();
       function wireSortable(table) {
         const body = table.tBodies[0];
         const original = new Map([...body.rows].map((row, i) => [row, i]));
         for (const button of table.querySelectorAll('thead button'))
-          button.onclick = () => {
+          button.onclick = (event) => {
             const header = button.closest('th');
             const column = header.cellIndex;
             const direction =
@@ -549,7 +630,7 @@
                 arrow.textContent = th === header ? (direction === 'ascending' ? '↑' : '↓') : '↕';
             }
             body.append(...rows);
-            if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+            if (event.detail > 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches)
               for (const row of rows) {
                 const delta = before.get(row) - row.getBoundingClientRect().top;
                 if (delta)
@@ -567,6 +648,15 @@
           };
       }
       for (const table of document.querySelectorAll('.sortable')) wireSortable(table);
+      for (const button of document.querySelectorAll('[data-sort-column]'))
+        button.onclick = () => {
+          const header =
+            document.getElementById('model-results').tHead.rows[0].cells[
+              Number(button.dataset.sortColumn)
+            ];
+          header.setAttribute('aria-sort', 'none');
+          header.querySelector('button').click();
+        };
       const taskFilter = document.getElementById('task-filter');
       if (taskFilter) {
         taskFilter.addEventListener('keydown', (event) => {
@@ -577,6 +667,7 @@
         });
         for (const button of taskFilter.querySelectorAll('button'))
           button.onclick = () => {
+            selectedTask = button.dataset.task;
             const template = [...document.querySelectorAll('template[data-task]')].find(
               (t) => t.dataset.task === button.dataset.task,
             );
@@ -596,7 +687,7 @@
             taskFilter.querySelector('summary').focus();
             document.getElementById('sort-status').textContent =
               button.dataset.task === 'all'
-                ? 'All tasks · 360 planned per model'
+                ? 'All tasks · {{COMPARISON_REPEATS}} attempt per task/model'
                 : 'Selected task · {{COMPARISON_REPEATS}} planned per model';
             wireSortable(table);
           };

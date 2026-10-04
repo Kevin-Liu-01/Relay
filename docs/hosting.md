@@ -154,6 +154,13 @@ are needed to resolve actual billing; no raw error body is persisted.
 
 ### Release process
 
+`/results` is a static, key-free results surface generated from the same table,
+controls and immutable campaign records as slide 9. The homepage and Replays
+menu link to it. `build-presentation.mjs` derives per-episode cost accounting from
+hash-checked records, validates it against original allowances, and exports CSV
+and JSON. Hosting serves the controller and fonts under the same-origin CSP.
+No result browsing, filtering or replay action triggers inference.
+
 The Vercel project is `relay` in `kl01s-projects`, connected to `Kevin-Liu-01/Relay` on `main`. `vercel.json` builds `build:hosted` and packages a Node 24 function with Chromium. The build preserves `workspace.html` for the private app and makes the public `index.html` the live console; an index-file rewrite alone is insufficient on this deployment.
 
 No shared model secret is deployed. `.env*` (except the example), `.runtime`, `.vercel`, private traces and local reports are excluded from the public repository/archive. Content Security Policy restricts the UI to bundled, same-origin assets and requests. There is no arbitrary upstream URL field or generic proxy.

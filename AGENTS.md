@@ -1,5 +1,22 @@
 # Relay handoff
 
+## Results and assignment handoff — 2026-10-03
+
+The collection below is closed. The new `/results` observer page shares slide 9's
+table, filters and controller; homepage Results and Replays link to it. Model
+names open task-level trace/replay lists. `scripts/lib/report-accounting.mjs`
+derives costs from episode-scoped requests and accepted receipts, never run-wide
+budgets. The presentation builder checks record hashes and reconciles the derived
+report against the frozen summary. CSV/JSON exports separate usage estimates,
+unresolved reservations and total allowance; none is an invoice. Read
+`docs/trial-review.md`, `docs/onsite-readiness.md` and `docs/presentation-notes.md`.
+
+The new navigation/responsive styling changes the release source fingerprint.
+Do not represent this UI release as the source that generated the 306 historical
+trials, or rerun the old collection verifier against new actor source. Original
+records, archives, summary and completion certificate remain untouched. The
+frozen root `dist` is retained; current release builds/tests use an isolated copy.
+
 ## Collection complete — 2026-10-03 21:14 UTC
 
 All **306/306 unique cells** are recorded: **152 passed, 61 incomplete, 93 blocked**;

@@ -11,6 +11,8 @@ The complete library is 81.04 MB compressed, loaded one selected trial at a time
 
 ## Open a trial
 
+- Start at [Results](https://relay.kevinliu.studio/results), also linked from the homepage and Replays menu. Sort any numeric column, select a task, then open a model's trial list. Search the list or choose **Show all trials**. Slide 9 uses the same data and controls.
+- Costs separate accepted usage estimates, unresolved reservations and combined allowance. CSV/JSON downloads include calls, accepted tokens, base rates, actions and time. The build reconciles each episode from its original events; it never assigns a whole multi-episode run's budget to each trial. Neither estimates nor reservations are invoices.
 - Open [the trial library](https://relay.kevinliu.studio/demo/review.html), or **All 306 trials** on [slide 9](https://relay.kevinliu.studio/presentation#9).
 - Every published attempt has **Review trace** and **Watch replay** links, including incomplete and blocked attempts. The catalog reports its actual recorded count; a planned cell is never presented as a recording.
 - Choose a model and task, or move to the previous/next trial. Each selection has a shareable URL. Browser Back restores the previous selection.

@@ -383,6 +383,14 @@ export function ReplayLibrary({ saved, onSaved, onRecording }) {
   return (
     <div className="replay-library">
       <p>Play actions back in the Slack interface. No key, no new inference.</p>
+      <a className="replay-library-row" href="/results" target="_blank" rel="noreferrer">
+        <Film size={23} />
+        <span>
+          <b>All model and task replays</b>
+          <small>306 attempts · 17 models · 18 tasks · results, costs and full traces</small>
+        </span>
+        <Play size={17} />
+      </a>
       {error && <p role="alert">{error}</p>}
       <h3>Your recordings</h3>
       {saved.length ? (

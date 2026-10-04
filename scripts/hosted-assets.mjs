@@ -104,3 +104,17 @@ writeFileSync(
 );
 if (existsSync('docs/presentation.pdf'))
   copyFileSync('docs/presentation.pdf', 'dist/presentation.pdf');
+const results = readFileSync('docs/results.html', 'utf8').replace(
+  /data:font\/woff2;base64,([A-Za-z0-9+/=]+)/g,
+  (_, data) =>
+    `./assets/presentation-${createHash('sha256').update(Buffer.from(data, 'base64')).digest('hex').slice(0, 16)}.woff2`,
+);
+writeFileSync(
+  'dist/results.html',
+  results.replace(
+    /<script>[\s\S]*?<\/script>/,
+    '<script src="./presentation-controls.js"></script>',
+  ),
+);
+for (const extension of ['csv', 'json'])
+  copyFileSync(`docs/results-accounting.${extension}`, `dist/demo/results-accounting.${extension}`);

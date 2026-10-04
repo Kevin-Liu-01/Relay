@@ -8,6 +8,7 @@
     { "source": "/presentation/", "destination": "/presentation", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/results", "destination": "/results.html" },
     { "source": "/play", "destination": "/play.html" },
     { "source": "/presentation", "destination": "/presentation.html" }
   ],

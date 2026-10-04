@@ -8,7 +8,24 @@
 - Strongest demonstration: a model replies in the correct thread, then a deeper run performs plausible actions but fails the exact task contract. Show both.
 - Remaining weaknesses: no successful new screenshot-only policy, wording ambiguities in two tasks, no semantic task holdout or repeatability estimate, and no sustained browser-worker scaling measurement.
 
-## What to submit
+## Assignment coverage
+
+Checked against the supplied CUA take-home brief on 2026-10-03. The private PDF
+is not part of the repository or submission package.
+
+| Requirement                        | Delivered evidence                                                                                 | Boundary                                                                                |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Runnable Slack-like environment    | README setup, lockfile, `/play`, React UI and private SQLite sessions                              | Focused synthetic workflows, not production Slack                                       |
+| Meaningful tasks                   | 18 templates including search, threads, edits and 12 deeper workflows; independent state contracts | Two instruction-language caveats remain disclosed, never retrospectively repaired       |
+| Different interaction approaches   | Earlier real-model traces across pixels, accessibility, page JSON and actor API                    | Unequal coverage; no successful new pixel-only policy and no causal interface ranking   |
+| Models with a compatible harness   | Original MIT-licensed Playwright/Responses runner; 17 exact routes, 306 attempts                   | Not native Codex/BrowserGym/OpenEnv integration or a popularity ranking                 |
+| Trajectories and verification      | `/results`, 306 trace/replay links, state checks, provenance, requests and responses               | UI-state playback, not video; public library omits original PNG bytes                   |
+| Setup and README                   | No-key sandbox/replay instructions, BYOK setup, CLI configuration                                  | New inference requires provider access; no shared secret shipped                        |
+| Isolation and scalability          | Slides 4 and 12; architecture and hosting docs                                                     | Session data isolation, not hostile-code sandboxing; scale-out is proposed              |
+| Speed and resource efficiency      | Slide 11, raw microbenchmark; per-trial latency, tokens, calls and cost downloads                  | No full worker-memory or sustained agent-throughput measurement; cost is not an invoice |
+| Onsite presentation and discussion | 13-slide HTML/PDF, plain technical bullets, diagrams and demo notes                                | Keep time for questions; do not claim RL training                                       |
+
+## Submission contents
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
 - [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
