@@ -16,8 +16,8 @@
     <main>
       <section class="slide active cover" data-title="My approach">
         <h1>
-          I used one harness<br />
-          <em>for multiple model APIs</em>
+          I started with how agents<br />
+          <em>would use a Slack workspace</em>
         </h1>
         <div class="brand-row" aria-label="What Relay supports">
           <span class="brand-chip">{{SLACK_MARK}}Slack workflows</span>
@@ -25,32 +25,39 @@
         </div>
         <ul>
           <li>
-            I used model APIs to choose actions and built a harness to execute them in a working
-            Slack-like app.
+            I studied how agents observe and act on pages, then reviewed Slack mockups and agent
+            environments.
           </li>
           <li>
-            I kept workspace setup, action execution, result checks, and recording separate from the
-            model.
+            I mapped search, threads, and message edits to agent actions and saved changes I could
+            verify.
           </li>
-          <li>This let me change models and interfaces without rebuilding the environment.</li>
+          <li>
+            I built the app, action loop, and result checks separately so I could test each part.
+          </li>
         </ul>
         <div
           class="diagram approach-flow"
           role="img"
-          aria-label="The harness takes a task, creates a fresh workspace, executes model actions, and checks the saved result. Each run is recorded."
+          aria-label="Design process: research computer use, map Slack workflows, build a working environment, then test and record agent runs."
         >
           <div class="flow">
-            <div class="node">{{ICON_TASK}}Task</div>
+            <div class="node">{{ICON_SEARCH}}Research<br />computer use</div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node">{{ICON_WORKSPACE}}Fresh<br />workspace</div>
+            <div class="node">{{ICON_TASK}}Map Slack<br />workflows</div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="blue">{{ICON_POLICY}}Model<br />actions</div>
+            <div class="node" data-tone="blue">{{ICON_WORKSPACE}}Build the<br />environment</div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="green">{{ICON_CHECK}}Result<br />checks</div>
+            <div class="node" data-tone="green">{{ICON_CHECK}}Test and<br />record runs</div>
           </div>
         </div>
         <ul class="sources">
-          <li>Kevin Liu · Relay · October 2026</li>
+          <li>
+            Kevin Liu · October 2026 ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
+              >Research and build decisions</a
+            >
+          </li>
         </ul>
       </section>
       <section class="slide" data-title="The environment">

@@ -32,7 +32,7 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
     'DM its named handoff recipient “Implement DESIGN navigation; accessibility approved.”',
   );
   await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
-    'I used one harness for multiple model APIs',
+    'I started with how agents would use a Slack workspace',
   );
   await expect(page.locator('.cover .brand-chip')).toHaveText([
     'Slack workflows',
@@ -40,8 +40,18 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   ]);
   await expect(page.locator('.cover .brand-chip svg')).toHaveCount(2);
   await expect(page.locator('.approach-flow .node')).toHaveCount(4);
-  await expect(page.locator('.approach-flow .node[data-tone="blue"]')).toHaveText('Modelactions');
-  await expect(page.locator('.approach-flow .node[data-tone="green"]')).toHaveText('Resultchecks');
+  await expect(page.locator('.approach-flow .node')).toHaveText([
+    'Researchcomputer use',
+    'Map Slackworkflows',
+    'Build theenvironment',
+    'Test andrecord runs',
+  ]);
+  await expect(page.locator('.approach-flow .node[data-tone="blue"]')).toHaveText(
+    'Build theenvironment',
+  );
+  await expect(page.locator('.approach-flow .node[data-tone="green"]')).toHaveText(
+    'Test andrecord runs',
+  );
   await expect(page.locator('.approach-flow')).toHaveCSS('background-color', 'rgb(247, 244, 250)');
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'The reusable harness made model comparisons possible',
@@ -102,7 +112,14 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
     'Success means the requested change was saved',
   );
   await expect(page.locator('[data-title="My approach"]')).toContainText(
-    'I used model APIs to choose actions',
+    'I studied how agents observe and act on pages',
+  );
+  await expect(page.locator('[data-title="My approach"]')).toContainText(
+    'saved changes I could verify',
+  );
+  await expect(page.locator('[data-title="My approach"] .sources a')).toHaveAttribute(
+    'href',
+    'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md',
   );
   await expect(page.locator('[data-title="My approach"]')).not.toContainText(
     'The assignment asked',

@@ -1,5 +1,26 @@
 # Verification and evidence
 
+## Research-led presentation opening: 2026-10-05
+
+- Rewrote slide 1 around Kevin's design process: research computer use, map
+  Slack workflows, build the environment, then test and record runs. The
+  heading is “I started with how agents would use a Slack workspace.” It no
+  longer presents API compatibility as the full approach.
+- The slide links the existing research record. Speaker notes distinguish
+  source review from execution of external projects and make no comparative
+  performance claim. The remaining 19 slides and all historical results stay
+  unchanged.
+- All **four presentation browser tests passed** in an isolated production
+  build, including narrative checks, all-slide layout, print bounds, mobile
+  width, sorting, and production security policy. Reviewed the final opening
+  screenshot. The backend suite was not rerun for this document-only change.
+- Regenerated the 20-page HTML/PDF. Initial long copy overflowed print, and an
+  early heading wrapped to three lines in the browser. Both were shortened
+  without shrinking type or weakening layout checks.
+- Refreshed the source receipt and passed the package credential screen.
+  Actor source and frozen root `dist` remain byte-identical. No inference,
+  campaign changes, or historical data edits were required.
+
 ## Design explanations tied to live runs: 2026-10-05
 
 - Revised slides 4–11 to connect each design choice to a failure case or visible

@@ -2,9 +2,10 @@
 
 ## How to use this deck
 
-The main story is: I built an execution loop around model APIs, made each run
-independent and inspectable, then used that system for two comparisons. The
-results exposed limits in both the task definitions and the interface comparison.
+The main story is: I researched how computer-use agents work, mapped that to
+Slack workflows, and built a testable environment and harness. Once each run was
+independent and inspectable, I used the system for two comparisons. The results
+exposed limits in both the task definitions and the interface comparison.
 
 - Use about 18 minutes for the slides, then demonstrate the UI and take questions.
 - Explain the editing example once, then refer back to its message, Save button, and stored result.
@@ -36,15 +37,24 @@ cause of those recorded stops.
 
 ## 1. My approach
 
-Start with my choice, not a restatement of the assignment.
+Introduce the design process, not the assignment or just API compatibility.
 
-A model API gives me a proposed action. I still need to execute it, preserve the
-application's rules, and determine whether it worked. I built those parts once
-so I could change the model without changing the test.
+I first researched how an agent gets information about a page and turns a model
+response into an action. I reviewed browser frameworks such as BrowserGym,
+Slack mockups, and existing environments including Cua's Slack task, env0, and
+Agent-Diff. The [research record](research.md) distinguishes source inspection
+from upstream claims. I did not execute those external projects or establish
+that Relay outperforms them.
 
-Use the flow to explain ownership: the harness takes a task, creates a fresh
-workspace, executes model actions, and checks the saved result. The model selects
-actions; the harness controls the environment and the record of what happened.
+That review helped separate three needs. The app needs working controls and
+stored changes. The harness needs to observe the app and execute model actions.
+The evaluator needs to check whether those changes satisfy the task.
+
+Use the flow to explain the decisions: research computer use, map Slack workflows,
+build the focused environment, then test and record agent runs. Search, threads,
+and message editing gave me concrete workflows to build and verify. A static
+mockup would not test saved changes; implementing all of Slack would add services
+these workflows do not require. The execution loop comes later on slide 4.
 
 The restored visual style uses the older deck's two-color opening, outlined icon
 labels, short bullets, and contained diagrams. It does not restore the older

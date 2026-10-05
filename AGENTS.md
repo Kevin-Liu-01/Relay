@@ -37,6 +37,9 @@ Do not restore slogan headings or insert unmatched pilot scores into the main
 story. The 306-run controls now belong on the comparison setup slide. Use
 `#main-lesson` for the failure review, never a hard-coded slide number.
 Slide 1 must introduce Kevin's engineering choices, not restate the known brief.
+Lead with computer-use research and how it shaped the Slack environment. Its
+flow is research → workflows → environment → verification, not the execution
+loop or multi-provider API support. Keep research claims tied to `docs/research.md`.
 Speaker transitions and supporting detail live in `docs/presentation-notes.md`.
 Preserve the existing grades, records, accounting, and stable result links.
 The interface table shows median elapsed seconds for all attempts and passed
