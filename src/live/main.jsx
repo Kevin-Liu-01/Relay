@@ -53,6 +53,7 @@ import { RunButton, ModelPrice, useLaunchLock } from './run-button.jsx';
 import { makeRunPlan, queueMustStop } from './run-plan.mjs';
 import { acceptFrame } from './playback.mjs';
 import { AgentCursor, StreamImage, StreamBadge } from './workspace-view.jsx';
+import { TaskComparison } from './task-comparison.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const elapsed = (n) =>
@@ -511,6 +512,10 @@ function App() {
             current.events.push(data);
             setRecord({ ...current });
           }
+          if (type === 'expected_result') {
+            current.expectations = { ...current.expectations, [data.episodeId]: data.contract };
+            setRecord({ ...current });
+          }
           if (type === 'artifact') current.artifacts[data.path] = data.image;
           if (type === 'audit') {
             current.audit = data;
@@ -579,6 +584,14 @@ function App() {
     events = (record?.events ?? []).filter((e) => e.episodeId === episodeId).map((e) => e.event),
     actions = events.filter((e) => e.kind === 'step'),
     activeStep = selectedStep == null ? actions.at(-1) : actions[selectedStep];
+  const finalState = !busy
+    ? record?.audit?.episodes.find((e) => e.episode.cell.episodeId === episodeId)?.outcome?.state
+    : null;
+  const comparisonState =
+    selectedStep == null
+      ? (finalState ?? events.filter((e) => e.replay?.data?.state).at(-1)?.replay.data.state)
+      : events.find((e) => e.kind === 'observation' && e.step === activeStep?.step)?.replay?.data
+          ?.state;
   const decision = (
     selectedStep == null
       ? events.filter((e) => e.kind === 'response').at(-1)?.response
@@ -974,6 +987,22 @@ function App() {
                   <Play size={14} /> Watch a replay
                 </button>
               </div>
+            )}
+            {episode && (
+              <TaskComparison
+                key={`${run.id}/${episodeId}`}
+                record={record}
+                episodeId={episodeId}
+                state={comparisonState}
+                actualLabel={
+                  selectedStep != null
+                    ? `Before action ${activeStep?.step}`
+                    : finalState
+                      ? 'Final captured state'
+                      : 'Latest captured state'
+                }
+                isFinal={selectedStep == null && !!finalState}
+              />
             )}
           </section>
           {(run || busy) && (

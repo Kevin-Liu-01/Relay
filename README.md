@@ -85,6 +85,10 @@ New browser runs include recorded cursor positions and click feedback. **Smart p
 makes fast actions readable and shortens long waits; **Recorded timing** preserves
 capture intervals. Use the expand icon to focus on either the live workspace or replay.
 
+**Expected vs actual** shows the required final values beside the captured values.
+Seek through a replay to see which requirements are met at each step. The panel is
+for viewers only and does not change the saved grade. [Comparison details](docs/expected-results.md).
+
 **Two models? Open 1v1.** Same task and seed, two fresh workspaces, side-by-side
 action feeds and independently checked outcomes. Each model gets its own allowance;
 the combined maximum is shown before launch.

@@ -15,6 +15,7 @@ import { assertSafeEvidence } from '../runner/export.mjs';
 import { TASK_CATALOG, TASK_LABELS } from '../shared/task-catalog.mjs';
 import { startSpectator } from './spectator.mjs';
 import { createFreeTier, freeCatalog, freeRunConfig, FreeTierError } from './free-tier.mjs';
+import { buildTaskExpectation } from './task-expectations.mjs';
 export { TASK_LABELS };
 
 export async function flushStream(res, signal) {
@@ -323,7 +324,14 @@ export function createHostedHandler({
             data.episodes.find((e) => e.status === 'running')?.cell.episodeId ?? activeEpisode;
           emit('run', data);
         },
-        onRecord: (episodeId, event) => emit('event', { episodeId, event }),
+        onRecord: (episodeId, event) => {
+          emit('event', { episodeId, event });
+          if (event.kind === 'episode_started') {
+            // Separate observer message, never a model input or a hashed actor event.
+            const episode = run.data.episodes.find((e) => e.cell.episodeId === episodeId);
+            emit('expected_result', { episodeId, contract: buildTaskExpectation(episode) });
+          }
+        },
       });
       deadline = setTimeout(() => run.cancel(), (LIMITS.runSeconds + 15) * 1000);
       if (abort.signal.aborted) run.cancel();

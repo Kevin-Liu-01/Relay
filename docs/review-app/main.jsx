@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { ReplayPlayer, WorkspaceReplay, replayFrames } from '../../src/live/replay.jsx';
 import { OutcomeBadge } from '../../src/live/feedback.jsx';
+import { TaskComparison } from '../../src/live/task-comparison.jsx';
 import { RelaySelect } from '../../src/live/select.jsx';
 import { TaskIcon } from '../../src/live/select-icons.jsx';
 import { ModelMark } from '../../src/lab/model-mark.jsx';
@@ -229,6 +230,13 @@ function Evidence({ record, item, view }) {
               </div>
             </div>
             <WorkspaceReplay frame={replayFrames(record, item.episodeId)[0]} />
+            <TaskComparison
+              record={record}
+              episodeId={item.episodeId}
+              state={audit.outcome?.state ?? audit.initial?.state}
+              actualLabel={audit.outcome?.state ? 'Final captured state' : 'Initial captured state'}
+              isFinal={!!audit.outcome?.state}
+            />
           </>
         ) : (
           <ReplayPlayer record={record} />
@@ -243,6 +251,13 @@ function Evidence({ record, item, view }) {
     return (
       <section className="review-detail" aria-label="Outcome checks">
         <h2>{item.outcome === 'blocked' ? 'Diagnostic workspace checks' : 'Outcome checks'}</h2>
+        <TaskComparison
+          record={record}
+          episodeId={item.episodeId}
+          state={audit.outcome?.state}
+          actualLabel="Final captured state"
+          isFinal
+        />
         {item.outcome === 'blocked' && (
           <p>
             A blocked run is not a completed task, even if its saved workspace satisfies some

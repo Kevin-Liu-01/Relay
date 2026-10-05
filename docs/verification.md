@@ -1,5 +1,31 @@
 # Verification and evidence
 
+## Expected and actual task results: 2026-10-04
+
+- Runs and replays now show exact required final values beside captured values.
+  Replay seeking updates the actual column. Missing structured captures show
+  unknown values. Unsupported task versions have no inferred comparison.
+- All **203 backend tests and 16 targeted browser tests passed**. The browser
+  suite opened all **306 published trials**, checked each expected-result panel,
+  and confirmed matching fields for all 152 saved passes. No paid model calls
+  were made. These are software checks, not new benchmark trials.
+- Tests cover all 18 task types at three seeds, provenance mismatches, exact
+  text and destinations, missing states, edits, reactions, pins, saves,
+  deletions, duplicate messages, keyboard use and mobile width. Live and 1v1
+  records retain requirements in browser-local history. Provider inputs and
+  the actor service do not expose the observer comparison.
+- The initial browser run caught replay-dialog overflow and timed out in four
+  other checks under parallel load. The dialog now keeps scrolling inside its
+  body. The final run used one worker and a 60-second per-test timeout; the
+  inventory sweep retained its 240-second limit. It keeps its coverage report
+  without duplicating all 306 records into another video/DOM trace. Focused
+  browser tests still retain visual evidence. Automatic retries were disabled.
+- Validation used isolated, credential-free builds. Backend source receipt
+  `0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759`,
+  frozen root `dist`, original records, campaign summary and costs are unchanged.
+  The two task-language caveats remain visible. The saved grader is still the
+  outcome authority. See [Expected and actual results](expected-results.md).
+
 ## Tab icons and punctuation: 2026-10-04
 
 - Added Relay SVG and ICO favicons to the presentation and results pages, including

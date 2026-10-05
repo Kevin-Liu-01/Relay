@@ -20,6 +20,7 @@ import { RelaySelect } from './select.jsx';
 import { ModeIcon } from './select-icons.jsx';
 import { episodeEvents, playbackTimeline, playbackAt } from './playback.mjs';
 import { AgentCursor } from './workspace-view.jsx';
+import { TaskComparison } from './task-comparison.jsx';
 
 export function replayFrames(record, episodeId) {
   const e = record?.audit?.episodes?.find((x) => x.episode.cell.episodeId === episodeId);
@@ -345,6 +346,14 @@ export function ReplayPlayer({ record }) {
           {(time / 1000).toFixed(1)} / {(timeline.duration / 1000).toFixed(1)}s
         </span>
       </div>
+      <TaskComparison
+        key={`${record.run.id}/${eid}`}
+        record={record}
+        episodeId={eid}
+        state={frame?.snapshot?.data?.state}
+        actualLabel={frame?.label ?? 'Selected replay frame'}
+        isFinal={frame?.label === 'Final workspace'}
+      />
     </div>
   );
 }

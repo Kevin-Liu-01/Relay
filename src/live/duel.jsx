@@ -54,9 +54,11 @@ async function streamRun({ provider, key, config, signal, onUpdate, onFrame }) {
         if (type === 'frame') onFrame(data);
         if (type === 'artifact') record.artifacts[data.path] = data.image;
         if (type === 'audit') record.audit = data;
+        if (type === 'expected_result')
+          record.expectations = { ...record.expectations, [data.episodeId]: data.contract };
         if (type === 'error') throw Error(data.message);
         if (type === 'done') complete = true;
-        if (['run', 'event', 'audit'].includes(type)) onUpdate({ ...record });
+        if (['run', 'event', 'audit', 'expected_result'].includes(type)) onUpdate({ ...record });
       }
     }
     if (!complete) throw Error('Connection ended before final audit.');

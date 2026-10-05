@@ -11,6 +11,8 @@ import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { validateCatalog, validateRecord } from '../docs/review-app/data.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
+import { buildTaskExpectation } from '../hosted/task-expectations.mjs';
+import { expectationKey } from '../src/live/task-comparison.mjs';
 const secrets = [
   'RAMP_ROUTER_API_KEY',
   'TYPESAFE_API_KEY',
@@ -28,6 +30,13 @@ const secrets = [
 if (!existsSync('dist/workspace.html')) copyFileSync('dist/index.html', 'dist/workspace.html');
 copyFileSync('dist/live.html', 'dist/index.html');
 mkdirSync('dist/demo', { recursive: true });
+const expectedResults = { schema: 'relay-task-expectations-v1', contracts: {} };
+function addExpectations(record) {
+  for (const episode of record.run?.episodes ?? []) {
+    const contract = buildTaskExpectation(episode);
+    if (contract) expectedResults.contracts[expectationKey(episode)] = contract;
+  }
+}
 // Static, lazy-loaded trial records. Never expose private runtime directories.
 if (existsSync('evidence/trial-library/catalog.json')) {
   const catalog = validateCatalog(JSON.parse(readFileSync('evidence/trial-library/catalog.json')));
@@ -42,7 +51,8 @@ if (existsSync('evidence/trial-library/catalog.json')) {
     const text = gunzipSync(bytes, { maxOutputLength: 80e6 }).toString('utf8');
     if (Buffer.byteLength(text) !== item.jsonBytes) throw Error('Public recording size mismatch.');
     assertSafeEvidence(text, secrets);
-    validateRecord(JSON.parse(text), item);
+    const record = validateRecord(JSON.parse(text), item);
+    addExpectations(record);
     copyFileSync(source, `dist${item.path}`);
   }
   copyFileSync('evidence/trial-library/catalog.json', 'dist/demo/trial-catalog.json');
@@ -95,7 +105,12 @@ const recordings = [
     kind: 'Real model · legacy screenshots + initial/final state',
   },
 ].filter((r) => existsSync(r.source));
-for (const r of recordings) copyFileSync(r.source, `dist/demo/${r.name}`);
+for (const r of recordings) {
+  copyFileSync(r.source, `dist/demo/${r.name}`);
+  addExpectations(JSON.parse(readFileSync(r.source, 'utf8')));
+}
+// An observer sidecar, not a rewrite of any signed recording or task definition.
+writeFileSync('dist/demo/task-expectations.json', JSON.stringify(expectedResults));
 writeFileSync(
   'dist/demo/replays.json',
   JSON.stringify(

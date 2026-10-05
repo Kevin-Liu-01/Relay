@@ -51,6 +51,7 @@ const send = (token, revision = 0, requestId = 'test-request-1', text = 'test') 
   });
 test('control plane is absent from app and requires token', async () => {
   assert.equal((await call(app, '/api/evaluate')).status, 404);
+  assert.equal((await call(app, '/demo/task-expectations.json')).status, 404);
   assert.equal((await call(control, '/tasks')).status, 401);
   assert.equal((await ctl('/tasks', { headers: { origin: app } })).status, 403);
 });

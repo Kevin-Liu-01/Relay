@@ -1,5 +1,14 @@
 # Relay handoff
 
+## Expected-result comparison
+
+Read `docs/expected-results.md`. Runs and replays compare exact required final
+values with the selected captured state. `hosted/task-expectations.mjs` owns the
+observer-only projection; source and baseline receipts must match. The static
+sidecar supports all 306 published trials without rewriting their records.
+Never send the projection to the actor or model, treat field matches as a new
+grade, or infer state from a missing capture. Task-language caveats remain.
+
 ## Public free-tier and navigation release
 
 The user authorized an operator-funded demo: $5/day aggregate, $0.05/run and

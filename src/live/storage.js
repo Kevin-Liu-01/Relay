@@ -41,6 +41,7 @@ export const saveRun = (record) =>
       audit: record.audit ?? null,
       events: record.events,
       artifacts: record.artifacts,
+      expectations: record.expectations ?? {},
       capturedAt: new Date().toISOString(),
       error: record.error ?? null,
       duel: record.duel ?? null,

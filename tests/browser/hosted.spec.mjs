@@ -39,6 +39,9 @@ function fakeRouter(provider, key) {
           criteria = body.questions.action.criteria,
           entries = Object.entries(criteria),
           o = body.state.observation;
+        expect(options.body).not.toMatch(
+          /relay-task-expectation|baselineMessageIds|expected_result|Expected vs actual/,
+        );
         const topic = 'Launch review · 15:00 UTC · Bring the final checklist';
         const field = o.elements.find((e) => e.name === 'Channel topic');
         const chosen = field
@@ -161,6 +164,9 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     });
     await expect(page.getByRole('region', { name: 'Current action', exact: true })).toHaveCount(0);
     await expect(page.locator('.workspace-top [role="status"]')).toHaveText('Task passed');
+    const comparison = page.getByRole('region', { name: 'Expected and actual result' });
+    await expect(comparison).toContainText('2/2 fields match');
+    await expect(comparison).toContainText('Final captured state');
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeVisible();
     for (const size of [
       { width: 1920, height: 1080 },
@@ -250,6 +256,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     expect(stored).toContain('fake-jev-contract-test');
     expect(stored).toContain('initial.json');
     const parsed = JSON.parse(stored)[0];
+    expect(parsed.expectations['episode-001'].schema).toBe('relay-task-expectation-v1');
+    expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toMatch(
+      /relay-task-expectation|baselineMessageIds|expected_result/,
+    );
     const pointers = parsed.events.filter((e) => e.event.kind === 'pointer');
     expect(pointers.length).toBeGreaterThanOrEqual(4);
     expect(pointers.some((e) => e.event.pointer.type === 'pointerdown')).toBe(true);

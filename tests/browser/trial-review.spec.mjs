@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { once } from 'node:events';
-import { gunzipSync } from 'node:zlib';
 import { createLiveServer } from '../../hosted/local.mjs';
 const catalog = JSON.parse(readFileSync('evidence/trial-library/catalog.json'));
 const passed = catalog.trials.find((r) => r.outcome === 'passed' && r.task === 'channel-topic');
@@ -50,6 +49,15 @@ test.describe('public trial library', () => {
     await page.goto(review(base));
     await expect(page.getByText('Recording hash checked')).toBeVisible();
     await expect(page.locator('.review-outcome')).toContainText('Task passed');
+    const comparison = page.getByRole('region', { name: 'Expected and actual result' });
+    await expect(comparison).toContainText('1/2 fields match');
+    await expect(comparison.locator('.comparison-field').first()).toContainText(
+      'Launch review · 15:00 UTC · Bring the final checklist',
+    );
+    await expect(comparison.locator('.comparison-field').first()).toHaveAttribute(
+      'data-status',
+      'different',
+    );
     await page.getByRole('button', { name: 'Next action', exact: true }).click();
     const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
     await expect(workspace.getByRole('dialog', { name: 'Edit channel topic' })).toBeVisible();
@@ -59,6 +67,14 @@ test.describe('public trial library', () => {
     await page.getByRole('button', { name: 'Play replay', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Pause replay' })).toBeVisible();
     await page.getByRole('button', { name: 'Pause replay' }).click();
+    const position = page.getByRole('slider', { name: 'Playback position' });
+    await position.fill(await position.getAttribute('max'));
+    await expect(comparison).toContainText('2/2 fields match');
+    await expect(comparison).toContainText('Final workspace');
+    await expect(comparison).toContainText('Saved check: unchanged');
+    await page.screenshot({ path: 'artifacts/expected-result-desktop.png', fullPage: true });
+    await position.fill('0');
+    await expect(comparison).toContainText('1/2 fields match');
     await page.getByRole('button', { name: 'Expand replay' }).click();
     await expect(page.locator('.replay-player')).toHaveAttribute('data-focus', 'true');
     await page.keyboard.press('Escape');
@@ -101,6 +117,9 @@ test.describe('public trial library', () => {
     await expect(page.getByRole('heading', { name: 'No actions recorded' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Play replay', exact: true })).toHaveCount(0);
     await expect(page.locator('.review-outcome')).not.toContainText('Task passed');
+    await expect(page.getByRole('region', { name: 'Expected and actual result' })).toContainText(
+      'Expected final',
+    );
     await page.goto(review(base, diagnostic, 'checks'));
     await expect(page.getByRole('heading', { name: 'Diagnostic workspace checks' })).toBeVisible();
     await expect(page.locator('.review-outcome')).not.toContainText('Task passed');
@@ -174,6 +193,15 @@ test.describe('public trial library', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(review(base));
     await expect(page.getByText('Recording hash checked')).toBeVisible();
+    const toggle = page.getByRole('button', { name: /Expected vs actual/ });
+    await expect(toggle).toContainText('fields match');
+    await toggle.focus();
+    await page.keyboard.press('Space');
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await page.keyboard.press('Enter');
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(toggle.locator('svg').last()).toHaveCSS('transition-duration', '0s');
+    await page.screenshot({ path: 'artifacts/expected-result-mobile.png', fullPage: true });
     await page.getByRole('combobox', { name: 'Review task' }).focus();
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
@@ -190,66 +218,28 @@ test.describe('public trial library', () => {
     );
   });
 
-  test('every published trial opens and renders its final captured workspace without inference', async ({
+  test('unknown versions never substitute answers and task wording caveats remain visible', async ({
     page,
-  }, testInfo) => {
-    test.setTimeout(240000);
-    const errors = [],
-      apiCalls = [],
-      checked = [];
-    page.on('pageerror', (error) => errors.push(error.message));
-    page.on('request', (request) => {
-      if (/\/api\//.test(request.url())) apiCalls.push(request.url());
+  }) => {
+    await page.route('**/demo/task-expectations.json', async (route) => {
+      const response = await route.fetch();
+      const value = await response.json();
+      for (const contract of Object.values(value.contracts)) contract.backendHash = 'wrong-version';
+      await route.fulfill({ json: value });
     });
-    await page.goto(review(base, catalog.trials[0]));
-    for (let i = 0; i < catalog.trials.length; i++) {
-      const item = catalog.trials[i];
-      await expect(page.locator('.review-card')).toHaveAttribute('data-trial-id', item.id);
-      await expect(page.getByText('Recording hash checked')).toBeVisible();
-      const data = JSON.parse(
-        gunzipSync(readFileSync(`evidence/trial-library/${item.path.split('/').at(-1)}`)),
-      );
-      const frames = data.events.filter(({ event }) => event.replay?.version === 1);
-      const snapshot = (item.actionAttempts ? frames.at(-1) : frames[0]).event.replay;
-      if (item.actionAttempts) {
-        await page
-          .getByRole('slider', { name: 'Playback position' })
-          .fill(String(frames.length - 1));
-        await expect(page.locator('.replay-action')).toContainText('Final workspace');
-      } else await expect(page.getByRole('heading', { name: 'No actions recorded' })).toBeVisible();
-      const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
-      await expect(workspace.locator('#root')).toHaveAttribute('inert', '');
-      const view = snapshot.ui.view ?? 'channel';
-      const channel =
-        snapshot.data.state.channels.find((c) => c.id === snapshot.ui.channelId) ??
-        snapshot.data.state.channels[0];
-      const heading = ['channel', 'pins'].includes(view)
-        ? channel.name
-        : ({ search: 'Search results', dms: 'Direct messages', saved: 'Later' }[view] ?? 'Threads');
-      await expect(workspace.locator('.channel-header h1')).toHaveText(heading);
-      if (['channel', 'pins'].includes(view))
-        await expect(workspace.locator('.topic-preview')).toHaveText(channel.topic);
-      checked.push({
-        id: item.id,
-        outcome: item.outcome,
-        frames: frames.length,
-        rendered: true,
-        archiveSha256: item.archiveSha256,
-      });
-      if (i + 1 < catalog.trials.length)
-        await page.getByRole('button', { name: 'Next trial', exact: true }).click();
-    }
-    expect(checked).toHaveLength(catalog.attempted);
-    expect(errors).toEqual([]);
-    expect(apiCalls).toEqual([]);
-    await testInfo.attach('replay-coverage.json', {
-      body: JSON.stringify({
-        evidenceKind: 'recorded-trial-replay-render-check',
-        summaryHash: catalog.summaryHash,
-        note: 'Software playback verification, not additional model inference. Zero-action trials render their first captured workspace.',
-        checked,
-      }),
-      contentType: 'application/json',
-    });
+    await page.goto(review(base));
+    const comparison = page.getByRole('region', { name: 'Expected and actual result' });
+    await expect(comparison).toContainText('Comparison unavailable for this task version');
+    await expect(comparison.locator('.comparison-field')).toHaveCount(0);
+    await expect(page.locator('.review-outcome')).toContainText('Task passed');
+    await page.unroute('**/demo/task-expectations.json');
+    await page.goto(
+      review(
+        base,
+        catalog.trials.find((t) => t.task === 'design-handoff'),
+      ),
+    );
+    await expect(comparison).toContainText('documented wording issue');
+    await expect(comparison).toContainText('Willow');
   });
 });
