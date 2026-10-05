@@ -1000,11 +1000,12 @@
     </dialog>
     <nav class="presenter-dock" aria-label="Presentation controls">
       <div id="deck-progress" class="deck-progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="20" aria-valuenow="1"><span></span></div>
+      <button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)">{{PRESENTER_PREV}}<span class="reading-step-label">Previous</span></button>
       <button id="open-overview" class="slide-picker" type="button" aria-label="Open slide overview" aria-haspopup="dialog" title="Find a slide (G)">{{PRESENTER_GRID}}<span><span id="counter" aria-live="polite"></span><span id="current-topic" class="current-topic"></span></span></button>
-      <div class="deck-step-controls"><button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)">{{PRESENTER_PREV}}</button><button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)">{{PRESENTER_NEXT}}</button></div>
+      <button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)"><span class="reading-step-label">Next</span>{{PRESENTER_NEXT}}</button>
       <span class="dock-divider" aria-hidden="true"></span>
       <button id="toggle-notes" class="presenter-icon" type="button" aria-label="Show speaker notes" aria-controls="presenter-notes" aria-expanded="false" title="Speaker notes (N)">{{PRESENTER_NOTES_ICON}}<span class="dock-label">Notes</span></button>
-      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter presentation view" aria-pressed="false" title="Presentation view (F)"><span class="present-enter">{{PRESENTER_EXPAND}}</span><span class="present-exit" hidden>{{PRESENTER_COLLAPSE}}</span><span class="dock-label">Present</span></button>
+      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter slides" aria-pressed="false" title="Enter slides (F)"><span class="present-enter">{{PRESENTER_EXPAND}}</span><span class="present-exit" hidden>{{PRESENTER_COLLAPSE}}</span><span class="dock-label">Enter slides</span></button>
       <button id="open-tools" class="presenter-icon" type="button" aria-label="Open presentation tools" aria-haspopup="dialog" title="Tools and shortcuts (?)">{{PRESENTER_KEYS}}</button>
     </nav>
     <div id="presenter-status" class="sr-only" role="status"></div>
@@ -1101,7 +1102,7 @@
             document.getElementById(
               table.id === 'model-results'
                 ? 'sort-status'
-                : table.id === 'interface-results'
+                : table.id === 'interface-study-table'
                   ? 'interface-sort-status'
                   : ['interface-repeat-results', 'repeat-task-results'].includes(table.id)
                     ? 'repeat-sort-status'

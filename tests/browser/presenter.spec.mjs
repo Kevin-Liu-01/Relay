@@ -79,7 +79,7 @@ test('presentation view fits the viewport and recovers when fullscreen is unavai
   });
   await page.goto(deck('#main-lesson'));
   await page.setViewportSize({ width: 1280, height: 720 });
-  await page.getByRole('button', { name: 'Enter presentation view' }).click();
+  await page.getByRole('button', { name: 'Enter slides', exact: true }).click();
   await expect(page.locator('body')).toHaveClass(/deck-presenting/);
   await expect(page.locator('#presenter-status')).toContainText('still fits this window');
   await expect
@@ -100,10 +100,86 @@ test('presentation view fits the viewport and recovers when fullscreen is unavai
   await expect(page.locator('#sort-status')).toContainText('Passed, descending');
   await page.keyboard.press('Escape');
   await expect(page.locator('body')).not.toHaveClass(/deck-presenting/);
-  await expect(page.getByRole('button', { name: 'Enter presentation view' })).toHaveAttribute(
+  await expect(page.getByRole('button', { name: 'Enter slides', exact: true })).toHaveAttribute(
     'aria-pressed',
     'false',
   );
+});
+
+test('reading view keeps its simple footer and slide mode has one padded 16:9 canvas for every slide', async ({
+  page,
+}, testInfo) => {
+  test.setTimeout(90000); // 100 distinct rendered slide/viewport states, with no retries.
+  await page.addInitScript(() => {
+    Element.prototype.requestFullscreen = async () => {
+      throw new Error('Window-fit test');
+    };
+  });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(deck('#interface-results'));
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  await expect(page.locator('body')).not.toHaveClass(/deck-presenting/);
+  await expect(page.locator('.presenter-dock')).toHaveCSS('border-radius', '0px');
+  await expect(page.locator('.reading-step-label').first()).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('document-view.png') });
+  await page.getByRole('button', { name: 'Enter slides', exact: true }).click();
+  for (const size of [
+    { width: 1440, height: 900 },
+    { width: 1280, height: 720 },
+    { width: 1920, height: 1080 },
+    { width: 800, height: 600 },
+    { width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize(size);
+    for (let n = 0; n < 20; n++) {
+      await page.evaluate((i) => {
+        location.hash = String(i + 1);
+      }, n);
+      await expect(page.locator('#counter')).toHaveText(`${n + 1} / 20`);
+      if (n === 0) {
+        await expect(page.locator('.slide.active .approach-flow .flow')).toHaveCSS(
+          'flex-direction',
+          'row',
+        );
+      }
+      await expect
+        .poll(
+          () =>
+            page.locator('.slide.active').evaluate((slide) => {
+              const r = slide.getBoundingClientRect();
+              const c = slide.querySelector('.slide-content').getBoundingClientRect();
+              const dock = document.querySelector('.presenter-dock').getBoundingClientRect();
+              const scale = r.width / 1280;
+              return (
+                Math.abs(r.width / r.height - 16 / 9) < 0.002 &&
+                r.left >= 0 &&
+                r.right <= innerWidth + 1 &&
+                r.top >= 0 &&
+                r.bottom < dock.top &&
+                c.left >= r.left + 56 * scale - 1 &&
+                c.right <= r.right - 56 * scale + 1 &&
+                c.top >= r.top + 40 * scale - 1 &&
+                c.bottom <= r.bottom - 40 * scale + 1
+              );
+            }),
+          {
+            message: `Slide ${n + 1} at ${size.width} must retain ratio, padding and viewport fit`,
+          },
+        )
+        .toBe(true);
+    }
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.evaluate(() => {
+    location.hash = 'interface-results';
+  });
+  await expect(page.locator('#counter')).toHaveText('17 / 20');
+  await page.screenshot({ path: testInfo.outputPath('slides-view.png') });
+  await page.keyboard.press('Escape');
+  await expect(page.locator('body')).not.toHaveClass(/deck-presenting/);
+  await expect(page).toHaveURL(/#interface-results$/);
+  await expect(page.locator('.slide-content').first()).toHaveCSS('display', 'contents');
 });
 
 test('presenter tools preserve canonical links, handle clipboard denial and leave print clean', async ({
@@ -159,7 +235,9 @@ test('small-screen presenter controls stay reachable and notes do not leave hidd
     await page.locator('.slide-card').evaluateAll((cards) =>
       cards.every((card) => {
         const bottom = card.getBoundingClientRect().bottom;
-        return [...card.children].every((child) => child.getBoundingClientRect().bottom <= bottom - 8);
+        return [...card.children].every(
+          (child) => child.getBoundingClientRect().bottom <= bottom - 8,
+        );
       }),
     ),
   ).toBe(true);

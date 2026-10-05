@@ -761,123 +761,125 @@ a:focus-visible {
   }
 }
 @media (max-width: 760px) {
-  .breadth-slide .comparison-heading {
-    display: block;
-  }
-  .comparison-controls {
-    flex-wrap: wrap;
-  }
-  .comparison-controls .task-filter > div {
-    left: 0;
-    right: auto;
-  }
-  .comparison-toolbar {
-    align-items: start;
-    font-size: 13px;
-  }
-  .comparison-toolbar button {
-    white-space: nowrap;
-  }
-  #sort-status {
-    margin-left: 0;
-  }
-  #trials-dialog {
-    padding: 16px;
-  }
-  main {
-    margin: 0 0 75px;
-  }
-  .slide {
-    padding: 24px 22px 32px;
-    min-height: calc(100vh - 64px);
-    border: 0;
-    border-radius: 0;
-  }
-  .masthead {
-    margin-bottom: 32px;
-  }
-  .section-label {
-    font-size: 10px;
-    gap: 6px;
-    text-align: right;
-  }
-  .section-label > svg {
-    display: none;
-  }
-  .wordmark {
-    font-size: 19px;
-  }
-  .wordmark svg {
-    width: 26px;
-    height: 26px;
-  }
-  .section-number {
-    padding-left: 7px;
-  }
-  .flow {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .node {
-    flex-basis: 130px;
-    font-size: 17px;
-  }
-  .stack {
-    flex-basis: 100%;
-  }
-  .diagram {
-    padding: 14px;
-  }
-  .brand-chip {
-    font-size: 18px;
-    padding: 11px 13px;
-  }
-  .brand-chip small {
-    font-size: 13px;
-    margin-left: 0;
-  }
-  .metrics {
-    gap: 8px;
-  }
-  .metric {
-    padding: 13px 9px;
-  }
-  .metric strong {
-    font-size: 27px;
-  }
-  .metric small {
-    font-size: 14px;
-  }
-  .metric span {
-    font-size: 13px;
-  }
-  .result-row {
-    grid-template-columns: 118px 1fr;
-    gap: 9px;
-    font-size: 14px;
-  }
-  .result-row > :last-child {
-    grid-column: 2;
-    font-size: 13px;
-  }
-  .interface-label {
-    gap: 6px;
-  }
-  .legend {
-    font-size: 13px;
-    gap: 12px;
-  }
-  nav {
-    gap: 8px;
-  }
-  nav button {
-    padding: 9px;
-    font-size: 12px;
-  }
-  #counter {
-    min-width: 0;
-    max-width: 170px;
-    font-size: 11px;
+  :root:not(:has(.deck-presenting)) {
+    .breadth-slide .comparison-heading {
+      display: block;
+    }
+    .comparison-controls {
+      flex-wrap: wrap;
+    }
+    .comparison-controls .task-filter > div {
+      left: 0;
+      right: auto;
+    }
+    .comparison-toolbar {
+      align-items: start;
+      font-size: 13px;
+    }
+    .comparison-toolbar button {
+      white-space: nowrap;
+    }
+    #sort-status {
+      margin-left: 0;
+    }
+    #trials-dialog {
+      padding: 16px;
+    }
+    main {
+      margin: 0 0 75px;
+    }
+    .slide {
+      padding: 24px 22px 32px;
+      min-height: calc(100vh - 64px);
+      border: 0;
+      border-radius: 0;
+    }
+    .masthead {
+      margin-bottom: 32px;
+    }
+    .section-label {
+      font-size: 10px;
+      gap: 6px;
+      text-align: right;
+    }
+    .section-label > svg {
+      display: none;
+    }
+    .wordmark {
+      font-size: 19px;
+    }
+    .wordmark svg {
+      width: 26px;
+      height: 26px;
+    }
+    .section-number {
+      padding-left: 7px;
+    }
+    .flow {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .node {
+      flex-basis: 130px;
+      font-size: 17px;
+    }
+    .stack {
+      flex-basis: 100%;
+    }
+    .diagram {
+      padding: 14px;
+    }
+    .brand-chip {
+      font-size: 18px;
+      padding: 11px 13px;
+    }
+    .brand-chip small {
+      font-size: 13px;
+      margin-left: 0;
+    }
+    .metrics {
+      gap: 8px;
+    }
+    .metric {
+      padding: 13px 9px;
+    }
+    .metric strong {
+      font-size: 27px;
+    }
+    .metric small {
+      font-size: 14px;
+    }
+    .metric span {
+      font-size: 13px;
+    }
+    .result-row {
+      grid-template-columns: 118px 1fr;
+      gap: 9px;
+      font-size: 14px;
+    }
+    .result-row > :last-child {
+      grid-column: 2;
+      font-size: 13px;
+    }
+    .interface-label {
+      gap: 6px;
+    }
+    .legend {
+      font-size: 13px;
+      gap: 12px;
+    }
+    nav {
+      gap: 8px;
+    }
+    nav button {
+      padding: 9px;
+      font-size: 12px;
+    }
+    #counter {
+      min-width: 0;
+      max-width: 170px;
+      font-size: 11px;
+    }
   }
 }
 @page {
@@ -935,7 +937,8 @@ a:focus-visible {
   top: 0;
   z-index: 2;
 }
-.comparison-slide > .table-scroll {
+.comparison-slide > .table-scroll,
+.comparison-slide > .slide-content > .table-scroll {
   max-height: 54vh;
 }
 .comparison-table {
@@ -1042,26 +1045,28 @@ a:focus-visible {
   display: none !important;
 }
 @media (max-width: 760px) {
-  .results-panel {
-    padding: 20px 16px;
-    border-radius: 0;
-  }
-  .results-page main {
-    margin: 0;
-  }
-  .cost-summary {
-    gap: 12px 18px;
-  }
-  .cost-summary strong,
-  .results-page .cost-summary strong {
-    font-size: 20px;
-  }
-  .trial-filter-bar input {
-    margin: 6px 0;
-    display: block;
-  }
-  .sort-tools a {
-    margin-left: 0;
+  :root:not(:has(.deck-presenting)) {
+    .results-panel {
+      padding: 20px 16px;
+      border-radius: 0;
+    }
+    .results-page main {
+      margin: 0;
+    }
+    .cost-summary {
+      gap: 12px 18px;
+    }
+    .cost-summary strong,
+    .results-page .cost-summary strong {
+      font-size: 20px;
+    }
+    .trial-filter-bar input {
+      margin: 6px 0;
+      display: block;
+    }
+    .sort-tools a {
+      margin-left: 0;
+    }
   }
 }
 @media print {
@@ -1094,7 +1099,8 @@ a:focus-visible {
   .cost-summary span {
     font-size: 10px;
   }
-  .comparison-slide > .table-scroll {
+  .comparison-slide > .table-scroll,
+  .comparison-slide > .slide-content > .table-scroll {
     max-height: none;
   }
   .comparison-table {
@@ -1350,7 +1356,8 @@ a:focus-visible {
   padding-top: 6px;
   padding-bottom: 6px;
 }
-.interface-study-results > ul:not(.sources) li {
+.interface-study-results > ul:not(.sources) li,
+.interface-study-results > .slide-content > ul:not(.sources) li {
   font-size: 21px;
   margin: 8px 0;
 }
@@ -1363,7 +1370,8 @@ a:focus-visible {
 .interface-study-results h2 {
   margin-bottom: 18px;
 }
-.interface-study-results > ul {
+.interface-study-results > ul,
+.interface-study-results > .slide-content > ul {
   margin-top: 12px;
   margin-bottom: 12px;
 }
@@ -1439,24 +1447,26 @@ a:focus-visible {
   flex-shrink: 0;
 }
 @media screen and (max-width: 760px) {
-  .workflow-inventory {
-    grid-template-columns: 1fr;
-  }
-  .workflow-inventory article span {
-    font-size: 13px;
-  }
-  .study-arms {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .study-arms > span {
-    font-size: 13px;
-    flex-direction: column;
-  }
-  .study-end {
-    font-size: 14px;
-  }
-  .study-table {
-    min-width: 830px;
+  :root:not(:has(.deck-presenting)) {
+    .workflow-inventory {
+      grid-template-columns: 1fr;
+    }
+    .workflow-inventory article span {
+      font-size: 13px;
+    }
+    .study-arms {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .study-arms > span {
+      font-size: 13px;
+      flex-direction: column;
+    }
+    .study-end {
+      font-size: 14px;
+    }
+    .study-table {
+      min-width: 830px;
+    }
   }
 }
 @media print {
@@ -1486,7 +1496,8 @@ a:focus-visible {
   .interface-study-results .study-links {
     margin: 6px 0;
   }
-  .interface-study-results > ul:not(.sources) li {
+  .interface-study-results > ul:not(.sources) li,
+  .interface-study-results > .slide-content > ul:not(.sources) li {
     font-size: 18px;
     margin: 8px 0;
   }
@@ -1503,7 +1514,8 @@ a:focus-visible {
   .interface-study-results .sources li {
     font-size: 12px;
   }
-  .interface-study-results > ul {
+  .interface-study-results > ul,
+  .interface-study-results > .slide-content > ul {
     margin-top: 12px;
     margin-bottom: 12px;
   }
@@ -1680,20 +1692,22 @@ a:focus-visible {
   background: #faf5ed;
 }
 @media screen and (max-width: 760px) {
-  .check-examples,
-  .tradeoff-grid,
-  .session-pair,
-  .timing-diagram {
-    grid-template-columns: 1fr;
-  }
-  .instruction-example > div {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .check-examples strong,
-  .tradeoff-grid strong,
-  .instruction-example strong {
-    font-size: 20px;
+  :root:not(:has(.deck-presenting)) {
+    .check-examples,
+    .tradeoff-grid,
+    .session-pair,
+    .timing-diagram {
+      grid-template-columns: 1fr;
+    }
+    .instruction-example > div {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .check-examples strong,
+    .tradeoff-grid strong,
+    .instruction-example strong {
+      font-size: 20px;
+    }
   }
 }
 @media print {
@@ -2119,143 +2133,145 @@ a:focus-visible {
   }
 }
 @media screen and (max-width: 760px) {
-  .brief-map,
-  .verification-map,
-  .demo-path,
-  .finding-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .brief-map > div,
-  .verification-map > div,
-  .demo-path > a {
-    gap: 10px;
-    padding-top: 14px;
-  }
-  .state-checks {
-    grid-template-columns: 1fr;
-  }
-  .state-checks .reward {
-    border-left: 0;
-    border-top: 1px solid #dfd5e5;
-    padding-top: 14px;
-  }
-  .ownership-strip {
-    gap: 8px;
-    font-size: 13px;
-  }
-  .ownership-tag {
-    width: 100%;
-  }
-  .approach-flow .flow,
-  .harness-diagram .flow,
-  .scale-diagram .flow,
-  .next-diagram {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .approach-flow .node,
-  .harness-diagram .node,
-  .scale-diagram .node,
-  .next-diagram .node {
-    flex-basis: auto;
-  }
-  .approach-flow .arrow,
-  .harness-diagram .arrow,
-  .scale-diagram .arrow,
-  .next-diagram .arrow {
-    transform: rotate(90deg);
-    align-self: center;
-  }
-  .harness-outputs {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .scope-diagram {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .scope-label.original,
-  .scope-label.expanded {
-    grid-column: 1;
-  }
-  .scope-label.original {
-    grid-row: 1;
-  }
-  .scope-diagram .environment {
-    grid-row: 2;
-  }
-  .scope-first {
-    grid-row: 3;
-  }
-  .scope-diagram .harness {
-    grid-row: 4;
-  }
-  .scope-second {
-    grid-row: 5;
-  }
-  .scope-label.expanded {
-    grid-row: 6;
-  }
-  .scope-diagram .benchmark {
-    grid-row: 7;
-  }
-  .scope-diagram .arrow {
-    transform: rotate(90deg);
-  }
-  .scope-diagram .node {
-    padding: 18px;
-  }
-  .takeaway {
-    font-size: 17px;
-  }
-  .interface-map > div {
-    grid-template-columns: 24px 1fr 82px;
-    padding: 14px 4px;
-    gap: 8px;
-    font-size: 16px;
-  }
-  .interface-map > div > span {
-    grid-column: 2 / 4;
-    grid-row: 2;
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .interface-map > div > b {
-    grid-column: 3;
-    grid-row: 1;
-  }
-  .interface-map > .interface-map-head {
-    display: none;
-  }
-  .campaign-equation {
-    gap: 8px;
-    grid-template-columns: 1fr 14px 1fr 14px 1fr;
-  }
-  .campaign-equation strong {
-    font-size: 40px;
-  }
-  .campaign-equation span {
-    font-size: 12px;
-    text-align: center;
-  }
-  .campaign-equation > .equation-sign:nth-child(6) {
-    display: none;
-  }
-  .campaign-equation .equation-total {
-    grid-column: 1 / -1;
-    padding-top: 18px;
-  }
-  .campaign-equation .equation-total strong {
-    font-size: 64px;
-  }
-  .mismatch-diagram {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 20px;
-  }
-  .mismatch-sign {
-    text-align: left;
+  :root:not(:has(.deck-presenting)) {
+    .brief-map,
+    .verification-map,
+    .demo-path,
+    .finding-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .brief-map > div,
+    .verification-map > div,
+    .demo-path > a {
+      gap: 10px;
+      padding-top: 14px;
+    }
+    .state-checks {
+      grid-template-columns: 1fr;
+    }
+    .state-checks .reward {
+      border-left: 0;
+      border-top: 1px solid #dfd5e5;
+      padding-top: 14px;
+    }
+    .ownership-strip {
+      gap: 8px;
+      font-size: 13px;
+    }
+    .ownership-tag {
+      width: 100%;
+    }
+    .approach-flow .flow,
+    .harness-diagram .flow,
+    .scale-diagram .flow,
+    .next-diagram {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .approach-flow .node,
+    .harness-diagram .node,
+    .scale-diagram .node,
+    .next-diagram .node {
+      flex-basis: auto;
+    }
+    .approach-flow .arrow,
+    .harness-diagram .arrow,
+    .scale-diagram .arrow,
+    .next-diagram .arrow {
+      transform: rotate(90deg);
+      align-self: center;
+    }
+    .harness-outputs {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .scope-diagram {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .scope-label.original,
+    .scope-label.expanded {
+      grid-column: 1;
+    }
+    .scope-label.original {
+      grid-row: 1;
+    }
+    .scope-diagram .environment {
+      grid-row: 2;
+    }
+    .scope-first {
+      grid-row: 3;
+    }
+    .scope-diagram .harness {
+      grid-row: 4;
+    }
+    .scope-second {
+      grid-row: 5;
+    }
+    .scope-label.expanded {
+      grid-row: 6;
+    }
+    .scope-diagram .benchmark {
+      grid-row: 7;
+    }
+    .scope-diagram .arrow {
+      transform: rotate(90deg);
+    }
+    .scope-diagram .node {
+      padding: 18px;
+    }
+    .takeaway {
+      font-size: 17px;
+    }
+    .interface-map > div {
+      grid-template-columns: 24px 1fr 82px;
+      padding: 14px 4px;
+      gap: 8px;
+      font-size: 16px;
+    }
+    .interface-map > div > span {
+      grid-column: 2 / 4;
+      grid-row: 2;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .interface-map > div > b {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .interface-map > .interface-map-head {
+      display: none;
+    }
+    .campaign-equation {
+      gap: 8px;
+      grid-template-columns: 1fr 14px 1fr 14px 1fr;
+    }
+    .campaign-equation strong {
+      font-size: 40px;
+    }
+    .campaign-equation span {
+      font-size: 12px;
+      text-align: center;
+    }
+    .campaign-equation > .equation-sign:nth-child(6) {
+      display: none;
+    }
+    .campaign-equation .equation-total {
+      grid-column: 1 / -1;
+      padding-top: 18px;
+    }
+    .campaign-equation .equation-total strong {
+      font-size: 64px;
+    }
+    .mismatch-diagram {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 20px;
+    }
+    .mismatch-sign {
+      text-align: left;
+    }
   }
 }
 @media print {
@@ -2294,9 +2310,48 @@ a:focus-visible {
   color: var(--muted);
   margin: -8px 0 16px;
 }
+.slide-content {
+  display: contents;
+}
 @media screen {
   .presentation-page main {
+    width: calc(100% - 48px);
     margin-bottom: 108px;
+  }
+  /* The reading view keeps the original document card and simple footer. */
+  .presentation-page:not(.deck-presenting) .presenter-dock {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 24px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 14px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: #f5f4f7;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .presentation-page:not(.deck-presenting) .deck-progress {
+    display: none;
+  }
+  .presentation-page:not(.deck-presenting) :is(#prev, #next) {
+    border-color: var(--line);
+    background: #fff;
+    color: #28262c;
+    padding-inline: 16px;
+  }
+  .presentation-page:not(.deck-presenting) #toggle-present {
+    background: #36253f;
+    color: #fff;
+    padding-inline: 16px;
+  }
+  .deck-presenting .reading-step-label {
+    display: none;
   }
   .presentation-page:has(dialog[open]) {
     overflow: hidden;
@@ -2725,20 +2780,52 @@ a:focus-visible {
       margin-right: 396px;
     }
   }
-  @media (min-width: 800px) {
-    .deck-presenting {
-      overflow: hidden;
-    }
-    .deck-presenting main {
-      position: fixed;
-      width: 1280px;
-      max-width: none;
-      margin: 0;
-      top: var(--deck-y, 16px);
-      left: var(--deck-x, 16px);
-      transform: scale(var(--deck-scale, 1));
-      transform-origin: top left;
-    }
+  .deck-presenting {
+    overflow: hidden;
+  }
+  .deck-presenting main {
+    position: fixed;
+    width: 1280px;
+    max-width: none;
+    margin: 0;
+    top: var(--deck-y, 16px);
+    left: var(--deck-x, 16px);
+    transform: scale(var(--deck-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide {
+    width: 1280px;
+    height: 720px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    padding: 40px 56px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 8px 40px #29262f14;
+  }
+  .deck-presenting .slide-content {
+    display: flow-root;
+    position: absolute;
+    width: 1168px;
+    left: var(--content-x, 56px);
+    top: 40px;
+    transform: scale(var(--content-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide h1 {
+    font-size: 54px;
+  }
+  .deck-presenting .slide h2 {
+    font-size: 40px;
+  }
+  .deck-presenting .slide-content > ul:not(.sources) > li {
+    font-size: 23px;
+  }
+  .deck-presenting .table-scroll {
+    max-height: none;
+  }
+  .deck-presenting .slide .flow {
+    flex-wrap: nowrap;
   }
   @media (max-width: 999px) {
     .presenter-notes {
@@ -2751,6 +2838,16 @@ a:focus-visible {
     }
   }
   @media (max-width: 760px) {
+    .presentation-page:not(.deck-presenting) main {
+      width: 100%;
+    }
+    .presentation-page:not(.deck-presenting) .presenter-dock {
+      padding-inline: 8px;
+      gap: 3px;
+    }
+    .reading-step-label {
+      display: none;
+    }
     .presenter-dock {
       height: 60px;
       padding: 7px;
@@ -2772,6 +2869,9 @@ a:focus-visible {
     }
     .presenter-dock button {
       padding: 10px;
+    }
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 10px;
     }
     .presenter-dock .dock-divider {
       margin: 0 2px;
@@ -2800,6 +2900,9 @@ a:focus-visible {
     }
   }
   @media (max-width: 380px) {
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 8px;
+    }
     .presenter-dock .presenter-icon {
       min-width: 40px;
       padding: 8px;
@@ -9049,6 +9152,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     ownedFullscreen = false,
     layoutFrame = 0;
   document.body.classList.add('presentation-page');
+  // One DOM copy: readable document flow normally, a bounded canvas in slide mode.
+  for (const slide of slides) {
+    const content = document.createElement('div');
+    content.className = 'slide-content';
+    content.append(...slide.childNodes);
+    slide.append(content);
+  }
 
   function layout() {
     cancelAnimationFrame(layoutFrame);
@@ -9056,7 +9166,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
       const narrowNotes = !notes.hidden && innerWidth < 1000;
       main.inert = narrowNotes;
       main.setAttribute('aria-hidden', String(narrowNotes));
-      if (!presenting || innerWidth < 800) {
+      if (!presenting) {
         for (const prop of ['--deck-scale', '--deck-x', '--deck-y'])
           main.style.removeProperty(prop);
         return;
@@ -9064,17 +9174,14 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
       const availableWidth =
         innerWidth - (!notes.hidden && innerWidth >= 1000 ? notes.offsetWidth + 20 : 0);
       const bottom = dock.getBoundingClientRect().top - 18;
-      const scale = Math.min(
-        (availableWidth - 32) / 1280,
-        (bottom - 18) / slides[index].offsetHeight,
-        1.6,
-      );
+      const scale = Math.min((availableWidth - 32) / 1280, (bottom - 18) / 720, 1.6);
       main.style.setProperty('--deck-scale', String(Math.max(0.1, scale)));
       main.style.setProperty('--deck-x', `${Math.max(16, (availableWidth - 1280 * scale) / 2)}px`);
-      main.style.setProperty(
-        '--deck-y',
-        `${Math.max(16, (bottom - slides[index].offsetHeight * scale) / 2)}px`,
-      );
+      main.style.setProperty('--deck-y', `${Math.max(16, (bottom - 720 * scale) / 2)}px`);
+      const content = slides[index].querySelector('.slide-content');
+      const fit = Math.min(1, 640 / content.offsetHeight, 1168 / content.scrollWidth);
+      content.style.setProperty('--content-scale', String(fit));
+      content.style.setProperty('--content-x', `${(1280 - 1168 * fit) / 2}px`);
     });
   }
 
@@ -9247,13 +9354,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     presenting = value;
     document.body.classList.toggle('deck-presenting', value);
     byId('toggle-present').setAttribute('aria-pressed', String(value));
-    byId('toggle-present').setAttribute(
-      'aria-label',
-      value ? 'Exit presentation view' : 'Enter presentation view',
-    );
+    byId('toggle-present').setAttribute('aria-label', value ? 'Back to document' : 'Enter slides');
     byId('toggle-present').querySelector('.present-enter').hidden = value;
     byId('toggle-present').querySelector('.present-exit').hidden = !value;
-    byId('toggle-present').querySelector('.dock-label').textContent = value ? 'Exit' : 'Present';
+    byId('toggle-present').querySelector('.dock-label').textContent = value
+      ? 'Exit slides'
+      : 'Enter slides';
+    byId('toggle-present').title = value ? 'Back to document (Esc)' : 'Enter slides (F)';
     layout();
   }
   let fullscreenBusy = false;
@@ -9420,7 +9527,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   });
   window.addEventListener('afterprint', layout);
   const observer = new ResizeObserver(layout);
-  for (const slide of slides) observer.observe(slide);
+  for (const slide of slides) observer.observe(slide.querySelector('.slide-content'));
   observer.observe(dock);
   document.fonts.ready.then(layout);
   show(hashIndex());
@@ -9517,7 +9624,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             document.getElementById(
               table.id === 'model-results'
                 ? 'sort-status'
-                : table.id === 'interface-results'
+                : table.id === 'interface-study-table'
                   ? 'interface-sort-status'
                   : ['interface-repeat-results', 'repeat-task-results'].includes(table.id)
                     ? 'repeat-sort-status'

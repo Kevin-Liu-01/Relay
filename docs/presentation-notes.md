@@ -17,8 +17,9 @@ exposed limits in both the task definitions and the interface comparison.
 - Use the slide counter or G to find any slide. N opens the current speaker
   notes, with a manual rehearsal timer and the next slide's title.
 - Notes appear on the same screen. They are not a private second-screen view.
-- F fits the slide to the window and requests browser fullscreen. Escape exits.
-  On narrow screens the deck stays scrollable so text remains readable.
+- Enter slides or F switches from the document to a padded 16:9 canvas and
+  requests browser fullscreen. Escape returns to the same document page.
+  Read on a phone in document view; slide mode retains the widescreen canvas.
 - The keyboard button opens shortcuts, a direct slide link and the PDF download.
 - Stable links: `#session-isolation`, `#run-speed`, `#resource-choices`, `#scaling-the-runner`, `#model-comparison`, `#main-lesson`, `#interface-results`.
 

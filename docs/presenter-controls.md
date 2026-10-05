@@ -1,7 +1,8 @@
 # Presentation controls
 
-The document viewer adds navigation and rehearsal tools to the existing
-20-slide deck. It does not change experiment data or make model requests.
+The default view retains the document-style card and full-width Previous/Next
+footer. Enter slides switches that same content to a 16:9 canvas. The navigation
+and rehearsal tools remain available in both views. No model requests are made.
 
 - Click the slide counter, press G, or press / to search all slide titles and
   topics. A number selects that exact slide. Enter opens the first result.
@@ -11,9 +12,13 @@ The document viewer adds navigation and rehearsal tools to the existing
   slide's title. Notes are visible on the same screen, not private presenter output.
 - The rehearsal timer starts only when clicked. It can pause, resume and reset.
   It does not measure agent execution or persist across page reloads.
-- Present fits the slide to the available window and requests browser fullscreen.
-  If fullscreen is denied, window fitting still works. Escape exits. Phone layouts
-  remain scrollable so controls and text do not shrink into an unreadable slide.
+- Enter slides fits a fixed 1280 by 720 canvas to the available window and requests
+  browser fullscreen. If fullscreen is denied, window fitting still works.
+  Escape returns to the document at the same slide. The document view stays
+  scrollable and readable on phones; explicit slide mode keeps its 16:9 ratio.
+- Slide mode reserves 56 canvas pixels on each side and 40 at top and bottom.
+  Content scales uniformly within that area when needed. It does not crop text,
+  stretch diagrams or change the outer aspect ratio on a dense results slide.
 - Tools provides a canonical slide link, the PDF and keyboard shortcuts. Clipboard
   denial selects the link for manual copying. Existing named and numeric links work.
 
@@ -42,6 +47,8 @@ surfaces and retains the existing 20-page export.
   There is never an outgoing interactive slide underneath the active slide.
 - Fullscreen entry is guarded while its promise settles. Fit changes are not
   animated; a resize observer recomputes scale after layout or note changes.
+  A single content wrapper uses normal document flow outside slide mode, including
+  printing. There is no second content copy to lose sorting or link state.
 - Dialog and search changes are immediate. No spring, stagger, background motion,
   or animated page scaling is added to this repeated-use interface.
 - Browser checks cover desktop, short windows, 390 px and 320 px screens,

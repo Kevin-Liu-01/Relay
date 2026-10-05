@@ -1,5 +1,25 @@
 # Verification and evidence
 
+## Document view and padded slide canvas: 2026-10-05
+
+- Restored the document-style card and full-width Previous/Next footer as the
+  default. Kept slide search, notes, the rehearsal timer, fullscreen, direct links
+  and PDF access. Enter slides explicitly opens the widescreen presentation.
+- Slide mode uses a fixed 1280 by 720 canvas with at least 56 horizontal and
+  40 vertical canvas pixels of padding. Content scales uniformly inside it.
+  Document view retains responsive layouts and scrolling, including on phones.
+- All **14 targeted browser tests and three presenter-note tests passed** in
+  isolated production workspace `relay-review-validation-Fbyai8`. The new layout
+  check covers all 20 slides at five viewport sizes, including a short window
+  and a phone. Existing table, replay, keyboard, focus and security-policy checks
+  also passed. No full backend rerun was needed for these observer-only changes.
+- Inspected document and slide screenshots. All 20 print pages passed the
+  clipping check; HTML and PDF were regenerated. Fixed mobile reflow inside the
+  widescreen canvas and an internal table ID that made `#interface-results`
+  scroll past the slide header. The public slide link is unchanged.
+- Original actor source and frozen root build still match the pre-study receipt.
+  No inference, task, grader, historical record or study outcome changed.
+
 ## Presenter navigation and rehearsal controls: 2026-10-05
 
 - Added a searchable slide overview, current-slide progress, same-screen speaker

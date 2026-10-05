@@ -18,6 +18,13 @@
     ownedFullscreen = false,
     layoutFrame = 0;
   document.body.classList.add('presentation-page');
+  // One DOM copy: readable document flow normally, a bounded canvas in slide mode.
+  for (const slide of slides) {
+    const content = document.createElement('div');
+    content.className = 'slide-content';
+    content.append(...slide.childNodes);
+    slide.append(content);
+  }
 
   function layout() {
     cancelAnimationFrame(layoutFrame);
@@ -25,7 +32,7 @@
       const narrowNotes = !notes.hidden && innerWidth < 1000;
       main.inert = narrowNotes;
       main.setAttribute('aria-hidden', String(narrowNotes));
-      if (!presenting || innerWidth < 800) {
+      if (!presenting) {
         for (const prop of ['--deck-scale', '--deck-x', '--deck-y'])
           main.style.removeProperty(prop);
         return;
@@ -33,17 +40,14 @@
       const availableWidth =
         innerWidth - (!notes.hidden && innerWidth >= 1000 ? notes.offsetWidth + 20 : 0);
       const bottom = dock.getBoundingClientRect().top - 18;
-      const scale = Math.min(
-        (availableWidth - 32) / 1280,
-        (bottom - 18) / slides[index].offsetHeight,
-        1.6,
-      );
+      const scale = Math.min((availableWidth - 32) / 1280, (bottom - 18) / 720, 1.6);
       main.style.setProperty('--deck-scale', String(Math.max(0.1, scale)));
       main.style.setProperty('--deck-x', `${Math.max(16, (availableWidth - 1280 * scale) / 2)}px`);
-      main.style.setProperty(
-        '--deck-y',
-        `${Math.max(16, (bottom - slides[index].offsetHeight * scale) / 2)}px`,
-      );
+      main.style.setProperty('--deck-y', `${Math.max(16, (bottom - 720 * scale) / 2)}px`);
+      const content = slides[index].querySelector('.slide-content');
+      const fit = Math.min(1, 640 / content.offsetHeight, 1168 / content.scrollWidth);
+      content.style.setProperty('--content-scale', String(fit));
+      content.style.setProperty('--content-x', `${(1280 - 1168 * fit) / 2}px`);
     });
   }
 
@@ -216,13 +220,13 @@
     presenting = value;
     document.body.classList.toggle('deck-presenting', value);
     byId('toggle-present').setAttribute('aria-pressed', String(value));
-    byId('toggle-present').setAttribute(
-      'aria-label',
-      value ? 'Exit presentation view' : 'Enter presentation view',
-    );
+    byId('toggle-present').setAttribute('aria-label', value ? 'Back to document' : 'Enter slides');
     byId('toggle-present').querySelector('.present-enter').hidden = value;
     byId('toggle-present').querySelector('.present-exit').hidden = !value;
-    byId('toggle-present').querySelector('.dock-label').textContent = value ? 'Exit' : 'Present';
+    byId('toggle-present').querySelector('.dock-label').textContent = value
+      ? 'Exit slides'
+      : 'Enter slides';
+    byId('toggle-present').title = value ? 'Back to document (Esc)' : 'Enter slides (F)';
     layout();
   }
   let fullscreenBusy = false;
@@ -389,7 +393,7 @@
   });
   window.addEventListener('afterprint', layout);
   const observer = new ResizeObserver(layout);
-  for (const slide of slides) observer.observe(slide);
+  for (const slide of slides) observer.observe(slide.querySelector('.slide-content'));
   observer.observe(dock);
   document.fonts.ready.then(layout);
   show(hashIndex());

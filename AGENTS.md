@@ -123,6 +123,10 @@ separate from historical data and the shared results-table controller. The resul
 page has no slides and must skip presenter initialization. Print must omit all
 presenter controls even when notes or a dialog is open. Keyboard navigation is
 immediate; reduced motion also disables pointer transitions. Use stable slide IDs.
+Default to the document-style card and full-width navigation footer. Enter slides
+is an explicit mode with a fixed 1280×720 canvas and 56px horizontal/40px vertical
+safe margins. Scale content uniformly within those margins, then fit the canvas
+to the viewport. Preserve notes, overview, timer, tables and same-slide return.
 
 Keep the 20-slide deck in this order: my approach and a concrete editing task,
 all workflows, harness and interfaces, grading and verification, then dedicated

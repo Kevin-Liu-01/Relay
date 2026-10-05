@@ -260,7 +260,7 @@ const studyHeading = (name, type = 'number', direction = 'descending') =>
 const apiPair = studyAnalysis?.paired.find((p) => p.left === 'a11y' && p.right === 'api');
 const elapsed = (seconds) => (seconds == null ? 'N/A' : `${seconds.toFixed(1)} s`);
 const studyTable = study
-  ? `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · median elapsed time in seconds · six tasks per cell</caption><thead><tr>${studyHeading('Model', 'text', 'ascending')}${studyModes.map((m) => studyHeading(labels[m])).join('')}${studyHeading('Allowance', 'number', 'ascending')}</tr></thead><tbody>${study.byModel
+  ? `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-study-table"><caption>Passed / attempted · median elapsed time in seconds · six tasks per cell</caption><thead><tr>${studyHeading('Model', 'text', 'ascending')}${studyModes.map((m) => studyHeading(labels[m])).join('')}${studyHeading('Allowance', 'number', 'ascending')}</tr></thead><tbody>${study.byModel
       .map(
         (row) =>
           `<tr><th scope="row" data-sort="${studyNames[row.model]}"><span class="study-model">${mark(studyMarks[row.model])}${studyNames[row.model]}</span></th>${studyModes

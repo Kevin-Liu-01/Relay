@@ -772,123 +772,125 @@ a:focus-visible {
   }
 }
 @media (max-width: 760px) {
-  .breadth-slide .comparison-heading {
-    display: block;
-  }
-  .comparison-controls {
-    flex-wrap: wrap;
-  }
-  .comparison-controls .task-filter > div {
-    left: 0;
-    right: auto;
-  }
-  .comparison-toolbar {
-    align-items: start;
-    font-size: 13px;
-  }
-  .comparison-toolbar button {
-    white-space: nowrap;
-  }
-  #sort-status {
-    margin-left: 0;
-  }
-  #trials-dialog {
-    padding: 16px;
-  }
-  main {
-    margin: 0 0 75px;
-  }
-  .slide {
-    padding: 24px 22px 32px;
-    min-height: calc(100vh - 64px);
-    border: 0;
-    border-radius: 0;
-  }
-  .masthead {
-    margin-bottom: 32px;
-  }
-  .section-label {
-    font-size: 10px;
-    gap: 6px;
-    text-align: right;
-  }
-  .section-label > svg {
-    display: none;
-  }
-  .wordmark {
-    font-size: 19px;
-  }
-  .wordmark svg {
-    width: 26px;
-    height: 26px;
-  }
-  .section-number {
-    padding-left: 7px;
-  }
-  .flow {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .node {
-    flex-basis: 130px;
-    font-size: 17px;
-  }
-  .stack {
-    flex-basis: 100%;
-  }
-  .diagram {
-    padding: 14px;
-  }
-  .brand-chip {
-    font-size: 18px;
-    padding: 11px 13px;
-  }
-  .brand-chip small {
-    font-size: 13px;
-    margin-left: 0;
-  }
-  .metrics {
-    gap: 8px;
-  }
-  .metric {
-    padding: 13px 9px;
-  }
-  .metric strong {
-    font-size: 27px;
-  }
-  .metric small {
-    font-size: 14px;
-  }
-  .metric span {
-    font-size: 13px;
-  }
-  .result-row {
-    grid-template-columns: 118px 1fr;
-    gap: 9px;
-    font-size: 14px;
-  }
-  .result-row > :last-child {
-    grid-column: 2;
-    font-size: 13px;
-  }
-  .interface-label {
-    gap: 6px;
-  }
-  .legend {
-    font-size: 13px;
-    gap: 12px;
-  }
-  nav {
-    gap: 8px;
-  }
-  nav button {
-    padding: 9px;
-    font-size: 12px;
-  }
-  #counter {
-    min-width: 0;
-    max-width: 170px;
-    font-size: 11px;
+  :root:not(:has(.deck-presenting)) {
+    .breadth-slide .comparison-heading {
+      display: block;
+    }
+    .comparison-controls {
+      flex-wrap: wrap;
+    }
+    .comparison-controls .task-filter > div {
+      left: 0;
+      right: auto;
+    }
+    .comparison-toolbar {
+      align-items: start;
+      font-size: 13px;
+    }
+    .comparison-toolbar button {
+      white-space: nowrap;
+    }
+    #sort-status {
+      margin-left: 0;
+    }
+    #trials-dialog {
+      padding: 16px;
+    }
+    main {
+      margin: 0 0 75px;
+    }
+    .slide {
+      padding: 24px 22px 32px;
+      min-height: calc(100vh - 64px);
+      border: 0;
+      border-radius: 0;
+    }
+    .masthead {
+      margin-bottom: 32px;
+    }
+    .section-label {
+      font-size: 10px;
+      gap: 6px;
+      text-align: right;
+    }
+    .section-label > svg {
+      display: none;
+    }
+    .wordmark {
+      font-size: 19px;
+    }
+    .wordmark svg {
+      width: 26px;
+      height: 26px;
+    }
+    .section-number {
+      padding-left: 7px;
+    }
+    .flow {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .node {
+      flex-basis: 130px;
+      font-size: 17px;
+    }
+    .stack {
+      flex-basis: 100%;
+    }
+    .diagram {
+      padding: 14px;
+    }
+    .brand-chip {
+      font-size: 18px;
+      padding: 11px 13px;
+    }
+    .brand-chip small {
+      font-size: 13px;
+      margin-left: 0;
+    }
+    .metrics {
+      gap: 8px;
+    }
+    .metric {
+      padding: 13px 9px;
+    }
+    .metric strong {
+      font-size: 27px;
+    }
+    .metric small {
+      font-size: 14px;
+    }
+    .metric span {
+      font-size: 13px;
+    }
+    .result-row {
+      grid-template-columns: 118px 1fr;
+      gap: 9px;
+      font-size: 14px;
+    }
+    .result-row > :last-child {
+      grid-column: 2;
+      font-size: 13px;
+    }
+    .interface-label {
+      gap: 6px;
+    }
+    .legend {
+      font-size: 13px;
+      gap: 12px;
+    }
+    nav {
+      gap: 8px;
+    }
+    nav button {
+      padding: 9px;
+      font-size: 12px;
+    }
+    #counter {
+      min-width: 0;
+      max-width: 170px;
+      font-size: 11px;
+    }
   }
 }
 @page {
@@ -946,7 +948,8 @@ a:focus-visible {
   top: 0;
   z-index: 2;
 }
-.comparison-slide > .table-scroll {
+.comparison-slide > .table-scroll,
+.comparison-slide > .slide-content > .table-scroll {
   max-height: 54vh;
 }
 .comparison-table {
@@ -1053,26 +1056,28 @@ a:focus-visible {
   display: none !important;
 }
 @media (max-width: 760px) {
-  .results-panel {
-    padding: 20px 16px;
-    border-radius: 0;
-  }
-  .results-page main {
-    margin: 0;
-  }
-  .cost-summary {
-    gap: 12px 18px;
-  }
-  .cost-summary strong,
-  .results-page .cost-summary strong {
-    font-size: 20px;
-  }
-  .trial-filter-bar input {
-    margin: 6px 0;
-    display: block;
-  }
-  .sort-tools a {
-    margin-left: 0;
+  :root:not(:has(.deck-presenting)) {
+    .results-panel {
+      padding: 20px 16px;
+      border-radius: 0;
+    }
+    .results-page main {
+      margin: 0;
+    }
+    .cost-summary {
+      gap: 12px 18px;
+    }
+    .cost-summary strong,
+    .results-page .cost-summary strong {
+      font-size: 20px;
+    }
+    .trial-filter-bar input {
+      margin: 6px 0;
+      display: block;
+    }
+    .sort-tools a {
+      margin-left: 0;
+    }
   }
 }
 @media print {
@@ -1105,7 +1110,8 @@ a:focus-visible {
   .cost-summary span {
     font-size: 10px;
   }
-  .comparison-slide > .table-scroll {
+  .comparison-slide > .table-scroll,
+  .comparison-slide > .slide-content > .table-scroll {
     max-height: none;
   }
   .comparison-table {
@@ -1361,7 +1367,8 @@ a:focus-visible {
   padding-top: 6px;
   padding-bottom: 6px;
 }
-.interface-study-results > ul:not(.sources) li {
+.interface-study-results > ul:not(.sources) li,
+.interface-study-results > .slide-content > ul:not(.sources) li {
   font-size: 21px;
   margin: 8px 0;
 }
@@ -1374,7 +1381,8 @@ a:focus-visible {
 .interface-study-results h2 {
   margin-bottom: 18px;
 }
-.interface-study-results > ul {
+.interface-study-results > ul,
+.interface-study-results > .slide-content > ul {
   margin-top: 12px;
   margin-bottom: 12px;
 }
@@ -1450,24 +1458,26 @@ a:focus-visible {
   flex-shrink: 0;
 }
 @media screen and (max-width: 760px) {
-  .workflow-inventory {
-    grid-template-columns: 1fr;
-  }
-  .workflow-inventory article span {
-    font-size: 13px;
-  }
-  .study-arms {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .study-arms > span {
-    font-size: 13px;
-    flex-direction: column;
-  }
-  .study-end {
-    font-size: 14px;
-  }
-  .study-table {
-    min-width: 830px;
+  :root:not(:has(.deck-presenting)) {
+    .workflow-inventory {
+      grid-template-columns: 1fr;
+    }
+    .workflow-inventory article span {
+      font-size: 13px;
+    }
+    .study-arms {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .study-arms > span {
+      font-size: 13px;
+      flex-direction: column;
+    }
+    .study-end {
+      font-size: 14px;
+    }
+    .study-table {
+      min-width: 830px;
+    }
   }
 }
 @media print {
@@ -1497,7 +1507,8 @@ a:focus-visible {
   .interface-study-results .study-links {
     margin: 6px 0;
   }
-  .interface-study-results > ul:not(.sources) li {
+  .interface-study-results > ul:not(.sources) li,
+  .interface-study-results > .slide-content > ul:not(.sources) li {
     font-size: 18px;
     margin: 8px 0;
   }
@@ -1514,7 +1525,8 @@ a:focus-visible {
   .interface-study-results .sources li {
     font-size: 12px;
   }
-  .interface-study-results > ul {
+  .interface-study-results > ul,
+  .interface-study-results > .slide-content > ul {
     margin-top: 12px;
     margin-bottom: 12px;
   }
@@ -1691,20 +1703,22 @@ a:focus-visible {
   background: #faf5ed;
 }
 @media screen and (max-width: 760px) {
-  .check-examples,
-  .tradeoff-grid,
-  .session-pair,
-  .timing-diagram {
-    grid-template-columns: 1fr;
-  }
-  .instruction-example > div {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .check-examples strong,
-  .tradeoff-grid strong,
-  .instruction-example strong {
-    font-size: 20px;
+  :root:not(:has(.deck-presenting)) {
+    .check-examples,
+    .tradeoff-grid,
+    .session-pair,
+    .timing-diagram {
+      grid-template-columns: 1fr;
+    }
+    .instruction-example > div {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .check-examples strong,
+    .tradeoff-grid strong,
+    .instruction-example strong {
+      font-size: 20px;
+    }
   }
 }
 @media print {
@@ -2130,143 +2144,145 @@ a:focus-visible {
   }
 }
 @media screen and (max-width: 760px) {
-  .brief-map,
-  .verification-map,
-  .demo-path,
-  .finding-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .brief-map > div,
-  .verification-map > div,
-  .demo-path > a {
-    gap: 10px;
-    padding-top: 14px;
-  }
-  .state-checks {
-    grid-template-columns: 1fr;
-  }
-  .state-checks .reward {
-    border-left: 0;
-    border-top: 1px solid #dfd5e5;
-    padding-top: 14px;
-  }
-  .ownership-strip {
-    gap: 8px;
-    font-size: 13px;
-  }
-  .ownership-tag {
-    width: 100%;
-  }
-  .approach-flow .flow,
-  .harness-diagram .flow,
-  .scale-diagram .flow,
-  .next-diagram {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .approach-flow .node,
-  .harness-diagram .node,
-  .scale-diagram .node,
-  .next-diagram .node {
-    flex-basis: auto;
-  }
-  .approach-flow .arrow,
-  .harness-diagram .arrow,
-  .scale-diagram .arrow,
-  .next-diagram .arrow {
-    transform: rotate(90deg);
-    align-self: center;
-  }
-  .harness-outputs {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .scope-diagram {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .scope-label.original,
-  .scope-label.expanded {
-    grid-column: 1;
-  }
-  .scope-label.original {
-    grid-row: 1;
-  }
-  .scope-diagram .environment {
-    grid-row: 2;
-  }
-  .scope-first {
-    grid-row: 3;
-  }
-  .scope-diagram .harness {
-    grid-row: 4;
-  }
-  .scope-second {
-    grid-row: 5;
-  }
-  .scope-label.expanded {
-    grid-row: 6;
-  }
-  .scope-diagram .benchmark {
-    grid-row: 7;
-  }
-  .scope-diagram .arrow {
-    transform: rotate(90deg);
-  }
-  .scope-diagram .node {
-    padding: 18px;
-  }
-  .takeaway {
-    font-size: 17px;
-  }
-  .interface-map > div {
-    grid-template-columns: 24px 1fr 82px;
-    padding: 14px 4px;
-    gap: 8px;
-    font-size: 16px;
-  }
-  .interface-map > div > span {
-    grid-column: 2 / 4;
-    grid-row: 2;
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .interface-map > div > b {
-    grid-column: 3;
-    grid-row: 1;
-  }
-  .interface-map > .interface-map-head {
-    display: none;
-  }
-  .campaign-equation {
-    gap: 8px;
-    grid-template-columns: 1fr 14px 1fr 14px 1fr;
-  }
-  .campaign-equation strong {
-    font-size: 40px;
-  }
-  .campaign-equation span {
-    font-size: 12px;
-    text-align: center;
-  }
-  .campaign-equation > .equation-sign:nth-child(6) {
-    display: none;
-  }
-  .campaign-equation .equation-total {
-    grid-column: 1 / -1;
-    padding-top: 18px;
-  }
-  .campaign-equation .equation-total strong {
-    font-size: 64px;
-  }
-  .mismatch-diagram {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 20px;
-  }
-  .mismatch-sign {
-    text-align: left;
+  :root:not(:has(.deck-presenting)) {
+    .brief-map,
+    .verification-map,
+    .demo-path,
+    .finding-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .brief-map > div,
+    .verification-map > div,
+    .demo-path > a {
+      gap: 10px;
+      padding-top: 14px;
+    }
+    .state-checks {
+      grid-template-columns: 1fr;
+    }
+    .state-checks .reward {
+      border-left: 0;
+      border-top: 1px solid #dfd5e5;
+      padding-top: 14px;
+    }
+    .ownership-strip {
+      gap: 8px;
+      font-size: 13px;
+    }
+    .ownership-tag {
+      width: 100%;
+    }
+    .approach-flow .flow,
+    .harness-diagram .flow,
+    .scale-diagram .flow,
+    .next-diagram {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .approach-flow .node,
+    .harness-diagram .node,
+    .scale-diagram .node,
+    .next-diagram .node {
+      flex-basis: auto;
+    }
+    .approach-flow .arrow,
+    .harness-diagram .arrow,
+    .scale-diagram .arrow,
+    .next-diagram .arrow {
+      transform: rotate(90deg);
+      align-self: center;
+    }
+    .harness-outputs {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .scope-diagram {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .scope-label.original,
+    .scope-label.expanded {
+      grid-column: 1;
+    }
+    .scope-label.original {
+      grid-row: 1;
+    }
+    .scope-diagram .environment {
+      grid-row: 2;
+    }
+    .scope-first {
+      grid-row: 3;
+    }
+    .scope-diagram .harness {
+      grid-row: 4;
+    }
+    .scope-second {
+      grid-row: 5;
+    }
+    .scope-label.expanded {
+      grid-row: 6;
+    }
+    .scope-diagram .benchmark {
+      grid-row: 7;
+    }
+    .scope-diagram .arrow {
+      transform: rotate(90deg);
+    }
+    .scope-diagram .node {
+      padding: 18px;
+    }
+    .takeaway {
+      font-size: 17px;
+    }
+    .interface-map > div {
+      grid-template-columns: 24px 1fr 82px;
+      padding: 14px 4px;
+      gap: 8px;
+      font-size: 16px;
+    }
+    .interface-map > div > span {
+      grid-column: 2 / 4;
+      grid-row: 2;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .interface-map > div > b {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .interface-map > .interface-map-head {
+      display: none;
+    }
+    .campaign-equation {
+      gap: 8px;
+      grid-template-columns: 1fr 14px 1fr 14px 1fr;
+    }
+    .campaign-equation strong {
+      font-size: 40px;
+    }
+    .campaign-equation span {
+      font-size: 12px;
+      text-align: center;
+    }
+    .campaign-equation > .equation-sign:nth-child(6) {
+      display: none;
+    }
+    .campaign-equation .equation-total {
+      grid-column: 1 / -1;
+      padding-top: 18px;
+    }
+    .campaign-equation .equation-total strong {
+      font-size: 64px;
+    }
+    .mismatch-diagram {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 20px;
+    }
+    .mismatch-sign {
+      text-align: left;
+    }
   }
 }
 @media print {
@@ -2305,9 +2321,48 @@ a:focus-visible {
   color: var(--muted);
   margin: -8px 0 16px;
 }
+.slide-content {
+  display: contents;
+}
 @media screen {
   .presentation-page main {
+    width: calc(100% - 48px);
     margin-bottom: 108px;
+  }
+  /* The reading view keeps the original document card and simple footer. */
+  .presentation-page:not(.deck-presenting) .presenter-dock {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 24px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 14px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: #f5f4f7;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .presentation-page:not(.deck-presenting) .deck-progress {
+    display: none;
+  }
+  .presentation-page:not(.deck-presenting) :is(#prev, #next) {
+    border-color: var(--line);
+    background: #fff;
+    color: #28262c;
+    padding-inline: 16px;
+  }
+  .presentation-page:not(.deck-presenting) #toggle-present {
+    background: #36253f;
+    color: #fff;
+    padding-inline: 16px;
+  }
+  .deck-presenting .reading-step-label {
+    display: none;
   }
   .presentation-page:has(dialog[open]) {
     overflow: hidden;
@@ -2736,20 +2791,52 @@ a:focus-visible {
       margin-right: 396px;
     }
   }
-  @media (min-width: 800px) {
-    .deck-presenting {
-      overflow: hidden;
-    }
-    .deck-presenting main {
-      position: fixed;
-      width: 1280px;
-      max-width: none;
-      margin: 0;
-      top: var(--deck-y, 16px);
-      left: var(--deck-x, 16px);
-      transform: scale(var(--deck-scale, 1));
-      transform-origin: top left;
-    }
+  .deck-presenting {
+    overflow: hidden;
+  }
+  .deck-presenting main {
+    position: fixed;
+    width: 1280px;
+    max-width: none;
+    margin: 0;
+    top: var(--deck-y, 16px);
+    left: var(--deck-x, 16px);
+    transform: scale(var(--deck-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide {
+    width: 1280px;
+    height: 720px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    padding: 40px 56px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 8px 40px #29262f14;
+  }
+  .deck-presenting .slide-content {
+    display: flow-root;
+    position: absolute;
+    width: 1168px;
+    left: var(--content-x, 56px);
+    top: 40px;
+    transform: scale(var(--content-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide h1 {
+    font-size: 54px;
+  }
+  .deck-presenting .slide h2 {
+    font-size: 40px;
+  }
+  .deck-presenting .slide-content > ul:not(.sources) > li {
+    font-size: 23px;
+  }
+  .deck-presenting .table-scroll {
+    max-height: none;
+  }
+  .deck-presenting .slide .flow {
+    flex-wrap: nowrap;
   }
   @media (max-width: 999px) {
     .presenter-notes {
@@ -2762,6 +2849,16 @@ a:focus-visible {
     }
   }
   @media (max-width: 760px) {
+    .presentation-page:not(.deck-presenting) main {
+      width: 100%;
+    }
+    .presentation-page:not(.deck-presenting) .presenter-dock {
+      padding-inline: 8px;
+      gap: 3px;
+    }
+    .reading-step-label {
+      display: none;
+    }
     .presenter-dock {
       height: 60px;
       padding: 7px;
@@ -2783,6 +2880,9 @@ a:focus-visible {
     }
     .presenter-dock button {
       padding: 10px;
+    }
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 10px;
     }
     .presenter-dock .dock-divider {
       margin: 0 2px;
@@ -2811,6 +2911,9 @@ a:focus-visible {
     }
   }
   @media (max-width: 380px) {
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 8px;
+    }
     .presenter-dock .presenter-icon {
       min-width: 40px;
       padding: 8px;
@@ -6499,7 +6602,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Interface results<span class="section-number">17 / 20</span></span></header>
         <h2>Interface comparison: 96 recorded attempts</h2>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · median elapsed time in seconds · six tasks per cell</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Actor API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=51524e03-26bb-408b-9aa4-37bc364f5a49-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">28.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">28.4 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=da9c7d7b-e645-41af-805d-576785e32676-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">33.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">50.3 s</dd></div></dl></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=86b5ed86-8e8d-47ac-8784-3291f3a64dcc-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels tasks"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">107.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">76.7 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=df707b04-715e-42b3-be1e-c4c7e5c06278-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Actor API tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">10.0 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.0 s</dd></div></dl></td><td data-sort="3.942986">$3.9430</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=b9e13025-a9c0-46c9-9efa-4b7817804504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility tasks"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.3 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.2 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=d3bc881e-d9c2-4b75-8cb7-394169007d06-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.8 s</dd></div></dl></td><td data-sort="2"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=0df2f095-33ef-4f74-9eff-975e45d360d4-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels tasks"><strong>2 / 6</strong></a><small>1 incomplete · 3 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">19.2 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=94229b2a-9c69-435e-8b52-ec3d20696f05-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">9.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="7.278396000000001">$7.2784</td></tr><tr><th scope="row" data-sort="Qwen 3.8 Max"><span class="study-model"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Qwen</title><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z"></path></svg>Qwen 3.8 Max</span></th><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Accessibility tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">14.7 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=143d7300-046d-4c4a-b144-b461df50ea89-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">36.6 s</dd></div></dl></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=f58dd859-b2d1-4534-a762-fcbc9e30bd49-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Pixels tasks"><strong>0 / 6</strong></a><small>0 incomplete · 6 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">55.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">N/A</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Actor API tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">11.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">6.3 s</dd></div></dl></td><td data-sort="5.482921999999999">$5.4829</td></tr><tr><th scope="row" data-sort="Grok 4.7"><span class="study-model"><svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="#0A0A0A"></path><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="#0A0A0A"></path></svg>Grok 4.7</span></th><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c3d44e6e-79fb-4915-80a8-182139fd714d-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Accessibility tasks"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">20.8 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c9b642a6-fcee-49e7-8958-8ece5122621f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Page JSON tasks"><strong>3 / 6</strong></a><small>3 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">17.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=340c875a-c88d-449e-b9fb-1d20235813aa-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Pixels tasks"><strong>0 / 6</strong></a><small>1 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">40.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">N/A</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=e9625cb0-4d45-4a33-b6b5-92f350881f7f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">9.0 s</dd></div><div><dt>Passed</dt><dd data-time="passed">5.2 s</dd></div></dl></td><td data-sort="6.057272">$6.0573</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-study-table"><caption>Passed / attempted · median elapsed time in seconds · six tasks per cell</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Actor API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=51524e03-26bb-408b-9aa4-37bc364f5a49-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">28.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">28.4 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=da9c7d7b-e645-41af-805d-576785e32676-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">33.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">50.3 s</dd></div></dl></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=86b5ed86-8e8d-47ac-8784-3291f3a64dcc-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels tasks"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">107.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">76.7 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=df707b04-715e-42b3-be1e-c4c7e5c06278-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Actor API tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">10.0 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.0 s</dd></div></dl></td><td data-sort="3.942986">$3.9430</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=b9e13025-a9c0-46c9-9efa-4b7817804504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility tasks"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.3 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.2 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=d3bc881e-d9c2-4b75-8cb7-394169007d06-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">10.8 s</dd></div></dl></td><td data-sort="2"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=0df2f095-33ef-4f74-9eff-975e45d360d4-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels tasks"><strong>2 / 6</strong></a><small>1 incomplete · 3 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">19.2 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=94229b2a-9c69-435e-8b52-ec3d20696f05-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">9.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="7.278396000000001">$7.2784</td></tr><tr><th scope="row" data-sort="Qwen 3.8 Max"><span class="study-model"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Qwen</title><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z"></path></svg>Qwen 3.8 Max</span></th><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Accessibility tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">26.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">14.7 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=143d7300-046d-4c4a-b144-b461df50ea89-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">36.6 s</dd></div></dl></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=f58dd859-b2d1-4534-a762-fcbc9e30bd49-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Pixels tasks"><strong>0 / 6</strong></a><small>0 incomplete · 6 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">55.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">N/A</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Actor API tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">11.9 s</dd></div><div><dt>Passed</dt><dd data-time="passed">6.3 s</dd></div></dl></td><td data-sort="5.482921999999999">$5.4829</td></tr><tr><th scope="row" data-sort="Grok 4.7"><span class="study-model"><svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="#0A0A0A"></path><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="#0A0A0A"></path></svg>Grok 4.7</span></th><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c3d44e6e-79fb-4915-80a8-182139fd714d-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Accessibility tasks"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">20.8 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c9b642a6-fcee-49e7-8958-8ece5122621f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Page JSON tasks"><strong>3 / 6</strong></a><small>3 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">17.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">7.8 s</dd></div></dl></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=340c875a-c88d-449e-b9fb-1d20235813aa-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Pixels tasks"><strong>0 / 6</strong></a><small>1 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">40.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">N/A</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=e9625cb0-4d45-4a33-b6b5-92f350881f7f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">9.0 s</dd></div><div><dt>Passed</dt><dd data-time="passed">5.2 s</dd></div></dl></td><td data-sort="6.057272">$6.0573</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>
         <span class="sr-only" id="interface-sort-status" role="status"></span>
         <ul>
           <li>All-attempt medians include early stops, while passed-run medians use only successful tasks.</li><li>Passed tasks differ across cells, so these medians do not establish a speed ranking.</li>
@@ -10051,11 +10154,12 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     </dialog>
     <nav class="presenter-dock" aria-label="Presentation controls">
       <div id="deck-progress" class="deck-progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="20" aria-valuenow="1"><span></span></div>
+      <button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left glyph" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span class="reading-step-label">Previous</span></button>
       <button id="open-overview" class="slide-picker" type="button" aria-label="Open slide overview" aria-haspopup="dialog" title="Find a slide (G)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid glyph" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg><span><span id="counter" aria-live="polite"></span><span id="current-topic" class="current-topic"></span></span></button>
-      <div class="deck-step-controls"><button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left glyph" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg></button><button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div>
+      <button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)"><span class="reading-step-label">Next</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
       <span class="dock-divider" aria-hidden="true"></span>
       <button id="toggle-notes" class="presenter-icon" type="button" aria-label="Show speaker notes" aria-controls="presenter-notes" aria-expanded="false" title="Speaker notes (N)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-pen glyph" aria-hidden="true"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg><span class="dock-label">Notes</span></button>
-      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter presentation view" aria-pressed="false" title="Presentation view (F)"><span class="present-enter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize glyph" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg></span><span class="present-exit" hidden><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize glyph" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg></span><span class="dock-label">Present</span></button>
+      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter slides" aria-pressed="false" title="Enter slides (F)"><span class="present-enter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize glyph" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg></span><span class="present-exit" hidden><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize glyph" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg></span><span class="dock-label">Enter slides</span></button>
       <button id="open-tools" class="presenter-icon" type="button" aria-label="Open presentation tools" aria-haspopup="dialog" title="Tools and shortcuts (?)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-keyboard glyph" aria-hidden="true"><path d="M10 8h.01"></path><path d="M12 12h.01"></path><path d="M14 8h.01"></path><path d="M16 12h.01"></path><path d="M18 8h.01"></path><path d="M6 8h.01"></path><path d="M7 16h10"></path><path d="M8 12h.01"></path><rect width="20" height="16" x="2" y="4" rx="2"></rect></svg></button>
     </nav>
     <div id="presenter-status" class="sr-only" role="status"></div>
@@ -10080,6 +10184,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     ownedFullscreen = false,
     layoutFrame = 0;
   document.body.classList.add('presentation-page');
+  // One DOM copy: readable document flow normally, a bounded canvas in slide mode.
+  for (const slide of slides) {
+    const content = document.createElement('div');
+    content.className = 'slide-content';
+    content.append(...slide.childNodes);
+    slide.append(content);
+  }
 
   function layout() {
     cancelAnimationFrame(layoutFrame);
@@ -10087,7 +10198,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
       const narrowNotes = !notes.hidden && innerWidth < 1000;
       main.inert = narrowNotes;
       main.setAttribute('aria-hidden', String(narrowNotes));
-      if (!presenting || innerWidth < 800) {
+      if (!presenting) {
         for (const prop of ['--deck-scale', '--deck-x', '--deck-y'])
           main.style.removeProperty(prop);
         return;
@@ -10095,17 +10206,14 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
       const availableWidth =
         innerWidth - (!notes.hidden && innerWidth >= 1000 ? notes.offsetWidth + 20 : 0);
       const bottom = dock.getBoundingClientRect().top - 18;
-      const scale = Math.min(
-        (availableWidth - 32) / 1280,
-        (bottom - 18) / slides[index].offsetHeight,
-        1.6,
-      );
+      const scale = Math.min((availableWidth - 32) / 1280, (bottom - 18) / 720, 1.6);
       main.style.setProperty('--deck-scale', String(Math.max(0.1, scale)));
       main.style.setProperty('--deck-x', `${Math.max(16, (availableWidth - 1280 * scale) / 2)}px`);
-      main.style.setProperty(
-        '--deck-y',
-        `${Math.max(16, (bottom - slides[index].offsetHeight * scale) / 2)}px`,
-      );
+      main.style.setProperty('--deck-y', `${Math.max(16, (bottom - 720 * scale) / 2)}px`);
+      const content = slides[index].querySelector('.slide-content');
+      const fit = Math.min(1, 640 / content.offsetHeight, 1168 / content.scrollWidth);
+      content.style.setProperty('--content-scale', String(fit));
+      content.style.setProperty('--content-x', `${(1280 - 1168 * fit) / 2}px`);
     });
   }
 
@@ -10278,13 +10386,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     presenting = value;
     document.body.classList.toggle('deck-presenting', value);
     byId('toggle-present').setAttribute('aria-pressed', String(value));
-    byId('toggle-present').setAttribute(
-      'aria-label',
-      value ? 'Exit presentation view' : 'Enter presentation view',
-    );
+    byId('toggle-present').setAttribute('aria-label', value ? 'Back to document' : 'Enter slides');
     byId('toggle-present').querySelector('.present-enter').hidden = value;
     byId('toggle-present').querySelector('.present-exit').hidden = !value;
-    byId('toggle-present').querySelector('.dock-label').textContent = value ? 'Exit' : 'Present';
+    byId('toggle-present').querySelector('.dock-label').textContent = value
+      ? 'Exit slides'
+      : 'Enter slides';
+    byId('toggle-present').title = value ? 'Back to document (Esc)' : 'Enter slides (F)';
     layout();
   }
   let fullscreenBusy = false;
@@ -10451,7 +10559,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   });
   window.addEventListener('afterprint', layout);
   const observer = new ResizeObserver(layout);
-  for (const slide of slides) observer.observe(slide);
+  for (const slide of slides) observer.observe(slide.querySelector('.slide-content'));
   observer.observe(dock);
   document.fonts.ready.then(layout);
   show(hashIndex());
@@ -10548,7 +10656,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             document.getElementById(
               table.id === 'model-results'
                 ? 'sort-status'
-                : table.id === 'interface-results'
+                : table.id === 'interface-study-table'
                   ? 'interface-sort-status'
                   : ['interface-repeat-results', 'repeat-task-results'].includes(table.id)
                     ? 'repeat-sort-status'

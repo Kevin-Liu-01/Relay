@@ -4,9 +4,48 @@
   color: var(--muted);
   margin: -8px 0 16px;
 }
+.slide-content {
+  display: contents;
+}
 @media screen {
   .presentation-page main {
+    width: calc(100% - 48px);
     margin-bottom: 108px;
+  }
+  /* The reading view keeps the original document card and simple footer. */
+  .presentation-page:not(.deck-presenting) .presenter-dock {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 24px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 14px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: #f5f4f7;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .presentation-page:not(.deck-presenting) .deck-progress {
+    display: none;
+  }
+  .presentation-page:not(.deck-presenting) :is(#prev, #next) {
+    border-color: var(--line);
+    background: #fff;
+    color: #28262c;
+    padding-inline: 16px;
+  }
+  .presentation-page:not(.deck-presenting) #toggle-present {
+    background: #36253f;
+    color: #fff;
+    padding-inline: 16px;
+  }
+  .deck-presenting .reading-step-label {
+    display: none;
   }
   .presentation-page:has(dialog[open]) {
     overflow: hidden;
@@ -435,20 +474,52 @@
       margin-right: 396px;
     }
   }
-  @media (min-width: 800px) {
-    .deck-presenting {
-      overflow: hidden;
-    }
-    .deck-presenting main {
-      position: fixed;
-      width: 1280px;
-      max-width: none;
-      margin: 0;
-      top: var(--deck-y, 16px);
-      left: var(--deck-x, 16px);
-      transform: scale(var(--deck-scale, 1));
-      transform-origin: top left;
-    }
+  .deck-presenting {
+    overflow: hidden;
+  }
+  .deck-presenting main {
+    position: fixed;
+    width: 1280px;
+    max-width: none;
+    margin: 0;
+    top: var(--deck-y, 16px);
+    left: var(--deck-x, 16px);
+    transform: scale(var(--deck-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide {
+    width: 1280px;
+    height: 720px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    padding: 40px 56px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 8px 40px #29262f14;
+  }
+  .deck-presenting .slide-content {
+    display: flow-root;
+    position: absolute;
+    width: 1168px;
+    left: var(--content-x, 56px);
+    top: 40px;
+    transform: scale(var(--content-scale, 1));
+    transform-origin: top left;
+  }
+  .deck-presenting .slide h1 {
+    font-size: 54px;
+  }
+  .deck-presenting .slide h2 {
+    font-size: 40px;
+  }
+  .deck-presenting .slide-content > ul:not(.sources) > li {
+    font-size: 23px;
+  }
+  .deck-presenting .table-scroll {
+    max-height: none;
+  }
+  .deck-presenting .slide .flow {
+    flex-wrap: nowrap;
   }
   @media (max-width: 999px) {
     .presenter-notes {
@@ -461,6 +532,16 @@
     }
   }
   @media (max-width: 760px) {
+    .presentation-page:not(.deck-presenting) main {
+      width: 100%;
+    }
+    .presentation-page:not(.deck-presenting) .presenter-dock {
+      padding-inline: 8px;
+      gap: 3px;
+    }
+    .reading-step-label {
+      display: none;
+    }
     .presenter-dock {
       height: 60px;
       padding: 7px;
@@ -482,6 +563,9 @@
     }
     .presenter-dock button {
       padding: 10px;
+    }
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 10px;
     }
     .presenter-dock .dock-divider {
       margin: 0 2px;
@@ -510,6 +594,9 @@
     }
   }
   @media (max-width: 380px) {
+    .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
+      padding-inline: 8px;
+    }
     .presenter-dock .presenter-icon {
       min-width: 40px;
       padding: 8px;

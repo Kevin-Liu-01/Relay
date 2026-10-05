@@ -403,7 +403,7 @@ test('published presentation controls work under the production content-security
     await expect(page.locator('.slide.active h2')).toHaveText(
       'Interface comparison: 96 recorded attempts',
     );
-    const studyTable = page.locator('#interface-results');
+    const studyTable = page.locator('#interface-study-table');
     const median = (rows) => {
       const values = rows.map((r) => r.durationMs / 1000).sort((a, b) => a - b);
       return values.length
