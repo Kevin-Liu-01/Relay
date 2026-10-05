@@ -66,6 +66,9 @@ export function analyzeInterfaces(summary, accounting) {
       'status',
     ),
     medianSecondsAll: median(selected.map((r) => r.durationMs / 1000)),
+    medianSecondsPassed: median(
+      selected.filter((r) => r.outcome === 'passed').map((r) => r.durationMs / 1000),
+    ),
     medianActionsAll: median(selected.map((r) => r.actionAttempts)),
     usageUSD: sum(selected.map((r) => r.cost.acceptedUSD)),
     unresolvedUSD: sum(selected.map((r) => r.cost.reservedUSD)),
@@ -122,13 +125,23 @@ export function analyzeInterfaces(summary, accounting) {
       MODES.map((m) => [m, describe(rows.filter((r) => r.interface === m))]),
     ),
     paired: paired(MODELS),
-    byModel: MODELS.map((model) => ({ model, paired: paired([model]) })),
+    byModel: MODELS.map((model) => ({
+      model,
+      byInterface: Object.fromEntries(
+        MODES.map((mode) => [
+          mode,
+          describe(rows.filter((r) => r.model === model && r.interface === mode)),
+        ]),
+      ),
+      paired: paired([model]),
+    })),
     diagnosticPassesBlocked: rows
       .filter((r) => r.outcome === 'blocked' && r.diagnosticSuccess)
       .map((r) => r.phase),
     limitations: [
       'Pass discordance retains blocked attempts as not passed, but reports blocks separately. It does not isolate model ability.',
       'All-attempt time medians include early stops. Both-passed differences select on the observed outcome and are secondary descriptions.',
+      'Passed-only medians use different successful task subsets across model/interface cells. No passes means no completion-time estimate, not zero seconds.',
       'Shared-host activity affects elapsed time. API exposes semantic actions and structured data; pixels use low-detail images on macOS.',
       'No p-values, confidence intervals, repeated-trial reliability estimates or general model ranking are claimed.',
     ],

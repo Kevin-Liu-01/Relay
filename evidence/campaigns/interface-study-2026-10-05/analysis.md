@@ -22,6 +22,29 @@ Each interface has 24 attempts. Time and action medians include every attempt, i
 | Pixels | 3 | 2 | 19 | 55.21 | 9.50 | $3.327162 | $1.811368 | $5.138530 |
 | API | 21 | 2 | 1 | 9.95 | 4.50 | $1.724542 | $0.053372 | $1.777914 |
 
+## Time by model and interface
+
+Seconds are recorded episode elapsed time, including model requests and browser work. All-attempt medians include early stops. Passed-only medians use just the passed tasks in each cell, not the same task subset across cells. N/A means no passed task, not zero seconds. These values do not establish a speed ranking; the matched differences below use shared successful pairs.
+
+| Model | Interface | Passed / attempted | Median seconds, all attempts | Median seconds, passed only |
+| --- | --- | ---: | ---: | ---: |
+| gpt-6.1-sol | Accessibility | 6 / 6 | 28.41 | 28.41 |
+| gpt-6.1-sol | Page JSON | 5 / 6 | 33.17 | 50.34 |
+| gpt-6.1-sol | Pixels | 1 / 6 | 107.43 | 76.72 |
+| gpt-6.1-sol | API | 6 / 6 | 9.95 | 9.95 |
+| claude-sonnet-5-5 | Accessibility | 4 / 6 | 26.29 | 10.24 |
+| claude-sonnet-5-5 | Page JSON | 4 / 6 | 26.54 | 10.77 |
+| claude-sonnet-5-5 | Pixels | 2 / 6 | 23.71 | 19.19 |
+| claude-sonnet-5-5 | API | 5 / 6 | 9.93 | 7.80 |
+| qwen3p8-max | Accessibility | 5 / 6 | 26.70 | 14.73 |
+| qwen3p8-max | Page JSON | 4 / 6 | 23.89 | 36.61 |
+| qwen3p8-max | Pixels | 0 / 6 | 55.21 | N/A |
+| qwen3p8-max | API | 5 / 6 | 11.87 | 6.27 |
+| grok-4.7 | Accessibility | 3 / 6 | 20.77 | 7.84 |
+| grok-4.7 | Page JSON | 3 / 6 | 17.20 | 7.79 |
+| grok-4.7 | Pixels | 0 / 6 | 40.52 | N/A |
+| grok-4.7 | API | 5 / 6 | 9.01 | 5.22 |
+
 ## Matched task outcomes
 
 Each row contains the same 24 model/task pairs. Blocked attempts count as not passed and remain separately identified. The first four outcome columns are disjoint and sum to 24. The last column overlaps them.
@@ -110,6 +133,7 @@ Secondary description: include only tasks that both interfaces passed. Each valu
 - 19 pixel attempts were blocked: 3 output_limit, 14 provider_connection_error, 2 timeout. These are not all perception failures.
 - Pass discordance retains blocked attempts as not passed, but reports blocks separately. It does not isolate model ability.
 - All-attempt time medians include early stops. Both-passed differences select on the observed outcome and are secondary descriptions.
+- Passed-only medians use different successful task subsets across model/interface cells. No passes means no completion-time estimate, not zero seconds.
 - Shared-host activity affects elapsed time. API exposes semantic actions and structured data; pixels use low-detail images on macOS.
 - No p-values, confidence intervals, repeated-trial reliability estimates or general model ranking are claimed.
 - The observations can guide a new preregistered study. Do not tune or relabel this completed one.

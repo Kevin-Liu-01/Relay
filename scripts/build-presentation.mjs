@@ -247,13 +247,17 @@ const studyAnalysis =
 const studyHeading = (name, type = 'number', direction = 'descending') =>
   `<th scope="col" aria-sort="none"><button type="button" data-type="${type}" data-direction="${direction}">${name}<span class="sort-arrow" aria-hidden="true">↕</span></button></th>`;
 const apiPair = studyAnalysis?.paired.find((p) => p.left === 'a11y' && p.right === 'api');
+const elapsed = (seconds) => (seconds == null ? 'N/A' : `${seconds.toFixed(1)} s`);
 const studyTable = study
-  ? `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · six tasks per cell · click headers to sort</caption><thead><tr>${studyHeading('Model', 'text', 'ascending')}${studyModes.map((m) => studyHeading(labels[m])).join('')}${studyHeading('Allowance', 'number', 'ascending')}</tr></thead><tbody>${study.byModel
+  ? `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · median elapsed time in seconds · six tasks per cell</caption><thead><tr>${studyHeading('Model', 'text', 'ascending')}${studyModes.map((m) => studyHeading(labels[m])).join('')}${studyHeading('Allowance', 'number', 'ascending')}</tr></thead><tbody>${study.byModel
       .map(
         (row) =>
           `<tr><th scope="row" data-sort="${studyNames[row.model]}"><span class="study-model">${mark(studyMarks[row.model])}${studyNames[row.model]}</span></th>${studyModes
             .map((m) => {
               const c = row.byInterface[m];
+              const timing = studyAnalysis?.byModel.find((r) => r.model === row.model)?.byInterface[
+                m
+              ];
               const trial = studyCatalog?.trials.find(
                 (t) => t.model === row.model && t.interface === m,
               );
@@ -261,7 +265,7 @@ const studyTable = study
               const link = trial
                 ? `<a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=${trial.id}&amp;view=replay" aria-label="Review ${studyNames[row.model]} ${labels[m]} tasks">${value}</a>`
                 : value;
-              return `<td data-sort="${c.passed}">${link}<small>${c.incomplete} incomplete · ${c.blocked} blocked${c.unattempted ? ` · ${c.unattempted} not run` : ''}</small></td>`;
+              return `<td data-sort="${c.passed}">${link}<small>${c.incomplete} incomplete · ${c.blocked} blocked${c.unattempted ? ` · ${c.unattempted} not run` : ''}</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">${elapsed(timing?.medianSecondsAll)}</dd></div><div><dt>Passed</dt><dd data-time="passed">${elapsed(timing?.medianSecondsPassed)}</dd></div></dl></td>`;
             })
             .join(
               '',
@@ -290,10 +294,10 @@ const values = {
       ? '<div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>'
       : ''),
   INTERFACE_STUDY_FINDINGS: studyAnalysis
-    ? `<li>API passed ${study.byInterface.api.passed}/24 attempts, accessibility passed ${study.byInterface.a11y.passed}/24, Page JSON passed ${study.byInterface['json-ui'].passed}/24, and pixels passed ${study.byInterface.pixels.passed}/24.</li><li>The table separates incomplete tasks from attempts blocked by service failures or run limits.</li><li>Click any pass count to inspect the model's six tasks, traces, and replays.</li>`
+    ? '<li>All-attempt medians include early stops, while passed-run medians use only successful tasks.</li><li>Passed tasks differ across cells, so these medians do not establish a speed ranking.</li>'
     : '<li>Compare interfaces within the same model and task, not against the earlier 306 runs.</li><li>API actions change structured data directly, so API results measure tool use.</li><li>One attempt per condition cannot establish a reliable winner.</li>',
   INTERFACE_STUDY_STATUS: study
-    ? `Verified snapshot: ${study.totals.passed} passed · ${study.totals.incomplete} incomplete · ${study.totals.blocked} blocked · ${study.totals.unattempted} not run. Usage estimate $${(study.estimatedUSD - study.reservedUSD).toFixed(4)} + unresolved $${study.reservedUSD.toFixed(4)} = $${study.estimatedUSD.toFixed(4)} of $25. Updated ${study.generatedAt.slice(0, 16).replace('T', ' ')} UTC.`
+    ? `Verified: ${study.totals.passed} passed · ${study.totals.incomplete} incomplete · ${study.totals.blocked} blocked${study.totals.unattempted ? ` · ${study.totals.unattempted} not run` : ''}. Usage estimate $${(study.estimatedUSD - study.reservedUSD).toFixed(4)} + unresolved $${study.reservedUSD.toFixed(4)} = $${study.estimatedUSD.toFixed(4)} of $25.`
     : 'Authorized: 96 runs, $25 estimated-spend ceiling, no retries. Results are pending.',
   COMPARISON_ID: comparisonId,
   COMPARISON_PLANNED: comparison.totals.planned,

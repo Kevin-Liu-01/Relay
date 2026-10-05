@@ -14,6 +14,7 @@
         "budget": 4
       },
       "medianSecondsAll": 28.3655,
+      "medianSecondsPassed": 12.654499999999999,
       "medianActionsAll": 9.5,
       "usageUSD": 9.193719999999999,
       "unresolvedUSD": 0,
@@ -32,6 +33,7 @@
         "provider_connection_error": 2
       },
       "medianSecondsAll": 19.035,
+      "medianSecondsPassed": 12.229500000000002,
       "medianActionsAll": 9.5,
       "usageUSD": 6.472618,
       "unresolvedUSD": 0.178794,
@@ -51,6 +53,7 @@
         "timeout": 2
       },
       "medianSecondsAll": 55.206,
+      "medianSecondsPassed": 23.515,
       "medianActionsAll": 9.5,
       "usageUSD": 3.3271619999999995,
       "unresolvedUSD": 1.8113679999999999,
@@ -68,6 +71,7 @@
         "timeout": 1
       },
       "medianSecondsAll": 9.952,
+      "medianSecondsPassed": 7.803,
       "medianActionsAll": 4.5,
       "usageUSD": 1.7245420000000002,
       "unresolvedUSD": 0.053372,
@@ -158,6 +162,71 @@
   "byModel": [
     {
       "model": "gpt-6.1-sol",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "passed": 6
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 28.408,
+          "medianSecondsPassed": 28.408,
+          "medianActionsAll": 9.5,
+          "usageUSD": 1.5277180000000001,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 1.5277180000000001,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 1,
+            "passed": 5
+          },
+          "blockedReasons": {
+            "provider_connection_error": 1
+          },
+          "medianSecondsAll": 33.173500000000004,
+          "medianSecondsPassed": 50.337,
+          "medianActionsAll": 10,
+          "usageUSD": 0.8927259999999999,
+          "unresolvedUSD": 0.116074,
+          "allowanceUSD": 1.0088000000000001,
+          "unknownRequests": 1
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 5,
+            "passed": 1
+          },
+          "blockedReasons": {
+            "provider_connection_error": 3,
+            "timeout": 2
+          },
+          "medianSecondsAll": 107.42999999999999,
+          "medianSecondsPassed": 76.72,
+          "medianActionsAll": 26,
+          "usageUSD": 0.46025199999999994,
+          "unresolvedUSD": 0.63782,
+          "allowanceUSD": 1.0980719999999997,
+          "unknownRequests": 5
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "passed": 6
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 9.952,
+          "medianSecondsPassed": 9.952,
+          "medianActionsAll": 4.5,
+          "usageUSD": 0.30839599999999995,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.308396,
+          "unknownRequests": 0
+        }
+      },
       "paired": [
         {
           "left": "a11y",
@@ -241,6 +310,76 @@
     },
     {
       "model": "claude-sonnet-5-5",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 4
+          },
+          "blockedReasons": {
+            "budget": 2
+          },
+          "medianSecondsAll": 26.286499999999997,
+          "medianSecondsPassed": 10.237,
+          "medianActionsAll": 11.5,
+          "usageUSD": 2.9492279999999997,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.949228,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 1,
+            "incomplete": 1,
+            "passed": 4
+          },
+          "blockedReasons": {
+            "output_limit": 1
+          },
+          "medianSecondsAll": 26.543999999999997,
+          "medianSecondsPassed": 10.7715,
+          "medianActionsAll": 11,
+          "usageUSD": 2.018452,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.018452,
+          "unknownRequests": 0
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 3,
+            "incomplete": 1,
+            "passed": 2
+          },
+          "blockedReasons": {
+            "provider_connection_error": 3
+          },
+          "medianSecondsAll": 23.708,
+          "medianSecondsPassed": 19.186500000000002,
+          "medianActionsAll": 8.5,
+          "usageUSD": 1.42814,
+          "unresolvedUSD": 0.31792,
+          "allowanceUSD": 1.7460599999999995,
+          "unknownRequests": 3
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "incomplete": 1,
+            "passed": 5
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 9.93,
+          "medianSecondsPassed": 7.803,
+          "medianActionsAll": 5,
+          "usageUSD": 0.5646559999999999,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.564656,
+          "unknownRequests": 0
+        }
+      },
       "paired": [
         {
           "left": "a11y",
@@ -324,6 +463,75 @@
     },
     {
       "model": "qwen3p8-max",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "incomplete": 1,
+            "passed": 5
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 26.698500000000003,
+          "medianSecondsPassed": 14.73,
+          "medianActionsAll": 9.5,
+          "usageUSD": 2.198732,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.198732,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 1,
+            "incomplete": 1,
+            "passed": 4
+          },
+          "blockedReasons": {
+            "provider_connection_error": 1
+          },
+          "medianSecondsAll": 23.891000000000002,
+          "medianSecondsPassed": 36.611999999999995,
+          "medianActionsAll": 9.5,
+          "usageUSD": 1.4412379999999998,
+          "unresolvedUSD": 0.06272,
+          "allowanceUSD": 1.5039580000000004,
+          "unknownRequests": 1
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 6
+          },
+          "blockedReasons": {
+            "output_limit": 3,
+            "provider_connection_error": 3
+          },
+          "medianSecondsAll": 55.206,
+          "medianSecondsPassed": null,
+          "medianActionsAll": 8.5,
+          "usageUSD": 0.9520900000000001,
+          "unresolvedUSD": 0.33414,
+          "allowanceUSD": 1.28623,
+          "unknownRequests": 3
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 1,
+            "passed": 5
+          },
+          "blockedReasons": {
+            "timeout": 1
+          },
+          "medianSecondsAll": 11.8715,
+          "medianSecondsPassed": 6.267,
+          "medianActionsAll": 4.5,
+          "usageUSD": 0.44063,
+          "unresolvedUSD": 0.053372,
+          "allowanceUSD": 0.49400200000000005,
+          "unknownRequests": 1
+        }
+      },
       "paired": [
         {
           "left": "a11y",
@@ -407,6 +615,73 @@
     },
     {
       "model": "grok-4.7",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 2,
+            "incomplete": 1,
+            "passed": 3
+          },
+          "blockedReasons": {
+            "budget": 2
+          },
+          "medianSecondsAll": 20.7655,
+          "medianSecondsPassed": 7.842,
+          "medianActionsAll": 9,
+          "usageUSD": 2.5180420000000003,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.518042,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "incomplete": 3,
+            "passed": 3
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 17.204,
+          "medianSecondsPassed": 7.793,
+          "medianActionsAll": 9,
+          "usageUSD": 2.1202020000000004,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.1202020000000004,
+          "unknownRequests": 0
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 5,
+            "incomplete": 1
+          },
+          "blockedReasons": {
+            "provider_connection_error": 5
+          },
+          "medianSecondsAll": 40.5185,
+          "medianSecondsPassed": null,
+          "medianActionsAll": 8,
+          "usageUSD": 0.48667999999999995,
+          "unresolvedUSD": 0.521488,
+          "allowanceUSD": 1.008168,
+          "unknownRequests": 5
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "incomplete": 1,
+            "passed": 5
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 9.011,
+          "medianSecondsPassed": 5.216,
+          "medianActionsAll": 4.5,
+          "usageUSD": 0.4108600000000001,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.41086,
+          "unknownRequests": 0
+        }
+      },
       "paired": [
         {
           "left": "a11y",
@@ -496,6 +771,7 @@
   "limitations": [
     "Pass discordance retains blocked attempts as not passed, but reports blocks separately. It does not isolate model ability.",
     "All-attempt time medians include early stops. Both-passed differences select on the observed outcome and are secondary descriptions.",
+    "Passed-only medians use different successful task subsets across model/interface cells. No passes means no completion-time estimate, not zero seconds.",
     "Shared-host activity affects elapsed time. API exposes semantic actions and structured data; pixels use low-detail images on macOS.",
     "No p-values, confidence intervals, repeated-trial reliability estimates or general model ranking are claimed."
   ]

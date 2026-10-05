@@ -72,3 +72,30 @@ test('both-passed differences use the median of within-task differences', () => 
     null,
   );
 });
+
+test('cell times retain early stops in all-attempt medians but exclude them from passed-only medians', () => {
+  const s = structuredClone(summary),
+    c = structuredClone(accounting);
+  const selected = s.rows.filter((r) => r.model === 'gpt-6.1-sol' && r.interface === 'pixels');
+  for (const [i, row] of selected.entries()) {
+    row.durationMs = [1000, 2000, 9000, 20000, 40000, 80000][i];
+    row.outcome = i < 4 ? 'blocked' : 'passed';
+    row.diagnosticSuccess = true;
+    c.rows.find((r) => r.phase === row.phase).outcome = row.outcome;
+  }
+  let cell = analyzeInterfaces(s, c).byModel.find((r) => r.model === 'gpt-6.1-sol').byInterface
+    .pixels;
+  assert.equal(cell.attempts, 6);
+  assert.equal(cell.outcomes.passed, 2);
+  assert.equal(cell.medianSecondsAll, 14.5);
+  assert.equal(cell.medianSecondsPassed, 60);
+  selected[4].outcome = 'incomplete';
+  c.rows.find((r) => r.phase === selected[4].phase).outcome = 'incomplete';
+  cell = analyzeInterfaces(s, c).byModel.find((r) => r.model === 'gpt-6.1-sol').byInterface.pixels;
+  assert.equal(cell.medianSecondsPassed, 80);
+  selected[5].outcome = 'blocked';
+  c.rows.find((r) => r.phase === selected[5].phase).outcome = 'blocked';
+  cell = analyzeInterfaces(s, c).byModel.find((r) => r.model === 'gpt-6.1-sol').byInterface.pixels;
+  assert.equal(cell.medianSecondsAll, 14.5);
+  assert.equal(cell.medianSecondsPassed, null);
+});

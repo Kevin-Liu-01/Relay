@@ -237,6 +237,13 @@ test('published presentation controls work under the production content-security
       'Interface comparison: 96 recorded attempts',
     );
     const studyTable = page.locator('#interface-results');
+    const median = (rows) => {
+      const values = rows.map((r) => r.durationMs / 1000).sort((a, b) => a - b);
+      return values.length
+        ? `${((values[Math.floor((values.length - 1) / 2)] + values[Math.floor(values.length / 2)]) / 2).toFixed(1)} s`
+        : 'N/A';
+    };
+    await expect(studyTable.locator('caption')).toContainText('median elapsed time in seconds');
     await expect(studyTable.locator('tbody tr')).toHaveCount(4);
     for (const [i, model] of study.byModel.entries()) {
       const row = studyTable.locator('tbody tr').nth(i);
@@ -247,8 +254,15 @@ test('published presentation controls work under the production content-security
           'href',
           /study=interfaces/,
         );
+        const attempts = study.rows.filter((r) => r.model === model.model && r.interface === mode);
+        const cell = row.locator('td').nth(j);
+        await expect(cell.locator('[data-time="all"]')).toHaveText(median(attempts));
+        await expect(cell.locator('[data-time="passed"]')).toHaveText(
+          median(attempts.filter((r) => r.outcome === 'passed')),
+        );
       }
     }
+    await expect(page.locator('.slide.active')).toContainText('N/A means no passed task');
     for (const [label, column, direction] of [
       ['Accessibility', 1, 'descending'],
       ['Actor API', 4, 'descending'],

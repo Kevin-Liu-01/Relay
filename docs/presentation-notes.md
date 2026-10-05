@@ -259,6 +259,13 @@ Next: show the full matrix, including stops.
 All 96 attempts are recorded: 58 passed, 11 incomplete, and 27 blocked. Each table
 cell contains six tasks. Click its pass count to review them.
 
+Each cell also shows median recorded elapsed time in seconds. “All”
+includes all six runs, including blocks and limits. “Passed” includes only
+the passed tasks counted at the top of that cell. N/A means no passed tasks,
+not an instant completion. These times include model calls and browser work.
+The task subsets differ, so do not rank speeds from the passed-only medians.
+The next slide reports a paired comparison on tasks both interfaces passed.
+
 API passed 21/24, accessibility 18/24, Page JSON 16/24, and pixels 3/24. Usage
 estimates total $20.718042; unresolved reservations are $2.043534; combined
 allowance is $22.761576. Missing receipts remain unknown, not free.

@@ -1316,9 +1316,30 @@ a:focus-visible {
   padding: 8px 10px;
   border-bottom: 1px solid var(--line);
 }
+.interface-study-results .study-table td,
+.interface-study-results .study-table tbody th {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
 .interface-study-results > ul:not(.sources) li {
   font-size: 21px;
   margin: 8px 0;
+}
+.interface-study-results .masthead {
+  margin-bottom: 20px;
+}
+.interface-study-results {
+  padding-top: 26px;
+}
+.interface-study-results h2 {
+  margin-bottom: 18px;
+}
+.interface-study-results > ul {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.interface-study-results .sources {
+  padding-top: 10px;
 }
 .study-table thead th {
   font-weight: 500;
@@ -1361,6 +1382,28 @@ a:focus-visible {
   font-weight: 500;
   white-space: nowrap;
 }
+.study-times {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.study-times > div {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.study-times dt {
+  color: var(--muted);
+}
+.study-times dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 .study-model svg {
   width: 24px;
   height: 24px;
@@ -1397,12 +1440,19 @@ a:focus-visible {
   .workflow-inventory article {
     min-height: 64px;
   }
-  .study-table th,
-  .study-table td {
-    padding: 6px 10px;
+  .interface-study-results .study-table th,
+  .interface-study-results .study-table td {
+    padding: 4px 10px;
   }
   .interface-study-results .study-table {
     margin: 4px 0;
+  }
+  .study-times {
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+  .study-times dd {
+    font-size: 13px;
   }
   .interface-study-results .study-links {
     margin: 6px 0;
@@ -1423,6 +1473,10 @@ a:focus-visible {
   }
   .interface-study-results .sources li {
     font-size: 12px;
+  }
+  .interface-study-results > ul {
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
 }
 

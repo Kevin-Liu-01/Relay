@@ -1,5 +1,25 @@
 # Verification and evidence
 
+## Interface-comparison timing: 2026-10-05
+
+- Each model/interface cell now shows median recorded elapsed seconds for all
+  six attempts and for its passed tasks only. N/A marks cells without a pass;
+  blocked diagnostic passes remain excluded from the passed-only measure.
+- Timing is derived from the verified episode durations. All-attempt medians
+  include early stops. The slide explains that successful task subsets differ
+  across cells and that these values are not a speed ranking. Existing paired
+  comparisons, outcomes, costs, and the source-summary hash are unchanged.
+- Added a per-model/interface table and timing fields to the derived analysis.
+  Regenerated the 20-slide HTML/PDF and checked all 32 displayed time values
+  against the verified rows. Sorting, keyboard controls, mobile width, and the
+  production security policy remain covered by the four presentation tests.
+- All **216 backend tests and four presentation browser tests passed** in an
+  isolated production build. Initial print/navigation overlap was corrected by
+  shortening the status note and adjusting spacing. An initial backend check
+  ran before the isolated build existed; the full post-build suite passed.
+- The original actor source, root build, and historical records remain
+  byte-identical. No new inference or changed grades were used.
+
 ## Social-preview release: 2026-10-05
 
 - Replaced the three-box README banner with a 1200 × 630 social card and a

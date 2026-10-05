@@ -49,6 +49,19 @@ const text = [
       `| ${modeNames[mode]} | ${r.outcomes.passed ?? 0} | ${r.outcomes.incomplete ?? 0} | ${r.outcomes.blocked ?? 0} | ${number(r.medianSecondsAll)} | ${number(r.medianActionsAll)} | ${money(r.usageUSD)} | ${money(r.unresolvedUSD)} | ${money(r.allowanceUSD)} |`,
   ),
   '',
+  '## Time by model and interface',
+  '',
+  'Seconds are recorded episode elapsed time, including model requests and browser work. All-attempt medians include early stops. Passed-only medians use just the passed tasks in each cell, not the same task subset across cells. N/A means no passed task, not zero seconds. These values do not establish a speed ranking; the matched differences below use shared successful pairs.',
+  '',
+  '| Model | Interface | Passed / attempted | Median seconds, all attempts | Median seconds, passed only |',
+  '| --- | --- | ---: | ---: | ---: |',
+  ...analysis.byModel.flatMap((model) =>
+    Object.entries(model.byInterface).map(
+      ([mode, r]) =>
+        `| ${model.model} | ${modeNames[mode]} | ${r.outcomes.passed ?? 0} / ${r.attempts} | ${number(r.medianSecondsAll)} | ${number(r.medianSecondsPassed)} |`,
+    ),
+  ),
+  '',
   '## Matched task outcomes',
   '',
   'Each row contains the same 24 model/task pairs. Blocked attempts count as not passed and remain separately identified. The first four outcome columns are disjoint and sum to 24. The last column overlaps them.',
