@@ -18,6 +18,11 @@
   fit at 390 px and 320 px. All 20 print pages passed the clipping check; HTML
   and PDF were regenerated. A separate interactive browser check confirmed
   actual fullscreen entry and exit. Fullscreen denial retains window fitting.
+- Screenshot review found that a wrapped current-slide label could overflow
+  a phone overview card. Intrinsic row sizing now keeps the full label inside
+  the card. All 13 browser checks passed again in `relay-review-validation-20sYc8`,
+  including a new assertion that each card contains its text. Inspected the
+  corrected phone screenshot and exercised the deployed overview.
 - Original actor source and frozen root build match the pre-study receipt.
   No inference, collector, grader, task or historical recording changed.
 

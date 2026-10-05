@@ -2489,6 +2489,8 @@ a:focus-visible {
   .slide-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(min-content, auto);
+    align-content: start;
     gap: 12px;
     overflow: auto;
     min-height: 0;
@@ -2509,6 +2511,9 @@ a:focus-visible {
   .slide-card[hidden],
   .overview-empty[hidden] {
     display: none;
+  }
+  .slide-card > * {
+    flex-shrink: 0;
   }
   .slide-card[aria-current='page'] {
     border-color: var(--plum);

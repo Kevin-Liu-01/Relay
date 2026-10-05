@@ -155,6 +155,14 @@ test('small-screen presenter controls stay reachable and notes do not leave hidd
   await page.getByRole('button', { name: 'Close speaker notes' }).click();
   await expect(page.locator('main')).not.toHaveAttribute('inert', '');
   await page.getByRole('button', { name: /Open slide overview/ }).click();
+  expect(
+    await page.locator('.slide-card').evaluateAll((cards) =>
+      cards.every((card) => {
+        const bottom = card.getBoundingClientRect().bottom;
+        return [...card.children].every((child) => child.getBoundingClientRect().bottom <= bottom - 8);
+      }),
+    ),
+  ).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('mobile-overview.png') });
   await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Next slide', exact: true }).click();
