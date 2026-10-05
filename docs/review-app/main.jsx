@@ -16,7 +16,7 @@ import { ReplayPlayer, WorkspaceReplay, replayFrames } from '../../src/live/repl
 import { OutcomeBadge } from '../../src/live/feedback.jsx';
 import { TaskComparison } from '../../src/live/task-comparison.jsx';
 import { RelaySelect } from '../../src/live/select.jsx';
-import { TaskIcon } from '../../src/live/select-icons.jsx';
+import { TaskIcon, ModeIcon } from '../../src/live/select-icons.jsx';
 import { ModelMark } from '../../src/lab/model-mark.jsx';
 import Zhipu from '@thesvg/react/zhipu';
 import Minimax from '@thesvg/react/minimax';
@@ -24,7 +24,17 @@ import logo from '../../src/assets/relay-mark.svg';
 import '../../src/live/style.css';
 import '../../src/live/experience.css';
 import './style.css';
-import { catalogPath, validateCatalog, loadRecord, stateChanges, taskCaveats } from './data.mjs';
+import {
+  catalogPath,
+  interfaceCatalogPath,
+  validateCatalog,
+  loadRecord,
+  stateChanges,
+  taskCaveats,
+} from './data.mjs';
+const interfaceStudy = new URLSearchParams(location.search).get('study') === 'interfaces';
+const resultAnchor = interfaceStudy ? 'interface-results' : 'model-comparison';
+const modeLabels = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'API' };
 
 function ReviewModelMark({ id, size }) {
   const Mark = id.startsWith('glm-') ? Zhipu : id.startsWith('minimax-') ? Minimax : null;
@@ -161,11 +171,21 @@ function Trace({ record }) {
               </h2>
               {event.kind === 'input' && (
                 <details open>
-                  <summary>Exact model request</summary>
+                  <summary>
+                    {record.imageInputs
+                      ? 'Model request · lossless image references'
+                      : 'Exact model request'}
+                  </summary>
                   {episode.inputs[event.requestFile] ? (
                     <JSONView value={episode.inputs[event.requestFile]} />
                   ) : (
                     <p role="alert">Request body was not recorded.</p>
+                  )}
+                  {record.imageInputs && (
+                    <p>
+                      Image references map to the original data URLs in the downloaded JSON's
+                      imageInputs field. The original archive request hashes are unchanged.
+                    </p>
                   )}
                 </details>
               )}
@@ -377,7 +397,7 @@ function App() {
     [loadError, setLoadError] = useState('');
   useEffect(() => {
     const controller = new AbortController();
-    fetch(catalogPath, { signal: controller.signal })
+    fetch(interfaceStudy ? interfaceCatalogPath : catalogPath, { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw Error('Trial catalog unavailable.');
         return r.json();
@@ -413,7 +433,7 @@ function App() {
   }, [item?.id]);
   function navigate(trial, view = selection.view) {
     if (trial === (selection.trial || item?.id) && view === selection.view) return;
-    const next = { trial, view };
+    const next = { trial, view, ...(interfaceStudy ? { study: 'interfaces' } : {}) };
     history.pushState(null, '', `${location.pathname}?${new URLSearchParams(next)}`);
     setSelection(next);
   }
@@ -433,14 +453,14 @@ function App() {
           Relay
         </a>
         <span>Trial review</span>
-        <a className="review-back" href="/presentation#9">
+        <a className="review-back" href={`/presentation#${resultAnchor}`}>
           <ArrowLeft size={15} /> Results
         </a>
       </header>
       <main>
         <div className="review-title">
           <div>
-            <h1>Review every trial</h1>
+            <h1>{interfaceStudy ? 'Compare interface traces' : 'Review every trial'}</h1>
             <p>
               {catalog
                 ? `${catalog.attempted} / ${catalog.planned} recorded · no key needed · no new inference`
@@ -468,13 +488,21 @@ function App() {
                 wide
                 value={item.model}
                 onChange={(model) =>
-                  navigate(catalog.trials.find((r) => r.model === model && r.task === item.task).id)
+                  navigate(
+                    catalog.trials.find(
+                      (r) =>
+                        r.model === model && r.task === item.task && r.interface === item.interface,
+                    ).id,
+                  )
                 }
                 options={[...new Set(catalog.trials.map((r) => r.model))].sort().map((model) => ({
                   value: model,
                   label: model,
                   icon: <ReviewModelMark id={model} size={19} />,
-                  disabled: !catalog.trials.some((r) => r.model === model && r.task === item.task),
+                  disabled: !catalog.trials.some(
+                    (r) =>
+                      r.model === model && r.task === item.task && r.interface === item.interface,
+                  ),
                   disabledReason: 'Not recorded for this task yet',
                 }))}
               />
@@ -483,16 +511,47 @@ function App() {
                 wide
                 value={item.task}
                 onChange={(task) =>
-                  navigate(catalog.trials.find((r) => r.task === task && r.model === item.model).id)
+                  navigate(
+                    catalog.trials.find(
+                      (r) =>
+                        r.task === task && r.model === item.model && r.interface === item.interface,
+                    ).id,
+                  )
                 }
                 options={[...new Set(catalog.trials.map((r) => r.task))].sort().map((task) => ({
                   value: task,
                   label: title(task),
                   icon: <TaskIcon task={task} />,
-                  disabled: !catalog.trials.some((r) => r.task === task && r.model === item.model),
+                  disabled: !catalog.trials.some(
+                    (r) =>
+                      r.task === task && r.model === item.model && r.interface === item.interface,
+                  ),
                   disabledReason: 'Not recorded for this model yet',
                 }))}
               />
+              {interfaceStudy && (
+                <RelaySelect
+                  label="Review interface"
+                  value={item.interface}
+                  onChange={(mode) =>
+                    navigate(
+                      catalog.trials.find(
+                        (r) =>
+                          r.task === item.task && r.model === item.model && r.interface === mode,
+                      ).id,
+                    )
+                  }
+                  options={Object.entries(modeLabels).map(([mode, label]) => ({
+                    value: mode,
+                    label,
+                    icon: <ModeIcon mode={mode} />,
+                    disabled: !catalog.trials.some(
+                      (r) => r.task === item.task && r.model === item.model && r.interface === mode,
+                    ),
+                    disabledReason: 'Not recorded for this model and task yet',
+                  }))}
+                />
+              )}
               <div className="review-trial-nav">
                 <button
                   aria-label="Previous trial"
@@ -596,8 +655,9 @@ function App() {
           </>
         )}
         <footer>
-          One attempt per model/task · failures retained · playback is read-only.{' '}
-          <a href="/presentation#9">Comparison and limitations</a>
+          One attempt per {interfaceStudy ? 'model/task/interface' : 'model/task'} · failures
+          retained · playback is read-only.{' '}
+          <a href={`/presentation#${resultAnchor}`}>Comparison and limitations</a>
         </footer>
       </main>
     </div>

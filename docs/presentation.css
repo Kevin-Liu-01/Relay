@@ -1208,6 +1208,202 @@ a:focus-visible {
   }
 }
 
+/* Workflow overview and matched study: editable, accessible text. */
+.workflow-inventory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 24px 0 14px;
+}
+.workflow-inventory h3 {
+  color: var(--plum);
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+.workflow-inventory article {
+  min-height: 65px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.workflow-inventory article strong {
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+}
+.workflow-inventory article span {
+  font-size: 12px;
+  color: var(--muted);
+  display: block;
+  line-height: 1.5;
+}
+.workflow-inventory-slide .sources li {
+  font-size: 13px;
+}
+.study-design {
+  display: grid;
+  gap: 22px;
+  text-align: center;
+}
+.study-start {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+.study-start strong {
+  font-weight: 500;
+  font-size: 22px;
+}
+.study-start span {
+  color: var(--muted);
+  font-size: 16px;
+}
+.study-arms {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.study-arms > span {
+  padding: 15px 8px;
+  background: white;
+  border: 1px solid #d8ccdf;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 17px;
+}
+.study-end {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  color: var(--plum);
+  font-size: 17px;
+}
+.study-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.study-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.study-table a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.study-table caption {
+  text-align: left;
+  color: var(--muted);
+  font-size: 14px;
+  padding-bottom: 14px;
+}
+.study-table th,
+.study-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.interface-study-results > ul:not(.sources) li {
+  font-size: 21px;
+  margin: 8px 0;
+}
+.study-table thead th {
+  font-weight: 500;
+  font-size: 14px;
+  background: #f6f2f8;
+}
+.study-table strong {
+  font-weight: 500;
+  font-size: 21px;
+  color: var(--plum);
+}
+.study-table small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+.study-model {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.study-model svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 760px) {
+  .workflow-inventory {
+    grid-template-columns: 1fr;
+  }
+  .workflow-inventory article span {
+    font-size: 13px;
+  }
+  .study-arms {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .study-arms > span {
+    font-size: 13px;
+    flex-direction: column;
+  }
+  .study-end {
+    font-size: 14px;
+  }
+  .study-table {
+    min-width: 830px;
+  }
+}
+@media print {
+  .workflow-inventory-slide h2 {
+    margin-bottom: 12px;
+  }
+  .workflow-inventory {
+    margin-top: 12px;
+  }
+  .workflow-inventory article {
+    min-height: 64px;
+  }
+  .study-table th,
+  .study-table td {
+    padding: 6px 10px;
+  }
+  .interface-study-results .study-table {
+    margin: 4px 0;
+  }
+  .interface-study-results .study-links {
+    margin: 6px 0;
+  }
+  .interface-study-results > ul:not(.sources) li {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+  .interface-study-results.slide {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .interface-study-results .masthead {
+    margin-bottom: 16px;
+  }
+  .interface-study-results h2 {
+    margin-bottom: 16px;
+  }
+  .interface-study-results .sources li {
+    font-size: 12px;
+  }
+}
+
 /* Story diagrams: editable text, shared Camber type, no image-only labels. */
 .node > span {
   display: block;

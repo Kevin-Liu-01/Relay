@@ -203,6 +203,27 @@ test('API spectator follows the same session without changing state or model inp
   }
 });
 
+test('pixel action transport can complete a topic update with deterministic coordinates', async () => {
+  // This is a builder-informed transport test, not a model trajectory.
+  const env = new InterfaceEnvironment({ ...environment, mode: 'pixels' });
+  try {
+    await env.reset({ taskId: 'channel-topic', seed: 2042 });
+    const click = async (name, role = 'button') => {
+      const box = await env.base.page.getByRole(role, { name, exact: true }).boundingBox();
+      expect(box).not.toBeNull();
+      await env.act({ type: 'click', x: box.x + box.width / 2, y: box.y + box.height / 2 });
+    };
+    await click('Edit channel topic');
+    await click('Channel topic', 'textbox');
+    await env.act({ type: 'key', key: process.platform === 'darwin' ? 'Meta+a' : 'Control+a' });
+    await env.act({ type: 'type', text: 'Launch review · 15:00 UTC · Bring the final checklist' });
+    await click('Save');
+    expect((await env.evaluate()).reward).toBe(1);
+  } finally {
+    await env.close();
+  }
+});
+
 for (const mode of ['pixels', 'a11y', 'json-ui'])
   test(`interface gateway ${mode}: observation boundary and forbidden actions`, async () => {
     const env = new InterfaceEnvironment({ ...environment, mode });

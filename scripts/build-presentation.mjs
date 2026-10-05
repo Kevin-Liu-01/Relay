@@ -69,21 +69,25 @@ const relay = readFileSync('src/assets/relay-mark.svg', 'utf8').replace(
   '<svg ',
   '<svg aria-hidden="true" ',
 );
-const sectionIcons = [
-  FileCheck2,
-  AppWindow,
-  ListChecks,
-  Network,
-  Layers,
-  ScanEye,
-  ShieldCheck,
-  FlaskConical,
-  ChartNoAxesCombined,
-  Route,
-  Gauge,
-  Network,
-  Play,
-];
+const sectionIcons = {
+  'The assignment': FileCheck2,
+  'The environment': AppWindow,
+  'All workflows': ListChecks,
+  'Define success': ListChecks,
+  'The repeatable harness': Network,
+  'The scope expands': Layers,
+  'Agent interfaces': ScanEye,
+  Verification: ShieldCheck,
+  'Comparison setup': FlaskConical,
+  'Controls in the 306 runs': Accessibility,
+  'Model comparison': ChartNoAxesCombined,
+  'Matched interface study': FlaskConical,
+  'Interface results': ChartNoAxesCombined,
+  'Main lesson': Route,
+  'Speed and resources': Gauge,
+  'The next benchmark version': Network,
+  'Demonstration and discussion': Play,
+};
 const fonts = [
   ['Camber', 'regular', 400],
   ['Camber', 'medium', 500],
@@ -198,7 +202,70 @@ const bars = Object.entries(summary.byInterface)
       `<div class="result-row"><span class="interface-label">${glyph(interfaceIcons[key])}${labels[key]}</span><div class="bar">${['passed', 'incomplete', 'blocked', 'unattempted'].map((outcome) => (c[outcome] ? `<span class="segment ${outcome}" style="flex:${c[outcome]}" title="${c[outcome]} ${outcome}"></span>` : '')).join('')}</div><span>${c.passed} pass / ${c.attempted} tried · ${c.unattempted} not run</span></div>`,
   )
   .join('\n');
+const studyPath = 'evidence/campaigns/interface-study-2026-10-05/verified-summary.json';
+const study = existsSync(studyPath) ? JSON.parse(readFileSync(studyPath)) : null;
+const studyCatalogPath = 'evidence/interface-trial-library/catalog.json';
+const studyCatalog = existsSync(studyCatalogPath)
+  ? validateCatalog(JSON.parse(readFileSync(studyCatalogPath)))
+  : null;
+if (study) {
+  const receipt = JSON.parse(
+    readFileSync(
+      `evidence/campaigns/interface-study-2026-10-05/verification-public-${study.totals.attempted}.json`,
+    ),
+  );
+  assert.equal(
+    receipt.summaryHash,
+    createHash('sha256').update(readFileSync(studyPath)).digest('hex'),
+  );
+  if (studyCatalog) assert.equal(studyCatalog.summaryHash, receipt.summaryHash);
+}
+const studyModes = ['a11y', 'json-ui', 'pixels', 'api'];
+const studyNames = {
+  'gpt-6.1-sol': 'GPT-6.1 Sol',
+  'claude-sonnet-5-5': 'Claude Sonnet 5.5',
+  'qwen3p8-max': 'Qwen 3.8 Max',
+  'grok-4.7': 'Grok 4.7',
+};
+const studyMarks = {
+  'gpt-6.1-sol': Openai,
+  'claude-sonnet-5-5': Anthropic,
+  'qwen3p8-max': Qwen,
+  'grok-4.7': Grok,
+};
+const studyTable = study
+  ? `<div class="table-scroll"><table class="study-table"><caption>Passed / attempted · six planned tasks per cell</caption><thead><tr><th scope="col">Model</th>${studyModes.map((m) => `<th scope="col">${labels[m]}</th>`).join('')}<th scope="col">Allowance</th></tr></thead><tbody>${study.byModel
+      .map(
+        (row) =>
+          `<tr><th scope="row"><span class="study-model">${mark(studyMarks[row.model])}${studyNames[row.model]}</span></th>${studyModes
+            .map((m) => {
+              const c = row.byInterface[m];
+              const trial = studyCatalog?.trials.find(
+                (t) => t.model === row.model && t.interface === m,
+              );
+              const value = `<strong>${c.passed} / ${c.attempted}</strong>`;
+              const link = trial
+                ? `<a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=${trial.id}&amp;view=replay" aria-label="Review ${studyNames[row.model]} ${labels[m]} tasks">${value}</a>`
+                : value;
+              return `<td>${link}<small>${c.blocked} blocked · ${c.unattempted} not run</small></td>`;
+            })
+            .join('')}<td>$${row.estimatedUSD.toFixed(4)}</td></tr>`,
+      )
+      .join('')}</tbody></table></div>`
+  : '<div class="takeaway">The matched study is prepared. No results are available yet.</div>';
 const values = {
+  INTERFACE_STUDY_TITLE:
+    study?.status === 'completed'
+      ? 'Interface comparison: 96 recorded attempts'
+      : `Interface comparison: ${study?.totals.attempted ?? 0} of 96 recorded`,
+  INTERFACE_STUDY_RESULTS:
+    studyTable +
+    (studyCatalog
+      ? '<div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All study traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a></div>'
+      : ''),
+  INTERFACE_STUDY_STATUS: study
+    ? `Verified snapshot: ${study.totals.passed} passed · ${study.totals.incomplete} incomplete · ${study.totals.blocked} blocked · ${study.totals.unattempted} not run. Usage estimate $${(study.estimatedUSD - study.reservedUSD).toFixed(4)} + unresolved $${study.reservedUSD.toFixed(4)} = $${study.estimatedUSD.toFixed(4)} of $25. Updated ${study.generatedAt.slice(0, 16).replace('T', ' ')} UTC.`
+    : 'Authorized: 96 runs, $25 estimated-spend ceiling, no retries. Results are pending.',
   COMPARISON_ID: comparisonId,
   COMPARISON_PLANNED: comparison.totals.planned,
   COMPARISON_ATTEMPTED: comparison.totals.attempted,
@@ -313,12 +380,15 @@ for (const [file, type] of [
 }
 const faviconLinks = html.match(/<link rel="icon"[^>]*>/g).join('');
 let sectionIndex = 0;
+const sectionCount = [...html.matchAll(/<section\b[^>]*data-title=/g)].length;
 html = html.replace(/(<section\b[^>]*data-title="([^"]+)"[^>]*>)/g, (_, tag, title) => {
-  const icon = sectionIcons[sectionIndex++];
+  const icon = sectionIcons[title];
+  sectionIndex++;
   if (!icon) throw Error('Missing presentation section icon.');
-  return `${tag}<header class="masthead"><span class="wordmark">${relay}Relay</span><span class="section-label">${glyph(icon)}${title}<span class="section-number">${String(sectionIndex).padStart(2, '0')} / 13</span></span></header>`;
+  const slideId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `${tag.replace('>', ` data-slide-id="${slideId}">`)}<header class="masthead"><span class="wordmark">${relay}Relay</span><span class="section-label">${glyph(icon)}${title}<span class="section-number">${String(sectionIndex).padStart(2, '0')} / ${sectionCount}</span></span></header>`;
 });
-if (sectionIndex !== 13) throw Error('Expected thirteen presentation sections.');
+assert.equal(sectionIndex, Object.keys(sectionIcons).length);
 writeFileSync('docs/presentation.html', html);
 // One table, accounting source and controller for both surfaces.
 const resultSection = html.match(/<section class="slide comparison-slide[\s\S]*?<\/section>/)[0];
@@ -326,11 +396,11 @@ const dialog = html.match(/<dialog id="trials-dialog"[\s\S]*?<\/dialog>/)[0];
 const controls = html.match(/<script>[\s\S]*?<\/script>/)[0];
 writeFileSync(
   'docs/results.html',
-  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay · Results and replays</title>${faviconLinks}<link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
+  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay · Results and replays</title>${faviconLinks}<link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a><a href="/presentation#interface-results">Interface study</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
 );
 console.log(
   JSON.stringify({
-    slides: 13,
+    slides: sectionCount,
     backendChecks: values.BACKEND_TESTS,
     browserChecks: values.BROWSER_TESTS,
     earlierInterfaceEpisodes: values.ATTEMPTED,

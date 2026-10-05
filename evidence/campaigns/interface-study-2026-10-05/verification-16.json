@@ -1,0 +1,31 @@
+{
+  "status": "partial-verified",
+  "attempted": 16,
+  "planned": 96,
+  "summaryHash": "1248f34d72016259db13f00534dcdaba1beed8d4a4d604d39e0ced21007f3761",
+  "sourceHash": "97ee3100901a2920ef70f6da7cb634a94aaf13aa021a109d58fe6fe0ad0d8849",
+  "checks": 778,
+  "gradeChecks": 32,
+  "accounting": {
+    "requests": 103,
+    "receipts": 100,
+    "unknownRequests": 3,
+    "inputTokens": 483642,
+    "outputTokens": 18912,
+    "acceptedUSD": 1.087356,
+    "reservedUSD": 0.354036,
+    "recordedUSD": 1.441392
+  },
+  "totals": {
+    "planned": 96,
+    "attempted": 16,
+    "passed": 12,
+    "incomplete": 0,
+    "blocked": 4,
+    "unattempted": 80,
+    "actionAttempts": 99,
+    "rejectedActions": 1,
+    "captureWarnings": 0,
+    "durationMs": 403008
+  }
+}

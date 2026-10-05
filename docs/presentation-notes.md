@@ -25,21 +25,23 @@
 
 ## Talk structure
 
-- Use the 13 slides for a 10–12 minute talk. Then show the app and discuss the design.
+- Use the 17 slides for a 12–15 minute talk. Then show the app and discuss the design.
 - Start with the assignment, then explain the workspace and harness.
-- On slide 5, explain why the reusable harness led to a larger comparison.
+- On slide 6, explain why the reusable harness led to a larger comparison.
 - Show the results before you explain the task-design lesson.
 - End with the next tests and questions for the team.
-- Keep slide 9 as the sortable results table. Existing result and replay links must work.
+- Use the stable #model-comparison link for the sortable results table. Existing result and replay links must work.
 - Generate HTML and PDF with `npm run presentation`. The builder checks the evidence before it inserts results.
 - The diagrams explain the design. They are not captured executions.
-- This writing revision does not add model runs or change previous results.
+- The separate 96-run interface study has its own plan and $25 cap. The original 306 results stay unchanged.
 
 ## Slide 1: The assignment
 
 - The brief asked for a runnable Slack-like app that computer-use agents could operate.
 - It also asked for meaningful tasks, different interaction methods, and recorded agent runs.
-- I split the work into three parts: build the app, verify tasks, and explain the design.
+- I approached it as a harness problem: connect model APIs to a controlled environment, then observe, execute and check actions.
+- I first needed to research the available computer-use interfaces, how to test them, and which models completed the tasks.
+- Model comparison was a question, not an assumption that one route would be best.
 - I started with a small set of complete workflows. I did not plan a full Slack replacement.
 
 ## Slide 2: The environment
@@ -52,7 +54,15 @@
 - All workspace data is fictional. Relay does not connect to a real Slack organization.
 - I reviewed Cua Slack, env0, Agent-Diff, and UI mockups. I did not run comparisons against them.
 
-## Slide 3: Define success
+## Slide 3: All workflows
+
+- Show all 18 tasks as a map of the workspace features.
+- Read one short flow from each column. Do not read all 18 flows aloud.
+- These are summaries, not alternative instructions or new task definitions.
+- The two starred tasks retain their original wording problems and raw outcomes.
+- Exact required values, locations and unchanged data are checked separately.
+
+## Slide 4: Define success
 
 - Workspace state is the stored data, such as messages, topics, and saved items.
 - The checker compares the final state with the task requirements.
@@ -63,7 +73,7 @@
 - A blocked run stays blocked, even if its diagnostic state checks pass.
 - The checker does not penalize a wrong action that the agent fully undoes. This is a design choice to discuss.
 
-## Slide 4: The repeatable harness
+## Slide 5: The repeatable harness
 
 - The harness is the code that manages each run.
 - It starts a fresh browser session and a separate database with known data.
@@ -76,7 +86,7 @@
 - Separate databases prevent runs from changing each other's data. They do not contain malicious code that can access the host.
 - The actor and control servers currently share a process. Stronger isolation needs separate processes, containers, or virtual machines.
 
-## Slide 5: The scope expands
+## Slide 6: The scope expands
 
 - Once the environment and harness worked, I could use the same run process with another model.
 - This let me ask which tasks different models could complete through the same interface.
@@ -85,7 +95,7 @@
 - This was an expansion of the original assignment, not a claim that I had built a validated benchmark.
 - A working harness does not prove that the task instructions are clear.
 
-## Slide 6: Agent interfaces
+## Slide 7: Agent interfaces
 
 - Pixel mode gives the model a screenshot. The model uses mouse coordinates and keyboard actions.
 - Accessibility mode gives the model named controls and element references.
@@ -97,7 +107,7 @@
 - The larger 306-run comparison uses only accessibility mode. Keep the two studies separate.
 - Documentation and history settings are configurable. Their benefits have not been measured.
 
-## Slide 7: Verification
+## Slide 8: Verification
 
 - Software tests and model runs answer different questions.
 - Scripted browser tests confirm that each workflow can work in the app.
@@ -106,7 +116,7 @@
 - None of these checks proves that a new reader will interpret the instructions as intended.
 - The slide uses saved full-suite reports. Newer release checks are recorded in [the verification log](verification.md).
 
-## Slide 8: Comparison setup
+## Slide 9: Comparison setup
 
 - I used 17 model routes, 18 tasks, and one run per pair. This gives 306 attempts.
 - Six tasks are simple. Twelve tasks require several steps or changes.
@@ -120,7 +130,16 @@
 - One attempt per pair cannot show how often a model will succeed.
 - The README has Node 24 setup steps. New model runs need a provider key. The manual workspace and replays do not.
 
-## Slide 9: Model comparison
+## Slide 10: Controls in the 306 runs
+
+- All 306 hash-verified records use accessibility, seed 1042, recent-four history and no site guide.
+- All use 40 actions, 180 seconds and 4,096 output tokens per request.
+- The model sees the accessibility tree and uses references for visible controls.
+- One JSON action is returned per call. This is not each model's native computer-use protocol.
+- Provider-default reasoning, collection time and backend routing were not controlled.
+- These results cannot tell us which of the four interfaces is best.
+
+## Slide 11: Model comparison
 
 - All 306 attempts are recorded: 152 passed, 61 were incomplete, and 93 were blocked.
 - No planned attempt is missing. A blocked run cannot become a pass through diagnostic checks alone.
@@ -131,7 +150,30 @@
 - Costs are estimates from recorded base rates. Unknown usage keeps its reservation. Neither amount is an invoice.
 - All records remain tied to the original source and result summary. The current UI did not produce these runs.
 
-## Slide 10: Main lesson
+## Slide 12: Matched interface study
+
+- The user approved four models, six tasks and four interfaces, with one attempt per cell.
+- The plan was recorded before inference with a separate $25 ceiling and no retries.
+- Each model attempts the same task in four fresh workspaces with identical starting data.
+- The order of interfaces is randomized within each model and task.
+- All routes support image input in the account catalog. Low reasoning is requested in every condition.
+- The first 16 cells test transport and trace integrity before the remaining 80 cells.
+- The six tasks include three focused tasks and three tasks with several changes.
+- The original 306 runs are not reused as an accessibility baseline.
+
+## Slide 13: Interface results
+
+- Read the status and recorded count before discussing the table.
+- Each model/interface cell has six planned tasks. Unattempted tasks remain explicit.
+- A blocked run is not an ordinary task failure. Missing usage keeps its reservation.
+- Compare matched tasks within each model. Do not declare a winner from unequal completion or one attempt per cell.
+- API is a tool-use condition with broader structured visibility and larger actions.
+- Pixel input uses low-detail images. Equal action limits do not equalize the work in each action.
+- Chromium runs on macOS. Pixel keyboard shortcuts are platform-dependent; the text interfaces also provide a direct fill action.
+- Observer-site builds and software checks shared this host during collection. Recorded time is not an isolated model-speed measurement.
+- The study can guide further tests, but it cannot establish reliability or general computer-use ability.
+
+## Slide 14: Main lesson
 
 - I tested the checker, but I did not ask an independent reader to solve every task before the larger comparison.
 - The checker can apply its rules correctly while the task instructions remain unclear.
@@ -145,7 +187,7 @@
 - Keep the original outcomes. Correct the instructions in a new task version before collecting new results.
 - The [failure review](campaigns/model-breadth-2026-10-03-observations.md) links to the recorded actions.
 
-## Slide 11: Speed and resources
+## Slide 15: Speed and resources
 
 - I measured local session creation, state reset, and screenshots.
 - Median times were 17.34 ms, 1.50 ms, and 84.15 ms, respectively.
@@ -156,7 +198,7 @@
 - Test 1, 4, 8, and 16 workers. Measure memory, CPU, action time, completed runs per minute, errors, and cleanup.
 - Choose the isolation boundary based on the code and tools that agents can execute.
 
-## Slide 12: The next benchmark version
+## Slide 16: The next benchmark version
 
 - First, ask someone outside the project to solve each task from its instructions and visible workspace.
 - Compare their interpretation with the expected result.
@@ -168,7 +210,7 @@
 - The environment is reusable. The current model comparison is exploratory.
 - The [engineering review](build-review.md) covers recording, error labels, replay ownership, and storage. Use it for follow-up questions.
 
-## Slide 13: Demonstration and discussion
+## Slide 17: Demonstration and discussion
 
 - Open `/play`. Search `in:design navigation`, open the decision thread, and read the approval.
 - Open `/results`. Select a model and task, then open its trace and replay.

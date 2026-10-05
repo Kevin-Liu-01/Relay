@@ -45,6 +45,16 @@ test('public library preserves every published outcome and binds original archiv
     );
   }
 });
+test('a matched catalog distinguishes interfaces without allowing duplicate cells', () => {
+  const first = structuredClone(catalog.trials[0]);
+  const second = { ...first, interface: 'pixels', runId: '11111111-1111-4111-8111-111111111111' };
+  second.id = trialId(second);
+  second.path = `/demo/trial-${second.id}.json.gz`;
+  const matched = { ...catalog, complete: true, planned: 2, attempted: 2, trials: [first, second] };
+  assert.equal(validateCatalog(matched).trials.length, 2);
+  second.interface = first.interface;
+  assert.throws(() => validateCatalog(matched), /Duplicate/);
+});
 test('every public recording is readable, secret-screened, byte-bound and preserves the complete event chain', () => {
   for (const item of catalog.trials) {
     const bytes = read(item);

@@ -1,0 +1,1310 @@
+{
+  "id": "interface-study-2026-10-05",
+  "schemaVersion": 1,
+  "planned": 96,
+  "authorization": "User approved 4 image-capable models × 6 tasks × 4 modes, 96 fresh runs, $25 estimated-spend cap, no retries. Separate from all previous campaigns.",
+  "maxEstimatedUSD": 25,
+  "pilotCells": 16,
+  "maxWallSeconds": 28800,
+  "maxTotalRequests": 3840,
+  "maxArchiveBytes": 12000000000,
+  "minimumFreeBytes": 10000000000,
+  "seed": 2042,
+  "orderSeed": 20261005,
+  "models": {
+    "gpt-6.1-sol": {
+      "id": "gpt-6.1-sol",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "vision": true,
+      "reasoning": "low"
+    },
+    "claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "vision": true,
+      "reasoning": "low"
+    },
+    "qwen3p8-max": {
+      "id": "qwen3p8-max",
+      "rates": {
+        "input": 2,
+        "output": 6
+      },
+      "vision": true,
+      "reasoning": "low"
+    },
+    "grok-4.7": {
+      "id": "grok-4.7",
+      "rates": {
+        "input": 2,
+        "output": 6
+      },
+      "vision": true,
+      "reasoning": "low"
+    }
+  },
+  "catalog": {
+    "at": "2026-10-05T06:30:01.734Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+    "source": "https://api.router.com/v1/models",
+    "models": [
+      {
+        "id": "gpt-6.1-sol",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "none",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      },
+      {
+        "id": "claude-sonnet-5-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "none",
+          "minimal",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      },
+      {
+        "id": "grok-4.7",
+        "owned_by": "xai",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "qwen3p8-max",
+        "owned_by": "router",
+        "catalogRates": {
+          "input": 2,
+          "output": 6
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "none",
+          "minimal",
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  "common": {
+    "provider": "ramp",
+    "seeds": [
+      2042
+    ],
+    "repeats": 1,
+    "guides": [
+      false
+    ],
+    "histories": [
+      "recent-4"
+    ],
+    "orderSeed": 20261005,
+    "maxSteps": 40,
+    "maxRequests": 40,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 180,
+    "runSeconds": 240,
+    "maxEstimatedUSD": 1,
+    "requestTimeoutSeconds": 90,
+    "continueAfterRequestTimeout": true,
+    "continueAfterOutputLimit": true,
+    "continueAfterConnectionFailure": true,
+    "continueAfterEpisodeTimeout": true
+  },
+  "phases": [
+    {
+      "id": "cell-001",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-002",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-003",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-004",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-005",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-006",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-007",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-008",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-009",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-010",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-011",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-012",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-013",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-014",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-015",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-016",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "channel-topic"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-017",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-018",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-019",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-020",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-021",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-022",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-023",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-024",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-025",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-026",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-027",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-028",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-029",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-030",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-031",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-032",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "saved-cleanup"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-033",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-034",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-035",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-036",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-037",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-038",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-039",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-040",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-041",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-042",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-043",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-044",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-045",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-046",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-047",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-048",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-049",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-050",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-051",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-052",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-053",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-054",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-055",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-056",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-057",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-058",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-059",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-060",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-061",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-062",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-063",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-064",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-065",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-066",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-067",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-068",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-069",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-070",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-071",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-072",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-073",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-074",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-075",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-076",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-077",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-078",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-079",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-080",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "decision-record"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-081",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-082",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-083",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-084",
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-085",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-086",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-087",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-088",
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-089",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-090",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-091",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-092",
+      "models": [
+        "qwen3p8-max"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-093",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-094",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-095",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-096",
+      "models": [
+        "grok-4.7"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    }
+  ]
+}

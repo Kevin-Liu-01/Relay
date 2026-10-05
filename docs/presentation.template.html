@@ -16,30 +16,37 @@
     <main>
       <section class="slide active cover" data-title="The assignment">
         <h1>
-          I started with<br />
-          <em>the assignment</em>
+          Build the harness.<br />
+          <em>Then test the models.</em>
         </h1>
         <ul>
-          <li>The brief asked for a Slack-like app that computer-use agents could operate.</li>
-          <li>I used its three requirements to plan the work.</li>
+          <li>
+            I approached the brief as a harness problem: connect model APIs to a controlled Slack
+            environment.
+          </li>
+          <li>
+            I needed to understand how agents observe a page, act, and know when a task is complete.
+          </li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="The brief has three requirements. Build a runnable app. Verify tasks with recorded agent runs. Explain isolation, speed, and resource use."
+          aria-label="My approach: research how agents control a page, build a repeatable harness around model APIs, and compare task outcomes."
         >
           <div>
-            <span class="diagram-label">Build</span>{{SLACK_MARK}}<strong>Slack workflows</strong
-            ><span>Runnable code and setup</span>
+            <span class="diagram-label">01 · Research</span>{{ICON_PIXELS}}<strong
+              >How can agents act?</strong
+            ><span>Screenshots, page controls, and APIs</span>
           </div>
           <div>
-            <span class="diagram-label">Verify</span>{{ICON_EVIDENCE}}<strong
-              >Recorded agent runs</strong
-            ><span>Actions and result checks</span>
+            <span class="diagram-label">02 · Build</span>{{ICON_RESET}}<strong
+              >How can I test them?</strong
+            ><span>Reset, observe, act, check, record</span>
           </div>
           <div>
-            <span class="diagram-label">Explain</span>{{ICON_TEST}}<strong>Design choices</strong
-            ><span>Isolation, speed, and resources</span>
+            <span class="diagram-label">03 · Compare</span>{{ICON_POLICY}}<strong
+              >Which models work?</strong
+            ><span>Task outcomes, time, cost, and traces</span>
           </div>
         </div>
         <ul class="sources">
@@ -86,6 +93,100 @@
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
               >Prior-work review</a
             >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide workflow-inventory-slide" data-title="All workflows">
+        <h2>18 tasks use the full workspace</h2>
+        <div
+          class="workflow-inventory"
+          role="img"
+          aria-label="All eighteen tasks, with the main steps needed to complete each workflow."
+        >
+          <div>
+            <h3>Six focused tasks</h3>
+            <article>
+              <strong>Update a topic</strong><span>Channel → edit topic → save</span>
+            </article>
+            <article>
+              <strong>Reply in a thread</strong><span>Find request → open thread → reply</span>
+            </article>
+            <article>
+              <strong>Edit a message</strong><span>Find own message → edit → save</span>
+            </article>
+            <article>
+              <strong>Triage an incident</strong><span>Find active incident → react → pin</span>
+            </article>
+            <article>
+              <strong>Delete a draft</strong><span>Find own draft → delete → confirm</span>
+            </article>
+            <article>
+              <strong>Send a handoff</strong><span>Read current details → compose DM</span>
+            </article>
+          </div>
+          <div>
+            <h3>Coordinate work</h3>
+            <article>
+              <strong>Coordinate a release *</strong
+              ><span>Read sources → edit → reply → topic → DM</span>
+            </article>
+            <article>
+              <strong>Close out an incident</strong
+              ><span>Read resolution → replace pin → reply → topic</span>
+            </article>
+            <article>
+              <strong>Refresh saved work</strong
+              ><span>Find current sources → replace saved items → DM</span>
+            </article>
+            <article>
+              <strong>Record a design decision</strong
+              ><span>Read approval → react → pin → save → details</span>
+            </article>
+            <article>
+              <strong>Repair an outdated handoff</strong
+              ><span>Read correction → edit DM → react → save</span>
+            </article>
+            <article>
+              <strong>Complete a QA sign-off</strong
+              ><span>Read test results → reply → fix reaction → save</span>
+            </article>
+          </div>
+          <div>
+            <h3>Combine several changes</h3>
+            <article>
+              <strong>Publish a release update</strong
+              ><span>Read source → format update → pin → delete draft</span>
+            </article>
+            <article>
+              <strong>Brief the on-call engineer</strong
+              ><span>Read rotation → DM primary → save → details</span>
+            </article>
+            <article>
+              <strong>Correct a threaded estimate</strong
+              ><span>Read review → edit own reply → react → reply</span>
+            </article>
+            <article>
+              <strong>Refresh the launch board</strong
+              ><span>Find plan → replace pin → save → topic</span>
+            </article>
+            <article>
+              <strong>Hand off an approved design *</strong
+              ><span>Read decision → react → DM → reply → save</span>
+            </article>
+            <article>
+              <strong>Prepare a release retrospective</strong
+              ><span>Read three sources → summarize → pin → save → DM</span>
+            </article>
+          </div>
+        </div>
+        <ul class="sources">
+          <li>
+            These diagrams summarize the intended workflows. Exact instructions and preservation
+            checks remain in each task.
+          </li>
+          <li>
+            * Two original tasks contain wording problems. Their results remain unchanged and are
+            discussed later.
           </li>
         </ul>
       </section>
@@ -333,6 +434,47 @@
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="Controls in the 306 runs">
+        <h2>All 306 runs used accessibility controls</h2>
+        <div
+          class="diagram flow"
+          role="img"
+          aria-label="Each model reads the accessibility tree, returns one JSON action, and receives an updated observation."
+        >
+          <div class="node">
+            {{ICON_A11Y}}Read the page<span>Accessibility tree<br />Named control references</span>
+          </div>
+          <div class="arrow">{{ICON_ARROW}}</div>
+          <div class="node">
+            {{ICON_POLICY}}Choose one action<span
+              >Click, hover, fill,<br />key, scroll, wait, finish</span
+            >
+          </div>
+          <div class="arrow">{{ICON_ARROW}}</div>
+          <div class="node" data-tone="green">
+            {{ICON_WORKSPACE}}Update the workspace<span
+              >Execute the action<br />Observe the new state</span
+            >
+          </div>
+        </div>
+        <ul>
+          <li>All runs used seed 1042, the last four turns, and no site guide.</li>
+          <li>All runs allowed 40 actions, 180 seconds, and 4,096 output tokens per request.</li>
+          <li>
+            These results compare model routes under one interface, not which interface works best.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Checked against all 306 hash-verified episode records. Reasoning used provider defaults;
+            routing and collection time were not controlled.
+          </li>
+          <li>
+            No screenshot-only condition, direct API condition, or llms.txt comparison is included
+            in these 306 runs.
+          </li>
+        </ul>
+      </section>
       <section class="slide comparison-slide{{COMPARISON_CLASS}}" data-title="Model comparison">
         <div class="comparison-heading">
           <h2>{{COMPARISON_TITLE}}</h2>
@@ -395,6 +537,61 @@
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02-final/README.md"
               >Earlier 36-trial pilot: 20 passed</a
             >
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Matched interface study">
+        <h2>Change the interface, keep the task fixed</h2>
+        <div
+          class="diagram study-design"
+          role="img"
+          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
+        >
+          <div class="study-start">
+            {{ICON_TASK}}<strong>One model + one task</strong><span>Identical starting data</span>
+          </div>
+          <div class="study-arms">
+            <span>{{ICON_A11Y}}Accessibility</span><span>{{ICON_JSON}}Page JSON</span
+            ><span>{{ICON_PIXELS}}Pixels</span><span>{{ICON_API}}API</span>
+          </div>
+          <div class="study-end">
+            {{ICON_CHECK}}Same final-state checks · separate traces and costs
+          </div>
+        </div>
+        <ul>
+          <li>Four models attempt six tasks through four interfaces, giving 96 planned runs.</li>
+          <li>
+            Each attempt starts fresh, and the interface order is randomized within each model and
+            task.
+          </li>
+          <li>The study uses a separate $25 allowance with no retries.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
+            cleanup, decision record.
+          </li>
+          <li>
+            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
+            $1 ceiling per cell.
+          </li>
+        </ul>
+      </section>
+      <section class="slide interface-study-results" data-title="Interface results">
+        <h2>{{INTERFACE_STUDY_TITLE}}</h2>
+        {{INTERFACE_STUDY_RESULTS}}
+        <ul>
+          <li>
+            Compare interfaces within the same model and task, not against the earlier 306 runs.
+          </li>
+          <li>API actions change structured data directly, so API results measure tool use.</li>
+          <li>One attempt per condition cannot establish a reliable winner.</li>
+        </ul>
+        <ul class="sources">
+          <li>{{INTERFACE_STUDY_STATUS}}</li>
+          <li>
+            Pixels use low-detail screenshots. Interfaces differ in visible information and action
+            size, not just formatting.
           </li>
         </ul>
       </section>
@@ -621,7 +818,7 @@
           `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
         document.getElementById('prev').disabled = index === 0;
         document.getElementById('next').disabled = index === slides.length - 1;
-        history.replaceState(null, '', `#${index + 1}`);
+        history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
         window.scrollTo(0, 0);
       }
       if (slides.length) {
@@ -647,8 +844,13 @@
         if (e.key === 'Home') show(0);
         if (e.key === 'End') show(slides.length - 1);
       });
-      window.addEventListener('hashchange', () => show((Number(location.hash.slice(1)) || 1) - 1));
-      show((Number(location.hash.slice(1)) || 1) - 1);
+      const hashIndex = () => {
+        const name = location.hash.slice(1);
+        const named = slides.findIndex((s) => s.dataset.slideId === name);
+        return named >= 0 ? named : (Number(name) || 1) - 1;
+      };
+      window.addEventListener('hashchange', () => show(hashIndex()));
+      show(hashIndex());
       const trialDialog = document.getElementById('trials-dialog');
       let selectedTask = 'all',
         selectedModel = '';

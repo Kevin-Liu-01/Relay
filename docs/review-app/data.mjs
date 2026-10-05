@@ -1,6 +1,7 @@
 // Shared by the static reviewer, exporter and tests. No provider or history access.
 import { episodeOutcome } from '../../shared/run-outcome.mjs';
 export const catalogPath = '/demo/trial-catalog.json';
+export const interfaceCatalogPath = '/demo/interface-trial-catalog.json';
 export const taskCaveats = {
   'release-sync':
     'Task wording caveat: the channel reference ambiguously scopes the handoff location. Retain this raw outcome; do not treat it as a clean model-capability comparison.',
@@ -27,7 +28,8 @@ export function validateCatalog(catalog) {
     fail(validId.test(item.id) && item.id === trialId(item), 'Invalid trial identity.');
     fail(!ids.has(item.id), 'Duplicate trial.');
     ids.add(item.id);
-    const cell = `${item.model}/${item.task}/${item.seed}`;
+    fail(['a11y', 'json-ui', 'pixels', 'api'].includes(item.interface), 'Invalid interface.');
+    const cell = `${item.model}/${item.task}/${item.seed}/${item.interface}`;
     fail(!cells.has(cell), 'Duplicate task/model/seed.');
     cells.add(cell);
     fail(['passed', 'incomplete', 'blocked'].includes(item.outcome), 'Invalid recorded outcome.');

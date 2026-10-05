@@ -1,5 +1,21 @@
 # Review traces and replay trials
 
+## Matched interface study
+
+The separate [interface library](https://relay.kevinliu.studio/demo/review.html?study=interfaces)
+contains the verified 16-run admission snapshot. Collection continues toward
+96 planned attempts. The original 306 records and outcomes are unchanged.
+Choose a model, task and interface. Each selection has trace and replay views.
+The [interface results slide](https://relay.kevinliu.studio/presentation#interface-results)
+links directly to each model/interface pair and the separate cost export.
+
+Pixel requests contain screenshots. Repeated PNG data URLs use a lossless
+encoding to keep public records small: replace each `image_url.relayImageRef`
+with `record.imageInputs[that hash]` to reconstruct the exact request object.
+The hash identifies the full original data URL string. Export verifies exact
+reconstruction before publication. Original events, hashes and private archives
+are unchanged. This differs from the older library's PNG omission below.
+
 ## Complete inventory
 
 **306/306 attempts** are available: 17 model routes × 18 tasks × one attempt,
@@ -11,9 +27,9 @@ The complete library is 81.04 MB compressed, loaded one selected trial at a time
 
 ## Open a trial
 
-- Start at [Results](https://relay.kevinliu.studio/results), also linked from the homepage and Replays menu. Sort any numeric column, select a task, then open a model's trial list. Search the list or choose **Show all trials**. Slide 9 uses the same data and controls.
+- Start at [Results](https://relay.kevinliu.studio/results), also linked from the homepage and Replays menu. Sort any numeric column, select a task, then open a model's trial list. Search the list or choose **Show all trials**. The model comparison slide uses the same data and controls.
 - Costs separate accepted usage estimates, unresolved reservations and combined allowance. CSV/JSON downloads include calls, accepted tokens, base rates, actions and time. The build reconciles each episode from its original events; it never assigns a whole multi-episode run's budget to each trial. Neither estimates nor reservations are invoices.
-- Open [the trial library](https://relay.kevinliu.studio/demo/review.html), or **All 306 trials** on [slide 9](https://relay.kevinliu.studio/presentation#9).
+- Open [the trial library](https://relay.kevinliu.studio/demo/review.html), or **All 306 trials** on [the comparison slide](https://relay.kevinliu.studio/presentation#model-comparison).
 - Every published attempt has **Review trace** and **Watch replay** links, including incomplete and blocked attempts. The catalog reports its actual recorded count; a planned cell is never presented as a recording.
 - Choose a model and task, or move to the previous/next trial. Each selection has a shareable URL. Browser Back restores the previous selection.
 - No key, model request, paid inference, browser-local run history or private workspace is needed.

@@ -1,0 +1,1424 @@
+{
+  "id": "interface-study-2026-10-05",
+  "status": "partial-verified",
+  "generatedAt": "2026-10-05T06:38:16.190Z",
+  "totals": {
+    "planned": 96,
+    "attempted": 16,
+    "passed": 12,
+    "incomplete": 0,
+    "blocked": 4,
+    "unattempted": 80,
+    "actionAttempts": 99,
+    "rejectedActions": 1,
+    "captureWarnings": 0,
+    "durationMs": 403008
+  },
+  "rows": [
+    {
+      "phase": "cell-001",
+      "episodeId": "episode-001",
+      "runId": "c3d44e6e-79fb-4915-80a8-182139fd714d",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "grok-4.7",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 6549,
+      "estimatedUSD": 0.089768,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-002",
+      "episodeId": "episode-001",
+      "runId": "340c875a-c88d-449e-b9fb-1d20235813aa",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "grok-4.7",
+      "interface": "pixels",
+      "status": "provider_connection_error",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 27,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 108222,
+      "estimatedUSD": 0.26808000000000004,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "Router connection interrupted before a complete receipt. Usage is unknown; reservation retained. No automatic retry.",
+      "failedChecks": [
+        "topic_correct",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 71,
+      "replaySnapshots": 29
+    },
+    {
+      "phase": "cell-003",
+      "episodeId": "episode-001",
+      "runId": "e9625cb0-4d45-4a33-b6b5-92f350881f7f",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "grok-4.7",
+      "interface": "api",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 2,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 3573,
+      "estimatedUSD": 0.009408,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 3
+    },
+    {
+      "phase": "cell-004",
+      "episodeId": "episode-001",
+      "runId": "c9b642a6-fcee-49e7-8958-8ece5122621f",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "grok-4.7",
+      "interface": "json-ui",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7637,
+      "estimatedUSD": 0.06022799999999999,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "grok-4.7"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-005",
+      "episodeId": "episode-001",
+      "runId": "0df2f095-33ef-4f74-9eff-975e45d360d4",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "claude-sonnet-5-5",
+      "interface": "pixels",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 9,
+      "rejectedActions": 1,
+      "invalidJSON": 1,
+      "durationMs": 23515,
+      "estimatedUSD": 0.13180799999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 10
+    },
+    {
+      "phase": "cell-006",
+      "episodeId": "episode-001",
+      "runId": "b9e13025-a9c0-46c9-9efa-4b7817804504",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "claude-sonnet-5-5",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7914,
+      "estimatedUSD": 0.1131,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-007",
+      "episodeId": "episode-001",
+      "runId": "94229b2a-9c69-435e-8b52-ec3d20696f05",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "claude-sonnet-5-5",
+      "interface": "api",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 2,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7803,
+      "estimatedUSD": 0.006107999999999995,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 3
+    },
+    {
+      "phase": "cell-008",
+      "episodeId": "episode-001",
+      "runId": "d3bc881e-d9c2-4b75-8cb7-394169007d06",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "claude-sonnet-5-5",
+      "interface": "json-ui",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 8209,
+      "estimatedUSD": 0.069238,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "claude-sonnet-5-5"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-009",
+      "episodeId": "episode-001",
+      "runId": "df707b04-715e-42b3-be1e-c4c7e5c06278",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "gpt-6.1-sol",
+      "interface": "api",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 2,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7975,
+      "estimatedUSD": 0.003802,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 3
+    },
+    {
+      "phase": "cell-010",
+      "episodeId": "episode-001",
+      "runId": "86b5ed86-8e8d-47ac-8784-3291f3a64dcc",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "gpt-6.1-sol",
+      "interface": "pixels",
+      "status": "provider_connection_error",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 15,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 76691,
+      "estimatedUSD": 0.17236999999999988,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "Router connection interrupted before a complete receipt. Usage is unknown; reservation retained. No automatic retry.",
+      "failedChecks": [
+        "topic_correct",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 36,
+      "replaySnapshots": 17
+    },
+    {
+      "phase": "cell-011",
+      "episodeId": "episode-001",
+      "runId": "51524e03-26bb-408b-9aa4-37bc364f5a49",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "gpt-6.1-sol",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 25655,
+      "estimatedUSD": 0.06981200000000004,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-012",
+      "episodeId": "episode-001",
+      "runId": "da9c7d7b-e645-41af-805d-576785e32676",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "gpt-6.1-sol",
+      "interface": "json-ui",
+      "status": "provider_connection_error",
+      "outcome": "blocked",
+      "diagnosticSuccess": true,
+      "actionAttempts": 3,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 16010,
+      "estimatedUSD": 0.14141399999999998,
+      "usageKnown": false,
+      "captureWarnings": 0,
+      "error": "Router connection interrupted before a complete receipt. Usage is unknown; reservation retained. No automatic retry.",
+      "failedChecks": [],
+      "returnedModels": [
+        "gpt-6.1-sol"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-013",
+      "episodeId": "episode-001",
+      "runId": "8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "qwen3p8-max",
+      "interface": "a11y",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7131,
+      "estimatedUSD": 0.07386599999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-014",
+      "episodeId": "episode-001",
+      "runId": "143d7300-046d-4c4a-b144-b461df50ea89",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "qwen3p8-max",
+      "interface": "json-ui",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 4,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 7076,
+      "estimatedUSD": 0.04530399999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 6,
+      "replaySnapshots": 5
+    },
+    {
+      "phase": "cell-015",
+      "episodeId": "episode-001",
+      "runId": "f58dd859-b2d1-4534-a762-fcbc9e30bd49",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "qwen3p8-max",
+      "interface": "pixels",
+      "status": "output_limit",
+      "outcome": "blocked",
+      "diagnosticSuccess": false,
+      "actionAttempts": 9,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 84414,
+      "estimatedUSD": 0.18262799999999998,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": "The model reached its output-token limit. Request a29d0cb4-6585-41f3-a939-8e0d08489fd2. No action executed.",
+      "failedChecks": [
+        "topic_correct",
+        "no_unrequested_state_changes"
+      ],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 9,
+      "replaySnapshots": 11
+    },
+    {
+      "phase": "cell-016",
+      "episodeId": "episode-001",
+      "runId": "89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4",
+      "task": "channel-topic",
+      "seed": 2042,
+      "model": "qwen3p8-max",
+      "interface": "api",
+      "status": "completed",
+      "outcome": "passed",
+      "diagnosticSuccess": true,
+      "actionAttempts": 2,
+      "rejectedActions": 0,
+      "invalidJSON": 0,
+      "durationMs": 4634,
+      "estimatedUSD": 0.004457999999999997,
+      "usageKnown": true,
+      "captureWarnings": 0,
+      "error": null,
+      "failedChecks": [],
+      "returnedModels": [
+        "accounts/fireworks/models/qwen3p8-max"
+      ],
+      "pointerEvents": 0,
+      "replaySnapshots": 3
+    },
+    {
+      "phase": "cell-017",
+      "model": "qwen3p8-max",
+      "task": "saved-cleanup",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-018",
+      "model": "qwen3p8-max",
+      "task": "saved-cleanup",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-019",
+      "model": "qwen3p8-max",
+      "task": "saved-cleanup",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-020",
+      "model": "qwen3p8-max",
+      "task": "saved-cleanup",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-021",
+      "model": "gpt-6.1-sol",
+      "task": "saved-cleanup",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-022",
+      "model": "gpt-6.1-sol",
+      "task": "saved-cleanup",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-023",
+      "model": "gpt-6.1-sol",
+      "task": "saved-cleanup",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-024",
+      "model": "gpt-6.1-sol",
+      "task": "saved-cleanup",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-025",
+      "model": "grok-4.7",
+      "task": "saved-cleanup",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-026",
+      "model": "grok-4.7",
+      "task": "saved-cleanup",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-027",
+      "model": "grok-4.7",
+      "task": "saved-cleanup",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-028",
+      "model": "grok-4.7",
+      "task": "saved-cleanup",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-029",
+      "model": "claude-sonnet-5-5",
+      "task": "saved-cleanup",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-030",
+      "model": "claude-sonnet-5-5",
+      "task": "saved-cleanup",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-031",
+      "model": "claude-sonnet-5-5",
+      "task": "saved-cleanup",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-032",
+      "model": "claude-sonnet-5-5",
+      "task": "saved-cleanup",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-033",
+      "model": "grok-4.7",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-034",
+      "model": "grok-4.7",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-035",
+      "model": "grok-4.7",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-036",
+      "model": "grok-4.7",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-037",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-038",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-039",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-040",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-041",
+      "model": "qwen3p8-max",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-042",
+      "model": "qwen3p8-max",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-043",
+      "model": "qwen3p8-max",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-044",
+      "model": "qwen3p8-max",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-045",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-046",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-047",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-048",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-049",
+      "model": "qwen3p8-max",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-050",
+      "model": "qwen3p8-max",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-051",
+      "model": "qwen3p8-max",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-052",
+      "model": "qwen3p8-max",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-053",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-054",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-055",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-056",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-057",
+      "model": "grok-4.7",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-058",
+      "model": "grok-4.7",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-059",
+      "model": "grok-4.7",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-060",
+      "model": "grok-4.7",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-061",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-062",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-063",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-064",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-065",
+      "model": "qwen3p8-max",
+      "task": "decision-record",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-066",
+      "model": "qwen3p8-max",
+      "task": "decision-record",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-067",
+      "model": "qwen3p8-max",
+      "task": "decision-record",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-068",
+      "model": "qwen3p8-max",
+      "task": "decision-record",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-069",
+      "model": "grok-4.7",
+      "task": "decision-record",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-070",
+      "model": "grok-4.7",
+      "task": "decision-record",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-071",
+      "model": "grok-4.7",
+      "task": "decision-record",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-072",
+      "model": "grok-4.7",
+      "task": "decision-record",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-073",
+      "model": "gpt-6.1-sol",
+      "task": "decision-record",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-074",
+      "model": "gpt-6.1-sol",
+      "task": "decision-record",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-075",
+      "model": "gpt-6.1-sol",
+      "task": "decision-record",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-076",
+      "model": "gpt-6.1-sol",
+      "task": "decision-record",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-077",
+      "model": "claude-sonnet-5-5",
+      "task": "decision-record",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-078",
+      "model": "claude-sonnet-5-5",
+      "task": "decision-record",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-079",
+      "model": "claude-sonnet-5-5",
+      "task": "decision-record",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-080",
+      "model": "claude-sonnet-5-5",
+      "task": "decision-record",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-081",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-082",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-083",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-084",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-085",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-086",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-087",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-088",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-089",
+      "model": "qwen3p8-max",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-090",
+      "model": "qwen3p8-max",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-091",
+      "model": "qwen3p8-max",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-092",
+      "model": "qwen3p8-max",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-093",
+      "model": "grok-4.7",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-094",
+      "model": "grok-4.7",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-095",
+      "model": "grok-4.7",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted"
+    },
+    {
+      "phase": "cell-096",
+      "model": "grok-4.7",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted"
+    }
+  ],
+  "estimatedUSD": 1.441392,
+  "reservedUSD": 0.354036,
+  "requests": 103,
+  "remainingUSD": 23.558608,
+  "byInterface": {
+    "a11y": {
+      "planned": 24,
+      "attempted": 4,
+      "passed": 4,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 20,
+      "actionAttempts": 16,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 47249,
+      "estimatedUSD": 0.346546
+    },
+    "json-ui": {
+      "planned": 24,
+      "attempted": 4,
+      "passed": 3,
+      "incomplete": 0,
+      "blocked": 1,
+      "unattempted": 20,
+      "actionAttempts": 15,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 38932,
+      "estimatedUSD": 0.3161839999999999
+    },
+    "pixels": {
+      "planned": 24,
+      "attempted": 4,
+      "passed": 1,
+      "incomplete": 0,
+      "blocked": 3,
+      "unattempted": 20,
+      "actionAttempts": 60,
+      "rejectedActions": 1,
+      "captureWarnings": 0,
+      "durationMs": 292842,
+      "estimatedUSD": 0.754886
+    },
+    "api": {
+      "planned": 24,
+      "attempted": 4,
+      "passed": 4,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 20,
+      "actionAttempts": 8,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 23985,
+      "estimatedUSD": 0.02377599999999999
+    }
+  },
+  "byModel": [
+    {
+      "model": "gpt-6.1-sol",
+      "planned": 24,
+      "attempted": 4,
+      "passed": 2,
+      "incomplete": 0,
+      "blocked": 2,
+      "unattempted": 20,
+      "actionAttempts": 24,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 126331,
+      "estimatedUSD": 0.3873979999999999,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 25655,
+          "estimatedUSD": 0.06981200000000004
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 1,
+          "unattempted": 5,
+          "actionAttempts": 3,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 16010,
+          "estimatedUSD": 0.14141399999999998
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 1,
+          "unattempted": 5,
+          "actionAttempts": 15,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 76691,
+          "estimatedUSD": 0.17236999999999988
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 2,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7975,
+          "estimatedUSD": 0.003802
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "planned": 24,
+      "attempted": 4,
+      "passed": 4,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 20,
+      "actionAttempts": 19,
+      "rejectedActions": 1,
+      "captureWarnings": 0,
+      "durationMs": 47441,
+      "estimatedUSD": 0.3202539999999999,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7914,
+          "estimatedUSD": 0.1131
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 8209,
+          "estimatedUSD": 0.069238
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 9,
+          "rejectedActions": 1,
+          "captureWarnings": 0,
+          "durationMs": 23515,
+          "estimatedUSD": 0.13180799999999998
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 2,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7803,
+          "estimatedUSD": 0.006107999999999995
+        }
+      }
+    },
+    {
+      "model": "qwen3p8-max",
+      "planned": 24,
+      "attempted": 4,
+      "passed": 3,
+      "incomplete": 0,
+      "blocked": 1,
+      "unattempted": 20,
+      "actionAttempts": 19,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 103255,
+      "estimatedUSD": 0.306256,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7131,
+          "estimatedUSD": 0.07386599999999997
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7076,
+          "estimatedUSD": 0.04530399999999998
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 1,
+          "unattempted": 5,
+          "actionAttempts": 9,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 84414,
+          "estimatedUSD": 0.18262799999999998
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 2,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 4634,
+          "estimatedUSD": 0.004457999999999997
+        }
+      }
+    },
+    {
+      "model": "grok-4.7",
+      "planned": 24,
+      "attempted": 4,
+      "passed": 3,
+      "incomplete": 0,
+      "blocked": 1,
+      "unattempted": 20,
+      "actionAttempts": 37,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 125981,
+      "estimatedUSD": 0.42748400000000003,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 6549,
+          "estimatedUSD": 0.089768
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 4,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 7637,
+          "estimatedUSD": 0.06022799999999999
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 1,
+          "unattempted": 5,
+          "actionAttempts": 27,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 108222,
+          "estimatedUSD": 0.26808000000000004
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 1,
+          "passed": 1,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 5,
+          "actionAttempts": 2,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 3573,
+          "estimatedUSD": 0.009408
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "One fresh attempt per model/task/interface, six public development tasks, one seed. Exploratory paired comparison, not reliability or significance evidence.",
+    "Interface is an observation/action bundle. API exposes structured state and semantic actions; it is tool use, not pixel-only computer use.",
+    "Pixels use low-detail 1440×900 screenshots; accessibility exposes a document tree, while Page JSON exposes viewport text and controls.",
+    "Low reasoning requested for every route; providers need not implement it equally. Model weights and provider routing are not pinned.",
+    "Forty actions and 180 seconds are equal ceilings but do not equalize work per action. No guide; four-turn history.",
+    "Unknown usage retains full reservations. Base-rate usage estimates are not invoices. Budget stops leave unattempted cells visible."
+  ]
+}

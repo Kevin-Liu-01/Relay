@@ -1,0 +1,17 @@
+phase,task,model,interface,outcome,requests,receipts,unknownRequests,inputTokens,outputTokens,acceptedUSD,reservedUSD,recordedUSD
+cell-001,channel-topic,grok-4.7,a11y,passed,4,4,0,44476,136,0.089768,0,0.089768
+cell-002,channel-topic,grok-4.7,pixels,blocked,28,27,1,67349,3773,0.15733600000000003,0.110744,0.26808000000000004
+cell-003,channel-topic,grok-4.7,api,passed,2,2,0,4410,98,0.009408,0,0.009408
+cell-004,channel-topic,grok-4.7,json-ui,passed,4,4,0,29808,102,0.060228000000000004,0,0.06022799999999999
+cell-005,channel-topic,claude-sonnet-5-5,pixels,passed,9,9,0,64749,231,0.13180799999999998,0,0.13180799999999998
+cell-006,channel-topic,claude-sonnet-5-5,a11y,passed,4,4,0,56105,89,0.1131,0,0.1131
+cell-007,channel-topic,claude-sonnet-5-5,api,passed,2,2,0,2754,60,0.006108,0,0.006107999999999995
+cell-008,channel-topic,claude-sonnet-5-5,json-ui,passed,4,4,0,34174,89,0.069238,0,0.069238
+cell-009,channel-topic,gpt-6.1-sol,api,passed,2,2,0,1696,41,0.0038020000000000003,0,0.003802
+cell-010,channel-topic,gpt-6.1-sol,pixels,blocked,16,15,1,17501,1015,0.045152,0.127218,0.17236999999999988
+cell-011,channel-topic,gpt-6.1-sol,a11y,passed,4,4,0,34571,67,0.069812,0,0.06981200000000004
+cell-012,channel-topic,gpt-6.1-sol,json-ui,blocked,4,3,1,12380,58,0.02534,0.116074,0.14141399999999998
+cell-013,channel-topic,qwen3p8-max,a11y,passed,4,4,0,36015,306,0.073866,0,0.07386599999999997
+cell-014,channel-topic,qwen3p8-max,json-ui,passed,4,4,0,21770,294,0.045304,0,0.04530399999999998
+cell-015,channel-topic,qwen3p8-max,pixels,blocked,10,10,0,54072,12414,0.18262799999999998,0,0.18262799999999998
+cell-016,channel-topic,qwen3p8-max,api,passed,2,2,0,1812,139,0.004458,0,0.004457999999999997

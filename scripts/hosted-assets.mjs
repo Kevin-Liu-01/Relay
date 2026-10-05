@@ -38,10 +38,14 @@ function addExpectations(record) {
   }
 }
 // Static, lazy-loaded trial records. Never expose private runtime directories.
-if (existsSync('evidence/trial-library/catalog.json')) {
-  const catalog = validateCatalog(JSON.parse(readFileSync('evidence/trial-library/catalog.json')));
+for (const [library, catalogName] of [
+  ['trial-library', 'trial-catalog.json'],
+  ['interface-trial-library', 'interface-trial-catalog.json'],
+]) {
+  if (!existsSync(`evidence/${library}/catalog.json`)) continue;
+  const catalog = validateCatalog(JSON.parse(readFileSync(`evidence/${library}/catalog.json`)));
   for (const item of catalog.trials) {
-    const source = `evidence/trial-library/${item.path.split('/').at(-1)}`;
+    const source = `evidence/${library}/${item.path.split('/').at(-1)}`;
     const bytes = readFileSync(source);
     if (
       bytes.length !== item.bytes ||
@@ -55,7 +59,7 @@ if (existsSync('evidence/trial-library/catalog.json')) {
     addExpectations(record);
     copyFileSync(source, `dist${item.path}`);
   }
-  copyFileSync('evidence/trial-library/catalog.json', 'dist/demo/trial-catalog.json');
+  copyFileSync(`evidence/${library}/catalog.json`, `dist/demo/${catalogName}`);
 }
 // Actor-visible fictional fixture only. No task instructions, grader or answers.
 writeFileSync('dist/demo/sandbox.json', JSON.stringify(makeWorkflowSeed(42)));
@@ -165,6 +169,10 @@ writeFileSync(
 );
 for (const extension of ['csv', 'json'])
   copyFileSync(`docs/results-accounting.${extension}`, `dist/demo/results-accounting.${extension}`);
+for (const extension of ['csv', 'json']) {
+  const path = `evidence/campaigns/interface-study-2026-10-05/accounting.${extension}`;
+  if (existsSync(path)) copyFileSync(path, `dist/demo/interface-study-accounting.${extension}`);
+}
 
 // Fail a production build if any server-only credential lands in public output.
 function checkPublic(directory) {

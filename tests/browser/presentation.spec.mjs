@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 import { readFileSync } from 'node:fs';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
-test('presentation: thirteen readable technical slides, evidence-backed counts and keyboard navigation', async ({
+test('presentation: seventeen readable technical slides, evidence-backed counts and keyboard navigation', async ({
   page,
 }, testInfo) => {
   const requests = [];
@@ -15,8 +15,8 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator('body')).toHaveCSS('font-family', /Relay Camber/);
   expect(await page.evaluate(() => document.fonts.check('500 32px "Relay Camber"'))).toBe(true);
-  await expect(page.locator('.slide')).toHaveCount(13);
-  await expect(page.locator('.masthead .wordmark svg')).toHaveCount(13);
+  await expect(page.locator('.slide')).toHaveCount(17);
+  await expect(page.locator('.masthead .wordmark svg')).toHaveCount(17);
   await expect(page.locator('[aria-label="Models in the campaign"] svg')).toHaveCount(3);
   await expect(page.locator('main')).not.toContainText('{{');
   await expect(page.locator('[data-title="Agent interfaces"] .lucide-accessibility')).toHaveCount(
@@ -27,12 +27,12 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   );
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
-  await expect(page.locator('.slide table')).toHaveCount(1);
+  await expect(page.locator('.slide table')).toHaveCount(2);
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
     'did not ask an independent reader to solve every task',
   );
   await expect(page.locator('[data-title="The assignment"] h1')).toHaveText(
-    'I started with the assignment',
+    'Build the harness. Then test the models.',
   );
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'I then used the harness to compare models',
@@ -46,20 +46,24 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
     'href',
     'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md',
   );
-  await expect(page.locator('.slide [role="img"]')).toHaveCount(11);
+  await expect(page.locator('.slide [role="img"]')).toHaveCount(14);
   const sequence = await page
     .locator('.slide')
     .evaluateAll((slides) => slides.map((s) => s.dataset.title));
   expect(sequence).toEqual([
     'The assignment',
     'The environment',
+    'All workflows',
     'Define success',
     'The repeatable harness',
     'The scope expands',
     'Agent interfaces',
     'Verification',
     'Comparison setup',
+    'Controls in the 306 runs',
     'Model comparison',
+    'Matched interface study',
+    'Interface results',
     'Main lesson',
     'Speed and resources',
     'The next benchmark version',
@@ -88,35 +92,41 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
     'The harness is the code that manages each run.',
   );
   const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 17; i++) {
     const slide = page.locator('.slide.active');
     await expect(slide).toHaveCount(1);
     await expect(slide.locator('h1, h2')).toHaveCount(1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (i === 5)
+    if (i === 2 || i === 12) {
+      const bottom = await slide
+        .locator('.sources')
+        .evaluate((node) => node.getBoundingClientRect().bottom);
+      expect(bottom, 'New slide content stays above the navigation').toBeLessThan(836);
+    }
+    if (i === 6)
       await expect(slide).toContainText(
         `${summary.totals.attempted} attempted: ${summary.totals.passed} passed`,
       );
-    if ([0, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(i)) {
+    if ([0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(i)) {
       await page.screenshot({
         path: testInfo.outputPath(`slide-${i + 1}.png`),
         animations: 'disabled',
       });
     }
-    if (i < 12) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
+    if (i < 16) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
   }
   await expect(page.getByRole('button', { name: 'Next slide', exact: true })).toBeDisabled();
   await page.keyboard.press('ArrowLeft');
-  await expect(page.locator('#counter')).toContainText('12 / 13');
+  await expect(page.locator('#counter')).toContainText('16 / 17');
   await page.keyboard.press('Home');
-  await expect(page.locator('#counter')).toContainText('1 / 13');
+  await expect(page.locator('#counter')).toContainText('1 / 17');
   await page.keyboard.press('End');
-  await expect(page.locator('#counter')).toContainText('13 / 13');
+  await expect(page.locator('#counter')).toContainText('17 / 17');
   expect(requests).toEqual([]);
 });
-test('presentation: print has thirteen unclipped pages and mobile has no horizontal overflow', async ({
+test('presentation: print has seventeen unclipped pages and mobile has no horizontal overflow', async ({
   page,
 }) => {
   await page.goto(pathToFileURL(resolve('docs/presentation.html')).href);
@@ -131,7 +141,7 @@ test('presentation: print has thirteen unclipped pages and mobile has no horizon
       width: s.clientWidth,
     })),
   );
-  expect(dimensions).toHaveLength(13);
+  expect(dimensions).toHaveLength(17);
   for (const d of dimensions) {
     expect(d.h, d.title).toBeLessThanOrEqual(d.client + 1);
     expect(d.w, d.title).toBeLessThanOrEqual(d.width + 1);
@@ -140,11 +150,11 @@ test('presentation: print has thirteen unclipped pages and mobile has no horizon
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('.slide.active')).toHaveCSS('animation-name', 'none');
   await page.setViewportSize({ width: 390, height: 844 });
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 17; i++) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (i < 12) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
+    if (i < 16) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
   }
 });
 
@@ -179,11 +189,11 @@ test('published presentation controls work under the production content-security
     ).toBe(true);
     expect(assetRequests.some((url) => /\/assets\/presentation-.*\.woff2$/.test(url))).toBe(true);
     expect(assetRequests.every((url) => url.startsWith(base))).toBe(true);
-    await expect(page.locator('#counter')).toContainText('1 / 13');
+    await expect(page.locator('#counter')).toContainText('1 / 17');
     await page.getByRole('button', { name: 'Next slide', exact: true }).click();
-    await expect(page.locator('#counter')).toContainText('2 / 13');
-    await page.goto(`${base}/presentation.html#9`);
-    await expect(page).toHaveURL(`${base}/presentation#9`);
+    await expect(page.locator('#counter')).toContainText('2 / 17');
+    await page.goto(`${base}/presentation.html#model-comparison`);
+    await expect(page).toHaveURL(`${base}/presentation#model-comparison`);
     await page.locator('#model-results thead button').filter({ hasText: 'Passed' }).click();
     await expect(page.locator('#sort-status')).toHaveText('Sorted by Passed, descending');
     const pdf = await request.get(`${base}/presentation.pdf`);
@@ -204,7 +214,7 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
       `evidence/campaigns/${JSON.parse(readFileSync('docs/current-comparison.json')).campaign}/summary.json`,
     ),
   );
-  await page.goto(`${pathToFileURL(resolve('docs/presentation.html')).href}#9`);
+  await page.goto(`${pathToFileURL(resolve('docs/presentation.html')).href}#model-comparison`);
   const table = page.locator('#model-results');
   await expect(table.locator('tbody tr')).toHaveCount(summary.byModel.length);
   await expect(table.locator('.trial-strip.dense')).toHaveCount(
@@ -247,7 +257,7 @@ test('comparison slide sorts raw values, preserves missing values, supports keyb
       await expect(button.locator('..')).toHaveAttribute('aria-sort', d);
       if (d === direction) await button.press('Space');
     }
-    await expect(page).toHaveURL(/#9$/);
+    await expect(page).toHaveURL(/#model-comparison$/);
   }
   const model = table.getByRole('button', { name: /^Model/ });
   await model.click();

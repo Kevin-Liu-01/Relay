@@ -1,5 +1,33 @@
 # Relay handoff
 
+## Active matched interface study
+
+Read `docs/campaigns/interface-study-2026-10-05.md` and its immutable JSON.
+The user approved 96 fresh cells: four image-capable routes, six tasks and four
+interfaces, with a separate $25 estimated allowance and no retries. The first
+16 cells are verified: 12 passed, four blocked, $1.441392 including unresolved
+reservations. Read the pilot review before bulk collection. The worker is
+`scripts/run-interface-study.mjs`; never edit its frozen helper, JSON, actor
+source or root dist during collection. Inspect `.runtime/interface-study-2026-10-05/worker.lock`
+and manifest before any launch. Do not start a second worker or repeat a cell.
+The original 306-run comparison is closed and remains untouched.
+
+The new presentation has 17 slides, an all-workflow overview and explicit controls.
+Use stable links such as `/presentation#model-comparison`; numeric links still
+select their corresponding slide. The separate interface table must say how many
+of 96 attempts are recorded. No winner claim from incomplete coverage or a single
+attempt per condition. API is tool use. Pixel inputs use low detail on macOS;
+keyboard behavior is platform-dependent. Reopen archives with
+`scripts/verify-interface-study.mjs` at a stopped boundary before publishing results.
+During collection, `--through=16 --publish` rechecks only the sealed admission
+prefix. The builder consumes `verified-summary.json`, never the moving summary.
+The verified 16-record public snapshot is separate from active collection files.
+Do not commit the moving `summary.json` or `manifest.json` until the worker stops.
+The active completion heartbeat `finish-relay-coverage-and-publish-every-replay`
+owns final verification and publication. It must not restart a stopped worker.
+Use `scripts/refresh-source-manifest.mjs` for the release receipt, not the old
+evidence collector. The original 306 records and reports remain unchanged.
+
 ## Expected-result comparison
 
 Read `docs/expected-results.md`. Runs and replays compare exact required final

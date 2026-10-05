@@ -34,6 +34,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 - **[Results, full costs and all replays](https://relay.kevinliu.studio/results)**: sortable model table, task filters and per-model drilldowns. Every trial links directly to its trace and recorded UI. No key or new inference required.
 - **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
+- **[Matched interface study](https://relay.kevinliu.studio/presentation#interface-results)**: a separate 96-run plan compares four models, six tasks and four interfaces. The verified admission snapshot has 16 attempts: 12 passed and four blocked. Collection continues within the approved $25 ceiling. [Plan and controls](docs/campaigns/interface-study-2026-10-05.md) · [Study traces and replays](https://relay.kevinliu.studio/demo/review.html?study=interfaces).
 - **[Build review](docs/build-review.md)**: task-design mistakes, engineering fixes, and what I would change next time.
 - **[One-pass model coverage](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)**: **306/306 recorded and verified**—152 passed, 61 incomplete, 93 blocked. Seventeen routes × all 18 tasks, one attempt per cell, with no repeats or hidden exclusions.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
@@ -227,7 +228,7 @@ The [one-pass campaign](docs/campaigns/model-breadth-2026-10-03-continuation.md)
 attempts and preserved failures alongside scripted evidence. No RL training or GPU
 experiment is claimed. [Full evidence chronology →](docs/verification.md)
 
-[Slide 9](https://relay.kevinliu.studio/presentation#9) has sortable model results
+[Model comparison](https://relay.kevinliu.studio/presentation#model-comparison) has sortable model results
 and a custom per-task filter. The completed inventory has **one attempt for every
 task/model**: 18 tasks × 17 routes = **306 cells**, no repeats. Family/tier coverage
 includes OpenAI, Anthropic, xAI, Qwen, DeepSeek, GLM, Kimi, MiniMax and NVIDIA;

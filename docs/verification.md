@@ -1,5 +1,42 @@
 # Verification and evidence
 
+## Presentation and matched-interface admission snapshot: 2026-10-05
+
+- The 17-slide deck starts with the harness-first approach, then shows all 18
+  workflows after the worked example. A separate slide explains the controls
+  used in the original 306 accessibility runs. New slides cover the matched
+  four-interface study and its verified results. Named slide links remain stable.
+- The published snapshot contains **16 of 96 planned attempts: 12 passed and
+  four blocked**. Collection is still running. The archive review passed **778
+  integrity checks and 32 recomputed outcome checks**. It retained all failures,
+  including a blocked run whose final workspace happened to satisfy the grader.
+- The snapshot records **$1.087356** in usage estimates plus **$0.354036** in
+  unresolved reservations, for **$1.441392** of the separate **$25** allowance.
+  It contains 103 requests and 100 accepted receipts. No request was retried.
+- Every published study attempt has a trace and actual-UI replay. The reviewer
+  keeps model, task and interface selections separate. Pixel requests use
+  lossless image references; unit checks reconstruct each request and verify
+  its original hash. Original event chains and archives remain unchanged.
+- All **210 backend tests and 14 targeted browser tests passed**. The browser
+  suite opens all 306 historical records and all 16 new study records, checks
+  exact outcomes, task comparisons, interface switching, keyboard interaction,
+  mobile width, table sorting, cost exports and production security policy.
+  No paid inference was used by these software checks.
+- The final layout pass adds a desktop content-bound check and reruns all four
+  presentation tests. The HTML and 17-page PDF have no print clipping. The
+  workflow and interface-results slides were inspected visually. Initial
+  validation found a tall results layout and a test fixture-scope error; both
+  were corrected before the successful checks.
+- Validation used an isolated, credential-free build and one browser worker.
+  Root actor source and frozen `dist` remain byte-identical. The original 306
+  records, summary and accounting exports are unchanged. Shared-host activity
+  during collection is disclosed; recorded durations are not isolated inference
+  speed measurements. The new study is exploratory, with one attempt per cell.
+
+Study plan: [matched interface study](campaigns/interface-study-2026-10-05.md).
+Admission findings: [pilot review](campaigns/interface-study-2026-10-05-pilot-review.md).
+Publication binding: [16-run verification](../evidence/campaigns/interface-study-2026-10-05/verification-public-16.json).
+
 ## Integrated header and access controls: 2026-10-04
 
 - Moved the title and explanation into the logo row. Free / Your key now sits
