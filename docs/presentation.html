@@ -1247,11 +1247,712 @@
           -webkit-print-color-adjust: exact;
         }
       }
+
+      /* Story diagrams: editable text, shared Camber type, no image-only labels. */
+      .node > span {
+        display: block;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.45;
+        margin-top: 8px;
+      }
+      .diagram-label {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--plum);
+      }
+      .brief-map,
+      .verification-map,
+      .demo-path {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        margin: 32px 0;
+      }
+      .brief-map > div,
+      .verification-map > div,
+      .demo-path > a {
+        border-top: 2px solid #d1c1dc;
+        padding: 20px 0 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .brief-map svg,
+      .verification-map svg,
+      .demo-path svg {
+        width: 28px;
+        height: 28px;
+        color: var(--plum);
+      }
+      .brief-map strong,
+      .verification-map strong,
+      .demo-path strong {
+        font-size: 24px;
+        line-height: 1.35;
+        font-weight: 500;
+      }
+      .brief-map > div > span:last-child,
+      .verification-map > div > span:last-child,
+      .demo-path > a > span:last-child {
+        font-size: 17px;
+        line-height: 1.4;
+        color: var(--muted);
+      }
+      .feature-strip {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px 36px;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid #e1d8e7;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .state-task {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #dfd5e5;
+      }
+      .state-task > .glyph {
+        width: 30px;
+        height: 30px;
+        color: var(--plum);
+      }
+      .state-task strong {
+        display: block;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .state-task span {
+        font-size: 17px;
+        color: var(--muted);
+      }
+      .state-checks {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 0.6fr;
+        gap: 22px;
+        margin-top: 22px;
+      }
+      .state-checks > div {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        align-content: center;
+        align-items: center;
+        gap: 7px 10px;
+      }
+      .state-checks strong {
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .state-checks span {
+        grid-column: 2;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .state-checks svg {
+        color: var(--green);
+      }
+      .state-checks .reward {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: 1px solid #dfd5e5;
+        color: var(--green);
+      }
+      .ownership-strip {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+        font-size: 16px;
+        color: var(--plum);
+      }
+      .ownership-strip svg {
+        width: 19px;
+        height: 19px;
+      }
+      .ownership-tag {
+        margin-left: auto;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .harness-diagram .node {
+        padding: 12px;
+      }
+      .harness-diagram .node .glyph {
+        display: none;
+      }
+      .loop-return {
+        margin: 0 14% 16px;
+        border: 1px solid #b29bbe;
+        border-top: 0;
+        height: 21px;
+        text-align: center;
+        position: relative;
+      }
+      .loop-return::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 1px;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-bottom: 5px solid #92799f;
+      }
+      .loop-return span {
+        display: inline-block;
+        position: relative;
+        top: 10px;
+        padding: 0 14px;
+        font-size: 12px;
+        color: var(--plum);
+        background: #f7f4fa;
+      }
+      .harness-outputs {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        border-top: 1px solid #e1d8e7;
+        padding-top: 18px;
+        margin-top: 24px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+      .harness-outputs span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .harness-outputs svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: var(--plum);
+      }
+      .scope-diagram {
+        display: grid;
+        grid-template-columns: 1fr 40px 1fr 40px 1fr;
+        grid-template-rows: auto auto;
+        gap: 24px 10px;
+        margin: 34px 0;
+      }
+      .scope-label {
+        border-bottom: 1px solid #b69ac6;
+        padding: 0 0 12px;
+        font-size: 16px;
+        color: var(--plum);
+        font-weight: 500;
+      }
+      .scope-label.original {
+        grid-column: 1 / 4;
+      }
+      .scope-label.expanded {
+        grid-column: 5;
+        color: var(--green);
+        border-color: #95c0ae;
+      }
+      .scope-diagram .node {
+        padding: 24px 16px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 21px;
+      }
+      .scope-diagram .node span {
+        font-weight: 400;
+      }
+      .scope-diagram .node .glyph {
+        margin: 0 0 18px;
+      }
+      .scope-diagram .arrow {
+        align-items: center;
+        justify-content: center;
+      }
+      .takeaway {
+        margin: 28px 0 0;
+        padding: 18px 22px;
+        font-size: 20px;
+        line-height: 1.4;
+        border-left: 3px solid var(--plum);
+        background: #f8f6fa;
+      }
+      .interface-map {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        margin: 22px 0;
+      }
+      .interface-map > div {
+        display: grid;
+        grid-template-columns: 24px 170px 1fr 150px;
+        gap: 14px;
+        align-items: center;
+        padding: 16px 14px;
+        font-size: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .interface-map strong,
+      .interface-map b {
+        font-weight: 500;
+      }
+      .interface-map b {
+        text-align: center;
+        color: var(--plum);
+        font-variant-numeric: tabular-nums;
+      }
+      .interface-map svg {
+        color: var(--plum);
+      }
+      .interface-map > .interface-map-head {
+        font-size: 12px;
+        color: var(--muted);
+        background: #faf9fb;
+      }
+      .interface-map-head > span:first-child {
+        grid-column: 1 / 3;
+      }
+      .interface-map > .api-row {
+        background: #f3f8f5;
+        border: 0;
+      }
+      .campaign-equation {
+        display: grid;
+        grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1.3fr;
+        align-items: center;
+        gap: 18px;
+        margin: 24px 0;
+        padding: 26px 0;
+        border-block: 1px solid var(--line);
+      }
+      .campaign-equation > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .campaign-equation svg {
+        color: var(--plum);
+        width: 22px;
+        height: 22px;
+      }
+      .campaign-equation strong {
+        font-size: 58px;
+        font-weight: 500;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        color: var(--plum);
+      }
+      .campaign-equation span {
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .campaign-equation .equation-sign {
+        font-size: 24px;
+        text-align: center;
+      }
+      .campaign-equation .equation-total strong {
+        font-size: 80px;
+        color: var(--green);
+      }
+      .limit-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 32px;
+        padding: 14px 0;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .limit-strip strong {
+        font-weight: 500;
+        color: var(--plum);
+      }
+      .mismatch-diagram {
+        display: grid;
+        grid-template-columns: 1fr 60px 1fr;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 28px;
+        background: #faf5ed;
+        border: 1px solid #e6d8c0;
+        border-radius: 12px;
+        margin: 24px 0;
+      }
+      .mismatch-diagram strong {
+        display: block;
+        font-weight: 500;
+        font-size: 36px;
+        margin: 10px 0;
+      }
+      .mismatch-diagram span:last-child {
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .mismatch-sign {
+        font-size: 40px;
+        color: #996d29;
+        text-align: center;
+      }
+      .finding-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .finding-grid strong {
+        font-size: 18px;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .finding-grid span {
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .scale-diagram {
+        margin: 24px 0;
+      }
+      .scale-diagram > .diagram-label {
+        margin-bottom: 12px;
+      }
+      .scale-diagram .node {
+        font-size: 17px;
+        padding: 12px;
+      }
+      .scale-diagram .node .glyph {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        margin: 0 10px 0 0;
+      }
+      .scale-diagram .stack {
+        flex: 1.6;
+      }
+      .next-diagram .node {
+        font-size: 18px;
+      }
+      .demo-path a {
+        text-decoration: none;
+        border-top-color: var(--plum);
+      }
+      .demo-path a:hover,
+      .demo-path a:focus-visible {
+        background: #f8f6fa;
+        border-radius: 0 0 8px 8px;
+      }
+      @media screen and (max-width: 760px) {
+        .brief-map,
+        .verification-map,
+        .demo-path,
+        .finding-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .brief-map > div,
+        .verification-map > div,
+        .demo-path > a {
+          gap: 10px;
+          padding-top: 14px;
+        }
+        .state-checks {
+          grid-template-columns: 1fr;
+        }
+        .state-checks .reward {
+          border-left: 0;
+          border-top: 1px solid #dfd5e5;
+          padding-top: 14px;
+        }
+        .ownership-strip {
+          gap: 8px;
+          font-size: 13px;
+        }
+        .ownership-tag {
+          width: 100%;
+        }
+        .harness-diagram .flow,
+        .scale-diagram .flow,
+        .next-diagram {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .harness-diagram .node,
+        .scale-diagram .node,
+        .next-diagram .node {
+          flex-basis: auto;
+        }
+        .harness-diagram .arrow,
+        .scale-diagram .arrow,
+        .next-diagram .arrow {
+          transform: rotate(90deg);
+          align-self: center;
+        }
+        .harness-outputs {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .scope-diagram {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .scope-label.original,
+        .scope-label.expanded {
+          grid-column: 1;
+        }
+        .scope-label.original {
+          grid-row: 1;
+        }
+        .scope-diagram .environment {
+          grid-row: 2;
+        }
+        .scope-first {
+          grid-row: 3;
+        }
+        .scope-diagram .harness {
+          grid-row: 4;
+        }
+        .scope-second {
+          grid-row: 5;
+        }
+        .scope-label.expanded {
+          grid-row: 6;
+        }
+        .scope-diagram .benchmark {
+          grid-row: 7;
+        }
+        .scope-diagram .arrow {
+          transform: rotate(90deg);
+        }
+        .scope-diagram .node {
+          padding: 18px;
+        }
+        .takeaway {
+          font-size: 17px;
+        }
+        .interface-map > div {
+          grid-template-columns: 24px 1fr 46px;
+          padding: 14px 4px;
+          gap: 8px;
+          font-size: 16px;
+        }
+        .interface-map > div > span {
+          grid-column: 2 / 4;
+          grid-row: 2;
+          font-size: 14px;
+          color: var(--muted);
+        }
+        .interface-map > div > b {
+          grid-column: 3;
+          grid-row: 1;
+        }
+        .interface-map > .interface-map-head {
+          display: none;
+        }
+        .campaign-equation {
+          gap: 8px;
+          grid-template-columns: 1fr 14px 1fr 14px 1fr;
+        }
+        .campaign-equation strong {
+          font-size: 40px;
+        }
+        .campaign-equation span {
+          font-size: 12px;
+          text-align: center;
+        }
+        .campaign-equation > .equation-sign:nth-child(6) {
+          display: none;
+        }
+        .campaign-equation .equation-total {
+          grid-column: 1 / -1;
+          padding-top: 18px;
+        }
+        .campaign-equation .equation-total strong {
+          font-size: 64px;
+        }
+        .mismatch-diagram {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 20px;
+        }
+        .mismatch-sign {
+          text-align: left;
+        }
+      }
+      @media print {
+        .brief-map,
+        .verification-map,
+        .demo-path {
+          margin: 24px 0;
+        }
+        .scope-diagram {
+          margin: 26px 0;
+        }
+        .harness-diagram {
+          margin: 18px 0;
+          padding: 18px 22px;
+        }
+        .interface-map > div {
+          padding-block: 14px;
+        }
+        .takeaway {
+          margin-top: 22px;
+        }
+        .scale-diagram {
+          margin: 18px 0;
+        }
+        .mismatch-diagram {
+          margin: 18px 0;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      <section class="slide active cover" data-title="Relay">
+      <section class="slide active cover" data-title="The assignment">
+        <header class="masthead">
+          <span class="wordmark"
+            ><svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+            >
+              <rect width="64" height="64" rx="18" fill="#35263f" />
+              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+            </svg>
+            Relay</span
+          ><span class="section-label"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+              ></path>
+              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+              <path d="m14 20 2 2 4-4"></path></svg
+            >The assignment<span class="section-number">01 / 13</span></span
+          >
+        </header>
+        <h1>
+          I started with a<br />
+          <em>working environment</em>
+        </h1>
+        <ul>
+          <li>
+            The brief asked for a Slack-like app that agents could use and that I could verify.
+          </li>
+          <li>
+            I focused on complete workflows, repeatable runs, and evidence that someone else could
+            inspect.
+          </li>
+        </ul>
+        <div
+          class="brief-map"
+          role="img"
+          aria-label="Three requirements from the brief map to three deliverables: runnable app to Slack workflows, verification to recorded agent runs, and design discussion to measured tradeoffs."
+        >
+          <div>
+            <span class="diagram-label">Build</span
+            ><svg
+              viewBox="0 0 2447.6 2452.5"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              aria-hidden="true"
+            >
+              <g clip-rule="evenodd" fill-rule="evenodd">
+                <path
+                  d="m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z"
+                  fill="#36c5f0"
+                ></path>
+                <path
+                  d="m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z"
+                  fill="#2eb67d"
+                ></path>
+                <path
+                  d="m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z"
+                  fill="#ecb22e"
+                ></path>
+                <path
+                  d="m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0"
+                  fill="#e01e5a"
+                ></path>
+              </g></svg
+            ><strong>Slack workflows</strong><span>Runnable code and setup</span>
+          </div>
+          <div>
+            <span class="diagram-label">Verify</span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+              ></path>
+              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+              <path d="m14 20 2 2 4-4"></path></svg
+            ><strong>Recorded agent runs</strong><span>Actions and result checks</span>
+          </div>
+          <div>
+            <span class="diagram-label">Explain</span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-flask-conical glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
+              ></path>
+              <path d="M6.453 15h11.094"></path>
+              <path d="M8.5 2h7"></path></svg
+            ><strong>Measured tradeoffs</strong><span>Isolation, speed, and resources</span>
+          </div>
+        </div>
+        <ul class="sources">
+          <li>
+            Kevin Liu · CUA implementation exercise · October 2026 · Based on the supplied
+            assignment brief.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="The environment">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -1284,75 +1985,157 @@
               <path d="M10 4v4"></path>
               <path d="M2 8h20"></path>
               <path d="M6 4v4"></path></svg
-            >Relay<span class="section-number">01 / 13</span></span
+            >The environment<span class="section-number">02 / 13</span></span
           >
         </header>
-        <h1>Test agents in a<br /><em>Slack-like workspace</em></h1>
-        <div class="brand-row">
-          <span class="brand-chip"
-            ><svg
-              viewBox="0 0 2447.6 2452.5"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              aria-hidden="true"
-            >
-              <g clip-rule="evenodd" fill-rule="evenodd">
-                <path
-                  d="m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z"
-                  fill="#36c5f0"
-                ></path>
-                <path
-                  d="m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z"
-                  fill="#2eb67d"
-                ></path>
-                <path
-                  d="m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z"
-                  fill="#ecb22e"
-                ></path>
-                <path
-                  d="m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0"
-                  fill="#e01e5a"
-                ></path>
-              </g></svg
-            >Slack workflows</span
-          ><span class="brand-chip"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            >Automatic result checks</span
-          >
-        </div>
+        <h2>Build the workflows before expanding the scope</h2>
         <ul>
-          <li>Relay tests whether an agent can complete a task in a working web app.</li>
           <li>
-            18 tasks cover search, threads, message edits, direct messages, and channel settings.
+            I built a focused Slack-like app with synthetic people, channels, messages, and
+            decisions.
           </li>
-          <li>Each run records the actions, checks the result, and estimates the cost.</li>
-          <li>The goal is to complete tasks with fewer errors, less time, and lower cost.</li>
+          <li>
+            Search, threads, and message editing support tasks that require finding information
+            before making a change.
+          </li>
+          <li>People and agents use the same workspace UI and state changes.</li>
         </ul>
         <div
-          class="diagram flow"
+          class="diagram workflow-diagram"
           role="img"
-          aria-label="Task to isolated workspace to agent interaction to state evaluation"
+          aria-label="A Slack workflow moves from finding a source message, to opening its thread, to editing or replying. Pins, saved items, direct messages, and channel settings extend these workflows."
         >
-          <div class="node">
-            <svg
+          <div class="flow">
+            <div class="node">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search glyph"
+                aria-hidden="true"
+              >
+                <path d="m21 21-4.34-4.34"></path>
+                <circle cx="11" cy="11" r="8"></circle></svg
+              >Find the source<span>Search channels and messages</span>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="node">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-messages-square glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+                <path
+                  d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"
+                ></path></svg
+              >Read the context<span>Open the relevant thread</span>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="node" data-tone="green">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-pencil-line glyph"
+                aria-hidden="true"
+              >
+                <path d="M13 21h8"></path>
+                <path d="m15 5 4 4"></path>
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                ></path></svg
+              >Make the change<span>Edit or reply in place</span>
+            </div>
+          </div>
+          <div class="feature-strip">
+            <span>Pins</span><span>Saved items</span><span>Direct messages</span
+            ><span>Channel settings</span>
+          </div>
+        </div>
+        <ul class="sources">
+          <li>
+            React UI · SQLite state ·
+            <a href="https://relay.kevinliu.studio/play">Try the workspace without a key</a> ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
+              >Prior-work review</a
+            >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Define success">
+        <header class="masthead">
+          <span class="wordmark"
+            ><svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+            >
+              <rect width="64" height="64" rx="18" fill="#35263f" />
+              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+            </svg>
+            Relay</span
+          ><span class="section-label"
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -1370,9 +2153,24 @@
               <path d="M13 19h8"></path>
               <path d="m3 17 2 2 4-4"></path>
               <path d="m3 7 2 2 4-4"></path></svg
-            >Task
-          </div>
-          <div class="arrow">
+            >Define success<span class="section-number">03 / 13</span></span
+          >
+        </header>
+        <h2>Define success as a change in workspace state</h2>
+        <ul>
+          <li>
+            A plausible action sequence is not enough. The requested result must exist in the right
+            place.
+          </li>
+          <li>The checks verify the text, author, destination, and unchanged data.</li>
+          <li>The model cannot pass a task by saying that it finished.</li>
+        </ul>
+        <div
+          class="diagram state-diagram"
+          role="img"
+          aria-label="A topic task has two checks: the requested text must be the channel topic, and no unrelated state may change. Both must pass."
+        >
+          <div class="state-task">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1383,14 +2181,120 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
+              class="lucide lucide-list-checks glyph"
               aria-hidden="true"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
+              <path d="M13 5h8"></path>
+              <path d="M13 12h8"></path>
+              <path d="M13 19h8"></path>
+              <path d="m3 17 2 2 4-4"></path>
+              <path d="m3 7 2 2 4-4"></path>
             </svg>
+            <div>
+              <strong>Example: update a channel topic</strong
+              ><span>Set the requested topic. Make no other changes.</span>
+            </div>
           </div>
-          <div class="node">
+          <div class="state-checks">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shield-check glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path></svg
+              ><strong>Correct topic</strong><span>Exact text in channel settings</span>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shield-check glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path></svg
+              ><strong>No extra changes</strong><span>Other workspace data stays the same</span>
+            </div>
+            <div class="reward"><strong>Both pass</strong><span>Reward = 1</span></div>
+          </div>
+        </div>
+        <ul class="sources">
+          <li>
+            Checks grade the final state. A wrong action that the agent fully undoes is not
+            penalized.
+          </li>
+          <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/task-suite.md"
+              >Task definitions and result checks</a
+            >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="The repeatable harness">
+        <header class="masthead">
+          <span class="wordmark"
+            ><svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+            >
+              <rect width="64" height="64" rx="18" fill="#35263f" />
+              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+            </svg>
+            Relay</span
+          ><span class="section-label"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-network glyph"
+              aria-hidden="true"
+            >
+              <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+              <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+              <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+              <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+              <path d="M12 12V8"></path></svg
+            >The repeatable harness<span class="section-number">04 / 13</span></span
+          >
+        </header>
+        <h2>Make each run repeatable and inspectable</h2>
+        <div
+          class="diagram harness-diagram"
+          role="img"
+          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, checks and executes it, then observes again. A separate checker grades final state and a recorder saves evidence."
+        >
+          <div class="ownership-strip">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1408,10 +2312,8 @@
               <path d="M10 4v4"></path>
               <path d="M2 8h20"></path>
               <path d="M6 4v4"></path></svg
-            >Private workspace
-          </div>
-          <div class="arrow">
-            <svg
+            >New browser session<span>+</span
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -1421,79 +2323,174 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
+              class="lucide lucide-database glyph"
               aria-hidden="true"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+              <path d="M3 12A9 3 0 0 0 21 12"></path></svg
+            >Private database<span class="ownership-tag">One owner per run</span>
           </div>
-          <div class="node" data-tone="blue">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-bot glyph"
-              aria-hidden="true"
-            >
-              <path d="M12 8V4H8"></path>
-              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-              <path d="M2 14h2"></path>
-              <path d="M20 14h2"></path>
-              <path d="M15 13v2"></path>
-              <path d="M9 13v2"></path></svg
-            >Agent actions
+          <div class="flow">
+            <div class="node">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-app-window glyph"
+                aria-hidden="true"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M10 4v4"></path>
+                <path d="M2 8h20"></path>
+                <path d="M6 4v4"></path></svg
+              >Observe<span>Visible workspace</span>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="node" data-tone="blue">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-bot glyph"
+                aria-hidden="true"
+              >
+                <path d="M12 8V4H8"></path>
+                <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                <path d="M2 14h2"></path>
+                <path d="M20 14h2"></path>
+                <path d="M15 13v2"></path>
+                <path d="M9 13v2"></path></svg
+              >Choose one action<span>Model response</span>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="node">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shield-check glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path></svg
+              >Check and execute<span>Browser or API</span>
+            </div>
           </div>
-          <div class="arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
-              aria-hidden="true"
+          <div class="loop-return"><span>Next observation</span></div>
+          <div class="harness-outputs">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+                ></path>
+                <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                <path d="m14 20 2 2 4-4"></path></svg
+              >Final state → independent result checks</span
+            ><span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+                ></path>
+                <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                <path d="m14 20 2 2 4-4"></path></svg
+              >Every step → trace and replay</span
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </div>
-          <div class="node" data-tone="green">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            >Result checks
           </div>
         </div>
+        <ul>
+          <li>The harness is the code that controls each test run.</li>
+          <li>
+            It resets the workspace, controls the loop, enforces limits, and saves the evidence.
+          </li>
+          <li>Separate workspace data prevents runs from changing each other.</li>
+        </ul>
         <ul class="sources">
-          <li>Kevin Liu · CUA implementation exercise · October 2026.</li>
+          <li>
+            Playwright controls the browser. Data isolation is not a security boundary for malicious
+            code.
+          </li>
         </ul>
       </section>
-      <section class="slide" data-title="How a run works">
+      <section class="slide" data-title="The scope expands">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -1531,27 +2528,127 @@
               <path
                 d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
               ></path></svg
-            >How a run works<span class="section-number">02 / 13</span></span
+            >The scope expands<span class="section-number">05 / 13</span></span
           >
         </header>
-        <h2>The harness runs and records the test</h2>
+        <h2>The harness made a broader comparison possible</h2>
         <ul>
-          <li>The harness is the code that controls each test run.</li>
-          <li>It shows the workspace to the model and asks for one action.</li>
-          <li>It checks the action, executes it, and records what changed.</li>
-          <li>It repeats these steps until the model finishes or reaches a limit.</li>
-          <li>It checks the final workspace against the task requirements.</li>
-        </ul>
-        <ul class="sources">
           <li>
-            React builds the UI. SQLite stores workspace data. Playwright controls the browser.
+            Once I could reset, run, check, and replay a task, I could reuse that process with
+            another model.
           </li>
           <li>
-            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
-              >Related projects and references</a
-            >. I reviewed their code but did not run a comparison.
+            I expanded the project from an environment demonstration into a benchmark prototype.
           </li>
         </ul>
+        <div
+          class="scope-diagram"
+          role="img"
+          aria-label="The original assignment led to a working environment and repeatable harness. The expanded scope used that base for a benchmark prototype with 18 tasks and 17 models."
+        >
+          <div class="scope-label original">Original assignment</div>
+          <div class="scope-label expanded">Expanded scope</div>
+          <div class="node environment">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-app-window glyph"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="M10 4v4"></path>
+              <path d="M2 8h20"></path>
+              <path d="M6 4v4"></path></svg
+            >Working environment<span>Focused Slack workflows<br />Known starting state</span>
+          </div>
+          <div class="arrow scope-first">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right glyph"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+          <div class="node harness">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-timer-reset glyph"
+              aria-hidden="true"
+            >
+              <path d="M10 2h4"></path>
+              <path d="M12 14v-4"></path>
+              <path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path>
+              <path d="M9 17H4v5"></path></svg
+            >Repeatable harness<span>Reset · act · check · record<br />Swap the model</span>
+          </div>
+          <div class="arrow scope-second">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right glyph"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+          <div class="node benchmark" data-tone="green">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-flask-conical glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
+              ></path>
+              <path d="M6.453 15h11.094"></path>
+              <path d="M8.5 2h7"></path></svg
+            >Benchmark prototype<span>18 tasks × 17 models<br />One attempt per pair</span>
+          </div>
+        </div>
+        <div class="takeaway">
+          A repeatable run is necessary. A valid comparison also needs validated tasks.
+        </div>
       </section>
       <section class="slide" data-title="Agent interfaces">
         <header class="masthead">
@@ -1590,16 +2687,20 @@
               <path
                 d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"
               ></path></svg
-            >Agent interfaces<span class="section-number">03 / 13</span></span
+            >Agent interfaces<span class="section-number">06 / 13</span></span
           >
         </header>
-        <h2>Four ways to use the workspace</h2>
+        <h2>Separate computer use from direct tool use</h2>
         <div
-          class="diagram flow"
+          class="interface-map"
           role="img"
-          aria-label="The model can use screenshots, accessibility elements, page JSON, or an API to act in the same workspace"
+          aria-label="Four interfaces were exercised. Pixels provide an image and coordinate actions. Accessibility provides labeled controls. Page JSON provides structured controls. API access changes workspace data directly. Earlier pass counts are not a matched comparison."
         >
-          <div class="node">
+          <div class="interface-map-head">
+            <span>Interface</span><span>What the agent receives and uses</span
+            ><span>Earlier passes / attempts</span>
+          </div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1610,16 +2711,15 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-app-window glyph"
+              class="lucide lucide-mouse-pointer-2 glyph"
               aria-hidden="true"
             >
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="M10 4v4"></path>
-              <path d="M2 8h20"></path>
-              <path d="M6 4v4"></path></svg
-            >Fresh workspace
+              <path
+                d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
+              ></path></svg
+            ><strong>Pixels</strong><span>Screenshot → mouse and keyboard</span><b>0 / 1</b>
           </div>
-          <div class="arrow">
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1630,105 +2730,18 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
+              class="lucide lucide-accessibility glyph"
               aria-hidden="true"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
+              <circle cx="16" cy="4" r="1"></circle>
+              <path d="m18 19 1-7-6 1"></path>
+              <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
+              <path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path>
+              <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg
+            ><strong>Accessibility</strong><span>Labeled controls → element actions</span
+            ><b>2 / 6</b>
           </div>
-          <div class="stack">
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-mouse-pointer-2 glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
-                ></path></svg
-              >Screenshot → mouse and keyboard
-            </div>
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-accessibility glyph"
-                aria-hidden="true"
-              >
-                <circle cx="16" cy="4" r="1"></circle>
-                <path d="m18 19 1-7-6 1"></path>
-                <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
-                <path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path>
-                <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg
-              >Accessibility → labeled controls
-            </div>
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-braces lucide-curly-braces glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"
-                ></path>
-                <path
-                  d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"
-                ></path></svg
-              >Page JSON → structured controls
-            </div>
-            <div class="node" data-tone="green">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-cable glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"
-                ></path>
-                <path d="M17 21v-2"></path>
-                <path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path>
-                <path d="M21 21v-2"></path>
-                <path d="M3 5V3"></path>
-                <path
-                  d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"
-                ></path>
-                <path d="M7 5V3"></path></svg
-              >API → direct workspace changes
-            </div>
-          </div>
-          <div class="arrow">
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1739,14 +2752,17 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
+              class="lucide lucide-braces lucide-curly-braces glyph"
               aria-hidden="true"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
+              <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path>
+              <path
+                d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"
+              ></path></svg
+            ><strong>Page JSON</strong><span>Structured controls → element actions</span
+            ><b>2 / 7</b>
           </div>
-          <div class="node" data-tone="blue">
+          <div class="api-row">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1757,545 +2773,38 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-bot glyph"
+              class="lucide lucide-cable glyph"
               aria-hidden="true"
             >
-              <path d="M12 8V4H8"></path>
-              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-              <path d="M2 14h2"></path>
-              <path d="M20 14h2"></path>
-              <path d="M15 13v2"></path>
-              <path d="M9 13v2"></path></svg
-            >Model<br />Chooses one action
+              <path
+                d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"
+              ></path>
+              <path d="M17 21v-2"></path>
+              <path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path>
+              <path d="M21 21v-2"></path>
+              <path d="M3 5V3"></path>
+              <path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path>
+              <path d="M7 5V3"></path></svg
+            ><strong>API</strong><span>Workspace data → direct changes</span><b>4 / 6</b>
           </div>
         </div>
         <ul>
           <li>
-            The model receives the task and workspace information, but not the expected answer.
+            The earlier tests used different tasks and models. They do not show which interface is
+            better.
           </li>
-          <li>API runs test tool use without browser interaction. They are reported separately.</li>
-          <li>The 306-run comparison uses accessibility controls for every model.</li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Isolation">
-        <header class="masthead">
-          <span class="wordmark"
-            ><svg
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-            >
-              <rect width="64" height="64" rx="18" fill="#35263f" />
-              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-            </svg>
-            Relay</span
-          ><span class="section-label"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            >Isolation<span class="section-number">04 / 13</span></span
-          >
-        </header>
-        <h2>Each run has its own workspace</h2>
-        <div
-          class="diagram"
-          role="img"
-          aria-label="Run A has browser session A and database A. Run B has browser session B and database B."
-        >
-          <div class="flow">
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-list-checks glyph"
-                aria-hidden="true"
-              >
-                <path d="M13 5h8"></path>
-                <path d="M13 12h8"></path>
-                <path d="M13 19h8"></path>
-                <path d="m3 17 2 2 4-4"></path>
-                <path d="m3 7 2 2 4-4"></path></svg
-              >Run A
-            </div>
-            <div class="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-right glyph"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-app-window glyph"
-                aria-hidden="true"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="M10 4v4"></path>
-                <path d="M2 8h20"></path>
-                <path d="M6 4v4"></path></svg
-              >Browser session A
-            </div>
-            <div class="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-right glyph"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-            <div class="node" data-tone="green">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-database glyph"
-                aria-hidden="true"
-              >
-                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-                <path d="M3 12A9 3 0 0 0 21 12"></path></svg
-              >Database A
-            </div>
-          </div>
-          <div class="flow subflow">
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-list-checks glyph"
-                aria-hidden="true"
-              >
-                <path d="M13 5h8"></path>
-                <path d="M13 12h8"></path>
-                <path d="M13 19h8"></path>
-                <path d="m3 17 2 2 4-4"></path>
-                <path d="m3 7 2 2 4-4"></path></svg
-              >Run B
-            </div>
-            <div class="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-right glyph"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-            <div class="node">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-app-window glyph"
-                aria-hidden="true"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="M10 4v4"></path>
-                <path d="M2 8h20"></path>
-                <path d="M6 4v4"></path></svg
-              >Browser session B
-            </div>
-            <div class="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-right glyph"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-            <div class="node" data-tone="green">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-database glyph"
-                aria-hidden="true"
-              >
-                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-                <path d="M3 12A9 3 0 0 0 21 12"></path></svg
-              >Database B
-            </div>
-          </div>
-        </div>
-        <ul>
-          <li>Each run starts with a new browser session and a separate SQLite database.</li>
-          <li>Changes in one workspace do not change another workspace.</li>
-          <li>Version checks reject outdated edits. Request IDs prevent duplicate writes.</li>
-          <li>This separates workspace data. It does not safely contain malicious code.</li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Setup and run design">
-        <header class="masthead">
-          <span class="wordmark"
-            ><svg
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-            >
-              <rect width="64" height="64" rx="18" fill="#35263f" />
-              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-            </svg>
-            Relay</span
-          ><span class="section-label"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-list-checks glyph"
-              aria-hidden="true"
-            >
-              <path d="M13 5h8"></path>
-              <path d="M13 12h8"></path>
-              <path d="M13 19h8"></path>
-              <path d="m3 17 2 2 4-4"></path>
-              <path d="m3 7 2 2 4-4"></path></svg
-            >Setup and run design<span class="section-number">05 / 13</span></span
-          >
-        </header>
-        <h2>Run Relay with different models</h2>
-        <div class="brand-row" aria-label="Models in the campaign">
-          <span class="brand-chip"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-bot glyph"
-              aria-hidden="true"
-            >
-              <path d="M12 8V4H8"></path>
-              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-              <path d="M2 14h2"></path>
-              <path d="M20 14h2"></path>
-              <path d="M15 13v2"></path>
-              <path d="M9 13v2"></path></svg
-            >17 models</span
-          ><span class="brand-chip"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-list-checks glyph"
-              aria-hidden="true"
-            >
-              <path d="M13 5h8"></path>
-              <path d="M13 12h8"></path>
-              <path d="M13 19h8"></path>
-              <path d="m3 17 2 2 4-4"></path>
-              <path d="m3 7 2 2 4-4"></path></svg
-            >18 tasks</span
-          ><span class="brand-chip"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            >1 run per task and model</span
-          >
-        </div>
-        <ul>
-          <li>Use Node 24. Follow the README to install, build, and start Relay.</li>
-          <li>Add a Router API key, then choose an available model and a task.</li>
           <li>
-            The comparison uses the same task data, controls, and result checks for every model.
+            The 306-run comparison uses accessibility controls only. API results stay separate.
           </li>
-          <li>Each run allows up to 40 actions, 180 seconds, and a $5 estimated cost.</li>
-          <li>The manual workspace and saved replays do not require an API key.</li>
         </ul>
         <ul class="sources">
+          <li>20 attempted: 8 passed, 11 incomplete, 1 blocked. 10 planned runs did not start.</li>
           <li>
+            126 requests · $0.149874 estimated allowance, including missing-usage reservations ·
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-continuation.md"
-              >Exact settings and run history</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
+              >Earlier interface evidence</a
             >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Tasks and result checks">
-        <header class="masthead">
-          <span class="wordmark"
-            ><svg
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-            >
-              <rect width="64" height="64" rx="18" fill="#35263f" />
-              <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-              <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-            </svg>
-            Relay</span
-          ><span class="section-label"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-flask-conical glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
-              ></path>
-              <path d="M6.453 15h11.094"></path>
-              <path d="M8.5 2h7"></path></svg
-            >Tasks and result checks<span class="section-number">06 / 13</span></span
-          >
-        </header>
-        <h2>Define the task and check the result</h2>
-        <ul>
-          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
-          <li>
-            Example: find an approval, update the channel description, pin the message, save the
-            reply, and acknowledge it.
-          </li>
-          <li>The checks verify the text, author, destination, and required changes.</li>
-          <li>A run fails if it leaves a duplicate message or changes unrelated data.</li>
-        </ul>
-        <div
-          class="diagram flow"
-          role="img"
-          aria-label="Compare the final workspace with the expected result. All checks must pass to receive reward 1."
-        >
-          <div class="node">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-app-window glyph"
-              aria-hidden="true"
-            >
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="M10 4v4"></path>
-              <path d="M2 8h20"></path>
-              <path d="M6 4v4"></path></svg
-            >Final workspace
-          </div>
-          <div class="arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-plus glyph"
-              aria-hidden="true"
-            >
-              <path d="M5 12h14"></path>
-              <path d="M12 5v14"></path>
-            </svg>
-          </div>
-          <div class="node">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
-              ></path>
-              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
-              <path d="m14 20 2 2 4-4"></path></svg
-            >Expected result
-          </div>
-          <div class="arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-arrow-right glyph"
-              aria-hidden="true"
-            >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </div>
-          <div class="node" data-tone="green">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check glyph"
-              aria-hidden="true"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            >Reward<br />Pass = 1 · Fail = 0
-          </div>
-        </div>
-        <ul class="sources">
-          <li>
-            These checks grade the final state. They do not penalize a wrong action that the agent
-            fully undoes.
           </li>
         </ul>
       </section>
@@ -2325,35 +2834,25 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-bot glyph"
+              class="lucide lucide-shield-check glyph"
               aria-hidden="true"
             >
-              <path d="M12 8V4H8"></path>
-              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-              <path d="M2 14h2"></path>
-              <path d="M20 14h2"></path>
-              <path d="M15 13v2"></path>
-              <path d="M9 13v2"></path></svg
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
             >Verification<span class="section-number">07 / 13</span></span
           >
         </header>
-        <h2>Test the app and the result checks</h2>
-        <ul>
-          <li>174 backend tests and 91 browser tests check the software.</li>
-          <li>
-            84 valid results and 2,583 deliberately invalid results test the checks for the 12
-            longer tasks.
-          </li>
-          <li>Scripted tests verify the UI. They do not show what a model can do.</li>
-          <li>306 recorded model runs show how the agents performed.</li>
-        </ul>
+        <h2>Test the software separately from the agents</h2>
         <div
-          class="diagram flow"
+          class="verification-map"
           role="img"
-          aria-label="Software tests check the app. Result tests check the grading. Model runs test whether an agent completes the task."
+          aria-label="Three different checks: software tests check the app, constructed states check the grader, and recorded model runs check task execution. None alone validates task wording."
         >
-          <div class="node">
-            <svg
+          <div>
+            <span class="diagram-label">App behavior</span
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -2363,18 +2862,19 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-flask-conical glyph"
+              class="lucide lucide-app-window glyph"
               aria-hidden="true"
             >
-              <path
-                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
-              ></path>
-              <path d="M6.453 15h11.094"></path>
-              <path d="M8.5 2h7"></path></svg
-            >Software tests<br />Does the app work?
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="M10 4v4"></path>
+              <path d="M2 8h20"></path>
+              <path d="M6 4v4"></path></svg
+            ><strong>174 backend tests<br />91 browser tests</strong
+            ><span>Does the software work?</span>
           </div>
-          <div class="node" data-tone="green">
-            <svg
+          <div>
+            <span class="diagram-label">Result checks</span
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -2391,10 +2891,12 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
               ></path>
               <path d="m9 12 2 2 4-4"></path></svg
-            >Result tests<br />Are incorrect results rejected?
+            ><strong>84 valid states<br />2,583 invalid states</strong
+            ><span>Does grading reject wrong results?</span>
           </div>
-          <div class="node" data-tone="blue">
-            <svg
+          <div>
+            <span class="diagram-label">Agent behavior</span
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -2413,11 +2915,24 @@
               <path d="M20 14h2"></path>
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path></svg
-            >Model runs<br />Can the agent do the task?
+            ><strong>306 recorded runs</strong><span>Can the agent complete the task?</span>
           </div>
         </div>
+        <ul>
+          <li>Scripted browser tests show that the workflows are possible.</li>
+          <li>Constructed states test the result checks for the 12 longer tasks.</li>
+          <li>Neither test proves that a task instruction is clear to a new reader.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
+              >Software verification</a
+            >
+            · Model evidence remains separate from scripted tests.
+          </li>
+        </ul>
       </section>
-      <section class="slide" data-title="Interface test results">
+      <section class="slide" data-title="Comparison setup">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -2443,173 +2958,109 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-chart-no-axes-combined glyph"
+              class="lucide lucide-flask-conical glyph"
               aria-hidden="true"
             >
-              <path d="M12 16v5"></path>
-              <path d="M16 14.639V21"></path>
-              <path d="M20 10.656V21"></path>
               <path
-                d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"
+                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
               ></path>
-              <path d="M4 18.463V21"></path>
-              <path d="M8 14.656V21"></path></svg
-            >Interface test results<span class="section-number">08 / 13</span></span
+              <path d="M6.453 15h11.094"></path>
+              <path d="M8.5 2h7"></path></svg
+            >Comparison setup<span class="section-number">08 / 13</span></span
           >
         </header>
-        <h2>Results from the earlier interface tests</h2>
+        <h2>One attempt for each model and task</h2>
+        <div class="campaign-equation" aria-label="Models in the campaign">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-bot glyph"
+              aria-hidden="true"
+            >
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path></svg
+            ><strong>17</strong><span>model routes</span>
+          </div>
+          <span class="equation-sign">×</span>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-list-checks glyph"
+              aria-hidden="true"
+            >
+              <path d="M13 5h8"></path>
+              <path d="M13 12h8"></path>
+              <path d="M13 19h8"></path>
+              <path d="m3 17 2 2 4-4"></path>
+              <path d="m3 7 2 2 4-4"></path></svg
+            ><strong>18</strong><span>tasks</span>
+          </div>
+          <span class="equation-sign">×</span>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shield-check glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><strong>1</strong><span>attempt per pair</span>
+          </div>
+          <span class="equation-sign">=</span>
+          <div class="equation-total"><strong>306</strong><span>recorded attempts</span></div>
+        </div>
         <ul>
+          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
+          <li>Every model uses the same task data, action format, and result checks.</li>
           <li>
-            20 attempted: 8 passed, 11 incomplete, and 1 blocked. 10 planned runs did not start.
+            One attempt shows coverage. It does not establish a reliable ranking or repeatability.
           </li>
-          <li>
-            These tests used different tasks and models, so they cannot establish which interface is
-            better.
-          </li>
-          <li>These results are separate from the 306-run model comparison.</li>
         </ul>
-        <div
-          class="diagram results"
-          role="img"
-          aria-label="Episode outcomes by interface; task and model coverage differ across rows"
-        >
-          <div class="result-row">
-            <span class="interface-label"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-accessibility glyph"
-                aria-hidden="true"
-              >
-                <circle cx="16" cy="4" r="1"></circle>
-                <path d="m18 19 1-7-6 1"></path>
-                <path d="m5 8 3-3 5.5 3-2.36 3.5"></path>
-                <path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path>
-                <path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg
-              >Accessibility</span
-            >
-            <div class="bar">
-              <span class="segment passed" style="flex: 2" title="2 passed"></span
-              ><span class="segment incomplete" style="flex: 4" title="4 incomplete"></span
-              ><span class="segment unattempted" style="flex: 3" title="3 unattempted"></span>
-            </div>
-            <span>2 pass / 6 tried · 3 not run</span>
-          </div>
-          <div class="result-row">
-            <span class="interface-label"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-braces lucide-curly-braces glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"
-                ></path>
-                <path
-                  d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"
-                ></path></svg
-              >Page JSON</span
-            >
-            <div class="bar">
-              <span class="segment passed" style="flex: 2" title="2 passed"></span
-              ><span class="segment incomplete" style="flex: 4" title="4 incomplete"></span
-              ><span class="segment blocked" style="flex: 1" title="1 blocked"></span
-              ><span class="segment unattempted" style="flex: 2" title="2 unattempted"></span>
-            </div>
-            <span>2 pass / 7 tried · 2 not run</span>
-          </div>
-          <div class="result-row">
-            <span class="interface-label"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-mouse-pointer-2 glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
-                ></path></svg
-              >Pixels</span
-            >
-            <div class="bar">
-              <span class="segment incomplete" style="flex: 1" title="1 incomplete"></span
-              ><span class="segment unattempted" style="flex: 3" title="3 unattempted"></span>
-            </div>
-            <span>0 pass / 1 tried · 3 not run</span>
-          </div>
-          <div class="result-row">
-            <span class="interface-label"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-cable glyph"
-                aria-hidden="true"
-              >
-                <path
-                  d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"
-                ></path>
-                <path d="M17 21v-2"></path>
-                <path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path>
-                <path d="M21 21v-2"></path>
-                <path d="M3 5V3"></path>
-                <path
-                  d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"
-                ></path>
-                <path d="M7 5V3"></path></svg
-              >Actor API</span
-            >
-            <div class="bar">
-              <span class="segment passed" style="flex: 4" title="4 passed"></span
-              ><span class="segment incomplete" style="flex: 2" title="2 incomplete"></span
-              ><span class="segment unattempted" style="flex: 2" title="2 unattempted"></span>
-            </div>
-            <span>4 pass / 6 tried · 2 not run</span>
-          </div>
-          <div class="legend">
-            <span><i class="passed"></i>Passed</span
-            ><span><i class="incomplete"></i>Incomplete</span
-            ><span><i class="blocked"></i>Blocked</span
-            ><span><i class="unattempted"></i>Unattempted</span>
-          </div>
+        <div class="limit-strip">
+          <span><strong>40</strong> actions</span><span><strong>180 s</strong> per run</span
+          ><span><strong>$5</strong> estimated allowance per run</span>
         </div>
         <ul class="sources">
           <li>
-            126 requests cost an estimated $0.149874, including a $0.001490 reservation for missing
-            usage. This is not an invoice.
+            105 earlier attempts retained + 201 continuation attempts. No recorded failure was
+            replaced.
           </li>
           <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay">Node 24 setup and BYOK instructions</a>
+            ·
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
-              >All interface runs and recorded actions</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-continuation.md"
+              >Exact routes, limits, and run history</a
             >.
           </li>
         </ul>
@@ -24585,29 +25036,52 @@
             >Main lesson<span class="section-number">10 / 13</span></span
           >
         </header>
-        <h2>My main mistake: I did not validate the task instructions</h2>
+        <h2>The checks and the instructions must agree</h2>
         <ul>
           <li>
-            I tested whether the UI and grading code worked, but did not independently validate
-            every task instruction.
+            I tested the grading code, but did not independently validate every task instruction.
           </li>
           <li>
-            Design handoff quoted “DESIGN” without requiring replacement. Six completed runs copied
-            it, but the grader expected “Willow”.
-          </li>
-          <li>Release sync gave an unclear channel location for one source message.</li>
-          <li>These tasks do not give a clear measure of model ability.</li>
-          <li>
-            Next time, I will ask someone to solve each task using only its instructions before
-            collecting results.
+            Trace review found two unclear tasks. Their scores do not cleanly measure model ability.
           </li>
         </ul>
+        <div
+          class="mismatch-diagram"
+          role="img"
+          aria-label="Design handoff instructions quoted DESIGN without explicitly requiring substitution. Six completed runs copied DESIGN, but the grader expected Willow. This is a task-definition mismatch."
+        >
+          <div>
+            <span class="diagram-label">Instruction</span><strong>“DESIGN”</strong
+            ><span>Replacement was not explicit</span>
+          </div>
+          <div class="mismatch-sign" aria-hidden="true">≠</div>
+          <div>
+            <span class="diagram-label">Expected result</span><strong>“Willow”</strong
+            ><span>Six completed runs copied DESIGN</span>
+          </div>
+        </div>
+        <div class="finding-grid">
+          <div>
+            <strong>Release sync</strong><span>Unclear source location<br />0 / 17 passed</span>
+          </div>
+          <div>
+            <strong>Retrospective</strong><span>Every run reached a limit<br />0 / 17 passed</span>
+          </div>
+          <div>
+            <strong>Handoff repair</strong
+            ><span>Sol and Astra clicked Cancel<br />5 / 17 passed</span>
+          </div>
+        </div>
         <ul class="sources">
+          <li>
+            Best individual models: 14 / 18 tasks. Across all models: 15 / 18 tasks passed at least
+            once.
+          </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
               >Recorded actions and failure analysis</a
-            >. Preserve the original results. Correct the instructions in a new test version.
+            >. Keep all original outcomes. A wording fix requires a new task version.
           </li>
         </ul>
       </section>
@@ -24645,7 +25119,7 @@
             >Speed and resources<span class="section-number">11 / 13</span></span
           >
         </header>
-        <h2>Local speed measurements</h2>
+        <h2>Measure local costs before scaling out</h2>
         <div
           class="metrics"
           role="img"
@@ -24716,18 +25190,114 @@
           </div>
         </div>
         <ul>
-          <li>These measurements used an Apple M5 Max with Node 24.</li>
-          <li>The test created 100 sessions and ran 400 reads, with up to 16 reads at once.</li>
-          <li>The browser test used 10 sessions, one after another.</li>
           <li>
-            These times exclude model calls. They do not measure how many agents can run together.
+            These timings exclude model calls. They do not measure simultaneous-agent capacity.
           </li>
           <li>
-            Next, test a queue of runs across separate workers with shared recording storage.
-            Measure each worker's full memory use.
+            Next, measure full browser memory, sustained throughput, and cleanup under concurrent
+            runs.
           </li>
         </ul>
+        <div
+          class="scale-diagram"
+          role="img"
+          aria-label="Proposed, not measured: a queue assigns runs to separate workers. Each worker owns a browser and database. Both write recordings to external storage."
+        >
+          <span class="diagram-label">Proposed scale-out</span>
+          <div class="flow">
+            <div class="node">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-layers lucide-layers-3 glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"
+                ></path>
+                <path
+                  d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"
+                ></path>
+                <path
+                  d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
+                ></path></svg
+              >Run queue
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="stack">
+              <div class="node">Worker A · browser + database A</div>
+              <div class="node">Worker B · browser + database B</div>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right glyph"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="node" data-tone="green">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+                ></path>
+                <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                <path d="m14 20 2 2 4-4"></path></svg
+              >Recording storage
+            </div>
+          </div>
+        </div>
         <ul class="sources">
+          <li>
+            Apple M5 Max · Node 24 · 100 sessions · 400 reads at concurrency 16 · 10 sequential
+            browser sessions.
+          </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
@@ -24736,7 +25306,7 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Build review">
+      <section class="slide" data-title="The next benchmark version">
         <header class="masthead">
           <span class="wordmark"
             ><svg
@@ -24770,37 +25340,177 @@
               <rect x="9" y="2" width="6" height="6" rx="1"></rect>
               <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
               <path d="M12 12V8"></path></svg
-            >Build review<span class="section-number">12 / 13</span></span
+            >The next benchmark version<span class="section-number">12 / 13</span></span
           >
         </header>
-        <h2>Other mistakes I made</h2>
+        <h2>Validate the test before comparing the models</h2>
         <ul>
           <li>
-            I did not establish suitable limits for the longest task. Every retrospective run
-            reached a limit.
+            Have an independent reader solve each task using only its instructions and visible
+            workspace.
           </li>
+          <li>Test limits on long workflows before fixing the comparison settings.</li>
           <li>
-            I let optional screenshot failures stop text-based agents. Recording failures now stay
-            separate from task results.
-          </li>
-          <li>
-            I initially displayed provider errors as task failures. The UI now shows them as blocked
-            runs.
-          </li>
-          <li>
-            I missed late replay updates that could replace the current view. Run ownership checks
-            now reject those updates.
-          </li>
-          <li>
-            I did not secure enough disk headroom. The safety check stopped collection before all
-            runs were recorded.
+            Use unseen task variants and matched runs to measure reliability and compare interfaces.
           </li>
         </ul>
+        <div
+          class="diagram next-diagram flow"
+          role="img"
+          aria-label="The proposed next version reviews task instructions, calibrates limits, freezes task versions and settings, then collects matched runs."
+        >
+          <div class="node">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-list-checks glyph"
+              aria-hidden="true"
+            >
+              <path d="M13 5h8"></path>
+              <path d="M13 12h8"></path>
+              <path d="M13 19h8"></path>
+              <path d="m3 17 2 2 4-4"></path>
+              <path d="m3 7 2 2 4-4"></path></svg
+            >Review instructions<span>Can a new reader solve it?</span>
+          </div>
+          <div class="arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right glyph"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+          <div class="node">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-flask-conical glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
+              ></path>
+              <path d="M6.453 15h11.094"></path>
+              <path d="M8.5 2h7"></path></svg
+            >Calibrate limits<span>Include long workflows</span>
+          </div>
+          <div class="arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right glyph"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+          <div class="node">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+              ></path>
+              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+              <path d="m14 20 2 2 4-4"></path></svg
+            >Freeze the version<span>Tasks, seeds, and settings</span>
+          </div>
+          <div class="arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right glyph"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+          <div class="node" data-tone="green">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-bot glyph"
+              aria-hidden="true"
+            >
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path></svg
+            >Compare runs<span>Same conditions</span>
+          </div>
+        </div>
+        <div class="takeaway">
+          The environment is reusable. Benchmark validity requires a separate validation process.
+        </div>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
-              >Build review: evidence, fixes, and remaining work</a
-            >. Collection later finished without replacing any recorded attempt.
+              >Detailed engineering review</a
+            >
+            ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/onsite-readiness.md"
+              >Remaining validation work</a
+            >. These are next steps, not completed results.
           </li>
         </ul>
       </section>
@@ -24839,19 +25549,79 @@
             >Demonstration and discussion<span class="section-number">13 / 13</span></span
           >
         </header>
-        <h2>Demo and questions</h2>
+        <h2>Inspect the behavior, then discuss the next test</h2>
+        <div class="demo-path">
+          <a href="https://relay.kevinliu.studio/play"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-app-window glyph"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="M10 4v4"></path>
+              <path d="M2 8h20"></path>
+              <path d="M6 4v4"></path></svg
+            ><span class="diagram-label">01 · Try</span><strong>Use the workspace</strong
+            ><span>Search, open a thread, edit</span></a
+          >
+          <a href="https://relay.kevinliu.studio/results"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-bot glyph"
+              aria-hidden="true"
+            >
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path></svg
+            ><span class="diagram-label">02 · Compare</span><strong>Choose a model and task</strong
+            ><span>All 306 attempts and costs</span></a
+          >
+          <a href="https://relay.kevinliu.studio/demo/review.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-file-check-corner lucide-file-check-2 glyph"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+              ></path>
+              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+              <path d="m14 20 2 2 4-4"></path></svg
+            ><span class="diagram-label">03 · Review</span><strong>Inspect the run</strong
+            ><span>Actions, changes, result checks</span></a
+          >
+        </div>
         <ul>
-          <li>
-            <a href="https://relay.kevinliu.studio/play">Try the workspace</a>. Search, reply in a
-            thread, and edit a message.
-          </li>
-          <li>
-            <a href="https://relay.kevinliu.studio/demo/review.html">Watch a recorded run</a>.
-            Inspect the actions, workspace changes, and result checks.
-          </li>
-          <li>Which workflows should we add next?</li>
-          <li>Should the score penalize wrong actions even when the agent undoes them?</li>
-          <li>How many agents must run at once, and what cost can we allow?</li>
+          <li>Which workflows best test the behavior you want to improve?</li>
+          <li>Should scoring include wrong actions that an agent later undoes?</li>
+          <li>What concurrency and cost targets should guide the next version?</li>
         </ul>
         <ul class="sources">
           <li>

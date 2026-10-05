@@ -11,228 +11,345 @@
   </head>
   <body>
     <main>
-      <section class="slide active cover" data-title="Relay">
-        <h1>Test agents in a<br /><em>Slack-like workspace</em></h1>
-        <div class="brand-row">
-          <span class="brand-chip">{{SLACK_MARK}}Slack workflows</span
-          ><span class="brand-chip">{{ICON_CHECK}}Automatic result checks</span>
-        </div>
+      <section class="slide active cover" data-title="The assignment">
+        <h1>
+          I started with a<br />
+          <em>working environment</em>
+        </h1>
         <ul>
-          <li>Relay tests whether an agent can complete a task in a working web app.</li>
           <li>
-            18 tasks cover search, threads, message edits, direct messages, and channel settings.
+            The brief asked for a Slack-like app that agents could use and that I could verify.
           </li>
-          <li>Each run records the actions, checks the result, and estimates the cost.</li>
-          <li>The goal is to complete tasks with fewer errors, less time, and lower cost.</li>
+          <li>
+            I focused on complete workflows, repeatable runs, and evidence that someone else could
+            inspect.
+          </li>
         </ul>
         <div
-          class="diagram flow"
+          class="brief-map"
           role="img"
-          aria-label="Task to isolated workspace to agent interaction to state evaluation"
+          aria-label="Three requirements from the brief map to three deliverables: runnable app to Slack workflows, verification to recorded agent runs, and design discussion to measured tradeoffs."
         >
-          <div class="node">{{ICON_TASK}}Task</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node">{{ICON_WORKSPACE}}Private workspace</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="blue">{{ICON_POLICY}}Agent actions</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="green">{{ICON_CHECK}}Result checks</div>
-        </div>
-        <ul class="sources">
-          <li>Kevin Liu · CUA implementation exercise · October 2026.</li>
-        </ul>
-      </section>
-      <section class="slide" data-title="How a run works">
-        <h2>The harness runs and records the test</h2>
-        <ul>
-          <li>The harness is the code that controls each test run.</li>
-          <li>It shows the workspace to the model and asks for one action.</li>
-          <li>It checks the action, executes it, and records what changed.</li>
-          <li>It repeats these steps until the model finishes or reaches a limit.</li>
-          <li>It checks the final workspace against the task requirements.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            React builds the UI. SQLite stores workspace data. Playwright controls the browser.
-          </li>
-          <li>
-            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
-              >Related projects and references</a
-            >. I reviewed their code but did not run a comparison.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Agent interfaces">
-        <h2>Four ways to use the workspace</h2>
-        <div
-          class="diagram flow"
-          role="img"
-          aria-label="The model can use screenshots, accessibility elements, page JSON, or an API to act in the same workspace"
-        >
-          <div class="node">{{ICON_WORKSPACE}}Fresh workspace</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="stack">
-            <div class="node">{{ICON_PIXELS}}Screenshot → mouse and keyboard</div>
-            <div class="node">{{ICON_A11Y}}Accessibility → labeled controls</div>
-            <div class="node">{{ICON_JSON}}Page JSON → structured controls</div>
-            <div class="node" data-tone="green">{{ICON_API}}API → direct workspace changes</div>
+          <div>
+            <span class="diagram-label">Build</span>{{SLACK_MARK}}<strong>Slack workflows</strong
+            ><span>Runnable code and setup</span>
           </div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="blue">{{ICON_POLICY}}Model<br />Chooses one action</div>
+          <div>
+            <span class="diagram-label">Verify</span>{{ICON_EVIDENCE}}<strong
+              >Recorded agent runs</strong
+            ><span>Actions and result checks</span>
+          </div>
+          <div>
+            <span class="diagram-label">Explain</span>{{ICON_TEST}}<strong
+              >Measured tradeoffs</strong
+            ><span>Isolation, speed, and resources</span>
+          </div>
         </div>
-        <ul>
+        <ul class="sources">
           <li>
-            The model receives the task and workspace information, but not the expected answer.
+            Kevin Liu · CUA implementation exercise · October 2026 · Based on the supplied
+            assignment brief.
           </li>
-          <li>API runs test tool use without browser interaction. They are reported separately.</li>
-          <li>The 306-run comparison uses accessibility controls for every model.</li>
         </ul>
       </section>
-      <section class="slide" data-title="Isolation">
-        <h2>Each run has its own workspace</h2>
+      <section class="slide" data-title="The environment">
+        <h2>Build the workflows before expanding the scope</h2>
+        <ul>
+          <li>
+            I built a focused Slack-like app with synthetic people, channels, messages, and
+            decisions.
+          </li>
+          <li>
+            Search, threads, and message editing support tasks that require finding information
+            before making a change.
+          </li>
+          <li>People and agents use the same workspace UI and state changes.</li>
+        </ul>
         <div
-          class="diagram"
+          class="diagram workflow-diagram"
           role="img"
-          aria-label="Run A has browser session A and database A. Run B has browser session B and database B."
+          aria-label="A Slack workflow moves from finding a source message, to opening its thread, to editing or replying. Pins, saved items, direct messages, and channel settings extend these workflows."
         >
           <div class="flow">
-            <div class="node">{{ICON_TASK}}Run A</div>
+            <div class="node">
+              {{ICON_SEARCH}}Find the source<span>Search channels and messages</span>
+            </div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node">{{ICON_BROWSER}}Browser session A</div>
+            <div class="node">
+              {{ICON_THREAD}}Read the context<span>Open the relevant thread</span>
+            </div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="green">{{ICON_DATABASE}}Database A</div>
+            <div class="node" data-tone="green">
+              {{ICON_EDIT}}Make the change<span>Edit or reply in place</span>
+            </div>
           </div>
-          <div class="flow subflow">
-            <div class="node">{{ICON_TASK}}Run B</div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node">{{ICON_BROWSER}}Browser session B</div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="green">{{ICON_DATABASE}}Database B</div>
+          <div class="feature-strip">
+            <span>Pins</span><span>Saved items</span><span>Direct messages</span
+            ><span>Channel settings</span>
           </div>
         </div>
-        <ul>
-          <li>Each run starts with a new browser session and a separate SQLite database.</li>
-          <li>Changes in one workspace do not change another workspace.</li>
-          <li>Version checks reject outdated edits. Request IDs prevent duplicate writes.</li>
-          <li>This separates workspace data. It does not safely contain malicious code.</li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Setup and run design">
-        <h2>Run Relay with different models</h2>
-        <div class="brand-row" aria-label="Models in the campaign">
-          <span class="brand-chip">{{ICON_POLICY}}17 models</span
-          ><span class="brand-chip">{{ICON_TASK}}18 tasks</span
-          ><span class="brand-chip">{{ICON_CHECK}}1 run per task and model</span>
-        </div>
-        <ul>
-          <li>Use Node 24. Follow the README to install, build, and start Relay.</li>
-          <li>Add a Router API key, then choose an available model and a task.</li>
-          <li>
-            The comparison uses the same task data, controls, and result checks for every model.
-          </li>
-          <li>Each run allows up to 40 actions, 180 seconds, and a $5 estimated cost.</li>
-          <li>The manual workspace and saved replays do not require an API key.</li>
-        </ul>
         <ul class="sources">
           <li>
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
-              >Exact settings and run history</a
+            React UI · SQLite state ·
+            <a href="https://relay.kevinliu.studio/play">Try the workspace without a key</a> ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
+              >Prior-work review</a
             >.
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Tasks and result checks">
-        <h2>Define the task and check the result</h2>
+      <section class="slide" data-title="Define success">
+        <h2>Define success as a change in workspace state</h2>
         <ul>
-          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
           <li>
-            Example: find an approval, update the channel description, pin the message, save the
-            reply, and acknowledge it.
+            A plausible action sequence is not enough. The requested result must exist in the right
+            place.
           </li>
-          <li>The checks verify the text, author, destination, and required changes.</li>
-          <li>A run fails if it leaves a duplicate message or changes unrelated data.</li>
+          <li>The checks verify the text, author, destination, and unchanged data.</li>
+          <li>The model cannot pass a task by saying that it finished.</li>
         </ul>
         <div
-          class="diagram flow"
+          class="diagram state-diagram"
           role="img"
-          aria-label="Compare the final workspace with the expected result. All checks must pass to receive reward 1."
+          aria-label="A topic task has two checks: the requested text must be the channel topic, and no unrelated state may change. Both must pass."
         >
-          <div class="node">{{ICON_WORKSPACE}}Final workspace</div>
-          <div class="arrow">{{ICON_PLUS}}</div>
-          <div class="node">{{ICON_STATE}}Expected result</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="green">{{ICON_CHECK}}Reward<br />Pass = 1 · Fail = 0</div>
+          <div class="state-task">
+            {{ICON_TASK}}
+            <div>
+              <strong>Example: update a channel topic</strong
+              ><span>Set the requested topic. Make no other changes.</span>
+            </div>
+          </div>
+          <div class="state-checks">
+            <div>
+              {{ICON_CHECK}}<strong>Correct topic</strong
+              ><span>Exact text in channel settings</span>
+            </div>
+            <div>
+              {{ICON_CHECK}}<strong>No extra changes</strong
+              ><span>Other workspace data stays the same</span>
+            </div>
+            <div class="reward"><strong>Both pass</strong><span>Reward = 1</span></div>
+          </div>
         </div>
         <ul class="sources">
           <li>
-            These checks grade the final state. They do not penalize a wrong action that the agent
-            fully undoes.
+            Checks grade the final state. A wrong action that the agent fully undoes is not
+            penalized.
+          </li>
+          <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/task-suite.md"
+              >Task definitions and result checks</a
+            >.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="The repeatable harness">
+        <h2>Make each run repeatable and inspectable</h2>
+        <div
+          class="diagram harness-diagram"
+          role="img"
+          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, checks and executes it, then observes again. A separate checker grades final state and a recorder saves evidence."
+        >
+          <div class="ownership-strip">
+            {{ICON_BROWSER}}New browser session<span>+</span>{{ICON_DATABASE}}Private database<span
+              class="ownership-tag"
+              >One owner per run</span
+            >
+          </div>
+          <div class="flow">
+            <div class="node">{{ICON_WORKSPACE}}Observe<span>Visible workspace</span></div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="blue">
+              {{ICON_POLICY}}Choose one action<span>Model response</span>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node">{{ICON_CHECK}}Check and execute<span>Browser or API</span></div>
+          </div>
+          <div class="loop-return"><span>Next observation</span></div>
+          <div class="harness-outputs">
+            <span>{{ICON_STATE}}Final state → independent result checks</span
+            ><span>{{ICON_EVIDENCE}}Every step → trace and replay</span>
+          </div>
+        </div>
+        <ul>
+          <li>The harness is the code that controls each test run.</li>
+          <li>
+            It resets the workspace, controls the loop, enforces limits, and saves the evidence.
+          </li>
+          <li>Separate workspace data prevents runs from changing each other.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Playwright controls the browser. Data isolation is not a security boundary for malicious
+            code.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="The scope expands">
+        <h2>The harness made a broader comparison possible</h2>
+        <ul>
+          <li>
+            Once I could reset, run, check, and replay a task, I could reuse that process with
+            another model.
+          </li>
+          <li>
+            I expanded the project from an environment demonstration into a benchmark prototype.
+          </li>
+        </ul>
+        <div
+          class="scope-diagram"
+          role="img"
+          aria-label="The original assignment led to a working environment and repeatable harness. The expanded scope used that base for a benchmark prototype with 18 tasks and 17 models."
+        >
+          <div class="scope-label original">Original assignment</div>
+          <div class="scope-label expanded">Expanded scope</div>
+          <div class="node environment">
+            {{ICON_WORKSPACE}}Working environment<span
+              >Focused Slack workflows<br />Known starting state</span
+            >
+          </div>
+          <div class="arrow scope-first">{{ICON_ARROW}}</div>
+          <div class="node harness">
+            {{ICON_RESET}}Repeatable harness<span
+              >Reset · act · check · record<br />Swap the model</span
+            >
+          </div>
+          <div class="arrow scope-second">{{ICON_ARROW}}</div>
+          <div class="node benchmark" data-tone="green">
+            {{ICON_TEST}}Benchmark prototype<span
+              >18 tasks × 17 models<br />One attempt per pair</span
+            >
+          </div>
+        </div>
+        <div class="takeaway">
+          A repeatable run is necessary. A valid comparison also needs validated tasks.
+        </div>
+      </section>
+      <section class="slide" data-title="Agent interfaces">
+        <h2>Separate computer use from direct tool use</h2>
+        <div
+          class="interface-map"
+          role="img"
+          aria-label="Four interfaces were exercised. Pixels provide an image and coordinate actions. Accessibility provides labeled controls. Page JSON provides structured controls. API access changes workspace data directly. Earlier pass counts are not a matched comparison."
+        >
+          <div class="interface-map-head">
+            <span>Interface</span><span>What the agent receives and uses</span
+            ><span>Earlier passes / attempts</span>
+          </div>
+          <div>
+            {{ICON_PIXELS}}<strong>Pixels</strong><span>Screenshot → mouse and keyboard</span
+            ><b>{{PIXEL_PASS_COUNT}}</b>
+          </div>
+          <div>
+            {{ICON_A11Y}}<strong>Accessibility</strong
+            ><span>Labeled controls → element actions</span><b>{{A11Y_PASS_COUNT}}</b>
+          </div>
+          <div>
+            {{ICON_JSON}}<strong>Page JSON</strong><span>Structured controls → element actions</span
+            ><b>{{JSON_PASS_COUNT}}</b>
+          </div>
+          <div class="api-row">
+            {{ICON_API}}<strong>API</strong><span>Workspace data → direct changes</span
+            ><b>{{API_PASS_COUNT}}</b>
+          </div>
+        </div>
+        <ul>
+          <li>
+            The earlier tests used different tasks and models. They do not show which interface is
+            better.
+          </li>
+          <li>
+            The 306-run comparison uses accessibility controls only. API results stay separate.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            {{ATTEMPTED}} attempted: {{PASSED}} passed, {{INCOMPLETE}} incomplete, {{BLOCKED}}
+            blocked. {{UNATTEMPTED}} planned runs did not start.
+          </li>
+          <li>
+            {{REQUESTS}} requests · ${{COST}} estimated allowance, including missing-usage
+            reservations ·
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
+              >Earlier interface evidence</a
+            >.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Verification">
-        <h2>Test the app and the result checks</h2>
-        <ul>
-          <li>
-            {{BACKEND_TESTS}} backend tests and {{BROWSER_TESTS}} browser tests check the software.
-          </li>
-          <li>
-            84 valid results and 2,583 deliberately invalid results test the checks for the 12
-            longer tasks.
-          </li>
-          <li>Scripted tests verify the UI. They do not show what a model can do.</li>
-          <li>{{COMPARISON_ATTEMPTED}} recorded model runs show how the agents performed.</li>
-        </ul>
+        <h2>Test the software separately from the agents</h2>
         <div
-          class="diagram flow"
+          class="verification-map"
           role="img"
-          aria-label="Software tests check the app. Result tests check the grading. Model runs test whether an agent completes the task."
+          aria-label="Three different checks: software tests check the app, constructed states check the grader, and recorded model runs check task execution. None alone validates task wording."
         >
-          <div class="node">{{ICON_TEST}}Software tests<br />Does the app work?</div>
-          <div class="node" data-tone="green">
-            {{ICON_CHECK}}Result tests<br />Are incorrect results rejected?
+          <div>
+            <span class="diagram-label">App behavior</span>{{ICON_BROWSER}}<strong
+              >{{BACKEND_TESTS}} backend tests<br />{{BROWSER_TESTS}} browser tests</strong
+            ><span>Does the software work?</span>
           </div>
-          <div class="node" data-tone="blue">
-            {{ICON_POLICY}}Model runs<br />Can the agent do the task?
+          <div>
+            <span class="diagram-label">Result checks</span>{{ICON_CHECK}}<strong
+              >84 valid states<br />2,583 invalid states</strong
+            ><span>Does grading reject wrong results?</span>
+          </div>
+          <div>
+            <span class="diagram-label">Agent behavior</span>{{ICON_POLICY}}<strong
+              >{{COMPARISON_ATTEMPTED}} recorded runs</strong
+            ><span>Can the agent complete the task?</span>
           </div>
         </div>
-      </section>
-      <section class="slide" data-title="Interface test results">
-        <h2>Results from the earlier interface tests</h2>
         <ul>
-          <li>
-            {{ATTEMPTED}} attempted: {{PASSED}} passed, {{INCOMPLETE}} incomplete, and {{BLOCKED}}
-            blocked. {{UNATTEMPTED}} planned runs did not start.
-          </li>
-          <li>
-            These tests used different tasks and models, so they cannot establish which interface is
-            better.
-          </li>
-          <li>These results are separate from the 306-run model comparison.</li>
+          <li>Scripted browser tests show that the workflows are possible.</li>
+          <li>Constructed states test the result checks for the 12 longer tasks.</li>
+          <li>Neither test proves that a task instruction is clear to a new reader.</li>
         </ul>
-        <div
-          class="diagram results"
-          role="img"
-          aria-label="Episode outcomes by interface; task and model coverage differ across rows"
-        >
-          {{RESULT_BARS}}
-          <div class="legend">
-            <span><i class="passed"></i>Passed</span
-            ><span><i class="incomplete"></i>Incomplete</span
-            ><span><i class="blocked"></i>Blocked</span
-            ><span><i class="unattempted"></i>Unattempted</span>
+        <ul class="sources">
+          <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
+              >Software verification</a
+            >
+            · Model evidence remains separate from scripted tests.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Comparison setup">
+        <h2>One attempt for each model and task</h2>
+        <div class="campaign-equation" aria-label="Models in the campaign">
+          <div>{{ICON_POLICY}}<strong>17</strong><span>model routes</span></div>
+          <span class="equation-sign">×</span>
+          <div>{{ICON_TASK}}<strong>18</strong><span>tasks</span></div>
+          <span class="equation-sign">×</span>
+          <div>{{ICON_CHECK}}<strong>1</strong><span>attempt per pair</span></div>
+          <span class="equation-sign">=</span>
+          <div class="equation-total">
+            <strong>{{COMPARISON_ATTEMPTED}}</strong><span>recorded attempts</span>
           </div>
+        </div>
+        <ul>
+          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
+          <li>Every model uses the same task data, action format, and result checks.</li>
+          <li>
+            One attempt shows coverage. It does not establish a reliable ranking or repeatability.
+          </li>
+        </ul>
+        <div class="limit-strip">
+          <span><strong>40</strong> actions</span><span><strong>180 s</strong> per run</span
+          ><span><strong>$5</strong> estimated allowance per run</span>
         </div>
         <ul class="sources">
           <li>
-            {{REQUESTS}} requests cost an estimated ${{COST}}, including a $0.001490 reservation for
-            missing usage. This is not an invoice.
+            105 earlier attempts retained + 201 continuation attempts. No recorded failure was
+            replaced.
           </li>
           <li>
+            <a href="https://github.com/Kevin-Liu-01/Relay">Node 24 setup and BYOK instructions</a>
+            ·
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
-              >All interface runs and recorded actions</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
+              >Exact routes, limits, and run history</a
             >.
           </li>
         </ul>
@@ -303,34 +420,57 @@
         </ul>
       </section>
       <section class="slide" data-title="Main lesson">
-        <h2>My main mistake: I did not validate the task instructions</h2>
+        <h2>The checks and the instructions must agree</h2>
         <ul>
           <li>
-            I tested whether the UI and grading code worked, but did not independently validate
-            every task instruction.
+            I tested the grading code, but did not independently validate every task instruction.
           </li>
           <li>
-            Design handoff quoted “DESIGN” without requiring replacement. Six completed runs copied
-            it, but the grader expected “Willow”.
-          </li>
-          <li>Release sync gave an unclear channel location for one source message.</li>
-          <li>These tasks do not give a clear measure of model ability.</li>
-          <li>
-            Next time, I will ask someone to solve each task using only its instructions before
-            collecting results.
+            Trace review found two unclear tasks. Their scores do not cleanly measure model ability.
           </li>
         </ul>
+        <div
+          class="mismatch-diagram"
+          role="img"
+          aria-label="Design handoff instructions quoted DESIGN without explicitly requiring substitution. Six completed runs copied DESIGN, but the grader expected Willow. This is a task-definition mismatch."
+        >
+          <div>
+            <span class="diagram-label">Instruction</span><strong>“DESIGN”</strong
+            ><span>Replacement was not explicit</span>
+          </div>
+          <div class="mismatch-sign" aria-hidden="true">≠</div>
+          <div>
+            <span class="diagram-label">Expected result</span><strong>“Willow”</strong
+            ><span>Six completed runs copied DESIGN</span>
+          </div>
+        </div>
+        <div class="finding-grid">
+          <div>
+            <strong>Release sync</strong><span>Unclear source location<br />0 / 17 passed</span>
+          </div>
+          <div>
+            <strong>Retrospective</strong><span>Every run reached a limit<br />0 / 17 passed</span>
+          </div>
+          <div>
+            <strong>Handoff repair</strong
+            ><span>Sol and Astra clicked Cancel<br />5 / 17 passed</span>
+          </div>
+        </div>
         <ul class="sources">
+          <li>
+            Best individual models: 14 / 18 tasks. Across all models: 15 / 18 tasks passed at least
+            once.
+          </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
               >Recorded actions and failure analysis</a
-            >. Preserve the original results. Correct the instructions in a new test version.
+            >. Keep all original outcomes. A wording fix requires a new task version.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Speed and resources">
-        <h2>Local speed measurements</h2>
+        <h2>Measure local costs before scaling out</h2>
         <div
           class="metrics"
           role="img"
@@ -350,18 +490,36 @@
           </div>
         </div>
         <ul>
-          <li>These measurements used an Apple M5 Max with Node 24.</li>
-          <li>The test created 100 sessions and ran 400 reads, with up to 16 reads at once.</li>
-          <li>The browser test used 10 sessions, one after another.</li>
           <li>
-            These times exclude model calls. They do not measure how many agents can run together.
+            These timings exclude model calls. They do not measure simultaneous-agent capacity.
           </li>
           <li>
-            Next, test a queue of runs across separate workers with shared recording storage.
-            Measure each worker's full memory use.
+            Next, measure full browser memory, sustained throughput, and cleanup under concurrent
+            runs.
           </li>
         </ul>
+        <div
+          class="scale-diagram"
+          role="img"
+          aria-label="Proposed, not measured: a queue assigns runs to separate workers. Each worker owns a browser and database. Both write recordings to external storage."
+        >
+          <span class="diagram-label">Proposed scale-out</span>
+          <div class="flow">
+            <div class="node">{{ICON_QUEUE}}Run queue</div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="stack">
+              <div class="node">Worker A · browser + database A</div>
+              <div class="node">Worker B · browser + database B</div>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="green">{{ICON_EVIDENCE}}Recording storage</div>
+          </div>
+        </div>
         <ul class="sources">
+          <li>
+            Apple M5 Max · Node 24 · 100 sessions · 400 reads at concurrency 16 · 10 sequential
+            browser sessions.
+          </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
@@ -370,52 +528,72 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Build review">
-        <h2>Other mistakes I made</h2>
+      <section class="slide" data-title="The next benchmark version">
+        <h2>Validate the test before comparing the models</h2>
         <ul>
           <li>
-            I did not establish suitable limits for the longest task. Every retrospective run
-            reached a limit.
+            Have an independent reader solve each task using only its instructions and visible
+            workspace.
           </li>
+          <li>Test limits on long workflows before fixing the comparison settings.</li>
           <li>
-            I let optional screenshot failures stop text-based agents. Recording failures now stay
-            separate from task results.
-          </li>
-          <li>
-            I initially displayed provider errors as task failures. The UI now shows them as blocked
-            runs.
-          </li>
-          <li>
-            I missed late replay updates that could replace the current view. Run ownership checks
-            now reject those updates.
-          </li>
-          <li>
-            I did not secure enough disk headroom. The safety check stopped collection before all
-            runs were recorded.
+            Use unseen task variants and matched runs to measure reliability and compare interfaces.
           </li>
         </ul>
+        <div
+          class="diagram next-diagram flow"
+          role="img"
+          aria-label="The proposed next version reviews task instructions, calibrates limits, freezes task versions and settings, then collects matched runs."
+        >
+          <div class="node">
+            {{ICON_TASK}}Review instructions<span>Can a new reader solve it?</span>
+          </div>
+          <div class="arrow">{{ICON_ARROW}}</div>
+          <div class="node">{{ICON_TEST}}Calibrate limits<span>Include long workflows</span></div>
+          <div class="arrow">{{ICON_ARROW}}</div>
+          <div class="node">
+            {{ICON_STATE}}Freeze the version<span>Tasks, seeds, and settings</span>
+          </div>
+          <div class="arrow">{{ICON_ARROW}}</div>
+          <div class="node" data-tone="green">
+            {{ICON_POLICY}}Compare runs<span>Same conditions</span>
+          </div>
+        </div>
+        <div class="takeaway">
+          The environment is reusable. Benchmark validity requires a separate validation process.
+        </div>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
-              >Build review: evidence, fixes, and remaining work</a
-            >. Collection later finished without replacing any recorded attempt.
+              >Detailed engineering review</a
+            >
+            ·
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/onsite-readiness.md"
+              >Remaining validation work</a
+            >. These are next steps, not completed results.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Demonstration and discussion">
-        <h2>Demo and questions</h2>
+        <h2>Inspect the behavior, then discuss the next test</h2>
+        <div class="demo-path">
+          <a href="https://relay.kevinliu.studio/play"
+            >{{ICON_WORKSPACE}}<span class="diagram-label">01 · Try</span
+            ><strong>Use the workspace</strong><span>Search, open a thread, edit</span></a
+          >
+          <a href="https://relay.kevinliu.studio/results"
+            >{{ICON_POLICY}}<span class="diagram-label">02 · Compare</span
+            ><strong>Choose a model and task</strong><span>All 306 attempts and costs</span></a
+          >
+          <a href="https://relay.kevinliu.studio/demo/review.html"
+            >{{ICON_EVIDENCE}}<span class="diagram-label">03 · Review</span
+            ><strong>Inspect the run</strong><span>Actions, changes, result checks</span></a
+          >
+        </div>
         <ul>
-          <li>
-            <a href="https://relay.kevinliu.studio/play">Try the workspace</a>. Search, reply in a
-            thread, and edit a message.
-          </li>
-          <li>
-            <a href="https://relay.kevinliu.studio/demo/review.html">Watch a recorded run</a>.
-            Inspect the actions, workspace changes, and result checks.
-          </li>
-          <li>Which workflows should we add next?</li>
-          <li>Should the score penalize wrong actions even when the agent undoes them?</li>
-          <li>How many agents must run at once, and what cost can we allow?</li>
+          <li>Which workflows best test the behavior you want to improve?</li>
+          <li>Should scoring include wrong actions that an agent later undoes?</li>
+          <li>What concurrency and cost targets should guide the next version?</li>
         </ul>
         <ul class="sources">
           <li>

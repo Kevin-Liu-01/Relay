@@ -31,11 +31,41 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
     'did not independently validate every task instruction',
   );
-  await expect(page.locator('[data-title="Build review"] h2')).toHaveText('Other mistakes I made');
-  await expect(page.locator('[data-title="Build review"] a')).toHaveAttribute(
+  await expect(page.locator('[data-title="The assignment"] h1')).toHaveText(
+    'I started with a working environment',
+  );
+  await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
+    'The harness made a broader comparison possible',
+  );
+  await expect(page.locator('.scope-diagram .scope-label')).toHaveText([
+    'Original assignment',
+    'Expanded scope',
+  ]);
+  await expect(page.locator('.scope-diagram .benchmark')).toContainText('Benchmark prototype');
+  await expect(page.locator('[data-title="The next benchmark version"] a').first()).toHaveAttribute(
     'href',
     'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md',
   );
+  await expect(page.locator('.slide [role="img"]')).toHaveCount(11);
+  const sequence = await page
+    .locator('.slide')
+    .evaluateAll((slides) => slides.map((s) => s.dataset.title));
+  expect(sequence).toEqual([
+    'The assignment',
+    'The environment',
+    'Define success',
+    'The repeatable harness',
+    'The scope expands',
+    'Agent interfaces',
+    'Verification',
+    'Comparison setup',
+    'Model comparison',
+    'Main lesson',
+    'Speed and resources',
+    'The next benchmark version',
+    'Demonstration and discussion',
+  ]);
+  await expect(page.locator('main')).not.toContainText('Other mistakes I made');
   // Keep the main narrative readable. Tables and source notes carry supporting detail.
   const narrative = await page
     .locator('.slide:not(.comparison-slide) > ul:not(.sources) > li')
@@ -55,11 +85,11 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (i === 7)
+    if (i === 5)
       await expect(slide).toContainText(
         `${summary.totals.attempted} attempted: ${summary.totals.passed} passed`,
       );
-    if ([0, 2, 6, 7, 8, 10].includes(i)) {
+    if ([0, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(i)) {
       await page.screenshot({
         path: testInfo.outputPath(`slide-${i + 1}.png`),
         animations: 'disabled',

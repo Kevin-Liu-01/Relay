@@ -31,6 +31,9 @@ import {
   Camera,
   ArrowRight,
   Plus,
+  Search,
+  MessagesSquare,
+  PencilLine,
 } from 'lucide-react';
 import Openai from '@thesvg/react/openai';
 import Slack from '@thesvg/react/slack';
@@ -67,14 +70,14 @@ const relay = readFileSync('src/assets/relay-mark.svg', 'utf8').replace(
   '<svg aria-hidden="true" ',
 );
 const sectionIcons = [
+  FileCheck2,
   AppWindow,
+  ListChecks,
+  Network,
   Layers,
   ScanEye,
   ShieldCheck,
-  ListChecks,
   FlaskConical,
-  Bot,
-  ChartNoAxesCombined,
   ChartNoAxesCombined,
   Route,
   Gauge,
@@ -259,6 +262,9 @@ const values = {
       CAMERA: Camera,
       ARROW: ArrowRight,
       PLUS: Plus,
+      SEARCH: Search,
+      THREAD: MessagesSquare,
+      EDIT: PencilLine,
     }).map(([name, component]) => [`ICON_${name}`, glyph(component)]),
   ),
   BACKEND_TESTS: [...backend.matchAll(/<testcase\b/g)].length,
@@ -271,6 +277,17 @@ const values = {
   REQUESTS: summary.requests,
   COST: summary.estimatedUSD.toFixed(6),
   RESULT_BARS: bars,
+  ...Object.fromEntries(
+    [
+      ['PIXEL', 'pixels'],
+      ['A11Y', 'a11y'],
+      ['JSON', 'json-ui'],
+      ['API', 'api'],
+    ].map(([name, key]) => [
+      `${name}_PASS_COUNT`,
+      `${summary.byInterface[key].passed} / ${summary.byInterface[key].attempted}`,
+    ]),
+  ),
   CREATE_MS: bench.latency.create.p50Ms.toFixed(2),
   RESET_MS: bench.latency.reset.p50Ms.toFixed(2),
   SCREENSHOT_MS: bench.latency.screenshot.p50Ms.toFixed(2),

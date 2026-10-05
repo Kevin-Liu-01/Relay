@@ -1,5 +1,15 @@
 # Verification and evidence
 
+## Presentation narrative and diagrams — 2026-10-04
+
+- Rebuilt the 13-slide story around the assignment, focused Slack workflows, repeatable harness, expansion into a benchmark prototype, recorded results, and task-validation lessons.
+- Added editable diagrams for requirements, workflow dependencies, state checks, run ownership and the action loop, scope expansion, interface differences, verification layers, instruction mismatch, and proposed scale-out. Camber, Relay colors, and existing SVG marks remain in use.
+- The 306-row evidence inventory, costs, original task outcomes, and campaign summary are unchanged. Slide 9 retains the sortable model table and all trace/replay links. Routine engineering mistakes remain in the linked written review.
+- All 29 focused evidence/accounting tests and five presentation/results browser tests pass. The updated tests assert story order, diagram presence, readable bullets, keyboard controls, numeric sorting, all-trial access, production CSP, mobile width, and 13 unclipped print pages.
+- The initial focused browser pass found missing text spacing across the cover title's line break. The HTML was corrected and all five checks passed on the next run. These checks are not a new full-app test run or new model trials.
+- Interactive browser review inspected the scope-expansion and harness diagrams. HTML/PDF generation uses the same verified result source and requires no inference.
+- Validation builds use a credential-free temporary copy. The root actor source and frozen build remain unchanged.
+
 ## Results and assignment handoff — 2026-10-03
 
 - **174 backend tests and 91 browser tests passed**, retries disabled. Coverage includes all 306 public trial records, production-CSP sorting, model/task drilldowns, cost exports, keyboard navigation and narrow-screen layouts.
