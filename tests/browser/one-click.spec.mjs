@@ -45,14 +45,16 @@ test('key entry is debounced; automatic prices and a shared connection make both
     await page.goto(url);
     await page.clock.install({ time: new Date('2026-09-30T12:00:00Z') });
     await page.clock.pauseAt(new Date('2026-09-30T12:00:01Z'));
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     const field = page.getByLabel('Provider API key');
     await field.fill('fake-first-draft');
     await field.fill('fake-final-key');
     await page.clock.fastForward(599);
     expect(calls).toHaveLength(0);
     await page.clock.fastForward(1);
-    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connected. Open key settings.');
     expect(calls).toEqual([{ provider: 'ramp', key: 'fake-final-key' }]);
     await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeEnabled();
     await expect(page.getByRole('button', { name: 'Bring your own key', exact: true })).toHaveCount(
@@ -93,9 +95,11 @@ for (const arena of [false, true])
           if (r.url().includes('op=run')) requests.push(r.url());
         });
         await page.goto(url);
-        await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+        await page.getByRole('button', { name: 'Your key', exact: true }).click();
         await page.getByLabel('Provider API key').fill('fake-loading-key');
-        await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+        await expect(
+          page.getByRole('button', { name: 'Your key', exact: true }),
+        ).toHaveAccessibleDescription('Connected. Open key settings.');
         if (arena) await page.getByRole('button', { name: '1v1', exact: true }).click();
         const button = page.getByRole('button', { name: arena ? 'Start 1v1' : 'Run', exact: true });
         const box = await button.boundingBox();
@@ -154,11 +158,13 @@ test('opting out during the auto-connect debounce never persists the pasted key'
     await page.goto(url);
     await page.clock.install({ time: new Date('2026-09-30T12:00:00Z') });
     await page.clock.pauseAt(new Date('2026-09-30T12:00:01Z'));
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-private-autoconnect-key');
     await page.getByLabel('Remember keys on this device').uncheck();
     await page.clock.fastForward(600);
-    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connected. Open key settings.');
     expect(await page.evaluate(() => localStorage.getItem('relay-credentials-v1'))).not.toContain(
       'fake-private',
     );

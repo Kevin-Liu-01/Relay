@@ -11,14 +11,23 @@ test('compact run header preserves controls, keyboard menus and responsive space
   try {
     await page.goto(`http://127.0.0.1:${server.address().port}`);
     await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toBeVisible();
+    await expect(
+      page.locator('.nav').getByRole('heading', { name: 'Try out Computer Use' }),
+    ).toBeVisible();
+    await expect(
+      page.locator('.launch-controls').getByRole('group', { name: 'Model access' }),
+    ).toBeVisible();
+    await expect(page.locator('.connection-status')).toHaveCount(0);
     await page.evaluate(() => document.fonts.ready);
     const measurements = [];
-    for (const width of [1920, 1440, 1280, 800, 390]) {
+    for (const width of [1920, 1440, 1280, 1024, 800, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       const geometry = await page.evaluate(() => {
         const rect = (selector) => {
-          const { top, bottom, height } = document.querySelector(selector).getBoundingClientRect();
-          return { top, bottom, height };
+          const { top, bottom, left, right, height } = document
+            .querySelector(selector)
+            .getBoundingClientRect();
+          return { top, bottom, left, right, height };
         };
         return {
           width: innerWidth,
@@ -26,15 +35,27 @@ test('compact run header preserves controls, keyboard menus and responsive space
           nav: rect('.nav'),
           intro: rect('.run-intro'),
           controls: rect('.control-bar'),
+          access: rect('.access-switch'),
+          run: rect('.run-actions'),
           toolbar: rect('.run-toolbar'),
           arena: rect('.arena'),
         };
       });
       measurements.push(geometry);
       expect(geometry.overflow).toBe(false);
-      expect(geometry.arena.top).toBeLessThanOrEqual(width <= 700 ? 420 : 225);
-      expect(geometry.intro.top - geometry.nav.bottom).toBeLessThanOrEqual(4);
-      expect(geometry.controls.top - geometry.intro.bottom).toBeLessThanOrEqual(8);
+      expect(geometry.arena.top).toBeLessThanOrEqual(
+        width <= 700 ? 340 : width <= 1100 ? 250 : 160,
+      );
+      expect(geometry.intro.top).toBeGreaterThanOrEqual(geometry.nav.top);
+      expect(geometry.intro.bottom).toBeLessThanOrEqual(geometry.nav.bottom);
+      expect(geometry.controls.top - geometry.nav.bottom).toBeLessThanOrEqual(1);
+      expect(geometry.access.right + 8).toBeLessThanOrEqual(geometry.run.left);
+      expect(
+        Math.abs(
+          (geometry.access.top + geometry.access.bottom) / 2 -
+            (geometry.run.top + geometry.run.bottom) / 2,
+        ),
+      ).toBeLessThan(1);
       expect(geometry.toolbar.top).toBeGreaterThanOrEqual(geometry.controls.bottom);
       expect(geometry.arena.top - geometry.toolbar.bottom).toBeLessThanOrEqual(8);
       for (const name of ['Task', 'Model', 'Interface']) {
@@ -47,9 +68,9 @@ test('compact run header preserves controls, keyboard menus and responsive space
         await expect(control).toBeInViewport();
         expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(34);
       }
-      if ([1440, 390].includes(width))
+      if ([1440, 800, 390].includes(width))
         await page.screenshot({
-          path: `evidence/visual/relay-compact-header-${width}.png`,
+          path: `evidence/visual/relay-integrated-header-${width}.png`,
           fullPage: true,
         });
     }

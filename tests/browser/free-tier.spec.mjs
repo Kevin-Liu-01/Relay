@@ -117,7 +117,9 @@ test('free is ready without a key; one click runs once, keeps evidence, and BYOK
     await page.keyboard.press('Escape');
     await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByLabel('Provider API key').fill(visitorKey);
-    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connected. Open key settings.');
     await page.getByRole('combobox', { name: 'Model', exact: true }).click();
     await page.getByRole('option', { name: 'frontier-test-model', exact: true }).click();
     await page.getByRole('button', { name: 'Run', exact: true }).click();

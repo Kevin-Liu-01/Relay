@@ -10,6 +10,13 @@ history, comparison and replay tabs; 1v1 and model queues sit beside BYOK run
 controls. There is no empty decision panel or timeline before a run starts.
 The idle workspace is a labeled reference image, not a live agent session.
 
+The title and brief explanation sit beside the Relay logo in the top row.
+Free / Your key sits immediately before Run. Your key also opens the connection
+settings; its loading icon, green check and accessible description show connection
+state without a second connection button. Narrow screens wrap navigation and
+controls without hiding the task, model, interface or access choice. Starting a
+run reveals the existing live workspace, action panel and evidence controls below.
+
 Scroll controls reserve fixed space in custom menus. Adding or removing an
 arrow cannot move an option between pointer-down and pointer-up. The regression
 reproduced a 24 px viewport shift before the fix and checks its geometry at both

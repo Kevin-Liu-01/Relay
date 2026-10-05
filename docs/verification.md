@@ -1,5 +1,24 @@
 # Verification and evidence
 
+## Integrated header and access controls: 2026-10-04
+
+- Moved the title and explanation into the logo row. Free / Your key now sits
+  immediately before Run. Your key also opens connection settings and exposes
+  connecting, connected and disconnected states through its icon and accessible
+  description. The separate connection button and intro row are removed.
+- All **26 targeted browser tests passed**, without retries or paid inference.
+  Checks cover seven widths from 320 to 1920 px, control alignment, keyboard menus,
+  saved/revoked keys, opt-out, free/BYOK switching, quotas, duplicate launches,
+  sequential queues, 1v1, provider errors, audit, focus mode and replays.
+- The desktop idle workspace starts at 158 px, compared with about 220 px in the
+  preceding release at 1440 px width. At 390 px width it starts at about 294 px,
+  compared with 408 px. Controls remain visible and there is no horizontal overflow.
+  Desktop, tablet and phone screenshots were inspected.
+- Validation used an isolated production build. Frozen root `dist`, task
+  definitions, recorded trajectories, the 306 outcomes and cost records are
+  unchanged. Free access remains disabled in production; its infrastructure
+  activation is separate from this layout change.
+
 ## Compact run header: 2026-10-04
 
 - Reduced navigation height and the vertical gaps around the heading and run

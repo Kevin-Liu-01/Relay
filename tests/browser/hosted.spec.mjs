@@ -124,7 +124,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       'font-family',
       /^"?Relay Camber"?,/,
     );
-    await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toHaveCSS(
+    await expect(page.getByRole('button', { name: 'Your key', exact: true })).toHaveCSS(
       'font-family',
       /^"?Relay Camber"?,/,
     );
@@ -140,7 +140,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await expect(page.getByRole('heading', { name: 'Try out Computer Use' })).toBeInViewport();
     await page.screenshot({ path: 'evidence/visual/relay-welcome-mobile.png', fullPage: true });
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
     await page.getByLabel('Provider API key').fill('private-test-key-for-browser');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();
@@ -177,7 +177,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       await expectFullWidthWorkspace(page);
       expect(
         await page.locator('.arena').evaluate((el) => el.getBoundingClientRect().top + scrollY),
-      ).toBeLessThanOrEqual(205);
+      ).toBeLessThanOrEqual(size.width > 1100 ? 160 : 250);
       await page
         .getByRole('button', { name: 'Inspect the evidence', exact: true })
         .scrollIntoViewIfNeeded();
@@ -273,19 +273,23 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('__relayCapture');
     expect(JSON.stringify(parsed.audit.episodes[0].inputs)).not.toContain('"replay"');
     await page.reload();
-    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connected. Open key settings.');
     await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
       'jev-latest',
     );
     expect(runRequests).toHaveLength(1); // Reload only discovers models, never starts inference.
-    await page.getByRole('button', { name: 'Connected', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveAttribute('type', 'password');
     await expect(page.getByLabel('Provider API key')).toHaveValue('private-test-key-for-browser');
     await page.getByRole('button', { name: 'Forget key', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveValue('');
     expect(await page.evaluate(() => localStorage.getItem('relay-credentials-v1'))).toBeNull();
     await page.reload();
-    await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connect a key.');
     await page.getByRole('button', { name: /History/ }).click();
     await expect(page.locator('.history-row')).toHaveCount(1);
     await page.locator('.history-main').click();

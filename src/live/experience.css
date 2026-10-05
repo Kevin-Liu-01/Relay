@@ -696,7 +696,7 @@ dialog:has(.replay-player[data-focus='true']) {
   .nav {
     gap: 4px;
   }
-  .nav > button {
+  .nav-links > button {
     padding: 7px;
   }
 }
@@ -1109,15 +1109,13 @@ button:focus-visible {
 }
 /* One primary run surface; personal history contains comparison and replay tools. */
 .run-intro {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin: 4px 0 8px;
+  min-width: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
 }
 .run-intro h1 {
   margin: 0;
-  font-size: clamp(25px, 2.4vw, 34px);
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -1125,15 +1123,21 @@ button:focus-visible {
   color: var(--purple);
 }
 .run-intro p {
-  margin: 4px 0 0;
-  font-size: 13px;
+  margin: 3px 0 0;
+  font-size: 11px;
   color: var(--quiet);
   line-height: 1.5;
+}
+.launch-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
 }
 .access-switch {
   display: flex;
   flex-shrink: 0;
-  padding: 4px;
+  padding: 2px;
   gap: 3px;
   background: #eae7ee;
   border: 1px solid #e0dbe6;
@@ -1141,7 +1145,7 @@ button:focus-visible {
 }
 .access-switch button {
   min-height: 34px;
-  min-width: 88px;
+  min-width: 76px;
   border-radius: 7px;
   font-weight: 500;
 }
@@ -1150,8 +1154,8 @@ button:focus-visible {
   color: var(--purple);
   box-shadow: 0 1px 4px #32213e16;
 }
-.connection-status {
-  color: var(--quiet);
+.key-connected {
+  color: var(--green);
 }
 .run-toolbar .free-note {
   display: flex;
@@ -1226,27 +1230,24 @@ button:focus-visible {
   height: 100%;
   width: 100%;
 }
-.workspace-expanded .run-intro {
-  margin: 4px 0 8px;
-}
-.workspace-expanded .run-intro h1 {
-  font-size: 25px;
-}
-.workspace-expanded .run-intro p {
-  display: none;
-}
 @media (max-width: 700px) {
   .run-intro {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    margin: 4px 0 8px;
+    flex: 1;
+    padding-left: 10px;
+  }
+  .run-intro h1 {
+    font-size: 16px;
   }
   .run-intro p {
-    max-width: 32ch;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .launch-controls {
+    flex-basis: 100%;
+    flex-wrap: wrap;
   }
   .access-switch {
-    width: 100%;
+    flex: 1;
   }
   .access-switch button {
     flex: 1;

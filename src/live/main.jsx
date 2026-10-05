@@ -373,7 +373,7 @@ function App() {
       if (version === connectionVersion.current && e.name !== 'AbortError')
         setError(
           restoring
-            ? 'Saved key could not reconnect. Open Connect a key to update or forget it.'
+            ? 'Saved key could not reconnect. Open Your key to update or forget it.'
             : e.message,
         );
     } finally {
@@ -640,6 +640,14 @@ function App() {
       .filter((e) => e.status !== 'queued')
       .map((e) => ({ s, e, outcome: episodeOutcome(e) })),
   );
+  const keyConnectionDescription =
+    access !== 'byok'
+      ? 'Use your own provider key.'
+      : connecting
+        ? 'Connecting…'
+        : catalog.length
+          ? 'Connected. Open key settings.'
+          : 'Connect a key.';
   return (
     <div
       className={`live-shell ${run || busy ? 'workspace-expanded' : 'workspace-idle'} ${workspaceFocus ? 'workspace-focus' : ''}`}
@@ -650,58 +658,35 @@ function App() {
           Relay
           <span className="wordmark-dot" />
         </a>
-        <span className="nav-caption">Computer use, live.</span>
-        <div className="nav-spacer" />
-        <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
-          <ArrowUpRight size={16} />
-          Try Slack
-        </a>
-        <a className="try-slack" href="/results" target="_blank" rel="noreferrer">
-          <GitCompareArrows size={16} /> Results & replays
-        </a>
-        <button onClick={() => setModal('history')}>
-          <History size={16} />
-          History{saved.length > 0 && <span className="count">{saved.length}</span>}
-        </button>
-        <a
-          className="icon"
-          href="https://github.com/Kevin-Liu-01/Relay"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="GitHub repository"
-        >
-          <Github width={19} height={19} />
-        </a>
-      </header>
-      <section className="run-intro" aria-label="About Relay">
-        <div>
+        <div className="run-intro">
           <h1>
             Try out <span className="welcome-accent">Computer Use</span>
           </h1>
           <p>Give a model a Slack task. Watch it work, then inspect the result.</p>
         </div>
-        <div className="access-switch" aria-label="Model access">
-          <button
-            aria-pressed={access === 'free'}
-            disabled={busy || connecting || !setup?.free?.enabled}
-            onClick={() => access !== 'free' && connectFree()}
-            title={
-              setup?.free?.enabled
-                ? 'Cheap models, no key required'
-                : 'Free runs are not available yet'
-            }
-          >
-            <Sparkles size={15} /> Free
+        <nav className="nav-links" aria-label="Main navigation">
+          <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
+            <ArrowUpRight size={16} />
+            Try Slack
+          </a>
+          <a className="try-slack" href="/results" target="_blank" rel="noreferrer">
+            <GitCompareArrows size={16} /> Results & replays
+          </a>
+          <button onClick={() => setModal('history')}>
+            <History size={16} />
+            History{saved.length > 0 && <span className="count">{saved.length}</span>}
           </button>
-          <button
-            aria-pressed={access === 'byok'}
-            disabled={busy || connecting}
-            onClick={() => (access === 'byok' ? setModal('connect') : useOwnKey())}
+          <a
+            className="icon"
+            href="https://github.com/Kevin-Liu-01/Relay"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub repository"
           >
-            <KeyRound size={15} /> Your key
-          </button>
-        </div>
-      </section>
+            <Github width={19} height={19} />
+          </a>
+        </nav>
+      </header>
       {error && (
         <div className="error" role="alert">
           <AlertTriangle size={15} />
@@ -780,35 +765,53 @@ function App() {
         >
           <Settings2 size={17} />
         </button>
-        <div className="nav-spacer" />
-        {access === 'byok' && (
-          <button
-            className="connection-status"
-            disabled={busy || connecting}
-            onClick={() => setModal('connect')}
-          >
-            {connecting ? (
-              <LoaderCircle className="busy-spinner" size={14} />
-            ) : (
-              <KeyRound size={14} />
-            )}
-            {connecting ? 'Connecting…' : catalog.length ? 'Connected' : 'Connect a key'}
-          </button>
-        )}
-        <RunButton
-          label="Run"
-          busy={busy}
-          starting={!frame && !actions.length}
-          disabled={
-            !setup ||
-            connecting ||
-            (access === 'free'
-              ? !model || !rates || freeRemaining === 0
-              : !!catalog.length && !rates)
-          }
-          onStart={() => start()}
-          onStop={() => abort.current?.abort()}
-        />
+        <div className="launch-controls">
+          <div className="access-switch" role="group" aria-label="Model access">
+            <button
+              aria-pressed={access === 'free'}
+              disabled={busy || connecting || !setup?.free?.enabled}
+              onClick={() => access !== 'free' && connectFree()}
+              title={
+                setup?.free?.enabled
+                  ? 'Cheap models, no key required'
+                  : 'Free runs are not available yet'
+              }
+            >
+              <Sparkles size={15} aria-hidden="true" /> Free
+            </button>
+            <button
+              aria-pressed={access === 'byok'}
+              aria-description={keyConnectionDescription}
+              aria-busy={access === 'byok' && connecting}
+              title={keyConnectionDescription}
+              disabled={busy || connecting}
+              onClick={() => (access === 'byok' ? setModal('connect') : useOwnKey())}
+            >
+              {access === 'byok' && connecting ? (
+                <LoaderCircle className="busy-spinner" size={15} aria-hidden="true" />
+              ) : access === 'byok' && catalog.length ? (
+                <Check className="key-connected" size={15} aria-hidden="true" />
+              ) : (
+                <KeyRound size={15} aria-hidden="true" />
+              )}
+              Your key
+            </button>
+          </div>
+          <RunButton
+            label="Run"
+            busy={busy}
+            starting={!frame && !actions.length}
+            disabled={
+              !setup ||
+              connecting ||
+              (access === 'free'
+                ? !model || !rates || freeRemaining === 0
+                : !!catalog.length && !rates)
+            }
+            onStart={() => start()}
+            onStop={() => abort.current?.abort()}
+          />
+        </div>
       </section>
       <div className="run-toolbar">
         {access === 'free' ? (

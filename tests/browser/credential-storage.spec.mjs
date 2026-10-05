@@ -37,7 +37,9 @@ const stored = (page) =>
 async function enterKey(page, key) {
   await page.getByLabel('Provider API key', { exact: true }).fill(key);
   await page.getByRole('button', { name: 'Connect', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Your key', exact: true }),
+  ).toHaveAccessibleDescription('Connected. Open key settings.');
 }
 
 test('saved provider keys restore, prefill 1v1, forget independently and support opt-out', async ({
@@ -49,10 +51,10 @@ test('saved provider keys restore, prefill 1v1, forget independently and support
   });
   await serve(async (url, calls) => {
     await page.goto(url);
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await expect(page.getByLabel('Remember keys on this device')).toBeChecked();
     await enterKey(page, 'fake-remembered-ramp');
-    await page.getByRole('button', { name: 'Connected', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
     await enterKey(page, 'fake-remembered-typesafe');
     expect((await stored(page)).keys).toEqual({
@@ -80,7 +82,7 @@ test('saved provider keys restore, prefill 1v1, forget independently and support
     await expect(page.getByLabel('API key A', { exact: true })).toHaveValue('');
     expect((await stored(page)).keys).toEqual({ ramp: 'fake-remembered-ramp', typesafe: '' });
     await page.keyboard.press('Escape');
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByRole('button', { name: 'Ramp Router', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveValue('fake-remembered-ramp');
     await page.getByLabel('Remember keys on this device').uncheck();
@@ -89,7 +91,7 @@ test('saved provider keys restore, prefill 1v1, forget independently and support
     expect((await stored(page)).remember).toBe(false);
     expect(JSON.stringify(await stored(page))).not.toContain('fake-');
     await page.reload();
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveValue('');
     await expect(page.getByLabel('Remember keys on this device')).not.toBeChecked();
     expect(runRequests).toEqual([]);
@@ -102,14 +104,16 @@ test('failed, corrupt and revoked credentials never silently reconnect or save a
   await serve(
     async (url, calls) => {
       await page.goto(url);
-      await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+      await page.getByRole('button', { name: 'Your key', exact: true }).click();
       await page.getByLabel('Provider API key').fill('fake-invalid-key');
       await page.getByRole('button', { name: 'Connect', exact: true }).click();
       await expect(page.getByRole('alert')).toContainText('Credential rejected');
       expect(await stored(page)).toBeNull();
       await page.evaluate(() => localStorage.setItem('relay-credentials-v1', '{broken'));
       await page.reload();
-      await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: 'Your key', exact: true }),
+      ).toHaveAccessibleDescription('Connect a key.');
       expect(calls).toHaveLength(1);
       await page.evaluate(() =>
         localStorage.setItem(
@@ -125,12 +129,14 @@ test('failed, corrupt and revoked credentials never silently reconnect or save a
       await page.reload();
       await expect(page.getByRole('alert')).toContainText('Saved key could not reconnect');
       expect(calls).toHaveLength(2);
-      await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+      await page.getByRole('button', { name: 'Your key', exact: true }).click();
       await expect(page.getByLabel('Provider API key')).toHaveValue('fake-revoked-key');
       await page.getByRole('button', { name: 'Forget key', exact: true }).click();
       expect(await stored(page)).toBeNull();
       await page.reload();
-      await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: 'Your key', exact: true }),
+      ).toHaveAccessibleDescription('Connect a key.');
       expect(calls).toHaveLength(2);
     },
     async () => {
@@ -151,19 +157,21 @@ test('blocked local storage allows an in-memory connection and shows the persist
   );
   await serve(async (url) => {
     await page.goto(url);
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await enterKey(page, 'fake-private-memory-key');
     await expect(page.getByRole('combobox', { name: 'Model', exact: true })).toHaveText(
       'gpt-4o-mini',
     );
     await expect(page.getByRole('alert')).toContainText('key could not be saved');
     await expect(page.getByRole('alert')).not.toContainText('fake-private-memory-key');
-    await page.getByRole('button', { name: 'Connected', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByRole('button', { name: 'Forget key', exact: true }).click();
     await expect(page.getByLabel('Provider API key')).toHaveValue('');
     await expect(page.getByRole('alert')).toContainText('saved copy could not be removed');
     await page.reload();
-    await expect(page.getByRole('button', { name: 'Connect a key', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connect a key.');
   });
 });
 
@@ -181,7 +189,7 @@ test('forget during connection cancels the late response so it cannot restore or
     async (url, calls) => {
       try {
         await page.goto(url);
-        await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+        await page.getByRole('button', { name: 'Your key', exact: true }).click();
         await page.getByLabel('Provider API key').fill('fake-forgotten-key');
         await page.getByRole('button', { name: 'Connect', exact: true }).click();
         await began;
@@ -191,7 +199,9 @@ test('forget during connection cancels the late response so it cannot restore or
         expect((await stored(page)).keys.ramp).toBe('fake-replacement-key');
         expect(JSON.stringify(await stored(page))).not.toContain('fake-forgotten-key');
         await page.reload();
-        await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+        await expect(
+          page.getByRole('button', { name: 'Your key', exact: true }),
+        ).toHaveAccessibleDescription('Connected. Open key settings.');
         expect(calls.at(-1).key).toBe('fake-replacement-key');
       } finally {
         release();

@@ -50,7 +50,7 @@ async function fitsViewport(page, menu) {
 test('scroll arrows never shift options while selecting from a long menu', async ({ page }) => {
   await preview(async (url) => {
     await page.goto(url);
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-scroll-layout-key');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();
     const model = page.getByRole('combobox', { name: 'Model', exact: true });
@@ -172,7 +172,7 @@ test('model menus use lab marks, scroll long catalogs and preserve Jev restricti
 }) => {
   await preview(async (url) => {
     await page.goto(url);
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-dropdown-key');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();
     const model = page.getByRole('combobox', { name: 'Model', exact: true });
@@ -201,7 +201,7 @@ test('model menus use lab marks, scroll long catalogs and preserve Jev restricti
     await expect(page.getByRole('option', { name: 'claude-sonnet', exact: true })).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(model.locator('.relay-select-value')).toHaveText('claude-sonnet');
-    await page.getByRole('button', { name: 'Connected', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-jev-dropdown-key');
     await page.getByRole('button', { name: 'Connect', exact: true }).click();

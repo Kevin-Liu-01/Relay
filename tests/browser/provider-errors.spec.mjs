@@ -68,9 +68,11 @@ test('Router 403 is blocked, not task failure or verified success; unknown usage
   await once(server, 'listening');
   try {
     await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-error-regression-key');
-    await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Your key', exact: true }),
+    ).toHaveAccessibleDescription('Connected. Open key settings.');
     await page.getByRole('button', { name: 'Run', exact: true }).click();
     const result = page.getByRole('region', { name: 'Run result' });
     await expect(result).toBeVisible();

@@ -116,13 +116,14 @@ button.primary:hover {
   padding: 0 28px;
 }
 .nav {
-  height: 60px;
+  min-height: 72px;
   display: flex;
   gap: 16px;
   align-items: center;
   flex-shrink: 0;
 }
 .wordmark {
+  flex-shrink: 0;
   text-decoration: none;
   font-weight: 700;
   font-size: 27px;
@@ -150,9 +151,12 @@ button.primary:hover {
   background: #d9d4df;
   margin: 0 3px;
 }
-.nav-caption {
-  font-size: 12px;
-  color: var(--quiet);
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 .nav-spacer {
   flex: 1;
@@ -170,6 +174,7 @@ button.primary:hover {
 }
 .control-bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   padding: 6px 0 8px;
@@ -909,13 +914,13 @@ details pre {
   .nav {
     gap: 10px;
     height: auto;
-    min-height: 60px;
+    min-height: 72px;
     flex-wrap: wrap;
     padding: 8px 0;
   }
-  .nav-caption,
-  .nav-divider {
-    display: none;
+  .nav-links {
+    flex-basis: 100%;
+    justify-content: flex-end;
   }
   .arena {
     grid-template-columns: minmax(0, 1fr) 260px;
@@ -955,14 +960,14 @@ details pre {
     font-size: 24px;
     margin-right: 8px;
   }
-  .nav > button {
+  .nav-links > button {
     font-size: 10px;
     padding: 7px;
   }
   .nav .connect {
     padding: 7px;
   }
-  .nav > .icon {
+  .nav-links > .icon {
     display: none;
   }
   .nav .count {
@@ -972,12 +977,6 @@ details pre {
     flex-wrap: wrap;
     padding: 6px 0 6px;
     gap: 6px;
-  }
-  .control-bar > .nav-spacer {
-    display: none;
-  }
-  .control-bar > .run-actions {
-    margin-left: auto;
   }
   .arena {
     display: flex;
