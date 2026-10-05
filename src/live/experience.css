@@ -377,6 +377,8 @@ dialog:has(.replay-player[data-focus='true']) {
   inset: 8px;
   z-index: 20;
   grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
 }
 .workspace-focus .decision-panel {
   display: none;
@@ -753,22 +755,8 @@ button:focus-visible {
     animation: none;
   }
 }
-/* Match the observer stage to the fixed 1440×900 agent viewport. Let the page
-   grow instead of letterboxing, stretching text or cropping agent actions. */
-.live-shell.workspace-expanded {
-  height: auto;
-  min-height: 100dvh;
-}
-.workspace-expanded .arena {
-  flex: none;
-}
-.workspace-expanded .viewport {
-  flex: none;
-  aspect-ratio: 8 / 5;
-}
-.workspace-expanded .viewport > img {
-  height: auto;
-}
+/* The shell owns the dynamic viewport budget. Fit the complete captured frame
+   inside its remaining space; the actor viewport and cursor coordinates stay fixed. */
 .workspace-expanded .decision-panel {
   contain: size;
   overflow: auto;
@@ -778,11 +766,28 @@ button:focus-visible {
   min-height: 85px;
 }
 @media (max-width: 700px) {
-  .workspace-expanded .viewport-column {
-    height: auto;
-  }
   .workspace-expanded .decision-panel {
     contain: none;
+    overflow: visible;
+  }
+}
+.live-shell:not(.workspace-focus) .viewport-column > .task-comparison {
+  display: flex;
+  flex-direction: column;
+  max-height: 35%;
+  min-height: 0;
+}
+.live-shell .task-comparison .comparison-toggle {
+  flex-shrink: 0;
+}
+.live-shell .task-comparison .comparison-content {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+@media (max-width: 700px) {
+  .live-shell:not(.workspace-focus) .viewport-column > .task-comparison {
+    max-height: min(180px, 30dvh);
   }
 }
 .try-slack {
@@ -827,6 +832,7 @@ button:focus-visible {
 }
 .run-toolbar {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 14px;
@@ -1198,6 +1204,7 @@ button:focus-visible {
 }
 .workspace-ready {
   display: flex;
+  flex-shrink: 0;
   gap: 14px;
   align-items: center;
   justify-content: space-between;
@@ -1211,24 +1218,8 @@ button:focus-visible {
   gap: 8px;
   color: var(--quiet);
 }
-.live-shell.workspace-idle {
-  height: auto;
-  min-height: 100dvh;
-  padding-bottom: 24px;
-}
 .workspace-idle .arena {
   grid-template-columns: minmax(0, 1fr);
-  flex: none;
-}
-.workspace-idle .viewport {
-  flex: none;
-  height: clamp(320px, 57vh, 640px);
-}
-.workspace-idle .viewport > img {
-  object-fit: cover;
-  object-position: top;
-  height: 100%;
-  width: 100%;
 }
 @media (max-width: 700px) {
   .run-intro {
@@ -1259,18 +1250,6 @@ button:focus-visible {
   }
   .free-details {
     margin-left: 0;
-  }
-  .workspace-idle .viewport-column {
-    height: auto;
-  }
-  .workspace-idle .viewport {
-    height: 320px;
-  }
-  .workspace-idle .viewport > img {
-    object-fit: cover;
-    object-position: left top;
-    width: 640px;
-    max-width: none;
   }
   .workspace-ready {
     align-items: flex-start;

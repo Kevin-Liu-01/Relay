@@ -5,7 +5,7 @@ import { TypeSafeRouter } from '../../runner/typesafe.mjs';
 import { expectRelayBrand } from './brand-assertions.mjs';
 import { testPricing } from '../fixtures/pricing.mjs';
 
-async function expectFullWidthWorkspace(page) {
+async function expectContainedWorkspace(page) {
   const frame = page.locator('.viewport > img');
   await expect(frame).toBeVisible();
   await expect.poll(() => frame.evaluate((el) => el.complete && el.naturalWidth > 0)).toBe(true);
@@ -17,13 +17,13 @@ async function expectFullWidthWorkspace(page) {
       right: stage.right - image.right,
       top: image.top - stage.top,
       bottom: stage.bottom - image.bottom,
-      ratio: image.width / image.height,
+      fit: getComputedStyle(el).objectFit,
       naturalRatio: el.naturalWidth / el.naturalHeight,
     };
   });
   for (const side of ['left', 'right', 'top', 'bottom'])
     expect(Math.abs(geometry[side])).toBeLessThan(1);
-  expect(geometry.ratio).toBeCloseTo(geometry.naturalRatio, 3);
+  expect(geometry.fit).toBe('contain');
   expect(geometry.naturalRatio).toBeCloseTo(1.6, 3);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 }
@@ -174,7 +174,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       { width: 800, height: 900 },
     ]) {
       await page.setViewportSize(size);
-      await expectFullWidthWorkspace(page);
+      await expectContainedWorkspace(page);
       expect(
         await page.locator('.arena').evaluate((el) => el.getBoundingClientRect().top + scrollY),
       ).toBeLessThanOrEqual(size.width > 1100 ? 160 : 250);
@@ -307,7 +307,7 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       true,
     );
     await page.screenshot({ path: 'evidence/visual/relay-live-mobile.png', fullPage: true });
-    await expectFullWidthWorkspace(page);
+    await expectContainedWorkspace(page);
     expect(errors).toEqual([]);
   } finally {
     server.closeAllConnections();

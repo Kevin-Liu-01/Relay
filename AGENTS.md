@@ -1,5 +1,21 @@
 # Relay handoff
 
+## Viewport layout release
+
+The homepage shell owns `100dvh`; its header and controls do not shrink. The
+arena fills the remaining height. Do not restore fixed idle-height caps or
+automatic active-page height. Keep captured frames contained, not cropped or
+stretched. Desktop evidence panels scroll independently. Phone content scrolls
+inside the arena, with a minimum readable frame height. Very short screens may
+scroll the page to keep controls reachable. The regression contract is
+`tests/browser/viewport-layout.spec.mjs`.
+
+This release was built in `/tmp/relay-viewport-tedJTv` while the study continued
+in the root checkout. It can advance `origin/main` without moving root `main`.
+Never pull or rebuild the root during collection. After the worker stops, verify
+its original archives against the frozen root first. Then fetch and fast-forward
+root `main` before integrating final study reports. Preserve the viewport release.
+
 ## Active matched interface study
 
 Read `docs/campaigns/interface-study-2026-10-05.md` and its immutable JSON.

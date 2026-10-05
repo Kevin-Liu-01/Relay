@@ -1,5 +1,25 @@
 # Verification and evidence
 
+## Dynamic viewport layout: 2026-10-05
+
+- The homepage uses `100dvh`, with a `100vh` fallback. The workspace fills the
+  height left after the header and controls. Removed the idle preview's 57vh /
+  640 px cap and the active view's automatic page height.
+- Captured frames retain their aspect ratio and show the full image. Wide or
+  short screens can have letterboxing. Desktop decisions and task comparisons
+  scroll within their panels. On phones, the workspace and decisions scroll
+  inside the remaining screen area. Run controls stay above that area.
+- All **17 targeted browser tests passed**, with one worker, no retries and no
+  paid inference. Checks cover idle, running, completed, focus, replay, queues,
+  sequential launches and free/BYOK flows. Viewport checks include dynamic height
+  changes, widths from 320 to 1920 px and a short landscape fallback.
+- Initial checks found that two small-phone previews became too short. A minimum
+  frame size and internal scrolling fixed this. Desktop and phone screenshots
+  were inspected. Safe-area padding and reachable controls are retained.
+- The hosted build and tests ran in an isolated worktree. The running study's
+  root actor source and frozen build were not changed. These are UI software
+  checks, not new model trials or a rerun of the backend suite.
+
 ## Presentation and matched-interface admission snapshot: 2026-10-05
 
 - The 17-slide deck starts with the harness-first approach, then shows all 18
