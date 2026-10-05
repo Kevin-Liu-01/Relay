@@ -119,8 +119,12 @@
   display: inline-flex;
 }
 .relay-select-scroll-slot {
-  height: 24px;
+  height: 0;
+  overflow: hidden;
   flex-shrink: 0;
+}
+.relay-select-menu[data-scrollable] .relay-select-scroll-slot {
+  height: 24px;
 }
 .relay-select-scroll {
   display: flex;

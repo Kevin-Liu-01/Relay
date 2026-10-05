@@ -1,5 +1,31 @@
 # Verification and evidence
 
+## Compact dropdowns and grading-slide heading: 2026-10-05
+
+- Removed unconditional scroll-arrow space from operator dropdowns. The empty
+  model menu now measures 52px on desktop instead of 100px, and 56px on mobile.
+  Both 24px arrow slots remain reserved for overflowing menus, so scrolling
+  cannot move a row between pointer-down and pointer-up.
+- Overflow is computed from natural option-list height and the menu's available
+  height, not the viewport after arrow space is subtracted. Resizing the content
+  or menu updates this decision. Observers are disconnected on unmount; closed
+  Radix fragments do not start layout observers.
+- Changed the grading-slide heading to “Success means the requested change was
+  saved.” The body still requires the exact requested edit and preservation of
+  unrelated data. Regenerated the HTML and 20-page PDF without changing grades.
+- The new compact-menu regression failed against the previous build's 24px empty
+  slots, then passed after the fix. An initial implementation needed a guard for
+  Radix's detached closed content. The resize test now varies the menu height
+  limit directly because Radix intentionally dismisses on window resize.
+- All **216 backend tests and 12 browser tests passed** in an isolated production
+  build. Coverage includes empty/single-option menus, changing height limits,
+  long-list geometry, pointer/keyboard/typeahead, modal focus, touch, reduced
+  motion, presentation controls, all-slide print clipping, and viewport layout.
+  Inspected dropdown and slide screenshots. The package credential screen passed.
+- The release fingerprint changed because it includes operator UI source.
+  Historical runs, graders, accounting, and the frozen root `dist` are unchanged.
+  No paid inference or changes to Slack's actor controls were required.
+
 ## Reference-style presentation and development lessons: 2026-10-05
 
 - Restored the earlier deck's visual language: a two-color opening, actual Slack

@@ -98,6 +98,9 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="Define success"]')).toContainText(
     'The grader is code that checks the stored messages',
   );
+  await expect(page.locator('[data-title="Define success"] h2')).toHaveText(
+    'Success means the requested change was saved',
+  );
   await expect(page.locator('[data-title="My approach"]')).toContainText(
     'I used model APIs to choose actions',
   );

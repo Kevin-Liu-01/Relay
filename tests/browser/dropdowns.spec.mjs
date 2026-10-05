@@ -47,6 +47,71 @@ async function fitsViewport(page, menu) {
   expect(box.y + box.height).toBeLessThanOrEqual(size.height);
 }
 
+test('short menus fit their contents without empty scroll-arrow space', async ({
+  page,
+}, testInfo) => {
+  await preview(async (url) => {
+    await page.goto(url);
+    const model = page.getByRole('combobox', { name: 'Model', exact: true });
+    await model.click();
+    const menu = page.getByRole('listbox', { name: 'Model', exact: true });
+    await expect(menu.getByRole('option')).toHaveCount(1);
+    for (const slot of await menu.locator('.relay-select-scroll-slot').all())
+      await expect(slot).toHaveCSS('height', '0px');
+    await expect(menu).toHaveCSS('height', '52px');
+    await page.screenshot({ path: testInfo.outputPath('empty-model-menu.png') });
+    await page.keyboard.press('Escape');
+
+    await page.getByRole('combobox', { name: 'Interface', exact: true }).click();
+    const modes = page.getByRole('listbox', { name: 'Interface', exact: true });
+    await expect(modes.getByRole('option')).toHaveCount(4);
+    await expect(modes).toHaveCSS('height', '172px');
+    await expect(modes.locator('.relay-select-scroll')).toHaveCount(0);
+    await page.screenshot({ path: testInfo.outputPath('short-interface-menu.png') });
+    await page.keyboard.press('Escape');
+
+    await page.getByRole('button', { name: 'Your key', exact: true }).click();
+    await page.getByRole('button', { name: 'Jev · TypeSafe', exact: true }).click();
+    await page.getByLabel('Provider API key').fill('fake-compact-layout-key');
+    await page.getByRole('button', { name: 'Connect', exact: true }).click();
+    await expect(model).toHaveText('jev-latest');
+    await model.click();
+    await expect(menu).toHaveCSS('height', '52px');
+    await page.getByRole('option', { name: 'jev-latest', exact: true }).click();
+    await expect(model).toBeFocused();
+  });
+});
+
+test('scroll-arrow space follows height limits without retaining blank space', async ({ page }) => {
+  await preview(async (url) => {
+    await page.goto(url);
+    await page.getByRole('combobox', { name: 'Interface', exact: true }).click();
+    const menu = page.getByRole('listbox', { name: 'Interface', exact: true });
+    await expect(menu).toHaveCSS('height', '172px');
+    // Radix dismisses on window resize. Change the menu limit in place to also
+    // cover size changes that happen without remounting its option viewport.
+    await menu.evaluate((element) => {
+      element.style.maxHeight = '120px';
+    });
+    await expect(menu).toHaveAttribute('data-scrollable', '');
+    for (const slot of await menu.locator('.relay-select-scroll-slot').all())
+      await expect(slot).toHaveCSS('height', '24px');
+    await fitsViewport(page, menu);
+    await menu.evaluate((element) => {
+      element.style.removeProperty('max-height');
+    });
+    await expect(menu).not.toHaveAttribute('data-scrollable');
+    await expect(menu).toHaveCSS('height', '172px');
+    for (const slot of await menu.locator('.relay-select-scroll-slot').all())
+      await expect(slot).toHaveCSS('height', '0px');
+    await page.keyboard.press('End');
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('combobox', { name: 'Interface', exact: true })).toHaveText(
+      'Actor API',
+    );
+  });
+});
+
 test('scroll arrows never shift options while selecting from a long menu', async ({ page }) => {
   await preview(async (url) => {
     await page.goto(url);
@@ -238,6 +303,12 @@ test.describe('compact custom menus', () => {
   }) => {
     await preview(async (url) => {
       await page.goto(url);
+      await page.getByRole('combobox', { name: 'Model', exact: true }).tap();
+      await expect(page.getByRole('listbox', { name: 'Model', exact: true })).toHaveCSS(
+        'height',
+        '56px',
+      );
+      await page.keyboard.press('Escape');
       const task = page.getByRole('combobox', { name: 'Task', exact: true });
       await task.tap();
       const menu = page.getByRole('listbox', { name: 'Task', exact: true });

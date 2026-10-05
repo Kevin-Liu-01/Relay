@@ -1,7 +1,54 @@
-import React, { useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import * as Select from '@radix-ui/react-select';
 import { Check, ChevronDown, ChevronUp, KeyRound } from 'lucide-react';
 import './select.css';
+
+function SelectOptions({ children }) {
+  const viewport = useRef(null);
+  const content = useRef(null);
+  useLayoutEffect(() => {
+    const element = viewport.current;
+    const menu = element.closest('.relay-select-menu');
+    // Closed Radix content is mounted in a detached fragment for item lookup.
+    if (!menu) return;
+    let frame;
+    const measure = () => {
+      const menuStyle = getComputedStyle(menu);
+      const viewportStyle = getComputedStyle(element);
+      const available =
+        parseFloat(menuStyle.maxHeight) -
+        parseFloat(menuStyle.borderTopWidth) -
+        parseFloat(menuStyle.borderBottomWidth);
+      const needed =
+        content.current.offsetHeight +
+        parseFloat(viewportStyle.paddingTop) +
+        parseFloat(viewportStyle.paddingBottom);
+      // Compare natural content with the menu limit, not the already-shrunken
+      // viewport. Otherwise reserved arrow space can keep a short menu overflowing.
+      menu.toggleAttribute('data-scrollable', needed > available);
+      // Radix updates its arrow visibility on scroll, but not on a size change.
+      element.dispatchEvent(new Event('scroll'));
+    };
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    });
+    observer.observe(menu);
+    observer.observe(element);
+    observer.observe(content.current);
+    measure();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      menu.removeAttribute('data-scrollable');
+    };
+  }, []);
+  return (
+    <Select.Viewport className="relay-select-options" ref={viewport}>
+      <div ref={content}>{children}</div>
+    </Select.Viewport>
+  );
+}
 
 // Only operator controls use this primitive; Slack remains its own environment.
 export function RelaySelect({
@@ -75,14 +122,14 @@ export function RelaySelect({
             onOpenChange?.(false);
           }}
         >
-          {/* Keep the viewport fixed when Radix adds/removes a scroll arrow.
-              Otherwise a row can move between pointer-down and pointer-up. */}
+          {/* Reserve both arrow slots only when content exceeds the menu limit.
+              Keep them fixed while scrolling so a clicked row cannot move. */}
           <div className="relay-select-scroll-slot">
             <Select.ScrollUpButton className="relay-select-scroll">
               <ChevronUp size={14} aria-hidden="true" />
             </Select.ScrollUpButton>
           </div>
-          <Select.Viewport className="relay-select-options">
+          <SelectOptions>
             {options.length ? (
               options.map((option) => (
                 <Select.Item
@@ -113,7 +160,7 @@ export function RelaySelect({
                 <Select.ItemText>{emptyText}</Select.ItemText>
               </Select.Item>
             )}
-          </Select.Viewport>
+          </SelectOptions>
           <div className="relay-select-scroll-slot">
             <Select.ScrollDownButton className="relay-select-scroll">
               <ChevronDown size={14} aria-hidden="true" />

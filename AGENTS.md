@@ -1,5 +1,14 @@
 # Relay handoff
 
+## Dropdown layout
+
+Short menus must not reserve blank scroll-arrow slots. Measure the natural
+option-list height against the available menu height. Reserve both slots only
+for an overflowing list, and keep them stable while scrolling. Do not use the
+already-reduced viewport height to decide overflow or restore unconditional
+24px slots. Cover empty, single-option, long, resized, and mobile menus in
+`tests/browser/dropdowns.spec.mjs`. These are operator UI changes, not trial data.
+
 ## Social previews
 
 The share card is an editable product illustration, not agent evidence.
