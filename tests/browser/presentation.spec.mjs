@@ -28,9 +28,61 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(3);
-  await expect(page.locator('[data-title="Main lesson"]')).toContainText(
-    'DM its named handoff recipient “Implement DESIGN navigation; accessibility approved.”',
+  const lesson = page.locator('[data-title="Main lesson"]');
+  await expect(lesson.locator('h2')).toHaveText('Why was the highest score 14/18?');
+  await expect(lesson).toContainText(
+    'GPT-6.1 Sol and GPT-6 Astra each passed 14 tasks and missed the same four',
   );
+  await expect(lesson.locator('.diagram-label')).toHaveText([
+    'Design handoff',
+    'Release synchronization',
+    'Release retrospective',
+    'Handoff repair',
+  ]);
+  for (const explanation of [
+    'never said to replace DESIGN',
+    'wording alone does not explain the miss',
+    'All 17 models hit a limit',
+    'clicked Cancel instead of Save changes',
+    'Five other models passed',
+    'Sol reached 40 actions and Astra hit the $5 estimated-allowance limit',
+    'Across all models, 15/18 tasks passed at least once',
+  ]) {
+    await expect(lesson).toContainText(explanation);
+  }
+  // Bind the diagnosis to the historical catalog, not just the slide's own copy.
+  const { trials } = JSON.parse(readFileSync('evidence/trial-library/catalog.json'));
+  const models = [...new Set(trials.map((trial) => trial.model))];
+  const passes = (model) =>
+    trials.filter((trial) => trial.model === model && trial.outcome === 'passed');
+  expect(Math.max(...models.map((model) => passes(model).length))).toBe(14);
+  const missedTasks = ['design-handoff', 'handoff-repair', 'release-retrospective', 'release-sync'];
+  for (const model of ['gpt-6.1-sol', 'gpt-6-astra']) {
+    expect(passes(model)).toHaveLength(14);
+    const misses = trials.filter((trial) => trial.model === model && trial.outcome !== 'passed');
+    expect(misses.map((trial) => trial.task).sort()).toEqual(missedTasks);
+    expect(misses.find((trial) => trial.task === 'design-handoff')).toMatchObject({
+      status: 'completed',
+      outcome: 'incomplete',
+    });
+    for (const trial of misses.filter((trial) => trial.task !== 'design-handoff')) {
+      expect(trial).toMatchObject(
+        model === 'gpt-6.1-sol'
+          ? { status: 'step_limit', actionAttempts: 40, outcome: 'incomplete' }
+          : { status: 'budget', outcome: 'blocked' },
+      );
+    }
+  }
+  expect(trials.filter((trial) => trial.task === 'release-retrospective')).toHaveLength(17);
+  for (const trial of trials.filter((trial) => trial.task === 'release-retrospective')) {
+    expect(['step_limit', 'output_limit', 'timeout', 'budget']).toContain(trial.status);
+  }
+  expect(
+    trials.filter((trial) => trial.task === 'handoff-repair' && trial.outcome === 'passed'),
+  ).toHaveLength(5);
+  expect(
+    new Set(trials.filter((trial) => trial.outcome === 'passed').map((trial) => trial.task)).size,
+  ).toBe(15);
   await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
     'How does an Agent use Slack?',
   );
@@ -167,9 +219,7 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   );
   // Design slides must explain the consequence for a run, not just name the mechanism.
   const isolation = page.locator('[data-title="Session isolation"]');
-  await expect(isolation.locator('h2')).toHaveText(
-    'Each run starts with its own copy of the task',
-  );
+  await expect(isolation.locator('h2')).toHaveText('Each run starts with its own copy of the task');
   await expect(isolation).toContainText(
     'Even with one model, each attempt needs fresh data so it cannot inherit completed work',
   );

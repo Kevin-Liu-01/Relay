@@ -743,49 +743,57 @@
         </ul>
       </section>
       <section class="slide" data-title="Main lesson">
-        <h2>A correct grader can still test an unclear instruction</h2>
+        <h2>Why was the highest score <em>14/18?</em></h2>
         <ul>
-          <li>One task asks the agent to send the approved design to a teammate.</li>
           <li>
-            The workspace names the design Willow, but my task quotes a message containing DESIGN
-            without explaining the substitution.
+            GPT-6.1 Sol and GPT-6 Astra each passed 14 tasks and missed the same four.
           </li>
         </ul>
         <div
-          class="instruction-example"
+          class="instruction-example failure-breakdown"
           role="img"
-          aria-label="The instruction quotes Implement DESIGN navigation; accessibility approved. Six completed runs sent that literal message. The grader requires Implement Willow navigation; accessibility approved. The mismatch is between the task wording and the expected answer."
+          aria-label="The four tasks missed by both Sol and Astra: design handoff had an unexplained placeholder; release synchronization had an ambiguous source location and unfinished changes; release retrospective stopped at limits; handoff repair repeatedly canceled the correct edit."
         >
           <div>
-            <span class="diagram-label">Instruction excerpt</span
+            <span class="diagram-label">Design handoff</span
             ><strong
-              >DM its named handoff recipient “Implement DESIGN navigation; accessibility
-              approved.”</strong
+              >Both sent DESIGN, as quoted in the task. The grader expected Willow, but the task
+              never said to replace DESIGN.</strong
             >
           </div>
           <div>
-            <span class="diagram-label">Six completed runs sent</span
-            ><strong>“Implement DESIGN navigation; accessibility approved.”</strong>
+            <span class="diagram-label">Release synchronization</span
+            ><strong
+              >The source location was ambiguous. Sol found the facts but left required changes
+              unfinished, so wording alone does not explain the miss.</strong
+            >
           </div>
-          <div class="expected-message">
-            <span class="diagram-label">The grader required</span
-            ><strong>“Implement Willow navigation; accessibility approved.”</strong>
+          <div>
+            <span class="diagram-label">Release retrospective</span
+            ><strong
+              >All 17 models hit a limit before finishing. These attempts do not show whether
+              a larger limit would be enough to complete the task.</strong
+            >
           </div>
-        </div>
-        <div class="takeaway">
-          Missing check: could an independent reader get the same answer from this instruction?
+          <div>
+            <span class="diagram-label">Handoff repair</span
+            ><strong
+              >Both entered the correct edit, then repeatedly clicked Cancel instead of Save
+              changes. Five other models passed.</strong
+            >
+          </div>
         </div>
         <ul class="sources">
           <li>
-            This explains a problem in six traces, not all 17 failures. A second task had an unclear
-            source location.
+            On the last three tasks, Sol reached 40 actions and Astra hit the $5 estimated-allowance
+            limit. That is not billed cost.
           </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
-              >Recorded actions and failure analysis</a
-            >. Keep the recorded grades. Fix the instruction in a new task version before collecting
-            new results.
+              >Failure analysis and traces</a
+            >. Across all models, 15/18 tasks passed at least once. One attempt per model and task;
+            no grades changed.
           </li>
         </ul>
       </section>

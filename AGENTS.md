@@ -138,6 +138,9 @@ Define technical terms once. Use factual headings and one idea per bullet.
 Do not restore slogan headings or insert unmatched pilot scores into the main
 story. The 306-run controls now belong on the comparison setup slide. Use
 `#main-lesson` for the failure review, never a hard-coded slide number.
+That slide explains the four tasks missed by both 14/18 models, Sol and Astra.
+Separate task-language flaws, observed actions and terminal limits. Do not
+attribute all four misses to unclear instructions or imply a capability ceiling.
 Slide 1 must introduce Kevin's engineering choices, not restate the known brief.
 Lead with computer-use research and how it shaped the Slack environment. Its
 flow is research → workflows → environment → verification, not the execution

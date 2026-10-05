@@ -1,5 +1,23 @@
 # Verification and evidence
 
+## Four-task explanation of the 14/18 score: 2026-10-05
+
+- Replaced the single-placeholder lesson with the four tasks missed by both
+  Sol and Astra. The slide separates unclear task wording, unfinished changes,
+  observed Cancel clicks and terminal limits. It distinguishes the best
+  individual score from the 15/18 tasks passed across all models.
+- Reopened all eight relevant public records and checked their catalog hashes.
+  Both handoff-repair traces repeatedly enter the correct edit and select
+  Cancel. Both design-handoff traces send literal DESIGN. The other three
+  tasks end at Sol's action limit or Astra's estimated-allowance limit.
+- Added catalog-bound regression checks for the maximum score, the exact four
+  misses, terminal outcomes, 17 retrospective limit stops and five handoff-repair
+  passes. All four presentation browser tests passed in isolated production
+  workspace `relay-review-validation-BQY860`. All 20 print pages and mobile
+  widths passed; inspected the new slide screenshot and regenerated HTML/PDF.
+- Original actor source and frozen root build match the pre-study receipt.
+  No inference, task wording, grader rules or historical records changed.
+
 ## Speed, resources and scaling continuity: 2026-10-05
 
 - Connected slides 9–11 as one explanation: model decisions add waiting time,

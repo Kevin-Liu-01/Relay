@@ -302,24 +302,48 @@ Existing evidence was preserved. See the [recorded storage stop](campaigns/model
 This supports budgeting for saved evidence, not a claim that Relay used all the
 disk space on a shared machine or that every pause was a model failure.
 
-Next: show a concrete reason not to read every failure as model inability.
+Next: open the four tasks missed by both models with the highest recorded score.
 
 ## 15. Main lesson
 
-Read the task excerpt aloud. The workspace says Willow, but the task quotes
-DESIGN without saying to replace it. Six completed runs sent that literal text.
-The grader requires Willow. A second required message has the same defect.
+Start from the preceding table: Sol and Astra each passed 14 of 18 tasks.
+They missed the same four, but the traces do not give one cause for all four.
+The highest recorded score is not a measured capability ceiling.
 
-My tests checked the answer I intended. They did not test whether an independent
-reader would infer it from the task. That is the missing validation step.
+1. **Design handoff:** both finished but sent the literal word DESIGN. The task
+   quotes “Implement DESIGN navigation; accessibility approved.” and never
+   explicitly says to substitute the approved name, Willow. The second message
+   has the same defect. Six completed runs across the collection did this. My
+   grader tests checked the answer I intended, not whether an independent reader
+   could infer it. This flaw does not explain all 17 outcomes or prove that a
+   clearer instruction would pass.
+2. **Release synchronization:** the task puts the release handoff and QA matrix
+   under one ambiguous location, although they are in different channels. Sol
+   found the current facts, updated the topic and sent the QA reply, but left
+   other required changes unfinished. Sol reached 40 actions; Astra reached
+   its allowance limit after 26. The wording is a validity concern, not an
+   isolated explanation of these two outcomes.
+3. **Release retrospective:** all 17 runs stopped at a limit. Sol reached 40
+   actions; Astra reached its allowance limit after 28. Neither completed all
+   required changes. This does not prove impossibility or that a larger limit
+   alone would solve the task.
+4. **Handoff repair:** both repeatedly filled the correct rollback-owner edit
+   and clicked Cancel, not Save changes. The original message stayed unchanged.
+   Sol reached 40 actions; Astra reached its allowance limit after 38. Five
+   other models passed, so the task was achievable in these conditions.
 
-This finding does not explain all seventeen failures or establish how a clearer
-task would score. Keep the grades and records. Correct wording in a new version.
+An allowance stop means the next request's reservation did not fit within the
+$5 estimated ceiling. It does not mean the provider billed exactly $5.
+Sol has four incomplete outcomes. Astra has one incomplete and three blocked
+outcomes. Do not relabel those blocked runs as completed task failures.
 
-Other cases are in the [failure review](campaigns/model-breadth-2026-10-03-observations.md):
-release-sync has an unclear source location; every retrospective run hit a limit;
-Sol and Astra entered a correct handoff edit, then clicked Cancel. Those are
-different explanations, not one general statement that long tasks are impossible.
+Across all models, 15 of 18 tasks passed at least once. Handoff repair accounts
+for the difference from the two highest individual scores. The three zero-pass
+tasks are design handoff, release synchronization and release retrospective.
+
+Use the [failure review](campaigns/model-breadth-2026-10-03-observations.md) and
+the preceding table's task links to inspect each trace. Keep the original grades,
+records and limits. Test corrected instructions only under a new task version.
 
 Next: explain what the early development runs taught me before showing the separate interface comparison.
 
