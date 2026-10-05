@@ -580,12 +580,9 @@
       <section class="slide interface-study-results" data-title="Interface results">
         <h2>{{INTERFACE_STUDY_TITLE}}</h2>
         {{INTERFACE_STUDY_RESULTS}}
+        <span class="sr-only" id="interface-sort-status" role="status"></span>
         <ul>
-          <li>
-            Compare interfaces within the same model and task, not against the earlier 306 runs.
-          </li>
-          <li>API actions change structured data directly, so API results measure tool use.</li>
-          <li>One attempt per condition cannot establish a reliable winner.</li>
+          {{INTERFACE_STUDY_FINDINGS}}
         </ul>
         <ul class="sources">
           <li>{{INTERFACE_STUDY_STATUS}}</li>
@@ -940,7 +937,11 @@
                   );
               }
             document.getElementById(
-              table.id === 'model-results' ? 'sort-status' : 'trial-sort-status',
+              table.id === 'model-results'
+                ? 'sort-status'
+                : table.id === 'interface-results'
+                  ? 'interface-sort-status'
+                  : 'trial-sort-status',
             ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
           };
       }

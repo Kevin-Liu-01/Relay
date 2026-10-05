@@ -6,7 +6,8 @@
 - This supports an engineering demonstration, not a leaderboard or an RL training result.
 - Completed one-pass coverage is **306/306: 152 passed, 61 incomplete, 93 blocked**. All 306 attempts have public structured traces and UI-state replays; zero cells are unattempted. The final verifier reopened all 277 archives, with 26,403 integrity checks and 2,007 grading checks in agreement.
 - Strongest demonstration: a model replies in the correct thread, then a deeper run performs plausible actions but fails the exact task contract. Show both.
-- Remaining weaknesses: no successful new screenshot-only policy, wording ambiguities in two tasks, no semantic task holdout or repeatability estimate, and no sustained browser-worker scaling measurement.
+- A separate matched study completed **96/96 attempts: 58 passed, 11 incomplete and 27 blocked**. It includes three screenshot-only passes, all 96 trace/replay records and [paired comparisons with full costs](../evidence/campaigns/interface-study-2026-10-05/analysis.md).
+- Remaining weaknesses: 19/24 pixel attempts blocked, wording ambiguities in two historical tasks, no semantic task holdout or repeatability estimate, and no sustained browser-worker scaling measurement.
 
 ## Assignment coverage
 
@@ -17,18 +18,18 @@ is not part of the repository or submission package.
 | ---------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | Runnable Slack-like environment    | README setup, lockfile, `/play`, React UI and private SQLite sessions                              | Focused synthetic workflows, not production Slack                                       |
 | Meaningful tasks                   | 18 templates including search, threads, edits and 12 deeper workflows; independent state contracts | Two instruction-language caveats remain disclosed, never retrospectively repaired       |
-| Different interaction approaches   | Earlier real-model traces across pixels, accessibility, page JSON and actor API                    | Unequal coverage; no successful new pixel-only policy and no causal interface ranking   |
+| Different interaction approaches   | Complete 96-run matched matrix across pixels, accessibility, page JSON and actor API; three pixel passes | One attempt per cell; 19 pixel blocks; no reliable interface or visual-reasoning ranking |
 | Models with a compatible harness   | Original MIT-licensed Playwright/Responses runner; 17 exact routes, 306 attempts                   | Not native Codex/BrowserGym/OpenEnv integration or a popularity ranking                 |
 | Trajectories and verification      | `/results`, 306 trace/replay links, state checks, provenance, requests and responses               | UI-state playback, not video; public library omits original PNG bytes                   |
 | Setup and README                   | No-key sandbox/replay instructions, BYOK setup, CLI configuration                                  | New inference requires provider access; no shared secret shipped                        |
 | Isolation and scalability          | Slides 4 and 11; architecture and hosting docs                                                     | Session data isolation, not hostile-code sandboxing; scale-out is proposed              |
 | Speed and resource efficiency      | Slide 11, raw microbenchmark; per-trial latency, tokens, calls and cost downloads                  | No full worker-memory or sustained agent-throughput measurement; cost is not an invoice |
-| Onsite presentation and discussion | 13-slide HTML/PDF, plain technical bullets, diagrams and demo notes                                | Keep time for questions; do not claim RL training                                       |
+| Onsite presentation and discussion | 17-slide HTML/PDF, plain technical bullets, diagrams and demo notes                                | Keep time for questions; do not claim RL training                                       |
 
 ## Submission contents
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
-- [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
+- [17-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
 - Presentation order: assignment → focused environment → repeatable harness → expanded benchmark prototype → results → task-validation lesson → next version. Diagrams show state checks, run ownership, the model loop, interface differences, and proposed scale-out. The sortable results remain on slide 9; routine engineering fixes remain in the written review.
 - [Build review](build-review.md): the task-validation mistake, other documented engineering mistakes, completed fixes, and remaining validation work.
 - [One-pass model coverage](../evidence/campaigns/model-breadth-2026-10-03-continuation/README.md): 17 routes × all 18 tasks × one attempt = 306 cells, no repeats. The first breadth worker preserved 37 earlier attempts and added 68. Its continuation preserves all 105 and collects only the 201 untouched cells. The shared $300 ceiling includes prior campaigns/probes. The linked report distinguishes actual collection from the target; Google remains unavailable without a separate key.
@@ -89,4 +90,4 @@ is not part of the repository or submission package.
 - Start in the no-key sandbox. Use saved pass/failure replays to avoid provider availability and spending during the onsite.
 - A new live run needs a provider-side spend cap and verified model. Hosted settings already allow 4,096 output tokens; the frozen campaign's smaller allowance is not the hosted default.
 - Discuss Slack fidelity, observation contracts, final-state versus path-level safety, isolation and required throughput.
-- Next research gates: successful pixel-policy runs, explicit language checks for task instructions, template-level holdouts, trainer compatibility tests and sustained worker measurements. The one-pass comparison is complete at $194.10583757 in shared estimates/reservations under the $300 cap; do not resume closed campaigns or repeat their cells.
+- Next research gates: reliable pixel transport and control, explicit language checks for task instructions, template-level holdouts, trainer compatibility tests and sustained worker measurements. The one-pass comparison is complete at $194.10583757 in shared estimates/reservations under the $300 cap. The separate matched study used $22.761576 of $25. Do not resume closed campaigns or repeat their cells.

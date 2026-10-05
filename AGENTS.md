@@ -16,7 +16,30 @@ Never pull or rebuild the root during collection. After the worker stops, verify
 its original archives against the frozen root first. Then fetch and fast-forward
 root `main` before integrating final study reports. Preserve the viewport release.
 
-## Active matched interface study
+## Completed matched interface study
+
+All **96/96** cells are complete and independently rechecked from their original
+archives: **58 passed, 11 incomplete, 27 blocked**, zero unattempted and zero
+capture gaps. PID 46950 exited and released its lock. Do not restart or repeat
+any cell. Final cell 096 hit the unchanged $1 cell allowance; it did not leave
+any unattempted cells. The generic stop message in that phase is not a coverage
+claim. Verification passed **7,892 integrity checks and 532 grade checks**.
+
+The final accounting is $20.718042 usage estimates plus $2.043534 unresolved
+reservations, totaling **$22.761576 of $25**. All 1,252 requests and 1,233 accepted
+receipts remain recorded. Read the generated `evidence/campaigns/interface-study-2026-10-05/analysis.md`
+for all paired outcomes, time and costs. Reproduce it with
+`node scripts/analyze-interface-study.mjs`. No significance or reliability claim.
+The public library contains all 96 attempts, separate from the original 306.
+
+Original source was preserved in `/var/folders/yl/sxf0v4tn14n2pkwqmf_21l540000gn/T/relay-review-validation-0YOtwk`
+before root main fast-forwarded to viewport release 4602c7c. The original root
+dist remains untouched. Collection verification completed before that source
+change; the release source must not be described as trial-generating source.
+Final summary SHA-256: `f0d47c998d58a72a401b2b4858dcb74bc0d69c4a46693ad32f94fa8678ebc328`.
+Final publication and its software checks are recorded in `docs/verification.md`.
+
+### Historical collection instructions
 
 Read `docs/campaigns/interface-study-2026-10-05.md` and its immutable JSON.
 The user approved 96 fresh cells: four image-capable routes, six tasks and four

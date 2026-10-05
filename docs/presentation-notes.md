@@ -163,15 +163,25 @@
 
 ## Slide 13: Interface results
 
-- Read the status and recorded count before discussing the table.
-- Each model/interface cell has six planned tasks. Unattempted tasks remain explicit.
+- All 96 attempts are recorded: 58 passed, 11 incomplete and 27 blocked.
+- Each model/interface cell has six attempted tasks. Click a header to sort or a pass count to inspect those runs.
+- API passed 21/24, accessibility 18/24, Page JSON 16/24 and pixels 3/24.
+- API tied or exceeded every other interface's pass count for each of the four models.
+- In the 24 matched API/accessibility pairs, both passed 17 tasks, only API passed four, and only accessibility passed one.
+- On those 17 shared passes, accessibility used a median two more actions and 5.462 more seconds than API.
+- This is a selected subset of successful pairs, not a general speed estimate.
+- Nineteen pixel attempts were blocked: 14 connection failures, three output limits and two timeouts.
+- All four accessibility blocks hit the $1 run cap. These are not ordinary model failures.
+- Sol Page JSON topic and Grok accessibility cleanup reached passing states, but remain blocked under the completion rule.
 - A blocked run is not an ordinary task failure. Missing usage keeps its reservation.
-- Compare matched tasks within each model. Do not declare a winner from unequal completion or one attempt per cell.
+- Compare matched tasks within each model. Do not declare a reliable winner from one attempt per cell.
 - API is a tool-use condition with broader structured visibility and larger actions.
 - Pixel input uses low-detail images. Equal action limits do not equalize the work in each action.
 - Chromium runs on macOS. Pixel keyboard shortcuts are platform-dependent; the text interfaces also provide a direct fill action.
 - Observer-site builds and software checks shared this host during collection. Recorded time is not an isolated model-speed measurement.
 - The study can guide further tests, but it cannot establish reliability or general computer-use ability.
+- Usage estimates total $20.718042. Unresolved reservations total $2.043534. Combined allowance is $22.761576 of $25.
+- [Full paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md) contains every pair, cost and timing definition.
 
 ## Slide 14: Main lesson
 
@@ -220,7 +230,7 @@
 - Ask which workflows matter, whether undone mistakes should affect the score, and what run capacity and cost the team needs.
 - Relay can reset state, provide observations, execute actions, and return a reward. No reinforcement learning training has been run.
 - Native Codex, BrowserGym, and OpenEnv compatibility have not been demonstrated.
-- Successful screenshot-only control, new task variants, training integration, and sustained worker tests remain future work.
+- The matched study has three screenshot-only passes. Reliable pixel control, new task variants, training integration and sustained worker tests remain future work.
 
 ## Reference facts for questions
 

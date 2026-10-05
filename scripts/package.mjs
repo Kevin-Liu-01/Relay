@@ -60,7 +60,12 @@ const files = roots.flatMap(function walk(p) {
 // A submission should not carry capability URLs, operator secrets or raw browser traces.
 // browser-test-only is the public, disposable test-server credential, not a live secret.
 for (const p of files) {
-  if (p.startsWith('evidence/trial-library/') && p.endsWith('.json.gz'))
+  if (
+    ['evidence/trial-library/', 'evidence/interface-trial-library/'].some((prefix) =>
+      p.startsWith(prefix),
+    ) &&
+    p.endsWith('.json.gz')
+  )
     assertSafeEvidence(
       gunzipSync(readFileSync(p), { maxOutputLength: 80e6 }).toString('utf8'),
       secrets,

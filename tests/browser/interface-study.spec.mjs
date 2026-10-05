@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import { episodeOutcome } from '../../shared/run-outcome.mjs';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
 
@@ -50,18 +52,65 @@ test.describe('matched interface review', () => {
       true,
     );
   });
-  test('every published study recording opens with its exact outcome', async ({ page }) => {
+  test('every published study recording renders its final workspace and exact outcome', async ({
+    page,
+  }, testInfo) => {
     test.setTimeout(240000);
-    const errors = [];
+    const errors = [],
+      apiCalls = [],
+      checked = [];
     page.on('pageerror', (e) => errors.push(e.message));
+    page.on('request', (r) => {
+      if (r.url().includes('/api/')) apiCalls.push(r.url());
+    });
+    await page.goto(url(base, catalog.trials[0]));
     for (const trial of catalog.trials) {
-      await page.goto(url(base, trial, 'checks'));
-      await expect(page.getByText('Recording hash checked')).toBeVisible();
       await expect(page.locator('.review-card')).toHaveAttribute('data-trial-id', trial.id);
+      await expect(page.getByText('Recording hash checked')).toBeVisible();
+      const record = JSON.parse(
+        gunzipSync(
+          readFileSync(`evidence/interface-trial-library/${trial.path.split('/').at(-1)}`),
+        ),
+      );
+      await expect(page.locator('.review-outcome')).toContainText(
+        episodeOutcome(record.run.episodes[0]).title,
+      );
+      const frames = record.events.filter(({ event }) => event.replay?.version === 1);
+      const snapshot = (trial.actionAttempts ? frames.at(-1) : frames[0]).event.replay;
+      if (trial.actionAttempts) {
+        await page
+          .getByRole('slider', { name: 'Playback position' })
+          .fill(String(frames.length - 1));
+        await expect(page.locator('.replay-action')).toContainText('Final workspace');
+      } else await expect(page.getByRole('heading', { name: 'No actions recorded' })).toBeVisible();
+      const comparison = page.getByRole('region', { name: 'Expected and actual result' });
+      await expect(comparison).toContainText('Expected final');
       if (trial.outcome === 'passed')
-        await expect(page.locator('.review-outcome')).toContainText('Task passed');
-      else await expect(page.locator('.review-outcome')).not.toContainText('Task passed');
+        await expect(
+          comparison.locator('.comparison-field:not([data-status="match"])'),
+        ).toHaveCount(0);
+      const workspace = page.frameLocator('iframe[title="Recorded Slack workspace"]');
+      await expect(workspace.locator('#root')).toHaveAttribute('inert', '');
+      const view = snapshot.ui.view ?? 'channel';
+      const channel =
+        snapshot.data.state.channels.find((c) => c.id === snapshot.ui.channelId) ??
+        snapshot.data.state.channels[0];
+      const heading = ['channel', 'pins'].includes(view)
+        ? channel.name
+        : ({ search: 'Search results', dms: 'Direct messages', saved: 'Later' }[view] ?? 'Threads');
+      await expect(workspace.locator('.channel-header h1')).toHaveText(heading);
+      if (['channel', 'pins'].includes(view))
+        await expect(workspace.locator('.topic-preview')).toHaveText(channel.topic);
+      checked.push({ id: trial.id, outcome: trial.outcome, frames: frames.length, rendered: true });
+      if (trial !== catalog.trials.at(-1))
+        await page.getByRole('button', { name: 'Next trial', exact: true }).click();
     }
     expect(errors).toEqual([]);
+    expect(apiCalls).toEqual([]);
+    expect(checked).toHaveLength(96);
+    await testInfo.attach('interface-replay-coverage.json', {
+      body: JSON.stringify({ summaryHash: catalog.summaryHash, checked }),
+      contentType: 'application/json',
+    });
   });
 });

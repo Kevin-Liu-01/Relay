@@ -1,5 +1,46 @@
 # Verification and evidence
 
+## Complete matched-interface study: 2026-10-05
+
+- All **96/96** planned attempts are recorded once: **58 passed, 11 incomplete,
+  27 blocked**, zero unattempted and zero capture gaps. No inference retries,
+  replacement cells, changed graders or increased limits were used. The worker
+  exited and released its lock. The final cell hit its $1 cap; no cell remained.
+- The verifier reopened all 96 original archives. All **7,892 integrity checks
+  and 532 recomputed outcome checks agreed**. The completed summary is bound by
+  `verification-public-96.json`; the earlier admission receipts are retained.
+- Accounting reconciles **1,252 requests, 1,233 receipts and 19 unknown-usage
+  requests**. Usage estimates are **$20.718042**, unresolved reservations are
+  **$2.043534**, and the combined allowance is **$22.761576 of $25**. These are
+  recorded base-rate estimates, not invoices or hosting costs.
+- The separate public library contains all 96 attempts. Existing public records
+  retain their exact hashes. The original 306-run catalog, records, summary,
+  accounting and graders are unchanged. Both collections are closed.
+- The 17-slide HTML/PDF now includes the completed sortable interface matrix.
+  Pass counts open the corresponding model/interface replay selection. Full cost
+  exports and a reproducible paired-outcome, time and action report are linked.
+  Nineteen pixel blocks, including 14 connection failures, remain explicit.
+  The report makes no significance, reliability or universal-best claim.
+- All **213 backend tests and 15 targeted browser tests passed**. The browser
+  checks render final workspaces for all **402** published comparison attempts,
+  check the new study's exact outcome labels and expected-state comparisons,
+  and cover sorting, keyboard controls, production security policy, mobile
+  width, viewport sizing and replay switching. No paid inference was used.
+- Initial browser validation found a writing-rule violation and an incorrect
+  test selector; both were fixed. A trace-artifact transfer also failed once.
+  The final full targeted pass used one worker, retained its trace settings,
+  and had no retries, skipped tests or flaky results. The 17-page PDF export
+  and print checks pass without clipping. The result slide was inspected visually.
+- Software checks used an isolated, credential-free production build. The
+  trial-generating source was preserved and checked against its source hash
+  before root main advanced to viewport commit `4602c7c`. The original root
+  build remains byte-identical. The updated package scanner also decompresses
+  and screens every interface-study record before creating the submission.
+
+See [paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md),
+[verification receipt](../evidence/campaigns/interface-study-2026-10-05/verification-public-96.json)
+and [all study traces](https://relay.kevinliu.studio/demo/review.html?study=interfaces).
+
 ## Dynamic viewport layout: 2026-10-05
 
 - The homepage uses `100dvh`, with a `100vh` fallback. The workspace fills the

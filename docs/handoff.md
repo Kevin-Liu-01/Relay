@@ -1,5 +1,21 @@
 # Exact handoff
 
+## Current evidence and presentation
+
+- The 17-slide [presentation](https://relay.kevinliu.studio/presentation) and
+  [PDF](presentation.pdf) explain the assignment, harness, workflows, controls,
+  model comparison, matched-interface results and limitations.
+- The original 306 attempts remain unchanged: 152 passed, 61 incomplete and 93 blocked.
+- The separate matched study completed all 96 attempts: 58 passed, 11 incomplete
+  and 27 blocked. All 96 have public traces and actual-UI state replays.
+- [Paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md)
+  includes all model/task pairs, time, actions, block reasons and full costs.
+  Its $22.761576 allowance includes $2.043534 unresolved; it is not an invoice.
+- Both collections are closed. Do not restart them, repeat cells or revise their
+  task wording after observing results. New studies need a new plan and approval.
+- The latest viewport release is preserved. Root `dist` remains the frozen
+  actor build; use an isolated copy for production builds and software tests.
+
 ## Hosted release
 
 The live site is [relay.kevinliu.studio](https://relay.kevinliu.studio). Source is
@@ -29,10 +45,10 @@ Reference scripts, fake transport tests and real model results must stay distinc
 
 ## Ready now
 
-Start with [Onsite readiness](onsite-readiness.md): the 12-slide deck/PDF,
-20 real-model attempts, full inventory, three replay excerpts, current measurements
-and limitations. The campaign stopped on an incomplete output-limited response;
-do not resume it or count its ten unattempted cells as failures. Original code is
+Start with [Onsite readiness](onsite-readiness.md): the 17-slide deck/PDF,
+306 accessibility attempts and 96 matched-interface attempts, full trace/replay
+libraries, current measurements and limitations. The earlier 20-attempt campaign
+is historical; its ten unattempted cells remain unattempted. Original code is
 MIT; third-party assets retain their restrictions.
 
 The current catalog has **18 tasks**. Read [the task suite](task-suite.md) for the
@@ -40,7 +56,7 @@ The current catalog has **18 tasks**. Read [the task suite](task-suite.md) for t
 report and bounded model-pilot plan. Older evidence is retained as historical
 context; the current assessment distinguishes it from the new campaign.
 
-The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, 18 task contracts, trainer bridge, tests, trajectory evidence, research provenance, measurements, a Docker recipe and a twelve-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for reference scripts and saved replays.
+The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, 18 task contracts, trainer bridge, tests, trajectory evidence, research provenance, measurements, a Docker recipe and a 17-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for reference scripts and saved replays.
 
 Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the original environment discussion. The hosted BYOK release now adds the screen-first console and TypeSafe decision transport; real Jev inference still requires an authenticated pilot.
 

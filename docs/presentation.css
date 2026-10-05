@@ -1321,6 +1321,24 @@ a:focus-visible {
   font-size: 14px;
   background: #f6f2f8;
 }
+.study-table thead button {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  border: 0;
+  padding: 5px 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.study-table thead button:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
+.study-table .sort-arrow {
+  color: var(--plum);
+}
 .study-table strong {
   font-weight: 500;
   font-size: 21px;

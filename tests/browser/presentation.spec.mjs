@@ -196,6 +196,46 @@ test('published presentation controls work under the production content-security
     await expect(page).toHaveURL(`${base}/presentation#model-comparison`);
     await page.locator('#model-results thead button').filter({ hasText: 'Passed' }).click();
     await expect(page.locator('#sort-status')).toHaveText('Sorted by Passed, descending');
+    await page.goto(`${base}/presentation#interface-results`);
+    const study = JSON.parse(
+      readFileSync('evidence/campaigns/interface-study-2026-10-05/verified-summary.json'),
+    );
+    await expect(page.locator('.slide.active h2')).toHaveText(
+      'Interface comparison: 96 recorded attempts',
+    );
+    const studyTable = page.locator('#interface-results');
+    await expect(studyTable.locator('tbody tr')).toHaveCount(4);
+    for (const [i, model] of study.byModel.entries()) {
+      const row = studyTable.locator('tbody tr').nth(i);
+      for (const [j, mode] of ['a11y', 'json-ui', 'pixels', 'api'].entries()) {
+        const c = model.byInterface[mode];
+        await expect(row.locator('td').nth(j)).toContainText(`${c.passed} / ${c.attempted}`);
+        await expect(row.locator('td').nth(j).locator('a')).toHaveAttribute(
+          'href',
+          /study=interfaces/,
+        );
+      }
+    }
+    for (const [label, column, direction] of [
+      ['Accessibility', 1, 'descending'],
+      ['Actor API', 4, 'descending'],
+      ['Allowance', 5, 'ascending'],
+    ]) {
+      const button = studyTable.getByRole('button', { name: new RegExp(`^${label}`) });
+      await button.click();
+      await expect(page.locator('#interface-sort-status')).toContainText(`${label}, ${direction}`);
+      const values = await studyTable
+        .locator('tbody tr')
+        .evaluateAll((rows, col) => rows.map((r) => Number(r.cells[col].dataset.sort)), column);
+      expect(values).toEqual(
+        [...values].sort((a, b) => (direction === 'ascending' ? a - b : b - a)),
+      );
+      await button.press('Space');
+      await expect(button.locator('..')).toHaveAttribute(
+        'aria-sort',
+        direction === 'ascending' ? 'descending' : 'ascending',
+      );
+    }
     const pdf = await request.get(`${base}/presentation.pdf`);
     expect(pdf.headers()['content-type']).toBe('application/pdf');
     expect((await pdf.body()).subarray(0, 5).toString()).toBe('%PDF-');
