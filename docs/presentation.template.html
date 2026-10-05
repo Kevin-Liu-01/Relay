@@ -399,11 +399,10 @@
         </ul>
       </section>
       <section class="slide" data-title="Session isolation">
-        <h2>Each model starts with <em>its own copy of the task</em></h2>
+        <h2>Each run starts with <em>its own copy of the task</em></h2>
         <ul>
           <li>
-            If a previous run leaves the message at 15:00, the next model starts with work already
-            done.
+            Even with one model, each attempt needs fresh data so it cannot inherit completed work.
           </li>
           <li>
             Each run gets its own SQLite database and browser session, so its actions change only
@@ -427,8 +426,7 @@
             </div>
           </div>
           <div class="diagram-caption">
-            In the live demo, starting the next model restores the task's starting data, not the
-            previous model's edits.
+            The new run starts with the message at 14:00. The previous result stays in history.
           </div>
         </div>
         <ul class="sources">
@@ -598,7 +596,10 @@
       <section class="slide" data-title="The scope expands">
         <h2>The reusable harness made <em>model comparisons</em> possible</h2>
         <ul>
-          <li>Once the harness worked, I could change the model without rebuilding the test.</li>
+          <li>
+            Once runs were repeatable, I wanted to compare how different models completed the
+            same tasks.
+          </li>
           <li>
             I expanded the assignment into a benchmark prototype with two separate comparisons.
           </li>

@@ -1,5 +1,15 @@
 # Verification and evidence
 
+## Isolation-to-benchmark narrative: 2026-10-05
+
+- Framed session isolation around independent attempts, even with one model,
+  instead of assuming that multi-model comparison was already introduced.
+  The scope-expansion slide now explicitly introduces comparing different
+  models on the same tasks. Speaker notes preserve that sequence.
+- All four presentation browser tests passed in an isolated production build.
+  Inspected slides 8 and 12, checked all 20 print pages and mobile width, and
+  regenerated HTML/PDF. No study records, actor source or frozen build changed.
+
 ## Verification-slide continuity: 2026-10-05
 
 - Connected the verification slide to the preceding success definition using

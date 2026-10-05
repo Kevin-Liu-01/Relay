@@ -56,6 +56,9 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'The reusable harness made model comparisons possible',
   );
+  await expect(page.locator('[data-title="The scope expands"]')).toContainText(
+    'Once runs were repeatable, I wanted to compare how different models completed the same tasks',
+  );
   await expect(page.locator('.scope-diagram .scope-label')).toHaveText([
     'Original assignment',
     'Expanded scope',
@@ -165,11 +168,14 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   // Design slides must explain the consequence for a run, not just name the mechanism.
   const isolation = page.locator('[data-title="Session isolation"]');
   await expect(isolation.locator('h2')).toHaveText(
-    'Each model starts with its own copy of the task',
+    'Each run starts with its own copy of the task',
   );
-  await expect(isolation).toContainText('the next model starts with work already done');
+  await expect(isolation).toContainText(
+    'Even with one model, each attempt needs fresh data so it cannot inherit completed work',
+  );
+  await expect(isolation).not.toContainText('the next model');
   await expect(isolation.locator('.diagram-caption')).toContainText(
-    "restores the task's starting data, not the previous model's edits",
+    'The new run starts with the message at 14:00. The previous result stays in history.',
   );
   await expect(page.locator('[data-title="Define success"]')).toContainText(
     'the screen alone cannot prove success',

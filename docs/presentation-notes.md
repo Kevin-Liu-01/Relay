@@ -155,6 +155,10 @@ Next: move from one correct run to two independent runs.
 
 ## 8. Session isolation
 
+The previous slide checked one run. Now I need to be able to run the task again,
+even with the same model. This is a requirement for repeatable execution before
+it becomes a requirement for comparing models.
+
 Start with the failure case: if A edits shared data, B may receive an easier task
 without doing the work. Separate runs must not affect each other's starting state.
 For this task, A changes 14:00 to 15:00. If B inherits that edit, a final-state
@@ -233,7 +237,12 @@ Next: show how the repeatable execution system enabled a benchmark.
 ## 12. The scope expands
 
 The environment and harness came first. Once they could reset, execute, grade,
-and record, I could change models without rebuilding the test.
+and record, I could repeat a task without carrying over the previous run's work.
+
+That led to a new question: how do different models perform on the same tasks?
+The same harness let me change the model without rebuilding the environment or
+changing the success rule. This is where the story moves from building a
+repeatable tool to comparing models.
 
 I then expanded the scope into two comparisons. The first asks which tasks each
 model completes through accessibility controls. The second changes the interface

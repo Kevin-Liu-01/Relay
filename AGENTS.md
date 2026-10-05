@@ -123,9 +123,11 @@ before the scope expansion and two comparisons. End with next tests and the demo
 Each design explanation must state the need, the implementation, its cost, and
 the evidence or remaining test. See `docs/design-discussion.md` for derivations.
 Put the failure case and live-run consequence on the slide itself, not only in
-speaker notes. For example, isolation prevents the next model from inheriting a
-completed edit. Connect speed to waits between actions, recording to replay and
-disk use, and proposed worker limits to visitor queueing. Do not turn a risk or
+speaker notes. Isolation prevents the next run from inheriting a completed edit,
+even with the same model. Introduce model comparison only at the scope-expansion
+slide, after explaining repeatable execution. Connect speed to waits between
+actions, recording to replay and disk use, and proposed worker limits to visitor
+queueing. Do not turn a risk or
 future design into a claim about observed failures or measured capacity.
 Do not substitute test counts for examples or turn proposed scale-out into a claim.
 Define technical terms once. Use factual headings and one idea per bullet.
