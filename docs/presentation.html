@@ -2532,10 +2532,11 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             code.
           </li>
           <li>
-            After each action, it reads the updated page before asking the model what to do next.
+            After Save, it reads the updated page so the model can check whether the edit appeared.
           </li>
           <li>
-            The run stops when the model finishes or reaches an action, time, or spending limit.
+            Action, time, and spending limits stop a stuck agent from making model calls
+            indefinitely.
           </li>
         </ul>
         <ul class="sources">
@@ -2577,11 +2578,15 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <ul>
+          <li>A browser edit requires finding the editor, entering text, and saving the change.</li>
           <li>
-            The interface determines what the model observes and which actions it can request.
+            The actor API can request that edit directly, so the workspace changes without a browser
+            click.
           </li>
-          <li>The actor API uses the same application rules but does not operate the browser.</li>
-          <li>All four paths change workspace data that the same grader can check.</li>
+          <li>
+            The same grader checks the result, but the model uses different information and actions
+            to reach it.
+          </li>
         </ul>
         <ul class="sources">
           <li>
@@ -2603,11 +2608,11 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         <h2>Success means the requested change was saved</h2>
         <ul>
           <li>
-            The grader is code that checks the stored messages, topics, and other workspace data.
+            A model can type the right text and click Cancel, so the screen alone cannot prove
+            success.
           </li>
           <li>
-            For the editing task, the original message must contain the requested text and all
-            unrelated data must stay unchanged.
+            The grader is code that checks the stored messages, topics, and other workspace data.
           </li>
         </ul>
         <div
@@ -2679,12 +2684,16 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         </div>
         <ul>
           <li>
-            These checks separate application bugs, grading bugs, and agent mistakes without paying
-            for more model calls.
+            A failed run can come from the app, the grader, or the model, so I check each
+            separately.
           </li>
           <li>
-            A scripted solution still knows my intended answer, so it cannot prove that a new reader
-            understands the task.
+            I inspect the saved actions and data to explain the failure without buying another
+            attempt.
+          </li>
+          <li>
+            A scripted solution tests my intended answer, not whether another reader understands the
+            task.
           </li>
         </ul>
         <ul class="sources">
@@ -2703,12 +2712,15 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Session isolation<span class="section-number">08 / 20</span></span></header>
-        <h2>Two agents must not share <em>mutable workspace data</em></h2>
+        <h2>Each model starts with <em>its own copy of the task</em></h2>
         <ul>
-          <li>If agent A edits a message, agent B must still see its own unchanged copy.</li>
           <li>
-            I give each run a separate SQLite file and a fresh browser context, which is an
-            independent browser session.
+            If a previous run leaves the message at 15:00, the next model starts with work already
+            done.
+          </li>
+          <li>
+            Each run gets its own SQLite database and browser session, so its actions change only
+            its own workspace.
           </li>
         </ul>
         <div
@@ -2716,23 +2728,27 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           role="img"
           aria-label="Both runs start from the same fixture, but own separate browser contexts and SQLite files. A saves the message at 15:00. B's copy remains at 14:00. App code is shared; workspace data is not."
         >
-          <div class="shared-code">Shared application code + same starting fixture</div>
+          <div class="shared-code">Same task and starting data · separate copies</div>
           <div class="session-pair">
             <div>
-              <span class="diagram-label">Run A</span><strong>Browser context A → database A</strong
+              <span class="diagram-label">Run A</span><strong>Browser session A → database A</strong
               ><span>Agent saves its edit</span><b>Launch review at 15:00</b>
             </div>
             <div>
-              <span class="diagram-label">Run B</span><strong>Browser context B → database B</strong
+              <span class="diagram-label">Run B</span><strong>Browser session B → database B</strong
               ><span>No action in this run</span><b>Launch review stays at 14:00</b>
             </div>
           </div>
           <div class="diagram-caption">
-            A session token selects one database. The agent is not given another run's token.
+            In the live demo, starting the next model restores the task's starting data, not the
+            previous model's edits.
           </div>
         </div>
         <ul class="sources">
-          <li>Tested: write to A, check that B is unchanged; close A, check that B still works.</li>
+          <li>
+            Tested: write to A, check B is unchanged; close A, check B still works. Cost: separate
+            files and browser setup.
+          </li>
           <li>
             The actor and control servers share a process. Separate data is not isolation from host
             crashes or malicious code.
@@ -2745,7 +2761,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge glyph" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>Run speed<span class="section-number">09 / 20</span></span></header>
-        <h2>Run time comes from repeated steps, not just reset</h2>
+        <h2>Every extra decision adds <em>another model request</em></h2>
         <div
           class="timing-diagram"
           role="img"
@@ -2777,16 +2793,16 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <ul>
-          <li>Every extra decision adds another model request and another observation.</li>
+          <li>Opening the editor, entering text, and saving can each require a model decision.</li>
           <li>
-            A faster database reset helps between runs, but does not remove the cost of those
-            repeated steps.
+            In the live viewer, the workspace waits during the model request and updates after the
+            action executes.
           </li>
         </ul>
         <ul class="sources">
           <li>
-            Measured locally on M5 Max / Node 24. Component medians exclude model calls and cannot
-            be added into an end-to-end estimate.
+            A faster reset helps between runs, not between decisions. Local M5 Max / Node 24 medians
+            exclude model calls and are not a full-run estimate.
           </li>
           <li>
             <a
@@ -2803,7 +2819,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Resource choices<span class="section-number">10 / 20</span></span></header>
-        <h2>Small databases do not mean cheap browser runs</h2>
+        <h2>Browsers and recordings have <em>separate resource costs</em></h2>
         <div
           class="tradeoff-grid"
           role="img"
@@ -2812,7 +2828,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           <article>
             <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Workspace data</span
             ><strong>One SQLite file per run</strong
-            ><span>Simple creation, reset, and deletion</span
+            ><span>The next model does not inherit earlier edits</span
             ><b>Measured: 48 KiB per fixture after one post</b>
           </article>
           <article data-tone="blue">
@@ -2829,20 +2845,28 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </article>
         </div>
         <ul>
-          <li>I share application code, but keep each run's data separate.</li>
           <li>
-            The storage test did not measure full browser memory, so it cannot tell us how many
-            agents fit on a machine.
+            Stored actions and states let the replay show each run without calling the model again.
+          </li>
+          <li>
+            The 306-run collection paused when free disk space fell below its storage safeguard.
           </li>
         </ul>
         <ul class="sources">
           <li>
-            The experiment runner creates and closes an environment per run. Reusing a browser
-            across fresh contexts is a future optimization.
+            The storage test did not measure full browser memory. Current runs create and close
+            their own environment; browser reuse is untested.
           </li>
           <li>
             API execution can omit the browser when visual recording is disabled. The reported
             interface study kept observer recording enabled.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-disk-stop.md"
+              >Recorded storage stop</a
+            >
+            · Existing evidence was preserved.
           </li>
         </ul>
       </section>
@@ -2852,12 +2876,15 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>Scaling the runner<span class="section-number">11 / 20</span></span></header>
-        <h2>I would scale with a fixed number of run workers</h2>
+        <h2>A queue would limit <em>how many browsers run at once</em></h2>
         <ul>
-          <li>The sequential collections do not demonstrate multi-agent throughput.</li>
           <li>
-            A queue would admit work only when a worker has capacity, instead of launching a browser
-            for every incoming request.
+            Starting a browser for every visitor could exhaust memory and slow or interrupt active
+            runs.
+          </li>
+          <li>
+            I would queue new runs until a worker is free, while keeping each active run's data
+            separate.
           </li>
         </ul>
         <div
@@ -2882,13 +2909,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <div class="takeaway">
-          More workers can finish more runs at once. They do not make an individual model request
-          faster.
+          A visitor would wait for a free worker before their run starts. More workers could reduce
+          the queue, not model response time.
         </div>
         <ul class="sources">
           <li>
-            Test 1, 4, 8, and 16 workers: successful runs/hour, full process-tree memory, provider
-            limits, and cleanup after a killed worker.
+            The collections ran sequentially, so capacity is unproven. Test 1, 4, 8, and 16 workers
+            for throughput, memory, provider limits, and crash cleanup.
           </li>
           <li>
             Use separate processes or containers for stronger containment. Browser pooling trades

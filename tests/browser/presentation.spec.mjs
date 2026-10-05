@@ -128,6 +128,30 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="Session isolation"]')).toContainText(
     'Launch review stays at 14:00',
   );
+  // Design slides must explain the consequence for a run, not just name the mechanism.
+  const isolation = page.locator('[data-title="Session isolation"]');
+  await expect(isolation.locator('h2')).toHaveText(
+    'Each model starts with its own copy of the task',
+  );
+  await expect(isolation).toContainText('the next model starts with work already done');
+  await expect(isolation.locator('.diagram-caption')).toContainText(
+    "restores the task's starting data, not the previous model's edits",
+  );
+  await expect(page.locator('[data-title="Define success"]')).toContainText(
+    'the screen alone cannot prove success',
+  );
+  await expect(page.locator('[data-title="Run speed"]')).toContainText(
+    'the workspace waits during the model request and updates after the action executes',
+  );
+  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
+    'let the replay show each run without calling the model again',
+  );
+  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
+    'paused when free disk space fell below its storage safeguard',
+  );
+  await expect(page.locator('[data-title="Scaling the runner"] .takeaway')).toContainText(
+    'wait for a free worker before their run starts',
+  );
   await expect(page.locator('[data-title="Session isolation"]')).toContainText(
     'Separate data is not isolation from host crashes',
   );

@@ -15,6 +15,25 @@ results exposed limits in both the task definitions and the interface comparison
 - The generated deck is `docs/presentation.html`, not the raw template.
 - Stable links: `#session-isolation`, `#run-speed`, `#resource-choices`, `#scaling-the-runner`, `#model-comparison`, `#main-lesson`, `#interface-results`.
 
+## Connect the design to what the audience sees
+
+Explain the consequence before naming the mechanism. These points are on the
+slides, so they remain understandable without the spoken explanation.
+
+| Design choice                        | Why it matters                                                       | What to point out in a run or replay                                                  |
+| ------------------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Fresh database and browser session   | Earlier edits must not help or disrupt the next model.               | A new attempt starts from the original task data, not the last run's final screen.    |
+| Read the page after an action        | The next decision needs the result of the last action.               | After opening the editor, the next observation includes its controls.                 |
+| Check saved data                     | Correct text in an unsaved dialog is not a completed edit.           | Compare the stored message with the expected result after Save or Cancel.             |
+| Repeat observe, request, and execute | Each decision adds another wait and observation.                     | The workspace pauses while the model responds, then changes when the action executes. |
+| Save actions and states              | A reviewer needs to explain a result without buying another attempt. | Scrub a recorded run and inspect the state at the selected step.                      |
+| Proposed worker limit                | Starting too many browsers could overload the host.                  | A future waiting state would precede execution, not interrupt an active run.          |
+
+The A/B isolation diagram illustrates the boundary tested by the software. It is
+not a recorded multi-agent load test. Both collections were sequential. The disk
+stop is an observed constraint; browser exhaustion is a risk to test, not a claimed
+cause of those recorded stops.
+
 ## 1. My approach
 
 Start with my choice, not a restatement of the assignment.
@@ -121,6 +140,13 @@ Next: move from one correct run to two independent runs.
 
 Start with the failure case: if A edits shared data, B may receive an easier task
 without doing the work. Separate runs must not affect each other's starting state.
+For this task, A changes 14:00 to 15:00. If B inherits that edit, a final-state
+check could pass even if B does nothing. That would measure A's work twice.
+
+In a walkthrough, show A's final message, then the new run's starting message.
+It starts at 14:00 again. This is task reset and run isolation, not the loss of A's
+recording. A's result remains available in history and replay. Do not start a paid
+attempt just to demonstrate this when saved initial and final states are available.
 
 Each run owns a database file and a fresh browser context. The database separates
 stored data. The context separates browser storage and open UI state. On normal

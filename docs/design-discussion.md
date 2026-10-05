@@ -83,6 +83,13 @@ copy to 15:00. Agent B must still see 14:00 until it makes its own change. Other
 B can benefit from A's work or be disrupted by it, and neither score describes an
 independent attempt.
 
+This matters even when models run one after another, as they did in the two
+collections. If B inherits A's completed edit, the final-state grader could pass B
+without B doing the work. In the live UI, a new run therefore shows a fresh copy
+of the task's starting data. History and replay retain A's recorded changes without
+applying them to B. A fresh viewer also prevents old frames from appearing as B's
+current work; viewer replacement and backend data isolation have separate tests.
+
 Each run gets a separate SQLite file, selected by a random session token. It also
 gets a fresh browser context, which is an independent browser session. The file
 separates stored messages and topics. The context separates browser storage and
@@ -116,6 +123,9 @@ Source: [session store](../server/store.mjs),
 [process restart test](../tests/restart.test.mjs),
 [hosted cleanup](../hosted/service.mjs).
 
+The visible handoff is covered by [run-handoff browser tests](../tests/browser/run-handoff.spec.mjs).
+The A/B illustration explains those boundaries, not measured concurrent capacity.
+
 ## What determines speed
 
 A run has setup work, repeated decisions, and finalization:
@@ -130,6 +140,10 @@ Reducing reset time helps when starting the next run. Reducing the number of
 decisions can remove several model requests and observations within a run. These
 are different optimizations. More workers can increase the number of runs
 completed in an hour, but do not make one model request faster.
+
+In the live viewer, the workspace can stay unchanged while a model request is in
+flight. Opening an editor, entering text, and saving can each take another decision.
+That is why a quick database reset alone does not make the walkthrough fast.
 
 The local component benchmark measured median database reset at 1.50 ms, HTTP
 application action at 3.31 ms, and screenshot capture at 84.15 ms. These are
@@ -166,6 +180,12 @@ an environment per run instead.
 
 API execution can avoid a browser when observer visuals are disabled. The matched
 study enabled visuals, so its costs are not evidence for a browser-free deployment.
+
+Recording also had an operational consequence: the 306-run collection paused when
+free disk space fell below its 10 GB reserve. Existing evidence was retained. See
+the [recorded stop](campaigns/model-breadth-2026-10-03-disk-stop.md). This shows why
+storage needs its own allowance; it does not prove that recordings caused all disk
+usage on the shared machine.
 
 ## How I would scale while keeping runs separate
 

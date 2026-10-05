@@ -1,5 +1,28 @@
 # Verification and evidence
 
+## Design explanations tied to live runs: 2026-10-05
+
+- Revised slides 4–11 to connect each design choice to a failure case or visible
+  consequence. The isolation slide now explains why inheriting a completed edit
+  would invalidate the next attempt, including when models run sequentially.
+  Its diagram shows A at 15:00 and B still at 14:00, with an explicit live-demo
+  explanation. This is an illustration, not a concurrent model-run result.
+- The other slides connect observation to the next decision, grading to Save
+  versus Cancel, model requests to waits between actions, and saved evidence to
+  replay without new inference. Resource discussion links the actual collection
+  disk stop. Worker queueing remains proposed and capacity remains unmeasured.
+- Added a reason/visible-effect rehearsal guide, source-backed discussion, and
+  presentation regressions. Retained the 20-slide sequence, style, tables, timing,
+  costs, task caveats, and all historical outcomes.
+- All **216 backend tests and seven browser tests passed** in isolated production
+  builds. Browser checks cover the final deck's content, all 20 slides, print
+  bounds, mobile width, sorting, production security policy, and run handoff.
+  Reviewed screenshots of all eight edited slides. An initial PDF overflow on
+  isolation was fixed by combining two repetitive captions, without shrinking text.
+- Regenerated HTML/PDF and the release source manifest. The package credential
+  screen passed. Actor source and frozen root `dist` remain byte-identical to
+  their pre-edit state. No new model calls, actor edits, or collection changes.
+
 ## Compact dropdowns and grading-slide heading: 2026-10-05
 
 - Removed unconditional scroll-arrow space from operator dropdowns. The empty
