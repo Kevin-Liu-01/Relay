@@ -32,6 +32,12 @@
 - `npm run package` screened text and all decompressed public records against
   credential patterns and the existing private Router key without exposing it.
   Raw runtime archives, private state, test videos and credentials are excluded.
+- Release `c106c46` reached Vercel Ready and the production domain. All 48 hosted
+  gzip records passed exact size/hash and record validation; hosted accounting
+  and PDF match local bytes. The 306/96 catalogs retain their original bindings.
+  Live browser review confirmed table sorting, Repeat 1/2 selection, playback,
+  trace review and per-task links without provider requests. The existing result
+  anchors still open the correct tables. See the [production receipt](../evidence/verification/interface-repeat-production.json).
 
 [Analysis](../evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md)
 · [Archive receipt](../evidence/campaigns/interface-repeat-2026-10-05-continuation/verification-public-48.json)

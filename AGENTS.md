@@ -2,7 +2,12 @@
 
 ## Authorized 48-run follow-up
 
-**Current status: all 48 attempts complete and archive-verified; publication in progress.**
+**Current status: all 48 attempts complete, archive-verified and published.**
+Release `c106c46` is live on `relay.kevinliu.studio`. All 48 deployed records
+passed hash, size, provenance, outcome and accounting checks. The public costs
+export and 20-page PDF match the release files. See the production receipt in
+`evidence/verification/interface-repeat-production.json`. The completion
+heartbeat must be paused; do not collect more runs without new authorization.
 PID 92802 exited and released its lock. Do not launch any collector or run more
 inference. Outcomes are 35 passed, one incomplete and 12 blocked; zero unattempted
 or capture gaps. Final verification passed 3,755 integrity and 218 saved-state
@@ -18,7 +23,7 @@ the repetition only for this explicitly named study. Preserve older validation.
 The 20-slide story is retained, with follow-up results at the stable
 `#interpreting-interface-results` anchor. `/results` includes both-repeat links.
 Keep frozen actor/source/dist and all collector files unchanged. Release builds
-and tests belong in isolated copies. Refresh this status after production verification.
+and tests belong in isolated copies. The 306 and 96 studies remain separate.
 
 **Historical launch: authorized continuation from cell 011.**
 The user raised Router account limits and explicitly requested continuation.

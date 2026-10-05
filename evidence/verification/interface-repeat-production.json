@@ -1,0 +1,50 @@
+{
+  "kind": "relay-observer-production-verification-v1",
+  "checkedAt": "2026-10-05T21:49:56.000Z",
+  "releaseCommit": "c106c4674315c923648fa2f227f4889bade8a993",
+  "deploymentId": "dpl_2iwTm8CNBk4WnFNSDGtddXS8PmRt",
+  "deploymentStatus": "Ready",
+  "origin": "https://relay.kevinliu.studio",
+  "study": "interface-repeat-2026-10-05",
+  "summaryHash": "7b1f321ab357d6c619765d61a57e74496c595987f004bb6f0c9301a9a7a24113",
+  "records": {
+    "checked": 48,
+    "compressedBytes": 41891799,
+    "checks": [
+      "HTTP 200",
+      "Catalog validation and verified-summary binding",
+      "Compressed byte count and SHA-256",
+      "Decompressed byte count",
+      "Record provenance, cell, outcome, action count, accounting and trace consistency"
+    ]
+  },
+  "accountingMatches": true,
+  "pdfMatches": true,
+  "pdfSha256": "798650306ba177e1901c62b369621d65d103e3e6a9564b952f34ec9d6dd8e023",
+  "priorCatalogs": [
+    {
+      "attempted": 306,
+      "summaryHash": "6618f7f2041bf3d9334ba70f47716380b1495a5bf0d51ba68fc6fd144d71211f"
+    },
+    {
+      "attempted": 96,
+      "summaryHash": "f0d47c998d58a72a401b2b4858dcb74bc0d69c4a46693ad32f94fa8678ebc328"
+    }
+  ],
+  "browserChecks": [
+    "Homepage Results & replays navigation remains available",
+    "Follow-up slide opens at /presentation#interpreting-interface-results",
+    "Pixels header changes model row order",
+    "Table link opens the 48-record reviewer",
+    "Repeat selector switches from repeat 1 to repeat 2",
+    "Replay starts, pauses and opens its recorded trace",
+    "Review navigation triggers no /api/ requests",
+    "Results details exposes 24 conditions and 96 trace/replay links",
+    "Existing #interface-results and #model-comparison anchors retain their 4 and 17 model rows"
+  ],
+  "limitations": [
+    "No production inference was run.",
+    "All 48 records were downloaded and validated; production UI interaction was sampled. The separate local browser suite rendered all 48.",
+    "This verifies publication and internal consistency, not independent model performance or provider billing."
+  ]
+}
