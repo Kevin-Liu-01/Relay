@@ -1,5 +1,14 @@
 # Relay handoff
 
+## Social previews
+
+The share card is an editable product illustration, not agent evidence.
+`docs/social-card.template.svg` owns the layout. Regenerate exact-font SVG and
+1x/2x PNG exports with `node scripts/social-assets.mjs`; provenance hashes bind
+the bundled marks, fonts, and fictional portraits. See `docs/social-card.md`.
+Hosted staging inserts page-specific static metadata and a content-hashed PNG
+URL. Keep these observer changes separate from the frozen actor build and records.
+
 ## Presentation narrative
 
 Keep the 20-slide deck in this order: my approach and a concrete editing task,

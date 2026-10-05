@@ -1,0 +1,22 @@
+{
+  "kind": "editable-product-illustration-not-agent-evidence",
+  "width": 1200,
+  "height": 630,
+  "templateSha256": "0c0c3992198ce8e986c4cb2dd9fc7ad3c74bc6c08c654b3005b40cdcc4dbfb3b",
+  "assets": {
+    "src/assets/relay-mark.svg": "eb992f9321b9ff3661037bd173bafd52da9e3860630ad961076c68fd249f80e5",
+    "src/assets/northstar-mark.svg": "f99bb5825c21d301a454f30d6d26b055057dc6ee6f9e7bd4e4e21e91fd2257de",
+    "src/assets/portraits/alex.webp": "b321f39365e0143f35b12f115572ea98c5ecc75333a593aa0012ac5da893a2ae",
+    "src/assets/portraits/maya.webp": "b30dc0133d8eaa9dc2c51ddc9eff716ca78aa8bf564d587734935049c9c06cf3",
+    "src/assets/fonts/camber-regular.woff2": "ee44a59725b519cc6a2cd3d587d2a27a5a47df0e35a13f83bcb803166b0643fc",
+    "src/assets/fonts/camber-medium.woff2": "f78e712501efc72c38a912fe014e584f2a004ee0146e4f8ac470e3bea885ec29",
+    "src/assets/fonts/camber-semibold.woff2": "a48b76db6a38357f2fe0cd766e3d40de247c571a9143cd0c6915d8ab013ea25d",
+    "src/assets/fonts/slack-lato-regular.woff2": "b5b8cac1d8b029b471cb7f6d5e2cc713a3bbcfea888e6a85d59b3ec9d478ecd3",
+    "src/assets/fonts/slack-lato-bold.woff2": "6e21fb5102f293831847e25d704a659740b7ff29bd444053dbb3fa81643e9db3"
+  },
+  "exports": {
+    "docs/architecture.svg": "df87eef29eaa17061ff9ddbc23286a506b6ad92420e2cb34c6cbaff0ab5f487d",
+    "docs/relay-social.png": "25f39384e054374b5b6b84d3e573f9cb675c19b3c81a83112ca28beb8712df4b",
+    "docs/relay-social@2x.png": "e2d76cf817db3ca4ada5d1500ebdfcb7c1ef2cb27302770c1fd8e24ff79c36e1"
+  }
+}

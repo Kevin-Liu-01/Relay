@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/architecture.svg" alt="Relay — watch agents work, inspect every decision" width="100%" />
+<img src="docs/relay-social@2x.png" alt="Relay: test computer use agents in a Slack-like workspace, with live actions, results, and replays" width="100%" />
 
 **A Slack-like playground for computer-use agents.**
 

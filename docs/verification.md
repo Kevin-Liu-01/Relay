@@ -1,5 +1,25 @@
 # Verification and evidence
 
+## Social-preview release: 2026-10-05
+
+- Replaced the three-box README banner with a 1200 × 630 social card and a
+  2400 × 1260 README export. The editable SVG uses the exact Relay and Northstar
+  marks, bundled Camber and Lato fonts, and existing fictional portraits.
+- The topic-edit example is labeled as an illustration with an expected result.
+  It is not a model trajectory, performance claim, or recorded pass. Asset and
+  export hashes are recorded in `docs/social-card-provenance.json`.
+- Hosted staging adds page-specific static Open Graph and Twitter metadata to
+  seven public documents. The shared image has a content-hashed same-origin
+  PNG URL. Previews do not require JavaScript or expose private query parameters.
+- All **215 backend tests and five targeted browser tests passed**. The browser
+  checks cover the public image bytes, metadata, disabled-JavaScript previews,
+  and the four existing presentation regressions. The new preview test initially
+  used a non-public local filename; it now uses the public routes. Inspected
+  screenshots at 1200, 600, and 300 pixels wide.
+- Validation used an isolated production build. The original actor source and
+  root `dist` remain byte-identical. No model calls, task changes, or historical
+  evidence edits were needed. The package credential screen passed.
+
 ## Design reasoning and concrete examples: 2026-10-05
 
 - Rebuilt the presentation as 20 slides. A saved message edit now connects the

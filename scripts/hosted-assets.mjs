@@ -13,6 +13,7 @@ import { validateCatalog, validateRecord } from '../docs/review-app/data.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
 import { buildTaskExpectation } from '../hosted/task-expectations.mjs';
 import { expectationKey } from '../src/live/task-comparison.mjs';
+import { socialImagePath, socialPages, withSocialMetadata } from './lib/social-card.mjs';
 const secrets = [
   'RAMP_ROUTER_API_KEY',
   'TYPESAFE_API_KEY',
@@ -172,6 +173,16 @@ for (const extension of ['csv', 'json'])
 for (const extension of ['csv', 'json']) {
   const path = `evidence/campaigns/interface-study-2026-10-05/accounting.${extension}`;
   if (existsSync(path)) copyFileSync(path, `dist/demo/interface-study-accounting.${extension}`);
+}
+
+// Use a committed, exact-font raster for unfurlers. Rendering is a separate
+// design-time operation, never part of an inference run or production build.
+const socialImage = readFileSync('docs/relay-social.png');
+const socialPath = socialImagePath(socialImage);
+writeFileSync(`dist${socialPath}`, socialImage);
+for (const page of socialPages) {
+  const path = `dist/${page.file}`;
+  writeFileSync(path, withSocialMetadata(readFileSync(path, 'utf8'), page, socialPath));
 }
 
 // Fail a production build if any server-only credential lands in public output.

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Relay: test computer use agents</title>
+  <desc id="description">A computer-use playground for Slack-like tasks. An illustrated Northstar workspace shows a topic edit, a cursor at Save, and its expected result. This is a product illustration, not a recorded model result.</desc>
+  <defs>
+    <style>
+      {{FONTS}}
+      text { font-family: 'Relay Camber', sans-serif; }
+      .slack { font-family: 'Relay Lato', sans-serif; }
+      .muted { fill: #776c81; }
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#35263f" flood-opacity=".12"/></filter>
+    <filter id="cursor-shadow" x="-60%" y="-40%" width="220%" height="200%"><feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#211728" flood-opacity=".24"/></filter>
+    <clipPath id="window"><rect x="528" y="100" width="624" height="396" rx="14"/></clipPath>
+    <clipPath id="avatar-a"><rect x="710" y="193" width="30" height="30" rx="5"/></clipPath>
+    <clipPath id="avatar-b"><rect x="710" y="442" width="30" height="30" rx="5"/></clipPath>
+  </defs>
+  <rect width="1200" height="630" fill="#f6f4f8"/>
+  <path d="M856 0H1200V630H977C864 563 770 478 756 363C739 230 779 97 856 0Z" fill="#e9e2ef"/>
+  <g transform="translate(52 46) scale(.875)">{{RELAY_MARK}}</g>
+  <text x="124" y="89" fill="#28232e" font-size="49" font-weight="600" letter-spacing=".3">Relay</text>
+  <text x="52" y="229" fill="#28232e" font-size="62" font-weight="600" letter-spacing="-.8">Test computer</text>
+  <text x="52" y="302" fill="#62416f" font-size="62" font-weight="600" letter-spacing="-.8">use agents.</text>
+  <text x="54" y="380" fill="#62596c" font-size="24">A Slack-like workspace.</text>
+  <text x="54" y="414" fill="#62596c" font-size="24">Live actions, results, and replays.</text>
+  <text x="54" y="575" fill="#35263f" font-size="20" font-weight="500">relay.kevinliu.studio</text>
+  <path d="M278 566h16m-6-6 6 6-6 6" stroke="#62416f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="530" y="74" fill="#62416f" font-size="13" font-weight="500" letter-spacing="1.3">ILLUSTRATED TASK · UPDATE A TOPIC</text>
+  <rect x="528" y="100" width="624" height="396" rx="14" fill="white" filter="url(#shadow)"/>
+  <g clip-path="url(#window)">
+    <rect x="528" y="100" width="624" height="44" fill="#351638"/>
+    <path d="M551 122h14m-9-5-5 5 5 5" fill="none" stroke="#cdb5d2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="589" y="111" width="458" height="24" rx="5" fill="#56385a" stroke="#745678"/>
+    <circle cx="605" cy="122" r="4" fill="none" stroke="#d2bdd7" stroke-width="1.4"/>
+    <path d="m608 125 3 3" stroke="#d2bdd7" stroke-width="1.4"/>
+    <text class="slack" x="620" y="127" font-size="13" fill="#e0d3e4">Search Northstar</text>
+    <rect x="528" y="144" width="157" height="352" fill="#42234d"/>
+    <g transform="translate(542 159) scale(.375)">{{NORTHSTAR_MARK}}</g>
+    <text class="slack" x="575" y="176" fill="white" font-size="18" font-weight="700">Northstar</text>
+    <text class="slack" x="548" y="219" fill="#dfcce6" font-size="14">Threads</text>
+    <text class="slack" x="548" y="248" fill="#dfcce6" font-size="14">Saved for later</text>
+    <path d="M544 268h126" stroke="#63416c"/>
+    <text class="slack" x="548" y="293" fill="#c8add2" font-size="12">Channels</text>
+    <text class="slack" x="547" y="322" fill="#dfcce6" font-size="14">#  general</text>
+    <rect x="536" y="337" width="140" height="30" rx="5" fill="#f3edf8"/>
+    <text class="slack" x="547" y="357" fill="#42234d" font-size="14" font-weight="700">#  proj-meridian</text>
+    <text class="slack" x="547" y="390" fill="#dfcce6" font-size="14">#  engineering</text>
+    <text class="slack" x="547" y="422" fill="#dfcce6" font-size="14">#  design</text>
+    <text class="slack" x="547" y="454" fill="#dfcce6" font-size="14">#  incidents</text>
+    <text class="slack" x="708" y="173" fill="#28262c" font-size="18" font-weight="700">#  proj-meridian</text>
+    <path d="M685 185h467" stroke="#ede9ef"/>
+    <image x="710" y="193" width="30" height="30" href="{{ALEX}}" clip-path="url(#avatar-a)"/>
+    <text class="slack" x="751" y="208" fill="#403747" font-size="14" font-weight="700">Alex Morgan</text>
+    <text class="slack" x="751" y="227" fill="#776c81" font-size="13">Launch review is at 14:00 UTC.</text>
+    <image x="710" y="442" width="30" height="30" href="{{MAYA}}" clip-path="url(#avatar-b)"/>
+    <text class="slack" x="751" y="454" fill="#403747" font-size="14" font-weight="700">Maya Chen</text>
+    <text class="slack" x="751" y="475" fill="#776c81" font-size="13">Please bring the final checklist.</text>
+    <rect x="695" y="242" width="444" height="185" rx="10" fill="white" stroke="#d9cfdf" filter="url(#shadow)"/>
+    <text class="slack" x="715" y="272" fill="#28262c" font-size="21" font-weight="700">Edit topic</text>
+    <path d="m1106 258 10 10m0-10-10 10" stroke="#817389" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="714" y="288" width="405" height="67" rx="5" fill="#fff" stroke="#79558b" stroke-width="2"/>
+    <text class="slack" x="728" y="314" fill="#35263f" font-size="17">Launch review · 15:00 UTC</text>
+    <text class="slack" x="728" y="338" fill="#35263f" font-size="17">Bring the final checklist</text>
+    <rect x="935" y="372" width="80" height="36" rx="5" fill="white" stroke="#d6d0da"/>
+    <text class="slack" x="975" y="395" text-anchor="middle" fill="#514658" font-size="15">Cancel</text>
+    <rect x="1028" y="372" width="90" height="36" rx="5" fill="#157a5d"/>
+    <text class="slack" x="1073" y="395" text-anchor="middle" fill="white" font-size="16" font-weight="700">Save</text>
+  </g>
+  <g transform="translate(1093 396) rotate(-12)" filter="url(#cursor-shadow)">
+    <path d="M0 0v35l9-9 9 16 8-5-10-15 13-2Z" fill="#35263f" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <rect x="528" y="520" width="624" height="76" rx="12" fill="#fff" stroke="#d9cfdf"/>
+  <circle cx="560" cy="558" r="15" fill="#e7f2ed"/>
+  <path d="m553 558 5 5 9-10" fill="none" stroke="#247859" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="588" y="548" fill="#75667f" font-size="12" font-weight="500" letter-spacing="1.2">EXPECTED RESULT</text>
+  <text x="588" y="576" fill="#35263f" font-size="20" font-weight="500">Updated topic. No other changes.</text>
+</svg>
