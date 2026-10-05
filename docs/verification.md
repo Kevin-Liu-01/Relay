@@ -1,5 +1,18 @@
 # Verification and evidence
 
+## Speed, resources and scaling continuity: 2026-10-05
+
+- Connected slides 9–11 as one explanation: model decisions add waiting time,
+  waiting keeps browsers open, active runs need memory, and saved recordings
+  retain disk space after cleanup. The scaling proposal now follows directly
+  from these costs instead of introducing an unrelated queue.
+- Moved the 306-run storage incident to the model-results speaker notes so it
+  follows the introduction of that collection. Preserved its evidence link and
+  clarified the transition into the earlier interface tests.
+- All four presentation browser tests passed in an isolated production build.
+  Inspected slides 9–11, checked all 20 print pages and mobile width, and
+  regenerated HTML/PDF. Actor source, frozen build and study records are unchanged.
+
 ## Isolation-to-benchmark narrative: 2026-10-05
 
 - Framed session isolation around independent attempts, even with one model,

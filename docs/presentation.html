@@ -2771,7 +2771,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge glyph" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>Run speed<span class="section-number">09 / 20</span></span></header>
-        <h2>Every extra decision adds <em>another model request</em></h2>
+        <h2>What makes <em>one run take longer?</em></h2>
         <div
           class="timing-diagram"
           role="img"
@@ -2803,7 +2803,10 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <ul>
-          <li>Opening the editor, entering text, and saving can each require a model decision.</li>
+          <li>
+            A fresh workspace makes runs independent, but each extra decision adds another model
+            request.
+          </li>
           <li>
             In the live viewer, the workspace waits during the model request and updates after the
             action executes.
@@ -2829,54 +2832,52 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Resource choices<span class="section-number">10 / 20</span></span></header>
-        <h2>Browsers and recordings have <em>separate resource costs</em></h2>
+        <h2>Each run consumes <em>memory and storage</em></h2>
+        <ul>
+          <li>
+            The browser stays open while the model decides, so a slow run also holds memory for
+            longer.
+          </li>
+        </ul>
         <div
           class="tradeoff-grid"
           role="img"
-          aria-label="SQLite limits backend services but still consumes disk and synchronous writes. Fresh browsers simplify cleanup but cost startup time and memory. Detailed recordings support review but consume storage."
+          aria-label="During a run, a separate SQLite file stores workspace changes and a browser uses memory for actions and the live view. After cleanup, saved recordings still use disk so the run can be reviewed without calling the model again."
         >
           <article>
             <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Workspace data</span
             ><strong>One SQLite file per run</strong
-            ><span>The next model does not inherit earlier edits</span
-            ><b>Measured: 48 KiB per fixture after one post</b>
+            ><span>Changes stay inside this attempt</span
+            ><b>48 KiB per fixture after one post</b>
           </article>
           <article data-tone="blue">
             <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Browser execution</span
-            ><strong>Fresh browser per experiment run</strong
-            ><span>No browser state carried into the next run</span
-            ><b>Cost: startup time and browser memory</b>
+            ><strong>Browser stays open</strong
+            ><span>Used for actions, observations and the live view</span
+            ><b>Uses memory until the run closes</b>
           </article>
           <article data-tone="green">
             <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Evidence</span
-            ><strong>Record actions and workspace states</strong
-            ><span>Review failures without new model calls</span
-            ><b>Cost: growing files and disk writes</b>
+            ><strong>Recordings remain</strong
+            ><span>Review and replay without new model calls</span
+            ><b>Disk use continues after cleanup</b>
           </article>
         </div>
         <ul>
-          <li>
-            Stored actions and states let the replay show each run without calling the model again.
-          </li>
-          <li>
-            The 306-run collection paused when free disk space fell below its storage safeguard.
-          </li>
+          <li>More simultaneous runs need more browser memory.</li>
+          <li>More saved runs need more storage.</li>
         </ul>
         <ul class="sources">
           <li>
-            The storage test did not measure full browser memory. Current runs create and close
-            their own environment; browser reuse is untested.
-          </li>
-          <li>
-            API execution can omit the browser when visual recording is disabled. The reported
-            interface study kept observer recording enabled.
+            48 KiB is fixture disk size, not memory per run. Full browser memory and recording
+            size need separate measurements.
           </li>
           <li>
             <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-disk-stop.md"
-              >Recorded storage stop</a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/design-discussion.md"
+              >Resource choices and measurements</a
             >
-            · Existing evidence was preserved.
+            · Experiment runs close their own browsers. Browser reuse is untested.
           </li>
         </ul>
       </section>
@@ -2889,8 +2890,8 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         <h2>A queue would limit <em>how many browsers run at once</em></h2>
         <ul>
           <li>
-            Starting a browser for every visitor could exhaust memory and slow or interrupt active
-            runs.
+            Because each active run holds a browser in memory, starting every visitor immediately
+            could exhaust the machine.
           </li>
           <li>
             I would queue new runs until a worker is free, while keeping each active run's data
@@ -2924,8 +2925,8 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         </div>
         <ul class="sources">
           <li>
-            The collections ran sequentially, so capacity is unproven. Test 1, 4, 8, and 16 workers
-            for throughput, memory, provider limits, and crash cleanup.
+            Concurrent capacity is unmeasured. Test 1, 4, 8, and 16 workers for throughput, memory,
+            provider limits, and crash cleanup.
           </li>
           <li>
             Use separate processes or containers for stronger containment. Browser pooling trades
@@ -5877,8 +5878,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         <h2>What the early interface tests <em>taught me</em></h2>
         <ul>
           <li>
-            These runs showed the harness could record successes, wrong actions, and interrupted
-            runs.
+            Early interface tests recorded successful, incorrect and interrupted runs.
           </li>
           <li>
             They used different task and model combinations, so their pooled scores could not

@@ -180,14 +180,32 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="Define success"]')).toContainText(
     'the screen alone cannot prove success',
   );
-  await expect(page.locator('[data-title="Run speed"]')).toContainText(
+  const speed = page.locator('[data-title="Run speed"]');
+  await expect(speed.locator('h2')).toHaveText('What makes one run take longer?');
+  await expect(speed).toContainText(
+    'A fresh workspace makes runs independent, but each extra decision adds another model request',
+  );
+  await expect(speed).toContainText(
     'the workspace waits during the model request and updates after the action executes',
   );
-  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
-    'let the replay show each run without calling the model again',
+  const resources = page.locator('[data-title="Resource choices"]');
+  await expect(resources.locator('h2')).toHaveText('Each run consumes memory and storage');
+  await expect(resources).toContainText(
+    'The browser stays open while the model decides, so a slow run also holds memory for longer',
   );
-  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
-    'paused when free disk space fell below its storage safeguard',
+  await expect(resources).toContainText('Review and replay without new model calls');
+  await expect(resources).toContainText('Disk use continues after cleanup');
+  await expect(resources).toContainText('More simultaneous runs need more browser memory');
+  await expect(resources).toContainText('More saved runs need more storage');
+  // Explain the engineering choices before introducing collection-specific findings.
+  await expect(resources).not.toContainText('306-run');
+  await expect(resources).not.toContainText('The next model');
+  await expect(resources).not.toContainText('interface study');
+  expect(readFileSync('docs/presentation-notes.md', 'utf8').replace(/\s+/g, ' ')).toContain(
+    'The 306-run collection paused when free disk space fell below its 10 GB storage safeguard',
+  );
+  await expect(page.locator('[data-title="Scaling the runner"]')).toContainText(
+    'Because each active run holds a browser in memory',
   );
   await expect(page.locator('[data-title="Scaling the runner"] .takeaway')).toContainText(
     'wait for a free worker before their run starts',
@@ -195,8 +213,8 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="Session isolation"]')).toContainText(
     'Separate data is not isolation from host crashes',
   );
-  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
-    'did not measure full browser memory',
+  await expect(resources).toContainText(
+    'Full browser memory and recording size need separate measurements',
   );
   await expect(page.locator('[data-title="Scaling the runner"]')).toContainText(
     'Proposed, not implemented or load-tested',

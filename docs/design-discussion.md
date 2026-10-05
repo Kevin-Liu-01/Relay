@@ -161,6 +161,12 @@ Source: [measurement code](../scripts/benchmark.mjs),
 
 ## Where resources go and what I would optimize
 
+Elapsed time also affects resource use. While a model request is in flight, that
+run's browser stays open and holds memory. Running more tasks at once means
+keeping more browsers open. Saved recordings outlive those browsers, so retaining
+more finished runs increases storage needs instead. This is why I need separate
+limits for active runs and evidence storage, not just a fast database reset.
+
 | Area           | Current choice                                    | Benefit                                              | Cost or limit                                                   | Next measurement                              |
 | -------------- | ------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------- |
 | Workspace data | One SQLite file per run                           | Clear ownership and simple deletion                  | Files grow with state and events; writes use synchronous SQLite | File growth and write latency on longer tasks |

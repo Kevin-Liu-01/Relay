@@ -180,12 +180,15 @@ The tests write to A and check B, then close A and check B again. This proves th
 specified noninterference cases, not a security boundary against arbitrary code.
 The actor and control listeners still share a process and host resources.
 
-Next: independent runs also consume time.
+Next: independent runs are possible, but how long does one run take?
 
 ## 9. Run speed
 
 Walk through setup, the repeated loop, then finalization. Each additional
 decision adds a model request, observation, action, and recording work.
+Opening the editor, entering text, and saving can each require a decision.
+This connects the repeatable run from the previous slide to what the viewer
+actually waits for during execution.
 
 The shown medians are local component measurements. Reset is 1.50 ms, HTTP action
 is 3.31 ms, screenshot is 84.15 ms. They exclude model calls and cannot be added
@@ -195,9 +198,20 @@ The measurement used 100 stored sessions but only 10 sequential browser contexts
 Do not call it a 100-agent load test. More concurrent workers would increase
 throughput, not make a single provider response faster.
 
-Next: explain what occupies resources during those runs.
+Next: while the model is deciding, the browser is still open. What resources
+does that run hold, and what remains after it ends?
 
 ## 10. Resource choices
+
+The previous slide explains elapsed time. This slide explains why time also
+affects capacity: a browser continues to use memory while it waits for a model
+response. Running more tasks together means keeping more browsers open.
+
+The three cards distinguish workspace data, the active browser, and saved
+recordings. The browser closes after the run, but its recording stays available.
+Active work therefore needs memory, while retained history needs storage.
+These are separate limits; a small database file does not establish how many
+live browsers fit on one machine.
 
 The SQLite fixture is small: 48 KiB after one post. Browser processes and evidence
 are additional costs. The Node memory measurement excludes browser children, so
@@ -208,17 +222,20 @@ ownership simple but pays startup cost. A browser pool could retain a browser
 while giving each run a new context; this is a future optimization to measure.
 
 Evidence takes storage and write time, but makes failures reviewable without
-another model call. The original collection hit storage safeguards, which made
-this cost operationally important.
+another model call. The disk-space incident belongs with the later model results,
+after the collection has been introduced, rather than interrupting this explanation.
 
-API mode can omit the browser only when observer visuals are disabled. The
-matched study kept visual recording enabled.
+API mode can omit the browser only when observer visuals are disabled. The later
+matched study kept visual recording enabled; it is not a browser-free measurement.
 
-Next: choose a scaling design that limits these costs.
+Next: how would I accept more run requests without opening too many browsers?
 
 ## 11. Scaling the runner
 
-This is a proposal. The collections themselves ran sequentially.
+The previous slide identified the costs. This slide proposes a way to bound
+active resource use: queue requests instead of opening a browser for every
+visitor immediately. The collections themselves ran sequentially, so this is
+not a claim about measured concurrent capacity.
 
 Jobs wait in a queue. A fixed number of workers each own one active run's browser
 and data. Waiting work does not allocate browsers. Evidence should become durable
@@ -278,6 +295,12 @@ reliable ranking from one attempt per pair.
 Sort the table. Click a model, then select a task to open the trace or replay.
 Usage estimates are $189.31101456 and unresolved reservations $3.77939636,
 totaling $193.09041092 for the selected 306. These are not invoices.
+
+The resource tradeoff from slide 10 also appeared during collection. The 306-run
+collection paused when free disk space fell below its 10 GB storage safeguard.
+Existing evidence was preserved. See the [recorded storage stop](campaigns/model-breadth-2026-10-03-disk-stop.md).
+This supports budgeting for saved evidence, not a claim that Relay used all the
+disk space on a shared machine or that every pause was a model failure.
 
 Next: show a concrete reason not to read every failure as model inability.
 

@@ -129,6 +129,10 @@ slide, after explaining repeatable execution. Connect speed to waits between
 actions, recording to replay and disk use, and proposed worker limits to visitor
 queueing. Do not turn a risk or
 future design into a claim about observed failures or measured capacity.
+Keep the time → resource use → concurrency argument explicit on slides 9–11:
+waiting holds browsers open, active browsers need memory, saved recordings need
+storage, and a worker limit bounds active runs. Introduce collection-specific
+incidents only after explaining that collection, not in the earlier design slides.
 Do not substitute test counts for examples or turn proposed scale-out into a claim.
 Define technical terms once. Use factual headings and one idea per bullet.
 Do not restore slogan headings or insert unmatched pilot scores into the main
