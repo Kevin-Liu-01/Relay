@@ -116,7 +116,7 @@ button.primary:hover {
   padding: 0 28px;
 }
 .nav {
-  height: 76px;
+  height: 60px;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -172,7 +172,7 @@ button.primary:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 0 17px;
+  padding: 6px 0 8px;
 }
 .control-bar > .icon {
   color: #817888;
@@ -909,9 +909,9 @@ details pre {
   .nav {
     gap: 10px;
     height: auto;
-    min-height: 65px;
+    min-height: 60px;
     flex-wrap: wrap;
-    padding: 10px 0;
+    padding: 8px 0;
   }
   .nav-caption,
   .nav-divider {
@@ -947,7 +947,7 @@ details pre {
   }
   .nav {
     height: auto;
-    min-height: 62px;
+    min-height: 60px;
     gap: 3px;
     flex-wrap: wrap;
   }
@@ -970,7 +970,7 @@ details pre {
   }
   .control-bar {
     flex-wrap: wrap;
-    padding: 7px 0 12px;
+    padding: 6px 0 6px;
     gap: 6px;
   }
   .control-bar > .nav-spacer {

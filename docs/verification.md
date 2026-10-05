@@ -1,5 +1,21 @@
 # Verification and evidence
 
+## Compact run header: 2026-10-04
+
+- Reduced navigation height and the vertical gaps around the heading and run
+  controls. Button and dropdown sizes are unchanged. The workspace starts about
+  59 px higher in the desktop idle view and 41 px higher after a run.
+- All **10 targeted browser tests passed**, with automatic retries disabled.
+  The layout check covers 1920, 1440, 1280, 800 and 390 px widths, keyboard menus,
+  control sizes and horizontal overflow. Existing checks cover free/BYOK runs,
+  sequential launches, 1v1, live views, history, focus mode and replays.
+- Initial height assertions underestimated the access switch and mobile wrapping.
+  Final bounds preserve those control sizes while enforcing the reduced gaps.
+  Desktop and mobile screenshots were inspected. These are simulated-provider
+  software checks; no paid inference was used.
+- The production build and tests ran in an isolated copy. Frozen root `dist`,
+  historical task definitions, the 306 outcomes and cost records are unchanged.
+
 ## Expected and actual task results: 2026-10-04
 
 - Runs and replays now show exact required final values beside captured values.

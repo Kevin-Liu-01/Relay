@@ -830,7 +830,7 @@ button:focus-visible {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 14px;
-  margin: -6px 0 12px;
+  margin: 0 0 8px;
   color: #827b8b;
   font-size: 11px;
 }
@@ -1113,7 +1113,7 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin: 16px 0 22px;
+  margin: 4px 0 8px;
 }
 .run-intro h1 {
   margin: 0;
@@ -1125,7 +1125,7 @@ button:focus-visible {
   color: var(--purple);
 }
 .run-intro p {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   font-size: 13px;
   color: var(--quiet);
   line-height: 1.5;
@@ -1227,7 +1227,7 @@ button:focus-visible {
   width: 100%;
 }
 .workspace-expanded .run-intro {
-  margin: 8px 0 16px;
+  margin: 4px 0 8px;
 }
 .workspace-expanded .run-intro h1 {
   font-size: 25px;
@@ -1239,8 +1239,8 @@ button:focus-visible {
   .run-intro {
     align-items: flex-start;
     flex-direction: column;
-    gap: 14px;
-    margin: 12px 0 18px;
+    gap: 8px;
+    margin: 4px 0 8px;
   }
   .run-intro p {
     max-width: 32ch;

@@ -175,6 +175,9 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     ]) {
       await page.setViewportSize(size);
       await expectFullWidthWorkspace(page);
+      expect(
+        await page.locator('.arena').evaluate((el) => el.getBoundingClientRect().top + scrollY),
+      ).toBeLessThanOrEqual(205);
       await page
         .getByRole('button', { name: 'Inspect the evidence', exact: true })
         .scrollIntoViewIfNeeded();
