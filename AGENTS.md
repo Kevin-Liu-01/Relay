@@ -2,9 +2,13 @@
 
 ## Presentation narrative
 
-Keep the 17-slide deck in this order: my approach and workflows, harness and
-interfaces, grading and verification, model comparison and its failure review,
-matched-interface study and its interpretation, then scaling and next tests.
+Keep the 20-slide deck in this order: my approach and a concrete editing task,
+all workflows, harness and interfaces, grading and verification, then dedicated
+slides on isolation, speed, resources, and scaling. Explain those design choices
+before the scope expansion and two comparisons. End with next tests and the demo.
+Each design explanation must state the need, the implementation, its cost, and
+the evidence or remaining test. See `docs/design-discussion.md` for derivations.
+Do not substitute test counts for examples or turn proposed scale-out into a claim.
 Define technical terms once. Use factual headings and one idea per bullet.
 Do not restore slogan headings or insert unmatched pilot scores into the main
 story. The 306-run controls now belong on the comparison setup slide. Use

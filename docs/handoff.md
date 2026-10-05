@@ -2,11 +2,13 @@
 
 ## Current evidence and presentation
 
-- The 17-slide [presentation](https://relay.kevinliu.studio/presentation) and
-  [PDF](presentation.pdf) first explain the assignment, workflows, harness,
-  interfaces, grader, and software checks. Each comparison then has its setup,
-  results, and interpretation in sequence. Scaling and next tests close the deck.
-  [Speaker notes](presentation-notes.md) include transitions between slides.
+- The 20-slide [presentation](https://relay.kevinliu.studio/presentation) and
+  [PDF](presentation.pdf) start with Kevin's approach and a concrete message edit.
+  They explain the harness and grading, then derive isolation, speed, resource
+  choices, and proposed scaling before the two comparisons. The failure example
+  shows the instruction, recorded response, and expected response in full.
+  [Speaker notes](presentation-notes.md) include transitions; the
+  [design discussion](design-discussion.md) explains choices, costs, and proof.
 - The original 306 attempts remain unchanged: 152 passed, 61 incomplete and 93 blocked.
 - The separate matched study completed all 96 attempts: 58 passed, 11 incomplete
   and 27 blocked. All 96 have public traces and actual-UI state replays.
@@ -47,7 +49,7 @@ Reference scripts, fake transport tests and real model results must stay distinc
 
 ## Ready now
 
-Start with [Onsite readiness](onsite-readiness.md): the 17-slide deck/PDF,
+Start with [Onsite readiness](onsite-readiness.md): the 20-slide deck/PDF,
 306 accessibility attempts and 96 matched-interface attempts, full trace/replay
 libraries, current measurements and limitations. The earlier 20-attempt campaign
 is historical; its ten unattempted cells remain unattempted. Original code is
@@ -58,7 +60,7 @@ The current catalog has **18 tasks**. Read [the task suite](task-suite.md) for t
 report and bounded model-pilot plan. Older evidence is retained as historical
 context; the current assessment distinguishes it from the new campaign.
 
-The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, 18 task contracts, trainer bridge, tests, trajectory evidence, research provenance, measurements, a Docker recipe and a 17-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for reference scripts and saved replays.
+The standalone project is `Kevin-Liu-01/Relay`, extracted from `cotcodec/cua-slack/`. It includes source, pinned npm lockfile, app/operator CLI, 18 task contracts, trainer bridge, tests, trajectory evidence, research provenance, measurements, a Docker recipe and a 20-slide presentation. No H100, paid API, cloud account or real Slack workspace is required for reference scripts and saved replays.
 
 Run `npm ci && npm run dev`, open `http://localhost:4318`, and create a task with `npm run session -- create thread-reply 47`. Use `docs/presentation.html` and its speaker notes for the original environment discussion. The hosted BYOK release now adds the screen-first console and TypeSafe decision transport; real Jev inference still requires an authenticated pilot.
 

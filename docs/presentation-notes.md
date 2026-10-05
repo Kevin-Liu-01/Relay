@@ -1,264 +1,320 @@
 # Presentation notes
 
-## Writing rules
+## How to use this deck
 
-- Use direct technical English inspired by ASD-STE100, without claiming formal compliance.
-- State what a component does or what the evidence shows.
-- Keep one complete sentence per main bullet, with no more than 20 words.
-- Use technical terms when they help, and define them before relying on them.
-- Do not use slogans, metaphors, em dashes, or asides inside a sentence.
-- Put the test conditions before the results, and the interpretation immediately after them.
-- Keep important limitations beside the claim they qualify.
-- Use diagrams for relationships and tables for results, not as decoration.
-- The style constraints must not hide a technical distinction or strengthen a result.
+The main story is: I built an execution loop around model APIs, made each run
+independent and inspectable, then used that system for two comparisons. The
+results exposed limits in both the task definitions and the interface comparison.
 
-## Narrative
+- Use about 18 minutes for the slides, then demonstrate the UI and take questions.
+- Explain the editing example once, then refer back to its message, Save button, and stored result.
+- Read [Design decisions and tradeoffs](design-discussion.md) before rehearsing. It derives the choices and links to code and tests.
+- Main bullets use short, direct technical English. This is inspired by ASD-STE100, not a claim of formal compliance.
+- Say what is implemented, what was measured, and what is proposed.
+- Diagrams illustrate behavior. They are not screenshots of recorded model executions.
+- The generated deck is `docs/presentation.html`, not the raw template.
+- Stable links: `#session-isolation`, `#run-speed`, `#resource-choices`, `#scaling-the-runner`, `#model-comparison`, `#main-lesson`, `#interface-results`.
 
-I approached the project by building a harness around model APIs, with separate
-action execution and result checks. Once it could run repeatable tests, I used it
-for two comparisons. Reviewing those results showed what the environment measures
-and what still needs validation.
+## 1. My approach
 
-- Slides 1–3: my approach and the workflows I chose.
-- Slides 4–7: execution, interfaces, grading, and verification.
-- Slide 8: why the scope expanded from an environment into a benchmark prototype.
-- Slides 9–11: model comparison, results, and task-definition findings.
-- Slides 12–14: interface comparison, results, and interpretation.
-- Slides 15–17: scaling limits, next tests, and discussion.
-- Allow 12–15 minutes, then demonstrate the app.
-- Keep older pilot counts in reference notes, outside the main narrative.
-- Generate HTML and PDF with `npm run presentation`.
-- Use stable links such as `#model-comparison`, `#main-lesson`, and `#interface-results`.
-- Diagrams explain the implementation. They are not recorded executions.
+Start with my choice, not a restatement of the assignment.
 
-## Terms
+A model API gives me a proposed action. I still need to execute it, preserve the
+application's rules, and determine whether it worked. I built those parts once
+so I could change the model without changing the test.
 
-- **Run:** one model attempts one task with fixed starting data and limits.
-- **Harness:** code that connects model APIs to the environment and manages a run.
-- **Observation:** the workspace information provided to the model at a step.
-- **Workspace state:** stored messages, topics, threads, and other application data.
-- **Grader:** code that checks the final state against task requirements.
-- **Trace:** the saved requests, responses, actions, errors, and checks.
-- **Replay:** a display of recorded workspace changes, with no new model calls.
-- **Model route:** the model identifier sent to the provider, not pinned model weights.
-- **Reservation:** allowance retained for unknown usage, not a confirmed charge.
+The three questions on this slide define the system: what to send the model,
+how to execute its response, and how to check the saved result.
 
-## Slide 1: My approach
+Next: use a specific Slack task to show what this requires.
 
-- The audience already knows the problem. Start with my engineering choices, not a recap of the brief.
-- I built the harness around model APIs rather than tying it to one model.
-- I separated model requests, action execution, and grading so I could check each part independently.
-- I researched what information and controls each computer-use interface provides.
-- I kept the run process consistent so I could compare task completion across models.
-- The broader benchmark came later, once this execution and recording process worked.
-- Next: show the concrete workflow that determined what the app needed.
+## 2. The environment
 
-## Slide 2: The environment
+Alex's launch-review message says 14:00. The task requires the same message to say
+15:00, with the rest unchanged. Searching, opening an editor, typing, and saving
+must all work. A dialog with the right text is not the same as a saved edit.
 
-- Search, threads, and message editing came from the assignment.
-- The example is a complete workflow: find a message, read the thread, and make the correct change.
-- React displays the interface, and SQLite stores workspace data.
-- Pins, saved items, direct messages, and channel settings support longer tasks.
-- People and browser agents use the same app. All people and content are fictional.
-- I reviewed Cua Slack, env0, Agent-Diff, and mockups, but did not benchmark against them.
-- Next: show how these features support the complete task set.
+This explains why I needed more than a static mockup, but not all of Slack.
+React renders the interface. SQLite holds each experimental workspace's data.
+The manual `/play` sandbox instead uses page memory and is not a graded run.
 
-## Slide 3: All workflows
+Next: show how these features support the broader task set.
 
-- The set includes six focused tasks and twelve tasks with several steps.
-- Read one flow from each column, not all eighteen.
-- These diagrams summarize workflows, not replacement task instructions.
-- The starred tasks had wording problems found during result review.
-- Keep that detail brief here because slide 11 explains the evidence.
-- Next: explain how a model executes one of these tasks.
+## 3. All workflows
 
-## Slide 4: The repeatable harness
+The suite has six focused tasks and twelve longer workflows. Read one flow from
+each column rather than listing every task. A longer task combines existing
+features: read several sources, change the right object, and preserve the rest.
 
-- A run starts with known data in a separate database and browser session.
-- The harness provides an observation, requests one model action, validates it, and executes it.
-- The loop continues until the model finishes or a run limit stops it.
-- Playwright executes browser actions, and provider adapters send model requests.
-- The recorder saves actions, errors, timing, usage receipts, and workspace states.
-- Replay displays saved states and cursor positions without new inference.
-- Separate data prevents runs from modifying each other's workspace.
-- It does not contain malicious code that can access the shared host.
-- Next: explain exactly what the model can see and do.
+The two stars identify task-language caveats, not tasks removed from the results.
+Their original outcomes remain recorded.
 
-## Slide 5: Agent interfaces
+Next: show how the harness runs any one of these tasks.
 
-- Pixels provide a screenshot and coordinate-based mouse and keyboard actions.
-- Accessibility provides named page controls and element references.
-- Page JSON describes page controls as structured data, not the underlying database.
-- Actor API access provides workspace data and direct application operations.
-- API is tool use, not browser control.
-- The interfaces use the same application rules, but expose different information and action sizes.
-- All models use Relay's shared action protocol, not provider-native computer-use protocols.
-- Next: show how results are checked independently of the model's response.
+## 4. The repeatable harness
 
-## Slide 6: Define success
+Define **run** as one model attempting one task. Define **observation** as the
+workspace information supplied at one step.
 
-- The grader compares final stored data with the task requirements.
-- Posting the requested topic as a message does not satisfy a channel-topic task.
-- The example requires both the exact topic and no unrelated changes.
-- Longer tasks also check author, destination, and required changes.
-- Expected answers and control credentials are not sent to the agent.
-- The grader returns reward 1 only when every required check passes.
-- A blocked attempt stays blocked even if its diagnostic state checks pass.
-- Fully undone mistakes are not penalized by this final-state grader.
-- Next: explain how the app, grader, and recording were tested.
+The model does not directly own the browser. It returns one supported action.
+The harness validates and executes that action, then reads the page again.
+Playwright performs browser actions; the API path performs application operations.
 
-## Slide 7: Verification
+The loop ends on finish or a limit. The harness records actions, errors, data,
+timing, and usage so I can inspect what happened. It does not expose a shell,
+the hidden answer, or the trainer credential to the model.
 
-- Scripted browser tests complete workflows without model inference.
-- Constructed valid and invalid states test the grader's implemented rules.
-- Saved steps let reviewers inspect the observation, action, and resulting workspace.
-- The slide uses saved full-suite reports. Later release checks are in [verification](verification.md).
-- These checks establish software behavior, not independent validation of task wording.
-- Next: explain why a reusable test system made a broader comparison practical.
+Next: explain the choices for observation and action.
 
-## Slide 8: The scope expands
+## 5. Agent interfaces
 
-- Once a run could be reset and recorded, changing models no longer required rebuilding the test.
-- I expanded the environment exercise into a benchmark prototype.
-- The first comparison used 17 models on 18 tasks through accessibility controls.
-- The second used four models and six tasks through four interfaces.
-- These answer different questions and use separate records and budgets.
-- Next: describe the first comparison's controls before showing scores.
+Pixels show a screenshot and require mouse/keyboard actions. Accessibility names
+page controls. Page JSON serializes those controls. Neither text-based browser
+mode is a direct database dump.
 
-## Slide 9: Comparison setup
+The actor API provides structured application data and operations. It is tool
+use, not computer use through the UI. This distinction matters later: setting a
+topic directly is different from finding and operating the topic editor.
 
-- Seventeen model routes times eighteen tasks gives 306 attempts.
-- Every attempt uses accessibility controls and a single JSON action per request.
-- Seed 1042 fixes starting data. Each observation includes the recent four turns and no site guide.
-- Limits are 40 actions, 180 seconds, 4,096 output tokens per request, and a $5 estimated allowance.
-- The comparison preserves 105 earlier runs and adds 201 untouched cells without retries.
-- Provider-default reasoning, backend routing, and collection time were not controlled.
-- The routes cover nine provider families. This is not a test of every available model.
-- The original 306 records remain fixed. The current observer UI did not generate those records.
-- Next: show recorded outcomes, costs, and links to each attempt.
+All models use Relay's shared action protocol, not their native CUA protocol.
 
-## Slide 10: Model comparison
+Next: check the result independently of whichever route the model used.
 
-- All 306 attempts are recorded: 152 passed, 61 incomplete, and 93 blocked.
-- Passed means the eligible run met every final-state check.
-- Incomplete means unmet checks after completion or the action limit.
-- Blocked means a service error, timeout, output limit, spending stop, or other execution interruption.
-- Diagnostic checks do not convert a blocked attempt into a pass.
-- Sort the table and use its task filter. Click a model to inspect traces and replays.
-- Sol and Astra each passed 14/18 tasks. Across all models, 15/18 tasks passed at least once.
-- One attempt per model/task pair cannot establish a reliable ranking.
-- Usage estimates and unresolved reservations are separate. Neither is an invoice.
-- Next: inspect why low scores cannot all be interpreted as model inability.
+## 6. Define success
 
-## Slide 11: Main lesson
+A completion response is not evidence that the message changed. The grader checks
+the stored original message, the exact required text, and unrequested changes.
 
-- Reviewing failures revealed both task-definition problems and model execution errors.
-- Design handoff quoted DESIGN without explicitly requiring substitution.
-- Six completed runs copied DESIGN, but the grader expected Willow.
-- Release sync's wording could place both sources in engineering, though one was in the project channel.
-- I tested grader logic without independently validating each task's interpretation.
-- This limits the comparison, but does not prove that clearer wording would fix every failure.
-- Retrospective had no passes because all runs hit limits.
-- Handoff repair passed five times. Sol and Astra entered a correct edit, then clicked Cancel.
-- Preserve all original outcomes. A corrected instruction belongs in a new task version.
-- Next: investigate a different question with a separate matched-interface study.
+Reward 1 requires every check. Posting a new message with the right words does
+not pass an editing task. Clicking Cancel does not save the typed edit.
 
-## Slide 12: Matched interface study
+This is a final-state check. A mistake that is fully undone may still pass.
+Actions remain in the trace, but the current reward does not penalize the path.
 
-- I used four models, six tasks, four interfaces, and one attempt per condition.
-- The plan fixed a separate $25 allowance before inference, with no retries.
-- Every model/task block starts four fresh workspaces from identical data.
-- Interface order is randomized within each block.
-- All routes support image input. Low reasoning is requested in every condition.
-- Each run allows 40 actions, 180 seconds, 90 seconds per request, and a $1 estimated allowance.
-- Seed 2042, recent-four history, no guide, and 4,096 output tokens remain fixed.
-- The first sixteen attempts verified transport and trace integrity before the remaining eighty.
-- The original 306 runs are not reused as a baseline.
-- Next: show the completed matrix before interpreting interface differences.
+Next: explain how I tested this check without trusting a model.
 
-## Slide 13: Interface results
+## 7. Verification
 
-- All 96 attempts are recorded: 58 passed, 11 incomplete, and 27 blocked.
-- Each model/interface cell includes six tasks.
-- API passed 21/24, accessibility 18/24, Page JSON 16/24, and pixels 3/24.
-- Click a pass count to inspect the six underlying attempts.
-- The table keeps incomplete and blocked counts visible.
-- Usage estimates total $20.718042, with $2.043534 in unresolved reservations.
-- Combined allowance is $22.761576 of $25, not a billing receipt.
-- Next: explain what could have caused these differences.
+The three examples test different things.
 
-## Slide 14: Interpreting interface results
+- A scripted browser solution tests whether the UI can complete the task.
+- Deliberately wrong versions of a correct state test whether the grader rejects near misses.
+- Reopening a recording tests whether its saved grade agrees with the saved data.
 
-- API and accessibility both passed seventeen of the twenty-four matched model/task pairs.
-- Only API passed four pairs, only accessibility passed one, and neither passed two.
-- Five pairs include a blocked attempt, so pass differences do not isolate model ability.
-- On seventeen shared passes, accessibility used median within-pair differences of two more actions, 5.462 more seconds, and $0.13008 more allowance.
-- This successful subset is not a general speed or cost estimate.
-- API exposes broader structured data and larger actions than browser controls.
-- Nineteen pixel attempts were blocked: fourteen connection failures, three output limits, and two timeouts.
-- All four accessibility blocks hit the $1 run cap.
-- Pixel observations were low-detail images, and Chromium ran on macOS.
-- macOS keyboard shortcuts differ from common Windows/Linux shortcuts. Element modes also provide direct fill.
-- Observer builds shared the host, so elapsed time is not isolated model speed.
-- No reliable winner or general CUA ranking follows from one attempt per condition.
-- [Paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md) defines every measurement.
-- Next: distinguish observed local performance from the untested scaling design.
+The long-workflow challenge report contains 84 valid and 2,583 invalid states
+across seven seeds. Those are software checks, not thousands of model attempts.
+Saved full-suite reports and later targeted release checks are distinguished in
+[verification](verification.md).
 
-## Slide 15: Speed and resources
+A script already knows the author's intended answer. It cannot independently
+validate the instruction's meaning. Return to this limit on slide 15.
 
-- Local median times were 17.34 ms for creation, 1.50 ms for reset, and 84.15 ms for screenshots.
-- These exclude model calls and do not measure end-to-end concurrent agent throughput.
-- The current actor and control servers share a process.
-- Proposed workers each own a browser and database, then send recordings to external storage.
-- Full browser memory, sustained concurrency, and multi-worker cleanup remain unmeasured.
-- Test one, four, eight, and sixteen workers before claiming capacity.
-- Stronger containment requires separate processes, containers, or virtual machines.
-- Next: identify the specific work needed for the next benchmark version.
+Next: move from one correct run to two independent runs.
 
-## Slide 16: The next benchmark version
+## 8. Session isolation
 
-- Have an independent reader solve tasks from the instructions and visible workspace.
-- Compare that interpretation with the expected result before collecting scores.
-- Test limits on short and long workflows, then freeze settings for collection.
-- Add unseen task variants and repeated attempts to estimate reliability.
-- Separate task ambiguity, wrong actions, service errors, and resource limits.
-- Change one test condition at a time where possible.
-- The [engineering review](build-review.md) covers recording, replay ownership, and storage.
-- Next: demonstrate the current deliverable and ask which extensions matter.
+Start with the failure case: if A edits shared data, B may receive an easier task
+without doing the work. Separate runs must not affect each other's starting state.
 
-## Slide 17: Demonstration and discussion
+Each run owns a database file and a fresh browser context. The database separates
+stored data. The context separates browser storage and open UI state. On normal
+close, the harness releases the context and deletes the session.
 
-- Open `/play`, search `in:design navigation`, and inspect the decision thread.
-- Open `/results`, select a model/task, then inspect its trace and replay.
-- Show Claude Fable's saved-item cleanup pass and Grok's incomplete retrospective.
-- The interface study is separately available at `/demo/review.html?study=interfaces`.
-- Discuss workflow coverage, undone mistakes, concurrency, and per-run cost.
-- Relay can reset, observe, act, and return a reward, but no RL training has been run.
-- Native Codex, BrowserGym, and OpenEnv compatibility have not been demonstrated.
-- The three screenshot-only passes do not establish reliable pixel control.
+A shared database with session filters is another option. Separate files make
+ownership and deletion simpler here, at the cost of more files and open/close work.
 
-## Reference facts for questions
+The tests write to A and check B, then close A and check B again. This proves the
+specified noninterference cases, not a security boundary against arbitrary code.
+The actor and control listeners still share a process and host resources.
 
-- Earlier interface passes: accessibility 2/6, page JSON 2/7, pixels 0/1, and API 4/6.
-- Earlier costs: 126 requests, $0.14838375 usage estimate, and $0.00149020 unresolved reservations. Combined allowance: $0.14987395.
-- Checker tests: 84 valid states and 2,583 invalid states across 12 longer task templates and seven seeds.
-- The larger comparison spans OpenAI, Anthropic, DeepSeek, Qwen, Grok, Kimi, MiniMax, GLM, and Nemotron.
-- The larger comparison has 4,747 requests and 4,712 accepted receipts. Usage is unresolved for 35 requests.
-- Accepted receipts report 74,861,087 input tokens and 1,400,260 output tokens.
-- Usage estimate: $189.31101456. Unresolved reservations: $3.77939636. Combined selected allowance: $193.09041092.
-- The shared ledger totals $194.10583757, including $1.01542665 outside those runs. The remaining allowance is $105.89416243 against $300.
-- These estimates do not apply cache discounts or include hosting charges. Download full precision as CSV or JSON.
-- Verification reopened 277 archives. All 26,403 integrity checks and 2,007 saved-state grading checks agreed.
-- The comparison recorded 4,662 action attempts, 506 rejected steps, and no capture gaps.
-- Original PNGs remain in the archives. Public records retain their hashes.
-- Retrospective stops: six action limits, five output limits, four timeouts, and two spending limits.
-- For handoff repair, Sol reached 40 actions. Astra stopped after 38 actions at its allowance.
-- Timing setup: Apple M5 Max, Node 24, 100 sessions, 400 reads at concurrency 16, and 10 sequential browser sessions.
+Next: independent runs also consume time.
+
+## 9. Run speed
+
+Walk through setup, the repeated loop, then finalization. Each additional
+decision adds a model request, observation, action, and recording work.
+
+The shown medians are local component measurements. Reset is 1.50 ms, HTTP action
+is 3.31 ms, screenshot is 84.15 ms. They exclude model calls and cannot be added
+into a complete run estimate. HTTP action timing is not total UI-action timing.
+
+The measurement used 100 stored sessions but only 10 sequential browser contexts.
+Do not call it a 100-agent load test. More concurrent workers would increase
+throughput, not make a single provider response faster.
+
+Next: explain what occupies resources during those runs.
+
+## 10. Resource choices
+
+The SQLite fixture is small: 48 KiB after one post. Browser processes and evidence
+are additional costs. The Node memory measurement excludes browser children, so
+I cannot derive agents-per-machine from it.
+
+The experiment loop creates and closes a browser per run. That makes lifecycle
+ownership simple but pays startup cost. A browser pool could retain a browser
+while giving each run a new context; this is a future optimization to measure.
+
+Evidence takes storage and write time, but makes failures reviewable without
+another model call. The original collection hit storage safeguards, which made
+this cost operationally important.
+
+API mode can omit the browser only when observer visuals are disabled. The
+matched study kept visual recording enabled.
+
+Next: choose a scaling design that limits these costs.
+
+## 11. Scaling the runner
+
+This is a proposal. The collections themselves ran sequentially.
+
+Jobs wait in a queue. A fixed number of workers each own one active run's browser
+and data. Waiting work does not allocate browsers. Evidence should become durable
+before a worker deletes its local resources.
+
+I would test 1, 4, 8, and 16 workers. Measure successful runs/hour, per-run latency,
+full process-tree memory, provider limits, capture failures, and cleanup. Kill one
+worker and verify that other runs are correct and its interrupted record survives.
+
+Pooling browsers may save startup work but enlarges the effect of a browser crash.
+Processes or containers provide a stronger boundary than browser contexts; this
+project has not established hostile-code containment.
+
+Next: show how the repeatable execution system enabled a benchmark.
+
+## 12. The scope expands
+
+The environment and harness came first. Once they could reset, execute, grade,
+and record, I could change models without rebuilding the test.
+
+I then expanded the scope into two comparisons. The first asks which tasks each
+model completes through accessibility controls. The second changes the interface
+for matched model/task pairs. They have separate plans, records, and budgets.
+
+Next: state the first comparison's controls before showing its results.
+
+## 13. Comparison setup
+
+Seventeen routes times eighteen tasks gives 306 attempts. All use accessibility
+controls, seed 1042, recent-four history, no site guide, and the same graders.
+The limits are 40 actions, 180 seconds, 4,096 output tokens per request, and $5
+estimated allowance per run.
+
+This inventory retains 105 earlier runs and adds 201 untouched cells. It is not
+a fresh randomized campaign. There are no repeats or replacement failures.
+Provider-default reasoning, provider routing, and collection time are not controlled.
+
+Next: inspect the complete table.
+
+## 14. Model comparison
+
+All 306 attempts are recorded: 152 passed, 61 incomplete, and 93 blocked.
+
+- Passed: an eligible run met every final-state check.
+- Incomplete: unmet checks after completion or the action limit.
+- Blocked: a service error, timeout, output limit, spend stop, or execution interruption.
+
+Diagnostic checks do not turn a blocked attempt into a pass. Sol and Astra each
+passed 14/18; across all models, 15/18 tasks passed at least once. That is not a
+reliable ranking from one attempt per pair.
+
+Sort the table. Click a model, then select a task to open the trace or replay.
+Usage estimates are $189.31101456 and unresolved reservations $3.77939636,
+totaling $193.09041092 for the selected 306. These are not invoices.
+
+Next: show a concrete reason not to read every failure as model inability.
+
+## 15. Main lesson
+
+Read the task excerpt aloud. The workspace says Willow, but the task quotes
+DESIGN without saying to replace it. Six completed runs sent that literal text.
+The grader requires Willow. A second required message has the same defect.
+
+My tests checked the answer I intended. They did not test whether an independent
+reader would infer it from the task. That is the missing validation step.
+
+This finding does not explain all seventeen failures or establish how a clearer
+task would score. Keep the grades and records. Correct wording in a new version.
+
+Other cases are in the [failure review](campaigns/model-breadth-2026-10-03-observations.md):
+release-sync has an unclear source location; every retrospective run hit a limit;
+Sol and Astra entered a correct handoff edit, then clicked Cancel. Those are
+different explanations, not one general statement that long tasks are impossible.
+
+Next: compare interface choices using a separate study.
+
+## 16. Matched interface study
+
+Four image-capable routes, six tasks, four interfaces, one attempt each gives 96.
+Each model/task block starts from four fresh copies of the same data. Interface
+order is randomized within the block.
+
+The plan fixed $25 total, $1 per run, 40 actions, 180 seconds, 90 seconds per
+request, 4,096 output tokens, low reasoning, seed 2042, recent-four history, and no
+guide. There are no retries. The original 306 trials are not reused as its baseline.
+
+Next: show the full matrix, including stops.
+
+## 17. Interface results
+
+All 96 attempts are recorded: 58 passed, 11 incomplete, and 27 blocked. Each table
+cell contains six tasks. Click its pass count to review them.
+
+API passed 21/24, accessibility 18/24, Page JSON 16/24, and pixels 3/24. Usage
+estimates total $20.718042; unresolved reservations are $2.043534; combined
+allowance is $22.761576. Missing receipts remain unknown, not free.
+
+Next: explain why the highest pass count is not a universal CUA winner.
+
+## 18. Interpreting interface results
+
+Use the topic example. The API can set a topic in one application operation.
+The browser path needs the editor, text entry, and Save. Equal action limits and
+a shared final check do not make these equally difficult.
+
+Nineteen pixel attempts stopped early: fourteen connection failures, three output
+limits, two timeouts. Images used low detail. On macOS, keyboard shortcuts differ
+from common Windows/Linux shortcuts; element modes also have direct fill.
+
+API and accessibility both passed 17 matched pairs; API alone passed four,
+accessibility alone one, neither two. Five pairs include a blocked attempt.
+On the 17 shared passes, accessibility used median within-pair differences of
+two more actions, 5.462 more seconds, and $0.13008 more allowance. This selected
+subset is not a general speed estimate. Shared-host activity also affected time.
+
+One attempt cannot estimate repeat-run reliability. See the
+[paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md).
+
+Next: identify what would make the next benchmark stronger.
+
+## 19. The next benchmark version
+
+Have an independent reader solve every task using only the instructions and
+visible workspace. Compare their interpretation with the expected result.
+Check run limits on short and long tasks, then freeze the conditions.
+
+Add unseen variants and repeated attempts. Keep task ambiguity, incorrect actions,
+service failures, and limits separate. New work requires a new study, not changes
+to the completed records.
+
+Next: show how reviewers can inspect the existing deliverable.
+
+## 20. Demonstration and discussion
+
+- Use `/play` to search, open a thread, and edit a message yourself.
+- In `/results`, select a model and task, then open the trace and replay.
+- Use a saved successful run and a failure to show expected versus actual state.
+- Open `/demo/review.html?study=interfaces` for the separate matched study.
+- Ask about target concurrency, workflow priorities, and whether wrong actions later undone should affect reward.
+
+Relay supports reset, observation, action execution, and a reward. No RL training
+has been run. Native Codex, BrowserGym, and OpenEnv compatibility have not been
+demonstrated. Use the saved PDF and recordings if the network fails.
 
 ## Before presenting
 
-- Open the site, PDF, results table, and one replay before the meeting.
-- Keep the PDF and saved evidence available if the service fails.
-- Do not show API keys while sharing your screen.
-- Use recorded examples for a predictable demo. New inference needs a working model route and a spending limit.
-- Original code has an MIT license. Third-party fonts and logos keep their own restrictions.
+- Rehearse slides 2, 8, 11, and 15 without reading their bullets. Explain the cause, choice, and cost.
+- Open the generated deck, PDF, results table, and one replay in advance.
+- Keep API keys out of screen sharing.
+- Replays need no model calls. A new live run needs a working route and a spending limit.
+- Preserve all original outcomes and disclose missing usage.
+- Original code is MIT. Third-party fonts and logos retain their restrictions.

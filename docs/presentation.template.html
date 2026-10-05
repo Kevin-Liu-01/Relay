@@ -16,38 +16,38 @@
     <main>
       <section class="slide active cover" data-title="My approach">
         <h1>
-          I built a harness<br />
-          <em>around model APIs</em>
+          I used one harness<br />
+          <em>for multiple model APIs</em>
         </h1>
         <ul>
           <li>
-            I separated the model API, action execution, and result checks so I could test each part
-            independently.
+            I used model APIs to choose actions and built a harness to execute those actions in
+            Slack.
           </li>
           <li>
-            I kept the run process fixed so I could change models and compare how they completed the
-            same tasks.
+            The harness owns the starting data, browser, result checks, and recording, so changing
+            models does not require rebuilding the test.
           </li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="My approach: research computer-use interfaces, implement a controlled test environment, then compare models on the same tasks."
+          aria-label="Three design questions: what information to send to a model, how to execute its action, and how to check that the requested change actually happened."
         >
           <div>
-            <span class="diagram-label">01 · Research</span>{{ICON_PIXELS}}<strong
-              >Computer-use interfaces</strong
-            ><span>What can the model see and do?</span>
+            <span class="diagram-label">Model input</span>{{ICON_PIXELS}}<strong
+              >What does it see?</strong
+            ><span>Compare screenshots, page controls, and structured data.</span>
           </div>
           <div>
-            <span class="diagram-label">02 · Build</span>{{ICON_RESET}}<strong
-              >Controlled test runs</strong
-            ><span>How do I execute and verify actions?</span>
+            <span class="diagram-label">Action execution</span>{{ICON_RESET}}<strong
+              >How does it act?</strong
+            ><span>Turn the response into a browser action or an API operation.</span>
           </div>
           <div>
-            <span class="diagram-label">03 · Compare</span>{{ICON_POLICY}}<strong
-              >Model performance</strong
-            ><span>Which tasks can each model complete?</span>
+            <span class="diagram-label">Result check</span>{{ICON_CHECK}}<strong
+              >Did the change happen?</strong
+            ><span>Check saved application data, not the model's claim.</span>
           </div>
         </div>
         <ul class="sources">
@@ -55,40 +55,53 @@
         </ul>
       </section>
       <section class="slide" data-title="The environment">
-        <h2>The app supports complete Slack workflows</h2>
+        <h2>I started with a task that needs a real saved change</h2>
         <ul>
-          <li>I started with search, threads, and message editing from the assignment.</li>
           <li>
-            Each workflow includes the interface, stored data, and checks for the required result.
+            The agent must find Alex's launch-review message and change its time from 14:00 to 15:00
+            UTC.
           </li>
-          <li>People and browser agents use the same app with fictional workspace data.</li>
+          <li>
+            Typing the new time is not enough: it must save the edit without changing other
+            messages.
+          </li>
         </ul>
         <div
           class="diagram workflow-diagram"
           role="img"
-          aria-label="A Slack workflow moves from finding a source message, to opening its thread, to editing or replying. Pins, saved items, direct messages, and channel settings extend these workflows."
+          aria-label="Example task: find Alex's launch-review message, edit its time from 14:00 to 15:00 UTC, then save. A static mockup cannot store or verify that change."
         >
           <div class="flow">
             <div class="node">
-              {{ICON_SEARCH}}Find the message<span>Search channels and messages</span>
+              {{ICON_SEARCH}}Find the message<span
+                >Alex · #proj-meridian<br />Launch review at 14:00 UTC</span
+              >
             </div>
             <div class="arrow">{{ICON_ARROW}}</div>
             <div class="node">
-              {{ICON_THREAD}}Read the thread<span>Check the related messages</span>
+              {{ICON_EDIT}}Edit the time<span
+                >Replace 14:00 with 15:00<br />Keep the rest of the text</span
+              >
             </div>
             <div class="arrow">{{ICON_ARROW}}</div>
             <div class="node" data-tone="green">
-              {{ICON_EDIT}}Make the change<span>Edit or reply in place</span>
+              {{ICON_CHECK}}Save the edit<span
+                >Stored message now says 15:00<br />Other messages are unchanged</span
+              >
             </div>
           </div>
           <div class="feature-strip">
-            <span>Pins</span><span>Saved items</span><span>Direct messages</span
-            ><span>Channel settings</span>
+            <span>React renders the UI</span><span>SQLite stores the change</span
+            ><span>Code checks the result</span>
           </div>
         </div>
         <ul class="sources">
           <li>
-            React UI · SQLite state ·
+            A static mockup cannot test persistence. A full Slack backend adds services these tasks
+            do not need.
+          </li>
+          <li>
+            Fictional data · Task abbreviated here ·
             <a href="https://relay.kevinliu.studio/play">Try the workspace without a key</a> ·
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
               >Prior-work review</a
@@ -191,45 +204,51 @@
         </ul>
       </section>
       <section class="slide" data-title="The repeatable harness">
-        <h2>The harness runs the model's actions in a loop</h2>
+        <h2>The model proposes an action; the harness executes it</h2>
         <div
           class="diagram harness-diagram"
           role="img"
           aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, validates and executes it, then observes again. The grader checks the final state and the recorder saves evidence."
         >
           <div class="ownership-strip">
-            {{ICON_BROWSER}}New browser session<span>+</span>{{ICON_DATABASE}}Private database<span
-              class="ownership-tag"
-              >Separate data for each run</span
+            {{ICON_TASK}}One run = one model attempting one task<span class="ownership-tag"
+              >Fresh starting data</span
             >
           </div>
           <div class="flow">
-            <div class="node">{{ICON_WORKSPACE}}Observe<span>Visible workspace</span></div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="blue">
-              {{ICON_POLICY}}Choose one action<span>Model response</span>
+            <div class="node">
+              {{ICON_WORKSPACE}}Read the page<span>The edit dialog is open</span>
             </div>
             <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node">{{ICON_CHECK}}Validate and execute<span>Browser or API</span></div>
+            <div class="node" data-tone="blue">
+              {{ICON_POLICY}}Ask the model<span>Example response: click Save</span>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node">
+              {{ICON_BROWSER}}Execute the action<span>Playwright clicks the button</span>
+            </div>
           </div>
           <div class="loop-return"><span>Next observation</span></div>
           <div class="harness-outputs">
-            <span>{{ICON_STATE}}Final state → grader</span
-            ><span>{{ICON_EVIDENCE}}Saved steps → trace and replay</span>
+            <span>{{ICON_STATE}}At the end: check saved data</span
+            ><span>{{ICON_EVIDENCE}}At each step: record what happened</span>
           </div>
         </div>
         <ul>
           <li>
-            Each run starts with a separate database and browser session containing known workspace
-            data.
+            The harness accepts only supported actions, so a model response cannot execute arbitrary
+            code.
           </li>
-          <li>The model receives an observation and returns one action at a time.</li>
-          <li>The harness repeats this loop until the model finishes or a limit stops the run.</li>
+          <li>
+            After each action, it reads the updated page before asking the model what to do next.
+          </li>
+          <li>
+            The run stops when the model finishes or reaches an action, time, or spending limit.
+          </li>
         </ul>
         <ul class="sources">
           <li>
-            Playwright controls the browser. Separate data does not protect the host from malicious
-            code.
+            The example shows browser control. The API path executes application operations instead.
           </li>
         </ul>
       </section>
@@ -279,32 +298,36 @@
         </ul>
       </section>
       <section class="slide" data-title="Define success">
-        <h2>The grader checks the final workspace state</h2>
+        <h2>I grade saved data, not visible text or a completion message</h2>
         <ul>
-          <li>Workspace state is the stored data: messages, threads, topics, and saved items.</li>
-          <li>The grader is code that compares this data with the task requirements.</li>
-          <li>A model's claim that it finished does not affect the result.</li>
+          <li>
+            The grader is code that checks the stored messages, topics, and other workspace data.
+          </li>
+          <li>
+            For the editing task, the original message must contain the requested text and all
+            unrelated data must stay unchanged.
+          </li>
         </ul>
         <div
           class="diagram state-diagram"
           role="img"
-          aria-label="A topic task has two checks: the requested text must be the channel topic, and no unrelated state may change. Both must pass."
+          aria-label="The editing task passes only if Alex's original message contains the exact requested text and no unrelated workspace data changes. Posting a new message or leaving an unsaved edit does not pass."
         >
           <div class="state-task">
             {{ICON_TASK}}
             <div>
-              <strong>Example: update a channel topic</strong
-              ><span>Set the requested topic. Make no other changes.</span>
+              <strong>Required saved message</strong
+              ><span>“Launch review is at 15:00 UTC. Please bring the final checklist.”</span>
             </div>
           </div>
           <div class="state-checks">
             <div>
-              {{ICON_CHECK}}<strong>Correct topic</strong
-              ><span>Exact text in channel settings</span>
+              {{ICON_CHECK}}<strong>Right change</strong
+              ><span>Exact text in Alex's original message</span>
             </div>
             <div>
               {{ICON_CHECK}}<strong>No extra changes</strong
-              ><span>Other workspace data stays the same</span>
+              ><span>No new message or unrelated edit</span>
             </div>
             <div class="reward"><strong>Both pass</strong><span>Reward = 1</span></div>
           </div>
@@ -322,34 +345,39 @@
         </ul>
       </section>
       <section class="slide" data-title="Verification">
-        <h2>I tested the app and grader before comparing models</h2>
+        <h2>I tested correct and nearly correct outcomes separately</h2>
         <div
-          class="verification-map"
+          class="check-examples"
           role="img"
-          aria-label="Scripted tests check app behavior. Constructed states check the grader. Recorded runs check agent behavior. These are separate sources of evidence."
+          aria-label="A scripted browser solution checks that the task is possible. Grader tests change a correct solution into a wrong destination or an extra edit and require failure. Recording checks bind the reported result to saved actions and data."
         >
           <div>
-            <span class="diagram-label">App behavior</span>{{ICON_BROWSER}}<strong
-              >{{BACKEND_TESTS}} backend tests<br />{{BROWSER_TESTS}} browser tests</strong
-            ><span>Does the software work?</span>
+            <span class="diagram-label">Can the UI do it?</span
+            ><strong>Run a scripted solution</strong>
+            <span>Search → edit → Save → inspect the stored message</span
+            ><b>The requested change must persist.</b>
           </div>
           <div>
-            <span class="diagram-label">Result checks</span>{{ICON_CHECK}}<strong
-              >84 valid states<br />2,583 invalid states</strong
-            ><span>Does the grader reject wrong results?</span>
+            <span class="diagram-label">Can the grader catch a near miss?</span
+            ><strong>Alter a known correct result</strong>
+            <span>Wrong destination, wrong author, or one extra change</span
+            ><b>The altered result must fail.</b>
           </div>
           <div>
-            <span class="diagram-label">Recording integrity</span>{{ICON_EVIDENCE}}<strong
-              >Actions and states<br />Timing and usage</strong
-            ><span>Can each result be inspected?</span>
+            <span class="diagram-label">Can I explain a model's result?</span
+            ><strong>Reopen the recorded run</strong>
+            <span>Read its actions and check its saved data again</span
+            ><b>The recorded grade must agree.</b>
           </div>
         </div>
         <ul>
-          <li>Scripted browser tests complete the workflows without a model.</li>
-          <li>Known valid and invalid states test the grader's rules.</li>
           <li>
-            Saved actions and workspace states support trace review and replay without new model
-            calls.
+            These checks separate application bugs, grading bugs, and agent mistakes without paying
+            for more model calls.
+          </li>
+          <li>
+            A scripted solution still knows my intended answer, so it cannot prove that a new reader
+            understands the task.
           </li>
         </ul>
         <ul class="sources">
@@ -357,8 +385,186 @@
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
               >Software verification</a
             >
-            · Counts shown here come from saved full-suite reports, not the later targeted release
-            checks.
+            · The longer-workflow grader tests cover 84 valid and 2,583 invalid states across seven
+            seeds.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Session isolation">
+        <h2>Two agents must not share mutable workspace data</h2>
+        <ul>
+          <li>If agent A edits a message, agent B must still see its own unchanged copy.</li>
+          <li>
+            I give each run a separate SQLite file and a fresh browser context, which is an
+            independent browser session.
+          </li>
+        </ul>
+        <div
+          class="isolation-diagram"
+          role="img"
+          aria-label="Both runs start from the same fixture, but own separate browser contexts and SQLite files. A saves the message at 15:00. B's copy remains at 14:00. App code is shared; workspace data is not."
+        >
+          <div class="shared-code">Shared application code + same starting fixture</div>
+          <div class="session-pair">
+            <div>
+              <span class="diagram-label">Run A</span><strong>Browser context A → database A</strong
+              ><span>Agent saves its edit</span><b>Launch review at 15:00</b>
+            </div>
+            <div>
+              <span class="diagram-label">Run B</span><strong>Browser context B → database B</strong
+              ><span>No action in this run</span><b>Launch review stays at 14:00</b>
+            </div>
+          </div>
+          <div class="diagram-caption">
+            A session token selects one database. The agent is not given another run's token.
+          </div>
+        </div>
+        <ul class="sources">
+          <li>Tested: write to A, check that B is unchanged; close A, check that B still works.</li>
+          <li>
+            The actor and control servers share a process. Separate data is not isolation from host
+            crashes or malicious code.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Run speed">
+        <h2>Run time comes from repeated steps, not just reset</h2>
+        <div
+          class="timing-diagram"
+          role="img"
+          aria-label="A run creates its workspace, repeats observe, model request, execute and record, then checks the result and cleans up. Only local components were measured separately."
+        >
+          <div class="timing-ends">Create workspace</div>
+          <div class="timing-loop">
+            <span class="diagram-label">Repeated for each decision</span
+            ><strong>Observe → wait for model → execute → record</strong>
+          </div>
+          <div class="timing-ends">Grade + clean up</div>
+        </div>
+        <div
+          class="metrics"
+          role="img"
+          aria-label="Local component medians: database reset {{RESET_MS}} milliseconds, HTTP action {{ACTION_MS}} milliseconds, screenshot {{SCREENSHOT_MS}} milliseconds. These are not full agent-run measurements."
+        >
+          <div class="metric">
+            {{ICON_RESET}}<strong>{{RESET_MS}} <small>ms</small></strong
+            ><span>Reset database</span>
+          </div>
+          <div class="metric">
+            {{ICON_API}}<strong>{{ACTION_MS}} <small>ms</small></strong
+            ><span>HTTP application action</span>
+          </div>
+          <div class="metric">
+            {{ICON_CAMERA}}<strong>{{SCREENSHOT_MS}} <small>ms</small></strong
+            ><span>Capture screenshot</span>
+          </div>
+        </div>
+        <ul>
+          <li>Every extra decision adds another model request and another observation.</li>
+          <li>
+            A faster database reset helps between runs, but does not remove the cost of those
+            repeated steps.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Measured locally on M5 Max / Node 24. Component medians exclude model calls and cannot
+            be added into an end-to-end estimate.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
+              >Samples and setup</a
+            >: 100 stored sessions; screenshots from 10 sequential browser contexts, not 100
+            concurrent agents.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Resource choices">
+        <h2>Small databases do not mean cheap browser runs</h2>
+        <div
+          class="tradeoff-grid"
+          role="img"
+          aria-label="SQLite limits backend services but still consumes disk and synchronous writes. Fresh browsers simplify cleanup but cost startup time and memory. Detailed recordings support review but consume storage."
+        >
+          <article>
+            <span class="diagram-label">Workspace data</span><strong>One SQLite file per run</strong
+            ><span>Simple creation, reset, and deletion</span
+            ><b>Measured: 48 KiB per fixture after one post</b>
+          </article>
+          <article>
+            <span class="diagram-label">Browser execution</span
+            ><strong>Fresh browser per experiment run</strong
+            ><span>No browser state carried into the next run</span
+            ><b>Cost: startup time and browser memory</b>
+          </article>
+          <article>
+            <span class="diagram-label">Evidence</span
+            ><strong>Record actions and workspace states</strong
+            ><span>Review failures without new model calls</span
+            ><b>Cost: growing files and disk writes</b>
+          </article>
+        </div>
+        <ul>
+          <li>I share application code, but keep each run's data separate.</li>
+          <li>
+            The storage test did not measure full browser memory, so it cannot tell us how many
+            agents fit on a machine.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            The experiment runner creates and closes an environment per run. Reusing a browser
+            across fresh contexts is a future optimization.
+          </li>
+          <li>
+            API execution can omit the browser when visual recording is disabled. The reported
+            interface study kept observer recording enabled.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Scaling the runner">
+        <h2>I would scale with a fixed number of run workers</h2>
+        <ul>
+          <li>The sequential collections do not demonstrate multi-agent throughput.</li>
+          <li>
+            A queue would admit work only when a worker has capacity, instead of launching a browser
+            for every incoming request.
+          </li>
+        </ul>
+        <div
+          class="scale-diagram"
+          role="img"
+          aria-label="Proposed scaling: jobs wait in a queue. Each available worker owns one run, its browser and its database. Finished evidence goes to durable storage before cleanup. The number of workers limits active resource use."
+        >
+          <span class="diagram-label">Proposed, not implemented or load-tested</span>
+          <div class="flow">
+            <div class="node">
+              {{ICON_QUEUE}}Waiting jobs<span>Do not allocate a browser yet</span>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="stack">
+              <div class="node">Worker A · browser A + database A</div>
+              <div class="node">Worker B · browser B + database B</div>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="green">
+              {{ICON_EVIDENCE}}Save evidence<span>Then release run resources</span>
+            </div>
+          </div>
+        </div>
+        <div class="takeaway">
+          More workers can finish more runs at once. They do not make an individual model request
+          faster.
+        </div>
+        <ul class="sources">
+          <li>
+            Test 1, 4, 8, and 16 workers: successful runs/hour, full process-tree memory, provider
+            limits, and cleanup after a killed worker.
+          </li>
+          <li>
+            Use separate processes or containers for stronger containment. Browser pooling trades
+            lower startup cost for shared failure risk.
           </li>
         </ul>
       </section>
@@ -508,58 +714,49 @@
         </ul>
       </section>
       <section class="slide" data-title="Main lesson">
-        <h2>Low scores had different causes</h2>
+        <h2>A correct grader can still test an unclear instruction</h2>
         <ul>
+          <li>One task asks the agent to send the approved design to a teammate.</li>
           <li>
-            Reviewing the failed tasks exposed two instruction problems that grader tests had not
-            caught.
-          </li>
-          <li>
-            Other runs failed because of incorrect actions or limits, so these scores need different
-            explanations.
+            The workspace names the design Willow, but my task quotes a message containing DESIGN
+            without explaining the substitution.
           </li>
         </ul>
         <div
-          class="mismatch-diagram"
+          class="instruction-example"
           role="img"
-          aria-label="Design handoff instructions quoted DESIGN without explicitly requiring substitution. Six completed runs copied DESIGN, but the grader expected Willow. This is a task-definition mismatch."
+          aria-label="The instruction quotes Implement DESIGN navigation; accessibility approved. Six completed runs sent that literal message. The grader requires Implement Willow navigation; accessibility approved. The mismatch is between the task wording and the expected answer."
         >
           <div>
-            <span class="diagram-label">Task text</span><strong>“DESIGN”</strong
-            ><span>No instruction to replace this word</span>
+            <span class="diagram-label">Instruction excerpt</span
+            ><strong
+              >DM its named handoff recipient “Implement DESIGN navigation; accessibility
+              approved.”</strong
+            >
           </div>
-          <div class="mismatch-sign" aria-hidden="true">≠</div>
           <div>
-            <span class="diagram-label">Result check</span><strong>“Willow”</strong
-            ><span>Grader requires this exact name</span>
+            <span class="diagram-label">Six completed runs sent</span
+            ><strong>“Implement DESIGN navigation; accessibility approved.”</strong>
+          </div>
+          <div class="expected-message">
+            <span class="diagram-label">The grader required</span
+            ><strong>“Implement Willow navigation; accessibility approved.”</strong>
           </div>
         </div>
-        <div class="finding-grid">
-          <div>
-            <strong>Release sync</strong><span>Unclear source location<br />0 / 17 passed</span>
-          </div>
-          <div>
-            <strong>Retrospective</strong><span>Every run reached a limit<br />0 / 17 passed</span>
-          </div>
-          <div>
-            <strong>Handoff repair</strong
-            ><span>Sol and Astra clicked Cancel<br />5 / 17 passed</span>
-          </div>
+        <div class="takeaway">
+          Missing check: could an independent reader get the same answer from this instruction?
         </div>
         <ul class="sources">
           <li>
-            Six completed runs copied DESIGN. The task did not explain that this word was a
-            placeholder.
-          </li>
-          <li>
-            Best individual models: 14 / 18 tasks. Across all models: 15 / 18 tasks passed at least
-            once.
+            This explains a problem in six traces, not all 17 failures. A second task had an unclear
+            source location.
           </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
               >Recorded actions and failure analysis</a
-            >. Keep all original outcomes. A wording fix requires a new task version.
+            >. Keep the recorded grades. Fix the instruction in a new task version before collecting
+            new results.
           </li>
         </ul>
       </section>
@@ -616,110 +813,52 @@
         </ul>
       </section>
       <section class="slide" data-title="Interpreting interface results">
-        <h2>These results do not isolate model ability</h2>
+        <h2>The API result does not show better computer use</h2>
         <div
           class="verification-map"
           role="img"
-          aria-label="Interpret API results as tool use, blocked runs as service or limit stops, and single-attempt comparisons as preliminary evidence."
+          aria-label="Setting a topic with the API is one application operation. The browser path requires opening the editor, entering text, and saving. Nineteen of twenty-four pixel runs stopped early. The scores do not isolate model ability."
         >
           <div>
-            <span class="diagram-label">API and accessibility</span>{{ICON_API}}<strong
-              >{{PAIRED_BOTH}} shared passes</strong
-            ><span>Same model and task<br />Different information and actions</span>
+            <span class="diagram-label">Example: API topic change</span>{{ICON_API}}<strong
+              >Set the topic directly</strong
+            ><span>One application operation<br />No dialog to navigate</span>
           </div>
           <div>
-            <span class="diagram-label">Pixel interruptions</span>{{ICON_PIXELS}}<strong
-              >{{PIXEL_BLOCKED}} blocked runs</strong
+            <span class="diagram-label">Same change in the browser</span>{{ICON_BROWSER}}<strong
+              >Open → fill → Save</strong
+            ><span>Several UI actions<br />Each requires another decision</span>
+          </div>
+          <div>
+            <span class="diagram-label">Pixel results</span>{{ICON_PIXELS}}<strong
+              >{{PIXEL_BLOCKED}} / 24 stopped early</strong
             ><span
               >{{PIXEL_CONNECTIONS}} connection failures<br />3 output limits · 2 timeouts</span
             >
           </div>
-          <div>
-            <span class="diagram-label">Study size</span>{{ICON_TEST}}<strong
-              >One attempt per condition</strong
-            ><span>No repeat-run estimate<br />No general CUA ranking</span>
-          </div>
         </div>
         <ul>
           <li>
-            API actions can perform more work per step, so equal action limits do not create
-            equivalent tests.
+            The same final check does not make the routes equally difficult: API access skips
+            browser interaction.
           </li>
           <li>
-            Pixel runs used low-detail images, and keyboard shortcuts depended on macOS behavior.
+            A pixel failure can reflect image delivery, keyboard behavior, or a service
+            interruption, not just a wrong decision.
           </li>
-          <li>
-            Service failures and run limits prevent some attempts from measuring task completion.
-          </li>
+          <li>One attempt per condition cannot establish a reliable winner.</li>
         </ul>
         <ul class="sources">
-          <li>{{PAIRED_DETAIL}}</li>
+          <li>{{PAIRED_BOTH}} shared passes for API/accessibility. {{PAIRED_DETAIL}}</li>
           <li>
             {{PAIRED_TIMING}} These are selected successful pairs, not a general speed estimate.
           </li>
           <li>
-            Elapsed time also includes shared-host activity.
+            Pixels used low-detail images on macOS. Time includes shared-host activity.
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
               >Definitions, costs, and all matched pairs</a
             >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Speed and resources">
-        <h2>Runs have separate data, but scaling is still untested</h2>
-        <div
-          class="metrics"
-          role="img"
-          aria-label="Median local times to create a session, reset state, and capture a screenshot. These exclude model calls."
-        >
-          <div class="metric">
-            {{ICON_WORKSPACE}}<strong>{{CREATE_MS}} <small>ms</small></strong
-            ><span>Create session · median</span>
-          </div>
-          <div class="metric">
-            {{ICON_RESET}}<strong>{{RESET_MS}} <small>ms</small></strong
-            ><span>Reset state · median</span>
-          </div>
-          <div class="metric">
-            {{ICON_CAMERA}}<strong>{{SCREENSHOT_MS}} <small>ms</small></strong
-            ><span>Screenshot · median</span>
-          </div>
-        </div>
-        <ul>
-          <li>
-            Each run has separate data, but these timings exclude model calls and shared-host
-            concurrency.
-          </li>
-          <li>The proposed worker design still needs memory, throughput, and cleanup tests.</li>
-        </ul>
-        <div
-          class="scale-diagram"
-          role="img"
-          aria-label="Proposed, not measured: a queue assigns runs to separate workers. Each worker owns a browser and database. Both write recordings to external storage."
-        >
-          <span class="diagram-label">Proposed design</span>
-          <div class="flow">
-            <div class="node">{{ICON_QUEUE}}Run queue</div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="stack">
-              <div class="node">Worker A · browser + database A</div>
-              <div class="node">Worker B · browser + database B</div>
-            </div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="green">{{ICON_EVIDENCE}}Recording storage</div>
-          </div>
-        </div>
-        <ul class="sources">
-          <li>
-            Apple M5 Max · Node 24 · 100 sessions · 400 reads at concurrency 16 · 10 sequential
-            browser sessions.
-          </li>
-          <li>
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
-              >Timing samples and test setup</a
-            >. The multi-worker design is proposed, not measured.
           </li>
         </ul>
       </section>

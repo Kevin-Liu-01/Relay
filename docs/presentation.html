@@ -1438,6 +1438,173 @@ a:focus-visible {
 }
 
 /* Story diagrams: editable text, shared Camber type, no image-only labels. */
+.check-examples,
+.tradeoff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 28px 0;
+}
+.check-examples > div,
+.tradeoff-grid > article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 21px;
+  border: 1px solid var(--line);
+  border-top: 3px solid #cbb7d4;
+  border-radius: 8px;
+}
+.check-examples strong,
+.tradeoff-grid strong {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.check-examples span:not(.diagram-label),
+.tradeoff-grid span:not(.diagram-label) {
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.check-examples b,
+.tradeoff-grid b {
+  margin-top: auto;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--plum);
+}
+.isolation-diagram {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f7f4fa;
+  border: 1px solid #e1d8e7;
+  border-radius: 12px;
+}
+.shared-code {
+  text-align: center;
+  font-size: 19px;
+  padding-bottom: 18px;
+}
+.session-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.session-pair > div {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #cebfda;
+  background: white;
+  border-radius: 10px;
+}
+.session-pair strong {
+  font-size: 21px;
+  font-weight: 500;
+}
+.session-pair span:not(.diagram-label),
+.diagram-caption {
+  font-size: 17px;
+  color: var(--muted);
+}
+.session-pair b {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--plum);
+}
+.diagram-caption {
+  margin-top: 18px;
+  text-align: center;
+}
+.timing-diagram {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: stretch;
+  gap: 12px;
+  margin: 24px 0;
+}
+.timing-ends {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 18px;
+}
+.timing-loop {
+  padding: 20px;
+  border: 1px solid #cebfda;
+  border-radius: 10px;
+  background: #f7f4fa;
+  text-align: center;
+}
+.timing-loop strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 21px;
+  font-weight: 500;
+}
+.instruction-example {
+  margin: 24px 0;
+  border: 1px solid #e2d1b9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.instruction-example > div {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 22px;
+  padding: 17px 20px;
+  align-items: center;
+}
+.instruction-example > div + div {
+  border-top: 1px solid #e7dccd;
+}
+.instruction-example strong {
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.expected-message {
+  background: #faf5ed;
+}
+@media screen and (max-width: 760px) {
+  .check-examples,
+  .tradeoff-grid,
+  .session-pair,
+  .timing-diagram {
+    grid-template-columns: 1fr;
+  }
+  .instruction-example > div {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .check-examples strong,
+  .tradeoff-grid strong,
+  .instruction-example strong {
+    font-size: 20px;
+  }
+}
+@media print {
+  .check-examples,
+  .tradeoff-grid {
+    margin: 22px 0;
+  }
+  .check-examples > div,
+  .tradeoff-grid > article {
+    gap: 13px;
+    padding: 18px;
+  }
+  .instruction-example strong {
+    font-size: 20px;
+  }
+  .timing-diagram {
+    margin: 18px 0;
+  }
+}
 .node > span {
   display: block;
   color: var(--muted);
@@ -2010,40 +2177,40 @@ a:focus-visible {
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>My approach<span class="section-number">01 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>My approach<span class="section-number">01 / 20</span></span></header>
         <h1>
-          I built a harness<br />
-          <em>around model APIs</em>
+          I used one harness<br />
+          <em>for multiple model APIs</em>
         </h1>
         <ul>
           <li>
-            I separated the model API, action execution, and result checks so I could test each part
-            independently.
+            I used model APIs to choose actions and built a harness to execute those actions in
+            Slack.
           </li>
           <li>
-            I kept the run process fixed so I could change models and compare how they completed the
-            same tasks.
+            The harness owns the starting data, browser, result checks, and recording, so changing
+            models does not require rebuilding the test.
           </li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="My approach: research computer-use interfaces, implement a controlled test environment, then compare models on the same tasks."
+          aria-label="Three design questions: what information to send to a model, how to execute its action, and how to check that the requested change actually happened."
         >
           <div>
-            <span class="diagram-label">01 · Research</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
-              >Computer-use interfaces</strong
-            ><span>What can the model see and do?</span>
+            <span class="diagram-label">Model input</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
+              >What does it see?</strong
+            ><span>Compare screenshots, page controls, and structured data.</span>
           </div>
           <div>
-            <span class="diagram-label">02 · Build</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong
-              >Controlled test runs</strong
-            ><span>How do I execute and verify actions?</span>
+            <span class="diagram-label">Action execution</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong
+              >How does it act?</strong
+            ><span>Turn the response into a browser action or an API operation.</span>
           </div>
           <div>
-            <span class="diagram-label">03 · Compare</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><strong
-              >Model performance</strong
-            ><span>Which tasks can each model complete?</span>
+            <span class="diagram-label">Result check</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong
+              >Did the change happen?</strong
+            ><span>Check saved application data, not the model's claim.</span>
           </div>
         </div>
         <ul class="sources">
@@ -2055,41 +2222,54 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>The environment<span class="section-number">02 / 17</span></span></header>
-        <h2>The app supports complete Slack workflows</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>The environment<span class="section-number">02 / 20</span></span></header>
+        <h2>I started with a task that needs a real saved change</h2>
         <ul>
-          <li>I started with search, threads, and message editing from the assignment.</li>
           <li>
-            Each workflow includes the interface, stored data, and checks for the required result.
+            The agent must find Alex's launch-review message and change its time from 14:00 to 15:00
+            UTC.
           </li>
-          <li>People and browser agents use the same app with fictional workspace data.</li>
+          <li>
+            Typing the new time is not enough: it must save the edit without changing other
+            messages.
+          </li>
         </ul>
         <div
           class="diagram workflow-diagram"
           role="img"
-          aria-label="A Slack workflow moves from finding a source message, to opening its thread, to editing or replying. Pins, saved items, direct messages, and channel settings extend these workflows."
+          aria-label="Example task: find Alex's launch-review message, edit its time from 14:00 to 15:00 UTC, then save. A static mockup cannot store or verify that change."
         >
           <div class="flow">
             <div class="node">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search glyph" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>Find the message<span>Search channels and messages</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search glyph" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>Find the message<span
+                >Alex · #proj-meridian<br />Launch review at 14:00 UTC</span
+              >
             </div>
             <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
             <div class="node">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square glyph" aria-hidden="true"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"></path></svg>Read the thread<span>Check the related messages</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line glyph" aria-hidden="true"><path d="M13 21h8"></path><path d="m15 5 4 4"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg>Edit the time<span
+                >Replace 14:00 with 15:00<br />Keep the rest of the text</span
+              >
             </div>
             <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
             <div class="node" data-tone="green">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line glyph" aria-hidden="true"><path d="M13 21h8"></path><path d="m15 5 4 4"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg>Make the change<span>Edit or reply in place</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Save the edit<span
+                >Stored message now says 15:00<br />Other messages are unchanged</span
+              >
             </div>
           </div>
           <div class="feature-strip">
-            <span>Pins</span><span>Saved items</span><span>Direct messages</span
-            ><span>Channel settings</span>
+            <span>React renders the UI</span><span>SQLite stores the change</span
+            ><span>Code checks the result</span>
           </div>
         </div>
         <ul class="sources">
           <li>
-            React UI · SQLite state ·
+            A static mockup cannot test persistence. A full Slack backend adds services these tasks
+            do not need.
+          </li>
+          <li>
+            Fictional data · Task abbreviated here ·
             <a href="https://relay.kevinliu.studio/play">Try the workspace without a key</a> ·
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md"
               >Prior-work review</a
@@ -2102,7 +2282,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>All workflows<span class="section-number">03 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>All workflows<span class="section-number">03 / 20</span></span></header>
         <h2>The task set covers 18 workflows</h2>
         <div
           class="workflow-inventory"
@@ -2201,46 +2381,52 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The repeatable harness<span class="section-number">04 / 17</span></span></header>
-        <h2>The harness runs the model's actions in a loop</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The repeatable harness<span class="section-number">04 / 20</span></span></header>
+        <h2>The model proposes an action; the harness executes it</h2>
         <div
           class="diagram harness-diagram"
           role="img"
           aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, validates and executes it, then observes again. The grader checks the final state and the recorder saves evidence."
         >
           <div class="ownership-strip">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>New browser session<span>+</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Private database<span
-              class="ownership-tag"
-              >Separate data for each run</span
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>One run = one model attempting one task<span class="ownership-tag"
+              >Fresh starting data</span
             >
           </div>
           <div class="flow">
-            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Observe<span>Visible workspace</span></div>
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="node" data-tone="blue">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Choose one action<span>Model response</span>
+            <div class="node">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Read the page<span>The edit dialog is open</span>
             </div>
             <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Validate and execute<span>Browser or API</span></div>
+            <div class="node" data-tone="blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Ask the model<span>Example response: click Save</span>
+            </div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Execute the action<span>Playwright clicks the button</span>
+            </div>
           </div>
           <div class="loop-return"><span>Next observation</span></div>
           <div class="harness-outputs">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Final state → grader</span
-            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Saved steps → trace and replay</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>At the end: check saved data</span
+            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>At each step: record what happened</span>
           </div>
         </div>
         <ul>
           <li>
-            Each run starts with a separate database and browser session containing known workspace
-            data.
+            The harness accepts only supported actions, so a model response cannot execute arbitrary
+            code.
           </li>
-          <li>The model receives an observation and returns one action at a time.</li>
-          <li>The harness repeats this loop until the model finishes or a limit stops the run.</li>
+          <li>
+            After each action, it reads the updated page before asking the model what to do next.
+          </li>
+          <li>
+            The run stops when the model finishes or reaches an action, time, or spending limit.
+          </li>
         </ul>
         <ul class="sources">
           <li>
-            Playwright controls the browser. Separate data does not protect the host from malicious
-            code.
+            The example shows browser control. The API path executes application operations instead.
           </li>
         </ul>
       </section>
@@ -2249,7 +2435,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Agent interfaces<span class="section-number">05 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Agent interfaces<span class="section-number">05 / 20</span></span></header>
         <h2>The model can use four interfaces to the same app</h2>
         <div
           class="interface-map"
@@ -2299,33 +2485,37 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>Define success<span class="section-number">06 / 17</span></span></header>
-        <h2>The grader checks the final workspace state</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>Define success<span class="section-number">06 / 20</span></span></header>
+        <h2>I grade saved data, not visible text or a completion message</h2>
         <ul>
-          <li>Workspace state is the stored data: messages, threads, topics, and saved items.</li>
-          <li>The grader is code that compares this data with the task requirements.</li>
-          <li>A model's claim that it finished does not affect the result.</li>
+          <li>
+            The grader is code that checks the stored messages, topics, and other workspace data.
+          </li>
+          <li>
+            For the editing task, the original message must contain the requested text and all
+            unrelated data must stay unchanged.
+          </li>
         </ul>
         <div
           class="diagram state-diagram"
           role="img"
-          aria-label="A topic task has two checks: the requested text must be the channel topic, and no unrelated state may change. Both must pass."
+          aria-label="The editing task passes only if Alex's original message contains the exact requested text and no unrelated workspace data changes. Posting a new message or leaving an unsaved edit does not pass."
         >
           <div class="state-task">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>
             <div>
-              <strong>Example: update a channel topic</strong
-              ><span>Set the requested topic. Make no other changes.</span>
+              <strong>Required saved message</strong
+              ><span>“Launch review is at 15:00 UTC. Please bring the final checklist.”</span>
             </div>
           </div>
           <div class="state-checks">
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong>Correct topic</strong
-              ><span>Exact text in channel settings</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong>Right change</strong
+              ><span>Exact text in Alex's original message</span>
             </div>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong>No extra changes</strong
-              ><span>Other workspace data stays the same</span>
+              ><span>No new message or unrelated edit</span>
             </div>
             <div class="reward"><strong>Both pass</strong><span>Reward = 1</span></div>
           </div>
@@ -2347,35 +2537,40 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Verification<span class="section-number">07 / 17</span></span></header>
-        <h2>I tested the app and grader before comparing models</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Verification<span class="section-number">07 / 20</span></span></header>
+        <h2>I tested correct and nearly correct outcomes separately</h2>
         <div
-          class="verification-map"
+          class="check-examples"
           role="img"
-          aria-label="Scripted tests check app behavior. Constructed states check the grader. Recorded runs check agent behavior. These are separate sources of evidence."
+          aria-label="A scripted browser solution checks that the task is possible. Grader tests change a correct solution into a wrong destination or an extra edit and require failure. Recording checks bind the reported result to saved actions and data."
         >
           <div>
-            <span class="diagram-label">App behavior</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong
-              >174 backend tests<br />91 browser tests</strong
-            ><span>Does the software work?</span>
+            <span class="diagram-label">Can the UI do it?</span
+            ><strong>Run a scripted solution</strong>
+            <span>Search → edit → Save → inspect the stored message</span
+            ><b>The requested change must persist.</b>
           </div>
           <div>
-            <span class="diagram-label">Result checks</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong
-              >84 valid states<br />2,583 invalid states</strong
-            ><span>Does the grader reject wrong results?</span>
+            <span class="diagram-label">Can the grader catch a near miss?</span
+            ><strong>Alter a known correct result</strong>
+            <span>Wrong destination, wrong author, or one extra change</span
+            ><b>The altered result must fail.</b>
           </div>
           <div>
-            <span class="diagram-label">Recording integrity</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg><strong
-              >Actions and states<br />Timing and usage</strong
-            ><span>Can each result be inspected?</span>
+            <span class="diagram-label">Can I explain a model's result?</span
+            ><strong>Reopen the recorded run</strong>
+            <span>Read its actions and check its saved data again</span
+            ><b>The recorded grade must agree.</b>
           </div>
         </div>
         <ul>
-          <li>Scripted browser tests complete the workflows without a model.</li>
-          <li>Known valid and invalid states test the grader's rules.</li>
           <li>
-            Saved actions and workspace states support trace review and replay without new model
-            calls.
+            These checks separate application bugs, grading bugs, and agent mistakes without paying
+            for more model calls.
+          </li>
+          <li>
+            A scripted solution still knows my intended answer, so it cannot prove that a new reader
+            understands the task.
           </li>
         </ul>
         <ul class="sources">
@@ -2383,8 +2578,206 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
               >Software verification</a
             >
-            · Counts shown here come from saved full-suite reports, not the later targeted release
-            checks.
+            · The longer-workflow grader tests cover 84 valid and 2,583 invalid states across seven
+            seeds.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Session isolation" data-slide-id="session-isolation"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Session isolation<span class="section-number">08 / 20</span></span></header>
+        <h2>Two agents must not share mutable workspace data</h2>
+        <ul>
+          <li>If agent A edits a message, agent B must still see its own unchanged copy.</li>
+          <li>
+            I give each run a separate SQLite file and a fresh browser context, which is an
+            independent browser session.
+          </li>
+        </ul>
+        <div
+          class="isolation-diagram"
+          role="img"
+          aria-label="Both runs start from the same fixture, but own separate browser contexts and SQLite files. A saves the message at 15:00. B's copy remains at 14:00. App code is shared; workspace data is not."
+        >
+          <div class="shared-code">Shared application code + same starting fixture</div>
+          <div class="session-pair">
+            <div>
+              <span class="diagram-label">Run A</span><strong>Browser context A → database A</strong
+              ><span>Agent saves its edit</span><b>Launch review at 15:00</b>
+            </div>
+            <div>
+              <span class="diagram-label">Run B</span><strong>Browser context B → database B</strong
+              ><span>No action in this run</span><b>Launch review stays at 14:00</b>
+            </div>
+          </div>
+          <div class="diagram-caption">
+            A session token selects one database. The agent is not given another run's token.
+          </div>
+        </div>
+        <ul class="sources">
+          <li>Tested: write to A, check that B is unchanged; close A, check that B still works.</li>
+          <li>
+            The actor and control servers share a process. Separate data is not isolation from host
+            crashes or malicious code.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Run speed" data-slide-id="run-speed"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge glyph" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>Run speed<span class="section-number">09 / 20</span></span></header>
+        <h2>Run time comes from repeated steps, not just reset</h2>
+        <div
+          class="timing-diagram"
+          role="img"
+          aria-label="A run creates its workspace, repeats observe, model request, execute and record, then checks the result and cleans up. Only local components were measured separately."
+        >
+          <div class="timing-ends">Create workspace</div>
+          <div class="timing-loop">
+            <span class="diagram-label">Repeated for each decision</span
+            ><strong>Observe → wait for model → execute → record</strong>
+          </div>
+          <div class="timing-ends">Grade + clean up</div>
+        </div>
+        <div
+          class="metrics"
+          role="img"
+          aria-label="Local component medians: database reset 1.50 milliseconds, HTTP action 3.31 milliseconds, screenshot 84.15 milliseconds. These are not full agent-run measurements."
+        >
+          <div class="metric">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong>1.50 <small>ms</small></strong
+            ><span>Reset database</span>
+          </div>
+          <div class="metric">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong>3.31 <small>ms</small></strong
+            ><span>HTTP application action</span>
+          </div>
+          <div class="metric">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera glyph" aria-hidden="true"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"></path><circle cx="12" cy="13" r="3"></circle></svg><strong>84.15 <small>ms</small></strong
+            ><span>Capture screenshot</span>
+          </div>
+        </div>
+        <ul>
+          <li>Every extra decision adds another model request and another observation.</li>
+          <li>
+            A faster database reset helps between runs, but does not remove the cost of those
+            repeated steps.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Measured locally on M5 Max / Node 24. Component medians exclude model calls and cannot
+            be added into an end-to-end estimate.
+          </li>
+          <li>
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
+              >Samples and setup</a
+            >: 100 stored sessions; screenshots from 10 sequential browser contexts, not 100
+            concurrent agents.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Resource choices" data-slide-id="resource-choices"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Resource choices<span class="section-number">10 / 20</span></span></header>
+        <h2>Small databases do not mean cheap browser runs</h2>
+        <div
+          class="tradeoff-grid"
+          role="img"
+          aria-label="SQLite limits backend services but still consumes disk and synchronous writes. Fresh browsers simplify cleanup but cost startup time and memory. Detailed recordings support review but consume storage."
+        >
+          <article>
+            <span class="diagram-label">Workspace data</span><strong>One SQLite file per run</strong
+            ><span>Simple creation, reset, and deletion</span
+            ><b>Measured: 48 KiB per fixture after one post</b>
+          </article>
+          <article>
+            <span class="diagram-label">Browser execution</span
+            ><strong>Fresh browser per experiment run</strong
+            ><span>No browser state carried into the next run</span
+            ><b>Cost: startup time and browser memory</b>
+          </article>
+          <article>
+            <span class="diagram-label">Evidence</span
+            ><strong>Record actions and workspace states</strong
+            ><span>Review failures without new model calls</span
+            ><b>Cost: growing files and disk writes</b>
+          </article>
+        </div>
+        <ul>
+          <li>I share application code, but keep each run's data separate.</li>
+          <li>
+            The storage test did not measure full browser memory, so it cannot tell us how many
+            agents fit on a machine.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>
+            The experiment runner creates and closes an environment per run. Reusing a browser
+            across fresh contexts is a future optimization.
+          </li>
+          <li>
+            API execution can omit the browser when visual recording is disabled. The reported
+            interface study kept observer recording enabled.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Scaling the runner" data-slide-id="scaling-the-runner"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>Scaling the runner<span class="section-number">11 / 20</span></span></header>
+        <h2>I would scale with a fixed number of run workers</h2>
+        <ul>
+          <li>The sequential collections do not demonstrate multi-agent throughput.</li>
+          <li>
+            A queue would admit work only when a worker has capacity, instead of launching a browser
+            for every incoming request.
+          </li>
+        </ul>
+        <div
+          class="scale-diagram"
+          role="img"
+          aria-label="Proposed scaling: jobs wait in a queue. Each available worker owns one run, its browser and its database. Finished evidence goes to durable storage before cleanup. The number of workers limits active resource use."
+        >
+          <span class="diagram-label">Proposed, not implemented or load-tested</span>
+          <div class="flow">
+            <div class="node">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>Waiting jobs<span>Do not allocate a browser yet</span>
+            </div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="stack">
+              <div class="node">Worker A · browser A + database A</div>
+              <div class="node">Worker B · browser B + database B</div>
+            </div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node" data-tone="green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Save evidence<span>Then release run resources</span>
+            </div>
+          </div>
+        </div>
+        <div class="takeaway">
+          More workers can finish more runs at once. They do not make an individual model request
+          faster.
+        </div>
+        <ul class="sources">
+          <li>
+            Test 1, 4, 8, and 16 workers: successful runs/hour, full process-tree memory, provider
+            limits, and cleanup after a killed worker.
+          </li>
+          <li>
+            Use separate processes or containers for stronger containment. Browser pooling trades
+            lower startup cost for shared failure risk.
           </li>
         </ul>
       </section>
@@ -2393,7 +2786,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>The scope expands<span class="section-number">08 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>The scope expands<span class="section-number">12 / 20</span></span></header>
         <h2>The reusable harness made model comparisons possible</h2>
         <ul>
           <li>Once the harness worked, I could change the model without rebuilding the test.</li>
@@ -2439,7 +2832,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Comparison setup<span class="section-number">09 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Comparison setup<span class="section-number">13 / 20</span></span></header>
         <h2>Comparison 1: 17 models, using accessibility controls</h2>
         <div class="campaign-equation" aria-label="Models in the campaign">
           <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><strong>17</strong><span>model routes</span></div>
@@ -2486,7 +2879,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Model comparison<span class="section-number">10 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Model comparison<span class="section-number">14 / 20</span></span></header>
         <div class="comparison-heading">
           <h2>Results for 17 models</h2>
           <span class="comparison-status">1 per task/model · Collection complete</span>
@@ -5273,59 +5666,50 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route glyph" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>Main lesson<span class="section-number">11 / 17</span></span></header>
-        <h2>Low scores had different causes</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route glyph" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>Main lesson<span class="section-number">15 / 20</span></span></header>
+        <h2>A correct grader can still test an unclear instruction</h2>
         <ul>
+          <li>One task asks the agent to send the approved design to a teammate.</li>
           <li>
-            Reviewing the failed tasks exposed two instruction problems that grader tests had not
-            caught.
-          </li>
-          <li>
-            Other runs failed because of incorrect actions or limits, so these scores need different
-            explanations.
+            The workspace names the design Willow, but my task quotes a message containing DESIGN
+            without explaining the substitution.
           </li>
         </ul>
         <div
-          class="mismatch-diagram"
+          class="instruction-example"
           role="img"
-          aria-label="Design handoff instructions quoted DESIGN without explicitly requiring substitution. Six completed runs copied DESIGN, but the grader expected Willow. This is a task-definition mismatch."
+          aria-label="The instruction quotes Implement DESIGN navigation; accessibility approved. Six completed runs sent that literal message. The grader requires Implement Willow navigation; accessibility approved. The mismatch is between the task wording and the expected answer."
         >
           <div>
-            <span class="diagram-label">Task text</span><strong>“DESIGN”</strong
-            ><span>No instruction to replace this word</span>
+            <span class="diagram-label">Instruction excerpt</span
+            ><strong
+              >DM its named handoff recipient “Implement DESIGN navigation; accessibility
+              approved.”</strong
+            >
           </div>
-          <div class="mismatch-sign" aria-hidden="true">≠</div>
           <div>
-            <span class="diagram-label">Result check</span><strong>“Willow”</strong
-            ><span>Grader requires this exact name</span>
+            <span class="diagram-label">Six completed runs sent</span
+            ><strong>“Implement DESIGN navigation; accessibility approved.”</strong>
+          </div>
+          <div class="expected-message">
+            <span class="diagram-label">The grader required</span
+            ><strong>“Implement Willow navigation; accessibility approved.”</strong>
           </div>
         </div>
-        <div class="finding-grid">
-          <div>
-            <strong>Release sync</strong><span>Unclear source location<br />0 / 17 passed</span>
-          </div>
-          <div>
-            <strong>Retrospective</strong><span>Every run reached a limit<br />0 / 17 passed</span>
-          </div>
-          <div>
-            <strong>Handoff repair</strong
-            ><span>Sol and Astra clicked Cancel<br />5 / 17 passed</span>
-          </div>
+        <div class="takeaway">
+          Missing check: could an independent reader get the same answer from this instruction?
         </div>
         <ul class="sources">
           <li>
-            Six completed runs copied DESIGN. The task did not explain that this word was a
-            placeholder.
-          </li>
-          <li>
-            Best individual models: 14 / 18 tasks. Across all models: 15 / 18 tasks passed at least
-            once.
+            This explains a problem in six traces, not all 17 failures. A second task had an unclear
+            source location.
           </li>
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
               >Recorded actions and failure analysis</a
-            >. Keep all original outcomes. A wording fix requires a new task version.
+            >. Keep the recorded grades. Fix the instruction in a new task version before collecting
+            new results.
           </li>
         </ul>
       </section>
@@ -5334,7 +5718,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Matched interface study<span class="section-number">12 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Matched interface study<span class="section-number">16 / 20</span></span></header>
         <h2>Comparison 2: the same tasks through four interfaces</h2>
         <div
           class="diagram study-design"
@@ -5376,7 +5760,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Interface results<span class="section-number">13 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Interface results<span class="section-number">17 / 20</span></span></header>
         <h2>Interface comparison: 96 recorded attempts</h2>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · six tasks per cell · click headers to sort</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Actor API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=51524e03-26bb-408b-9aa4-37bc364f5a49-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=da9c7d7b-e645-41af-805d-576785e32676-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=86b5ed86-8e8d-47ac-8784-3291f3a64dcc-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels tasks"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=df707b04-715e-42b3-be1e-c4c7e5c06278-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Actor API tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="3.942986">$3.9430</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=b9e13025-a9c0-46c9-9efa-4b7817804504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility tasks"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=d3bc881e-d9c2-4b75-8cb7-394169007d06-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="2"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=0df2f095-33ef-4f74-9eff-975e45d360d4-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels tasks"><strong>2 / 6</strong></a><small>1 incomplete · 3 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=94229b2a-9c69-435e-8b52-ec3d20696f05-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="7.278396000000001">$7.2784</td></tr><tr><th scope="row" data-sort="Qwen 3.8 Max"><span class="study-model"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Qwen</title><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z"></path></svg>Qwen 3.8 Max</span></th><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Accessibility tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=143d7300-046d-4c4a-b144-b461df50ea89-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=f58dd859-b2d1-4534-a762-fcbc9e30bd49-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Pixels tasks"><strong>0 / 6</strong></a><small>0 incomplete · 6 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Actor API tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="5.482921999999999">$5.4829</td></tr><tr><th scope="row" data-sort="Grok 4.7"><span class="study-model"><svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="#0A0A0A"></path><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="#0A0A0A"></path></svg>Grok 4.7</span></th><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c3d44e6e-79fb-4915-80a8-182139fd714d-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Accessibility tasks"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c9b642a6-fcee-49e7-8958-8ece5122621f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Page JSON tasks"><strong>3 / 6</strong></a><small>3 incomplete · 0 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=340c875a-c88d-449e-b9fb-1d20235813aa-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Pixels tasks"><strong>0 / 6</strong></a><small>1 incomplete · 5 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=e9625cb0-4d45-4a33-b6b5-92f350881f7f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="6.057272">$6.0573</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>
         <span class="sr-only" id="interface-sort-status" role="status"></span>
@@ -5396,116 +5780,53 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results<span class="section-number">14 / 17</span></span></header>
-        <h2>These results do not isolate model ability</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results<span class="section-number">18 / 20</span></span></header>
+        <h2>The API result does not show better computer use</h2>
         <div
           class="verification-map"
           role="img"
-          aria-label="Interpret API results as tool use, blocked runs as service or limit stops, and single-attempt comparisons as preliminary evidence."
+          aria-label="Setting a topic with the API is one application operation. The browser path requires opening the editor, entering text, and saving. Nineteen of twenty-four pixel runs stopped early. The scores do not isolate model ability."
         >
           <div>
-            <span class="diagram-label">API and accessibility</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong
-              >17 shared passes</strong
-            ><span>Same model and task<br />Different information and actions</span>
+            <span class="diagram-label">Example: API topic change</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong
+              >Set the topic directly</strong
+            ><span>One application operation<br />No dialog to navigate</span>
           </div>
           <div>
-            <span class="diagram-label">Pixel interruptions</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
-              >19 blocked runs</strong
+            <span class="diagram-label">Same change in the browser</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong
+              >Open → fill → Save</strong
+            ><span>Several UI actions<br />Each requires another decision</span>
+          </div>
+          <div>
+            <span class="diagram-label">Pixel results</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
+              >19 / 24 stopped early</strong
             ><span
               >14 connection failures<br />3 output limits · 2 timeouts</span
             >
           </div>
-          <div>
-            <span class="diagram-label">Study size</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg><strong
-              >One attempt per condition</strong
-            ><span>No repeat-run estimate<br />No general CUA ranking</span>
-          </div>
         </div>
         <ul>
           <li>
-            API actions can perform more work per step, so equal action limits do not create
-            equivalent tests.
+            The same final check does not make the routes equally difficult: API access skips
+            browser interaction.
           </li>
           <li>
-            Pixel runs used low-detail images, and keyboard shortcuts depended on macOS behavior.
+            A pixel failure can reflect image delivery, keyboard behavior, or a service
+            interruption, not just a wrong decision.
           </li>
-          <li>
-            Service failures and run limits prevent some attempts from measuring task completion.
-          </li>
+          <li>One attempt per condition cannot establish a reliable winner.</li>
         </ul>
         <ul class="sources">
-          <li>24 API/accessibility pairs: 17 both passed · 4 API only · 1 accessibility only · 2 neither passed. 5 pairs include a blocked attempt.</li>
+          <li>17 shared passes for API/accessibility. 24 API/accessibility pairs: 17 both passed · 4 API only · 1 accessibility only · 2 neither passed. 5 pairs include a blocked attempt.</li>
           <li>
             On 17 shared passes, median accessibility-minus-API differences were +2 actions, +5.462 seconds, and +$0.13008. These are selected successful pairs, not a general speed estimate.
           </li>
           <li>
-            Elapsed time also includes shared-host activity.
+            Pixels used low-detail images on macOS. Time includes shared-host activity.
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
               >Definitions, costs, and all matched pairs</a
             >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Speed and resources" data-slide-id="speed-and-resources"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge glyph" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>Speed and resources<span class="section-number">15 / 17</span></span></header>
-        <h2>Runs have separate data, but scaling is still untested</h2>
-        <div
-          class="metrics"
-          role="img"
-          aria-label="Median local times to create a session, reset state, and capture a screenshot. These exclude model calls."
-        >
-          <div class="metric">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong>17.34 <small>ms</small></strong
-            ><span>Create session · median</span>
-          </div>
-          <div class="metric">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong>1.50 <small>ms</small></strong
-            ><span>Reset state · median</span>
-          </div>
-          <div class="metric">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera glyph" aria-hidden="true"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"></path><circle cx="12" cy="13" r="3"></circle></svg><strong>84.15 <small>ms</small></strong
-            ><span>Screenshot · median</span>
-          </div>
-        </div>
-        <ul>
-          <li>
-            Each run has separate data, but these timings exclude model calls and shared-host
-            concurrency.
-          </li>
-          <li>The proposed worker design still needs memory, throughput, and cleanup tests.</li>
-        </ul>
-        <div
-          class="scale-diagram"
-          role="img"
-          aria-label="Proposed, not measured: a queue assigns runs to separate workers. Each worker owns a browser and database. Both write recordings to external storage."
-        >
-          <span class="diagram-label">Proposed design</span>
-          <div class="flow">
-            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>Run queue</div>
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="stack">
-              <div class="node">Worker A · browser + database A</div>
-              <div class="node">Worker B · browser + database B</div>
-            </div>
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="node" data-tone="green"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Recording storage</div>
-          </div>
-        </div>
-        <ul class="sources">
-          <li>
-            Apple M5 Max · Node 24 · 100 sessions · 400 reads at concurrency 16 · 10 sequential
-            browser sessions.
-          </li>
-          <li>
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
-              >Timing samples and test setup</a
-            >. The multi-worker design is proposed, not measured.
           </li>
         </ul>
       </section>
@@ -5514,7 +5835,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The next benchmark version<span class="section-number">16 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The next benchmark version<span class="section-number">19 / 20</span></span></header>
         <h2>The next version needs validated tasks and repeated runs</h2>
         <ul>
           <li>Ask someone outside the project to solve each task from its instructions.</li>
@@ -5562,7 +5883,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play glyph" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>Demonstration and discussion<span class="section-number">17 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play glyph" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>Demonstration and discussion<span class="section-number">20 / 20</span></span></header>
         <h2>Demo and design questions</h2>
         <div class="demo-path">
           <a href="https://relay.kevinliu.studio/play"

@@ -85,7 +85,10 @@ const sectionIcons = {
   'Matched interface study': FlaskConical,
   'Interface results': ChartNoAxesCombined,
   'Main lesson': Route,
-  'Speed and resources': Gauge,
+  'Session isolation': ShieldCheck,
+  'Run speed': Gauge,
+  'Resource choices': Database,
+  'Scaling the runner': Network,
   'The next benchmark version': Network,
   'Demonstration and discussion': Play,
 };
@@ -383,6 +386,7 @@ const values = {
   ),
   CREATE_MS: bench.latency.create.p50Ms.toFixed(2),
   RESET_MS: bench.latency.reset.p50Ms.toFixed(2),
+  ACTION_MS: bench.latency.actionHttp.p50Ms.toFixed(2),
   SCREENSHOT_MS: bench.latency.screenshot.p50Ms.toFixed(2),
 };
 let html = readFileSync('docs/presentation.template.html', 'utf8').replace(

@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 import { readFileSync } from 'node:fs';
 import { once } from 'node:events';
 import { createLiveServer } from '../../hosted/local.mjs';
-test('presentation: seventeen readable technical slides, evidence-backed counts and keyboard navigation', async ({
+test('presentation: twenty readable technical slides, evidence-backed counts and keyboard navigation', async ({
   page,
 }, testInfo) => {
   const requests = [];
@@ -15,8 +15,8 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator('body')).toHaveCSS('font-family', /Relay Camber/);
   expect(await page.evaluate(() => document.fonts.check('500 32px "Relay Camber"'))).toBe(true);
-  await expect(page.locator('.slide')).toHaveCount(17);
-  await expect(page.locator('.masthead .wordmark svg')).toHaveCount(17);
+  await expect(page.locator('.slide')).toHaveCount(20);
+  await expect(page.locator('.masthead .wordmark svg')).toHaveCount(20);
   await expect(page.locator('[aria-label="Models in the campaign"] svg')).toHaveCount(3);
   await expect(page.locator('main')).not.toContainText('{{');
   await expect(page.locator('[data-title="Agent interfaces"] .lucide-accessibility')).toHaveCount(
@@ -29,10 +29,10 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(2);
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
-    'two instruction problems that grader tests had not caught',
+    'DM its named handoff recipient “Implement DESIGN navigation; accessibility approved.”',
   );
   await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
-    'I built a harness around model APIs',
+    'I used one harness for multiple model APIs',
   );
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'The reusable harness made model comparisons possible',
@@ -46,7 +46,7 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     'href',
     'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md',
   );
-  await expect(page.locator('.slide [role="img"]')).toHaveCount(14);
+  await expect(page.locator('.slide [role="img"]')).toHaveCount(17);
   const sequence = await page
     .locator('.slide')
     .evaluateAll((slides) => slides.map((s) => s.dataset.title));
@@ -58,6 +58,10 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     'Agent interfaces',
     'Define success',
     'Verification',
+    'Session isolation',
+    'Run speed',
+    'Resource choices',
+    'Scaling the runner',
     'The scope expands',
     'Comparison setup',
     'Model comparison',
@@ -65,7 +69,6 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     'Matched interface study',
     'Interface results',
     'Interpreting interface results',
-    'Speed and resources',
     'The next benchmark version',
     'Demonstration and discussion',
   ]);
@@ -76,7 +79,7 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     .allTextContents();
   for (const bullet of narrative) {
     const text = bullet.replace(/\s+/g, ' ').trim();
-    expect(text.split(/\s+/).length, text).toBeLessThanOrEqual(20);
+    expect(text.split(/\s+/).length, text).toBeLessThanOrEqual(25);
     expect(
       [...new Intl.Segmenter('en', { granularity: 'sentence' }).segment(text)],
       text,
@@ -84,16 +87,33 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     expect(text, text).not.toMatch(/[;—()]/);
   }
   await expect(page.locator('[data-title="Define success"]')).toContainText(
-    'Workspace state is the stored data',
+    'The grader is code that checks the stored messages',
   );
   await expect(page.locator('[data-title="My approach"]')).toContainText(
-    'I separated the model API, action execution, and result checks',
+    'I used model APIs to choose actions',
   );
   await expect(page.locator('[data-title="My approach"]')).not.toContainText(
     'The assignment asked',
   );
   await expect(page.locator('[data-title="Agent interfaces"]')).not.toContainText('Earlier passes');
   await expect(page.locator('[data-title="Comparison setup"]')).toContainText('All 306 runs');
+  await expect(page.locator('[data-title="Session isolation"]')).toContainText(
+    'Launch review stays at 14:00',
+  );
+  await expect(page.locator('[data-title="Session isolation"]')).toContainText(
+    'Separate data is not isolation from host crashes',
+  );
+  await expect(page.locator('[data-title="Resource choices"]')).toContainText(
+    'did not measure full browser memory',
+  );
+  await expect(page.locator('[data-title="Scaling the runner"]')).toContainText(
+    'Proposed, not implemented or load-tested',
+  );
+  const benchmark = JSON.parse(readFileSync('evidence/benchmark-2026-10-01.json'));
+  const timing = page.locator('[data-title="Run speed"]');
+  for (const key of ['reset', 'actionHttp', 'screenshot'])
+    await expect(timing).toContainText(`${benchmark.latency[key].p50Ms.toFixed(2)} ms`);
+  await expect(timing).toContainText('not 100 concurrent agents');
   await expect(
     page
       .locator('[data-title="Model comparison"] a')
@@ -109,7 +129,7 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await expect(interpretation).toContainText(
     `+${paired.bothPassedMedianSecondsLeftMinusRight.toFixed(3)} seconds`,
   );
-  for (let i = 0; i < 17; i++) {
+  for (let i = 0; i < 20; i++) {
     const slide = page.locator('.slide.active');
     await expect(slide).toHaveCount(1);
     await expect(slide.locator('h1, h2')).toHaveCount(1);
@@ -128,18 +148,18 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
         animations: 'disabled',
       });
     }
-    if (i < 16) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
+    if (i < 19) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
   }
   await expect(page.getByRole('button', { name: 'Next slide', exact: true })).toBeDisabled();
   await page.keyboard.press('ArrowLeft');
-  await expect(page.locator('#counter')).toContainText('16 / 17');
+  await expect(page.locator('#counter')).toContainText('19 / 20');
   await page.keyboard.press('Home');
-  await expect(page.locator('#counter')).toContainText('1 / 17');
+  await expect(page.locator('#counter')).toContainText('1 / 20');
   await page.keyboard.press('End');
-  await expect(page.locator('#counter')).toContainText('17 / 17');
+  await expect(page.locator('#counter')).toContainText('20 / 20');
   expect(requests).toEqual([]);
 });
-test('presentation: print has seventeen unclipped pages and mobile has no horizontal overflow', async ({
+test('presentation: print has twenty unclipped pages and mobile has no horizontal overflow', async ({
   page,
 }) => {
   await page.goto(pathToFileURL(resolve('docs/presentation.html')).href);
@@ -154,7 +174,7 @@ test('presentation: print has seventeen unclipped pages and mobile has no horizo
       width: s.clientWidth,
     })),
   );
-  expect(dimensions).toHaveLength(17);
+  expect(dimensions).toHaveLength(20);
   for (const d of dimensions) {
     expect(d.h, d.title).toBeLessThanOrEqual(d.client + 1);
     expect(d.w, d.title).toBeLessThanOrEqual(d.width + 1);
@@ -163,11 +183,11 @@ test('presentation: print has seventeen unclipped pages and mobile has no horizo
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('.slide.active')).toHaveCSS('animation-name', 'none');
   await page.setViewportSize({ width: 390, height: 844 });
-  for (let i = 0; i < 17; i++) {
+  for (let i = 0; i < 20; i++) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (i < 16) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
+    if (i < 19) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
   }
 });
 
@@ -202,9 +222,9 @@ test('published presentation controls work under the production content-security
     ).toBe(true);
     expect(assetRequests.some((url) => /\/assets\/presentation-.*\.woff2$/.test(url))).toBe(true);
     expect(assetRequests.every((url) => url.startsWith(base))).toBe(true);
-    await expect(page.locator('#counter')).toContainText('1 / 17');
+    await expect(page.locator('#counter')).toContainText('1 / 20');
     await page.getByRole('button', { name: 'Next slide', exact: true }).click();
-    await expect(page.locator('#counter')).toContainText('2 / 17');
+    await expect(page.locator('#counter')).toContainText('2 / 20');
     await page.goto(`${base}/presentation.html#model-comparison`);
     await expect(page).toHaveURL(`${base}/presentation#model-comparison`);
     await page.locator('#model-results thead button').filter({ hasText: 'Passed' }).click();

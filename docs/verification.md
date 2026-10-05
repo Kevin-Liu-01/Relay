@@ -1,5 +1,30 @@
 # Verification and evidence
 
+## Design reasoning and concrete examples: 2026-10-05
+
+- Rebuilt the presentation as 20 slides. A saved message edit now connects the
+  environment, action loop, and grader. Verification uses executable examples
+  instead of presenting test counts as the explanation. Four dedicated slides
+  derive session isolation, run speed, resource choices, and proposed scaling.
+- The task-definition review shows the actual instruction excerpt, the literal
+  message sent by six completed runs, and the grader's expected message. No
+  original task, grade, record, or outcome was changed. The interface explanation
+  compares one direct topic operation with the browser's edit flow.
+- Added `docs/design-discussion.md` with code-linked reasoning, alternative
+  designs, benefits, costs, and remaining tests. Rewrote speaker notes for the
+  new sequence and updated the assignment coverage links.
+- All **213 backend tests and 13 targeted browser tests passed** in a
+  credential-free isolated production build. Browser coverage includes every
+  slide, sorting, keyboard navigation, mobile width, production security policy,
+  and final-workspace rendering for all **402** published comparison records.
+  This is a targeted browser release check, not a new full-browser-suite result.
+- The 20-page tagged PDF passes the export clipping check. Inspected the new
+  slides visually and rendered the isolation and task-review pages from the
+  actual PDF. An initial print overflow and a main-bullet style violation were
+  corrected before the final passing run.
+- The original actor source and root `dist` remain byte-identical. Both study
+  collections, graders, and accounting remain unchanged. No new inference ran.
+
 ## Approach-first opening: 2026-10-05
 
 - Slide 1 now introduces Kevin's model-API harness, separation of execution and
