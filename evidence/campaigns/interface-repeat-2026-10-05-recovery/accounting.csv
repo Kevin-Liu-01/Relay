@@ -1,0 +1,11 @@
+phase,repetition,task,model,interface,outcome,requests,receipts,unknownRequests,inputTokens,outputTokens,acceptedUSD,reservedUSD,recordedUSD
+cell-001,1,thread-reply,gpt-6.1-sol,pixels,blocked,34,33,1,41575,2029,0.10343999999999999,0.127276,0.23071599999999998
+cell-002,1,thread-reply,gpt-6.1-sol,a11y,passed,4,4,0,38364,62,0.077348,0,0.077348
+cell-003,1,thread-reply,gpt-6.1-sol,json-ui,passed,4,4,0,22620,62,0.04586,0,0.04586
+cell-004,1,thread-reply,gpt-6.1-sol,api,passed,3,3,0,4480,57,0.00953,0,0.009530000000000004
+cell-005,1,thread-reply,claude-sonnet-5-5,pixels,passed,5,5,0,28130,94,0.0572,0,0.0572
+cell-006,1,thread-reply,claude-sonnet-5-5,a11y,passed,4,4,0,62182,80,0.125164,0,0.12516400000000003
+cell-007,1,thread-reply,claude-sonnet-5-5,api,passed,3,3,0,6942,76,0.014644,0,0.014643999999999997
+cell-008,1,thread-reply,claude-sonnet-5-5,json-ui,passed,4,4,0,37524,80,0.075848,0,0.07584799999999998
+cell-009,2,incident-closeout,claude-sonnet-5-5,a11y,blocked,18,18,0,422686,1094,0.856312,0,0.8563119999999997
+cell-010,2,incident-closeout,claude-sonnet-5-5,json-ui,blocked,13,12,1,139057,344,0.28155399999999997,0.095958,0.37751200000000007

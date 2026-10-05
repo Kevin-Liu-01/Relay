@@ -1,5 +1,43 @@
 # Verification and evidence
 
+## Repeated interface follow-up: 2026-10-05
+
+- All **48/48** planned attempts are recorded: **35 passed, 1 incomplete, 12
+  blocked**, with no retries or replacements. The collector stopped normally
+  at 21:28:58Z and released its lock. The two prior stops and all original
+  records remain preserved in separate collection directories.
+- Archive verification passed **3,755 integrity checks and 218 saved-state
+  grade checks**. Zero capture gaps. Summary SHA-256:
+  `7b1f321ab357d6c619765d61a57e74496c595987f004bb6f0c9301a9a7a24113`.
+- Accounting retains **555 requests, 549 accepted receipts and six unknown
+  requests**. Base-rate estimates are **$8.234304**, reservations **$0.733406**,
+  total **$8.967710 of $25**. No missing receipt was refunded or inferred.
+- Analysis pairs within model/task/repetition, covers all six mode pairs,
+  includes every stop and shows all-attempt time plus shared-pass differences.
+  API passed 12/12, accessibility 10/12, Page JSON 9/12 and pixels 4/12. This is
+  a small fixed-task development study, not an authoritative interface ranking.
+- Added the separate 48-record library, a Repeat selector, sortable follow-up
+  table, per-task repeat links, accepted/reserved costs and source-bound exports.
+  The 20-slide deck retains the approach-first narrative and earlier tables.
+  The original 306 and 96 libraries and their summary bindings are unchanged.
+- A credential-free isolated production build passed **229 backend tests** and
+  **17 browser tests**, with retries disabled. The browser checks cover the
+  presentation, results, reviewer behavior and all **450 records** across the
+  three distinct libraries. No provider calls were made by software tests.
+- Validation workspace:
+  `/var/folders/yl/sxf0v4tn14n2pkwqmf_21l540000gn/T/relay-review-validation-s0kEMT`.
+  Original actor source and root `dist` match the preserved pre-study receipt.
+  Builds ran only in isolated copies. All 20 print pages passed clipping checks;
+  the follow-up PDF slide and phone reviewer screenshot were inspected visually.
+- `npm run package` screened text and all decompressed public records against
+  credential patterns and the existing private Router key without exposing it.
+  Raw runtime archives, private state, test videos and credentials are excluded.
+
+[Analysis](../evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md)
+· [Archive receipt](../evidence/campaigns/interface-repeat-2026-10-05-continuation/verification-public-48.json)
+· [Browser checks and 48/96 coverage](../evidence/verification/interface-repeat-browser.json)
+· [306-record regression sweep](../evidence/verification/interface-repeat-historical-sweep.json).
+
 ## Research-led presentation opening: 2026-10-05
 
 - Rewrote slide 1 around Kevin's design process: research computer use, map

@@ -1,0 +1,2068 @@
+{
+  "summaryHash": "7b1f321ab357d6c619765d61a57e74496c595987f004bb6f0c9301a9a7a24113",
+  "schema": "relay-interface-repeat-analysis-v1",
+  "design": "12 model/task/repetition blocks, four interfaces; two repeats of three fixed tasks. Descriptive only.",
+  "byInterface": {
+    "a11y": {
+      "attempts": 12,
+      "outcomes": {
+        "blocked": 2,
+        "passed": 10
+      },
+      "blockedReasons": {
+        "budget": 2
+      },
+      "medianSecondsAll": 13.8085,
+      "medianSecondsPassed": 13.14,
+      "medianActionsAll": 6.5,
+      "usageUSD": 3.787724,
+      "unresolvedUSD": 0,
+      "allowanceUSD": 3.7877239999999994,
+      "unknownRequests": 0
+    },
+    "json-ui": {
+      "attempts": 12,
+      "outcomes": {
+        "blocked": 3,
+        "passed": 9
+      },
+      "blockedReasons": {
+        "budget": 1,
+        "credentials_invalid": 1,
+        "output_limit": 1
+      },
+      "medianSecondsAll": 16.189,
+      "medianSecondsPassed": 12.408,
+      "medianActionsAll": 7,
+      "usageUSD": 2.407492,
+      "unresolvedUSD": 0.095958,
+      "allowanceUSD": 2.5034500000000004,
+      "unknownRequests": 1
+    },
+    "pixels": {
+      "attempts": 12,
+      "outcomes": {
+        "blocked": 7,
+        "incomplete": 1,
+        "passed": 4
+      },
+      "blockedReasons": {
+        "output_limit": 2,
+        "timeout": 5
+      },
+      "medianSecondsAll": 131.965,
+      "medianSecondsPassed": 32.825,
+      "medianActionsAll": 31.5,
+      "usageUSD": 1.841782,
+      "unresolvedUSD": 0.637448,
+      "allowanceUSD": 2.4792300000000003,
+      "unknownRequests": 5
+    },
+    "api": {
+      "attempts": 12,
+      "outcomes": {
+        "passed": 12
+      },
+      "blockedReasons": {},
+      "medianSecondsAll": 8.1345,
+      "medianSecondsPassed": 8.1345,
+      "medianActionsAll": 3,
+      "usageUSD": 0.19730599999999998,
+      "unresolvedUSD": 0,
+      "allowanceUSD": 0.19730599999999998,
+      "unknownRequests": 0
+    }
+  },
+  "paired": [
+    {
+      "left": "a11y",
+      "right": "json-ui",
+      "pairs": 12,
+      "bothPassed": 9,
+      "leftOnly": 1,
+      "rightOnly": 0,
+      "neitherPassed": 2,
+      "blockedEither": 3,
+      "bothPassedMedianSecondsLeftMinusRight": 2.487,
+      "bothPassedMedianActionsLeftMinusRight": 0,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.04931600000000004
+    },
+    {
+      "left": "a11y",
+      "right": "pixels",
+      "pairs": 12,
+      "bothPassed": 4,
+      "leftOnly": 6,
+      "rightOnly": 0,
+      "neitherPassed": 2,
+      "blockedEither": 8,
+      "bothPassedMedianSecondsLeftMinusRight": -20.715500000000002,
+      "bothPassedMedianActionsLeftMinusRight": -5.5,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.05100100000000002
+    },
+    {
+      "left": "a11y",
+      "right": "api",
+      "pairs": 12,
+      "bothPassed": 10,
+      "leftOnly": 0,
+      "rightOnly": 2,
+      "neitherPassed": 0,
+      "blockedEither": 2,
+      "bothPassedMedianSecondsLeftMinusRight": 6.292999999999999,
+      "bothPassedMedianActionsLeftMinusRight": 3,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.13007999999999997
+    },
+    {
+      "left": "json-ui",
+      "right": "pixels",
+      "pairs": 12,
+      "bothPassed": 3,
+      "leftOnly": 6,
+      "rightOnly": 1,
+      "neitherPassed": 2,
+      "blockedEither": 9,
+      "bothPassedMedianSecondsLeftMinusRight": -6.669,
+      "bothPassedMedianActionsLeftMinusRight": -1,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.018647999999999984
+    },
+    {
+      "left": "json-ui",
+      "right": "api",
+      "pairs": 12,
+      "bothPassed": 9,
+      "leftOnly": 0,
+      "rightOnly": 3,
+      "neitherPassed": 0,
+      "blockedEither": 3,
+      "bothPassedMedianSecondsLeftMinusRight": 1.921,
+      "bothPassedMedianActionsLeftMinusRight": 4,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.09437600000000002
+    },
+    {
+      "left": "pixels",
+      "right": "api",
+      "pairs": 12,
+      "bothPassed": 4,
+      "leftOnly": 0,
+      "rightOnly": 8,
+      "neitherPassed": 0,
+      "blockedEither": 7,
+      "bothPassedMedianSecondsLeftMinusRight": 26.493499999999997,
+      "bothPassedMedianActionsLeftMinusRight": 8,
+      "bothPassedMedianAllowanceLeftMinusRight": 0.06929899999999999
+    }
+  ],
+  "byModel": [
+    {
+      "model": "gpt-6.1-sol",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "passed": 6
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 17.185000000000002,
+          "medianSecondsPassed": 17.185000000000002,
+          "medianActionsAll": 6,
+          "usageUSD": 1.282594,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 1.2825939999999996,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 1,
+            "passed": 5
+          },
+          "blockedReasons": {
+            "output_limit": 1
+          },
+          "medianSecondsAll": 23.109,
+          "medianSecondsPassed": 17.563,
+          "medianActionsAll": 5.5,
+          "usageUSD": 0.731226,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.7312260000000002,
+          "unknownRequests": 0
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 5,
+            "passed": 1
+          },
+          "blockedReasons": {
+            "timeout": 5
+          },
+          "medianSecondsAll": 180.17000000000002,
+          "medianSecondsPassed": 159.443,
+          "medianActionsAll": 33.5,
+          "usageUSD": 0.6628119999999998,
+          "unresolvedUSD": 0.637448,
+          "allowanceUSD": 1.3002599999999997,
+          "unknownRequests": 5
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "passed": 6
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 8.6795,
+          "medianSecondsPassed": 8.6795,
+          "medianActionsAll": 3,
+          "usageUSD": 0.077724,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.07772399999999999,
+          "unknownRequests": 0
+        }
+      },
+      "paired": [
+        {
+          "left": "a11y",
+          "right": "json-ui",
+          "pairs": 6,
+          "bothPassed": 5,
+          "leftOnly": 1,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 1,
+          "bothPassedMedianSecondsLeftMinusRight": 2.549,
+          "bothPassedMedianActionsLeftMinusRight": 0,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.035703999999999944
+        },
+        {
+          "left": "a11y",
+          "right": "pixels",
+          "pairs": 6,
+          "bothPassed": 1,
+          "leftOnly": 5,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 5,
+          "bothPassedMedianSecondsLeftMinusRight": -146.001,
+          "bothPassedMedianActionsLeftMinusRight": -28,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.03403800000000001
+        },
+        {
+          "left": "a11y",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 6,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 0,
+          "bothPassedMedianSecondsLeftMinusRight": 6.390499999999999,
+          "bothPassedMedianActionsLeftMinusRight": 3,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.13007999999999997
+        },
+        {
+          "left": "json-ui",
+          "right": "pixels",
+          "pairs": 6,
+          "bothPassed": 0,
+          "leftOnly": 5,
+          "rightOnly": 1,
+          "neitherPassed": 0,
+          "blockedEither": 6,
+          "bothPassedMedianSecondsLeftMinusRight": null,
+          "bothPassedMedianActionsLeftMinusRight": null,
+          "bothPassedMedianAllowanceLeftMinusRight": null
+        },
+        {
+          "left": "json-ui",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 5,
+          "leftOnly": 0,
+          "rightOnly": 1,
+          "neitherPassed": 0,
+          "blockedEither": 1,
+          "bothPassedMedianSecondsLeftMinusRight": 0.065,
+          "bothPassedMedianActionsLeftMinusRight": 4,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.09437600000000002
+        },
+        {
+          "left": "pixels",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 1,
+          "leftOnly": 0,
+          "rightOnly": 5,
+          "neitherPassed": 0,
+          "blockedEither": 5,
+          "bothPassedMedianSecondsLeftMinusRight": 151.399,
+          "bothPassedMedianActionsLeftMinusRight": 31,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.09604199999999996
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "byInterface": {
+        "a11y": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 4
+          },
+          "blockedReasons": {
+            "budget": 2
+          },
+          "medianSecondsAll": 13.506499999999999,
+          "medianSecondsPassed": 11.440999999999999,
+          "medianActionsAll": 7,
+          "usageUSD": 2.50513,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.50513,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 4
+          },
+          "blockedReasons": {
+            "budget": 1,
+            "credentials_invalid": 1
+          },
+          "medianSecondsAll": 13.6115,
+          "medianSecondsPassed": 9.908,
+          "medianActionsAll": 7,
+          "usageUSD": 1.6762659999999996,
+          "unresolvedUSD": 0.095958,
+          "allowanceUSD": 1.772224,
+          "unknownRequests": 1
+        },
+        "pixels": {
+          "attempts": 6,
+          "outcomes": {
+            "blocked": 2,
+            "incomplete": 1,
+            "passed": 3
+          },
+          "blockedReasons": {
+            "output_limit": 2
+          },
+          "medianSecondsAll": 32.4495,
+          "medianSecondsPassed": 14.077,
+          "medianActionsAll": 5.5,
+          "usageUSD": 1.1789700000000003,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 1.1789700000000003,
+          "unknownRequests": 0
+        },
+        "api": {
+          "attempts": 6,
+          "outcomes": {
+            "passed": 6
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 6.3315,
+          "medianSecondsPassed": 6.3315,
+          "medianActionsAll": 3,
+          "usageUSD": 0.11958200000000001,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.119582,
+          "unknownRequests": 0
+        }
+      },
+      "paired": [
+        {
+          "left": "a11y",
+          "right": "json-ui",
+          "pairs": 6,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 1.4080000000000001,
+          "bothPassedMedianActionsLeftMinusRight": 0,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.07944200000000001
+        },
+        {
+          "left": "a11y",
+          "right": "pixels",
+          "pairs": 6,
+          "bothPassed": 3,
+          "leftOnly": 1,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 3,
+          "bothPassedMedianSecondsLeftMinusRight": -4.033,
+          "bothPassedMedianActionsLeftMinusRight": -1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.06796400000000002
+        },
+        {
+          "left": "a11y",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 5.7780000000000005,
+          "bothPassedMedianActionsLeftMinusRight": 2.5,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.18858600000000003
+        },
+        {
+          "left": "json-ui",
+          "right": "pixels",
+          "pairs": 6,
+          "bothPassed": 3,
+          "leftOnly": 1,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 3,
+          "bothPassedMedianSecondsLeftMinusRight": -6.669,
+          "bothPassedMedianActionsLeftMinusRight": -1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.018647999999999984
+        },
+        {
+          "left": "json-ui",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 4.8745,
+          "bothPassedMedianActionsLeftMinusRight": 2.5,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.10913499999999998
+        },
+        {
+          "left": "pixels",
+          "right": "api",
+          "pairs": 6,
+          "bothPassed": 3,
+          "leftOnly": 0,
+          "rightOnly": 3,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 8.401,
+          "bothPassedMedianActionsLeftMinusRight": 2,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.042556000000000004
+        }
+      ]
+    }
+  ],
+  "byTask": [
+    {
+      "task": "thread-reply",
+      "byInterface": {
+        "a11y": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 9.8665,
+          "medianSecondsPassed": 9.8665,
+          "medianActionsAll": 4,
+          "usageUSD": 0.405024,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.40502400000000005,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 7.849,
+          "medianSecondsPassed": 7.849,
+          "medianActionsAll": 4,
+          "usageUSD": 0.243416,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.24341599999999997,
+          "unknownRequests": 0
+        },
+        "pixels": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 2
+          },
+          "blockedReasons": {
+            "timeout": 2
+          },
+          "medianSecondsAll": 97.10249999999999,
+          "medianSecondsPassed": 13.013,
+          "medianActionsAll": 19,
+          "usageUSD": 0.340712,
+          "unresolvedUSD": 0.254552,
+          "allowanceUSD": 0.5952639999999998,
+          "unknownRequests": 2
+        },
+        "api": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 6.9505,
+          "medianSecondsPassed": 6.9505,
+          "medianActionsAll": 3,
+          "usageUSD": 0.048336000000000004,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.048336000000000004,
+          "unknownRequests": 0
+        }
+      },
+      "paired": [
+        {
+          "left": "a11y",
+          "right": "json-ui",
+          "pairs": 4,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 0,
+          "bothPassedMedianSecondsLeftMinusRight": 2.4675000000000002,
+          "bothPassedMedianActionsLeftMinusRight": 0,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.04040200000000002
+        },
+        {
+          "left": "a11y",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 2,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": -3.1465,
+          "bothPassedMedianActionsLeftMinusRight": -1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.06797400000000002
+        },
+        {
+          "left": "a11y",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 0,
+          "bothPassedMedianSecondsLeftMinusRight": 3.4605,
+          "bothPassedMedianActionsLeftMinusRight": 1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.08917500000000002
+        },
+        {
+          "left": "json-ui",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 2,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": -5.6575,
+          "bothPassedMedianActionsLeftMinusRight": -1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.01865799999999998
+        },
+        {
+          "left": "json-ui",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 0,
+          "bothPassedMedianSecondsLeftMinusRight": 0.8985,
+          "bothPassedMedianActionsLeftMinusRight": 1,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.04877299999999999
+        },
+        {
+          "left": "pixels",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 7.484,
+          "bothPassedMedianActionsLeftMinusRight": 2,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.04254600000000001
+        }
+      ]
+    },
+    {
+      "task": "edit-message",
+      "byInterface": {
+        "a11y": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 13.8085,
+          "medianSecondsPassed": 13.8085,
+          "medianActionsAll": 6.5,
+          "usageUSD": 0.842274,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.8422739999999999,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 1,
+            "passed": 3
+          },
+          "blockedReasons": {
+            "output_limit": 1
+          },
+          "medianSecondsAll": 16.189,
+          "medianSecondsPassed": 14.815,
+          "medianActionsAll": 7,
+          "usageUSD": 0.447488,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.447488,
+          "unknownRequests": 0
+        },
+        "pixels": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 2
+          },
+          "blockedReasons": {
+            "output_limit": 1,
+            "timeout": 1
+          },
+          "medianSecondsAll": 105.50800000000001,
+          "medianSecondsPassed": 105.50800000000001,
+          "medianActionsAll": 25.5,
+          "usageUSD": 0.6338,
+          "unresolvedUSD": 0.127334,
+          "allowanceUSD": 0.7611340000000001,
+          "unknownRequests": 1
+        },
+        "api": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 7.3759999999999994,
+          "medianSecondsPassed": 7.3759999999999994,
+          "medianActionsAll": 3,
+          "usageUSD": 0.048552,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.04855199999999997,
+          "unknownRequests": 0
+        }
+      },
+      "paired": [
+        {
+          "left": "a11y",
+          "right": "json-ui",
+          "pairs": 4,
+          "bothPassed": 3,
+          "leftOnly": 1,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 1,
+          "bothPassedMedianSecondsLeftMinusRight": 0.43,
+          "bothPassedMedianActionsLeftMinusRight": 0,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.10956799999999997
+        },
+        {
+          "left": "a11y",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 2,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": -91.6995,
+          "bothPassedMedianActionsLeftMinusRight": -19,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.015552999999999928
+        },
+        {
+          "left": "a11y",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 4,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 0,
+          "blockedEither": 0,
+          "bothPassedMedianSecondsLeftMinusRight": 7.7965,
+          "bothPassedMedianActionsLeftMinusRight": 3.5,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.198366
+        },
+        {
+          "left": "json-ui",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 1,
+          "leftOnly": 2,
+          "rightOnly": 1,
+          "neitherPassed": 0,
+          "blockedEither": 3,
+          "bothPassedMedianSecondsLeftMinusRight": -36.758,
+          "bothPassedMedianActionsLeftMinusRight": -10,
+          "bothPassedMedianAllowanceLeftMinusRight": -0.11277600000000013
+        },
+        {
+          "left": "json-ui",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 3,
+          "leftOnly": 0,
+          "rightOnly": 1,
+          "neitherPassed": 0,
+          "blockedEither": 1,
+          "bothPassedMedianSecondsLeftMinusRight": 7.975,
+          "bothPassedMedianActionsLeftMinusRight": 4,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.15706599999999998
+        },
+        {
+          "left": "pixels",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 97.9925,
+          "bothPassedMedianActionsLeftMinusRight": 22.5,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.18294200000000005
+        }
+      ]
+    },
+    {
+      "task": "incident-closeout",
+      "byInterface": {
+        "a11y": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 2
+          },
+          "blockedReasons": {
+            "budget": 2
+          },
+          "medianSecondsAll": 39.812,
+          "medianSecondsPassed": 36.375,
+          "medianActionsAll": 16.5,
+          "usageUSD": 2.540426,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 2.540425999999999,
+          "unknownRequests": 0
+        },
+        "json-ui": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 2,
+            "passed": 2
+          },
+          "blockedReasons": {
+            "budget": 1,
+            "credentials_invalid": 1
+          },
+          "medianSecondsAll": 30.646,
+          "medianSecondsPassed": 30.646,
+          "medianActionsAll": 15,
+          "usageUSD": 1.7165879999999998,
+          "unresolvedUSD": 0.095958,
+          "allowanceUSD": 1.8125460000000004,
+          "unknownRequests": 1
+        },
+        "pixels": {
+          "attempts": 4,
+          "outcomes": {
+            "blocked": 3,
+            "incomplete": 1
+          },
+          "blockedReasons": {
+            "output_limit": 1,
+            "timeout": 2
+          },
+          "medianSecondsAll": 142.313,
+          "medianSecondsPassed": null,
+          "medianActionsAll": 31.5,
+          "usageUSD": 0.8672700000000001,
+          "unresolvedUSD": 0.255562,
+          "allowanceUSD": 1.122832,
+          "unknownRequests": 2
+        },
+        "api": {
+          "attempts": 4,
+          "outcomes": {
+            "passed": 4
+          },
+          "blockedReasons": {},
+          "medianSecondsAll": 24.3855,
+          "medianSecondsPassed": 24.3855,
+          "medianActionsAll": 8,
+          "usageUSD": 0.10041800000000001,
+          "unresolvedUSD": 0,
+          "allowanceUSD": 0.10041800000000004,
+          "unknownRequests": 0
+        }
+      },
+      "paired": [
+        {
+          "left": "a11y",
+          "right": "json-ui",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 0,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 5.729,
+          "bothPassedMedianActionsLeftMinusRight": 0,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.15650899999999976
+        },
+        {
+          "left": "a11y",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 0,
+          "leftOnly": 2,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 4,
+          "bothPassedMedianSecondsLeftMinusRight": null,
+          "bothPassedMedianActionsLeftMinusRight": null,
+          "bothPassedMedianAllowanceLeftMinusRight": null
+        },
+        {
+          "left": "a11y",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 9.624,
+          "bothPassedMedianActionsLeftMinusRight": 7,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.40453099999999986
+        },
+        {
+          "left": "json-ui",
+          "right": "pixels",
+          "pairs": 4,
+          "bothPassed": 0,
+          "leftOnly": 2,
+          "rightOnly": 0,
+          "neitherPassed": 2,
+          "blockedEither": 4,
+          "bothPassedMedianSecondsLeftMinusRight": null,
+          "bothPassedMedianActionsLeftMinusRight": null,
+          "bothPassedMedianAllowanceLeftMinusRight": null
+        },
+        {
+          "left": "json-ui",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 2,
+          "leftOnly": 0,
+          "rightOnly": 2,
+          "neitherPassed": 0,
+          "blockedEither": 2,
+          "bothPassedMedianSecondsLeftMinusRight": 3.895,
+          "bothPassedMedianActionsLeftMinusRight": 7,
+          "bothPassedMedianAllowanceLeftMinusRight": 0.24802200000000008
+        },
+        {
+          "left": "pixels",
+          "right": "api",
+          "pairs": 4,
+          "bothPassed": 0,
+          "leftOnly": 0,
+          "rightOnly": 4,
+          "neitherPassed": 0,
+          "blockedEither": 3,
+          "bothPassedMedianSecondsLeftMinusRight": null,
+          "bothPassedMedianActionsLeftMinusRight": null,
+          "bothPassedMedianAllowanceLeftMinusRight": null
+        }
+      ]
+    }
+  ],
+  "repeatConsistency": [
+    {
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-002",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 10.839,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 38364,
+          "outputTokens": 62,
+          "acceptedUSD": 0.077348,
+          "reservedUSD": 0,
+          "recordedUSD": 0.077348,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-019",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 7.453,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 38364,
+          "outputTokens": 62,
+          "acceptedUSD": 0.077348,
+          "reservedUSD": 0,
+          "recordedUSD": 0.077348,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-003",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 8.29,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 22620,
+          "outputTokens": 62,
+          "acceptedUSD": 0.04586,
+          "reservedUSD": 0,
+          "recordedUSD": 0.04586,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-018",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 8.501,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 22620,
+          "outputTokens": 62,
+          "acceptedUSD": 0.04586,
+          "reservedUSD": 0,
+          "recordedUSD": 0.04586,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "passes": 0,
+      "trials": [
+        {
+          "phase": "cell-001",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 180.201,
+          "actions": 33,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 34,
+          "receipts": 33,
+          "unknownRequests": 1,
+          "inputTokens": 41575,
+          "outputTokens": 2029,
+          "acceptedUSD": 0.10343999999999999,
+          "reservedUSD": 0.127276,
+          "recordedUSD": 0.23071599999999998,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-017",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 180.128,
+          "actions": 38,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 39,
+          "receipts": 38,
+          "unknownRequests": 1,
+          "inputTokens": 48206,
+          "outputTokens": 2648,
+          "acceptedUSD": 0.12289199999999999,
+          "reservedUSD": 0.127276,
+          "recordedUSD": 0.2501679999999999,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-004",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 8.225,
+          "actions": 3,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 4480,
+          "outputTokens": 57,
+          "acceptedUSD": 0.00953,
+          "reservedUSD": 0,
+          "recordedUSD": 0.009530000000000004,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-020",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 9.134,
+          "actions": 3,
+          "task": "thread-reply",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 4479,
+          "outputTokens": 56,
+          "acceptedUSD": 0.009518,
+          "reservedUSD": 0,
+          "recordedUSD": 0.009518000000000006,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "a11y",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-037",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 20.928,
+          "actions": 6,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 6,
+          "receipts": 6,
+          "unknownRequests": 0,
+          "inputTokens": 69345,
+          "outputTokens": 98,
+          "acceptedUSD": 0.13967000000000002,
+          "reservedUSD": 0,
+          "recordedUSD": 0.13966999999999996,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-029",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 13.442,
+          "actions": 6,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 6,
+          "receipts": 6,
+          "unknownRequests": 0,
+          "inputTokens": 69345,
+          "outputTokens": 98,
+          "acceptedUSD": 0.13967000000000002,
+          "reservedUSD": 0,
+          "recordedUSD": 0.13966999999999996,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "passes": 1,
+      "trials": [
+        {
+          "phase": "cell-040",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 17.563,
+          "actions": 7,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 51253,
+          "outputTokens": 146,
+          "acceptedUSD": 0.103966,
+          "reservedUSD": 0,
+          "recordedUSD": 0.10396600000000002,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-032",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 48.944,
+          "actions": 0,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 1,
+          "receipts": 1,
+          "unknownRequests": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "acceptedUSD": 0,
+          "reservedUSD": 0,
+          "recordedUSD": 0,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "pixels",
+      "passes": 1,
+      "trials": [
+        {
+          "phase": "cell-038",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 180.219,
+          "actions": 34,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 35,
+          "receipts": 34,
+          "unknownRequests": 1,
+          "inputTokens": 43321,
+          "outputTokens": 2133,
+          "acceptedUSD": 0.10797199999999998,
+          "reservedUSD": 0.127334,
+          "recordedUSD": 0.235306,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-030",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 159.443,
+          "actions": 34,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 34,
+          "receipts": 34,
+          "unknownRequests": 0,
+          "inputTokens": 43436,
+          "outputTokens": 1876,
+          "acceptedUSD": 0.10563199999999999,
+          "reservedUSD": 0,
+          "recordedUSD": 0.10563199999999995,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-039",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 7.765,
+          "actions": 3,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 4505,
+          "outputTokens": 58,
+          "acceptedUSD": 0.00959,
+          "reservedUSD": 0,
+          "recordedUSD": 0.009589999999999994,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-031",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 8.044,
+          "actions": 3,
+          "task": "edit-message",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 4505,
+          "outputTokens": 58,
+          "acceptedUSD": 0.00959,
+          "reservedUSD": 0,
+          "recordedUSD": 0.009589999999999994,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-013",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 37.626,
+          "actions": 15,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 15,
+          "receipts": 15,
+          "unknownRequests": 0,
+          "inputTokens": 210882,
+          "outputTokens": 256,
+          "acceptedUSD": 0.42432400000000003,
+          "reservedUSD": 0,
+          "recordedUSD": 0.4243239999999998,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-034",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 35.124,
+          "actions": 15,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "a11y",
+          "requests": 15,
+          "receipts": 15,
+          "unknownRequests": 0,
+          "inputTokens": 210847,
+          "outputTokens": 254,
+          "acceptedUSD": 0.424234,
+          "reservedUSD": 0,
+          "recordedUSD": 0.42423399999999983,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-015",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 28.655,
+          "actions": 15,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 15,
+          "receipts": 15,
+          "unknownRequests": 0,
+          "inputTokens": 132710,
+          "outputTokens": 235,
+          "acceptedUSD": 0.26777,
+          "reservedUSD": 0,
+          "recordedUSD": 0.26777000000000006,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-035",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 32.637,
+          "actions": 15,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "json-ui",
+          "requests": 15,
+          "receipts": 15,
+          "unknownRequests": 0,
+          "inputTokens": 132710,
+          "outputTokens": 235,
+          "acceptedUSD": 0.26777,
+          "reservedUSD": 0,
+          "recordedUSD": 0.26777000000000006,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "passes": 0,
+      "trials": [
+        {
+          "phase": "cell-016",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 180.139,
+          "actions": 32,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 33,
+          "receipts": 32,
+          "unknownRequests": 1,
+          "inputTokens": 42141,
+          "outputTokens": 2874,
+          "acceptedUSD": 0.11302199999999997,
+          "reservedUSD": 0.127782,
+          "recordedUSD": 0.24080400000000002,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-036",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 182.622,
+          "actions": 31,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "pixels",
+          "requests": 32,
+          "receipts": 31,
+          "unknownRequests": 1,
+          "inputTokens": 40762,
+          "outputTokens": 2833,
+          "acceptedUSD": 0.10985399999999998,
+          "reservedUSD": 0.12778,
+          "recordedUSD": 0.23763399999999996,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-014",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 30.243,
+          "actions": 8,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 8,
+          "receipts": 8,
+          "unknownRequests": 0,
+          "inputTokens": 8954,
+          "outputTokens": 185,
+          "acceptedUSD": 0.019758,
+          "reservedUSD": 0,
+          "recordedUSD": 0.019758000000000005,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-033",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 23.259,
+          "actions": 8,
+          "task": "incident-closeout",
+          "model": "gpt-6.1-sol",
+          "interface": "api",
+          "requests": 8,
+          "receipts": 8,
+          "unknownRequests": 0,
+          "inputTokens": 8954,
+          "outputTokens": 183,
+          "acceptedUSD": 0.019738,
+          "reservedUSD": 0,
+          "recordedUSD": 0.019738,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-006",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 9.689,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 62182,
+          "outputTokens": 80,
+          "acceptedUSD": 0.125164,
+          "reservedUSD": 0,
+          "recordedUSD": 0.12516400000000003,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-025",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 10.044,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 62182,
+          "outputTokens": 80,
+          "acceptedUSD": 0.125164,
+          "reservedUSD": 0,
+          "recordedUSD": 0.12516400000000003,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-008",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 7.303,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 37524,
+          "outputTokens": 80,
+          "acceptedUSD": 0.075848,
+          "reservedUSD": 0,
+          "recordedUSD": 0.07584799999999998,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-028",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 7.408,
+          "actions": 4,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 4,
+          "receipts": 4,
+          "unknownRequests": 0,
+          "inputTokens": 37524,
+          "outputTokens": 80,
+          "acceptedUSD": 0.075848,
+          "reservedUSD": 0,
+          "recordedUSD": 0.07584799999999998,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-005",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 11.949,
+          "actions": 5,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 5,
+          "receipts": 5,
+          "unknownRequests": 0,
+          "inputTokens": 28130,
+          "outputTokens": 94,
+          "acceptedUSD": 0.0572,
+          "reservedUSD": 0,
+          "recordedUSD": 0.0572,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-027",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 14.077,
+          "actions": 5,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 5,
+          "receipts": 5,
+          "unknownRequests": 0,
+          "inputTokens": 28130,
+          "outputTokens": 92,
+          "acceptedUSD": 0.057179999999999995,
+          "reservedUSD": 0,
+          "recordedUSD": 0.05718000000000001,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-007",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 5.382,
+          "actions": 3,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 6942,
+          "outputTokens": 76,
+          "acceptedUSD": 0.014644,
+          "reservedUSD": 0,
+          "recordedUSD": 0.014643999999999997,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-026",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 5.676,
+          "actions": 3,
+          "task": "thread-reply",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 6942,
+          "outputTokens": 76,
+          "acceptedUSD": 0.014644,
+          "reservedUSD": 0,
+          "recordedUSD": 0.014643999999999997,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "a11y",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-045",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 14.175,
+          "actions": 7,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 139798,
+          "outputTokens": 200,
+          "acceptedUSD": 0.281596,
+          "reservedUSD": 0,
+          "recordedUSD": 0.28159599999999996,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-044",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 12.838,
+          "actions": 7,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 139754,
+          "outputTokens": 183,
+          "acceptedUSD": 0.281338,
+          "reservedUSD": 0,
+          "recordedUSD": 0.281338,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-048",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 14.815,
+          "actions": 7,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 85066,
+          "outputTokens": 162,
+          "acceptedUSD": 0.17175200000000002,
+          "reservedUSD": 0,
+          "recordedUSD": 0.171752,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-043",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 12.408,
+          "actions": 7,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 85070,
+          "outputTokens": 163,
+          "acceptedUSD": 0.17176999999999998,
+          "reservedUSD": 0,
+          "recordedUSD": 0.17177,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "pixels",
+      "passes": 1,
+      "trials": [
+        {
+          "phase": "cell-046",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 51.573,
+          "actions": 17,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 17,
+          "receipts": 17,
+          "unknownRequests": 0,
+          "inputTokens": 139259,
+          "outputTokens": 601,
+          "acceptedUSD": 0.28452800000000006,
+          "reservedUSD": 0,
+          "recordedUSD": 0.2845280000000001,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-041",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 40.111,
+          "actions": 6,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 46624,
+          "outputTokens": 4242,
+          "acceptedUSD": 0.135668,
+          "reservedUSD": 0,
+          "recordedUSD": 0.13566799999999998,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-047",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 6.987,
+          "actions": 3,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 6958,
+          "outputTokens": 77,
+          "acceptedUSD": 0.014686000000000001,
+          "reservedUSD": 0,
+          "recordedUSD": 0.01468599999999999,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-042",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 4.433,
+          "actions": 3,
+          "task": "edit-message",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 6958,
+          "outputTokens": 77,
+          "acceptedUSD": 0.014686000000000001,
+          "reservedUSD": 0,
+          "recordedUSD": 0.01468599999999999,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "passes": 0,
+      "trials": [
+        {
+          "phase": "cell-022",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 52.548,
+          "actions": 20,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 20,
+          "receipts": 20,
+          "unknownRequests": 0,
+          "inputTokens": 408863,
+          "outputTokens": 1783,
+          "acceptedUSD": 0.835556,
+          "reservedUSD": 0,
+          "recordedUSD": 0.8355560000000001,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-009",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 41.998,
+          "actions": 18,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "a11y",
+          "requests": 18,
+          "receipts": 18,
+          "unknownRequests": 0,
+          "inputTokens": 422686,
+          "outputTokens": 1094,
+          "acceptedUSD": 0.856312,
+          "reservedUSD": 0,
+          "recordedUSD": 0.8563119999999997,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "passes": 0,
+      "trials": [
+        {
+          "phase": "cell-021",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 83.05,
+          "actions": 32,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 32,
+          "receipts": 32,
+          "unknownRequests": 0,
+          "inputTokens": 429507,
+          "outputTokens": 4048,
+          "acceptedUSD": 0.8994939999999999,
+          "reservedUSD": 0,
+          "recordedUSD": 0.8994940000000002,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-010",
+          "repetition": 2,
+          "outcome": "blocked",
+          "seconds": 22.425,
+          "actions": 12,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "json-ui",
+          "requests": 13,
+          "receipts": 12,
+          "unknownRequests": 1,
+          "inputTokens": 139057,
+          "outputTokens": 344,
+          "acceptedUSD": 0.28155399999999997,
+          "reservedUSD": 0.095958,
+          "recordedUSD": 0.37751200000000007,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "passes": 0,
+      "trials": [
+        {
+          "phase": "cell-024",
+          "repetition": 1,
+          "outcome": "blocked",
+          "seconds": 24.788,
+          "actions": 2,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 3,
+          "receipts": 3,
+          "unknownRequests": 0,
+          "inputTokens": 11868,
+          "outputTokens": 4132,
+          "acceptedUSD": 0.065056,
+          "reservedUSD": 0,
+          "recordedUSD": 0.065056,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-012",
+          "repetition": 2,
+          "outcome": "incomplete",
+          "seconds": 104.487,
+          "actions": 32,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "pixels",
+          "requests": 32,
+          "receipts": 32,
+          "unknownRequests": 0,
+          "inputTokens": 278929,
+          "outputTokens": 2148,
+          "acceptedUSD": 0.5793380000000001,
+          "reservedUSD": 0,
+          "recordedUSD": 0.5793380000000001,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "api",
+      "passes": 2,
+      "trials": [
+        {
+          "phase": "cell-023",
+          "repetition": 1,
+          "outcome": "passed",
+          "seconds": 25.512,
+          "actions": 9,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 9,
+          "receipts": 9,
+          "unknownRequests": 0,
+          "inputTokens": 14776,
+          "outputTokens": 463,
+          "acceptedUSD": 0.034182,
+          "reservedUSD": 0,
+          "recordedUSD": 0.03418200000000002,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        },
+        {
+          "phase": "cell-011",
+          "repetition": 2,
+          "outcome": "passed",
+          "seconds": 14.531,
+          "actions": 7,
+          "task": "incident-closeout",
+          "model": "claude-sonnet-5-5",
+          "interface": "api",
+          "requests": 7,
+          "receipts": 7,
+          "unknownRequests": 0,
+          "inputTokens": 12390,
+          "outputTokens": 196,
+          "acceptedUSD": 0.026739999999999996,
+          "reservedUSD": 0,
+          "recordedUSD": 0.026740000000000014,
+          "inputUSDPerMillion": 2,
+          "outputUSDPerMillion": 10
+        }
+      ]
+    }
+  ],
+  "diagnosticPassesBlocked": [
+    "cell-021"
+  ],
+  "limitations": [
+    "Pass discordance retains blocked attempts as not passed, but reports blocks separately. It does not isolate model ability.",
+    "All-attempt time medians include early stops. Both-passed differences select on the observed outcome and are secondary descriptions.",
+    "Passed-only medians use different successful task subsets across model/interface cells. No passes means no completion-time estimate, not zero seconds.",
+    "Shared-host activity affects elapsed time. API exposes semantic actions and structured data; pixels use low-detail images on macOS.",
+    "Two repetitions of three selected development tasks do not establish general reliability. No p-values, population confidence intervals or general ranking are claimed.",
+    "The credential-deactivated attempt remains blocked. All six requests without receipts retain their reservations. Prior studies are separate, not pooled."
+  ]
+}

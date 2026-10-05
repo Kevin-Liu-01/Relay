@@ -1,5 +1,96 @@
 # Relay handoff
 
+## Authorized 48-run follow-up
+
+**Current status: all 48 attempts complete and archive-verified; publication in progress.**
+PID 92802 exited and released its lock. Do not launch any collector or run more
+inference. Outcomes are 35 passed, one incomplete and 12 blocked; zero unattempted
+or capture gaps. Final verification passed 3,755 integrity and 218 saved-state
+grade checks. Accounting: 555 requests, 549 receipts, six unknown; $8.234304
+accepted estimates plus $0.733406 reservations = $8.967710 of the $25 allowance.
+The verified summary hash is
+`7b1f321ab357d6c619765d61a57e74496c595987f004bb6f0c9301a9a7a24113`.
+All 48 public records live in `evidence/interface-repeat-trial-library`.
+`scripts/analyze-interface-repeat.mjs` derives all six paired comparisons within
+model/task/repetition, costs, time and repeat consistency. Never pool older studies.
+The new reviewer uses `?study=repeat` and a Repeat selector; catalog identity includes
+the repetition only for this explicitly named study. Preserve older validation.
+The 20-slide story is retained, with follow-up results at the stable
+`#interpreting-interface-results` anchor. `/results` includes both-repeat links.
+Keep frozen actor/source/dist and all collector files unchanged. Release builds
+and tests belong in isolated copies. Refresh this status after production verification.
+
+**Historical launch: authorized continuation from cell 011.**
+The user raised Router account limits and explicitly requested continuation.
+The authenticated catalog returned HTTP 200; the two frozen routes and rates
+remain available. Read `docs/campaigns/interface-repeat-2026-10-05-continuation.md`.
+PID 92802, exec session 38466, owns the continuation lock. The single-use command
+is `scripts/run-interface-repeat-continuation.mjs bulk --authorized-continuation`;
+it has already been launched. Do not run it again. Check its actual manifest and
+summary under `.runtime` / `evidence/campaigns/interface-repeat-2026-10-05-continuation`.
+All ten carried archives reverified (629 integrity, 42 grade checks); ten targeted
+regressions pass and original actor/source/build are unchanged. This collector
+retains the exact first ten phase records, including cell 010's unsafe flag,
+their $1.870134 allowance, all original caps and the original wall-clock start.
+At completion use `node scripts/verify-interface-repeat-continuation.mjs --publish`.
+Never edit any original, recovery or continuation worker/helper/preparation file,
+the frozen plan/actor/root dist, or historical receipts during inference. Do not
+retry cells. The completion heartbeat handles final analysis and publication.
+
+**Historical credential stop: 10/48 attempted.**
+Read `docs/campaigns/interface-repeat-2026-10-05-credential-stop.md`. PID 32598
+exited and released its lock. A read-only account catalog request confirms
+HTTP 401, `api_key_deactivated`. There is no active collector. The completion
+heartbeat is paused pending an active credential and user continuation.
+All ten archives verify: 629 integrity checks, 42 grade checks, seven passes,
+three blocks and zero capture gaps. Total recorded allowance is $1.870134,
+including $0.223234 unresolved reservations. Preserve the 38 untouched cells
+starting at cell 011. Do not retry cells 001-010, restart either frozen worker,
+silently substitute another credential, reset accounting, or relax limits.
+The launch history below is historical, not current process status.
+
+**Historical recovery collector:** `scripts/run-interface-repeat-recovery.mjs`.
+Read `docs/campaigns/interface-repeat-2026-10-05-recovery.md` first. The user
+explicitly authorized fixing the reporting failure and continuing untouched
+cells. The original worker stopped after one completed raw attempt because
+reporting leaked repetition metadata into strict actor-config validation.
+The first timeout is preserved, not retried. Offline recovery verified 245
+integrity checks, three grade checks, and $0.230716 including its reservation.
+The separate recovery manifest/summary lives in `.runtime` / `evidence/campaigns`
+under `interface-repeat-2026-10-05-recovery`. It retains all original limits,
+the 20:18:30Z wall-clock start, the full 48-cell order and shared $25 allowance.
+Do not use the original stale zero-attempt summary as coverage or edit it.
+The recovery admission worker started as PID 21912, exec session 83963, for
+cells 002 through 008. Read the lock/manifest for actual status. Verify with
+`node scripts/verify-interface-repeat-recovery.mjs` at the admission boundary,
+write the original study's pilot review, then launch this recovery worker's
+`bulk --reviewed-pilot` once. No original worker/source/build bytes changed.
+Admission is now verified: eight attempts, seven passes and one retained timeout;
+453 integrity checks, 24 grade checks, $0.636310 total allowance. Read the written
+pilot review. The remaining 40 started as PID 32598, exec session 39907, using
+`bulk --reviewed-pilot`. It subsequently stopped as described above; never relaunch pilot.
+Its worker/helper/recovery script are now also frozen. Use only observer-side
+changes while collecting. Unexpected stops still require diagnosis, not reruns.
+
+The user approved `interface-repeat-2026-10-05`: Sol and Sonnet, thread reply,
+message editing and incident closeout, four modes, two fresh attempts each,
+with a separate additional $25 estimated ceiling. Read its campaign Markdown
+and JSON before acting. This is 48 planned cells, not 48 retries or an extension
+of either closed collection. The new worker is `scripts/run-interface-repeat-study.mjs`;
+its own verifier and public library use `interface-repeat` names.
+Check its private manifest and worker lock before any launch. Review and verify
+the first eight cells before `bulk --reviewed-pilot`. No automatic resumption
+after a stop. Keep the frozen worker, helper, JSON, actor source and root `dist`
+unchanged during collection. Only the collector runs paid inference. Preserve
+all historical results and show repeats as repeats of three tasks, not new tasks.
+Report completion, time, actions and cost without promising a universal winner.
+Admission started at 2026-10-05T20:18:30Z as PID 4353 (exec session 61455).
+The completion heartbeat owns evidence review and the one authorized transition
+from eight verified admission cells to the remaining 40. All 220 backend tests
+passed before launch in `/var/folders/yl/sxf0v4tn14n2pkwqmf_21l540000gn/T/relay-review-validation-2JeM64`.
+That copy preserves the source/build baseline. No paid smoke runs were added.
+Keep status here distinct from the manifest's actual current state.
+
 ## Dropdown layout
 
 Short menus must not reserve blank scroll-arrow slots. Measure the natural

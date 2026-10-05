@@ -61,9 +61,11 @@ const files = roots.flatMap(function walk(p) {
 // browser-test-only is the public, disposable test-server credential, not a live secret.
 for (const p of files) {
   if (
-    ['evidence/trial-library/', 'evidence/interface-trial-library/'].some((prefix) =>
-      p.startsWith(prefix),
-    ) &&
+    [
+      'evidence/trial-library/',
+      'evidence/interface-trial-library/',
+      'evidence/interface-repeat-trial-library/',
+    ].some((prefix) => p.startsWith(prefix)) &&
     p.endsWith('.json.gz')
   )
     assertSafeEvidence(

@@ -7,7 +7,8 @@
 - Completed one-pass coverage is **306/306: 152 passed, 61 incomplete, 93 blocked**. All 306 attempts have public structured traces and UI-state replays; zero cells are unattempted. The final verifier reopened all 277 archives, with 26,403 integrity checks and 2,007 grading checks in agreement.
 - Strongest demonstration: a model replies in the correct thread, then a deeper run performs plausible actions but fails the exact task contract. Show both.
 - A separate matched study completed **96/96 attempts: 58 passed, 11 incomplete and 27 blocked**. It includes three screenshot-only passes, all 96 trace/replay records and [paired comparisons with full costs](../evidence/campaigns/interface-study-2026-10-05/analysis.md).
-- Remaining weaknesses: 19/24 pixel attempts blocked, wording ambiguities in two historical tasks, no semantic task holdout or repeatability estimate, and no sustained browser-worker scaling measurement.
+- A separate follow-up completed **48/48 attempts: 35 passed, 1 incomplete and 12 blocked**, with two fresh attempts per model/task/interface for Sol and Sonnet on three fixed tasks. [Outcomes, paired time and costs](../evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md) and [all replays](https://relay.kevinliu.studio/demo/review.html?study=repeat) remain separate from earlier studies.
+- Remaining weaknesses: low-detail pixel input and platform-specific keys, wording ambiguities in two historical tasks, only two repeats on three selected tasks rather than a semantic holdout, and no sustained browser-worker scaling measurement.
 
 ## Assignment coverage
 

@@ -1,0 +1,731 @@
+{
+  "id": "interface-repeat-2026-10-05",
+  "schemaVersion": 1,
+  "planned": 48,
+  "authorization": "User approved 48 new runs: Sol and Sonnet, three tasks, four interfaces, two fresh attempts per condition. Separate additional $25 estimated-spend ceiling. No request retries or replacement cells.",
+  "maxEstimatedUSD": 25,
+  "pilotCells": 8,
+  "maxWallSeconds": 28800,
+  "maxTotalRequests": 1920,
+  "maxArchiveBytes": 12000000000,
+  "minimumFreeBytes": 10000000000,
+  "seed": 2042,
+  "orderSeed": 26100548,
+  "repetitions": 2,
+  "models": {
+    "gpt-6.1-sol": {
+      "id": "gpt-6.1-sol",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "vision": true,
+      "reasoning": "low"
+    },
+    "claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": {
+        "input": 2,
+        "output": 10
+      },
+      "vision": true,
+      "reasoning": "low"
+    }
+  },
+  "catalog": {
+    "at": "2026-10-05T20:16:12.308Z",
+    "hash": "eb4ca2c6b3dffb6c26c48637bc97f1ca9685752b1971f7d235c7a94608ac5a79",
+    "source": "https://api.router.com/v1/models",
+    "models": [
+      {
+        "id": "gpt-6.1-sol",
+        "owned_by": "openai",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "none",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      },
+      {
+        "id": "claude-sonnet-5-5",
+        "owned_by": "anthropic",
+        "catalogRates": {
+          "input": 2,
+          "output": 10
+        },
+        "unavailableReason": null,
+        "imageInput": true,
+        "reasoningEfforts": [
+          "none",
+          "minimal",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      }
+    ]
+  },
+  "common": {
+    "provider": "ramp",
+    "seeds": [
+      2042
+    ],
+    "repeats": 1,
+    "guides": [
+      false
+    ],
+    "histories": [
+      "recent-4"
+    ],
+    "orderSeed": 26100548,
+    "maxSteps": 40,
+    "maxRequests": 40,
+    "maxOutputTokens": 4096,
+    "maxInputUnits": 250000,
+    "episodeSeconds": 180,
+    "runSeconds": 240,
+    "maxEstimatedUSD": 1,
+    "requestTimeoutSeconds": 90,
+    "continueAfterRequestTimeout": true,
+    "continueAfterOutputLimit": true,
+    "continueAfterConnectionFailure": true,
+    "continueAfterEpisodeTimeout": true
+  },
+  "phases": [
+    {
+      "id": "cell-001",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-002",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-003",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-004",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-005",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-006",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-007",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-008",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-009",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-010",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-011",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-012",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-013",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-014",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-015",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-016",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-017",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-018",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-019",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-020",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-021",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-022",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-023",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-024",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-025",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-026",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-027",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-028",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "thread-reply"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-029",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-030",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-031",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-032",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-033",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-034",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-035",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-036",
+      "repetition": 2,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "incident-closeout"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-037",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-038",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-039",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-040",
+      "repetition": 1,
+      "models": [
+        "gpt-6.1-sol"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-041",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-042",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-043",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    },
+    {
+      "id": "cell-044",
+      "repetition": 2,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-045",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "a11y"
+      ]
+    },
+    {
+      "id": "cell-046",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "pixels"
+      ]
+    },
+    {
+      "id": "cell-047",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "api"
+      ]
+    },
+    {
+      "id": "cell-048",
+      "repetition": 1,
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "tasks": [
+        "edit-message"
+      ],
+      "interfaces": [
+        "json-ui"
+      ]
+    }
+  ]
+}

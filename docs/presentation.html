@@ -1328,6 +1328,18 @@ a:focus-visible {
   gap: 24px;
   font-size: 13px;
   margin: 10px 0;
+  flex-wrap: wrap;
+}
+.repeat-trial-details {
+  margin-top: 24px;
+}
+.repeat-trial-details > summary {
+  cursor: pointer;
+  color: var(--plum);
+  padding: 12px 0;
+}
+.results-page .repeat-study-results {
+  margin-top: 24px;
 }
 .study-table a {
   text-decoration-thickness: 1px;
@@ -5937,59 +5949,20 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Interpreting interface results" data-slide-id="interpreting-interface-results"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+      <section class="slide interface-study-results repeat-study-results" data-title="Interpreting interface results" data-slide-id="interpreting-interface-results"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results<span class="section-number">18 / 20</span></span></header>
-        <h2>The API result does not show better computer use</h2>
-        <div
-          class="verification-map"
-          role="img"
-          aria-label="Setting a topic with the API is one application operation. The browser path requires opening the editor, entering text, and saving. Nineteen of twenty-four pixel runs stopped early. The scores do not isolate model ability."
-        >
-          <div>
-            <span class="diagram-label">Example: API topic change</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong
-              >Set the topic directly</strong
-            ><span>One application operation<br />No dialog to navigate</span>
-          </div>
-          <div>
-            <span class="diagram-label">Same change in the browser</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong
-              >Open → fill → Save</strong
-            ><span>Several UI actions<br />Each requires another decision</span>
-          </div>
-          <div>
-            <span class="diagram-label">Pixel results</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
-              >19 / 24 stopped early</strong
-            ><span
-              >14 connection failures<br />3 output limits · 2 timeouts</span
-            >
-          </div>
-        </div>
-        <ul>
-          <li>
-            The same final check does not make the routes equally difficult: API access skips
-            browser interaction.
-          </li>
-          <li>
-            A pixel failure can reflect image delivery, keyboard behavior, or a service
-            interruption, not just a wrong decision.
-          </li>
-          <li>One attempt per condition cannot establish a reliable winner.</li>
-        </ul>
+        <h2>I repeated the comparison on three workflows</h2>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable repeated interface results"><table class="study-table sortable" id="interface-repeat-results"><caption>Passed / 6 attempts · three tasks, two repeats · median elapsed seconds</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=9db894c4-dd1f-47ec-b359-b5b24977b861-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">17.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.2 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f50084a1-00f7-414f-ad29-cc1937f145fa-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON repeats"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.1 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.6 s</dd></div></dl></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f65e4b6f-d462-4d5c-986a-19e14d7ba8f8-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels repeats"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">180.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">159.4 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=249ee43a-811a-41c7-8b4b-a4d89a043809-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">8.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">8.7 s</dd></div></dl></td><td data-sort="3.3918039999999996">$3.3918</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=43205556-40d9-47d4-b34c-5c3ae9c357b9-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">11.4 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=44788dd5-7a84-42b9-92de-29112f9f43cc-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.6 s</dd></div><div><dt>Passed</dt><dd data-time="passed">9.9 s</dd></div></dl></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=40a6fc64-0b1f-4350-823d-09e9b01ea504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels repeats"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">32.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">14.1 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=2c96ca7e-7180-46b6-b6ee-360aa8f2bad6-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">6.3 s</dd></div><div><dt>Passed</dt><dd data-time="passed">6.3 s</dd></div></dl></td><td data-sort="5.575906000000001">$5.5759</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat">All 48 traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-repeat-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md">All paired comparisons ↗</a></div>
+        <span class="sr-only" id="repeat-sort-status" role="status"></span>
+        <ul><li>Each interface had 12 attempts: API passed 12, accessibility 10, Page JSON 9, and pixels 4.</li><li>On 10 shared passes, API used a median 6.3 fewer seconds and 3 fewer actions than accessibility.</li><li>API skips browser interaction, so its higher completion count does not show better computer use.</li></ul>
         <ul class="sources">
-          <li>17 shared passes for API/accessibility. 24 API/accessibility pairs: 17 both passed · 4 API only · 1 accessibility only · 2 neither passed. 5 pairs include a blocked attempt.</li>
-          <li>
-            On 17 shared passes, median accessibility-minus-API differences were +2 actions, +5.462 seconds, and +$0.13008. These are selected successful pairs, not a general speed estimate.
-          </li>
-          <li>
-            Pixels used low-detail images on macOS. Time includes shared-host activity.
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
-              >Definitions, costs, and all matched pairs</a
-            >.
-          </li>
+          <li>Verified: 35 passed · 1 incomplete · 12 blocked. $8.2343 usage + $0.7334 unresolved = $8.9677 of $25. Six requests lack receipts.</li>
+          <li>Two repeats each of thread reply, message editing and incident closeout. The earlier 96 attempts remain a separate study.</li>
+          <li>All-attempt times include stops. Shared-pass timing selects on success. Low-detail pixels, macOS keys and two repeats limit what this comparison establishes.</li>
         </ul>
       </section>
       <section class="slide" data-title="The next benchmark version" data-slide-id="the-next-benchmark-version"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
@@ -5998,7 +5971,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The next benchmark version<span class="section-number">19 / 20</span></span></header>
-        <h2>The next version needs validated tasks and repeated runs</h2>
+        <h2>The next version needs validated, unseen task variants</h2>
         <ul>
           <li>Ask someone outside the project to solve each task from its instructions.</li>
           <li>Compare their interpretation with the expected result.</li>
@@ -9608,7 +9581,9 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
                 ? 'sort-status'
                 : table.id === 'interface-results'
                   ? 'interface-sort-status'
-                  : 'trial-sort-status',
+                  : ['interface-repeat-results', 'repeat-task-results'].includes(table.id)
+                    ? 'repeat-sort-status'
+                    : 'trial-sort-status',
             ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
           };
       }

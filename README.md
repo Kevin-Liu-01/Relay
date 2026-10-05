@@ -25,7 +25,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 - **Use your own key:** connect Ramp Router or TypeSafe to use the compatible
   models available to your account, including model queues and 1v1.
 - **Try Slack:** use the mock workspace yourself. No key is required.
-- **Results & replays:** inspect all 306 benchmark attempts. **History** groups
+- **Results & replays:** inspect all 306 model trials, the separate 96-run interface study, and the new 48-run repeated comparison. **History** groups
   your browser's own runs, comparisons and replay library.
 
 [Free-tier policy and setup](docs/free-tier.md) · [Hosted setup and privacy](docs/hosting.md).
@@ -35,6 +35,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 - **[Results, full costs and all replays](https://relay.kevinliu.studio/results)**: sortable model table, task filters and per-model drilldowns. Every trial links directly to its trace and recorded UI. No key or new inference required.
 - **[Presentation](https://relay.kevinliu.studio/presentation)**: 20 slides from the model-API harness and a concrete editing task through isolation, speed, resource choices, scaling, and two comparisons. [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md) · [design decisions explained](docs/design-discussion.md).
 - **[Completed matched interface study](https://relay.kevinliu.studio/presentation#interface-results)**: all **96/96** attempts are verified across four models, six tasks and four interfaces. **58 passed, 11 incomplete, 27 blocked.** API passed 21/24, accessibility 18/24, Page JSON 16/24 and pixels 3/24. Nineteen pixel runs were blocked, including 14 connection failures. This describes the fixed harness, not a reliable capability ranking. Estimated allowance: **$22.761576** of $25, including **$2.043534** unresolved. [Plan](docs/campaigns/interface-study-2026-10-05.md) · [Paired results, time and costs](evidence/campaigns/interface-study-2026-10-05/analysis.md) · [All 96 traces and replays](https://relay.kevinliu.studio/demo/review.html?study=interfaces).
+- **[Repeated interface follow-up](https://relay.kevinliu.studio/presentation#interpreting-interface-results)**: all **48/48** attempts verified, with two repeats of three tasks for Sol and Sonnet. **35 passed, 1 incomplete, 12 blocked.** API passed 12/12, accessibility 10/12, Page JSON 9/12 and pixels 4/12. Recorded allowance: **$8.967710**, including **$0.733406** unresolved. [Paired outcomes, time and costs](evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md) · [All 48 traces and replays](https://relay.kevinliu.studio/demo/review.html?study=repeat). These selected development tasks do not establish a general ranking.
 - **[Build review](docs/build-review.md)**: task-design mistakes, engineering fixes, and what I would change next time.
 - **[One-pass model coverage](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)**: **306/306 recorded and verified**—152 passed, 61 incomplete, 93 blocked. Seventeen routes × all 18 tasks, one attempt per cell, with no repeats or hidden exclusions.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.

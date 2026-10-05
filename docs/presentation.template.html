@@ -859,58 +859,19 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Interpreting interface results">
-        <h2>The API result does not show better computer use</h2>
-        <div
-          class="verification-map"
-          role="img"
-          aria-label="Setting a topic with the API is one application operation. The browser path requires opening the editor, entering text, and saving. Nineteen of twenty-four pixel runs stopped early. The scores do not isolate model ability."
-        >
-          <div>
-            <span class="diagram-label">Example: API topic change</span>{{ICON_API}}<strong
-              >Set the topic directly</strong
-            ><span>One application operation<br />No dialog to navigate</span>
-          </div>
-          <div>
-            <span class="diagram-label">Same change in the browser</span>{{ICON_BROWSER}}<strong
-              >Open → fill → Save</strong
-            ><span>Several UI actions<br />Each requires another decision</span>
-          </div>
-          <div>
-            <span class="diagram-label">Pixel results</span>{{ICON_PIXELS}}<strong
-              >{{PIXEL_BLOCKED}} / 24 stopped early</strong
-            ><span
-              >{{PIXEL_CONNECTIONS}} connection failures<br />3 output limits · 2 timeouts</span
-            >
-          </div>
-        </div>
-        <ul>
-          <li>
-            The same final check does not make the routes equally difficult: API access skips
-            browser interaction.
-          </li>
-          <li>
-            A pixel failure can reflect image delivery, keyboard behavior, or a service
-            interruption, not just a wrong decision.
-          </li>
-          <li>One attempt per condition cannot establish a reliable winner.</li>
-        </ul>
+      <section class="slide interface-study-results repeat-study-results" data-title="Interpreting interface results">
+        <h2>I repeated the comparison on three workflows</h2>
+        {{INTERFACE_REPEAT_RESULTS}}
+        <span class="sr-only" id="repeat-sort-status" role="status"></span>
+        <ul>{{INTERFACE_REPEAT_FINDINGS}}</ul>
         <ul class="sources">
-          <li>{{PAIRED_BOTH}} shared passes for API/accessibility. {{PAIRED_DETAIL}}</li>
-          <li>
-            {{PAIRED_TIMING}} These are selected successful pairs, not a general speed estimate.
-          </li>
-          <li>
-            Pixels used low-detail images on macOS. Time includes shared-host activity.
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
-              >Definitions, costs, and all matched pairs</a
-            >.
-          </li>
+          <li>{{INTERFACE_REPEAT_STATUS}}</li>
+          <li>Two repeats each of thread reply, message editing and incident closeout. The earlier 96 attempts remain a separate study.</li>
+          <li>All-attempt times include stops. Shared-pass timing selects on success. Low-detail pixels, macOS keys and two repeats limit what this comparison establishes.</li>
         </ul>
       </section>
       <section class="slide" data-title="The next benchmark version">
-        <h2>The next version needs validated tasks and repeated runs</h2>
+        <h2>The next version needs validated, unseen task variants</h2>
         <ul>
           <li>Ask someone outside the project to solve each task from its instructions.</li>
           <li>Compare their interpretation with the expected result.</li>
@@ -1149,7 +1110,9 @@
                 ? 'sort-status'
                 : table.id === 'interface-results'
                   ? 'interface-sort-status'
-                  : 'trial-sort-status',
+                  : ['interface-repeat-results', 'repeat-task-results'].includes(table.id)
+                    ? 'repeat-sort-status'
+                    : 'trial-sort-status',
             ).textContent = `Sorted by ${button.firstChild.textContent.trim()}, ${direction}`;
           };
       }

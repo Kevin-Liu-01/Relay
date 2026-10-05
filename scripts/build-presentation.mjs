@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { modelComparison } from './lib/model-comparison.mjs';
 import { comparisonSlide } from './lib/comparison-slide.mjs';
 import { analyzeInterfaces } from './lib/interface-analysis.mjs';
+import { repeatPresentation } from './lib/interface-repeat-presentation.mjs';
 import { validateCatalog, validateRecord, trialId } from '../docs/review-app/data.mjs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -273,7 +274,17 @@ const studyTable = study
       )
       .join('')}</tbody></table></div>`
   : '<div class="takeaway">The matched study is prepared. No results are available yet.</div>';
+const repeat = repeatPresentation({
+  heading: studyHeading,
+  mark,
+  names: studyNames,
+  marks: studyMarks,
+  elapsed,
+});
 const values = {
+  INTERFACE_REPEAT_RESULTS: repeat.table,
+  INTERFACE_REPEAT_FINDINGS: repeat.findings,
+  INTERFACE_REPEAT_STATUS: repeat.status,
   PAIRED_BOTH: apiPair?.bothPassed ?? 'Pending',
   PIXEL_BLOCKED: studyAnalysis?.byInterface.pixels.outcomes.blocked ?? 'Pending',
   PIXEL_CONNECTIONS:
@@ -426,11 +437,20 @@ assert.equal(sectionIndex, Object.keys(sectionIcons).length);
 writeFileSync('docs/presentation.html', html);
 // One table, accounting source and controller for both surfaces.
 const resultSection = html.match(/<section class="slide comparison-slide[\s\S]*?<\/section>/)[0];
+const repeatSection = html.match(
+  /<section class="slide interface-study-results repeat-study-results[\s\S]*?<\/section>/,
+)[0];
 const dialog = html.match(/<dialog id="trials-dialog"[\s\S]*?<\/dialog>/)[0];
 const controls = html.match(/<script>[\s\S]*?<\/script>/)[0];
 writeFileSync(
   'docs/results.html',
-  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay · Results and replays</title>${faviconLinks}<link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a><a href="/presentation#interface-results">Interface study</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
+  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay · Results and replays</title>${faviconLinks}<link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a><a href="/presentation#interface-results">96-run study</a><a href="#interface-repeat-results">48-run follow-up</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}${repeatSection
+    .replace('class="slide ', 'class="results-panel ')
+    .replace(/<span class="section-number">[\s\S]*?<\/span>/, '')
+    .replace(
+      '</section>',
+      repeat.details + '</section>',
+    )}</main>${dialog}${controls}</body></html>`,
 );
 console.log(
   JSON.stringify({

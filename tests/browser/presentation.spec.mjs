@@ -27,7 +27,7 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   );
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
-  await expect(page.locator('.slide table')).toHaveCount(2);
+  await expect(page.locator('.slide table')).toHaveCount(3);
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
     'DM its named handoff recipient “Implement DESIGN navigation; accessibility approved.”',
   );
@@ -65,7 +65,7 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
     'href',
     'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md',
   );
-  await expect(page.locator('.slide [role="img"]')).toHaveCount(17);
+  await expect(page.locator('.slide [role="img"]')).toHaveCount(16);
   const sequence = await page
     .locator('.slide')
     .evaluateAll((slides) => slides.map((s) => s.dataset.title));
@@ -189,14 +189,14 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
       .filter({ hasText: 'Read the failure analysis' }),
   ).toHaveAttribute('href', 'https://relay.kevinliu.studio/presentation#main-lesson');
   const analysis = JSON.parse(
-    readFileSync('evidence/campaigns/interface-study-2026-10-05/analysis.json'),
+    readFileSync('evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.json'),
   );
   const paired = analysis.paired.find((p) => p.left === 'a11y' && p.right === 'api');
   const interpretation = page.locator('[data-title="Interpreting interface results"]');
   await expect(interpretation).toContainText(`${paired.bothPassed} shared passes`);
-  await expect(interpretation).toContainText(`${paired.rightOnly} API only`);
+  await expect(interpretation).toContainText('API passed 12');
   await expect(interpretation).toContainText(
-    `+${paired.bothPassedMedianSecondsLeftMinusRight.toFixed(3)} seconds`,
+    `${paired.bothPassedMedianSecondsLeftMinusRight.toFixed(1)} fewer seconds`,
   );
   for (let i = 0; i < 20; i++) {
     const slide = page.locator('.slide.active');

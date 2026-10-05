@@ -336,24 +336,41 @@ Next: explain why the highest pass count is not a universal CUA winner.
 
 ## 18. Interpreting interface results
 
-Use the topic example. The API can set a topic in one application operation.
-The browser path needs the editor, text entry, and Save. Equal action limits and
-a shared final check do not make these equally difficult.
+The earlier study used one attempt per condition. I followed it with two fresh
+attempts per condition for Sol and Sonnet, using thread reply, message editing and
+incident closeout. This adds repeat observations while keeping the study small.
+The three workflows cover parent selection, editing and multi-step changes.
+They are fixed development tasks, not unseen variants.
 
-Nineteen pixel attempts stopped early: fourteen connection failures, three output
-limits, two timeouts. Images used low detail. On macOS, keyboard shortcuts differ
-from common Windows/Linux shortcuts; element modes also have direct fill.
+All 48 planned attempts are recorded: 35 passed, one incomplete and 12 blocked.
+API passed 12/12, accessibility 10/12, Page JSON 9/12, and pixels 4/12.
+For API and accessibility, ten pairs both passed and two passed only with API.
+On those ten shared passes, API used median within-pair differences of 6.293
+fewer seconds, three fewer actions and $0.130080 less allowance.
 
-API and accessibility both passed 17 matched pairs; API alone passed four,
-accessibility alone one, neither two. Five pairs include a blocked attempt.
-On the 17 shared passes, accessibility used median within-pair differences of
-two more actions, 5.462 more seconds, and $0.13008 more allowance. This selected
-subset is not a general speed estimate. Shared-host activity also affected time.
+This supports using the API for these app tasks when direct operations are
+available. It does not show better computer use: the API bypasses dialogs,
+targeting and text entry. Accessibility had the highest observed browser pass
+count, but this small study cannot establish a general ranking.
 
-One attempt cannot estimate repeat-run reliability. See the
-[paired analysis](../evidence/campaigns/interface-study-2026-10-05/analysis.md).
+All-attempt timing includes early stops. Passed-only timing uses different
+successful subsets. Neither is a general speed estimate. Pixel input remains
+low-detail on macOS. Five pixel attempts timed out, two hit output limits, and
+one completed with an incorrect result. Other blocks were three per-cell budget
+stops, one Page JSON output limit and one deactivated-key response. The latter
+remains in the results after the user restored access; it was not retried.
 
-Next: identify what would make the next benchmark stronger.
+The total is $8.234304 in accepted estimates plus $0.733406 in reservations,
+or $8.967710 of $25. Six requests have no accepted usage receipt. These are
+base-rate estimates, not invoices. Keep all outcomes visible.
+
+Click a count, then change model, task, interface or Repeat. Each selection
+opens its exact recorded workspace and checks without a model call.
+[All six paired comparisons](../evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md)
+include task-level and model-level breakdowns. The 96-run table and original
+306 records remain available and are not pooled with these 48 attempts.
+
+Next: test new task variants and improve the conditions before collecting more.
 
 ## 19. The next benchmark version
 

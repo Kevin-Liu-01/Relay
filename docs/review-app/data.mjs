@@ -2,6 +2,7 @@
 import { episodeOutcome } from '../../shared/run-outcome.mjs';
 export const catalogPath = '/demo/trial-catalog.json';
 export const interfaceCatalogPath = '/demo/interface-trial-catalog.json';
+export const repeatCatalogPath = '/demo/interface-repeat-trial-catalog.json';
 export const taskCaveats = {
   'release-sync':
     'Task wording caveat: the channel reference ambiguously scopes the handoff location. Retain this raw outcome; do not treat it as a clean model-capability comparison.',
@@ -22,6 +23,7 @@ export function validateCatalog(catalog) {
   fail(catalog?.schema === 'relay-trial-catalog-v1', 'Unsupported trial catalog.');
   fail(Array.isArray(catalog.trials) && catalog.trials.length <= 1000, 'Invalid trial inventory.');
   fail(hash.test(catalog.summaryHash), 'Missing summary binding.');
+  const repeated = catalog.campaign === 'interface-repeat-2026-10-05';
   const ids = new Set(),
     cells = new Set();
   for (const item of catalog.trials) {
@@ -29,7 +31,9 @@ export function validateCatalog(catalog) {
     fail(!ids.has(item.id), 'Duplicate trial.');
     ids.add(item.id);
     fail(['a11y', 'json-ui', 'pixels', 'api'].includes(item.interface), 'Invalid interface.');
-    const cell = `${item.model}/${item.task}/${item.seed}/${item.interface}`;
+    if (repeated) fail([1, 2].includes(item.repetition), 'Invalid repetition.');
+    else fail(item.repetition === undefined, 'Unexpected repetition in a single-attempt study.');
+    const cell = `${item.model}/${item.task}/${item.seed}/${item.interface}${repeated ? `/${item.repetition}` : ''}`;
     fail(!cells.has(cell), 'Duplicate task/model/seed.');
     cells.add(cell);
     fail(['passed', 'incomplete', 'blocked'].includes(item.outcome), 'Invalid recorded outcome.');
@@ -132,6 +136,7 @@ export async function loadRecord(item, signal) {
   // Validate even when called outside the app. Never fetch a path from the URL.
   validateCatalog({
     schema: 'relay-trial-catalog-v1',
+    ...(item.repetition === undefined ? {} : { campaign: 'interface-repeat-2026-10-05' }),
     summaryHash: '0'.repeat(64),
     trials: [item],
     attempted: 1,

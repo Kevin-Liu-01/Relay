@@ -1,0 +1,60 @@
+{
+  "id": "interface-repeat-2026-10-05",
+  "createdAt": "2026-10-05T20:18:30.673Z",
+  "planHash": "4c7398aed445f714903eb8364f98274ca6d6fe428200d10286ff3e933187774d",
+  "sourceHash": "4157e7bbae3a4cd77b880a5da5361f9942f755bbb7ee47fa059b8717a1b59766",
+  "buildHash": "9406fbc350a17bf2f4f0f45ef69d3ecca6574c39b07fdf1d470c10efd6dece5d",
+  "workerHash": "16e6d866b4c2c5d5875ddd08a1f37ff6aacfda38cbd2889f12c5985743732831",
+  "phases": [
+    {
+      "id": "cell-001",
+      "repetition": 1,
+      "startedAt": "2026-10-05T20:18:31.108Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": false
+    }
+  ],
+  "status": "running"
+}

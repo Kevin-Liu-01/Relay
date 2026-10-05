@@ -27,13 +27,20 @@ import './style.css';
 import {
   catalogPath,
   interfaceCatalogPath,
+  repeatCatalogPath,
   validateCatalog,
   loadRecord,
   stateChanges,
   taskCaveats,
 } from './data.mjs';
-const interfaceStudy = new URLSearchParams(location.search).get('study') === 'interfaces';
-const resultAnchor = interfaceStudy ? 'interface-results' : 'model-comparison';
+const studyQuery = new URLSearchParams(location.search).get('study');
+const repeatStudy = studyQuery === 'repeat';
+const interfaceStudy = repeatStudy || studyQuery === 'interfaces';
+const resultAnchor = repeatStudy
+  ? 'interpreting-interface-results'
+  : interfaceStudy
+    ? 'interface-results'
+    : 'model-comparison';
 const modeLabels = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'API' };
 
 function ReviewModelMark({ id, size }) {
@@ -397,7 +404,9 @@ function App() {
     [loadError, setLoadError] = useState('');
   useEffect(() => {
     const controller = new AbortController();
-    fetch(interfaceStudy ? interfaceCatalogPath : catalogPath, { signal: controller.signal })
+    fetch(repeatStudy ? repeatCatalogPath : interfaceStudy ? interfaceCatalogPath : catalogPath, {
+      signal: controller.signal,
+    })
       .then((r) => {
         if (!r.ok) throw Error('Trial catalog unavailable.');
         return r.json();
@@ -433,7 +442,11 @@ function App() {
   }, [item?.id]);
   function navigate(trial, view = selection.view) {
     if (trial === (selection.trial || item?.id) && view === selection.view) return;
-    const next = { trial, view, ...(interfaceStudy ? { study: 'interfaces' } : {}) };
+    const next = {
+      trial,
+      view,
+      ...(interfaceStudy ? { study: repeatStudy ? 'repeat' : 'interfaces' } : {}),
+    };
     history.pushState(null, '', `${location.pathname}?${new URLSearchParams(next)}`);
     setSelection(next);
   }
@@ -460,7 +473,13 @@ function App() {
       <main>
         <div className="review-title">
           <div>
-            <h1>{interfaceStudy ? 'Compare interface traces' : 'Review every trial'}</h1>
+            <h1>
+              {repeatStudy
+                ? 'Review the 48-run follow-up'
+                : interfaceStudy
+                  ? 'Compare interface traces'
+                  : 'Review every trial'}
+            </h1>
             <p>
               {catalog
                 ? `${catalog.attempted} / ${catalog.planned} recorded · no key needed · no new inference`
@@ -491,7 +510,10 @@ function App() {
                   navigate(
                     catalog.trials.find(
                       (r) =>
-                        r.model === model && r.task === item.task && r.interface === item.interface,
+                        r.model === model &&
+                        r.task === item.task &&
+                        r.interface === item.interface &&
+                        (!repeatStudy || r.repetition === item.repetition),
                     ).id,
                   )
                 }
@@ -501,7 +523,10 @@ function App() {
                   icon: <ReviewModelMark id={model} size={19} />,
                   disabled: !catalog.trials.some(
                     (r) =>
-                      r.model === model && r.task === item.task && r.interface === item.interface,
+                      r.model === model &&
+                      r.task === item.task &&
+                      r.interface === item.interface &&
+                      (!repeatStudy || r.repetition === item.repetition),
                   ),
                   disabledReason: 'Not recorded for this task yet',
                 }))}
@@ -514,7 +539,10 @@ function App() {
                   navigate(
                     catalog.trials.find(
                       (r) =>
-                        r.task === task && r.model === item.model && r.interface === item.interface,
+                        r.task === task &&
+                        r.model === item.model &&
+                        r.interface === item.interface &&
+                        (!repeatStudy || r.repetition === item.repetition),
                     ).id,
                   )
                 }
@@ -524,7 +552,10 @@ function App() {
                   icon: <TaskIcon task={task} />,
                   disabled: !catalog.trials.some(
                     (r) =>
-                      r.task === task && r.model === item.model && r.interface === item.interface,
+                      r.task === task &&
+                      r.model === item.model &&
+                      r.interface === item.interface &&
+                      (!repeatStudy || r.repetition === item.repetition),
                   ),
                   disabledReason: 'Not recorded for this model yet',
                 }))}
@@ -537,7 +568,10 @@ function App() {
                     navigate(
                       catalog.trials.find(
                         (r) =>
-                          r.task === item.task && r.model === item.model && r.interface === mode,
+                          r.task === item.task &&
+                          r.model === item.model &&
+                          r.interface === mode &&
+                          (!repeatStudy || r.repetition === item.repetition),
                       ).id,
                     )
                   }
@@ -546,9 +580,35 @@ function App() {
                     label,
                     icon: <ModeIcon mode={mode} />,
                     disabled: !catalog.trials.some(
-                      (r) => r.task === item.task && r.model === item.model && r.interface === mode,
+                      (r) =>
+                        r.task === item.task &&
+                        r.model === item.model &&
+                        r.interface === mode &&
+                        (!repeatStudy || r.repetition === item.repetition),
                     ),
                     disabledReason: 'Not recorded for this model and task yet',
+                  }))}
+                />
+              )}
+              {repeatStudy && (
+                <RelaySelect
+                  label="Review repeat"
+                  value={String(item.repetition)}
+                  onChange={(value) =>
+                    navigate(
+                      catalog.trials.find(
+                        (r) =>
+                          r.model === item.model &&
+                          r.task === item.task &&
+                          r.interface === item.interface &&
+                          r.repetition === Number(value),
+                      ).id,
+                    )
+                  }
+                  options={[1, 2].map((rep) => ({
+                    value: String(rep),
+                    label: `Repeat ${rep}`,
+                    icon: <Film size={18} />,
                   }))}
                 />
               )}
@@ -655,8 +715,10 @@ function App() {
           </>
         )}
         <footer>
-          One attempt per {interfaceStudy ? 'model/task/interface' : 'model/task'} · failures
-          retained · playback is read-only.{' '}
+          {repeatStudy
+            ? 'Two fresh attempts per model/task/interface'
+            : `One attempt per ${interfaceStudy ? 'model/task/interface' : 'model/task'}`}{' '}
+          · failures retained · playback is read-only.{' '}
           <a href={`/presentation#${resultAnchor}`}>Comparison and limitations</a>
         </footer>
       </main>

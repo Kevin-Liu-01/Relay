@@ -42,6 +42,7 @@ function addExpectations(record) {
 for (const [library, catalogName] of [
   ['trial-library', 'trial-catalog.json'],
   ['interface-trial-library', 'interface-trial-catalog.json'],
+  ['interface-repeat-trial-library', 'interface-repeat-trial-catalog.json'],
 ]) {
   if (!existsSync(`evidence/${library}/catalog.json`)) continue;
   const catalog = validateCatalog(JSON.parse(readFileSync(`evidence/${library}/catalog.json`)));
@@ -173,6 +174,9 @@ for (const extension of ['csv', 'json'])
 for (const extension of ['csv', 'json']) {
   const path = `evidence/campaigns/interface-study-2026-10-05/accounting.${extension}`;
   if (existsSync(path)) copyFileSync(path, `dist/demo/interface-study-accounting.${extension}`);
+  const repeatPath = `evidence/campaigns/interface-repeat-2026-10-05-continuation/accounting.${extension}`;
+  if (existsSync(repeatPath))
+    copyFileSync(repeatPath, `dist/demo/interface-repeat-accounting.${extension}`);
 }
 
 // Use a committed, exact-font raster for unfurlers. Rendering is a separate

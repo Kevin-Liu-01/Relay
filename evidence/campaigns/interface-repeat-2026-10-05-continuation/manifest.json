@@ -1,0 +1,3845 @@
+{
+  "id": "interface-repeat-2026-10-05-continuation",
+  "studyId": "interface-repeat-2026-10-05",
+  "createdAt": "2026-10-05T20:18:30.673Z",
+  "continuedAt": "2026-10-05T20:58:49.479Z",
+  "planHash": "4c7398aed445f714903eb8364f98274ca6d6fe428200d10286ff3e933187774d",
+  "sourceHash": "4157e7bbae3a4cd77b880a5da5361f9942f755bbb7ee47fa059b8717a1b59766",
+  "buildHash": "9406fbc350a17bf2f4f0f45ef69d3ecca6574c39b07fdf1d470c10efd6dece5d",
+  "originalWorkerHash": "16e6d866b4c2c5d5875ddd08a1f37ff6aacfda38cbd2889f12c5985743732831",
+  "originalManifestHash": "0e39ae02e9c1a480e16748255e7792ac3228c2362a49bf8bb7dd1997a76d8c2e",
+  "priorWorkerHash": "72ad47c87b3e23940881e676a6e0cc7d9fe540bfa5a96ee5c6c3c7e981ce155f",
+  "priorManifestHash": "d24c1220118b75c86f980167b20429be1fef20c6cde09bc354fb3cee66a3e35e",
+  "priorVerificationHash": "735ec9ac64df68637ac7573fca0fa3710f2c60fe30ea93ad269d47df422cbdf6",
+  "priorSummaryHash": "22788d46fce854226e2e001e1fbc17b3ae37e70feffb95a562a4a14e6fef20ad",
+  "workerHash": "8b13fbe205ecdabe78c87e0315074b8a363943bf70f2d09fbab7acd5c61c2993",
+  "status": "completed",
+  "pilotReview": {
+    "reviewHash": "ac4a3bd9ea08aead5daea98cfb52b016067ea85f66b9f10e5556ec485c9d290d",
+    "at": "2026-10-05T20:45:31.651Z",
+    "archives": [
+      "c4182d57f1995b02f6c6a364a0738fce1c393fe869c73781443281b368ab0cab",
+      "d9e107560415188e8290c3e71fb7ab6781e771b129067d4c658bfccf93d7a41e",
+      "f1f66a36796a7f1e2451133754d646b33adcb37ecc9022ff67c6d346cc68d912",
+      "2c011f6d69d1a062695488fc4e93c7c7dad7d1b2fc0a812f4cc0726f4ac8a967",
+      "85800dd907399a8b8683e56916863dbc82857df3e98838dfad017daebaedd0c3",
+      "b84de68852eb9d5dfa55387f9fc7db417658630b745e75cef41af862c859b130",
+      "26aeb5b039426972b6b73868c31f501e18dcb78ad106f3aea44bacfd4a071574",
+      "f1c7a6097c4c347a07767bebfbfc6f1f7ed145e1129dbde56c0ca8614973cf95"
+    ]
+  },
+  "authorization": {
+    "reason": "User raised Router account limits and explicitly requested continuation.",
+    "carriedCells": 10,
+    "inferenceRequestsAdded": 0,
+    "nextCell": "cell-011",
+    "priorCollection": "interface-repeat-2026-10-05-recovery",
+    "unchangedStudyLimits": true
+  },
+  "phases": [
+    {
+      "id": "cell-001",
+      "repetition": 1,
+      "startedAt": "2026-10-05T20:18:31.108Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "f65e4b6f-d462-4d5c-986a-19e14d7ba8f8",
+      "originCampaign": "interface-repeat-2026-10-05",
+      "status": "completed",
+      "budget": {
+        "requests": 34,
+        "inputTokens": 41575,
+        "outputTokens": 2029,
+        "estimatedUSD": 0.23071599999999998,
+        "usageKnown": false
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-001.tar.gz",
+        "bytes": 40508423,
+        "sha256": "c4182d57f1995b02f6c6a364a0738fce1c393fe869c73781443281b368ab0cab",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 245,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:21:31.506Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-002",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:05.220Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "9db894c4-dd1f-47ec-b359-b5b24977b861",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 38364,
+        "outputTokens": 62,
+        "estimatedUSD": 0.077348,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-002.tar.gz",
+        "bytes": 1271546,
+        "sha256": "d9e107560415188e8290c3e71fb7ab6781e771b129067d4c658bfccf93d7a41e",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:43:16.407Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-003",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:16.622Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "f50084a1-00f7-414f-ad29-cc1937f145fa",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 22620,
+        "outputTokens": 62,
+        "estimatedUSD": 0.04586,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-003.tar.gz",
+        "bytes": 1256324,
+        "sha256": "f1f66a36796a7f1e2451133754d646b33adcb37ecc9022ff67c6d346cc68d912",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:43:25.288Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-004",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:25.481Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "249ee43a-811a-41c7-8b4b-a4d89a043809",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 4480,
+        "outputTokens": 57,
+        "estimatedUSD": 0.009530000000000004,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-004.tar.gz",
+        "bytes": 898875,
+        "sha256": "2c011f6d69d1a062695488fc4e93c7c7dad7d1b2fc0a812f4cc0726f4ac8a967",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:43:33.965Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-005",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:34.160Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "40a6fc64-0b1f-4350-823d-09e9b01ea504",
+      "status": "completed",
+      "budget": {
+        "requests": 5,
+        "inputTokens": 28130,
+        "outputTokens": 94,
+        "estimatedUSD": 0.0572,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-005.tar.gz",
+        "bytes": 5328999,
+        "sha256": "85800dd907399a8b8683e56916863dbc82857df3e98838dfad017daebaedd0c3",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:43:46.780Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-006",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:46.936Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "43205556-40d9-47d4-b34c-5c3ae9c357b9",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 62182,
+        "outputTokens": 80,
+        "estimatedUSD": 0.12516400000000003,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-006.tar.gz",
+        "bytes": 1271311,
+        "sha256": "b84de68852eb9d5dfa55387f9fc7db417658630b745e75cef41af862c859b130",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:43:56.935Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-007",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:43:57.117Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "2c96ca7e-7180-46b6-b6ee-360aa8f2bad6",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 6942,
+        "outputTokens": 76,
+        "estimatedUSD": 0.014643999999999997,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-007.tar.gz",
+        "bytes": 898830,
+        "sha256": "26aeb5b039426972b6b73868c31f501e18dcb78ad106f3aea44bacfd4a071574",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:44:02.693Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-008",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:44:02.905Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "44788dd5-7a84-42b9-92de-29112f9f43cc",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 37524,
+        "outputTokens": 80,
+        "estimatedUSD": 0.07584799999999998,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-008.tar.gz",
+        "bytes": 1256273,
+        "sha256": "f1c7a6097c4c347a07767bebfbfc6f1f7ed145e1129dbde56c0ca8614973cf95",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:44:10.435Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-009",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:45:32.197Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "a34921e6-d19a-4318-a40b-32e5ca205b2d",
+      "status": "stopped",
+      "budget": {
+        "requests": 18,
+        "inputTokens": 422686,
+        "outputTokens": 1094,
+        "estimatedUSD": 0.8563119999999997,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-009.tar.gz",
+        "bytes": 4676841,
+        "sha256": "e1b479afcf3f8736bcea384c2e7c41ee0dfb67e8957dc6234fd8be21dc805ded",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 103,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:46:14.724Z",
+      "stopReason": {
+        "code": "campaign_stop",
+        "message": "Failure outside the reviewed continuation policy; other cells remain unattempted."
+      }
+    },
+    {
+      "id": "cell-010",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-recovery",
+      "startedAt": "2026-10-05T20:46:14.888Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": false,
+      "runId": "f7bcda1c-482c-47e2-acc4-1bbeebd73c33",
+      "status": "stopped",
+      "budget": {
+        "requests": 13,
+        "inputTokens": 139057,
+        "outputTokens": 344,
+        "estimatedUSD": 0.37751200000000007,
+        "usageKnown": false
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-010.tar.gz",
+        "bytes": 2555371,
+        "sha256": "46be830f2ff4f7a4de5059e8bc1365e1aedff9ebdd42d073626b6c40d848756d",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 73,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:46:37.646Z",
+      "stopReason": {
+        "code": "campaign_stop",
+        "message": "Failure outside the reviewed continuation policy; other cells remain unattempted."
+      }
+    },
+    {
+      "id": "cell-011",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T20:59:14.045Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "6947a0be-7d0f-466a-833b-16c1215adc15",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 12390,
+        "outputTokens": 196,
+        "estimatedUSD": 0.026740000000000014,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-011.tar.gz",
+        "bytes": 1458187,
+        "sha256": "4dc1d97c6ce204b58c48b85133b68b5e3d975db78d2a5f15cebfce0cec0d1141",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T20:59:28.909Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-012",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T20:59:29.210Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "92f43666-7727-4d05-a81f-7d925ed9e040",
+      "status": "completed",
+      "budget": {
+        "requests": 32,
+        "inputTokens": 278929,
+        "outputTokens": 2148,
+        "estimatedUSD": 0.5793380000000001,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-012.tar.gz",
+        "bytes": 38900308,
+        "sha256": "e542dbf636e3f790285687463f3aba2648297dea0d11cacbe0035f4724b38528",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 233,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:01:16.626Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-013",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:01:16.822Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "ebf50b5e-0547-4b2b-940e-9d0ae00ee0c5",
+      "status": "completed",
+      "budget": {
+        "requests": 15,
+        "inputTokens": 210882,
+        "outputTokens": 256,
+        "estimatedUSD": 0.4243239999999998,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-013.tar.gz",
+        "bytes": 3728127,
+        "sha256": "c9fc69cb6ca03ab76c4b3a08c7a18b254534ca4a1ba9418b2708d59d0e821562",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 84,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:01:54.809Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-014",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:01:55.037Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "72efe304-50b9-4796-aae8-07805c91aaa3",
+      "status": "completed",
+      "budget": {
+        "requests": 8,
+        "inputTokens": 8954,
+        "outputTokens": 185,
+        "estimatedUSD": 0.019758000000000005,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-014.tar.gz",
+        "bytes": 1625178,
+        "sha256": "dcf5dee318e9dd5c542513f16e66853cb625315c52df08430489fcf29d8346a6",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 49,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:02:25.583Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-015",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:02:25.732Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "192cd5b7-87bf-4c23-96ea-529d8ce10072",
+      "status": "completed",
+      "budget": {
+        "requests": 15,
+        "inputTokens": 132710,
+        "outputTokens": 235,
+        "estimatedUSD": 0.26777000000000006,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-015.tar.gz",
+        "bytes": 3699451,
+        "sha256": "eb5fa8700868a032c33b39bfb03a94db91534e4882f9eaeb1bf4051e4ad33da5",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 84,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:02:54.734Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-016",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:02:54.870Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "d2872a19-dc02-4033-9346-fdf9cfd5b9f6",
+      "status": "completed",
+      "budget": {
+        "requests": 33,
+        "inputTokens": 42141,
+        "outputTokens": 2874,
+        "estimatedUSD": 0.24080400000000002,
+        "usageKnown": false
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-016.tar.gz",
+        "bytes": 39907939,
+        "sha256": "03915f7f2d5367fe03404bcd86c5342cca767118016f8028bb29c67883ab75b7",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 238,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:05:58.175Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-017",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:05:58.433Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "3ed30979-5f56-467e-93d8-d2de26131c31",
+      "status": "completed",
+      "budget": {
+        "requests": 39,
+        "inputTokens": 48206,
+        "outputTokens": 2648,
+        "estimatedUSD": 0.2501679999999999,
+        "usageKnown": false
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-017.tar.gz",
+        "bytes": 47599368,
+        "sha256": "d4d55044fbb35bc57eefdfd7548d0a98a69c424687650c385c5624a0bcd8bafb",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 280,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:09:02.031Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-018",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:09:02.682Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "73d2271a-f281-4b60-9930-ae7bc53d548c",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 22620,
+        "outputTokens": 62,
+        "estimatedUSD": 0.04586,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-018.tar.gz",
+        "bytes": 1256328,
+        "sha256": "9c41f47a159aba422694d922acd11fd3cfc7b37be35cbf06d030ef1ea6db584a",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:09:11.482Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-019",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:09:11.636Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "844c63d1-27d9-4099-b29a-092cea3a56e9",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 38364,
+        "outputTokens": 62,
+        "estimatedUSD": 0.077348,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-019.tar.gz",
+        "bytes": 1271475,
+        "sha256": "c52ffea7b0ea5381038e618fa0fc4f908c633ace7289b19db3be698342e37cda",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:09:19.343Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-020",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:09:19.487Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "6105c23a-f8f5-49de-abad-693c22e9f8d2",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 4479,
+        "outputTokens": 56,
+        "estimatedUSD": 0.009518000000000006,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-020.tar.gz",
+        "bytes": 898862,
+        "sha256": "573b20cbdb8c16c036b16a1a3fe2ccd2985a6a232a870dd7ea6b69f4b86d5c1f",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:09:28.859Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-021",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:09:29.002Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "34dec455-9bff-47ee-b51b-30225317a792",
+      "status": "stopped",
+      "budget": {
+        "requests": 32,
+        "inputTokens": 429507,
+        "outputTokens": 4048,
+        "estimatedUSD": 0.8994940000000002,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-021.tar.gz",
+        "bytes": 6440864,
+        "sha256": "d9d68f7c7549460bda28a8eeb82375e3b0b9d99e9f869a2b3901741f6410122c",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 173,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:10:52.672Z",
+      "stopReason": {
+        "code": "campaign_stop",
+        "message": "Failure outside the reviewed continuation policy; other cells remain unattempted."
+      }
+    },
+    {
+      "id": "cell-022",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:10:52.913Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "4eda5169-461e-4131-b102-366d166a4105",
+      "status": "stopped",
+      "budget": {
+        "requests": 20,
+        "inputTokens": 408863,
+        "outputTokens": 1783,
+        "estimatedUSD": 0.8355560000000001,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-022.tar.gz",
+        "bytes": 4475487,
+        "sha256": "eccb6513c34e13a6c5a9311242cdba8724f1ca08e7d11493ec459f2f463ee444",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 113,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:11:45.916Z",
+      "stopReason": {
+        "code": "campaign_stop",
+        "message": "Failure outside the reviewed continuation policy; other cells remain unattempted."
+      }
+    },
+    {
+      "id": "cell-023",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:11:46.101Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "c030c46e-ba18-425a-817b-c6888b653adf",
+      "status": "completed",
+      "budget": {
+        "requests": 9,
+        "inputTokens": 14776,
+        "outputTokens": 463,
+        "estimatedUSD": 0.03418200000000002,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-023.tar.gz",
+        "bytes": 1799309,
+        "sha256": "742d9a37429daffcf9e32552bd1c0d0a05a528a5fa1398a0876fb1f71054257d",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 54,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:12:12.005Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-024",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:12:12.230Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "35fa97cf-606e-4817-a1b3-bda5922913fb",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 11868,
+        "outputTokens": 4132,
+        "estimatedUSD": 0.065056,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-024.tar.gz",
+        "bytes": 2074641,
+        "sha256": "b84f51001a95aa0d442eee6035910e19007563b5ff0f6fa94ce03fab7a5ada0d",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 28,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:12:37.305Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-025",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:12:37.463Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "75b13073-e124-4065-8822-40b4f23a68b5",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 62182,
+        "outputTokens": 80,
+        "estimatedUSD": 0.12516400000000003,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-025.tar.gz",
+        "bytes": 1271527,
+        "sha256": "fbe972b9a338d24eaa5bec4c91f5e8078bdd9a18a15f7a6fee567aff9e96bbda",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:12:47.717Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-026",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:12:47.868Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "26e4fd1d-ce85-4133-9e99-9221ad8a2148",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 6942,
+        "outputTokens": 76,
+        "estimatedUSD": 0.014643999999999997,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-026.tar.gz",
+        "bytes": 898845,
+        "sha256": "58296079c7d320f02b95cc313ddbf95fff3681ce98a0f96df810ccd6cd1fe3ad",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:12:53.731Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-027",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:12:53.882Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "26a1b7c6-12e0-43a8-ac51-2ebe86a80982",
+      "status": "completed",
+      "budget": {
+        "requests": 5,
+        "inputTokens": 28130,
+        "outputTokens": 92,
+        "estimatedUSD": 0.05718000000000001,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-027.tar.gz",
+        "bytes": 5329014,
+        "sha256": "66945bac6144097c99bf9d0fb4a05eaf3d54ba78bc375181e64dda7557671016",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:13:08.450Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-028",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:13:08.591Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "thread-reply"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "c088bcaa-6b65-41ff-9b83-7dafe09ee3ca",
+      "status": "completed",
+      "budget": {
+        "requests": 4,
+        "inputTokens": 37524,
+        "outputTokens": 80,
+        "estimatedUSD": 0.07584799999999998,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-028.tar.gz",
+        "bytes": 1256081,
+        "sha256": "23caa2bed8b3c1293e3667819627b870747b98c11db2ebf738add0928b7dbf86",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 29,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:13:16.198Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-029",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:13:16.367Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "875e2968-b76d-4fd2-84c4-a6c2c0109071",
+      "status": "completed",
+      "budget": {
+        "requests": 6,
+        "inputTokens": 69345,
+        "outputTokens": 98,
+        "estimatedUSD": 0.13966999999999996,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-029.tar.gz",
+        "bytes": 1602332,
+        "sha256": "ca63dae9862522f1e0eb9b27e375e15d67f7b8f682682483640d71d7d829168a",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 39,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:13:30.044Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-030",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:13:30.199Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "cba986e8-6afa-4c2e-8768-aeb0ac3e2f1a",
+      "status": "completed",
+      "budget": {
+        "requests": 34,
+        "inputTokens": 43436,
+        "outputTokens": 1876,
+        "estimatedUSD": 0.10563199999999995,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-030.tar.gz",
+        "bytes": 40834651,
+        "sha256": "36d28307a86a70df6221567b9b918ace35df1fc7764e6f0a704edd37ce1db571",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 247,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:16:12.850Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-031",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:16:13.021Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "3c20350f-d077-490e-8737-ba9f4c7b9bf4",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 4505,
+        "outputTokens": 58,
+        "estimatedUSD": 0.009589999999999994,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-031.tar.gz",
+        "bytes": 896710,
+        "sha256": "88d80a427b8107824357acb919b992602d73dac7821ae4cb3fdcd318339873bf",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:16:21.277Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-032",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:16:21.420Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "83fb2f4c-7133-420f-b25a-0a37bd6f5fcf",
+      "status": "completed",
+      "budget": {
+        "requests": 1,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "estimatedUSD": 0,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-032.tar.gz",
+        "bytes": 462470,
+        "sha256": "00f8f56068f1e8236ed6fc078cb74bfec50664352ad1c3b00b758277617987b6",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 13,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:17:10.594Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-033",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:17:10.794Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "c868e4d2-536b-4a03-90b1-c1ef2433ea80",
+      "status": "completed",
+      "budget": {
+        "requests": 8,
+        "inputTokens": 8954,
+        "outputTokens": 183,
+        "estimatedUSD": 0.019738,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-033.tar.gz",
+        "bytes": 1627849,
+        "sha256": "3512285353bc3e99b24a16f43120eb667f9d94568b2d482d1d1601ed16345613",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 49,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:17:34.456Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-034",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:17:34.675Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "ba2cd097-3dde-45e7-bd77-c853b9a61bb0",
+      "status": "completed",
+      "budget": {
+        "requests": 15,
+        "inputTokens": 210847,
+        "outputTokens": 254,
+        "estimatedUSD": 0.42423399999999983,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-034.tar.gz",
+        "bytes": 3723661,
+        "sha256": "38e994acc1d24176fc6edca311f9416ca370864bb9e5442e86d2669cddf9d419",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 84,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:18:10.170Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-035",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:18:10.315Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "9110b486-58df-4e9c-8d5e-e111e39dc8f8",
+      "status": "completed",
+      "budget": {
+        "requests": 15,
+        "inputTokens": 132710,
+        "outputTokens": 235,
+        "estimatedUSD": 0.26777000000000006,
+        "usageKnown": true
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-035.tar.gz",
+        "bytes": 3699493,
+        "sha256": "c85382928a32b62b53676d32e599b5bdccd0f0a704b5a2b72d988aac56a6728b",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 84,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:18:43.319Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-036",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:18:43.480Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "incident-closeout"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "ec2afec2-303e-4a85-87ed-f8b33c0f234e",
+      "status": "completed",
+      "budget": {
+        "requests": 32,
+        "inputTokens": 40762,
+        "outputTokens": 2833,
+        "estimatedUSD": 0.23763399999999996,
+        "usageKnown": false
+      },
+      "initialHash": "2b55608441d0c57ec843fe1b28902110ec4cad8d0305fe906e4df3acea9c251a",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-036.tar.gz",
+        "bytes": 39779207,
+        "sha256": "589a43d2e52e13e3114933c767dce58f2fcc650ed56d7fc6821d5ef25377b2c4",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 231,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:22:10.244Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-037",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:22:12.767Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "28e0b58a-388d-4b9f-bce0-054828ffdca1",
+      "status": "completed",
+      "budget": {
+        "requests": 6,
+        "inputTokens": 69345,
+        "outputTokens": 98,
+        "estimatedUSD": 0.13966999999999996,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-037.tar.gz",
+        "bytes": 1599153,
+        "sha256": "1b00221821903d186819180d9b13deeb78b8987883893bf072110ec7867cfda1",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 39,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:22:35.773Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-038",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:22:36.836Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "b72ee47d-6020-4cdc-a366-0614a81654cf",
+      "status": "completed",
+      "budget": {
+        "requests": 35,
+        "inputTokens": 43321,
+        "outputTokens": 2133,
+        "estimatedUSD": 0.235306,
+        "usageKnown": false
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-038.tar.gz",
+        "bytes": 40611095,
+        "sha256": "71305c90079aed6b970b8ede9bf1675c231dc7f386812f40b02b8488aed66681",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 252,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:25:43.295Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-039",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:25:43.656Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "6819b9dc-e380-4dde-b157-6fb920b7b40a",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 4505,
+        "outputTokens": 58,
+        "estimatedUSD": 0.009589999999999994,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-039.tar.gz",
+        "bytes": 896624,
+        "sha256": "04385ceefa43de580c7cf22cea3063709d4a71d8d53c7b69a64b3e0264720902",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:25:51.748Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-040",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:25:51.917Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "gpt-6.1-sol",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "a149b52f-7b15-4617-b7a4-abd796f81036",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 51253,
+        "outputTokens": 146,
+        "estimatedUSD": 0.10396600000000002,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-040.tar.gz",
+        "bytes": 1812726,
+        "sha256": "123ef2ce97e4bf08ecdb6d3c7b804b7953c7870dc0a97d134912f4dd0a128b36",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:26:10.451Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-041",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:26:10.856Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "d8c59b84-4776-42c5-8a11-10e978b7786d",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 46624,
+        "outputTokens": 4242,
+        "estimatedUSD": 0.13566799999999998,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-041.tar.gz",
+        "bytes": 7243537,
+        "sha256": "a0c3f57ae1c84b17426f58c5753ad9fac13c896656d14728d048efd46a30f076",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 56,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:26:52.593Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-042",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:26:52.861Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "69858b44-adb1-41dd-a0a9-f6493e3dcd18",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 6958,
+        "outputTokens": 77,
+        "estimatedUSD": 0.01468599999999999,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-042.tar.gz",
+        "bytes": 896759,
+        "sha256": "117e477e2fb8809958d235d0bb753bc33073e3e9c674c57cf12374715f55ae3c",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:26:57.582Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-043",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:26:57.798Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "5b13bf1f-caaa-4bd0-a3d9-f1ff72ec8568",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 85070,
+        "outputTokens": 163,
+        "estimatedUSD": 0.17177,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-043.tar.gz",
+        "bytes": 1812670,
+        "sha256": "307366212f28adf62c928bef86bec61ad2bd01174c51493f9b6cb09409851838",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:27:10.627Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-044",
+      "repetition": 2,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:27:10.813Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "a7ca4705-6c24-45c5-9da0-446f705cc14b",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 139754,
+        "outputTokens": 183,
+        "estimatedUSD": 0.281338,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-044.tar.gz",
+        "bytes": 1828544,
+        "sha256": "5e0168b9bf6260d51e8700f765f0a5531f2b8284d5ba9fa05c714034a045592a",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:27:23.974Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-045",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:27:24.135Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "a11y"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "34c90a14-c30b-43e4-a577-8cd4c50149c4",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 139798,
+        "outputTokens": 200,
+        "estimatedUSD": 0.28159599999999996,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-045.tar.gz",
+        "bytes": 1828584,
+        "sha256": "aac96526dc8be86a6e9180fb7e7538228ec3404561dc3d19c99170d20bd1b981",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:27:38.676Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-046",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:27:38.866Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "pixels"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "a4b3f431-ec2b-46c5-87c6-b4a5b8a4b7cf",
+      "status": "completed",
+      "budget": {
+        "requests": 17,
+        "inputTokens": 139259,
+        "outputTokens": 601,
+        "estimatedUSD": 0.2845280000000001,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-046.tar.gz",
+        "bytes": 20091313,
+        "sha256": "6f703c2e3db17407e24c984c1cc55f622013398741f999db62f46aad0882246e",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 128,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:28:34.829Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-047",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:28:35.099Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "api"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "de0c469a-80c0-4189-af4f-7d56968ece69",
+      "status": "completed",
+      "budget": {
+        "requests": 3,
+        "inputTokens": 6958,
+        "outputTokens": 77,
+        "estimatedUSD": 0.01468599999999999,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-047.tar.gz",
+        "bytes": 896651,
+        "sha256": "70e4feb9c844a37c600922122459a8e0d8408aedeea9bdf182baf0f3557ddac7",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 24,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:28:42.466Z",
+      "stopReason": null
+    },
+    {
+      "id": "cell-048",
+      "repetition": 1,
+      "originCampaign": "interface-repeat-2026-10-05-continuation",
+      "startedAt": "2026-10-05T21:28:42.788Z",
+      "config": {
+        "provider": "ramp",
+        "seeds": [
+          2042
+        ],
+        "repeats": 1,
+        "guides": [
+          false
+        ],
+        "histories": [
+          "recent-4"
+        ],
+        "orderSeed": 26100548,
+        "maxSteps": 40,
+        "maxRequests": 40,
+        "maxOutputTokens": 4096,
+        "maxInputUnits": 250000,
+        "episodeSeconds": 180,
+        "runSeconds": 240,
+        "maxEstimatedUSD": 1,
+        "requestTimeoutSeconds": 90,
+        "continueAfterRequestTimeout": true,
+        "continueAfterOutputLimit": true,
+        "continueAfterConnectionFailure": true,
+        "continueAfterEpisodeTimeout": true,
+        "tasks": [
+          "edit-message"
+        ],
+        "interfaces": [
+          "json-ui"
+        ],
+        "models": [
+          {
+            "id": "claude-sonnet-5-5",
+            "rates": {
+              "input": 2,
+              "output": 10
+            },
+            "vision": true,
+            "reasoning": "low"
+          }
+        ]
+      },
+      "safeToContinue": true,
+      "runId": "8f285904-2844-4ff4-bf50-708437646af1",
+      "status": "completed",
+      "budget": {
+        "requests": 7,
+        "inputTokens": 85066,
+        "outputTokens": 162,
+        "estimatedUSD": 0.171752,
+        "usageKnown": true
+      },
+      "initialHash": "ed8d5c3c308207e26346cb16f8c22ee9eacd1c797fbeac292dbc950205637017",
+      "appProvenance": {
+        "ok": true,
+        "service": "relay-app",
+        "backendHash": "0e4f3e9bcece947e83df0921747922387797f5c754e7a177cab0943516b7c759",
+        "buildHash": "1fbaeb947d4a0dab06ca381011609ac329158011bd296a1ede2b70082aeaf376"
+      },
+      "archive": {
+        "path": "cell-048.tar.gz",
+        "bytes": 1812666,
+        "sha256": "a3acc02a42f68f5c4a2a09e88485c05cc877362f4d7cd370b25c782280c32ff8",
+        "availability": "local-preserved"
+      },
+      "audit": {
+        "status": "verified",
+        "checks": 44,
+        "gaps": []
+      },
+      "finishedAt": "2026-10-05T21:28:58.253Z",
+      "stopReason": null
+    }
+  ]
+}

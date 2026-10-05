@@ -1,0 +1,30 @@
+{
+  "schema": "relay-release-browser-checks-v1",
+  "reportSHA256": "c524d16e4ec2e2e1f2f55e6b6e93717b6fcc377dc935d65479798333e6ced7bc",
+  "stats": {
+    "startTime": "2026-10-05T21:39:39.495Z",
+    "duration": 56855.578,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "results: homepage access, numeric sorting, all model/task traces and cost exports without inference",
+      "status": "passed"
+    },
+    {
+      "title": "every published trial opens and renders its final captured workspace without inference",
+      "status": "passed"
+    }
+  ],
+  "coverage": [
+    {
+      "name": "replay-coverage.json",
+      "sha256": "7e7ccc4830ff3039881f458beeec31a2535a8d5ab51e6da488fd10d5506c127c",
+      "summaryHash": "6618f7f2041bf3d9334ba70f47716380b1495a5bf0d51ba68fc6fd144d71211f",
+      "checked": 306
+    }
+  ]
+}

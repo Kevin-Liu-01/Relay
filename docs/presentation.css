@@ -1313,6 +1313,18 @@ a:focus-visible {
   gap: 24px;
   font-size: 13px;
   margin: 10px 0;
+  flex-wrap: wrap;
+}
+.repeat-trial-details {
+  margin-top: 24px;
+}
+.repeat-trial-details > summary {
+  cursor: pointer;
+  color: var(--plum);
+  padding: 12px 0;
+}
+.results-page .repeat-study-results {
+  margin-top: 24px;
 }
 .study-table a {
   text-decoration-thickness: 1px;

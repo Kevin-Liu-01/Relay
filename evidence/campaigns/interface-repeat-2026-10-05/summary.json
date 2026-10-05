@@ -1,0 +1,657 @@
+{
+  "id": "interface-repeat-2026-10-05",
+  "status": "stopped",
+  "generatedAt": "2026-10-05T20:18:31.109Z",
+  "totals": {
+    "planned": 48,
+    "attempted": 0,
+    "passed": 0,
+    "incomplete": 0,
+    "blocked": 0,
+    "unattempted": 48,
+    "actionAttempts": 0,
+    "rejectedActions": 0,
+    "captureWarnings": 0,
+    "durationMs": 0
+  },
+  "rows": [
+    {
+      "phase": "cell-001",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-002",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-003",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-004",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-005",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-006",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-007",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-008",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-009",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-010",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-011",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-012",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-013",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-014",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-015",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-016",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-017",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-018",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-019",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-020",
+      "model": "gpt-6.1-sol",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-021",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-022",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-023",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-024",
+      "model": "claude-sonnet-5-5",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-025",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-026",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-027",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-028",
+      "model": "claude-sonnet-5-5",
+      "task": "thread-reply",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-029",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-030",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-031",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-032",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-033",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-034",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-035",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-036",
+      "model": "gpt-6.1-sol",
+      "task": "incident-closeout",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-037",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-038",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-039",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-040",
+      "model": "gpt-6.1-sol",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-041",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-042",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-043",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-044",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 2
+    },
+    {
+      "phase": "cell-045",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "a11y",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-046",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "pixels",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-047",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "api",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    },
+    {
+      "phase": "cell-048",
+      "model": "claude-sonnet-5-5",
+      "task": "edit-message",
+      "interface": "json-ui",
+      "seed": 2042,
+      "outcome": "unattempted",
+      "repetition": 1
+    }
+  ],
+  "estimatedUSD": 0,
+  "reservedUSD": 0,
+  "requests": 0,
+  "remainingUSD": 25,
+  "byInterface": {
+    "a11y": {
+      "planned": 12,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 12,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0
+    },
+    "json-ui": {
+      "planned": 12,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 12,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0
+    },
+    "pixels": {
+      "planned": 12,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 12,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0
+    },
+    "api": {
+      "planned": 12,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 12,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0
+    }
+  },
+  "byModel": [
+    {
+      "model": "gpt-6.1-sol",
+      "planned": 24,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 24,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "planned": 24,
+      "attempted": 0,
+      "passed": 0,
+      "incomplete": 0,
+      "blocked": 0,
+      "unattempted": 24,
+      "actionAttempts": 0,
+      "rejectedActions": 0,
+      "captureWarnings": 0,
+      "durationMs": 0,
+      "estimatedUSD": 0,
+      "byInterface": {
+        "a11y": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "json-ui": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "pixels": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        },
+        "api": {
+          "planned": 6,
+          "attempted": 0,
+          "passed": 0,
+          "incomplete": 0,
+          "blocked": 0,
+          "unattempted": 6,
+          "actionAttempts": 0,
+          "rejectedActions": 0,
+          "captureWarnings": 0,
+          "durationMs": 0,
+          "estimatedUSD": 0
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Two fresh attempts per model/task/interface on three selected public development tasks. Repetitions are not new tasks or held-out evidence.",
+    "Follow-up selection used prior engineering knowledge; historical outcomes are not pooled into this comparison. No universal or authoritative ranking.",
+    "Interfaces change both observation and actions. API is semantic tool use, not screenshot-based computer use.",
+    "Pixels use low-detail 1440×900 images on macOS. Keyboard behavior is platform-dependent. This protocol is unchanged from the earlier study.",
+    "Low reasoning requested for both routes; provider semantics and unpinned model routing can differ.",
+    "Forty actions and 180 seconds are equal ceilings, not equal work. Elapsed time includes local shared-host activity; blocked attempts can end early.",
+    "Usage estimates and retained unknown reservations are separate and are not invoices. No retry, replacement, or stopping after a favorable result."
+  ],
+  "workerError": "Unknown configuration fields are rejected; never place credentials in run configs."
+}
