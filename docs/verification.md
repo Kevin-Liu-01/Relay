@@ -1,5 +1,14 @@
 # Verification and evidence
 
+## Slide-one title: 2026-10-05
+
+- Changed the opening title to “How does an Agent use Slack?” as requested.
+  The opening body, diagram, remaining slides and results are unchanged.
+- Regenerated HTML/PDF. All four presentation browser tests passed in an
+  isolated production build, including all 20 print pages and mobile width.
+  Inspected the opening screenshot. The frozen actor source and root build
+  remain unchanged; no inference or backend changes were needed.
+
 ## Repeated interface follow-up: 2026-10-05
 
 - All **48/48** planned attempts are recorded: **35 passed, 1 incomplete, 12

@@ -32,7 +32,7 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
     'DM its named handoff recipient “Implement DESIGN navigation; accessibility approved.”',
   );
   await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
-    'I started with how agents would use a Slack workspace',
+    'How does an Agent use Slack?',
   );
   await expect(page.locator('.cover .brand-chip')).toHaveText([
     'Slack workflows',
