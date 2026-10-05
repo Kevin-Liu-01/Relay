@@ -28,7 +28,7 @@ test.describe('repeated interface review', () => {
   }, testInfo) => {
     await page.goto(`${base}/presentation#interpreting-interface-results`);
     await expect(page.locator('.slide.active h2')).toHaveText(
-      'I repeated the comparison on three workflows',
+      'Do the interface results hold across repeated attempts?',
     );
     await expect(page.locator('.slide')).toHaveCount(20);
     const table = page.locator('#interface-repeat-results');

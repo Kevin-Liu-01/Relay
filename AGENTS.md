@@ -116,6 +116,14 @@ URL. Keep these observer changes separate from the frozen actor build and record
 
 ## Presentation narrative
 
+The document presenter lives in `docs/presenter.js` and `docs/presenter.css`.
+Speaker notes are compiled from `docs/presentation-notes.md`, not a second copy.
+Keep overview search, focus restoration, notes, timer and fit/fullscreen controls
+separate from historical data and the shared results-table controller. The results
+page has no slides and must skip presenter initialization. Print must omit all
+presenter controls even when notes or a dialog is open. Keyboard navigation is
+immediate; reduced motion also disables pointer transitions. Use stable slide IDs.
+
 Keep the 20-slide deck in this order: my approach and a concrete editing task,
 all workflows, harness and interfaces, grading and verification, then dedicated
 slides on isolation, speed, resources, and scaling. Explain those design choices

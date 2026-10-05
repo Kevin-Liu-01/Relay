@@ -7,6 +7,7 @@ import { modelComparison } from './lib/model-comparison.mjs';
 import { comparisonSlide } from './lib/comparison-slide.mjs';
 import { analyzeInterfaces } from './lib/interface-analysis.mjs';
 import { repeatPresentation } from './lib/interface-repeat-presentation.mjs';
+import { presenterNotes } from './lib/presenter-notes.mjs';
 import { validateCatalog, validateRecord, trialId } from '../docs/review-app/data.mjs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -36,6 +37,15 @@ import {
   Search,
   MessagesSquare,
   PencilLine,
+  ArrowLeft,
+  LayoutGrid,
+  NotebookPen,
+  Maximize,
+  Minimize,
+  Download,
+  Link,
+  Keyboard,
+  X,
 } from 'lucide-react';
 import Openai from '@thesvg/react/openai';
 import Slack from '@thesvg/react/slack';
@@ -350,7 +360,27 @@ const values = {
   ),
   COST_SUMMARY: `<div class="cost-summary" aria-label="Cost breakdown"><span><strong>$${costs.acceptedUSD.toFixed(4)}</strong>Usage estimate</span><span><strong>$${costs.reservedUSD.toFixed(4)}</strong>Unresolved · ${costs.unknownRequests} calls</span><span><strong>$${costs.recordedUSD.toFixed(4)}</strong>Total allowance · 306 trials</span></div>`,
   COST_DETAIL: `Total allowance adds the usage estimate to money reserved for missing usage. These are estimates, not invoices. Including earlier tests: $${comparison.recordedTotalUSD.toFixed(4)} of the $300 budget.`,
-  PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}`,
+  PRESENTATION_STYLES: `${fontStyles}\n${readFileSync('docs/presentation.css', 'utf8')}\n${readFileSync('docs/presenter.css', 'utf8')}`,
+  PRESENTER_SCRIPT: readFileSync('docs/presenter.js', 'utf8'),
+  PRESENTER_NOTES: presenterNotes(
+    readFileSync('docs/presentation-notes.md', 'utf8'),
+    [
+      ...readFileSync('docs/presentation.template.html', 'utf8').matchAll(
+        /<section\b[^>]*data-title="([^"]+)"/g,
+      ),
+    ].map((m) => m[1]),
+  ),
+  PRESENTER_PREV: glyph(ArrowLeft),
+  PRESENTER_NEXT: glyph(ArrowRight),
+  PRESENTER_GRID: glyph(LayoutGrid),
+  PRESENTER_NOTES_ICON: glyph(NotebookPen),
+  PRESENTER_EXPAND: glyph(Maximize),
+  PRESENTER_COLLAPSE: glyph(Minimize),
+  PRESENTER_DOWNLOAD: glyph(Download),
+  PRESENTER_LINK: glyph(Link),
+  PRESENTER_KEYS: glyph(Keyboard),
+  PRESENTER_CLOSE: glyph(X),
+  PRESENTER_SEARCH: glyph(Search),
   OPENAI_MARK: mark(Openai),
   SLACK_MARK: mark(Slack),
   ...Object.fromEntries(

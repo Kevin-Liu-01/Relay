@@ -862,7 +862,8 @@
         </ul>
       </section>
       <section class="slide interface-study-results repeat-study-results" data-title="Interpreting interface results">
-        <h2>I repeated the comparison on three workflows</h2>
+        <h2>Do the interface results hold across repeated attempts?</h2>
+        <div class="repeat-context">The first study used one attempt per condition. This follow-up tested each condition twice.</div>
         {{INTERFACE_REPEAT_RESULTS}}
         <span class="sr-only" id="repeat-sort-status" role="status"></span>
         <ul>{{INTERFACE_REPEAT_FINDINGS}}</ul>
@@ -967,58 +968,48 @@
       </div>
       {{COMPARISON_TRIALS}}<span class="sr-only" id="trial-sort-status" role="status"></span>
     </dialog>
-    <nav aria-label="Presentation controls">
-      <button id="prev" aria-label="Previous slide">← Previous</button
-      ><span id="counter" aria-live="polite"></span
-      ><button id="next" aria-label="Next slide">Next →</button>
+    <aside id="presenter-notes" class="presenter-notes" aria-labelledby="notes-title" hidden>
+      <header class="presenter-panel-header">
+        <div><span class="presenter-eyebrow">Speaker notes · visible on this screen</span><h2 id="notes-title">Speaker notes</h2></div>
+        <button id="close-notes" class="presenter-icon" type="button" aria-label="Close speaker notes">{{PRESENTER_CLOSE}}</button>
+      </header>
+      <div class="presenter-timer" aria-label="Rehearsal timer">
+        <time id="talk-time" aria-label="Elapsed presentation time">00:00</time>
+        <button id="timer-toggle" type="button" aria-pressed="false">Start timer</button>
+        <button id="timer-reset" type="button">Reset</button>
+      </div>
+      <div id="notes-content" class="notes-content" tabindex="0" aria-label="Current slide speaker notes"></div>
+      <button id="notes-next" class="notes-next" type="button"><span>Next slide</span><strong id="notes-next-title"></strong>{{PRESENTER_NEXT}}</button>
+    </aside>
+    {{PRESENTER_NOTES}}
+    <dialog id="slide-overview" class="presenter-dialog" aria-labelledby="overview-title">
+      <header class="presenter-panel-header"><div><span class="presenter-eyebrow">Relay · Presentation</span><h2 id="overview-title">Jump to a slide</h2></div><button id="close-overview" class="presenter-icon" type="button" aria-label="Close slide overview">{{PRESENTER_CLOSE}}</button></header>
+      <label class="slide-search">{{PRESENTER_SEARCH}}<input id="slide-search" type="search" aria-label="Find a slide" placeholder="Search titles, topics, or slide numbers" autocomplete="off" /></label>
+      <div id="overview-count" class="presenter-caption" role="status"></div>
+      <div id="slide-grid" class="slide-grid"></div>
+      <div id="overview-empty" class="overview-empty" hidden>No matching slides. Try another title or number.</div>
+      <footer class="overview-footer"><span><kbd>Esc</kbd> Close</span><span><kbd>Enter</kbd> Open the first result</span></footer>
+    </dialog>
+    <dialog id="presenter-tools" class="presenter-dialog presenter-tools" aria-labelledby="tools-title">
+      <header class="presenter-panel-header"><h2 id="tools-title">Presentation tools</h2><button id="close-tools" class="presenter-icon" type="button" aria-label="Close presentation tools">{{PRESENTER_CLOSE}}</button></header>
+      <div class="presenter-actions"><button id="copy-slide" type="button">{{PRESENTER_LINK}} Copy slide link</button><a href="presentation.pdf" download="Relay-presentation.pdf">{{PRESENTER_DOWNLOAD}} Download slides</a></div>
+      <div id="share-status" class="presenter-caption" role="status"></div>
+      <label class="slide-link-label">Current slide<input id="slide-link" readonly aria-label="Current slide link" /></label>
+      <h3>Keyboard shortcuts</h3>
+      <dl class="shortcut-list"><div><dt>Next / previous</dt><dd><kbd>→</kbd> <kbd>←</kbd></dd></div><div><dt>First / last slide</dt><dd><kbd>Home</kbd> <kbd>End</kbd></dd></div><div><dt>Find a slide</dt><dd><kbd>G</kbd> or <kbd>/</kbd></dd></div><div><dt>Speaker notes</dt><dd><kbd>N</kbd></dd></div><div><dt>Presentation view</dt><dd><kbd>F</kbd></dd></div><div><dt>These controls</dt><dd><kbd>?</kbd></dd></div></dl>
+    </dialog>
+    <nav class="presenter-dock" aria-label="Presentation controls">
+      <div id="deck-progress" class="deck-progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="20" aria-valuenow="1"><span></span></div>
+      <button id="open-overview" class="slide-picker" type="button" aria-label="Open slide overview" aria-haspopup="dialog" title="Find a slide (G)">{{PRESENTER_GRID}}<span><span id="counter" aria-live="polite"></span><span id="current-topic" class="current-topic"></span></span></button>
+      <div class="deck-step-controls"><button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)">{{PRESENTER_PREV}}</button><button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)">{{PRESENTER_NEXT}}</button></div>
+      <span class="dock-divider" aria-hidden="true"></span>
+      <button id="toggle-notes" class="presenter-icon" type="button" aria-label="Show speaker notes" aria-controls="presenter-notes" aria-expanded="false" title="Speaker notes (N)">{{PRESENTER_NOTES_ICON}}<span class="dock-label">Notes</span></button>
+      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter presentation view" aria-pressed="false" title="Presentation view (F)"><span class="present-enter">{{PRESENTER_EXPAND}}</span><span class="present-exit" hidden>{{PRESENTER_COLLAPSE}}</span><span class="dock-label">Present</span></button>
+      <button id="open-tools" class="presenter-icon" type="button" aria-label="Open presentation tools" aria-haspopup="dialog" title="Tools and shortcuts (?)">{{PRESENTER_KEYS}}</button>
     </nav>
+    <div id="presenter-status" class="sr-only" role="status"></div>
     <script>
-      const slides = [...document.querySelectorAll('.slide')];
-      let index = 0;
-      function show(i) {
-        if (!slides.length) return;
-        index = Math.max(0, Math.min(slides.length - 1, i));
-        slides.forEach((s, n) => {
-          s.classList.toggle('active', n === index);
-          s.setAttribute('aria-hidden', n !== index);
-        });
-        document.getElementById('counter').textContent =
-          `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
-        document.getElementById('prev').disabled = index === 0;
-        document.getElementById('next').disabled = index === slides.length - 1;
-        history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
-        window.scrollTo(0, 0);
-      }
-      if (slides.length) {
-        document.getElementById('prev').onclick = () => show(index - 1);
-        document.getElementById('next').onclick = () => show(index + 1);
-      }
-      document.addEventListener('keydown', (e) => {
-        if (
-          e.target.closest(
-            'dialog, input, select, textarea, .table-scroll, .sort-tools, .task-filter',
-          ) ||
-          (e.key === ' ' && e.target.closest('button, a'))
-        )
-          return;
-        if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
-          e.preventDefault();
-          show(index + 1);
-        }
-        if (['ArrowLeft', 'PageUp'].includes(e.key)) {
-          e.preventDefault();
-          show(index - 1);
-        }
-        if (e.key === 'Home') show(0);
-        if (e.key === 'End') show(slides.length - 1);
-      });
-      const hashIndex = () => {
-        const name = location.hash.slice(1);
-        const named = slides.findIndex((s) => s.dataset.slideId === name);
-        return named >= 0 ? named : (Number(name) || 1) - 1;
-      };
-      window.addEventListener('hashchange', () => show(hashIndex()));
-      show(hashIndex());
+      {{PRESENTER_SCRIPT}}
       const trialDialog = document.getElementById('trials-dialog');
       let selectedTask = 'all',
         selectedModel = '';

@@ -1,5 +1,26 @@
 # Verification and evidence
 
+## Presenter navigation and rehearsal controls: 2026-10-05
+
+- Added a searchable slide overview, current-slide progress, same-screen speaker
+  notes, a manual rehearsal timer, fullscreen fitting, link copying and PDF access.
+  Notes come from the existing numbered notes document. They are not private
+  second-screen output. The timer measures rehearsal, not agent execution.
+- Reframed slide 18 around whether interface outcomes hold across repeated
+  attempts. Its introduction explains why the separate two-repeat follow-up
+  exists. All study results, table links and the 20-slide order are unchanged.
+- All **232 backend tests and 13 targeted browser tests passed** in isolated
+  production workspace `relay-review-validation-PaSrF9`. Coverage includes every
+  published 48-run and 96-run recording, sorting and review links, production
+  content security policy, keyboard focus, exact-number search, reduced motion,
+  timer controls, fullscreen denial and clipboard denial.
+- Inspected desktop overview, notes, fitted slide and phone layouts. Controls
+  fit at 390 px and 320 px. All 20 print pages passed the clipping check; HTML
+  and PDF were regenerated. A separate interactive browser check confirmed
+  actual fullscreen entry and exit. Fullscreen denial retains window fitting.
+- Original actor source and frozen root build match the pre-study receipt.
+  No inference, collector, grader, task or historical recording changed.
+
 ## Four-task explanation of the 14/18 score: 2026-10-05
 
 - Replaced the single-placeholder lesson with the four tasks missed by both

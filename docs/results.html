@@ -38,7 +38,6 @@ main {
 }
 .slide.active {
   display: block;
-  animation: reveal 200ms ease-out;
 }
 .masthead {
   display: flex;
@@ -2286,6 +2285,558 @@ a:focus-visible {
   }
   .mismatch-diagram {
     margin: 18px 0;
+  }
+}
+
+.repeat-context {
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin: -8px 0 16px;
+}
+@media screen {
+  .presentation-page main {
+    margin-bottom: 108px;
+  }
+  .presentation-page:has(dialog[open]) {
+    overflow: hidden;
+  }
+  .presenter-dock {
+    left: 50%;
+    right: auto;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 24px);
+    height: 64px;
+    padding: 8px 10px;
+    gap: 5px;
+    border: 1px solid #ded8e5;
+    border-radius: 16px;
+    background: #fffefef5;
+    box-shadow:
+      0 8px 32px #30203916,
+      0 2px 5px #30203908;
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+  .presenter-dock button,
+  .presenter-panel-header button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    border-color: transparent;
+    background: transparent;
+    border-radius: 9px;
+    font-size: 13px;
+    padding: 10px;
+  }
+  .presenter-dock button:active:not(:disabled),
+  .presenter-actions button:active {
+    transform: scale(0.97);
+  }
+  .presenter-dock .glyph,
+  .presenter-dialog .glyph,
+  .presenter-notes .glyph {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    display: block;
+  }
+  .presenter-dock .slide-picker {
+    justify-content: start;
+    gap: 12px;
+    text-align: left;
+    min-width: 165px;
+    max-width: 250px;
+  }
+  .slide-picker > span {
+    min-width: 0;
+  }
+  .presenter-dock #counter {
+    min-width: 0;
+    max-width: none;
+    text-align: left;
+    display: block;
+    font-size: 11px;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .current-topic {
+    display: block;
+    margin-top: 2px;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .deck-step-controls {
+    display: flex;
+    gap: 5px;
+  }
+  .presenter-icon {
+    min-width: 44px;
+  }
+  .presenter-dock .primary-next {
+    background: #36253f;
+    color: #fff;
+  }
+  .presenter-dock .primary-next:hover:not(:disabled) {
+    background: var(--plum);
+  }
+  .presenter-dock button[aria-expanded='true'],
+  .presenter-dock button[aria-pressed='true'] {
+    background: #efe8f4;
+    color: var(--plum);
+  }
+  .dock-divider {
+    height: 24px;
+    width: 1px;
+    background: var(--line);
+    margin: 0 5px;
+  }
+  .deck-progress {
+    position: absolute;
+    top: -1px;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    overflow: hidden;
+  }
+  .deck-progress > span {
+    display: block;
+    background: #9977ad;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+  }
+  .presenter-panel-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .presenter-panel-header h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 6px 0 0;
+    letter-spacing: 0;
+    text-wrap: initial;
+  }
+  .presenter-eyebrow {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.025em;
+  }
+  .presenter-caption {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .presenter-dialog {
+    width: min(1000px, calc(100% - 32px));
+    max-width: none;
+    max-height: calc(100dvh - 64px);
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 30px 90px #24182e30;
+    color: #28262c;
+    overflow: hidden;
+  }
+  .presenter-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .presenter-dialog::backdrop {
+    background: #21142966;
+  }
+  .presenter-dialog > * {
+    flex-shrink: 0;
+  }
+  .slide-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #d4c8dd;
+    border-radius: 10px;
+    padding: 0 14px;
+    margin-top: 22px;
+  }
+  .slide-search:focus-within {
+    outline: 2px solid var(--plum);
+    outline-offset: 2px;
+  }
+  .slide-search input {
+    font: inherit;
+    font-size: 15px;
+    border: 0;
+    padding: 14px 0;
+    outline: none;
+    min-width: 0;
+    width: 100%;
+    background: transparent;
+    color: inherit;
+  }
+  .slide-search .glyph {
+    color: var(--muted);
+  }
+  .slide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    overflow: auto;
+    min-height: 0;
+    padding: 4px;
+    flex-shrink: 1;
+  }
+  .slide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #faf9fc;
+    border-color: var(--line);
+  }
+  .slide-card[hidden],
+  .overview-empty[hidden] {
+    display: none;
+  }
+  .slide-card[aria-current='page'] {
+    border-color: var(--plum);
+    box-shadow: inset 0 0 0 1px var(--plum);
+    background: #f2ebf7;
+  }
+  .slide-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .slide-card-meta > :first-child {
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--plum);
+  }
+  .slide-card strong {
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+  .slide-card-topic {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: auto;
+  }
+  .slide-card[aria-current='page'] .slide-card-topic::after {
+    content: ' · Current';
+    color: var(--plum);
+  }
+  .overview-empty {
+    padding: 40px 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 15px;
+  }
+  .overview-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  kbd {
+    display: inline-block;
+    font: inherit;
+    font-size: 11px;
+    border: 1px solid #ded8e4;
+    border-radius: 4px;
+    min-width: 22px;
+    padding: 2px 5px;
+    background: #f8f6fa;
+    text-align: center;
+  }
+  .presenter-tools {
+    width: min(490px, calc(100% - 32px));
+    overflow-y: auto;
+  }
+  .presenter-tools h3 {
+    font-size: 14px;
+    margin: 24px 0 10px;
+  }
+  .presenter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .presenter-actions > * {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    text-decoration: none;
+  }
+  .slide-link-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .slide-link-label input {
+    display: block;
+    margin-top: 6px;
+    padding: 10px;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    font: inherit;
+    color: inherit;
+  }
+  .shortcut-list {
+    margin: 0;
+  }
+  .shortcut-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0edf3;
+    font-size: 13px;
+  }
+  .shortcut-list dd {
+    margin: 0;
+  }
+  .presenter-notes {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    width: 360px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    box-shadow: 0 10px 40px #30203910;
+    z-index: 4;
+  }
+  .presenter-notes[hidden] {
+    display: none;
+  }
+  .presenter-notes .presenter-panel-header {
+    flex-shrink: 0;
+  }
+  .presenter-notes h2 {
+    font-size: 18px;
+  }
+  .presenter-timer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 16px 0;
+    margin: 8px 0 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .presenter-timer time {
+    font-size: 23px;
+    font-variant-numeric: tabular-nums;
+    margin-right: auto;
+  }
+  .presenter-timer button {
+    font-size: 12px;
+    padding: 8px;
+    min-height: 36px;
+  }
+  .notes-content {
+    overflow-y: auto;
+    min-height: 0;
+    flex: 1;
+    padding: 0 8px 12px 0;
+    margin-top: 16px;
+    overscroll-behavior: contain;
+  }
+  .notes-content p,
+  .notes-content li {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .notes-content ul,
+  .notes-content ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .notes-content strong {
+    font-weight: 500;
+  }
+  .notes-content code {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .notes-next {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    gap: 6px 12px;
+    flex-shrink: 0;
+    text-align: left;
+    border-color: transparent;
+    border-top-color: var(--line);
+    border-radius: 0;
+    padding: 16px 0 0;
+  }
+  .notes-next > span {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .notes-next strong {
+    grid-column: 1;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .notes-next .glyph {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  @media (min-width: 1000px) {
+    .presentation-page.notes-open:not(.deck-presenting) main {
+      max-width: calc(100% - 416px);
+      margin-left: 20px;
+      margin-right: 396px;
+    }
+  }
+  @media (min-width: 800px) {
+    .deck-presenting {
+      overflow: hidden;
+    }
+    .deck-presenting main {
+      position: fixed;
+      width: 1280px;
+      max-width: none;
+      margin: 0;
+      top: var(--deck-y, 16px);
+      left: var(--deck-x, 16px);
+      transform: scale(var(--deck-scale, 1));
+      transform-origin: top left;
+    }
+  }
+  @media (max-width: 999px) {
+    .presenter-notes {
+      left: 12px;
+      right: 12px;
+      width: auto;
+      top: 12px;
+      bottom: 94px;
+      z-index: 5;
+    }
+  }
+  @media (max-width: 760px) {
+    .presenter-dock {
+      height: 60px;
+      padding: 7px;
+      gap: 3px;
+      bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    .presenter-dock .dock-label,
+    .current-topic {
+      display: none;
+    }
+    .presenter-dock .slide-picker {
+      min-width: 0;
+      max-width: none;
+      gap: 8px;
+    }
+    .presenter-dock #counter {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .presenter-dock button {
+      padding: 10px;
+    }
+    .presenter-dock .dock-divider {
+      margin: 0 2px;
+    }
+    .slide-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .presenter-dialog {
+      padding: 18px;
+      border-radius: 15px;
+      max-height: calc(100dvh - 28px);
+    }
+    .slide-card {
+      min-height: 142px;
+      padding: 12px;
+    }
+    .slide-card strong {
+      font-size: 14px;
+    }
+    .overview-footer > :last-child {
+      display: none;
+    }
+    .presenter-notes {
+      bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+      padding: 18px;
+    }
+  }
+  @media (max-width: 380px) {
+    .presenter-dock .presenter-icon {
+      min-width: 40px;
+      padding: 8px;
+    }
+    .deck-step-controls {
+      gap: 3px;
+    }
+    .presenter-dock .slide-picker > .glyph,
+    .dock-divider {
+      display: none;
+    }
+    .slide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .presenter-dock button:active:not(:disabled),
+    .presenter-actions button:active {
+      transform: none;
+    }
+  }
+}
+@media print {
+  dialog::backdrop {
+    display: none !important;
+  }
+  .presenter-notes,
+  .presenter-dialog,
+  .presenter-dock,
+  #presenter-status {
+    display: none !important;
+  }
+  .presentation-page main {
+    position: static !important;
+    transform: none !important;
+    width: 1280px !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .repeat-context {
+    font-size: 14px;
+    margin: -4px 0 10px;
   }
 }
 </style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a><a href="/presentation#interface-results">96-run study</a><a href="#interface-repeat-results">48-run follow-up</a></header><main><section class="results-panel comparison-slide breadth-slide" data-title="Model comparison" data-slide-id="model-comparison"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
@@ -5080,7 +5631,8 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results</span></header>
-        <h2>I repeated the comparison on three workflows</h2>
+        <h2>Do the interface results hold across repeated attempts?</h2>
+        <div class="repeat-context">The first study used one attempt per condition. This follow-up tested each condition twice.</div>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable repeated interface results"><table class="study-table sortable" id="interface-repeat-results"><caption>Passed / 6 attempts · three tasks, two repeats · median elapsed seconds</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=9db894c4-dd1f-47ec-b359-b5b24977b861-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">17.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.2 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f50084a1-00f7-414f-ad29-cc1937f145fa-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON repeats"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.1 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.6 s</dd></div></dl></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f65e4b6f-d462-4d5c-986a-19e14d7ba8f8-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels repeats"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">180.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">159.4 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=249ee43a-811a-41c7-8b4b-a4d89a043809-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">8.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">8.7 s</dd></div></dl></td><td data-sort="3.3918039999999996">$3.3918</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=43205556-40d9-47d4-b34c-5c3ae9c357b9-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">11.4 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=44788dd5-7a84-42b9-92de-29112f9f43cc-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.6 s</dd></div><div><dt>Passed</dt><dd data-time="passed">9.9 s</dd></div></dl></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=40a6fc64-0b1f-4350-823d-09e9b01ea504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels repeats"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">32.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">14.1 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=2c96ca7e-7180-46b6-b6ee-360aa8f2bad6-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">6.3 s</dd></div><div><dt>Passed</dt><dd data-time="passed">6.3 s</dd></div></dl></td><td data-sort="5.575906000000001">$5.5759</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat">All 48 traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-repeat-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md">All paired comparisons ↗</a></div>
         <span class="sr-only" id="repeat-sort-status" role="status"></span>
         <ul><li>Each interface had 12 attempts: API passed 12, accessibility 10, Page JSON 9, and pixels 4.</li><li>On 10 shared passes, API used a median 6.3 fewer seconds and 3 fewer actions than accessibility.</li><li>API skips browser interaction, so its higher completion count does not show better computer use.</li></ul>
@@ -8472,52 +9024,403 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     <td>change_1_design, new_message_destination_and_content, all_requested_messages, no_unrequested_state_changes<small class="trial-origin">new · model-breadth-2026-10-03-continuation · block-269 · 8f9b5249-62f3-4967-bc8e-3ff9d580fce0</small></td>
   </tr></tbody></table></div><span class="sr-only" id="trial-sort-status" role="status"></span>
     </dialog><script>
-      const slides = [...document.querySelectorAll('.slide')];
-      let index = 0;
-      function show(i) {
-        if (!slides.length) return;
-        index = Math.max(0, Math.min(slides.length - 1, i));
-        slides.forEach((s, n) => {
-          s.classList.toggle('active', n === index);
-          s.setAttribute('aria-hidden', n !== index);
-        });
-        document.getElementById('counter').textContent =
-          `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
-        document.getElementById('prev').disabled = index === 0;
-        document.getElementById('next').disabled = index === slides.length - 1;
-        history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
-        window.scrollTo(0, 0);
+      // Document-only controls. The shared results page has no slides and skips this.
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  if (!slides.length) return;
+  const byId = (id) => document.getElementById(id);
+  const main = document.querySelector('main');
+  const dock = document.querySelector('.presenter-dock');
+  const notes = byId('presenter-notes');
+  const overview = byId('slide-overview');
+  const tools = byId('presenter-tools');
+  const search = byId('slide-search');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const titles = slides.map((slide) =>
+    slide.querySelector('h1, h2').textContent.replace(/\s+/g, ' ').trim(),
+  );
+  let index = 0,
+    presenting = false,
+    ownedFullscreen = false,
+    layoutFrame = 0;
+  document.body.classList.add('presentation-page');
+
+  function layout() {
+    cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(() => {
+      const narrowNotes = !notes.hidden && innerWidth < 1000;
+      main.inert = narrowNotes;
+      main.setAttribute('aria-hidden', String(narrowNotes));
+      if (!presenting || innerWidth < 800) {
+        for (const prop of ['--deck-scale', '--deck-x', '--deck-y'])
+          main.style.removeProperty(prop);
+        return;
       }
-      if (slides.length) {
-        document.getElementById('prev').onclick = () => show(index - 1);
-        document.getElementById('next').onclick = () => show(index + 1);
-      }
-      document.addEventListener('keydown', (e) => {
-        if (
-          e.target.closest(
-            'dialog, input, select, textarea, .table-scroll, .sort-tools, .task-filter',
-          ) ||
-          (e.key === ' ' && e.target.closest('button, a'))
-        )
-          return;
-        if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
-          e.preventDefault();
-          show(index + 1);
-        }
-        if (['ArrowLeft', 'PageUp'].includes(e.key)) {
-          e.preventDefault();
-          show(index - 1);
-        }
-        if (e.key === 'Home') show(0);
-        if (e.key === 'End') show(slides.length - 1);
+      const availableWidth =
+        innerWidth - (!notes.hidden && innerWidth >= 1000 ? notes.offsetWidth + 20 : 0);
+      const bottom = dock.getBoundingClientRect().top - 18;
+      const scale = Math.min(
+        (availableWidth - 32) / 1280,
+        (bottom - 18) / slides[index].offsetHeight,
+        1.6,
+      );
+      main.style.setProperty('--deck-scale', String(Math.max(0.1, scale)));
+      main.style.setProperty('--deck-x', `${Math.max(16, (availableWidth - 1280 * scale) / 2)}px`);
+      main.style.setProperty(
+        '--deck-y',
+        `${Math.max(16, (bottom - slides[index].offsetHeight * scale) / 2)}px`,
+      );
+    });
+  }
+
+  function show(nextIndex, { pointer = false, focus = false } = {}) {
+    const previous = index;
+    index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    slides.forEach((slide, n) => {
+      slide.getAnimations().forEach((animation) => animation.cancel());
+      slide.classList.toggle('active', n === index);
+      slide.setAttribute('aria-hidden', String(n !== index));
+    });
+    byId('counter').textContent = `${index + 1} / ${slides.length}`;
+    byId('current-topic').textContent = slides[index].dataset.title;
+    byId('open-overview').setAttribute(
+      'aria-label',
+      `Open slide overview, slide ${index + 1} of ${slides.length}`,
+    );
+    byId('prev').disabled = index === 0;
+    byId('next').disabled = index === slides.length - 1;
+    byId('next').title =
+      index < slides.length - 1 ? `Next: ${titles[index + 1]} (→)` : 'Last slide';
+    const progress = byId('deck-progress');
+    progress.setAttribute('aria-valuenow', String(index + 1));
+    progress.setAttribute('aria-valuemax', String(slides.length));
+    progress.setAttribute(
+      'aria-valuetext',
+      `Slide ${index + 1} of ${slides.length}: ${titles[index]}`,
+    );
+    progress.firstElementChild.style.transform = `scaleX(${(index + 1) / slides.length})`;
+    byId('notes-title').textContent = `${index + 1}. ${titles[index]}`;
+    byId('notes-content').replaceChildren(
+      document.querySelector(`template[data-presenter-notes="${index}"]`).content.cloneNode(true),
+    );
+    byId('notes-content').scrollTop = 0;
+    byId('notes-next-title').textContent = titles[index + 1] || 'End of presentation';
+    byId('notes-next').disabled = index === slides.length - 1;
+    for (const button of byId('slide-grid').querySelectorAll('button')) {
+      if (Number(button.dataset.index) === index) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    }
+    history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    layout();
+    if (pointer && previous !== index && !reduced.matches)
+      slides[index].animate([{ opacity: 0.65 }, { opacity: 1 }], {
+        duration: 150,
+        easing: 'cubic-bezier(.23,1,.32,1)',
       });
-      const hashIndex = () => {
-        const name = location.hash.slice(1);
-        const named = slides.findIndex((s) => s.dataset.slideId === name);
-        return named >= 0 ? named : (Number(name) || 1) - 1;
-      };
-      window.addEventListener('hashchange', () => show(hashIndex()));
-      show(hashIndex());
+    if (focus) {
+      const heading = slides[index].querySelector('h1, h2');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
+  }
+
+  function openDialog(dialog, trigger, focusTarget) {
+    if (document.querySelector('dialog[open]')) return;
+    dialog.returnFocus = trigger;
+    dialog.showModal();
+    focusTarget?.focus();
+  }
+  for (const [dialog, close] of [
+    [overview, 'close-overview'],
+    [tools, 'close-tools'],
+  ]) {
+    byId(close).onclick = () => dialog.close();
+    dialog.addEventListener('close', () => dialog.returnFocus?.focus({ preventScroll: true }));
+    dialog.addEventListener('click', (event) => {
+      const rect = dialog.getBoundingClientRect();
+      if (
+        event.target === dialog &&
+        (event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom)
+      )
+        dialog.close();
+    });
+  }
+  const chapters = [
+    [5, 'Approach'],
+    [11, 'System design'],
+    [15, 'Model results'],
+    [18, 'Interface results'],
+    [20, 'Next steps'],
+  ];
+  slides.forEach((slide, i) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.index = String(i);
+    button.className = 'slide-card';
+    const meta = document.createElement('span');
+    meta.className = 'slide-card-meta';
+    const number = document.createElement('span');
+    number.textContent = String(i + 1).padStart(2, '0');
+    const chapter = document.createElement('span');
+    chapter.textContent = chapters.find(([end]) => i < end)[1];
+    meta.append(number, chapter);
+    const title = document.createElement('strong');
+    title.textContent = titles[i];
+    const topic = document.createElement('span');
+    topic.className = 'slide-card-topic';
+    topic.textContent = slide.dataset.title;
+    button.append(meta, title, topic);
+    button.onclick = (event) => {
+      // Native dialog closing restores its trigger first, then focus the destination.
+      overview.returnFocus = null;
+      overview.close();
+      if (!notes.hidden && innerWidth < 1000) {
+        toggleNotes(false);
+        main.inert = false;
+      }
+      show(i, { pointer: event.detail > 0, focus: true });
+    };
+    byId('slide-grid').append(button);
+  });
+  function filterSlides() {
+    const query = search.value.trim().toLowerCase();
+    const number = /^\d+$/.test(query) ? Number(query) : null;
+    let count = 0;
+    for (const button of byId('slide-grid').children) {
+      button.hidden =
+        number === null
+          ? !button.textContent.toLowerCase().includes(query)
+          : Number(button.dataset.index) + 1 !== number;
+      if (!button.hidden) count++;
+    }
+    byId('overview-count').textContent = `${count} of ${slides.length} slides`;
+    byId('overview-empty').hidden = count !== 0;
+    byId('slide-grid').scrollTop = 0;
+  }
+  function openOverview() {
+    search.value = '';
+    filterSlides();
+    openDialog(overview, byId('open-overview'), search);
+    byId('slide-grid')
+      .querySelector('[aria-current="page"]')
+      ?.scrollIntoView({ block: 'center', behavior: 'instant' });
+  }
+  search.oninput = filterSlides;
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      byId('slide-grid').querySelector('button:not([hidden])')?.click();
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      byId('slide-grid').querySelector('button:not([hidden])')?.focus();
+    }
+  });
+  byId('open-overview').onclick = openOverview;
+
+  function toggleNotes(open = notes.hidden) {
+    notes.hidden = !open;
+    document.body.classList.toggle('notes-open', open);
+    byId('toggle-notes').setAttribute('aria-expanded', String(open));
+    byId('toggle-notes').setAttribute(
+      'aria-label',
+      open ? 'Hide speaker notes' : 'Show speaker notes',
+    );
+    if (open) byId('close-notes').focus({ preventScroll: true });
+    else byId('toggle-notes').focus({ preventScroll: true });
+    layout();
+  }
+  byId('toggle-notes').onclick = () => toggleNotes();
+  byId('close-notes').onclick = () => toggleNotes(false);
+  byId('notes-next').onclick = (event) => show(index + 1, { pointer: event.detail > 0 });
+
+  function setPresenting(value) {
+    presenting = value;
+    document.body.classList.toggle('deck-presenting', value);
+    byId('toggle-present').setAttribute('aria-pressed', String(value));
+    byId('toggle-present').setAttribute(
+      'aria-label',
+      value ? 'Exit presentation view' : 'Enter presentation view',
+    );
+    byId('toggle-present').querySelector('.present-enter').hidden = value;
+    byId('toggle-present').querySelector('.present-exit').hidden = !value;
+    byId('toggle-present').querySelector('.dock-label').textContent = value ? 'Exit' : 'Present';
+    layout();
+  }
+  let fullscreenBusy = false;
+  async function togglePresenting() {
+    if (fullscreenBusy) return;
+    fullscreenBusy = true;
+    byId('toggle-present').disabled = true;
+    const value = !presenting;
+    setPresenting(value);
+    try {
+      if (value && !document.fullscreenElement && document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+        ownedFullscreen = true;
+      } else if (!value && ownedFullscreen && document.fullscreenElement) {
+        await document.exitFullscreen();
+      }
+    } catch {
+      byId('presenter-status').textContent =
+        'Browser fullscreen is unavailable. Presentation view still fits this window.';
+    } finally {
+      fullscreenBusy = false;
+      byId('toggle-present').disabled = false;
+    }
+  }
+  byId('toggle-present').onclick = togglePresenting;
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && ownedFullscreen) {
+      ownedFullscreen = false;
+      setPresenting(false);
+    }
+    layout();
+  });
+
+  function openTools() {
+    byId('slide-link').value =
+      `https://relay.kevinliu.studio/presentation#${slides[index].dataset.slideId}`;
+    byId('share-status').textContent = '';
+    openDialog(tools, byId('open-tools'), byId('copy-slide'));
+  }
+  byId('open-tools').onclick = openTools;
+  byId('copy-slide').onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(byId('slide-link').value);
+      byId('share-status').textContent = 'Slide link copied.';
+    } catch {
+      byId('share-status').textContent = 'Copy the selected link below.';
+      byId('slide-link').focus();
+      byId('slide-link').select();
+    }
+  };
+
+  let elapsed = 0,
+    started = null,
+    ticker = null;
+  function updateTimer() {
+    const seconds = Math.floor(
+      (elapsed + (started === null ? 0 : performance.now() - started)) / 1000,
+    );
+    byId('talk-time').textContent =
+      `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+  }
+  byId('timer-toggle').onclick = () => {
+    if (started === null) {
+      started = performance.now();
+      ticker = setInterval(updateTimer, 250);
+    } else {
+      elapsed += performance.now() - started;
+      started = null;
+      clearInterval(ticker);
+    }
+    byId('timer-toggle').textContent = started === null ? 'Resume timer' : 'Pause timer';
+    byId('timer-toggle').setAttribute('aria-pressed', String(started !== null));
+    updateTimer();
+  };
+  byId('timer-reset').onclick = () => {
+    elapsed = 0;
+    started = null;
+    clearInterval(ticker);
+    updateTimer();
+    byId('timer-toggle').textContent = 'Start timer';
+    byId('timer-toggle').setAttribute('aria-pressed', 'false');
+  };
+  window.addEventListener('pagehide', () => {
+    clearInterval(ticker);
+    ticker = null;
+  });
+  window.addEventListener('pageshow', () => {
+    if (started !== null && ticker === null) ticker = setInterval(updateTimer, 250);
+  });
+
+  byId('prev').onclick = (event) => show(index - 1, { pointer: event.detail > 0 });
+  byId('next').onclick = (event) => show(index + 1, { pointer: event.detail > 0 });
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.defaultPrevented ||
+      event.isComposing ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      document.querySelector('dialog[open]')
+    )
+      return;
+    const key = event.key.toLowerCase();
+    if (key === 'escape') {
+      if (!notes.hidden) toggleNotes(false);
+      else if (presenting) void togglePresenting();
+      return;
+    }
+    if (
+      event.target.closest(
+        'input, select, textarea, [contenteditable]:not([contenteditable="false"]), .table-scroll, .sort-tools, .task-filter',
+      )
+    )
+      return;
+    if (key === 'n') {
+      event.preventDefault();
+      toggleNotes();
+      return;
+    }
+    if (key === 'g' || key === '/') {
+      event.preventDefault();
+      openOverview();
+      return;
+    }
+    if (key === 'f') {
+      event.preventDefault();
+      void togglePresenting();
+      return;
+    }
+    if (key === '?') {
+      event.preventDefault();
+      openTools();
+      return;
+    }
+    if (
+      event.target.closest('.presenter-notes') ||
+      (key === ' ' && event.target.closest('button, a'))
+    )
+      return;
+    const nextIndex = ['arrowright', 'pagedown', ' '].includes(key)
+      ? index + 1
+      : ['arrowleft', 'pageup'].includes(key)
+        ? index - 1
+        : key === 'home'
+          ? 0
+          : key === 'end'
+            ? slides.length - 1
+            : null;
+    if (nextIndex !== null) {
+      event.preventDefault();
+      show(nextIndex);
+    }
+  });
+  function hashIndex() {
+    const hash = location.hash.slice(1);
+    const named = slides.findIndex((slide) => slide.dataset.slideId === hash);
+    return named >= 0 ? named : /^\d+$/.test(hash) ? Number(hash) - 1 : 0;
+  }
+  window.addEventListener('hashchange', () => show(hashIndex()));
+  window.addEventListener('resize', layout);
+  window.addEventListener('beforeprint', () => {
+    main.inert = false;
+    main.removeAttribute('aria-hidden');
+  });
+  window.addEventListener('afterprint', layout);
+  const observer = new ResizeObserver(layout);
+  for (const slide of slides) observer.observe(slide);
+  observer.observe(dock);
+  document.fonts.ready.then(layout);
+  show(hashIndex());
+})();
+
       const trialDialog = document.getElementById('trials-dialog');
       let selectedTask = 'all',
         selectedModel = '';

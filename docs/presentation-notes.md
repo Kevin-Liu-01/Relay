@@ -14,6 +14,12 @@ exposed limits in both the task definitions and the interface comparison.
 - Say what is implemented, what was measured, and what is proposed.
 - Diagrams illustrate behavior. They are not screenshots of recorded model executions.
 - The generated deck is `docs/presentation.html`, not the raw template.
+- Use the slide counter or G to find any slide. N opens the current speaker
+  notes, with a manual rehearsal timer and the next slide's title.
+- Notes appear on the same screen. They are not a private second-screen view.
+- F fits the slide to the window and requests browser fullscreen. Escape exits.
+  On narrow screens the deck stays scrollable so text remains readable.
+- The keyboard button opens shortcuts, a direct slide link and the PDF download.
 - Stable links: `#session-isolation`, `#run-speed`, `#resource-choices`, `#scaling-the-runner`, `#model-comparison`, `#main-lesson`, `#interface-results`.
 
 ## Connect the design to what the audience sees
@@ -395,7 +401,8 @@ API passed 21/24, accessibility 18/24, Page JSON 16/24, and pixels 3/24. Usage
 estimates total $20.718042; unresolved reservations are $2.043534; combined
 allowance is $22.761576. Missing receipts remain unknown, not free.
 
-Next: explain why the highest pass count is not a universal CUA winner.
+Next: the first study tried each condition once. Does the pattern persist when
+the same conditions get two fresh attempts?
 
 ## 18. Interpreting interface results
 
@@ -404,6 +411,9 @@ attempts per condition for Sol and Sonnet, using thread reply, message editing a
 incident closeout. This adds repeat observations while keeping the study small.
 The three workflows cover parent selection, editing and multi-step changes.
 They are fixed development tasks, not unseen variants.
+Introduce the reason before reading another table: an outcome from one attempt
+does not tell me whether it will repeat. This follow-up checks that question on
+a smaller set, without claiming that two attempts measure general reliability.
 
 All 48 planned attempts are recorded: 35 passed, one incomplete and 12 blocked.
 API passed 12/12, accessibility 10/12, Page JSON 9/12, and pixels 4/12.

@@ -49,7 +49,6 @@ main {
 }
 .slide.active {
   display: block;
-  animation: reveal 200ms ease-out;
 }
 .masthead {
   display: flex;
@@ -2297,6 +2296,558 @@ a:focus-visible {
   }
   .mismatch-diagram {
     margin: 18px 0;
+  }
+}
+
+.repeat-context {
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin: -8px 0 16px;
+}
+@media screen {
+  .presentation-page main {
+    margin-bottom: 108px;
+  }
+  .presentation-page:has(dialog[open]) {
+    overflow: hidden;
+  }
+  .presenter-dock {
+    left: 50%;
+    right: auto;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 24px);
+    height: 64px;
+    padding: 8px 10px;
+    gap: 5px;
+    border: 1px solid #ded8e5;
+    border-radius: 16px;
+    background: #fffefef5;
+    box-shadow:
+      0 8px 32px #30203916,
+      0 2px 5px #30203908;
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+  .presenter-dock button,
+  .presenter-panel-header button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    border-color: transparent;
+    background: transparent;
+    border-radius: 9px;
+    font-size: 13px;
+    padding: 10px;
+  }
+  .presenter-dock button:active:not(:disabled),
+  .presenter-actions button:active {
+    transform: scale(0.97);
+  }
+  .presenter-dock .glyph,
+  .presenter-dialog .glyph,
+  .presenter-notes .glyph {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    display: block;
+  }
+  .presenter-dock .slide-picker {
+    justify-content: start;
+    gap: 12px;
+    text-align: left;
+    min-width: 165px;
+    max-width: 250px;
+  }
+  .slide-picker > span {
+    min-width: 0;
+  }
+  .presenter-dock #counter {
+    min-width: 0;
+    max-width: none;
+    text-align: left;
+    display: block;
+    font-size: 11px;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .current-topic {
+    display: block;
+    margin-top: 2px;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .deck-step-controls {
+    display: flex;
+    gap: 5px;
+  }
+  .presenter-icon {
+    min-width: 44px;
+  }
+  .presenter-dock .primary-next {
+    background: #36253f;
+    color: #fff;
+  }
+  .presenter-dock .primary-next:hover:not(:disabled) {
+    background: var(--plum);
+  }
+  .presenter-dock button[aria-expanded='true'],
+  .presenter-dock button[aria-pressed='true'] {
+    background: #efe8f4;
+    color: var(--plum);
+  }
+  .dock-divider {
+    height: 24px;
+    width: 1px;
+    background: var(--line);
+    margin: 0 5px;
+  }
+  .deck-progress {
+    position: absolute;
+    top: -1px;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    overflow: hidden;
+  }
+  .deck-progress > span {
+    display: block;
+    background: #9977ad;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+  }
+  .presenter-panel-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .presenter-panel-header h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 6px 0 0;
+    letter-spacing: 0;
+    text-wrap: initial;
+  }
+  .presenter-eyebrow {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.025em;
+  }
+  .presenter-caption {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .presenter-dialog {
+    width: min(1000px, calc(100% - 32px));
+    max-width: none;
+    max-height: calc(100dvh - 64px);
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 30px 90px #24182e30;
+    color: #28262c;
+    overflow: hidden;
+  }
+  .presenter-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .presenter-dialog::backdrop {
+    background: #21142966;
+  }
+  .presenter-dialog > * {
+    flex-shrink: 0;
+  }
+  .slide-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #d4c8dd;
+    border-radius: 10px;
+    padding: 0 14px;
+    margin-top: 22px;
+  }
+  .slide-search:focus-within {
+    outline: 2px solid var(--plum);
+    outline-offset: 2px;
+  }
+  .slide-search input {
+    font: inherit;
+    font-size: 15px;
+    border: 0;
+    padding: 14px 0;
+    outline: none;
+    min-width: 0;
+    width: 100%;
+    background: transparent;
+    color: inherit;
+  }
+  .slide-search .glyph {
+    color: var(--muted);
+  }
+  .slide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    overflow: auto;
+    min-height: 0;
+    padding: 4px;
+    flex-shrink: 1;
+  }
+  .slide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #faf9fc;
+    border-color: var(--line);
+  }
+  .slide-card[hidden],
+  .overview-empty[hidden] {
+    display: none;
+  }
+  .slide-card[aria-current='page'] {
+    border-color: var(--plum);
+    box-shadow: inset 0 0 0 1px var(--plum);
+    background: #f2ebf7;
+  }
+  .slide-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .slide-card-meta > :first-child {
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--plum);
+  }
+  .slide-card strong {
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+  .slide-card-topic {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: auto;
+  }
+  .slide-card[aria-current='page'] .slide-card-topic::after {
+    content: ' · Current';
+    color: var(--plum);
+  }
+  .overview-empty {
+    padding: 40px 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 15px;
+  }
+  .overview-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  kbd {
+    display: inline-block;
+    font: inherit;
+    font-size: 11px;
+    border: 1px solid #ded8e4;
+    border-radius: 4px;
+    min-width: 22px;
+    padding: 2px 5px;
+    background: #f8f6fa;
+    text-align: center;
+  }
+  .presenter-tools {
+    width: min(490px, calc(100% - 32px));
+    overflow-y: auto;
+  }
+  .presenter-tools h3 {
+    font-size: 14px;
+    margin: 24px 0 10px;
+  }
+  .presenter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .presenter-actions > * {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    text-decoration: none;
+  }
+  .slide-link-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .slide-link-label input {
+    display: block;
+    margin-top: 6px;
+    padding: 10px;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    font: inherit;
+    color: inherit;
+  }
+  .shortcut-list {
+    margin: 0;
+  }
+  .shortcut-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0edf3;
+    font-size: 13px;
+  }
+  .shortcut-list dd {
+    margin: 0;
+  }
+  .presenter-notes {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    width: 360px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    box-shadow: 0 10px 40px #30203910;
+    z-index: 4;
+  }
+  .presenter-notes[hidden] {
+    display: none;
+  }
+  .presenter-notes .presenter-panel-header {
+    flex-shrink: 0;
+  }
+  .presenter-notes h2 {
+    font-size: 18px;
+  }
+  .presenter-timer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 16px 0;
+    margin: 8px 0 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .presenter-timer time {
+    font-size: 23px;
+    font-variant-numeric: tabular-nums;
+    margin-right: auto;
+  }
+  .presenter-timer button {
+    font-size: 12px;
+    padding: 8px;
+    min-height: 36px;
+  }
+  .notes-content {
+    overflow-y: auto;
+    min-height: 0;
+    flex: 1;
+    padding: 0 8px 12px 0;
+    margin-top: 16px;
+    overscroll-behavior: contain;
+  }
+  .notes-content p,
+  .notes-content li {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .notes-content ul,
+  .notes-content ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .notes-content strong {
+    font-weight: 500;
+  }
+  .notes-content code {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .notes-next {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    gap: 6px 12px;
+    flex-shrink: 0;
+    text-align: left;
+    border-color: transparent;
+    border-top-color: var(--line);
+    border-radius: 0;
+    padding: 16px 0 0;
+  }
+  .notes-next > span {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .notes-next strong {
+    grid-column: 1;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .notes-next .glyph {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  @media (min-width: 1000px) {
+    .presentation-page.notes-open:not(.deck-presenting) main {
+      max-width: calc(100% - 416px);
+      margin-left: 20px;
+      margin-right: 396px;
+    }
+  }
+  @media (min-width: 800px) {
+    .deck-presenting {
+      overflow: hidden;
+    }
+    .deck-presenting main {
+      position: fixed;
+      width: 1280px;
+      max-width: none;
+      margin: 0;
+      top: var(--deck-y, 16px);
+      left: var(--deck-x, 16px);
+      transform: scale(var(--deck-scale, 1));
+      transform-origin: top left;
+    }
+  }
+  @media (max-width: 999px) {
+    .presenter-notes {
+      left: 12px;
+      right: 12px;
+      width: auto;
+      top: 12px;
+      bottom: 94px;
+      z-index: 5;
+    }
+  }
+  @media (max-width: 760px) {
+    .presenter-dock {
+      height: 60px;
+      padding: 7px;
+      gap: 3px;
+      bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    .presenter-dock .dock-label,
+    .current-topic {
+      display: none;
+    }
+    .presenter-dock .slide-picker {
+      min-width: 0;
+      max-width: none;
+      gap: 8px;
+    }
+    .presenter-dock #counter {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .presenter-dock button {
+      padding: 10px;
+    }
+    .presenter-dock .dock-divider {
+      margin: 0 2px;
+    }
+    .slide-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .presenter-dialog {
+      padding: 18px;
+      border-radius: 15px;
+      max-height: calc(100dvh - 28px);
+    }
+    .slide-card {
+      min-height: 142px;
+      padding: 12px;
+    }
+    .slide-card strong {
+      font-size: 14px;
+    }
+    .overview-footer > :last-child {
+      display: none;
+    }
+    .presenter-notes {
+      bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+      padding: 18px;
+    }
+  }
+  @media (max-width: 380px) {
+    .presenter-dock .presenter-icon {
+      min-width: 40px;
+      padding: 8px;
+    }
+    .deck-step-controls {
+      gap: 3px;
+    }
+    .presenter-dock .slide-picker > .glyph,
+    .dock-divider {
+      display: none;
+    }
+    .slide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .presenter-dock button:active:not(:disabled),
+    .presenter-actions button:active {
+      transform: none;
+    }
+  }
+}
+@media print {
+  dialog::backdrop {
+    display: none !important;
+  }
+  .presenter-notes,
+  .presenter-dialog,
+  .presenter-dock,
+  #presenter-status {
+    display: none !important;
+  }
+  .presentation-page main {
+    position: static !important;
+    transform: none !important;
+    width: 1280px !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .repeat-context {
+    font-size: 14px;
+    margin: -4px 0 10px;
   }
 }
 
@@ -5962,7 +6513,8 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results<span class="section-number">18 / 20</span></span></header>
-        <h2>I repeated the comparison on three workflows</h2>
+        <h2>Do the interface results hold across repeated attempts?</h2>
+        <div class="repeat-context">The first study used one attempt per condition. This follow-up tested each condition twice.</div>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable repeated interface results"><table class="study-table sortable" id="interface-repeat-results"><caption>Passed / 6 attempts · three tasks, two repeats · median elapsed seconds</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=9db894c4-dd1f-47ec-b359-b5b24977b861-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">17.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.2 s</dd></div></dl></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f50084a1-00f7-414f-ad29-cc1937f145fa-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON repeats"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">23.1 s</dd></div><div><dt>Passed</dt><dd data-time="passed">17.6 s</dd></div></dl></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=f65e4b6f-d462-4d5c-986a-19e14d7ba8f8-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels repeats"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">180.2 s</dd></div><div><dt>Passed</dt><dd data-time="passed">159.4 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=249ee43a-811a-41c7-8b4b-a4d89a043809-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">8.7 s</dd></div><div><dt>Passed</dt><dd data-time="passed">8.7 s</dd></div></dl></td><td data-sort="3.3918039999999996">$3.3918</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=43205556-40d9-47d4-b34c-5c3ae9c357b9-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.5 s</dd></div><div><dt>Passed</dt><dd data-time="passed">11.4 s</dd></div></dl></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=44788dd5-7a84-42b9-92de-29112f9f43cc-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON repeats"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">13.6 s</dd></div><div><dt>Passed</dt><dd data-time="passed">9.9 s</dd></div></dl></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=40a6fc64-0b1f-4350-823d-09e9b01ea504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels repeats"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">32.4 s</dd></div><div><dt>Passed</dt><dd data-time="passed">14.1 s</dd></div></dl></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat&amp;trial=2c96ca7e-7180-46b6-b6ee-360aa8f2bad6-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 API repeats"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small><dl class="study-times" aria-label="Median elapsed time"><div><dt>All</dt><dd data-time="all">6.3 s</dd></div><div><dt>Passed</dt><dd data-time="passed">6.3 s</dd></div></dl></td><td data-sort="5.575906000000001">$5.5759</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=repeat">All 48 traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-repeat-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md">All paired comparisons ↗</a></div>
         <span class="sr-only" id="repeat-sort-status" role="status"></span>
         <ul><li>Each interface had 12 attempts: API passed 12, accessibility 10, Page JSON 9, and pixels 4.</li><li>On 10 shared passes, API used a median 6.3 fewer seconds and 3 fewer actions than accessibility.</li><li>API skips browser interaction, so its higher completion count does not show better computer use.</li></ul>
@@ -9443,58 +9995,463 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
     <td>change_1_design, new_message_destination_and_content, all_requested_messages, no_unrequested_state_changes<small class="trial-origin">new · model-breadth-2026-10-03-continuation · block-269 · 8f9b5249-62f3-4967-bc8e-3ff9d580fce0</small></td>
   </tr></tbody></table></div><span class="sr-only" id="trial-sort-status" role="status"></span>
     </dialog>
-    <nav aria-label="Presentation controls">
-      <button id="prev" aria-label="Previous slide">← Previous</button
-      ><span id="counter" aria-live="polite"></span
-      ><button id="next" aria-label="Next slide">Next →</button>
+    <aside id="presenter-notes" class="presenter-notes" aria-labelledby="notes-title" hidden>
+      <header class="presenter-panel-header">
+        <div><span class="presenter-eyebrow">Speaker notes · visible on this screen</span><h2 id="notes-title">Speaker notes</h2></div>
+        <button id="close-notes" class="presenter-icon" type="button" aria-label="Close speaker notes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x glyph" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      </header>
+      <div class="presenter-timer" aria-label="Rehearsal timer">
+        <time id="talk-time" aria-label="Elapsed presentation time">00:00</time>
+        <button id="timer-toggle" type="button" aria-pressed="false">Start timer</button>
+        <button id="timer-reset" type="button">Reset</button>
+      </div>
+      <div id="notes-content" class="notes-content" tabindex="0" aria-label="Current slide speaker notes"></div>
+      <button id="notes-next" class="notes-next" type="button"><span>Next slide</span><strong id="notes-next-title"></strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+    </aside>
+    <template data-presenter-notes="0"><p>Introduce the design process, not the assignment or just API compatibility.</p><p>I first researched how an agent gets information about a page and turns a model response into an action. I reviewed browser frameworks such as BrowserGym, Slack mockups, and existing environments including Cua&#39;s Slack task, env0, and Agent-Diff. The <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/research.md" target="_blank" rel="noopener noreferrer">research record</a> distinguishes source inspection from upstream claims. I did not execute those external projects or establish that Relay outperforms them.</p><p>That review helped separate three needs. The app needs working controls and stored changes. The harness needs to observe the app and execute model actions. The evaluator needs to check whether those changes satisfy the task.</p><p>Use the flow to explain the decisions: research computer use, map Slack workflows, build the focused environment, then test and record agent runs. Search, threads, and message editing gave me concrete workflows to build and verify. A static mockup would not test saved changes; implementing all of Slack would add services these workflows do not require. The execution loop comes later on slide 4.</p><p>The restored visual style uses the older deck&#39;s two-color opening, outlined icon labels, short bullets, and contained diagrams. It does not restore the older wording, unmatched results, or slide order. Purple identifies the harness, blue identifies execution, and green identifies checks or saved evidence.</p><p>Next: use a specific Slack task to show what this requires.</p></template>
+<template data-presenter-notes="1"><p>Alex&#39;s launch-review message says 14:00. The task requires the same message to say 15:00, with the rest unchanged. Searching, opening an editor, typing, and saving must all work. A dialog with the right text is not the same as a saved edit.</p><p>This explains why I needed more than a static mockup, but not all of Slack. React renders the interface. SQLite holds each experimental workspace&#39;s data. The manual <code>/play</code> sandbox instead uses page memory and is not a graded run.</p><p>Next: show how these features support the broader task set.</p></template>
+<template data-presenter-notes="2"><p>The suite has six focused tasks and twelve longer workflows. Read one flow from each column rather than listing every task. A longer task combines existing features: read several sources, change the right object, and preserve the rest.</p><p>The two stars identify task-language caveats, not tasks removed from the results. Their original outcomes remain recorded.</p><p>Next: show how the harness runs any one of these tasks.</p></template>
+<template data-presenter-notes="3"><p>Define <strong>run</strong> as one model attempting one task. Define <strong>observation</strong> as the workspace information supplied at one step.</p><p>The model does not directly own the browser. It returns one supported action. The harness validates and executes that action, then reads the page again. Playwright performs browser actions; the API path performs application operations.</p><p>The loop ends on finish or a limit. The harness records actions, errors, data, timing, and usage so I can inspect what happened. It does not expose a shell, the hidden answer, or the trainer credential to the model.</p><p>Next: explain the choices for observation and action.</p></template>
+<template data-presenter-notes="4"><p>Pixels show a screenshot and require mouse/keyboard actions. Accessibility names page controls. Page JSON serializes those controls. Neither text-based browser mode is a direct database dump.</p><p>The actor API provides structured application data and operations. It is tool use, not computer use through the UI. This distinction matters later: setting a topic directly is different from finding and operating the topic editor.</p><p>All models use Relay&#39;s shared action protocol, not their native CUA protocol.</p><p>Next: check the result independently of whichever route the model used.</p></template>
+<template data-presenter-notes="5"><p>A completion response is not evidence that the message changed. The grader checks the stored original message, the exact required text, and unrequested changes.</p><p>Reward 1 requires every check. Posting a new message with the right words does not pass an editing task. Clicking Cancel does not save the typed edit.</p><p>This is a final-state check. A mistake that is fully undone may still pass. Actions remain in the trace, but the current reward does not penalize the path.</p><p>Next: explain how I tested this check without trusting a model.</p></template>
+<template data-presenter-notes="6"><p>The previous slide defines success: change Alex&#39;s original message from 14:00 to 15:00 and leave the rest of the workspace unchanged. This slide tests whether the implementation follows that rule.</p><ul><li>App test: a script makes the edit through the UI, saves it, and checks the stored result. This establishes that the app can complete the workflow.</li><li>Grader test: supply the unchanged 14:00 state, then a correct 15:00 edit with an extra message. Both must fail. The first checks the required edit; the second checks the previous slide&#39;s no-extra-changes rule.</li><li>Recording test: open a saved run and grade its final workspace again. The recomputed grade must match the recorded grade. This is an offline check, not a second model attempt or replaying actions to manufacture a new result.</li></ul><p>The long-workflow challenge report contains 84 valid and 2,583 invalid states across seven seeds. Those are software checks, not thousands of model attempts. Saved full-suite reports and later targeted release checks are distinguished in <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md" target="_blank" rel="noopener noreferrer">verification</a>.</p><p>A script already knows the author&#39;s intended answer. It cannot independently validate the instruction&#39;s meaning. Return to this limit on slide 15.</p><p>Next: move from one correct run to two independent runs.</p></template>
+<template data-presenter-notes="7"><p>The previous slide checked one run. Now I need to be able to run the task again, even with the same model. This is a requirement for repeatable execution before it becomes a requirement for comparing models.</p><p>Start with the failure case: if A edits shared data, B may receive an easier task without doing the work. Separate runs must not affect each other&#39;s starting state. For this task, A changes 14:00 to 15:00. If B inherits that edit, a final-state check could pass even if B does nothing. That would measure A&#39;s work twice.</p><p>In a walkthrough, show A&#39;s final message, then the new run&#39;s starting message. It starts at 14:00 again. This is task reset and run isolation, not the loss of A&#39;s recording. A&#39;s result remains available in history and replay. Do not start a paid attempt just to demonstrate this when saved initial and final states are available.</p><p>Each run owns a database file and a fresh browser context. The database separates stored data. The context separates browser storage and open UI state. On normal close, the harness releases the context and deletes the session.</p><p>A shared database with session filters is another option. Separate files make ownership and deletion simpler here, at the cost of more files and open/close work.</p><p>The tests write to A and check B, then close A and check B again. This proves the specified noninterference cases, not a security boundary against arbitrary code. The actor and control listeners still share a process and host resources.</p><p>Next: independent runs are possible, but how long does one run take?</p></template>
+<template data-presenter-notes="8"><p>Walk through setup, the repeated loop, then finalization. Each additional decision adds a model request, observation, action, and recording work. Opening the editor, entering text, and saving can each require a decision. This connects the repeatable run from the previous slide to what the viewer actually waits for during execution.</p><p>The shown medians are local component measurements. Reset is 1.50 ms, HTTP action is 3.31 ms, screenshot is 84.15 ms. They exclude model calls and cannot be added into a complete run estimate. HTTP action timing is not total UI-action timing.</p><p>The measurement used 100 stored sessions but only 10 sequential browser contexts. Do not call it a 100-agent load test. More concurrent workers would increase throughput, not make a single provider response faster.</p><p>Next: while the model is deciding, the browser is still open. What resources does that run hold, and what remains after it ends?</p></template>
+<template data-presenter-notes="9"><p>The previous slide explains elapsed time. This slide explains why time also affects capacity: a browser continues to use memory while it waits for a model response. Running more tasks together means keeping more browsers open.</p><p>The three cards distinguish workspace data, the active browser, and saved recordings. The browser closes after the run, but its recording stays available. Active work therefore needs memory, while retained history needs storage. These are separate limits; a small database file does not establish how many live browsers fit on one machine.</p><p>The SQLite fixture is small: 48 KiB after one post. Browser processes and evidence are additional costs. The Node memory measurement excludes browser children, so I cannot derive agents-per-machine from it.</p><p>The experiment loop creates and closes a browser per run. That makes lifecycle ownership simple but pays startup cost. A browser pool could retain a browser while giving each run a new context; this is a future optimization to measure.</p><p>Evidence takes storage and write time, but makes failures reviewable without another model call. The disk-space incident belongs with the later model results, after the collection has been introduced, rather than interrupting this explanation.</p><p>API mode can omit the browser only when observer visuals are disabled. The later matched study kept visual recording enabled; it is not a browser-free measurement.</p><p>Next: how would I accept more run requests without opening too many browsers?</p></template>
+<template data-presenter-notes="10"><p>The previous slide identified the costs. This slide proposes a way to bound active resource use: queue requests instead of opening a browser for every visitor immediately. The collections themselves ran sequentially, so this is not a claim about measured concurrent capacity.</p><p>Jobs wait in a queue. A fixed number of workers each own one active run&#39;s browser and data. Waiting work does not allocate browsers. Evidence should become durable before a worker deletes its local resources.</p><p>I would test 1, 4, 8, and 16 workers. Measure successful runs/hour, per-run latency, full process-tree memory, provider limits, capture failures, and cleanup. Kill one worker and verify that other runs are correct and its interrupted record survives.</p><p>Pooling browsers may save startup work but enlarges the effect of a browser crash. Processes or containers provide a stronger boundary than browser contexts; this project has not established hostile-code containment.</p><p>Next: show how the repeatable execution system enabled a benchmark.</p></template>
+<template data-presenter-notes="11"><p>The environment and harness came first. Once they could reset, execute, grade, and record, I could repeat a task without carrying over the previous run&#39;s work.</p><p>That led to a new question: how do different models perform on the same tasks? The same harness let me change the model without rebuilding the environment or changing the success rule. This is where the story moves from building a repeatable tool to comparing models.</p><p>I then expanded the scope into two comparisons. The first asks which tasks each model completes through accessibility controls. The second changes the interface for matched model/task pairs. They have separate plans, records, and budgets.</p><p>Next: state the first comparison&#39;s controls before showing its results.</p></template>
+<template data-presenter-notes="12"><p>Seventeen routes times eighteen tasks gives 306 attempts. All use accessibility controls, seed 1042, recent-four history, no site guide, and the same graders. The limits are 40 actions, 180 seconds, 4,096 output tokens per request, and $5 estimated allowance per run.</p><p>This inventory retains 105 earlier runs and adds 201 untouched cells. It is not a fresh randomized campaign. There are no repeats or replacement failures. Provider-default reasoning, provider routing, and collection time are not controlled.</p><p>Next: inspect the complete table.</p></template>
+<template data-presenter-notes="13"><p>All 306 attempts are recorded: 152 passed, 61 incomplete, and 93 blocked.</p><ul><li>Passed: an eligible run met every final-state check.</li><li>Incomplete: unmet checks after completion or the action limit.</li><li>Blocked: a service error, timeout, output limit, spend stop, or execution interruption.</li></ul><p>Diagnostic checks do not turn a blocked attempt into a pass. Sol and Astra each passed 14/18; across all models, 15/18 tasks passed at least once. That is not a reliable ranking from one attempt per pair.</p><p>Sort the table. Click a model, then select a task to open the trace or replay. Usage estimates are $189.31101456 and unresolved reservations $3.77939636, totaling $193.09041092 for the selected 306. These are not invoices.</p><p>The resource tradeoff from slide 10 also appeared during collection. The 306-run collection paused when free disk space fell below its 10 GB storage safeguard. Existing evidence was preserved. See the <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-disk-stop.md" target="_blank" rel="noopener noreferrer">recorded storage stop</a>. This supports budgeting for saved evidence, not a claim that Relay used all the disk space on a shared machine or that every pause was a model failure.</p><p>Next: open the four tasks missed by both models with the highest recorded score.</p></template>
+<template data-presenter-notes="14"><p>Start from the preceding table: Sol and Astra each passed 14 of 18 tasks. They missed the same four, but the traces do not give one cause for all four. The highest recorded score is not a measured capability ceiling.</p><ol><li><strong>Design handoff:</strong> both finished but sent the literal word DESIGN. The task quotes “Implement DESIGN navigation; accessibility approved.” and never explicitly says to substitute the approved name, Willow. The second message has the same defect. Six completed runs across the collection did this. My grader tests checked the answer I intended, not whether an independent reader could infer it. This flaw does not explain all 17 outcomes or prove that a clearer instruction would pass.</li><li><strong>Release synchronization:</strong> the task puts the release handoff and QA matrix under one ambiguous location, although they are in different channels. Sol found the current facts, updated the topic and sent the QA reply, but left other required changes unfinished. Sol reached 40 actions; Astra reached its allowance limit after 26. The wording is a validity concern, not an isolated explanation of these two outcomes.</li><li><strong>Release retrospective:</strong> all 17 runs stopped at a limit. Sol reached 40 actions; Astra reached its allowance limit after 28. Neither completed all required changes. This does not prove impossibility or that a larger limit alone would solve the task.</li><li><strong>Handoff repair:</strong> both repeatedly filled the correct rollback-owner edit and clicked Cancel, not Save changes. The original message stayed unchanged. Sol reached 40 actions; Astra reached its allowance limit after 38. Five other models passed, so the task was achievable in these conditions.</li></ol><p>An allowance stop means the next request&#39;s reservation did not fit within the $5 estimated ceiling. It does not mean the provider billed exactly $5. Sol has four incomplete outcomes. Astra has one incomplete and three blocked outcomes. Do not relabel those blocked runs as completed task failures.</p><p>Across all models, 15 of 18 tasks passed at least once. Handoff repair accounts for the difference from the two highest individual scores. The three zero-pass tasks are design handoff, release synchronization and release retrospective.</p><p>Use the <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md" target="_blank" rel="noopener noreferrer">failure review</a> and the preceding table&#39;s task links to inspect each trace. Keep the original grades, records and limits. Test corrected instructions only under a new task version.</p><p>Next: explain what the early development runs taught me before showing the separate interface comparison.</p></template>
+<template data-presenter-notes="15"><p>This is a learning and design-refinement slide, not another results table. The early onsite campaign attempted 20 of 30 planned runs. It exercised several interfaces, but did not give every interface the same task/model combinations. For example, its only attempted pixel run was Mini on topic update, while the other interfaces covered more tasks and also used Luna.</p><p>Those traces were useful for checking the harness. Mini posted a requested topic as a message and claimed completion; the state grader rejected it. A pixel run returned malformed multi-action outputs; the parser rejected them without changing the workspace. These examples support the existing validation design. Do not claim that the grader or action validator was added after these runs.</p><p>The comparison needed a change: use the same models, tasks, starting data, and outcome checks for every interface. The later study does that. It also labels API as tool use, because semantic operations skip browser interaction. This tighter design still does not isolate visual reasoning or prove a general winner.</p><p>Four image-capable routes, six tasks, four interfaces, one attempt each gives 96. Each model/task block starts from four fresh copies of the same data. Interface order is randomized within the block.</p><p>The plan fixed $25 total, $1 per run, 40 actions, 180 seconds, 90 seconds per request, 4,096 output tokens, low reasoning, seed 2042, recent-four history, and no guide. There are no retries. Neither the early development attempts nor the original 306 trials are reused as its baseline. The full controls remain linked on the slide. Models are Sol, Sonnet, Qwen, and Grok; tasks are topic update, thread reply, message edit, incident closeout, saved cleanup, and decision record.</p><p>Next: show what happened under that matched design, including every stop.</p></template>
+<template data-presenter-notes="16"><p>All 96 attempts are recorded: 58 passed, 11 incomplete, and 27 blocked. Each table cell contains six tasks. Click its pass count to review them.</p><p>Each cell also shows median recorded elapsed time in seconds. “All” includes all six runs, including blocks and limits. “Passed” includes only the passed tasks counted at the top of that cell. N/A means no passed tasks, not an instant completion. These times include model calls and browser work. The task subsets differ, so do not rank speeds from the passed-only medians. The next slide reports a paired comparison on tasks both interfaces passed.</p><p>API passed 21/24, accessibility 18/24, Page JSON 16/24, and pixels 3/24. Usage estimates total $20.718042; unresolved reservations are $2.043534; combined allowance is $22.761576. Missing receipts remain unknown, not free.</p><p>Next: the first study tried each condition once. Does the pattern persist when the same conditions get two fresh attempts?</p></template>
+<template data-presenter-notes="17"><p>The earlier study used one attempt per condition. I followed it with two fresh attempts per condition for Sol and Sonnet, using thread reply, message editing and incident closeout. This adds repeat observations while keeping the study small. The three workflows cover parent selection, editing and multi-step changes. They are fixed development tasks, not unseen variants. Introduce the reason before reading another table: an outcome from one attempt does not tell me whether it will repeat. This follow-up checks that question on a smaller set, without claiming that two attempts measure general reliability.</p><p>All 48 planned attempts are recorded: 35 passed, one incomplete and 12 blocked. API passed 12/12, accessibility 10/12, Page JSON 9/12, and pixels 4/12. For API and accessibility, ten pairs both passed and two passed only with API. On those ten shared passes, API used median within-pair differences of 6.293 fewer seconds, three fewer actions and $0.130080 less allowance.</p><p>This supports using the API for these app tasks when direct operations are available. It does not show better computer use: the API bypasses dialogs, targeting and text entry. Accessibility had the highest observed browser pass count, but this small study cannot establish a general ranking.</p><p>All-attempt timing includes early stops. Passed-only timing uses different successful subsets. Neither is a general speed estimate. Pixel input remains low-detail on macOS. Five pixel attempts timed out, two hit output limits, and one completed with an incorrect result. Other blocks were three per-cell budget stops, one Page JSON output limit and one deactivated-key response. The latter remains in the results after the user restored access; it was not retried.</p><p>The total is $8.234304 in accepted estimates plus $0.733406 in reservations, or $8.967710 of $25. Six requests have no accepted usage receipt. These are base-rate estimates, not invoices. Keep all outcomes visible.</p><p>Click a count, then change model, task, interface or Repeat. Each selection opens its exact recorded workspace and checks without a model call. <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-repeat-2026-10-05-continuation/analysis.md" target="_blank" rel="noopener noreferrer">All six paired comparisons</a> include task-level and model-level breakdowns. The 96-run table and original 306 records remain available and are not pooled with these 48 attempts.</p><p>Next: test new task variants and improve the conditions before collecting more.</p></template>
+<template data-presenter-notes="18"><p>Have an independent reader solve every task using only the instructions and visible workspace. Compare their interpretation with the expected result. Check run limits on short and long tasks, then freeze the conditions.</p><p>Add unseen variants and repeated attempts. Keep task ambiguity, incorrect actions, service failures, and limits separate. New work requires a new study, not changes to the completed records.</p><p>Next: show how reviewers can inspect the existing deliverable.</p></template>
+<template data-presenter-notes="19"><ul><li>Use <code>/play</code> to search, open a thread, and edit a message yourself.</li><li>In <code>/results</code>, select a model and task, then open the trace and replay.</li><li>Use a saved successful run and a failure to show expected versus actual state.</li><li>Open <code>/demo/review.html?study=interfaces</code> for the separate matched study.</li><li>Ask about target concurrency, workflow priorities, and whether wrong actions later undone should affect reward.</li></ul><p>Relay supports reset, observation, action execution, and a reward. No RL training has been run. Native Codex, BrowserGym, and OpenEnv compatibility have not been demonstrated. Use the saved PDF and recordings if the network fails.</p></template>
+    <dialog id="slide-overview" class="presenter-dialog" aria-labelledby="overview-title">
+      <header class="presenter-panel-header"><div><span class="presenter-eyebrow">Relay · Presentation</span><h2 id="overview-title">Jump to a slide</h2></div><button id="close-overview" class="presenter-icon" type="button" aria-label="Close slide overview"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x glyph" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></header>
+      <label class="slide-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search glyph" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><input id="slide-search" type="search" aria-label="Find a slide" placeholder="Search titles, topics, or slide numbers" autocomplete="off" /></label>
+      <div id="overview-count" class="presenter-caption" role="status"></div>
+      <div id="slide-grid" class="slide-grid"></div>
+      <div id="overview-empty" class="overview-empty" hidden>No matching slides. Try another title or number.</div>
+      <footer class="overview-footer"><span><kbd>Esc</kbd> Close</span><span><kbd>Enter</kbd> Open the first result</span></footer>
+    </dialog>
+    <dialog id="presenter-tools" class="presenter-dialog presenter-tools" aria-labelledby="tools-title">
+      <header class="presenter-panel-header"><h2 id="tools-title">Presentation tools</h2><button id="close-tools" class="presenter-icon" type="button" aria-label="Close presentation tools"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x glyph" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></header>
+      <div class="presenter-actions"><button id="copy-slide" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link glyph" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> Copy slide link</button><a href="presentation.pdf" download="Relay-presentation.pdf"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download glyph" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg> Download slides</a></div>
+      <div id="share-status" class="presenter-caption" role="status"></div>
+      <label class="slide-link-label">Current slide<input id="slide-link" readonly aria-label="Current slide link" /></label>
+      <h3>Keyboard shortcuts</h3>
+      <dl class="shortcut-list"><div><dt>Next / previous</dt><dd><kbd>→</kbd> <kbd>←</kbd></dd></div><div><dt>First / last slide</dt><dd><kbd>Home</kbd> <kbd>End</kbd></dd></div><div><dt>Find a slide</dt><dd><kbd>G</kbd> or <kbd>/</kbd></dd></div><div><dt>Speaker notes</dt><dd><kbd>N</kbd></dd></div><div><dt>Presentation view</dt><dd><kbd>F</kbd></dd></div><div><dt>These controls</dt><dd><kbd>?</kbd></dd></div></dl>
+    </dialog>
+    <nav class="presenter-dock" aria-label="Presentation controls">
+      <div id="deck-progress" class="deck-progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="20" aria-valuenow="1"><span></span></div>
+      <button id="open-overview" class="slide-picker" type="button" aria-label="Open slide overview" aria-haspopup="dialog" title="Find a slide (G)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid glyph" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg><span><span id="counter" aria-live="polite"></span><span id="current-topic" class="current-topic"></span></span></button>
+      <div class="deck-step-controls"><button id="prev" class="presenter-icon" type="button" aria-label="Previous slide" title="Previous slide (←)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left glyph" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg></button><button id="next" class="presenter-icon primary-next" type="button" aria-label="Next slide" title="Next slide (→)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div>
+      <span class="dock-divider" aria-hidden="true"></span>
+      <button id="toggle-notes" class="presenter-icon" type="button" aria-label="Show speaker notes" aria-controls="presenter-notes" aria-expanded="false" title="Speaker notes (N)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-pen glyph" aria-hidden="true"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg><span class="dock-label">Notes</span></button>
+      <button id="toggle-present" class="presenter-icon" type="button" aria-label="Enter presentation view" aria-pressed="false" title="Presentation view (F)"><span class="present-enter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize glyph" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg></span><span class="present-exit" hidden><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize glyph" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg></span><span class="dock-label">Present</span></button>
+      <button id="open-tools" class="presenter-icon" type="button" aria-label="Open presentation tools" aria-haspopup="dialog" title="Tools and shortcuts (?)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-keyboard glyph" aria-hidden="true"><path d="M10 8h.01"></path><path d="M12 12h.01"></path><path d="M14 8h.01"></path><path d="M16 12h.01"></path><path d="M18 8h.01"></path><path d="M6 8h.01"></path><path d="M7 16h10"></path><path d="M8 12h.01"></path><rect width="20" height="16" x="2" y="4" rx="2"></rect></svg></button>
     </nav>
+    <div id="presenter-status" class="sr-only" role="status"></div>
     <script>
-      const slides = [...document.querySelectorAll('.slide')];
-      let index = 0;
-      function show(i) {
-        if (!slides.length) return;
-        index = Math.max(0, Math.min(slides.length - 1, i));
-        slides.forEach((s, n) => {
-          s.classList.toggle('active', n === index);
-          s.setAttribute('aria-hidden', n !== index);
-        });
-        document.getElementById('counter').textContent =
-          `${index + 1} / ${slides.length} · ${slides[index].dataset.title}`;
-        document.getElementById('prev').disabled = index === 0;
-        document.getElementById('next').disabled = index === slides.length - 1;
-        history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
-        window.scrollTo(0, 0);
+      // Document-only controls. The shared results page has no slides and skips this.
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  if (!slides.length) return;
+  const byId = (id) => document.getElementById(id);
+  const main = document.querySelector('main');
+  const dock = document.querySelector('.presenter-dock');
+  const notes = byId('presenter-notes');
+  const overview = byId('slide-overview');
+  const tools = byId('presenter-tools');
+  const search = byId('slide-search');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const titles = slides.map((slide) =>
+    slide.querySelector('h1, h2').textContent.replace(/\s+/g, ' ').trim(),
+  );
+  let index = 0,
+    presenting = false,
+    ownedFullscreen = false,
+    layoutFrame = 0;
+  document.body.classList.add('presentation-page');
+
+  function layout() {
+    cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(() => {
+      const narrowNotes = !notes.hidden && innerWidth < 1000;
+      main.inert = narrowNotes;
+      main.setAttribute('aria-hidden', String(narrowNotes));
+      if (!presenting || innerWidth < 800) {
+        for (const prop of ['--deck-scale', '--deck-x', '--deck-y'])
+          main.style.removeProperty(prop);
+        return;
       }
-      if (slides.length) {
-        document.getElementById('prev').onclick = () => show(index - 1);
-        document.getElementById('next').onclick = () => show(index + 1);
-      }
-      document.addEventListener('keydown', (e) => {
-        if (
-          e.target.closest(
-            'dialog, input, select, textarea, .table-scroll, .sort-tools, .task-filter',
-          ) ||
-          (e.key === ' ' && e.target.closest('button, a'))
-        )
-          return;
-        if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
-          e.preventDefault();
-          show(index + 1);
-        }
-        if (['ArrowLeft', 'PageUp'].includes(e.key)) {
-          e.preventDefault();
-          show(index - 1);
-        }
-        if (e.key === 'Home') show(0);
-        if (e.key === 'End') show(slides.length - 1);
+      const availableWidth =
+        innerWidth - (!notes.hidden && innerWidth >= 1000 ? notes.offsetWidth + 20 : 0);
+      const bottom = dock.getBoundingClientRect().top - 18;
+      const scale = Math.min(
+        (availableWidth - 32) / 1280,
+        (bottom - 18) / slides[index].offsetHeight,
+        1.6,
+      );
+      main.style.setProperty('--deck-scale', String(Math.max(0.1, scale)));
+      main.style.setProperty('--deck-x', `${Math.max(16, (availableWidth - 1280 * scale) / 2)}px`);
+      main.style.setProperty(
+        '--deck-y',
+        `${Math.max(16, (bottom - slides[index].offsetHeight * scale) / 2)}px`,
+      );
+    });
+  }
+
+  function show(nextIndex, { pointer = false, focus = false } = {}) {
+    const previous = index;
+    index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    slides.forEach((slide, n) => {
+      slide.getAnimations().forEach((animation) => animation.cancel());
+      slide.classList.toggle('active', n === index);
+      slide.setAttribute('aria-hidden', String(n !== index));
+    });
+    byId('counter').textContent = `${index + 1} / ${slides.length}`;
+    byId('current-topic').textContent = slides[index].dataset.title;
+    byId('open-overview').setAttribute(
+      'aria-label',
+      `Open slide overview, slide ${index + 1} of ${slides.length}`,
+    );
+    byId('prev').disabled = index === 0;
+    byId('next').disabled = index === slides.length - 1;
+    byId('next').title =
+      index < slides.length - 1 ? `Next: ${titles[index + 1]} (→)` : 'Last slide';
+    const progress = byId('deck-progress');
+    progress.setAttribute('aria-valuenow', String(index + 1));
+    progress.setAttribute('aria-valuemax', String(slides.length));
+    progress.setAttribute(
+      'aria-valuetext',
+      `Slide ${index + 1} of ${slides.length}: ${titles[index]}`,
+    );
+    progress.firstElementChild.style.transform = `scaleX(${(index + 1) / slides.length})`;
+    byId('notes-title').textContent = `${index + 1}. ${titles[index]}`;
+    byId('notes-content').replaceChildren(
+      document.querySelector(`template[data-presenter-notes="${index}"]`).content.cloneNode(true),
+    );
+    byId('notes-content').scrollTop = 0;
+    byId('notes-next-title').textContent = titles[index + 1] || 'End of presentation';
+    byId('notes-next').disabled = index === slides.length - 1;
+    for (const button of byId('slide-grid').querySelectorAll('button')) {
+      if (Number(button.dataset.index) === index) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    }
+    history.replaceState(null, '', `#${slides[index].dataset.slideId}`);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    layout();
+    if (pointer && previous !== index && !reduced.matches)
+      slides[index].animate([{ opacity: 0.65 }, { opacity: 1 }], {
+        duration: 150,
+        easing: 'cubic-bezier(.23,1,.32,1)',
       });
-      const hashIndex = () => {
-        const name = location.hash.slice(1);
-        const named = slides.findIndex((s) => s.dataset.slideId === name);
-        return named >= 0 ? named : (Number(name) || 1) - 1;
-      };
-      window.addEventListener('hashchange', () => show(hashIndex()));
-      show(hashIndex());
+    if (focus) {
+      const heading = slides[index].querySelector('h1, h2');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
+  }
+
+  function openDialog(dialog, trigger, focusTarget) {
+    if (document.querySelector('dialog[open]')) return;
+    dialog.returnFocus = trigger;
+    dialog.showModal();
+    focusTarget?.focus();
+  }
+  for (const [dialog, close] of [
+    [overview, 'close-overview'],
+    [tools, 'close-tools'],
+  ]) {
+    byId(close).onclick = () => dialog.close();
+    dialog.addEventListener('close', () => dialog.returnFocus?.focus({ preventScroll: true }));
+    dialog.addEventListener('click', (event) => {
+      const rect = dialog.getBoundingClientRect();
+      if (
+        event.target === dialog &&
+        (event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom)
+      )
+        dialog.close();
+    });
+  }
+  const chapters = [
+    [5, 'Approach'],
+    [11, 'System design'],
+    [15, 'Model results'],
+    [18, 'Interface results'],
+    [20, 'Next steps'],
+  ];
+  slides.forEach((slide, i) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.index = String(i);
+    button.className = 'slide-card';
+    const meta = document.createElement('span');
+    meta.className = 'slide-card-meta';
+    const number = document.createElement('span');
+    number.textContent = String(i + 1).padStart(2, '0');
+    const chapter = document.createElement('span');
+    chapter.textContent = chapters.find(([end]) => i < end)[1];
+    meta.append(number, chapter);
+    const title = document.createElement('strong');
+    title.textContent = titles[i];
+    const topic = document.createElement('span');
+    topic.className = 'slide-card-topic';
+    topic.textContent = slide.dataset.title;
+    button.append(meta, title, topic);
+    button.onclick = (event) => {
+      // Native dialog closing restores its trigger first, then focus the destination.
+      overview.returnFocus = null;
+      overview.close();
+      if (!notes.hidden && innerWidth < 1000) {
+        toggleNotes(false);
+        main.inert = false;
+      }
+      show(i, { pointer: event.detail > 0, focus: true });
+    };
+    byId('slide-grid').append(button);
+  });
+  function filterSlides() {
+    const query = search.value.trim().toLowerCase();
+    const number = /^\d+$/.test(query) ? Number(query) : null;
+    let count = 0;
+    for (const button of byId('slide-grid').children) {
+      button.hidden =
+        number === null
+          ? !button.textContent.toLowerCase().includes(query)
+          : Number(button.dataset.index) + 1 !== number;
+      if (!button.hidden) count++;
+    }
+    byId('overview-count').textContent = `${count} of ${slides.length} slides`;
+    byId('overview-empty').hidden = count !== 0;
+    byId('slide-grid').scrollTop = 0;
+  }
+  function openOverview() {
+    search.value = '';
+    filterSlides();
+    openDialog(overview, byId('open-overview'), search);
+    byId('slide-grid')
+      .querySelector('[aria-current="page"]')
+      ?.scrollIntoView({ block: 'center', behavior: 'instant' });
+  }
+  search.oninput = filterSlides;
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      byId('slide-grid').querySelector('button:not([hidden])')?.click();
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      byId('slide-grid').querySelector('button:not([hidden])')?.focus();
+    }
+  });
+  byId('open-overview').onclick = openOverview;
+
+  function toggleNotes(open = notes.hidden) {
+    notes.hidden = !open;
+    document.body.classList.toggle('notes-open', open);
+    byId('toggle-notes').setAttribute('aria-expanded', String(open));
+    byId('toggle-notes').setAttribute(
+      'aria-label',
+      open ? 'Hide speaker notes' : 'Show speaker notes',
+    );
+    if (open) byId('close-notes').focus({ preventScroll: true });
+    else byId('toggle-notes').focus({ preventScroll: true });
+    layout();
+  }
+  byId('toggle-notes').onclick = () => toggleNotes();
+  byId('close-notes').onclick = () => toggleNotes(false);
+  byId('notes-next').onclick = (event) => show(index + 1, { pointer: event.detail > 0 });
+
+  function setPresenting(value) {
+    presenting = value;
+    document.body.classList.toggle('deck-presenting', value);
+    byId('toggle-present').setAttribute('aria-pressed', String(value));
+    byId('toggle-present').setAttribute(
+      'aria-label',
+      value ? 'Exit presentation view' : 'Enter presentation view',
+    );
+    byId('toggle-present').querySelector('.present-enter').hidden = value;
+    byId('toggle-present').querySelector('.present-exit').hidden = !value;
+    byId('toggle-present').querySelector('.dock-label').textContent = value ? 'Exit' : 'Present';
+    layout();
+  }
+  let fullscreenBusy = false;
+  async function togglePresenting() {
+    if (fullscreenBusy) return;
+    fullscreenBusy = true;
+    byId('toggle-present').disabled = true;
+    const value = !presenting;
+    setPresenting(value);
+    try {
+      if (value && !document.fullscreenElement && document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+        ownedFullscreen = true;
+      } else if (!value && ownedFullscreen && document.fullscreenElement) {
+        await document.exitFullscreen();
+      }
+    } catch {
+      byId('presenter-status').textContent =
+        'Browser fullscreen is unavailable. Presentation view still fits this window.';
+    } finally {
+      fullscreenBusy = false;
+      byId('toggle-present').disabled = false;
+    }
+  }
+  byId('toggle-present').onclick = togglePresenting;
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && ownedFullscreen) {
+      ownedFullscreen = false;
+      setPresenting(false);
+    }
+    layout();
+  });
+
+  function openTools() {
+    byId('slide-link').value =
+      `https://relay.kevinliu.studio/presentation#${slides[index].dataset.slideId}`;
+    byId('share-status').textContent = '';
+    openDialog(tools, byId('open-tools'), byId('copy-slide'));
+  }
+  byId('open-tools').onclick = openTools;
+  byId('copy-slide').onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(byId('slide-link').value);
+      byId('share-status').textContent = 'Slide link copied.';
+    } catch {
+      byId('share-status').textContent = 'Copy the selected link below.';
+      byId('slide-link').focus();
+      byId('slide-link').select();
+    }
+  };
+
+  let elapsed = 0,
+    started = null,
+    ticker = null;
+  function updateTimer() {
+    const seconds = Math.floor(
+      (elapsed + (started === null ? 0 : performance.now() - started)) / 1000,
+    );
+    byId('talk-time').textContent =
+      `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+  }
+  byId('timer-toggle').onclick = () => {
+    if (started === null) {
+      started = performance.now();
+      ticker = setInterval(updateTimer, 250);
+    } else {
+      elapsed += performance.now() - started;
+      started = null;
+      clearInterval(ticker);
+    }
+    byId('timer-toggle').textContent = started === null ? 'Resume timer' : 'Pause timer';
+    byId('timer-toggle').setAttribute('aria-pressed', String(started !== null));
+    updateTimer();
+  };
+  byId('timer-reset').onclick = () => {
+    elapsed = 0;
+    started = null;
+    clearInterval(ticker);
+    updateTimer();
+    byId('timer-toggle').textContent = 'Start timer';
+    byId('timer-toggle').setAttribute('aria-pressed', 'false');
+  };
+  window.addEventListener('pagehide', () => {
+    clearInterval(ticker);
+    ticker = null;
+  });
+  window.addEventListener('pageshow', () => {
+    if (started !== null && ticker === null) ticker = setInterval(updateTimer, 250);
+  });
+
+  byId('prev').onclick = (event) => show(index - 1, { pointer: event.detail > 0 });
+  byId('next').onclick = (event) => show(index + 1, { pointer: event.detail > 0 });
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.defaultPrevented ||
+      event.isComposing ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      document.querySelector('dialog[open]')
+    )
+      return;
+    const key = event.key.toLowerCase();
+    if (key === 'escape') {
+      if (!notes.hidden) toggleNotes(false);
+      else if (presenting) void togglePresenting();
+      return;
+    }
+    if (
+      event.target.closest(
+        'input, select, textarea, [contenteditable]:not([contenteditable="false"]), .table-scroll, .sort-tools, .task-filter',
+      )
+    )
+      return;
+    if (key === 'n') {
+      event.preventDefault();
+      toggleNotes();
+      return;
+    }
+    if (key === 'g' || key === '/') {
+      event.preventDefault();
+      openOverview();
+      return;
+    }
+    if (key === 'f') {
+      event.preventDefault();
+      void togglePresenting();
+      return;
+    }
+    if (key === '?') {
+      event.preventDefault();
+      openTools();
+      return;
+    }
+    if (
+      event.target.closest('.presenter-notes') ||
+      (key === ' ' && event.target.closest('button, a'))
+    )
+      return;
+    const nextIndex = ['arrowright', 'pagedown', ' '].includes(key)
+      ? index + 1
+      : ['arrowleft', 'pageup'].includes(key)
+        ? index - 1
+        : key === 'home'
+          ? 0
+          : key === 'end'
+            ? slides.length - 1
+            : null;
+    if (nextIndex !== null) {
+      event.preventDefault();
+      show(nextIndex);
+    }
+  });
+  function hashIndex() {
+    const hash = location.hash.slice(1);
+    const named = slides.findIndex((slide) => slide.dataset.slideId === hash);
+    return named >= 0 ? named : /^\d+$/.test(hash) ? Number(hash) - 1 : 0;
+  }
+  window.addEventListener('hashchange', () => show(hashIndex()));
+  window.addEventListener('resize', layout);
+  window.addEventListener('beforeprint', () => {
+    main.inert = false;
+    main.removeAttribute('aria-hidden');
+  });
+  window.addEventListener('afterprint', layout);
+  const observer = new ResizeObserver(layout);
+  for (const slide of slides) observer.observe(slide);
+  observer.observe(dock);
+  document.fonts.ready.then(layout);
+  show(hashIndex());
+})();
+
       const trialDialog = document.getElementById('trials-dialog');
       let selectedTask = 'all',
         selectedModel = '';

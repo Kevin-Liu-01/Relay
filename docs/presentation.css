@@ -34,7 +34,6 @@ main {
 }
 .slide.active {
   display: block;
-  animation: reveal 200ms ease-out;
 }
 .masthead {
   display: flex;

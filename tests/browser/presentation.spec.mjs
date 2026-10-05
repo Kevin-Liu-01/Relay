@@ -385,6 +385,13 @@ test('published presentation controls work under the production content-security
     await expect(page.locator('#counter')).toContainText('1 / 20');
     await page.getByRole('button', { name: 'Next slide', exact: true }).click();
     await expect(page.locator('#counter')).toContainText('2 / 20');
+    await page.getByRole('button', { name: /Open slide overview/ }).click();
+    await page.getByRole('searchbox', { name: 'Find a slide' }).fill('15');
+    await page.getByRole('searchbox', { name: 'Find a slide' }).press('Enter');
+    await expect(page).toHaveURL(`${base}/presentation#main-lesson`);
+    await page.getByRole('button', { name: 'Show speaker notes' }).click();
+    await expect(page.locator('#notes-content')).toContainText('same four');
+    await page.getByRole('button', { name: 'Close speaker notes' }).click();
     await page.goto(`${base}/presentation.html#model-comparison`);
     await expect(page).toHaveURL(`${base}/presentation#model-comparison`);
     await page.locator('#model-results thead button').filter({ hasText: 'Passed' }).click();
