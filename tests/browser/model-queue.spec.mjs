@@ -143,6 +143,10 @@ test('catalog-priced models run sequentially with independent budgets, audits, h
     expect(new Set(values.map((r) => r.run.id)).size).toBe(2);
     expect(values.every((r) => r.audit.integrity.status === 'verified')).toBe(true);
     expect(JSON.stringify(values)).not.toContain('fake-model-queue-key');
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Compare', exact: true }).click();
     const table = page.getByRole('dialog', { name: 'Compare runs' });
     await expect(table.getByRole('cell').filter({ hasText: 'claude-sonnet-5-5' })).toBeVisible();

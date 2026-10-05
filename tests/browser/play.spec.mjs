@@ -28,7 +28,7 @@ test('no-key Try Slack opens a usable workspace: send, edit, thread, search, DM,
   await withSandbox(async (url) => {
     await page.goto(url);
     const next = page.waitForEvent('popup');
-    await page.getByRole('link', { name: 'Try Slack yourself', exact: true }).click();
+    await page.getByRole('link', { name: 'Try Slack', exact: true }).click();
     const slack = await next;
     const apiCalls = [],
       errors = [];

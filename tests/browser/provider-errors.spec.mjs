@@ -71,7 +71,7 @@ test('Router 403 is blocked, not task failure or verified success; unknown usage
     await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
     await page.getByLabel('Provider API key').fill('fake-error-regression-key');
     await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
-    await page.getByRole('button', { name: 'Run this task', exact: true }).click();
+    await page.getByRole('button', { name: 'Run', exact: true }).click();
     const result = page.getByRole('region', { name: 'Run result' });
     await expect(result).toBeVisible();
     await expect(

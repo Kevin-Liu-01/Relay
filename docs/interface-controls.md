@@ -1,5 +1,20 @@
 # Relay menus
 
+## Public access and navigation
+
+The homepage has one task/model/interface toolbar and one Run control. Free
+access lists only approved cheap routes and uses server-enforced limits;
+Your key opens the separate BYOK connection. See [free-tier.md](free-tier.md).
+Results & replays opens the public 306-trial library. History groups the local
+history, comparison and replay tabs; 1v1 and model queues sit beside BYOK run
+controls. There is no empty decision panel or timeline before a run starts.
+The idle workspace is a labeled reference image, not a live agent session.
+
+Scroll controls reserve fixed space in custom menus. Adding or removing an
+arrow cannot move an option between pointer-down and pointer-up. The regression
+reproduced a 24 px viewport shift before the fix and checks its geometry at both
+ends of a long list. The trace filter uses this same component.
+
 ## Workspace interaction coverage
 
 The Slack-like workspace now has real Pins/Messages views, a DMs people directory

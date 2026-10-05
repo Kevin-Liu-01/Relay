@@ -96,6 +96,10 @@ test('a dismissed replay load cannot reopen over the next running workspace', as
         },
       });
     });
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Replays', exact: true }).click();
     const loading = page.waitForRequest('**/demo/delayed.json');
     await page.getByRole('button', { name: /Delayed recording/ }).click();
@@ -203,6 +207,10 @@ test('outcomes show distinct badges, check counts, filters and episode-specific 
       db.close();
     });
     await page.reload();
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Compare', exact: true }).click();
     const modal = page.getByRole('dialog', { name: 'Compare runs' });
     await expect(modal.locator('.outcome-summary')).toHaveCount(6);

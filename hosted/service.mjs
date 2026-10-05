@@ -14,6 +14,7 @@ import { buildAudit } from '../runner/audit.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
 import { TASK_CATALOG, TASK_LABELS } from '../shared/task-catalog.mjs';
 import { startSpectator } from './spectator.mjs';
+import { createFreeTier, freeCatalog, freeRunConfig, FreeTierError } from './free-tier.mjs';
 export { TASK_LABELS };
 
 export async function flushStream(res, signal) {
@@ -114,8 +115,25 @@ export function createHostedHandler({
   routerFactory = routerFor,
   pricingResolver = createPricingResolver(),
   launchOptions = async () => ({}),
+  freeTier = createFreeTier(),
 } = {}) {
   let active = 0;
+  let freeModels;
+  async function getFreeModels(router) {
+    if (!freeModels || Date.now() - freeModels.at > 60_000) {
+      const entry = { at: Date.now() };
+      entry.promise = router
+        .models({ timeoutMs: 15000 })
+        .then((catalog) => pricingResolver('ramp', catalog))
+        .then(freeCatalog)
+        .catch((error) => {
+          if (freeModels === entry) freeModels = null;
+          throw error;
+        });
+      freeModels = entry;
+    }
+    return freeModels.promise;
+  }
   return async function handler(req, res) {
     const op = new URL(req.url, 'http://localhost').searchParams.get('op');
     if (op === 'config' && req.method === 'GET')
@@ -124,6 +142,7 @@ export function createHostedHandler({
         tasks: TASK_LABELS,
         taskCatalog: TASK_CATALOG,
         limits: LIMITS,
+        free: freeTier.publicConfig,
         defaults: {
           ...DEFAULT_CONFIG,
           interfaces: ['a11y'],
@@ -142,35 +161,77 @@ export function createHostedHandler({
       });
     if (!['models', 'run'].includes(op) || req.method !== 'POST')
       return json(res, 404, { error: 'Endpoint not found.' });
-    let body, router;
+    let body,
+      router,
+      apiKey,
+      free = false,
+      admission,
+      slot = false;
     try {
       checkOrigin(req);
       body = await readBody(req);
-      const allowed = op === 'models' ? ['provider', 'key'] : ['provider', 'key', 'config'];
+      free = body?.access === 'free';
+      const allowed = free
+        ? op === 'models'
+          ? ['access']
+          : ['access', 'model', 'task', 'interface']
+        : op === 'models'
+          ? ['access', 'provider', 'key']
+          : ['access', 'provider', 'key', 'config'];
       if (!body || Object.keys(body).some((k) => !allowed.includes(k)))
         throw Error('Unknown request fields.');
-      if (
+      if (body.access !== undefined && !['free', 'byok'].includes(body.access))
+        throw Error('Unknown access mode.');
+      if (free) {
+        if (!freeTier.enabled)
+          throw new FreeTierError(
+            'Free runs are temporarily unavailable. You can use your own key.',
+          );
+        apiKey = freeTier.key;
+        if (op === 'run') body.config = hostedConfig(freeRunConfig(body));
+        body.provider = 'ramp';
+      } else if (
         typeof body.key !== 'string' ||
         body.key.length < 8 ||
         body.key.length > 512 ||
         /\s/.test(body.key)
       )
         throw Error('Enter your provider API key.');
-      router = routerFactory(body.provider, body.key);
-      if (op === 'models')
-        return json(res, 200, await pricingResolver(body.provider, await router.models()));
+      apiKey ??= body.key;
+      router = routerFactory(body.provider, apiKey);
+      if (op === 'models') {
+        try {
+          return json(
+            res,
+            200,
+            free
+              ? await getFreeModels(router)
+              : await pricingResolver(body.provider, await router.models()),
+          );
+        } finally {
+          router.apiKey = undefined;
+        }
+      }
       if (body.config?.provider !== body.provider) throw Error('Provider/config mismatch.');
       body.config = hostedConfig(body.config);
       if (active >= 2)
         return json(res, 429, { error: 'This worker is busy. Please try again shortly.' });
+      active++;
+      slot = true;
+      if (free) admission = await freeTier.reserve(req);
     } catch (e) {
       // Fixed transport errors never include upstream bodies or auth headers.
-      const message = String(e.message)
-        .replaceAll(body?.key ?? '\0', '[redacted]')
+      const message = (
+        free && !(e instanceof FreeTierError)
+          ? 'Free request could not start. Check your selection or use your own key.'
+          : String(e.message)
+      )
+        .replaceAll(apiKey ?? body?.key ?? '\0', '[redacted]')
         .slice(0, 220);
-      return json(res, 400, { error: message });
+      if (router) router.apiKey = undefined;
+      if (slot) active--;
+      return json(res, e instanceof FreeTierError ? e.status : 400, { error: message });
     }
-    active++;
     let servers, run, dir, deadline, heartbeat;
     const abort = new AbortController();
     const disconnect = () => {
@@ -186,7 +247,7 @@ export function createHostedHandler({
       }
       const line = JSON.stringify({ type, data }) + '\n';
       try {
-        assertSafeEvidence(line, [body.key, servers?.controlToken]);
+        assertSafeEvidence(line, [apiKey, servers?.controlToken]);
       } catch {
         // Event callbacks (including CDP) must not crash another request's worker.
         disconnect();
@@ -195,11 +256,15 @@ export function createHostedHandler({
       res.write(line);
     };
     try {
+      // The client may disconnect while the durable admission call is pending.
+      // Its reservation stays held, but a closed response must not start work.
+      if (res.destroyed || req.aborted) return;
       // Validate credentials before allocating the browser, even on cold starts.
-      const catalog = await pricingResolver(
+      let catalog = await pricingResolver(
         body.provider,
         await router.models({ signal: abort.signal, timeoutMs: 15000 }),
       );
+      if (free) catalog = freeCatalog(catalog);
       // The server re-resolves rates; the browser cannot lower its own budget accounting.
       body.config = hostedConfig(applyCatalogRates(body.config, catalog));
       if (abort.signal.aborted) return;
@@ -211,7 +276,11 @@ export function createHostedHandler({
         'x-accel-buffering': 'no',
       });
       res.flushHeaders?.();
-      emit('connected', { provider: body.provider });
+      emit('connected', {
+        provider: body.provider,
+        access: free ? 'free' : 'byok',
+        ...(admission ? { free: admission } : {}),
+      });
       heartbeat = setInterval(() => emit('heartbeat', { at: Date.now() }), 10000);
       dir = mkdtempSync(join(tmpdir(), 'relay-hosted-'));
       servers = createServers({
@@ -262,7 +331,7 @@ export function createHostedHandler({
       const audit = buildAudit({
         runRoot: join(dir, 'runs'),
         id: run.id,
-        secrets: [body.key, servers.controlToken],
+        secrets: [apiKey, servers.controlToken],
       });
       // Preserve exact PNG/request artifacts for portable integrity verification. Live JPEGs
       // are only a viewing feed; they are not substituted for hashed policy observations.
@@ -283,9 +352,13 @@ export function createHostedHandler({
       await flushStream(res, abort.signal);
       emit('done', { id: run.id });
     } catch (e) {
-      const message = run
-        ? run.safeError(e)
-        : 'Unable to start the run. Check your key, model access and provider availability.';
+      const message = (
+        run
+          ? run.safeError(e)
+          : free
+            ? 'Free run could not start. This attempt keeps its daily reservation. Try BYOK or return later.'
+            : 'Unable to start the run. Check your key, model access and provider availability.'
+      ).replaceAll(apiKey ?? '\0', '[redacted]');
       if (!res.headersSent) json(res, 400, { error: message });
       else emit('error', { message });
     } finally {
@@ -300,6 +373,7 @@ export function createHostedHandler({
       if (dir) rmSync(dir, { recursive: true, force: true });
       router.apiKey = undefined;
       body.key = undefined;
+      apiKey = undefined;
       active--;
       if (!res.writableEnded) res.end();
     }

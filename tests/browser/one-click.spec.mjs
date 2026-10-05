@@ -54,7 +54,7 @@ test('key entry is debounced; automatic prices and a shared connection make both
     await page.clock.fastForward(1);
     await expect(page.getByRole('button', { name: 'Connected', exact: true })).toBeVisible();
     expect(calls).toEqual([{ provider: 'ramp', key: 'fake-final-key' }]);
-    await expect(page.getByRole('button', { name: 'Run this task', exact: true })).toBeEnabled();
+    await expect(page.getByRole('button', { name: 'Run', exact: true })).toBeEnabled();
     await expect(page.getByRole('button', { name: 'Bring your own key', exact: true })).toHaveCount(
       0,
     );

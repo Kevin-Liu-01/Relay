@@ -5,6 +5,16 @@ import { gunzipSync } from 'node:zlib';
 import { assertSafeEvidence } from '../runner/export.mjs';
 mkdirSync('artifacts', { recursive: true });
 if (existsSync('.env')) process.loadEnvFile('.env');
+const secrets = [
+  'RAMP_ROUTER_API_KEY',
+  'TYPESAFE_API_KEY',
+  'RELAY_FREE_RAMP_KEY',
+  'RELAY_FREE_VISITOR_SECRET',
+  'KV_REST_API_TOKEN',
+  'UPSTASH_REDIS_REST_TOKEN',
+]
+  .map((name) => process.env[name])
+  .filter(Boolean);
 const roots = [
   'README.md',
   'LICENSE',
@@ -51,18 +61,16 @@ const files = roots.flatMap(function walk(p) {
 // browser-test-only is the public, disposable test-server credential, not a live secret.
 for (const p of files) {
   if (p.startsWith('evidence/trial-library/') && p.endsWith('.json.gz'))
-    assertSafeEvidence(gunzipSync(readFileSync(p), { maxOutputLength: 80e6 }).toString('utf8'), [
-      process.env.RAMP_ROUTER_API_KEY,
-      process.env.TYPESAFE_API_KEY,
-    ]);
+    assertSafeEvidence(
+      gunzipSync(readFileSync(p), { maxOutputLength: 80e6 }).toString('utf8'),
+      secrets,
+    );
   if (
     /\.(json|jsonl|md|html|js|mjs|jsx|yml|yaml)$/.test(p) &&
     (/\/s\/[a-f0-9]{64}|"token"\s*:\s*"[a-f0-9]{64}"|Bearer\s+(?!browser-test-only\b)[A-Za-z0-9._~+/-]{16,}|sk-routgw-[A-Za-z0-9]{16,}/.test(
       readFileSync(p, 'utf8'),
     ) ||
-      [process.env.RAMP_ROUTER_API_KEY, process.env.TYPESAFE_API_KEY].some(
-        (secret) => secret && readFileSync(p, 'utf8').includes(secret),
-      ))
+      secrets.some((secret) => secret && readFileSync(p, 'utf8').includes(secret)))
   )
     throw Error(`Credential-shaped content in ${p}`);
 }

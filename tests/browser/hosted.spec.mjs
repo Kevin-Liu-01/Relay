@@ -105,17 +105,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
       'rgb(40, 38, 44)',
     );
     await expect(page.getByText('SLACK / COMPUTER USE', { exact: true })).toHaveCount(0);
-    await expect(page.getByRole('heading', { name: 'Waiting for a decision' })).toHaveCSS(
-      'font-size',
-      '13px',
-    );
-    expect(
-      (await page.getByRole('region', { name: 'Current action', exact: true }).boundingBox())
-        .height,
-    ).toBeLessThan(65);
-    expect(
-      (await page.locator('.decision-panel .model-heading').boundingBox()).height,
-    ).toBeLessThan(45);
+    await expect(page.getByRole('heading', { name: 'Waiting for a decision' })).toHaveCount(0);
+    await expect(page.locator('.decision-panel')).toHaveCount(0);
+    await expect(page.locator('.welcome')).toHaveCount(0);
+    await expect(page.locator('.timeline')).toHaveCount(0);
     await expectRelayBrand(page, request);
     await page.evaluate(() => document.fonts.ready);
     const loadedCamberWeights = await page.evaluate(() =>
@@ -284,6 +277,10 @@ test('hosted UI: BYOK, live Jev decisions, audit, replay, remembered connection 
     await expect(page.locator('.history-row')).toHaveCount(1);
     await page.locator('.history-main').click();
     await expect(page.getByRole('heading', { name: 'Task passed', exact: true })).toBeVisible();
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Compare', exact: true }).click();
     await expect(page.getByRole('dialog')).toContainText('Candidate selection');
     await page.keyboard.press('Escape');
@@ -351,6 +348,10 @@ test('no-key replay: real UI, play/pause/seek, no run requests, legacy fallback 
     expect(await dialog.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
     await page.screenshot({ path: 'evidence/visual/relay-replay-mobile.png', fullPage: true });
     await page.keyboard.press('Escape');
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Replays', exact: true }).click();
     await page.getByRole('button', { name: /GPT-4o mini · an incomplete browser run/ }).click();
     await expect(dialog).toContainText('UI position not recorded');

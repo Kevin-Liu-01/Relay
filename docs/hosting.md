@@ -1,4 +1,4 @@
-# Relay Live · hosted BYOK
+# Relay Live · free runs and BYOK
 
 To use the mocked Slack UI yourself, open **[Try Slack](https://relay.kevinliu.studio/play)**
 or the **Try Slack** link on the home page. It opens a separate tab, including
@@ -10,7 +10,17 @@ On narrow screens the Slack workspace pans within its own area; the Relay and
 Reset controls stay visible. It is a practice sandbox, not a scored session,
 durable chat service, or shared workspace. No messages are sent to real Slack.
 
-Open **[relay.kevinliu.studio](https://relay.kevinliu.studio)**. Choose **Connect a key**, select **Jev · TypeSafe** or **Ramp Router**, and enter that provider's key. Model discovery uses your account, not a fabricated model list. Select a task, model and interface, then **Run**. A TypeSafe key is sufficient for Jev; no SGLang server, GPU or H100 allocation is required.
+Open **[relay.kevinliu.studio](https://relay.kevinliu.studio)**. **Free** automatically
+loads approved cheap models when the public tier is enabled. Pick a task and
+press **Run**. The limit is three attempts per network per UTC day, $0.05 estimated
+allowance per run, and $5/day shared across visitors. See [the complete free-tier
+policy](free-tier.md), including conservative reservations and deployment setup.
+
+For more models, choose **Your key**, select **Jev · TypeSafe** or **Ramp Router**,
+and enter that provider's key. Model discovery uses your account. A TypeSafe key
+is sufficient for Jev; no SGLang server, GPU or H100 allocation is required.
+BYOK never falls back to the operator's key. **History** groups personal runs,
+comparisons and replays; **Results & replays** opens the public benchmark library.
 
 The large screen is the agent's actual browser, streamed while it works. It is read-only for the observer. The right panel shows Jev's returned action probabilities or a generative model's recorded actions. Replay, Audit, History and Compare stay out of the workspace until needed.
 
@@ -36,7 +46,11 @@ npm run build:hosted
 npm run live
 ```
 
-Open `http://localhost:4340`. This path accepts keys in the UI; it does not load a shared provider key from `.env`. The original local operator lab on port 4330 remains available for larger matrices, CLI runs and raw audit archives. The cloud limits below do not apply to that separately configured local runner.
+Open `http://localhost:4340`. The default is BYOK; the server does not automatically
+load a shared key from `.env`. Free mode requires explicit environment opt-in and
+the durable store described in [free-tier.md](free-tier.md). The original local
+operator lab on port 4330 remains available for larger matrices, CLI runs and raw
+audit archives. The cloud limits below do not apply to that local runner.
 
 ## Where data goes
 
@@ -59,10 +73,17 @@ flowchart LR
 - **Forget key** clears that provider's saved copy and the current UI connection, including matching arena lanes. It does not erase run history, revoke the provider credential or clear copies already held in another tab's memory. Clearing this site's browser data removes keys and history. Provider-side revoke/rotation remains your responsibility. A key previously pasted into a conversation should be rotated before continued use.
 - Corrupt stored credentials are ignored. Blocked storage falls back to in-memory use with a visible warning on save/removal failure. A saved key that fails authentication remains available to update or forget; there is no retry loop or provider substitution.
 - History belongs to this browser profile and origin. Other visitors cannot query a shared history endpoint. Clearing browser storage deletes history; another device will not see it. Download important runs.
+- The free path instead reads its operator key from encrypted deployment environment
+  storage. It never sends this key to the browser or places it in browser storage.
+  Redis stores only daily allowance/attempt counters with hashed network identifiers,
+  not keys, prompts, workspace state, model responses or personal run history.
 - Each run owns a random temporary directory, loopback application/control listeners, control secret, SQLite sessions and fresh browser contexts. Normal completion/disconnect closes them and deletes temporary run files. Forced process termination can prevent cleanup; temporary files are not durable storage or a recovery guarantee.
 - The observer receives initial/final state and grader results as audit evidence. The model receives only its configured observation interface, not the observer's final audit or control secret.
 
 ## Bounds and costs
+
+The table below applies to **BYOK**. The public free tier uses the stricter fixed
+limits in [free-tier.md](free-tier.md).
 
 **Try models** queues 1–8 selected models against the current task, seed, interface,
 guide and history. Each is a separate request with a fresh workspace, its full

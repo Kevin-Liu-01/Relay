@@ -16,10 +16,13 @@ test('results: homepage access, numeric sorting, all model/task traces and cost 
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await page.goto(base);
-    await expect(page.getByRole('link', { name: 'Results', exact: true })).toHaveAttribute(
-      'href',
-      '/results',
-    );
+    await expect(
+      page.getByRole('link', { name: 'Results & replays', exact: true }),
+    ).toHaveAttribute('href', '/results');
+    await page
+      .locator('.nav')
+      .getByRole('button', { name: /History/ })
+      .click();
     await page.getByRole('button', { name: 'Replays', exact: true }).click();
     await expect(page.getByRole('link', { name: /All model and task replays/ })).toHaveAttribute(
       'href',

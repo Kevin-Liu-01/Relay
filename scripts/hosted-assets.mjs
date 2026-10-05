@@ -1,12 +1,31 @@
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import {
+  copyFileSync,
+  mkdirSync,
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  readdirSync,
+} from 'node:fs';
 import { makeWorkflowSeed } from '../server/workflow-seed.mjs';
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { validateCatalog, validateRecord } from '../docs/review-app/data.mjs';
 import { assertSafeEvidence } from '../runner/export.mjs';
+const secrets = [
+  'RAMP_ROUTER_API_KEY',
+  'TYPESAFE_API_KEY',
+  'RELAY_FREE_RAMP_KEY',
+  'RELAY_FREE_VISITOR_SECRET',
+  'KV_REST_API_TOKEN',
+  'UPSTASH_REDIS_REST_TOKEN',
+]
+  .map((name) => process.env[name])
+  .filter(Boolean);
 // Vercel serves an existing index before fallback rewrites. Keep the private
-// workspace entry separate, and make the actual public index the BYOK console.
-copyFileSync('dist/index.html', 'dist/workspace.html');
+// workspace entry separate, and make the actual public index the operator console.
+// Vite clears dist on each fresh build. A repeated staging pass must not copy
+// the already-promoted operator index over the actor entry.
+if (!existsSync('dist/workspace.html')) copyFileSync('dist/index.html', 'dist/workspace.html');
 copyFileSync('dist/live.html', 'dist/index.html');
 mkdirSync('dist/demo', { recursive: true });
 // Static, lazy-loaded trial records. Never expose private runtime directories.
@@ -22,7 +41,7 @@ if (existsSync('evidence/trial-library/catalog.json')) {
       throw Error('Public recording hash mismatch.');
     const text = gunzipSync(bytes, { maxOutputLength: 80e6 }).toString('utf8');
     if (Buffer.byteLength(text) !== item.jsonBytes) throw Error('Public recording size mismatch.');
-    assertSafeEvidence(text, [process.env.RAMP_ROUTER_API_KEY, process.env.TYPESAFE_API_KEY]);
+    assertSafeEvidence(text, secrets);
     validateRecord(JSON.parse(text), item);
     copyFileSync(source, `dist${item.path}`);
   }
@@ -118,3 +137,14 @@ writeFileSync(
 );
 for (const extension of ['csv', 'json'])
   copyFileSync(`docs/results-accounting.${extension}`, `dist/demo/results-accounting.${extension}`);
+
+// Fail a production build if any server-only credential lands in public output.
+function checkPublic(directory) {
+  for (const item of readdirSync(directory, { withFileTypes: true })) {
+    const path = `${directory}/${item.name}`;
+    if (item.isDirectory()) checkPublic(path);
+    else if (secrets.some((secret) => readFileSync(path).includes(Buffer.from(secret))))
+      throw Error(`Server credential found in public output: ${path}`);
+  }
+}
+checkPublic('dist');

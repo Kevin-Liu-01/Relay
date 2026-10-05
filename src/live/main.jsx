@@ -29,6 +29,7 @@ import {
   LoaderCircle,
   Maximize2,
   Minimize2,
+  Sparkles,
 } from 'lucide-react';
 import Github from '@thesvg/react/github';
 import { ModelMark } from '../lab/model-mark.jsx';
@@ -100,10 +101,31 @@ function Modal({ title, close, children, wide = false }) {
     </dialog>
   );
 }
+function LibraryTabs({ view, onChange }) {
+  return (
+    <div className="library-tabs" aria-label="Your runs">
+      {[
+        ['history', 'History', History],
+        ['compare', 'Compare', GitCompareArrows],
+        ['replays', 'Replays', Film],
+      ].map(([id, label, Icon]) => (
+        <button key={id} aria-pressed={view === id} onClick={() => onChange(id)}>
+          <Icon size={15} />
+          {label}
+        </button>
+      ))}
+      <a href="/results" target="_blank" rel="noreferrer">
+        Benchmark results <ArrowUpRight size={13} />
+      </a>
+    </div>
+  );
+}
 function App() {
   const [workspaceFocus, setWorkspaceFocus] = useState(false);
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [remembered] = useState(() => readCredentials());
+  const [access, setAccess] = useState(remembered.keys[remembered.provider] ? 'byok' : 'free');
+  const [freeRemaining, setFreeRemaining] = useState(null);
   const [rememberKeys, setRememberKeys] = useState(remembered.remember);
   const rememberPreference = useRef(remembered.remember);
   const [setup, setSetup] = useState(null),
@@ -177,14 +199,27 @@ function App() {
     connectionVersion = useRef(0),
     follow = useRef(true);
   useEffect(() => {
+    let mounted = true;
+    const initialConnection = connectionVersion.current;
     api('config')
       .then((r) => r.json())
-      .then(setSetup)
+      .then((config) => {
+        if (!mounted) return;
+        setSetup(config);
+        if (
+          !remembered.keys[remembered.provider] &&
+          connectionVersion.current === initialConnection
+        ) {
+          if (config.free?.enabled) connectFree();
+          else setAccess('byok');
+        }
+      })
       .catch((e) => setError(e.message));
     refreshHistory();
     if (remembered.keys[remembered.provider])
       connect(remembered.provider, remembered.keys[remembered.provider], true);
     return () => {
+      mounted = false;
       abort.current?.abort();
       connections.close();
       clearTimeout(connectTimer.current);
@@ -203,7 +238,51 @@ function App() {
     setRates(models.find((m) => m.id === id)?.rates ?? null);
     setVision(false);
   }
+  async function connectFree() {
+    clearTimeout(connectTimer.current);
+    const version = ++connectionVersion.current;
+    setAccess('free');
+    setProvider('ramp');
+    setMode((value) => (value === 'pixels' ? 'a11y' : value));
+    setGuide(false);
+    setContext('recent-4');
+    setCap(0.05);
+    setSteps(20);
+    setCatalog([]);
+    setModel('');
+    setRates(null);
+    setConnecting(true);
+    setError('');
+    setModal(null);
+    try {
+      const data = await (await api('models', { access: 'free' })).json();
+      if (version !== connectionVersion.current) return;
+      setCatalog(data.models);
+      chooseModel(data.models[0]?.id ?? '', data.models);
+      if (!data.models.length)
+        setError('No free models are available right now. You can use your own key.');
+    } catch (error) {
+      if (version === connectionVersion.current) setError(error.message);
+    } finally {
+      if (version === connectionVersion.current) setConnecting(false);
+    }
+  }
+  function useOwnKey() {
+    clearTimeout(connectTimer.current);
+    connectionVersion.current++;
+    setAccess('byok');
+    setCatalog([]);
+    setModel('');
+    setRates(null);
+    setCap(2);
+    setSteps(40);
+    setConnecting(false);
+    setError('');
+    if (validKey(keys[provider])) connect(provider, keys[provider], true);
+    else setModal('connect');
+  }
   function chooseProvider(p) {
+    setAccess('byok');
     clearTimeout(connectTimer.current);
     connectionVersion.current++;
     setConnecting(false);
@@ -266,6 +345,7 @@ function App() {
     }
   }
   async function connect(p = provider, inputKey = keys[p], restoring = false) {
+    setAccess('byok');
     clearTimeout(connectTimer.current);
     const key = inputKey.trim();
     const version = ++connectionVersion.current;
@@ -301,8 +381,16 @@ function App() {
   }
   async function start(compare = false, selected = [{ id: model, rates, vision }]) {
     if (busy || connecting) return;
-    if (!setup || !model || !keys[provider]) {
+    if (!setup || !model || (access === 'byok' && !keys[provider])) {
+      if (access === 'free') {
+        setError('Choose an available free model or use your own key.');
+        return;
+      }
       setModal('connect');
+      return;
+    }
+    if (access === 'free' && (compare || selected.length !== 1)) {
+      setError('Use your own key for comparisons and model queues.');
       return;
     }
     let jobs;
@@ -378,9 +466,20 @@ function App() {
     setEventFilter('');
     follow.current = true;
     // Each request owns its evidence. A queued successor never mutates this object.
-    const current = { run: null, events: [], artifacts: {}, audit: null, batch };
+    const current = { run: null, events: [], artifacts: {}, audit: null, batch, access };
     try {
-      const response = await api('run', { provider, key: keys[provider], config }, signal);
+      const response = await api(
+        'run',
+        access === 'free'
+          ? {
+              access: 'free',
+              model: config.models[0].id,
+              task: config.tasks[0],
+              interface: config.interfaces[0],
+            }
+          : { provider, key: keys[provider], config },
+        signal,
+      );
       const reader = response.body.getReader(),
         decoder = new TextDecoder();
       let buffer = '';
@@ -396,6 +495,7 @@ function App() {
           buffer = buffer.slice(newline + 1);
           if (!line) continue;
           const { type, data } = JSON.parse(line);
+          if (type === 'connected' && data.free) setFreeRemaining(data.free.remaining);
           if (type === 'run') {
             current.run = data;
             const active =
@@ -529,7 +629,7 @@ function App() {
   );
   return (
     <div
-      className={`live-shell ${run || busy ? 'workspace-expanded' : ''} ${workspaceFocus ? 'workspace-focus' : ''}`}
+      className={`live-shell ${run || busy ? 'workspace-expanded' : 'workspace-idle'} ${workspaceFocus ? 'workspace-focus' : ''}`}
     >
       <header className="nav">
         <a className="wordmark" href="/">
@@ -537,31 +637,18 @@ function App() {
           Relay
           <span className="wordmark-dot" />
         </a>
-        <span className="nav-divider" />
-        <span className="nav-caption">Agents, in the open.</span>
+        <span className="nav-caption">Computer use, live.</span>
         <div className="nav-spacer" />
-        <a className="try-slack" href="/results" target="_blank" rel="noreferrer">
-          <GitCompareArrows size={16} /> Results
-        </a>
         <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
           <ArrowUpRight size={16} />
           Try Slack
         </a>
-        <button disabled={busy || connecting} onClick={() => setModal('duel')}>
-          <Swords size={16} />
-          1v1
-        </button>
-        <button disabled={busy} onClick={() => setModal('replays')}>
-          <Film size={16} />
-          Replays
-        </button>
+        <a className="try-slack" href="/results" target="_blank" rel="noreferrer">
+          <GitCompareArrows size={16} /> Results & replays
+        </a>
         <button onClick={() => setModal('history')}>
           <History size={16} />
           History{saved.length > 0 && <span className="count">{saved.length}</span>}
-        </button>
-        <button onClick={() => setModal('compare')}>
-          <GitCompareArrows size={16} />
-          Compare
         </button>
         <a
           className="icon"
@@ -572,15 +659,36 @@ function App() {
         >
           <Github width={19} height={19} />
         </a>
-        <button className="connect" disabled={busy} onClick={() => setModal('connect')}>
-          {connecting ? (
-            <LoaderCircle className="busy-spinner" size={14} />
-          ) : (
-            <KeyRound size={14} />
-          )}
-          {connecting ? 'Connecting…' : catalog.length ? 'Connected' : 'Connect a key'}
-        </button>
       </header>
+      <section className="run-intro" aria-label="About Relay">
+        <div>
+          <h1>
+            Try out <span className="welcome-accent">Computer Use</span>
+          </h1>
+          <p>Give a model a Slack task. Watch it work, then inspect the result.</p>
+        </div>
+        <div className="access-switch" aria-label="Model access">
+          <button
+            aria-pressed={access === 'free'}
+            disabled={busy || connecting || !setup?.free?.enabled}
+            onClick={() => access !== 'free' && connectFree()}
+            title={
+              setup?.free?.enabled
+                ? 'Cheap models, no key required'
+                : 'Free runs are not available yet'
+            }
+          >
+            <Sparkles size={15} /> Free
+          </button>
+          <button
+            aria-pressed={access === 'byok'}
+            disabled={busy || connecting}
+            onClick={() => (access === 'byok' ? setModal('connect') : useOwnKey())}
+          >
+            <KeyRound size={15} /> Your key
+          </button>
+        </div>
+      </section>
       {error && (
         <div className="error" role="alert">
           <AlertTriangle size={15} />
@@ -618,7 +726,11 @@ function App() {
           onChange={(id) => chooseModel(id)}
           placeholder={connecting ? 'Loading models…' : 'Choose a model'}
           placeholderIcon={<ModelMark />}
-          emptyText="Connect a key to see models"
+          emptyText={
+            access === 'free'
+              ? 'Free models are temporarily unavailable'
+              : 'Connect a key to see models'
+          }
           wide
           options={catalog.map((m) => ({
             value: m.id,
@@ -638,43 +750,90 @@ function App() {
             value: id,
             label,
             icon: <ModeIcon mode={id} />,
-            disabled: provider === 'typesafe' && ['pixels', 'api'].includes(id),
-            disabledReason: 'Jev supports Accessibility and Page JSON.',
+            disabled:
+              (access === 'free' && id === 'pixels') ||
+              (provider === 'typesafe' && ['pixels', 'api'].includes(id)),
+            disabledReason:
+              access === 'free'
+                ? 'Use your own key for pixel runs.'
+                : 'Jev supports Accessibility and Page JSON.',
           }))}
         />
         <button
           className="icon"
-          disabled={busy}
+          disabled={busy || access === 'free'}
           aria-label="Run settings"
           onClick={() => setModal('settings')}
         >
           <Settings2 size={17} />
         </button>
         <div className="nav-spacer" />
+        {access === 'byok' && (
+          <button
+            className="connection-status"
+            disabled={busy || connecting}
+            onClick={() => setModal('connect')}
+          >
+            {connecting ? (
+              <LoaderCircle className="busy-spinner" size={14} />
+            ) : (
+              <KeyRound size={14} />
+            )}
+            {connecting ? 'Connecting…' : catalog.length ? 'Connected' : 'Connect a key'}
+          </button>
+        )}
         <RunButton
           label="Run"
           busy={busy}
           starting={!frame && !actions.length}
-          disabled={!setup || connecting || (!!catalog.length && !rates)}
+          disabled={
+            !setup ||
+            connecting ||
+            (access === 'free'
+              ? !model || !rates || freeRemaining === 0
+              : !!catalog.length && !rates)
+          }
           onStart={() => start()}
           onStop={() => abort.current?.abort()}
         />
       </section>
       <div className="run-toolbar">
-        <button
-          disabled={busy || connecting || !catalog.some((m) => m.rates) || mode === 'pixels'}
-          onClick={() => {
-            setBatchModels(model ? [model] : []);
-            setModelSearch('');
-            setModal('models');
-          }}
-        >
-          <Layers size={14} /> Try models
-        </button>
-        <span>
-          ${cap.toFixed(2)} allowance / model · {steps} actions ·{' '}
-          {setup?.defaults.episodeSeconds ?? 180}s
-        </span>
+        {access === 'free' ? (
+          <span className="free-note">
+            <Sparkles size={14} />
+            {freeRemaining === null
+              ? '3 free runs a day'
+              : `${freeRemaining} free ${freeRemaining === 1 ? 'run' : 'runs'} left today`}
+            <span className="toolbar-dot">·</span> No key needed
+            <span
+              className="free-details"
+              title="Up to $0.05 per run. $5 shared daily allowance. Limits apply per network and reset at 00:00 UTC. Failed starts also count."
+            >
+              Limited daily allowance
+            </span>
+          </span>
+        ) : (
+          <>
+            <button
+              disabled={busy || connecting || !catalog.some((m) => m.rates) || mode === 'pixels'}
+              onClick={() => {
+                setBatchModels(model ? [model] : []);
+                setModelSearch('');
+                setModal('models');
+              }}
+            >
+              <Layers size={14} /> Try models
+            </button>
+            <button disabled={busy || connecting} onClick={() => setModal('duel')}>
+              <Swords size={14} />
+              1v1
+            </button>
+            <span>
+              ${cap.toFixed(2)} allowance / model · {steps} actions ·{' '}
+              {setup?.defaults.episodeSeconds ?? 180}s
+            </span>
+          </>
+        )}
         {queue && (
           <span role="status" className="queue-progress">
             <progress aria-label="Completed queue runs" value={queue.completed} max={queue.total} />
@@ -703,7 +862,7 @@ function App() {
               <span className="workspace-task" title={episode?.instruction}>
                 {workspaceFocus && episode
                   ? `${episode.cell.model.id} · ${busy && episode.inFlight ? 'Choosing the next move' : latestAction ? describeAction(latestAction.action, episode.currentObservation) : state}`
-                  : (episode?.instruction ?? 'A fresh workspace for every episode.')}
+                  : (episode?.instruction ?? 'Northstar · a fictional Slack workspace')}
               </span>
               <span className="read-only">
                 <Eye size={12} />
@@ -749,38 +908,6 @@ function App() {
                   smooth={busy}
                 />
               )}
-              {!run && !busy && (
-                <div className="welcome">
-                  <h1>
-                    Try out <span className="welcome-accent">Computer Use</span>
-                  </h1>
-                  <p>
-                    {model
-                      ? 'Your model is ready. Pick a task.'
-                      : 'Connect a model. Give it a task.'}
-                    <br />
-                    See every action, and what changed.
-                  </p>
-                  <div>
-                    <button
-                      className="primary"
-                      disabled={connecting}
-                      onClick={() => (model ? start() : setModal('connect'))}
-                    >
-                      {model ? <Play size={14} /> : <KeyRound size={14} />}
-                      {model ? 'Run this task' : 'Bring your own key'}
-                    </button>
-                    <button onClick={() => setModal('replays')}>
-                      <Play size={13} />
-                      Watch a replay
-                    </button>
-                    <a className="try-slack" href="/play" target="_blank" rel="noreferrer">
-                      <ArrowUpRight size={14} />
-                      Try Slack yourself
-                    </a>
-                  </div>
-                </div>
-              )}
               <StreamBadge
                 live={busy}
                 frame={frame?.episodeId === episodeId ? frame : null}
@@ -801,178 +928,193 @@ function App() {
                 </span>
               )}
             </div>
-            <div className="timeline">
-              <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>
-                <Play size={14} />
-                Play replay
-              </button>
-              <button
-                title="Follow latest"
-                onClick={() => {
-                  setSelectedStep(null);
-                  follow.current = true;
-                }}
-              >
-                <RefreshCw size={13} />
-                <span>Latest</span>
-              </button>
-              <input
-                type="range"
-                aria-label="Replay step"
-                min={0}
-                max={Math.max(0, actions.length - 1)}
-                disabled={busy || !actions.length}
-                value={selectedStep ?? Math.max(0, actions.length - 1)}
-                onChange={(e) => {
-                  follow.current = false;
-                  setSelectedStep(Number(e.target.value));
-                }}
-              />
-              <span className="numeric">
-                {actions.length ? (selectedStep ?? actions.length - 1) + 1 : 0} / {actions.length}
-              </span>
-              <button disabled={!record} onClick={() => setModal('audit')}>
-                <ShieldCheck size={14} />
-                Audit
-                <ArrowUpRight size={12} />
-              </button>
-            </div>
-          </section>
-          <aside className="decision-panel" aria-label="Agent decisions">
-            <div className="model-heading">
-              <ModelMark id={episode?.cell.model.id ?? model} size={20} />
-              <div>
-                <h2>{(episode?.cell.model.id ?? model) || 'Your model'}</h2>
-              </div>
-              <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
-            </div>
-            {((!episode?.evaluation && !episode?.error) || busy) && (
-              <ActionSpotlight
-                events={events}
-                busy={busy}
-                selected={selectedStep == null ? null : activeStep}
-                episode={episode}
-              />
-            )}
-            {decision ? (
-              <>
-                <div className="section-label">
-                  <h3>Action probabilities</h3>
-                  <span>{ranked.length} options</span>
-                </div>
-                <div className="options-list">
-                  {(allOptions ? ranked : ranked.slice(0, 8)).map((c) => (
-                    <div
-                      className={`option ${c.name === decision.choice ? 'chosen' : ''}`}
-                      key={c.name}
-                    >
-                      <div>
-                        <span>{c.label}</span>
-                        <b className="numeric">{(c.p * 100).toFixed(1)}%</b>
-                      </div>
-                      <div className="probability-track">
-                        <i
-                          style={{
-                            width: '100%',
-                            transform: `scaleX(${c.p})`,
-                            transformOrigin: 'left',
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {ranked.length > 8 && (
-                  <button className="small-link" onClick={() => setAllOptions(!allOptions)}>
-                    {allOptions ? 'Fewer options' : `All ${ranked.length} options`}
-                  </button>
-                )}
-                <p className="probability-note">
-                  Probabilities over this offered menu. Not a measured chance of task success.
-                </p>
-              </>
-            ) : actions.length || (!episode?.evaluation && !episode?.error) || busy ? (
-              <>
-                <div className="section-label">
-                  <h3>Actions</h3>
-                  <span>{actions.length} recorded</span>
-                </div>
-                <div className="actions">
-                  {actions.length ? (
-                    actions.map((s, i) => (
-                      <button
-                        key={i}
-                        disabled={busy}
-                        className={`action ${s.error ? 'rejected' : ''} ${selectedStep === i ? 'selected' : ''}`}
-                        onClick={() => {
-                          setSelectedStep(i);
-                          follow.current = false;
-                        }}
-                      >
-                        <span className="action-number">{String(i + 1).padStart(2, '0')}</span>
-                        <span>
-                          <b>{s.action?.type ?? 'Rejected action'}</b>
-                          <small>
-                            {s.action?.text ?? s.action?.topic ?? s.error ?? s.action?.ref ?? ' '}
-                          </small>
-                        </span>
-                        <span className="action-time">{elapsed(s.response?.latencyMs)}</span>
-                      </button>
-                    ))
-                  ) : (
-                    <div className="action-placeholder">
-                      <Workflow size={24} />
-                      <p>
-                        {episode?.error ? 'No decisions returned.' : 'Decisions will appear here.'}
-                      </p>
-                      <span>
-                        {provider === 'typesafe'
-                          ? 'Jev returns a ranked choice, not generated text.'
-                          : 'Exact actions, timing and outcomes.'}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </>
-            ) : null}
-            {busy && (
-              <div className="thinking" role="status">
-                <span className="state-dot running" />
-                {!frame && !actions.length
-                  ? 'Preparing a fresh workspace…'
-                  : episode?.inFlight
-                    ? 'Model is deciding…'
-                    : 'Interacting with the workspace…'}
-              </div>
-            )}
-            <div className="panel-bottom">
-              {episode?.evaluation || episode?.error ? (
-                <ResultCard
-                  episode={episode}
-                  onReplay={!busy ? () => openReplay(record) : undefined}
-                  onChooseModel={
-                    !busy
-                      ? () => {
-                          document
-                            .getElementById('relay-model-selector')
-                            ?.scrollIntoView({ block: 'center' });
-                          setModelMenuOpen(true);
-                        }
-                      : undefined
-                  }
+            {run || busy ? (
+              <div className="timeline">
+                <button disabled={busy || !record?.run} onClick={() => openReplay(record)}>
+                  <Play size={14} />
+                  Play replay
+                </button>
+                <button
+                  title="Follow latest"
+                  onClick={() => {
+                    setSelectedStep(null);
+                    follow.current = true;
+                  }}
+                >
+                  <RefreshCw size={13} />
+                  <span>Latest</span>
+                </button>
+                <input
+                  type="range"
+                  aria-label="Replay step"
+                  min={0}
+                  max={Math.max(0, actions.length - 1)}
+                  disabled={busy || !actions.length}
+                  value={selectedStep ?? Math.max(0, actions.length - 1)}
+                  onChange={(e) => {
+                    follow.current = false;
+                    setSelectedStep(Number(e.target.value));
+                  }}
                 />
-              ) : (
-                <span className="quiet-note">
-                  <ShieldCheck size={14} />
-                  Outcome checked independently
+                <span className="numeric">
+                  {actions.length ? (selectedStep ?? actions.length - 1) + 1 : 0} / {actions.length}
                 </span>
+                <button disabled={!record} onClick={() => setModal('audit')}>
+                  <ShieldCheck size={14} />
+                  Audit
+                  <ArrowUpRight size={12} />
+                </button>
+              </div>
+            ) : (
+              <div className="workspace-ready">
+                <span>
+                  <Radio size={14} /> Live actions and results appear here when you run.
+                </span>
+                <button onClick={() => setModal('replays')}>
+                  <Play size={14} /> Watch a replay
+                </button>
+              </div>
+            )}
+          </section>
+          {(run || busy) && (
+            <aside className="decision-panel" aria-label="Agent decisions">
+              <div className="model-heading">
+                <ModelMark id={episode?.cell.model.id ?? model} size={20} />
+                <div>
+                  <h2>{(episode?.cell.model.id ?? model) || 'Your model'}</h2>
+                </div>
+                <span className="latency">{elapsed(lastResponse?.latencyMs)}</span>
+              </div>
+              {((!episode?.evaluation && !episode?.error) || busy) && (
+                <ActionSpotlight
+                  events={events}
+                  busy={busy}
+                  selected={selectedStep == null ? null : activeStep}
+                  episode={episode}
+                />
               )}
-              <button className="full-width" disabled={!record} onClick={() => setModal('audit')}>
-                Inspect the evidence
-                <ArrowUpRight size={14} />
-              </button>
-            </div>
-          </aside>
+              {decision ? (
+                <>
+                  <div className="section-label">
+                    <h3>Action probabilities</h3>
+                    <span>{ranked.length} options</span>
+                  </div>
+                  <div className="options-list">
+                    {(allOptions ? ranked : ranked.slice(0, 8)).map((c) => (
+                      <div
+                        className={`option ${c.name === decision.choice ? 'chosen' : ''}`}
+                        key={c.name}
+                      >
+                        <div>
+                          <span>{c.label}</span>
+                          <b className="numeric">{(c.p * 100).toFixed(1)}%</b>
+                        </div>
+                        <div className="probability-track">
+                          <i
+                            style={{
+                              width: '100%',
+                              transform: `scaleX(${c.p})`,
+                              transformOrigin: 'left',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {ranked.length > 8 && (
+                    <button className="small-link" onClick={() => setAllOptions(!allOptions)}>
+                      {allOptions ? 'Fewer options' : `All ${ranked.length} options`}
+                    </button>
+                  )}
+                  <p className="probability-note">
+                    Probabilities over this offered menu. Not a measured chance of task success.
+                  </p>
+                </>
+              ) : actions.length || (!episode?.evaluation && !episode?.error) || busy ? (
+                <>
+                  <div className="section-label">
+                    <h3>Actions</h3>
+                    <span>{actions.length} recorded</span>
+                  </div>
+                  <div className="actions">
+                    {actions.length ? (
+                      actions.map((s, i) => (
+                        <button
+                          key={i}
+                          disabled={busy}
+                          className={`action ${s.error ? 'rejected' : ''} ${selectedStep === i ? 'selected' : ''}`}
+                          onClick={() => {
+                            setSelectedStep(i);
+                            follow.current = false;
+                          }}
+                        >
+                          <span className="action-number">{String(i + 1).padStart(2, '0')}</span>
+                          <span>
+                            <b>{s.action?.type ?? 'Rejected action'}</b>
+                            <small>
+                              {s.action?.text ?? s.action?.topic ?? s.error ?? s.action?.ref ?? ' '}
+                            </small>
+                          </span>
+                          <span className="action-time">{elapsed(s.response?.latencyMs)}</span>
+                        </button>
+                      ))
+                    ) : (
+                      <div className="action-placeholder">
+                        <Workflow size={24} />
+                        <p>
+                          {episode?.error
+                            ? 'No decisions returned.'
+                            : 'Decisions will appear here.'}
+                        </p>
+                        <span>
+                          {provider === 'typesafe'
+                            ? 'Jev returns a ranked choice, not generated text.'
+                            : 'Exact actions, timing and outcomes.'}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : null}
+              {busy && (
+                <div className="thinking" role="status">
+                  <span className="state-dot running" />
+                  {!frame && !actions.length
+                    ? 'Preparing a fresh workspace…'
+                    : episode?.inFlight
+                      ? 'Model is deciding…'
+                      : 'Interacting with the workspace…'}
+                </div>
+              )}
+              <div className="panel-bottom">
+                {episode?.evaluation || episode?.error ? (
+                  <ResultCard
+                    episode={episode}
+                    onReplay={!busy ? () => openReplay(record) : undefined}
+                    onChooseModel={
+                      !busy
+                        ? () => {
+                            document
+                              .getElementById('relay-model-selector')
+                              ?.scrollIntoView({ block: 'center' });
+                            setModelMenuOpen(true);
+                          }
+                        : undefined
+                    }
+                  />
+                ) : (
+                  <span className="quiet-note">
+                    <ShieldCheck size={14} />
+                    Outcome checked independently
+                  </span>
+                )}
+                <button className="full-width" disabled={!record} onClick={() => setModal('audit')}>
+                  Inspect the evidence
+                  <ArrowUpRight size={14} />
+                </button>
+              </div>
+            </aside>
+          )}
         </main>
       )}
       {modal === 'duel' && setup && (
@@ -1008,6 +1150,7 @@ function App() {
       )}
       {modal === 'replays' && (
         <Modal title="Replays" wide close={() => setModal(null)}>
+          <LibraryTabs view={modal} onChange={setModal} />
           <ReplayLibrary saved={saved} onRecording={openReplay} onSaved={loadReplay} />
         </Modal>
       )}
@@ -1016,70 +1159,73 @@ function App() {
           <ReplayPlayer key={replayRecord.run.id} record={replayRecord} />
         </Modal>
       )}
-      <section className="episode-bar" aria-label="Episodes">
-        {run?.episodes.map((e, i) => (
-          <button
-            key={e.cell.episodeId}
-            className={e.cell.episodeId === episodeId ? 'selected' : ''}
-            disabled={busy && e.status === 'queued'}
-            onClick={() => {
-              setEpisodeId(e.cell.episodeId);
-              setSelectedStep(null);
-              follow.current = false;
-            }}
-          >
-            <span className={episodeOutcome(e).kind === 'passed' ? 'pass-text' : ''}>
-              {e.evaluation || e.error ? episodeOutcome(e).symbol : String(i + 1).padStart(2, '0')}
-            </span>
-            <ModeIcon mode={e.cell.mode} />
-            {MODES[e.cell.mode]}
-          </button>
-        ))}
-        {!run && (
-          <span>
-            <Layers size={14} />
-            One task. Multiple ways to interact.
+      {run && (
+        <section className="episode-bar" aria-label="Episodes">
+          {run?.episodes.map((e, i) => (
+            <button
+              key={e.cell.episodeId}
+              className={e.cell.episodeId === episodeId ? 'selected' : ''}
+              disabled={busy && e.status === 'queued'}
+              onClick={() => {
+                setEpisodeId(e.cell.episodeId);
+                setSelectedStep(null);
+                follow.current = false;
+              }}
+            >
+              <span className={episodeOutcome(e).kind === 'passed' ? 'pass-text' : ''}>
+                {e.evaluation || e.error
+                  ? episodeOutcome(e).symbol
+                  : String(i + 1).padStart(2, '0')}
+              </span>
+              <ModeIcon mode={e.cell.mode} />
+              {MODES[e.cell.mode]}
+            </button>
+          ))}
+          <div className="nav-spacer" />
+          <span className="quiet-note">
+            {run?.config.provider === 'typesafe'
+              ? 'Text observation · candidate policy'
+              : mode === 'api'
+                ? 'API is not a screenshot-policy benchmark'
+                : ''}
           </span>
-        )}
-        <div className="nav-spacer" />
-        <span className="quiet-note">
-          {run?.config.provider === 'typesafe'
-            ? 'Text observation · candidate policy'
-            : mode === 'api'
-              ? 'API is not a screenshot-policy benchmark'
-              : 'Isolated workspace · hidden outcome grader'}
-        </span>
-      </section>
-      <footer>
-        <span>
-          <span className={`state-dot ${catalog.length ? 'connected' : ''}`} />
-          {catalog.length
-            ? provider === 'typesafe'
-              ? 'TypeSafe'
-              : 'Ramp Router'
-            : 'No key connected'}
-        </span>
-        <div className="nav-spacer" />
-        <span className="numeric">
-          {run?.budget.requests ?? 0}
-          <small>calls</small>
-        </span>
-        <span className="numeric">
-          {run?.budget.usageKnown === false
-            ? 'Unknown'
-            : ((run?.budget.inputTokens ?? 0) + (run?.budget.outputTokens ?? 0)).toLocaleString()}
-          <small>tokens</small>
-        </span>
-        <span className="numeric">
-          {money(run?.budget.estimatedUSD ?? 0)}
-          <small>
-            {run?.budget.usageKnown === false ? 'budget allowance · not a charge' : 'estimated'}
-          </small>
-        </span>
-        <span className="local-note">History stays in this browser</span>
-      </footer>
+        </section>
+      )}
+      {(run || busy) && (
+        <footer>
+          <span>
+            <span className={`state-dot ${catalog.length ? 'connected' : ''}`} />
+            {catalog.length
+              ? provider === 'typesafe'
+                ? 'TypeSafe'
+                : 'Ramp Router'
+              : 'No key connected'}
+          </span>
+          <div className="nav-spacer" />
+          <span className="numeric">
+            {run?.budget.requests ?? 0}
+            <small>calls</small>
+          </span>
+          <span className="numeric">
+            {run?.budget.usageKnown === false
+              ? 'Unknown'
+              : ((run?.budget.inputTokens ?? 0) + (run?.budget.outputTokens ?? 0)).toLocaleString()}
+            <small>tokens</small>
+          </span>
+          <span className="numeric">
+            {money(run?.budget.estimatedUSD ?? 0)}
+            <small>
+              {run?.budget.usageKnown === false ? 'budget allowance · not a charge' : 'estimated'}
+            </small>
+          </span>
+          <span className="local-note">History stays in this browser</span>
+        </footer>
+      )}
       {modal === 'connect' && (
         <Modal title="Connect your model" close={() => setModal(null)}>
+          <p className="hint">
+            Use any compatible model available to your key. Your provider bills you directly.
+          </p>
           <div className="provider-tabs">
             {[
               ['ramp', 'Ramp Router'],
@@ -1310,12 +1456,13 @@ function App() {
       )}
       {modal === 'history' && (
         <Modal title="Run history" close={() => setModal(null)} wide>
+          <LibraryTabs view={modal} onChange={setModal} />
           <p className="hint">
             Private to this browser. No shared server history. Download evidence to keep it
             elsewhere.
           </p>
           {!saved.length ? (
-            <p>No runs yet. Connect a key and press Run.</p>
+            <p>No runs yet. Choose a task and press Run.</p>
           ) : (
             saved.map((s) => (
               <div className="history-row" key={s.id}>
@@ -1371,13 +1518,14 @@ function App() {
       )}
       {modal === 'compare' && (
         <Modal title="Compare runs" close={() => setModal(null)} wide>
+          <LibraryTabs view={modal} onChange={setModal} />
           <p className="hint">
             Compare matched tasks and seeds. Keep guide and history settings the same; interfaces
             change what agents can see and do.
           </p>
           <button
             className="primary"
-            disabled={busy || !model}
+            disabled={busy || !model || access === 'free'}
             onClick={() => {
               setModal(null);
               start(true);

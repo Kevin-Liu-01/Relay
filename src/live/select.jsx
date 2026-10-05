@@ -75,9 +75,13 @@ export function RelaySelect({
             onOpenChange?.(false);
           }}
         >
-          <Select.ScrollUpButton className="relay-select-scroll">
-            <ChevronUp size={14} aria-hidden="true" />
-          </Select.ScrollUpButton>
+          {/* Keep the viewport fixed when Radix adds/removes a scroll arrow.
+              Otherwise a row can move between pointer-down and pointer-up. */}
+          <div className="relay-select-scroll-slot">
+            <Select.ScrollUpButton className="relay-select-scroll">
+              <ChevronUp size={14} aria-hidden="true" />
+            </Select.ScrollUpButton>
+          </div>
           <Select.Viewport className="relay-select-options">
             {options.length ? (
               options.map((option) => (
@@ -110,9 +114,11 @@ export function RelaySelect({
               </Select.Item>
             )}
           </Select.Viewport>
-          <Select.ScrollDownButton className="relay-select-scroll">
-            <ChevronDown size={14} aria-hidden="true" />
-          </Select.ScrollDownButton>
+          <div className="relay-select-scroll-slot">
+            <Select.ScrollDownButton className="relay-select-scroll">
+              <ChevronDown size={14} aria-hidden="true" />
+            </Select.ScrollDownButton>
+          </div>
         </Select.Content>
       </Select.Portal>
     </Select.Root>

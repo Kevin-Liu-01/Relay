@@ -35,7 +35,7 @@ test('replay readiness resends the latest seek when startup snapshot delivery wa
   });
   try {
     await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.getByRole('button', { name: 'Replays', exact: true }).click();
+    await page.getByRole('button', { name: 'Watch a replay', exact: true }).click();
     await page.getByRole('button', { name: /GPT-6 Luna · decision record incomplete/ }).click();
     const dialog = page.getByRole('dialog', { name: 'Replay studio' });
     const frame = page.frameLocator('iframe[title="Recorded Slack workspace"]');
@@ -71,7 +71,7 @@ test('published campaign replays show real pass/failure evidence with no inferen
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.getByRole('button', { name: 'Replays', exact: true }).click();
+    await page.getByRole('button', { name: 'Watch a replay', exact: true }).click();
     await page.getByRole('button', { name: /GPT-6 Luna · thread reply passed/ }).click();
     const dialog = page.getByRole('dialog', { name: 'Replay studio' });
     await dialog.getByRole('slider', { name: 'Playback position' }).fill('4');
@@ -96,7 +96,7 @@ test('published campaign replays show real pass/failure evidence with no inferen
       frame.getByText('QA checklist complete. Ready for review.', { exact: true }),
     ).toBeVisible();
     await page.keyboard.press('Escape');
-    await page.getByRole('button', { name: 'Replays', exact: true }).click();
+    await page.getByRole('button', { name: 'Watch a replay', exact: true }).click();
     await page.getByRole('button', { name: /GPT-6 Luna · decision record incomplete/ }).click();
     await dialog.getByRole('slider', { name: 'Playback position' }).fill('17');
     await expect(dialog).toContainText('Task incomplete');

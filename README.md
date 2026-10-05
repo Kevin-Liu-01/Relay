@@ -11,11 +11,24 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 ![Node 24](https://img.shields.io/badge/Node-24-397d59?style=flat-square)
 ![React](https://img.shields.io/badge/React-19-78638c?style=flat-square)
 ![Playwright](https://img.shields.io/badge/Browser-Playwright-397d59?style=flat-square)
-![BYOK](https://img.shields.io/badge/Models-Bring_your_own_key-78638c?style=flat-square)
+![Model access](https://img.shields.io/badge/Models-Free_demo_%2B_BYOK-78638c?style=flat-square)
 
 </div>
 
 ---
+
+## Try it
+
+- **Run a model:** choose a task, model and interface, then press Run. When the
+  free tier is enabled, cheap models need no key. Free runs have a $0.05 estimated
+  allowance, with three attempts per network per UTC day and a shared $5/day cap.
+- **Use your own key:** connect Ramp Router or TypeSafe to use the compatible
+  models available to your account, including model queues and 1v1.
+- **Try Slack:** use the mock workspace yourself. No key is required.
+- **Results & replays:** inspect all 306 benchmark attempts. **History** groups
+  your browser's own runs, comparisons and replay library.
+
+[Free-tier policy and setup](docs/free-tier.md) · [Hosted setup and privacy](docs/hosting.md).
 
 ## Onsite submission
 
@@ -48,7 +61,9 @@ interface, documentation or history policy.
 Relay separates **the workspace**, **the policy**, and **the evaluator**. A model
 claiming “done” does not make a task pass—the final workspace state does.
 
-<img src="evidence/visual/relay-live.png" alt="Relay Live — a large Slack workspace with a compact decision panel" width="100%" />
+<img src="evidence/visual/relay-free-desktop.png" alt="Relay — task, model and interface controls above the Slack workspace, with Free and Your key access" width="100%" />
+
+<sub>Free-tier interface verification with a fake provider. Live free access requires the configured spending counter.</sub>
 
 **[Try Relay Live →](https://relay.kevinliu.studio)** Bring a **TypeSafe key for Jev**
 or a **Ramp Router key**. Choose a model and task, then watch its real browser.
@@ -65,7 +80,7 @@ refresh. This is a personal practice workspace, not a scored agent run.
 **No key? [Browse the trial library](https://relay.kevinliu.studio/demo/review.html).** Play a recorded run inside the actual Slack interface,
 with the dialog, typed text and action target restored at each step. Try the
 model/task selectors to inspect both successes and failures. The main site's
-**Replays** menu also retains the separately labeled reference examples.
+**History → Replays** tab also retains the separately labeled reference examples.
 New browser runs include recorded cursor positions and click feedback. **Smart pace**
 makes fast actions readable and shortens long waits; **Recorded timing** preserves
 capture intervals. Use the expand icon to focus on either the live workspace or replay.

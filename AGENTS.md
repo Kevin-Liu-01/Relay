@@ -1,5 +1,21 @@
 # Relay handoff
 
+## Public free-tier and navigation release
+
+The user authorized an operator-funded demo: $5/day aggregate, $0.05/run and
+three anonymous visitor attempts/day. `docs/free-tier.md` owns the implementation
+contract and honest per-network identity limit. `hosted/free-tier.mjs` uses one
+atomic durable Redis reservation and fails closed without all server-only secrets.
+Never replace it with an in-memory counter, refund unknown usage, or expand the
+cheap exact-ID allowlist without review. BYOK is a separate path and never falls
+back to the shared credential. Default deployments keep free access disabled
+until the operator provisions and verifies its non-evicting quota store.
+
+Homepage navigation now groups public Results & replays and browser-local History.
+History contains comparison and replay tabs. Queues/1v1 live with BYOK run controls.
+The empty welcome overlay, idle decision panel, timeline and redundant footer are
+removed; live/replay evidence behavior and the frozen 306 outcomes are unchanged.
+
 ## Results and assignment handoff — 2026-10-03
 
 The collection below is closed. The new `/results` observer page shares slide 9's
@@ -279,7 +295,7 @@ key for Ramp. Live runs require positive pricing and account-discovered model ID
 Preserve failures and mark missing usage unknown. References are scripts, not model evidence.
 
 For the public release at `relay.kevinliu.studio`, read `docs/hosting.md` and
-`docs/system-one.md`. `src/live/` owns the screen-first BYOK UI; `hosted/` owns
+`docs/system-one.md`. `src/live/` owns the free/BYOK UI; `hosted/` owns
 request-isolated execution and NDJSON streaming; `api/relay.mjs` is the Vercel entry.
 `/play` (also `play.html`) is the no-key, hands-on sandbox, using the same Slack
 React app and `shared/workspace.mjs` transition/search rules. `src/play/session.mjs`
@@ -290,7 +306,9 @@ scored benchmark. The agent spectator and recorded replay remain read-only.
 Provider keys may persist only in the operator UI's dedicated localStorage record
 when “Remember keys on this device” is enabled (default on, as requested by Kevin).
 Keep keys out of run history, audit, replay, exports and server persistence. Never
-deploy a shared provider key. Restoring a key may discover models, never start a run.
+expose the operator key in client code or browser storage. Its deployment is now
+explicitly authorized only behind `docs/free-tier.md` limits. Restoring a key may
+discover models, never start a run.
 History is browser-local, not a shared server database. Jev uses TypeSafe's official
 Choice API, not SGLang: text observations, deterministic candidate menu, real returned
 probabilities. Fake transport tests are not evidence of live Jev inference.

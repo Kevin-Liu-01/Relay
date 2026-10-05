@@ -1,5 +1,42 @@
 # Verification and evidence
 
+## Simpler homepage and guarded free access — 2026-10-04
+
+- **181 backend tests and all 94 browser tests passed**, with test retries disabled.
+  The complete browser pass reopens all 306 public trial recordings. No paid model
+  inference was used for software verification.
+- The homepage has one run toolbar, Free/Your key selection, Results & replays,
+  and grouped History/Compare/Replays tabs. The large welcome overlay, empty
+  decision panel and redundant isolation/grader footer are removed. BYOK queues,
+  1v1, live streaming, audit and manual Slack access remain covered.
+- Free access enforces a fixed cheap-model allowlist, $0.05 per-run reservation,
+  $5 per UTC day and three admitted attempts per network per UTC day. The operator
+  credential stays server-side. Extra fields, arbitrary model/config overrides,
+  invalid prices and unavailable quota storage fail closed. BYOK never falls back
+  to the operator's credential. See [the policy](free-tier.md) for identity and
+  estimated-cost limitations.
+- New checks cover pending quota concurrency, disconnects, daily key persistence,
+  hashed network identity, safe errors, free/BYOK key separation, double clicks,
+  exhaustion after refresh and responsive navigation. Redis and provider transports
+  are simulated; these tests do not certify the real quota service.
+- Validation caught a non-idempotent staging step that could overwrite the actor
+  entry on a second staging pass. Fresh build plus repeated staging now preserves
+  that entry. Another full pass caught a custom-menu click failure: appearing
+  scroll arrows moved rows by 24 px. A new regression fails on the old layout;
+  reserved arrow space and five repeated checks fix the shift without weakening
+  the trace-filter assertions. The final full suite passed after both fixes.
+- The public build and submission package are screened against the actual private
+  Router key without printing or exporting it. The new desktop/mobile screenshots
+  are UI verification with fake inference, not new model-performance evidence.
+- Builds/tests ran in an isolated copy. Frozen root `dist` remains
+  `9406fbc350a17bf2f4f0f45ef69d3ecca6574c39b07fdf1d470c10efd6dece5d`.
+  Historical task contracts, 306 outcomes, archives, public records and completion
+  certificate are unchanged; the new release is not their original actor source.
+- **Activation pending:** production secrets are configured, but
+  `RELAY_FREE_ENABLED=0`. The linked Vercel integration offered only paid Redis
+  plans. Creating that separate infrastructure resource needs operator approval.
+  No real Redis concurrency check or live free-tier inference is claimed.
+
 ## Presentation narrative and diagrams — 2026-10-04
 
 - Rebuilt the 13-slide story around the assignment, focused Slack workflows, repeatable harness, expansion into a benchmark prototype, recorded results, and task-validation lessons.

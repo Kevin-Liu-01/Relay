@@ -118,6 +118,10 @@
   right: 11px;
   display: inline-flex;
 }
+.relay-select-scroll-slot {
+  height: 24px;
+  flex-shrink: 0;
+}
 .relay-select-scroll {
   display: flex;
   justify-content: center;

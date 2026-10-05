@@ -47,6 +47,39 @@ async function fitsViewport(page, menu) {
   expect(box.y + box.height).toBeLessThanOrEqual(size.height);
 }
 
+test('scroll arrows never shift options while selecting from a long menu', async ({ page }) => {
+  await preview(async (url) => {
+    await page.goto(url);
+    await page.getByRole('button', { name: 'Connect a key', exact: true }).click();
+    await page.getByLabel('Provider API key').fill('fake-scroll-layout-key');
+    await page.getByRole('button', { name: 'Connect', exact: true }).click();
+    const model = page.getByRole('combobox', { name: 'Model', exact: true });
+    await expect(model).toHaveText('gpt-4o-mini');
+    await model.click();
+    const menu = page.getByRole('listbox', { name: 'Model', exact: true });
+    await expect(menu).toHaveCSS('opacity', '1');
+    const viewport = menu.locator('[data-radix-select-viewport]');
+    const geometry = () =>
+      viewport.evaluate((el) => {
+        const rect = el.getBoundingClientRect();
+        return { y: rect.y, height: rect.height };
+      });
+    const initial = await geometry();
+    await viewport.evaluate((el) => {
+      el.scrollTop = 150;
+    });
+    await expect(menu.locator('.relay-select-scroll')).toHaveCount(2);
+    expect(await geometry()).toEqual(initial);
+    await viewport.evaluate((el) => {
+      el.scrollTop = el.scrollHeight;
+    });
+    await expect(menu.locator('.relay-select-scroll')).toHaveCount(1);
+    expect(await geometry()).toEqual(initial);
+    await page.getByRole('option', { name: /^very-long-model/ }).click();
+    await expect(model).toHaveText(/^very-long-model/);
+  });
+});
+
 test('custom menus: task icons, pointer, keyboard, typeahead, dismissal and dialog focus', async ({
   page,
 }) => {
