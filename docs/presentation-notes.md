@@ -98,6 +98,7 @@
 ## Slide 9 — Model results and costs
 
 - All 306 planned runs are recorded: 152 passed, 61 were incomplete, and 93 were blocked.
+- Sol and Astra each passed 14 of 18 tasks. Across all models, 15 of 18 tasks had at least one pass. Do not confuse the best model's score with total task coverage.
 - Passed means that the run completed and every required check passed.
 - Incomplete means that the run did not satisfy the task, including runs stopped at the action limit.
 - Blocked means that a provider, execution, output, time, or cost restriction stopped the run.
@@ -130,8 +131,11 @@
 - The remaining allowance is $105.89416243 under the $300 cap.
 - The earlier 36-run pilot stays separate. It had 20 passes and used different limits and models.
 
-## Slide 10 — Why failures need inspection
+## Slide 10 — My main mistake: task instructions
 
+- I tested the UI and grading code, but did not independently validate every task instruction.
+- A scripted solution knows the author's intent. Its success does not prove that the written instructions communicate that intent.
+- This is the central lesson of the build, not a minor footnote to the scores.
 - Thread repair passed 13 of 17 runs. It requires finding a reviewed estimate, editing an existing reply, adding a reaction, and posting a confirmation.
 - Direct-message handoff passed 16 of 17 runs.
 - Saved-item cleanup passed 4 of 17 runs. One additional run had correct diagnostic state checks but stopped at an output limit, so it remains blocked.
@@ -143,6 +147,9 @@
 - Preserve all recorded results. Fix and version the instructions before collecting new results.
 - Scripted tests can verify that a workflow is possible without proving that its written instructions are clear.
 - The exact records are linked in [the failure analysis](campaigns/model-breadth-2026-10-03-observations.md).
+- Next time, ask someone to solve each task using only its instructions and the visible workspace. Check the result against the grader before collecting model runs.
+- The other two tasks missed by Sol and Astra were handoff repair and release retrospective. Handoff repair passed for five other models. Every retrospective run reached a limit.
+- In the handoff-repair traces, both models entered the correct edit and selected Cancel rather than Save changes. Do not attribute that observed behavior to unclear task wording.
 
 ## Slide 11 — Local speed
 
@@ -152,17 +159,23 @@
 - Each timing measures only the stated operation. It does not include a model call.
 - Concurrent API reads do not demonstrate concurrent agents.
 - Full browser-process memory, sustained agent concurrency, and multi-host capacity remain unmeasured.
-
-## Slide 12 — Lessons and next tests
-
-- Valid actions do not guarantee a correct result.
-- Test task instructions with people before using them to compare models.
-- Keep wrong answers, blocked runs, and missing cost data separate.
-- The diagram shows a proposed system, not a measured deployment.
-- A queue would send runs to workers with private browser sessions and databases.
-- Workers would save run records outside their local storage.
+- Proposed next step: a queue sends runs to separate workers with private browser sessions and databases. Workers save recordings outside their local storage.
 - Test 1, 4, 8, and 16 workers. Measure full process memory, CPU use, action latency, failures, and cleanup.
-- Choose process, container, or VM separation based on the agent's permissions.
+- Choose process, container, or VM separation based on the agent's permissions. This is a proposal, not a measured deployment.
+
+## Slide 12 — Other mistakes I made
+
+- The admission pilot checked three simple tasks per new model. It did not establish suitable limits for the longest workflow.
+- All 17 retrospective runs reached a limit. Six reached the action limit, five the output limit, four a timeout, and two a spending limit. More time is not a proven fix.
+- I allowed an optional screenshot timeout to stop a text-based run. The fix separates recording errors from required model observations and preserves valid grades.
+- Screenshot-based agents still need a valid screenshot. Hosted image capture remains imperfect, so do not claim that all screenshot problems are solved.
+- I initially displayed a provider 403 as a task failure with a misleading verified label. The result views now separate blocked runs, wrong results, and unknown cost.
+- I missed late replay updates and consecutive-run display cleanup. Regression tests reproduced those failures before the ownership and handoff fixes.
+- Those display bugs do not show that isolated workspace databases shared data.
+- I did not secure enough free disk space on the shared development machine. The safety check stopped collection between runs without losing recorded evidence.
+- Storage stops were a planning problem. The safety check was correct, and unrelated machine activity also consumed space.
+- The confirmed software bugs were fixed. Task-language validation, long-workflow limit calibration, and sustained resource testing remain work for a new version.
+- Use the [build review](build-review.md) for the evidence and status of each lesson. Do not describe deliberate scope choices as accidental defects.
 
 ## Slide 13 — Demo and discussion
 

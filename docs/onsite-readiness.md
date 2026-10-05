@@ -21,7 +21,7 @@ is not part of the repository or submission package.
 | Models with a compatible harness   | Original MIT-licensed Playwright/Responses runner; 17 exact routes, 306 attempts                   | Not native Codex/BrowserGym/OpenEnv integration or a popularity ranking                 |
 | Trajectories and verification      | `/results`, 306 trace/replay links, state checks, provenance, requests and responses               | UI-state playback, not video; public library omits original PNG bytes                   |
 | Setup and README                   | No-key sandbox/replay instructions, BYOK setup, CLI configuration                                  | New inference requires provider access; no shared secret shipped                        |
-| Isolation and scalability          | Slides 4 and 12; architecture and hosting docs                                                     | Session data isolation, not hostile-code sandboxing; scale-out is proposed              |
+| Isolation and scalability          | Slides 4 and 11; architecture and hosting docs                                                     | Session data isolation, not hostile-code sandboxing; scale-out is proposed              |
 | Speed and resource efficiency      | Slide 11, raw microbenchmark; per-trial latency, tokens, calls and cost downloads                  | No full worker-memory or sustained agent-throughput measurement; cost is not an invoice |
 | Onsite presentation and discussion | 13-slide HTML/PDF, plain technical bullets, diagrams and demo notes                                | Keep time for questions; do not claim RL training                                       |
 
@@ -29,6 +29,7 @@ is not part of the repository or submission package.
 
 - [Repository setup](../README.md), pinned lockfile and [MIT license](../LICENSE) for original code.
 - [13-slide HTML deck](https://relay.kevinliu.studio/presentation), [PDF](presentation.pdf) and [speaker/demo notes](presentation-notes.md).
+- [Build review](build-review.md): the task-validation mistake, other documented engineering mistakes, completed fixes, and remaining validation work.
 - [One-pass model coverage](../evidence/campaigns/model-breadth-2026-10-03-continuation/README.md): 17 routes × all 18 tasks × one attempt = 306 cells, no repeats. The first breadth worker preserved 37 earlier attempts and added 68. Its continuation preserves all 105 and collects only the 201 untouched cells. The shared $300 ceiling includes prior campaigns/probes. The linked report distinguishes actual collection from the target; Google remains unavailable without a separate key.
 - [Completed pilot evidence](../evidence/campaigns/model-comparison-2026-10-02-final/README.md): 36 attempted, 20 passed, 11 incomplete, four output-limited and one connection failure. All 1,971 archive checks passed; the closed plan retains 24 unattempted cells. Slide 9 links this evidence and exposes the new per-task inventory without pooling the campaigns.
 - [Complete model-run inventory](../evidence/campaigns/onsite-2026-10-01/README.md), compressed original trajectories, readable manifests and audit receipts.

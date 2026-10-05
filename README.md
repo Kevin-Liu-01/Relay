@@ -21,6 +21,7 @@ Real interactions. Isolated workspaces. Comparable runs. An inspectable audit tr
 
 - **[Results, full costs and all replays](https://relay.kevinliu.studio/results)**: sortable model table, task filters and per-model drilldowns. Every trial links directly to its trace and recorded UI. No key or new inference required.
 - **[Presentation](https://relay.kevinliu.studio/presentation)** · [PDF](docs/presentation.pdf) · [speaker and demo notes](docs/presentation-notes.md).
+- **[Build review](docs/build-review.md)**: task-design mistakes, engineering fixes, and what I would change next time.
 - **[One-pass model coverage](evidence/campaigns/model-breadth-2026-10-03-continuation/README.md)**: **306/306 recorded and verified**—152 passed, 61 incomplete, 93 blocked. Seventeen routes × all 18 tasks, one attempt per cell, with no repeats or hidden exclusions.
 - **[Requirement-by-requirement assessment](docs/onsite-readiness.md)**: demonstrated behavior, exact failure findings and remaining limits.
 - **[Earlier interface study](evidence/campaigns/onsite-2026-10-01/README.md)**: 20 real-model episodes across two models and four interfaces—8 strict passes, 11 incorrect/step-limited outcomes, 1 blocked. Ten planned cells remain unattempted. This is separate from the one-pass comparison.

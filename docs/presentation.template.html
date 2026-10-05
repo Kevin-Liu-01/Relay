@@ -302,25 +302,22 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="Findings">
-        <h2>Unclear tasks make failures hard to interpret</h2>
+      <section class="slide" data-title="Main lesson">
+        <h2>My main mistake: I did not validate the task instructions</h2>
         <ul>
           <li>
-            Thread repair passed in {{THREAD_REPAIR_RESULT}} runs. It requires finding a fact,
-            editing a reply, and confirming the change.
+            I tested whether the UI and grading code worked, but did not independently validate
+            every task instruction.
           </li>
           <li>
-            Design handoff passed in {{DESIGN_RESULT}} runs. Six completed runs copied “DESIGN”
-            instead of the required name.
+            Design handoff quoted “DESIGN” without requiring replacement. Six completed runs copied
+            it, but the grader expected “Willow”.
           </li>
-          <li>The task did not clearly tell the model to replace “DESIGN” with a name.</li>
+          <li>Release sync gave an unclear channel location for one source message.</li>
+          <li>These tasks do not give a clear measure of model ability.</li>
           <li>
-            Release sync also passed in {{RELEASE_RESULT}} runs. Its instructions give an unclear
-            location for a source message.
-          </li>
-          <li>
-            Keep these recorded results. Fix the instructions before running a new version of the
-            test.
+            Next time, I will ask someone to solve each task using only its instructions before
+            collecting results.
           </li>
         </ul>
         <ul class="sources">
@@ -328,7 +325,7 @@
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-observations.md"
               >Recorded actions and failure analysis</a
-            >. These two tasks do not provide a clear measure of model ability.
+            >. Preserve the original results. Correct the instructions in a new test version.
           </li>
         </ul>
       </section>
@@ -359,44 +356,49 @@
           <li>
             These times exclude model calls. They do not measure how many agents can run together.
           </li>
+          <li>
+            Next, test a queue of runs across separate workers with shared recording storage.
+            Measure each worker's full memory use.
+          </li>
         </ul>
         <ul class="sources">
           <li>
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/benchmark-2026-10-01.json"
               >Timing samples and test setup</a
-            >.
+            >. The multi-worker design is proposed, not measured.
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="What I learned">
-        <h2>What I learned and what to test next</h2>
-        <div
-          class="diagram flow"
-          role="img"
-          aria-label="Proposed next step: a queue sends runs to separate workers, which save their records outside the workers. This has not been load-tested."
-        >
-          <div class="node">{{ICON_QUEUE}}Run queue</div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="stack">
-            <div class="node">{{ICON_BROWSER}}Worker A: browser + private state</div>
-            <div class="node">{{ICON_BROWSER}}Worker B: browser + private state</div>
-          </div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="green">{{ICON_EVIDENCE}}Saved run records</div>
-        </div>
+      <section class="slide" data-title="Build review">
+        <h2>Other mistakes I made</h2>
         <ul>
-          <li>Check the finished task, not just whether each action was valid.</li>
-          <li>Test the instructions with people before using them to compare models.</li>
-          <li>Report blocked runs separately from completed runs with wrong results.</li>
           <li>
-            Next, run several workers together and measure memory, speed, failures, and cleanup.
+            I did not establish suitable limits for the longest task. Every retrospective run
+            reached a limit.
+          </li>
+          <li>
+            I let optional screenshot failures stop text-based agents. Recording failures now stay
+            separate from task results.
+          </li>
+          <li>
+            I initially displayed provider errors as task failures. The UI now shows them as blocked
+            runs.
+          </li>
+          <li>
+            I missed late replay updates that could replace the current view. Run ownership checks
+            now reject those updates.
+          </li>
+          <li>
+            I did not secure enough disk headroom. The safety check stopped collection before all
+            runs were recorded.
           </li>
         </ul>
         <ul class="sources">
           <li>
-            The worker design is a proposal. Sustained operation with multiple workers has not been
-            measured.
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
+              >Build review: evidence, fixes, and remaining work</a
+            >. Collection later finished without replacing any recorded attempt.
           </li>
         </ul>
       </section>

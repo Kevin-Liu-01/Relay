@@ -28,6 +28,14 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(1);
+  await expect(page.locator('[data-title="Main lesson"]')).toContainText(
+    'did not independently validate every task instruction',
+  );
+  await expect(page.locator('[data-title="Build review"] h2')).toHaveText('Other mistakes I made');
+  await expect(page.locator('[data-title="Build review"] a')).toHaveAttribute(
+    'href',
+    'https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md',
+  );
   // Keep the main narrative readable. Tables and source notes carry supporting detail.
   const narrative = await page
     .locator('.slide:not(.comparison-slide) > ul:not(.sources) > li')
