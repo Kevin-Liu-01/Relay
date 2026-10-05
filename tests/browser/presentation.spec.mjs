@@ -29,13 +29,13 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(2);
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
-    'did not ask an independent reader to solve every task',
+    'two instruction problems that grader tests had not caught',
   );
   await expect(page.locator('[data-title="The assignment"] h1')).toHaveText(
-    'Build the harness. Then test the models.',
+    'A Slack environment for testing agents',
   );
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
-    'I then used the harness to compare models',
+    'The reusable harness made model comparisons possible',
   );
   await expect(page.locator('.scope-diagram .scope-label')).toHaveText([
     'Original assignment',
@@ -54,17 +54,17 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     'The assignment',
     'The environment',
     'All workflows',
-    'Define success',
     'The repeatable harness',
-    'The scope expands',
     'Agent interfaces',
+    'Define success',
     'Verification',
+    'The scope expands',
     'Comparison setup',
-    'Controls in the 306 runs',
     'Model comparison',
+    'Main lesson',
     'Matched interface study',
     'Interface results',
-    'Main lesson',
+    'Interpreting interface results',
     'Speed and resources',
     'The next benchmark version',
     'Demonstration and discussion',
@@ -81,17 +81,31 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
       [...new Intl.Segmenter('en', { granularity: 'sentence' }).segment(text)],
       text,
     ).toHaveLength(1);
-    expect(text, text).not.toMatch(
-      /[;—()]|\b(?:cohort|mutation|policy|idempotency|atomicity|gateways?)\b/i,
-    );
+    expect(text, text).not.toMatch(/[;—()]/);
   }
   await expect(page.locator('[data-title="Define success"]')).toContainText(
     'Workspace state is the stored data',
   );
-  await expect(page.locator('[data-title="The repeatable harness"]')).toContainText(
-    'The harness is the code that manages each run.',
+  await expect(page.locator('[data-title="The assignment"]')).toContainText(
+    'a harness that connects model APIs to the app and manages each test run',
   );
-  const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
+  await expect(page.locator('[data-title="Agent interfaces"]')).not.toContainText('Earlier passes');
+  await expect(page.locator('[data-title="Comparison setup"]')).toContainText('All 306 runs');
+  await expect(
+    page
+      .locator('[data-title="Model comparison"] a')
+      .filter({ hasText: 'Read the failure analysis' }),
+  ).toHaveAttribute('href', 'https://relay.kevinliu.studio/presentation#main-lesson');
+  const analysis = JSON.parse(
+    readFileSync('evidence/campaigns/interface-study-2026-10-05/analysis.json'),
+  );
+  const paired = analysis.paired.find((p) => p.left === 'a11y' && p.right === 'api');
+  const interpretation = page.locator('[data-title="Interpreting interface results"]');
+  await expect(interpretation).toContainText(`${paired.bothPassed} shared passes`);
+  await expect(interpretation).toContainText(`${paired.rightOnly} API only`);
+  await expect(interpretation).toContainText(
+    `+${paired.bothPassedMedianSecondsLeftMinusRight.toFixed(3)} seconds`,
+  );
   for (let i = 0; i < 17; i++) {
     const slide = page.locator('.slide.active');
     await expect(slide).toHaveCount(1);
@@ -99,17 +113,13 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (i === 2 || i === 12) {
+    if (!(await slide.evaluate((node) => node.classList.contains('comparison-slide')))) {
       const bottom = await slide
-        .locator('.sources')
+        .locator(':scope > :last-child')
         .evaluate((node) => node.getBoundingClientRect().bottom);
       expect(bottom, 'New slide content stays above the navigation').toBeLessThan(836);
     }
-    if (i === 6)
-      await expect(slide).toContainText(
-        `${summary.totals.attempted} attempted: ${summary.totals.passed} passed`,
-      );
-    if ([0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(i)) {
+    {
       await page.screenshot({
         path: testInfo.outputPath(`slide-${i + 1}.png`),
         animations: 'disabled',

@@ -1926,7 +1926,7 @@ a:focus-visible {
     font-size: 17px;
   }
   .interface-map > div {
-    grid-template-columns: 24px 1fr 46px;
+    grid-template-columns: 24px 1fr 82px;
     padding: 14px 4px;
     gap: 8px;
     font-size: 16px;
@@ -2012,37 +2012,34 @@ a:focus-visible {
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>The assignment<span class="section-number">01 / 17</span></span></header>
         <h1>
-          Build the harness.<br />
-          <em>Then test the models.</em>
+          A Slack environment<br />
+          <em>for testing agents</em>
         </h1>
         <ul>
           <li>
-            I approached the brief as a harness problem: connect model APIs to a controlled Slack
-            environment.
+            The assignment asked for a working Slack-like app, agent tasks, and recorded tests.
           </li>
-          <li>
-            I needed to understand how agents observe a page, act, and know when a task is complete.
-          </li>
+          <li>I needed a harness that connects model APIs to the app and manages each test run.</li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="My approach: research how agents control a page, build a repeatable harness around model APIs, and compare task outcomes."
+          aria-label="My approach: research computer-use interfaces, implement a controlled test environment, then compare models on the same tasks."
         >
           <div>
             <span class="diagram-label">01 · Research</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
-              >How can agents act?</strong
-            ><span>Screenshots, page controls, and APIs</span>
+              >Computer-use interfaces</strong
+            ><span>What can the model see and do?</span>
           </div>
           <div>
             <span class="diagram-label">02 · Build</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong
-              >How can I test them?</strong
-            ><span>Reset, observe, act, check, record</span>
+              >Controlled test runs</strong
+            ><span>How do I execute and verify actions?</span>
           </div>
           <div>
             <span class="diagram-label">03 · Compare</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><strong
-              >Which models work?</strong
-            ><span>Task outcomes, time, cost, and traces</span>
+              >Model performance</strong
+            ><span>Which tasks can each model complete?</span>
           </div>
         </div>
         <ul class="sources">
@@ -2058,11 +2055,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>The environment<span class="section-number">02 / 17</span></span></header>
-        <h2>Build a small set of complete workflows</h2>
+        <h2>The app supports complete Slack workflows</h2>
         <ul>
-          <li>I built the app with fictional people, channels, and messages.</li>
-          <li>I chose search, threads, and message editing as the core workflows.</li>
-          <li>People and browser agents use the same interface.</li>
+          <li>I started with search, threads, and message editing from the assignment.</li>
+          <li>
+            Each workflow includes the interface, stored data, and checks for the required result.
+          </li>
+          <li>People and browser agents use the same app with fictional workspace data.</li>
         </ul>
         <div
           class="diagram workflow-diagram"
@@ -2103,7 +2102,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>All workflows<span class="section-number">03 / 17</span></span></header>
-        <h2>18 tasks use the full workspace</h2>
+        <h2>The task set covers 18 workflows</h2>
         <div
           class="workflow-inventory"
           role="img"
@@ -2196,16 +2195,114 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="The repeatable harness" data-slide-id="the-repeatable-harness"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The repeatable harness<span class="section-number">04 / 17</span></span></header>
+        <h2>The harness runs the model's actions in a loop</h2>
+        <div
+          class="diagram harness-diagram"
+          role="img"
+          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, validates and executes it, then observes again. The grader checks the final state and the recorder saves evidence."
+        >
+          <div class="ownership-strip">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>New browser session<span>+</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Private database<span
+              class="ownership-tag"
+              >Separate data for each run</span
+            >
+          </div>
+          <div class="flow">
+            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Observe<span>Visible workspace</span></div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node" data-tone="blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Choose one action<span>Model response</span>
+            </div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Validate and execute<span>Browser or API</span></div>
+          </div>
+          <div class="loop-return"><span>Next observation</span></div>
+          <div class="harness-outputs">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Final state → grader</span
+            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Saved steps → trace and replay</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Each run starts with a separate database and browser session containing known workspace
+            data.
+          </li>
+          <li>The model receives an observation and returns one action at a time.</li>
+          <li>The harness repeats this loop until the model finishes or a limit stops the run.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Playwright controls the browser. Separate data does not protect the host from malicious
+            code.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Agent interfaces" data-slide-id="agent-interfaces"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Agent interfaces<span class="section-number">05 / 17</span></span></header>
+        <h2>The model can use four interfaces to the same app</h2>
+        <div
+          class="interface-map"
+          role="img"
+          aria-label="Pixels provide screenshots and coordinate actions. Accessibility provides named controls and element actions. Page JSON provides structured page controls and element actions. The actor API provides workspace data and direct state changes."
+        >
+          <div class="interface-map-head">
+            <span>Interface</span><span>Observation → action</span><span>Interaction</span>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong>Pixels</strong><span>Screenshot → mouse and keyboard</span
+            ><b>Browser</b>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg><strong>Accessibility</strong
+            ><span>Named page controls → click or fill</span><b>Browser</b>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces lucide-curly-braces glyph" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg><strong>Page JSON</strong
+            ><span>Structured page controls → click or fill</span><b>Browser</b>
+          </div>
+          <div class="api-row">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong>Actor API</strong><span>Workspace data → direct changes</span
+            ><b>Tool use</b>
+          </div>
+        </div>
+        <ul>
+          <li>
+            The interface determines what the model observes and which actions it can request.
+          </li>
+          <li>The actor API uses the same application rules but does not operate the browser.</li>
+          <li>All four paths change workspace data that the same grader can check.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Page JSON describes page controls, not the underlying database. Actor API access exposes
+            broader structured data.
+          </li>
+          <li>
+            The harness uses a shared JSON action protocol, not each provider's native computer-use
+            protocol.
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Define success" data-slide-id="define-success"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>Define success<span class="section-number">04 / 17</span></span></header>
-        <h2>Check the final workspace state</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>Define success<span class="section-number">06 / 17</span></span></header>
+        <h2>The grader checks the final workspace state</h2>
         <ul>
           <li>Workspace state is the stored data: messages, threads, topics, and saved items.</li>
-          <li>The checker compares this data with the task requirements.</li>
+          <li>The grader is code that compares this data with the task requirements.</li>
           <li>A model's claim that it finished does not affect the result.</li>
         </ul>
         <div
@@ -2234,7 +2331,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         </div>
         <ul class="sources">
           <li>
-            The checker grades the final state. It does not penalize a wrong action that the agent
+            The grader checks the final state. It does not penalize a wrong action that the agent
             fully undoes.
           </li>
           <li>
@@ -2244,50 +2341,49 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="The repeatable harness" data-slide-id="the-repeatable-harness"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+      <section class="slide" data-title="Verification" data-slide-id="verification"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The repeatable harness<span class="section-number">05 / 17</span></span></header>
-        <h2>Start each run in a fresh workspace</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Verification<span class="section-number">07 / 17</span></span></header>
+        <h2>I tested the app and grader before comparing models</h2>
         <div
-          class="diagram harness-diagram"
+          class="verification-map"
           role="img"
-          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, checks and executes it, then observes again. A separate checker grades final state and a recorder saves evidence."
+          aria-label="Scripted tests check app behavior. Constructed states check the grader. Recorded runs check agent behavior. These are separate sources of evidence."
         >
-          <div class="ownership-strip">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>New browser session<span>+</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Private database<span
-              class="ownership-tag"
-              >Separate data for each run</span
-            >
+          <div>
+            <span class="diagram-label">App behavior</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong
+              >174 backend tests<br />91 browser tests</strong
+            ><span>Does the software work?</span>
           </div>
-          <div class="flow">
-            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Observe<span>Visible workspace</span></div>
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="node" data-tone="blue">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Choose one action<span>Model response</span>
-            </div>
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Check and execute<span>Browser or API</span></div>
+          <div>
+            <span class="diagram-label">Result checks</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong
+              >84 valid states<br />2,583 invalid states</strong
+            ><span>Does the grader reject wrong results?</span>
           </div>
-          <div class="loop-return"><span>Next observation</span></div>
-          <div class="harness-outputs">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Final state → result checks</span
-            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Saved steps → trace and replay</span>
+          <div>
+            <span class="diagram-label">Recording integrity</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg><strong
+              >Actions and states<br />Timing and usage</strong
+            ><span>Can each result be inspected?</span>
           </div>
         </div>
         <ul>
-          <li>The harness is the code that manages each run.</li>
+          <li>Scripted browser tests complete the workflows without a model.</li>
+          <li>Known valid and invalid states test the grader's rules.</li>
           <li>
-            It resets the workspace, sends observations, executes actions, and records results.
+            Saved actions and workspace states support trace review and replay without new model
+            calls.
           </li>
-          <li>Each run has its own browser session and database.</li>
         </ul>
         <ul class="sources">
           <li>
-            Playwright controls the browser. Separate data does not protect the host from malicious
-            code.
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
+              >Software verification</a
+            >
+            · Counts shown here come from saved full-suite reports, not the later targeted release
+            checks.
           </li>
         </ul>
       </section>
@@ -2296,12 +2392,17 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>The scope expands<span class="section-number">06 / 17</span></span></header>
-        <h2>I then used the harness to compare models</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>The scope expands<span class="section-number">08 / 17</span></span></header>
+        <h2>The reusable harness made model comparisons possible</h2>
         <ul>
-          <li>The same run process worked with different models.</li>
-          <li>I used it to compare 17 models on 18 tasks.</li>
-          <li>This expanded the project into a benchmark prototype.</li>
+          <li>Once the harness worked, I could change the model without rebuilding the test.</li>
+          <li>
+            I expanded the assignment into a benchmark prototype with two separate comparisons.
+          </li>
+          <li>
+            The first compares models using accessibility controls, and the second compares four
+            interfaces.
+          </li>
         </ul>
         <div
           class="scope-diagram"
@@ -2324,110 +2425,13 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           <div class="arrow scope-second"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           <div class="node benchmark" data-tone="green">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Benchmark prototype<span
-              >18 tasks × 17 models<br />One attempt per pair</span
+              >306 model-comparison runs<br />96 interface-comparison runs</span
             >
           </div>
         </div>
         <div class="takeaway">
-          The comparison also needs clear tasks and consistent test conditions.
+          The next slides cover the test conditions, results, and limitations of each comparison.
         </div>
-      </section>
-      <section class="slide" data-title="Agent interfaces" data-slide-id="agent-interfaces"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Agent interfaces<span class="section-number">07 / 17</span></span></header>
-        <h2>Each interface gives the agent different controls</h2>
-        <div
-          class="interface-map"
-          role="img"
-          aria-label="Four interfaces were exercised. Pixels provide an image and coordinate actions. Accessibility provides labeled controls. Page JSON provides structured controls. API access changes workspace data directly. Earlier pass counts are not a matched comparison."
-        >
-          <div class="interface-map-head">
-            <span>Interface</span><span>What the agent receives and uses</span
-            ><span>Earlier passes / attempts</span>
-          </div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong>Pixels</strong><span>Screenshot → mouse and keyboard</span
-            ><b>0 / 1</b>
-          </div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg><strong>Accessibility</strong><span>Named controls → element actions</span
-            ><b>2 / 6</b>
-          </div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces lucide-curly-braces glyph" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg><strong>Page JSON</strong><span>Controls as JSON → element actions</span
-            ><b>2 / 7</b>
-          </div>
-          <div class="api-row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong>API</strong><span>Workspace data → direct changes</span
-            ><b>4 / 6</b>
-          </div>
-        </div>
-        <ul>
-          <li>
-            Earlier runs used different tasks and models, so they cannot show which interface works
-            best.
-          </li>
-          <li>The larger comparison uses only accessibility controls.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            20 attempted: 8 passed, 11 incomplete, 1
-            blocked. 10 planned runs did not start.
-          </li>
-          <li>
-            126 requests · $0.149874 estimated allowance, including missing-usage
-            reservations ·
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
-              >Earlier interface evidence</a
-            >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Verification" data-slide-id="verification"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Verification<span class="section-number">08 / 17</span></span></header>
-        <h2>Test the software and the agents separately</h2>
-        <div
-          class="verification-map"
-          role="img"
-          aria-label="Three different checks: software tests check the app, constructed states check the grader, and recorded model runs check task execution. None alone validates task wording."
-        >
-          <div>
-            <span class="diagram-label">App behavior</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><strong
-              >174 backend tests<br />91 browser tests</strong
-            ><span>Does the software work?</span>
-          </div>
-          <div>
-            <span class="diagram-label">Result checks</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong
-              >84 valid states<br />2,583 invalid states</strong
-            ><span>Does grading reject wrong results?</span>
-          </div>
-          <div>
-            <span class="diagram-label">Agent behavior</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><strong
-              >306 recorded runs</strong
-            ><span>Can the agent complete the task?</span>
-          </div>
-        </div>
-        <ul>
-          <li>Scripted browser tests confirm that the app supports each workflow.</li>
-          <li>Known valid and invalid states test the checker.</li>
-          <li>Neither check proves that a new reader can understand the task.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
-              >Software verification</a
-            >
-            · Model evidence remains separate from scripted tests.
-          </li>
-        </ul>
       </section>
       <section class="slide" data-title="Comparison setup" data-slide-id="comparison-setup"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
@@ -2435,7 +2439,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Comparison setup<span class="section-number">09 / 17</span></span></header>
-        <h2>Run each task once with each model</h2>
+        <h2>Comparison 1: 17 models, using accessibility controls</h2>
         <div class="campaign-equation" aria-label="Models in the campaign">
           <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><strong>17</strong><span>model routes</span></div>
           <span class="equation-sign">×</span>
@@ -2448,16 +2452,22 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <ul>
-          <li>I used six simple tasks and 12 tasks with several steps.</li>
-          <li>All models use the same task data, action format, and result checks.</li>
-          <li>One run per pair cannot show how often a model will succeed.</li>
+          <li>Each model receives named page controls and returns one JSON action per request.</li>
+          <li>All 306 runs use the same starting data, recent-four history, and no site guide.</li>
+          <li>
+            This tests model performance under one interface, not the best interface for each model.
+          </li>
         </ul>
         <div class="limit-strip">
           <span><strong>40</strong> actions</span><span><strong>180 s</strong> per run</span
           ><span><strong>$5</strong> estimated allowance per run</span>
         </div>
         <ul class="sources">
-          <li>I kept 105 earlier runs and added 201 new runs. I did not replace failed runs.</li>
+          <li>
+            Seed 1042 · 4,096 output tokens per request · identical graders · provider-default
+            reasoning.
+          </li>
+          <li>I kept 105 earlier runs and added 201 new runs without replacing failures.</li>
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay"
               >Node 24 setup and API key instructions</a
@@ -2466,53 +2476,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/model-breadth-2026-10-03-continuation.md"
               >Exact routes, limits, and run history</a
-            >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Controls in the 306 runs" data-slide-id="controls-in-the-306-runs"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg>Controls in the 306 runs<span class="section-number">10 / 17</span></span></header>
-        <h2>All 306 runs used accessibility controls</h2>
-        <div
-          class="diagram flow"
-          role="img"
-          aria-label="Each model reads the accessibility tree, returns one JSON action, and receives an updated observation."
-        >
-          <div class="node">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg>Read the page<span>Accessibility tree<br />Named control references</span>
-          </div>
-          <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-          <div class="node">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Choose one action<span
-              >Click, hover, fill,<br />key, scroll, wait, finish</span
-            >
-          </div>
-          <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
-          <div class="node" data-tone="green">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Update the workspace<span
-              >Execute the action<br />Observe the new state</span
-            >
-          </div>
-        </div>
-        <ul>
-          <li>All runs used seed 1042, the last four turns, and no site guide.</li>
-          <li>All runs allowed 40 actions, 180 seconds, and 4,096 output tokens per request.</li>
-          <li>
-            These results compare model routes under one interface, not which interface works best.
-          </li>
-        </ul>
-        <ul class="sources">
-          <li>
-            Checked against all 306 hash-verified episode records. Reasoning used provider defaults;
-            routing and collection time were not controlled.
-          </li>
-          <li>
-            No screenshot-only condition, direct API condition, or llms.txt comparison is included
-            in these 306 runs.
+            >. Provider routing and collection time were not controlled.
           </li>
         </ul>
       </section>
@@ -2521,7 +2485,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Model comparison<span class="section-number">11 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Model comparison<span class="section-number">10 / 17</span></span></header>
         <div class="comparison-heading">
           <h2>Results for 17 models</h2>
           <span class="comparison-status">1 per task/model · Collection complete</span>
@@ -5281,7 +5245,9 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </li>
           <li>
             105 earlier runs are included. No retries. One run per task cannot establish a reliable model ranking. Two tasks have unclear instructions.
-            <a href="https://relay.kevinliu.studio/presentation#10">Read the failure analysis</a>.
+            <a href="https://relay.kevinliu.studio/presentation#main-lesson"
+              >Read the failure analysis</a
+            >.
           </li>
           <li>
             <a
@@ -5298,73 +5264,6 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
               href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/model-breadth-2026-10-03-continuation/trials.csv"
               >Download all trials (CSV)</a
             >
-            ·
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02-final/README.md"
-              >Earlier 36-trial pilot: 20 passed</a
-            >
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Matched interface study" data-slide-id="matched-interface-study"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Matched interface study<span class="section-number">12 / 17</span></span></header>
-        <h2>Change the interface, keep the task fixed</h2>
-        <div
-          class="diagram study-design"
-          role="img"
-          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
-        >
-          <div class="study-start">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg><strong>One model + one task</strong><span>Identical starting data</span>
-          </div>
-          <div class="study-arms">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg>Accessibility</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces lucide-curly-braces glyph" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>Page JSON</span
-            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg>Pixels</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg>API</span>
-          </div>
-          <div class="study-end">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Same final-state checks · separate traces and costs
-          </div>
-        </div>
-        <ul>
-          <li>Four models attempt six tasks through four interfaces, giving 96 planned runs.</li>
-          <li>
-            Each attempt starts fresh, and the interface order is randomized within each model and
-            task.
-          </li>
-          <li>The study uses a separate $25 allowance with no retries.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
-            cleanup, decision record.
-          </li>
-          <li>
-            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
-            $1 ceiling per cell.
-          </li>
-        </ul>
-      </section>
-      <section class="slide interface-study-results" data-title="Interface results" data-slide-id="interface-results"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#35263f" />
-  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
-  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
-</svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Interface results<span class="section-number">13 / 17</span></span></header>
-        <h2>Interface comparison: 96 recorded attempts</h2>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · six tasks per cell · click headers to sort</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Actor API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=51524e03-26bb-408b-9aa4-37bc364f5a49-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=da9c7d7b-e645-41af-805d-576785e32676-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=86b5ed86-8e8d-47ac-8784-3291f3a64dcc-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels tasks"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=df707b04-715e-42b3-be1e-c4c7e5c06278-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Actor API tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="3.942986">$3.9430</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=b9e13025-a9c0-46c9-9efa-4b7817804504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility tasks"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=d3bc881e-d9c2-4b75-8cb7-394169007d06-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="2"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=0df2f095-33ef-4f74-9eff-975e45d360d4-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels tasks"><strong>2 / 6</strong></a><small>1 incomplete · 3 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=94229b2a-9c69-435e-8b52-ec3d20696f05-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="7.278396000000001">$7.2784</td></tr><tr><th scope="row" data-sort="Qwen 3.8 Max"><span class="study-model"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Qwen</title><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z"></path></svg>Qwen 3.8 Max</span></th><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Accessibility tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=143d7300-046d-4c4a-b144-b461df50ea89-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=f58dd859-b2d1-4534-a762-fcbc9e30bd49-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Pixels tasks"><strong>0 / 6</strong></a><small>0 incomplete · 6 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Actor API tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="5.482921999999999">$5.4829</td></tr><tr><th scope="row" data-sort="Grok 4.7"><span class="study-model"><svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="#0A0A0A"></path><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="#0A0A0A"></path></svg>Grok 4.7</span></th><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c3d44e6e-79fb-4915-80a8-182139fd714d-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Accessibility tasks"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c9b642a6-fcee-49e7-8958-8ece5122621f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Page JSON tasks"><strong>3 / 6</strong></a><small>3 incomplete · 0 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=340c875a-c88d-449e-b9fb-1d20235813aa-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Pixels tasks"><strong>0 / 6</strong></a><small>1 incomplete · 5 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=e9625cb0-4d45-4a33-b6b5-92f350881f7f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="6.057272">$6.0573</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>
-        <span class="sr-only" id="interface-sort-status" role="status"></span>
-        <ul>
-          <li>API passed 21/24 attempts, accessibility passed 18/24, Page JSON passed 16/24, and pixels passed 3/24.</li><li>19 pixel runs were blocked, including 14 connection failures.</li><li>API measures tool use, and one attempt per condition cannot establish a reliable winner.</li>
-        </ul>
-        <ul class="sources">
-          <li>Verified snapshot: 58 passed · 11 incomplete · 27 blocked · 0 not run. Usage estimate $20.7180 + unresolved $2.0435 = $22.7616 of $25. Updated 2026-10-05 07:42 UTC.</li>
-          <li>
-            Pixels use low-detail screenshots. Interfaces differ in visible information and action
-            size, not just formatting.
           </li>
         </ul>
       </section>
@@ -5373,14 +5272,16 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route glyph" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>Main lesson<span class="section-number">14 / 17</span></span></header>
-        <h2>The checks and the instructions must agree</h2>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route glyph" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>Main lesson<span class="section-number">11 / 17</span></span></header>
+        <h2>Low scores had different causes</h2>
         <ul>
           <li>
-            I tested the checker, but I did not ask an independent reader to solve every task.
+            Reviewing the failed tasks exposed two instruction problems that grader tests had not
+            caught.
           </li>
           <li>
-            Two tasks had unclear instructions, so their scores do not measure model ability alone.
+            Other runs failed because of incorrect actions or limits, so these scores need different
+            explanations.
           </li>
         </ul>
         <div
@@ -5395,7 +5296,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           <div class="mismatch-sign" aria-hidden="true">≠</div>
           <div>
             <span class="diagram-label">Result check</span><strong>“Willow”</strong
-            ><span>Checker requires this exact name</span>
+            ><span>Grader requires this exact name</span>
           </div>
         </div>
         <div class="finding-grid">
@@ -5427,13 +5328,131 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="Matched interface study" data-slide-id="matched-interface-study"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Matched interface study<span class="section-number">12 / 17</span></span></header>
+        <h2>Comparison 2: the same tasks through four interfaces</h2>
+        <div
+          class="diagram study-design"
+          role="img"
+          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
+        >
+          <div class="study-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg><strong>One model + one task</strong><span>Identical starting data</span>
+          </div>
+          <div class="study-arms">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg>Accessibility</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces lucide-curly-braces glyph" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>Page JSON</span
+            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg>Pixels</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg>API</span>
+          </div>
+          <div class="study-end">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Same final-state checks · separate traces and costs
+          </div>
+        </div>
+        <ul>
+          <li>I ran four models on six tasks through four interfaces, giving 96 fresh attempts.</li>
+          <li>
+            Each attempt starts fresh, and the interface order is randomized within each model and
+            task.
+          </li>
+          <li>This is a separate study with a $25 allowance and no retries.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
+            cleanup, decision record.
+          </li>
+          <li>
+            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
+            $1 ceiling per cell.
+          </li>
+        </ul>
+      </section>
+      <section class="slide interface-study-results" data-title="Interface results" data-slide-id="interface-results"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined glyph" aria-hidden="true"><path d="M12 16v5"></path><path d="M16 14.639V21"></path><path d="M20 10.656V21"></path><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path><path d="M4 18.463V21"></path><path d="M8 14.656V21"></path></svg>Interface results<span class="section-number">13 / 17</span></span></header>
+        <h2>Interface comparison: 96 recorded attempts</h2>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · six tasks per cell · click headers to sort</caption><thead><tr><th scope="col" aria-sort="none"><button type="button" data-type="text" data-direction="ascending">Model<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Accessibility<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Page JSON<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Pixels<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="descending">Actor API<span class="sort-arrow" aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="none"><button type="button" data-type="number" data-direction="ascending">Allowance<span class="sort-arrow" aria-hidden="true">↕</span></button></th></tr></thead><tbody><tr><th scope="row" data-sort="GPT-6.1 Sol"><span class="study-model"><svg viewBox="0 0 256 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"></path></svg>GPT-6.1 Sol</span></th><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=51524e03-26bb-408b-9aa4-37bc364f5a49-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Accessibility tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=da9c7d7b-e645-41af-805d-576785e32676-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Page JSON tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="1"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=86b5ed86-8e8d-47ac-8784-3291f3a64dcc-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Pixels tasks"><strong>1 / 6</strong></a><small>0 incomplete · 5 blocked</small></td><td data-sort="6"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=df707b04-715e-42b3-be1e-c4c7e5c06278-episode-001&amp;view=replay" aria-label="Review GPT-6.1 Sol Actor API tasks"><strong>6 / 6</strong></a><small>0 incomplete · 0 blocked</small></td><td data-sort="3.942986">$3.9430</td></tr><tr><th scope="row" data-sort="Claude Sonnet 5.5"><span class="study-model"><svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Anthropic</title><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"></path></svg>Claude Sonnet 5.5</span></th><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=b9e13025-a9c0-46c9-9efa-4b7817804504-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Accessibility tasks"><strong>4 / 6</strong></a><small>0 incomplete · 2 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=d3bc881e-d9c2-4b75-8cb7-394169007d06-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="2"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=0df2f095-33ef-4f74-9eff-975e45d360d4-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Pixels tasks"><strong>2 / 6</strong></a><small>1 incomplete · 3 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=94229b2a-9c69-435e-8b52-ec3d20696f05-episode-001&amp;view=replay" aria-label="Review Claude Sonnet 5.5 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="7.278396000000001">$7.2784</td></tr><tr><th scope="row" data-sort="Qwen 3.8 Max"><span class="study-model"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><title>Qwen</title><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z"></path></svg>Qwen 3.8 Max</span></th><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=8c7cdb22-b6ec-40b5-ba8f-f1c591d7c35c-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Accessibility tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="4"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=143d7300-046d-4c4a-b144-b461df50ea89-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Page JSON tasks"><strong>4 / 6</strong></a><small>1 incomplete · 1 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=f58dd859-b2d1-4534-a762-fcbc9e30bd49-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Pixels tasks"><strong>0 / 6</strong></a><small>0 incomplete · 6 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=89c5596f-9ef4-4a62-9c9f-0b6f0b0b11e4-episode-001&amp;view=replay" aria-label="Review Qwen 3.8 Max Actor API tasks"><strong>5 / 6</strong></a><small>0 incomplete · 1 blocked</small></td><td data-sort="5.482921999999999">$5.4829</td></tr><tr><th scope="row" data-sort="Grok 4.7"><span class="study-model"><svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="#0A0A0A"></path><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="#0A0A0A"></path></svg>Grok 4.7</span></th><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c3d44e6e-79fb-4915-80a8-182139fd714d-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Accessibility tasks"><strong>3 / 6</strong></a><small>1 incomplete · 2 blocked</small></td><td data-sort="3"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=c9b642a6-fcee-49e7-8958-8ece5122621f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Page JSON tasks"><strong>3 / 6</strong></a><small>3 incomplete · 0 blocked</small></td><td data-sort="0"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=340c875a-c88d-449e-b9fb-1d20235813aa-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Pixels tasks"><strong>0 / 6</strong></a><small>1 incomplete · 5 blocked</small></td><td data-sort="5"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces&amp;trial=e9625cb0-4d45-4a33-b6b5-92f350881f7f-episode-001&amp;view=replay" aria-label="Review Grok 4.7 Actor API tasks"><strong>5 / 6</strong></a><small>1 incomplete · 0 blocked</small></td><td data-sort="6.057272">$6.0573</td></tr></tbody></table></div><div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>
+        <span class="sr-only" id="interface-sort-status" role="status"></span>
+        <ul>
+          <li>API passed 21/24 attempts, accessibility passed 18/24, Page JSON passed 16/24, and pixels passed 3/24.</li><li>The table separates incomplete tasks from attempts blocked by service failures or run limits.</li><li>Click any pass count to inspect the model's six tasks, traces, and replays.</li>
+        </ul>
+        <ul class="sources">
+          <li>Verified snapshot: 58 passed · 11 incomplete · 27 blocked · 0 not run. Usage estimate $20.7180 + unresolved $2.0435 = $22.7616 of $25. Updated 2026-10-05 07:42 UTC.</li>
+          <li>
+            Pixels use low-detail screenshots. Interfaces differ in visible information and action
+            size, not just formatting.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Interpreting interface results" data-slide-id="interpreting-interface-results"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#35263f" />
+  <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
+  <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
+</svg>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Interpreting interface results<span class="section-number">14 / 17</span></span></header>
+        <h2>These results do not isolate model ability</h2>
+        <div
+          class="verification-map"
+          role="img"
+          aria-label="Interpret API results as tool use, blocked runs as service or limit stops, and single-attempt comparisons as preliminary evidence."
+        >
+          <div>
+            <span class="diagram-label">API and accessibility</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg><strong
+              >17 shared passes</strong
+            ><span>Same model and task<br />Different information and actions</span>
+          </div>
+          <div>
+            <span class="diagram-label">Pixel interruptions</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
+              >19 blocked runs</strong
+            ><span
+              >14 connection failures<br />3 output limits · 2 timeouts</span
+            >
+          </div>
+          <div>
+            <span class="diagram-label">Study size</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg><strong
+              >One attempt per condition</strong
+            ><span>No repeat-run estimate<br />No general CUA ranking</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            API actions can perform more work per step, so equal action limits do not create
+            equivalent tests.
+          </li>
+          <li>
+            Pixel runs used low-detail images, and keyboard shortcuts depended on macOS behavior.
+          </li>
+          <li>
+            Service failures and run limits prevent some attempts from measuring task completion.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>24 API/accessibility pairs: 17 both passed · 4 API only · 1 accessibility only · 2 neither passed. 5 pairs include a blocked attempt.</li>
+          <li>
+            On 17 shared passes, median accessibility-minus-API differences were +2 actions, +5.462 seconds, and +$0.13008. These are selected successful pairs, not a general speed estimate.
+          </li>
+          <li>
+            Elapsed time also includes shared-host activity.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
+              >Definitions, costs, and all matched pairs</a
+            >.
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Speed and resources" data-slide-id="speed-and-resources"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge glyph" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>Speed and resources<span class="section-number">15 / 17</span></span></header>
-        <h2>Measure local speed before adding more workers</h2>
+        <h2>Runs have separate data, but scaling is still untested</h2>
         <div
           class="metrics"
           role="img"
@@ -5454,11 +5473,10 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
         </div>
         <ul>
           <li>
-            These timings exclude model calls and do not measure how many agents can run at once.
+            Each run has separate data, but these timings exclude model calls and shared-host
+            concurrency.
           </li>
-          <li>
-            Next, measure memory use, completed runs per minute, and cleanup with several workers.
-          </li>
+          <li>The proposed worker design still needs memory, throughput, and cleanup tests.</li>
         </ul>
         <div
           class="scale-diagram"
@@ -5496,7 +5514,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network glyph" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>The next benchmark version<span class="section-number">16 / 17</span></span></header>
-        <h2>Validate each task before the next comparison</h2>
+        <h2>The next version needs validated tasks and repeated runs</h2>
         <ul>
           <li>Ask someone outside the project to solve each task from its instructions.</li>
           <li>Compare their interpretation with the expected result.</li>
@@ -5522,7 +5540,10 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Compare runs<span>Same conditions</span>
           </div>
         </div>
-        <div class="takeaway">Validate the task instructions as carefully as the grading code.</div>
+        <div class="takeaway">
+          The current results describe these attempts. Repeated runs are needed to estimate
+          reliability.
+        </div>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
@@ -5541,7 +5562,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play glyph" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>Demonstration and discussion<span class="section-number">17 / 17</span></span></header>
-        <h2>Use the app and inspect a recorded run</h2>
+        <h2>Demo and design questions</h2>
         <div class="demo-path">
           <a href="https://relay.kevinliu.studio/play"
             ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg><span class="diagram-label">01 · Try</span

@@ -80,7 +80,7 @@ const sectionIcons = {
   'Agent interfaces': ScanEye,
   Verification: ShieldCheck,
   'Comparison setup': FlaskConical,
-  'Controls in the 306 runs': Accessibility,
+  'Interpreting interface results': ScanEye,
   'Model comparison': ChartNoAxesCombined,
   'Matched interface study': FlaskConical,
   'Interface results': ChartNoAxesCombined,
@@ -243,6 +243,7 @@ const studyAnalysis =
     : null;
 const studyHeading = (name, type = 'number', direction = 'descending') =>
   `<th scope="col" aria-sort="none"><button type="button" data-type="${type}" data-direction="${direction}">${name}<span class="sort-arrow" aria-hidden="true">↕</span></button></th>`;
+const apiPair = studyAnalysis?.paired.find((p) => p.left === 'a11y' && p.right === 'api');
 const studyTable = study
   ? `<div class="table-scroll" tabindex="0" role="region" aria-label="Sortable interface results"><table class="study-table sortable" id="interface-results"><caption>Passed / attempted · six tasks per cell · click headers to sort</caption><thead><tr>${studyHeading('Model', 'text', 'ascending')}${studyModes.map((m) => studyHeading(labels[m])).join('')}${studyHeading('Allowance', 'number', 'ascending')}</tr></thead><tbody>${study.byModel
       .map(
@@ -266,6 +267,16 @@ const studyTable = study
       .join('')}</tbody></table></div>`
   : '<div class="takeaway">The matched study is prepared. No results are available yet.</div>';
 const values = {
+  PAIRED_BOTH: apiPair?.bothPassed ?? 'Pending',
+  PIXEL_BLOCKED: studyAnalysis?.byInterface.pixels.outcomes.blocked ?? 'Pending',
+  PIXEL_CONNECTIONS:
+    studyAnalysis?.byInterface.pixels.blockedReasons.provider_connection_error ?? 'Pending',
+  PAIRED_DETAIL: apiPair
+    ? `24 API/accessibility pairs: ${apiPair.bothPassed} both passed · ${apiPair.rightOnly} API only · ${apiPair.leftOnly} accessibility only · ${apiPair.neitherPassed} neither passed. ${apiPair.blockedEither} pairs include a blocked attempt.`
+    : 'Matched results are pending.',
+  PAIRED_TIMING: apiPair
+    ? `On ${apiPair.bothPassed} shared passes, median accessibility-minus-API differences were +${apiPair.bothPassedMedianActionsLeftMinusRight} actions, +${apiPair.bothPassedMedianSecondsLeftMinusRight.toFixed(3)} seconds, and +$${apiPair.bothPassedMedianAllowanceLeftMinusRight.toFixed(5)}.`
+    : 'Matched timing is pending.',
   INTERFACE_STUDY_TITLE:
     study?.status === 'completed'
       ? 'Interface comparison: 96 recorded attempts'
@@ -276,7 +287,7 @@ const values = {
       ? '<div class="study-links"><a href="https://relay.kevinliu.studio/demo/review.html?study=interfaces">All traces and replays ↗</a><a href="https://relay.kevinliu.studio/demo/interface-study-accounting.csv">Costs CSV ↓</a><a href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md">Paired results and timing ↗</a></div>'
       : ''),
   INTERFACE_STUDY_FINDINGS: studyAnalysis
-    ? `<li>API passed ${study.byInterface.api.passed}/24 attempts, accessibility passed ${study.byInterface.a11y.passed}/24, Page JSON passed ${study.byInterface['json-ui'].passed}/24, and pixels passed ${study.byInterface.pixels.passed}/24.</li><li>${studyAnalysis.byInterface.pixels.outcomes.blocked} pixel runs were blocked, including ${studyAnalysis.byInterface.pixels.blockedReasons.provider_connection_error} connection failures.</li><li>API measures tool use, and one attempt per condition cannot establish a reliable winner.</li>`
+    ? `<li>API passed ${study.byInterface.api.passed}/24 attempts, accessibility passed ${study.byInterface.a11y.passed}/24, Page JSON passed ${study.byInterface['json-ui'].passed}/24, and pixels passed ${study.byInterface.pixels.passed}/24.</li><li>The table separates incomplete tasks from attempts blocked by service failures or run limits.</li><li>Click any pass count to inspect the model's six tasks, traces, and replays.</li>`
     : '<li>Compare interfaces within the same model and task, not against the earlier 306 runs.</li><li>API actions change structured data directly, so API results measure tool use.</li><li>One attempt per condition cannot establish a reliable winner.</li>',
   INTERFACE_STUDY_STATUS: study
     ? `Verified snapshot: ${study.totals.passed} passed · ${study.totals.incomplete} incomplete · ${study.totals.blocked} blocked · ${study.totals.unattempted} not run. Usage estimate $${(study.estimatedUSD - study.reservedUSD).toFixed(4)} + unresolved $${study.reservedUSD.toFixed(4)} = $${study.estimatedUSD.toFixed(4)} of $25. Updated ${study.generatedAt.slice(0, 16).replace('T', ' ')} UTC.`

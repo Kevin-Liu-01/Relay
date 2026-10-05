@@ -16,37 +16,34 @@
     <main>
       <section class="slide active cover" data-title="The assignment">
         <h1>
-          Build the harness.<br />
-          <em>Then test the models.</em>
+          A Slack environment<br />
+          <em>for testing agents</em>
         </h1>
         <ul>
           <li>
-            I approached the brief as a harness problem: connect model APIs to a controlled Slack
-            environment.
+            The assignment asked for a working Slack-like app, agent tasks, and recorded tests.
           </li>
-          <li>
-            I needed to understand how agents observe a page, act, and know when a task is complete.
-          </li>
+          <li>I needed a harness that connects model APIs to the app and manages each test run.</li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="My approach: research how agents control a page, build a repeatable harness around model APIs, and compare task outcomes."
+          aria-label="My approach: research computer-use interfaces, implement a controlled test environment, then compare models on the same tasks."
         >
           <div>
             <span class="diagram-label">01 · Research</span>{{ICON_PIXELS}}<strong
-              >How can agents act?</strong
-            ><span>Screenshots, page controls, and APIs</span>
+              >Computer-use interfaces</strong
+            ><span>What can the model see and do?</span>
           </div>
           <div>
             <span class="diagram-label">02 · Build</span>{{ICON_RESET}}<strong
-              >How can I test them?</strong
-            ><span>Reset, observe, act, check, record</span>
+              >Controlled test runs</strong
+            ><span>How do I execute and verify actions?</span>
           </div>
           <div>
             <span class="diagram-label">03 · Compare</span>{{ICON_POLICY}}<strong
-              >Which models work?</strong
-            ><span>Task outcomes, time, cost, and traces</span>
+              >Model performance</strong
+            ><span>Which tasks can each model complete?</span>
           </div>
         </div>
         <ul class="sources">
@@ -57,11 +54,13 @@
         </ul>
       </section>
       <section class="slide" data-title="The environment">
-        <h2>Build a small set of complete workflows</h2>
+        <h2>The app supports complete Slack workflows</h2>
         <ul>
-          <li>I built the app with fictional people, channels, and messages.</li>
-          <li>I chose search, threads, and message editing as the core workflows.</li>
-          <li>People and browser agents use the same interface.</li>
+          <li>I started with search, threads, and message editing from the assignment.</li>
+          <li>
+            Each workflow includes the interface, stored data, and checks for the required result.
+          </li>
+          <li>People and browser agents use the same app with fictional workspace data.</li>
         </ul>
         <div
           class="diagram workflow-diagram"
@@ -97,7 +96,7 @@
         </ul>
       </section>
       <section class="slide workflow-inventory-slide" data-title="All workflows">
-        <h2>18 tasks use the full workspace</h2>
+        <h2>The task set covers 18 workflows</h2>
         <div
           class="workflow-inventory"
           role="img"
@@ -190,11 +189,99 @@
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="The repeatable harness">
+        <h2>The harness runs the model's actions in a loop</h2>
+        <div
+          class="diagram harness-diagram"
+          role="img"
+          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, validates and executes it, then observes again. The grader checks the final state and the recorder saves evidence."
+        >
+          <div class="ownership-strip">
+            {{ICON_BROWSER}}New browser session<span>+</span>{{ICON_DATABASE}}Private database<span
+              class="ownership-tag"
+              >Separate data for each run</span
+            >
+          </div>
+          <div class="flow">
+            <div class="node">{{ICON_WORKSPACE}}Observe<span>Visible workspace</span></div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="blue">
+              {{ICON_POLICY}}Choose one action<span>Model response</span>
+            </div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node">{{ICON_CHECK}}Validate and execute<span>Browser or API</span></div>
+          </div>
+          <div class="loop-return"><span>Next observation</span></div>
+          <div class="harness-outputs">
+            <span>{{ICON_STATE}}Final state → grader</span
+            ><span>{{ICON_EVIDENCE}}Saved steps → trace and replay</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Each run starts with a separate database and browser session containing known workspace
+            data.
+          </li>
+          <li>The model receives an observation and returns one action at a time.</li>
+          <li>The harness repeats this loop until the model finishes or a limit stops the run.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Playwright controls the browser. Separate data does not protect the host from malicious
+            code.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Agent interfaces">
+        <h2>The model can use four interfaces to the same app</h2>
+        <div
+          class="interface-map"
+          role="img"
+          aria-label="Pixels provide screenshots and coordinate actions. Accessibility provides named controls and element actions. Page JSON provides structured page controls and element actions. The actor API provides workspace data and direct state changes."
+        >
+          <div class="interface-map-head">
+            <span>Interface</span><span>Observation → action</span><span>Interaction</span>
+          </div>
+          <div>
+            {{ICON_PIXELS}}<strong>Pixels</strong><span>Screenshot → mouse and keyboard</span
+            ><b>Browser</b>
+          </div>
+          <div>
+            {{ICON_A11Y}}<strong>Accessibility</strong
+            ><span>Named page controls → click or fill</span><b>Browser</b>
+          </div>
+          <div>
+            {{ICON_JSON}}<strong>Page JSON</strong
+            ><span>Structured page controls → click or fill</span><b>Browser</b>
+          </div>
+          <div class="api-row">
+            {{ICON_API}}<strong>Actor API</strong><span>Workspace data → direct changes</span
+            ><b>Tool use</b>
+          </div>
+        </div>
+        <ul>
+          <li>
+            The interface determines what the model observes and which actions it can request.
+          </li>
+          <li>The actor API uses the same application rules but does not operate the browser.</li>
+          <li>All four paths change workspace data that the same grader can check.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Page JSON describes page controls, not the underlying database. Actor API access exposes
+            broader structured data.
+          </li>
+          <li>
+            The harness uses a shared JSON action protocol, not each provider's native computer-use
+            protocol.
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Define success">
-        <h2>Check the final workspace state</h2>
+        <h2>The grader checks the final workspace state</h2>
         <ul>
           <li>Workspace state is the stored data: messages, threads, topics, and saved items.</li>
-          <li>The checker compares this data with the task requirements.</li>
+          <li>The grader is code that compares this data with the task requirements.</li>
           <li>A model's claim that it finished does not affect the result.</li>
         </ul>
         <div
@@ -223,7 +310,7 @@
         </div>
         <ul class="sources">
           <li>
-            The checker grades the final state. It does not penalize a wrong action that the agent
+            The grader checks the final state. It does not penalize a wrong action that the agent
             fully undoes.
           </li>
           <li>
@@ -233,54 +320,58 @@
           </li>
         </ul>
       </section>
-      <section class="slide" data-title="The repeatable harness">
-        <h2>Start each run in a fresh workspace</h2>
+      <section class="slide" data-title="Verification">
+        <h2>I tested the app and grader before comparing models</h2>
         <div
-          class="diagram harness-diagram"
+          class="verification-map"
           role="img"
-          aria-label="Each run owns a browser session and database. The harness observes the workspace, asks the model for one action, checks and executes it, then observes again. A separate checker grades final state and a recorder saves evidence."
+          aria-label="Scripted tests check app behavior. Constructed states check the grader. Recorded runs check agent behavior. These are separate sources of evidence."
         >
-          <div class="ownership-strip">
-            {{ICON_BROWSER}}New browser session<span>+</span>{{ICON_DATABASE}}Private database<span
-              class="ownership-tag"
-              >Separate data for each run</span
-            >
+          <div>
+            <span class="diagram-label">App behavior</span>{{ICON_BROWSER}}<strong
+              >{{BACKEND_TESTS}} backend tests<br />{{BROWSER_TESTS}} browser tests</strong
+            ><span>Does the software work?</span>
           </div>
-          <div class="flow">
-            <div class="node">{{ICON_WORKSPACE}}Observe<span>Visible workspace</span></div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node" data-tone="blue">
-              {{ICON_POLICY}}Choose one action<span>Model response</span>
-            </div>
-            <div class="arrow">{{ICON_ARROW}}</div>
-            <div class="node">{{ICON_CHECK}}Check and execute<span>Browser or API</span></div>
+          <div>
+            <span class="diagram-label">Result checks</span>{{ICON_CHECK}}<strong
+              >84 valid states<br />2,583 invalid states</strong
+            ><span>Does the grader reject wrong results?</span>
           </div>
-          <div class="loop-return"><span>Next observation</span></div>
-          <div class="harness-outputs">
-            <span>{{ICON_STATE}}Final state → result checks</span
-            ><span>{{ICON_EVIDENCE}}Saved steps → trace and replay</span>
+          <div>
+            <span class="diagram-label">Recording integrity</span>{{ICON_EVIDENCE}}<strong
+              >Actions and states<br />Timing and usage</strong
+            ><span>Can each result be inspected?</span>
           </div>
         </div>
         <ul>
-          <li>The harness is the code that manages each run.</li>
+          <li>Scripted browser tests complete the workflows without a model.</li>
+          <li>Known valid and invalid states test the grader's rules.</li>
           <li>
-            It resets the workspace, sends observations, executes actions, and records results.
+            Saved actions and workspace states support trace review and replay without new model
+            calls.
           </li>
-          <li>Each run has its own browser session and database.</li>
         </ul>
         <ul class="sources">
           <li>
-            Playwright controls the browser. Separate data does not protect the host from malicious
-            code.
+            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
+              >Software verification</a
+            >
+            · Counts shown here come from saved full-suite reports, not the later targeted release
+            checks.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="The scope expands">
-        <h2>I then used the harness to compare models</h2>
+        <h2>The reusable harness made model comparisons possible</h2>
         <ul>
-          <li>The same run process worked with different models.</li>
-          <li>I used it to compare 17 models on 18 tasks.</li>
-          <li>This expanded the project into a benchmark prototype.</li>
+          <li>Once the harness worked, I could change the model without rebuilding the test.</li>
+          <li>
+            I expanded the assignment into a benchmark prototype with two separate comparisons.
+          </li>
+          <li>
+            The first compares models using accessibility controls, and the second compares four
+            interfaces.
+          </li>
         </ul>
         <div
           class="scope-diagram"
@@ -303,103 +394,16 @@
           <div class="arrow scope-second">{{ICON_ARROW}}</div>
           <div class="node benchmark" data-tone="green">
             {{ICON_TEST}}Benchmark prototype<span
-              >18 tasks × 17 models<br />One attempt per pair</span
+              >306 model-comparison runs<br />96 interface-comparison runs</span
             >
           </div>
         </div>
         <div class="takeaway">
-          The comparison also needs clear tasks and consistent test conditions.
+          The next slides cover the test conditions, results, and limitations of each comparison.
         </div>
-      </section>
-      <section class="slide" data-title="Agent interfaces">
-        <h2>Each interface gives the agent different controls</h2>
-        <div
-          class="interface-map"
-          role="img"
-          aria-label="Four interfaces were exercised. Pixels provide an image and coordinate actions. Accessibility provides labeled controls. Page JSON provides structured controls. API access changes workspace data directly. Earlier pass counts are not a matched comparison."
-        >
-          <div class="interface-map-head">
-            <span>Interface</span><span>What the agent receives and uses</span
-            ><span>Earlier passes / attempts</span>
-          </div>
-          <div>
-            {{ICON_PIXELS}}<strong>Pixels</strong><span>Screenshot → mouse and keyboard</span
-            ><b>{{PIXEL_PASS_COUNT}}</b>
-          </div>
-          <div>
-            {{ICON_A11Y}}<strong>Accessibility</strong><span>Named controls → element actions</span
-            ><b>{{A11Y_PASS_COUNT}}</b>
-          </div>
-          <div>
-            {{ICON_JSON}}<strong>Page JSON</strong><span>Controls as JSON → element actions</span
-            ><b>{{JSON_PASS_COUNT}}</b>
-          </div>
-          <div class="api-row">
-            {{ICON_API}}<strong>API</strong><span>Workspace data → direct changes</span
-            ><b>{{API_PASS_COUNT}}</b>
-          </div>
-        </div>
-        <ul>
-          <li>
-            Earlier runs used different tasks and models, so they cannot show which interface works
-            best.
-          </li>
-          <li>The larger comparison uses only accessibility controls.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            {{ATTEMPTED}} attempted: {{PASSED}} passed, {{INCOMPLETE}} incomplete, {{BLOCKED}}
-            blocked. {{UNATTEMPTED}} planned runs did not start.
-          </li>
-          <li>
-            {{REQUESTS}} requests · ${{COST}} estimated allowance, including missing-usage
-            reservations ·
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
-              >Earlier interface evidence</a
-            >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Verification">
-        <h2>Test the software and the agents separately</h2>
-        <div
-          class="verification-map"
-          role="img"
-          aria-label="Three different checks: software tests check the app, constructed states check the grader, and recorded model runs check task execution. None alone validates task wording."
-        >
-          <div>
-            <span class="diagram-label">App behavior</span>{{ICON_BROWSER}}<strong
-              >{{BACKEND_TESTS}} backend tests<br />{{BROWSER_TESTS}} browser tests</strong
-            ><span>Does the software work?</span>
-          </div>
-          <div>
-            <span class="diagram-label">Result checks</span>{{ICON_CHECK}}<strong
-              >84 valid states<br />2,583 invalid states</strong
-            ><span>Does grading reject wrong results?</span>
-          </div>
-          <div>
-            <span class="diagram-label">Agent behavior</span>{{ICON_POLICY}}<strong
-              >{{COMPARISON_ATTEMPTED}} recorded runs</strong
-            ><span>Can the agent complete the task?</span>
-          </div>
-        </div>
-        <ul>
-          <li>Scripted browser tests confirm that the app supports each workflow.</li>
-          <li>Known valid and invalid states test the checker.</li>
-          <li>Neither check proves that a new reader can understand the task.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
-              >Software verification</a
-            >
-            · Model evidence remains separate from scripted tests.
-          </li>
-        </ul>
       </section>
       <section class="slide" data-title="Comparison setup">
-        <h2>Run each task once with each model</h2>
+        <h2>Comparison 1: 17 models, using accessibility controls</h2>
         <div class="campaign-equation" aria-label="Models in the campaign">
           <div>{{ICON_POLICY}}<strong>17</strong><span>model routes</span></div>
           <span class="equation-sign">×</span>
@@ -412,16 +416,22 @@
           </div>
         </div>
         <ul>
-          <li>I used six simple tasks and 12 tasks with several steps.</li>
-          <li>All models use the same task data, action format, and result checks.</li>
-          <li>One run per pair cannot show how often a model will succeed.</li>
+          <li>Each model receives named page controls and returns one JSON action per request.</li>
+          <li>All 306 runs use the same starting data, recent-four history, and no site guide.</li>
+          <li>
+            This tests model performance under one interface, not the best interface for each model.
+          </li>
         </ul>
         <div class="limit-strip">
           <span><strong>40</strong> actions</span><span><strong>180 s</strong> per run</span
           ><span><strong>$5</strong> estimated allowance per run</span>
         </div>
         <ul class="sources">
-          <li>I kept 105 earlier runs and added 201 new runs. I did not replace failed runs.</li>
+          <li>
+            Seed 1042 · 4,096 output tokens per request · identical graders · provider-default
+            reasoning.
+          </li>
+          <li>I kept 105 earlier runs and added 201 new runs without replacing failures.</li>
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay"
               >Node 24 setup and API key instructions</a
@@ -430,48 +440,7 @@
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
               >Exact routes, limits, and run history</a
-            >.
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Controls in the 306 runs">
-        <h2>All 306 runs used accessibility controls</h2>
-        <div
-          class="diagram flow"
-          role="img"
-          aria-label="Each model reads the accessibility tree, returns one JSON action, and receives an updated observation."
-        >
-          <div class="node">
-            {{ICON_A11Y}}Read the page<span>Accessibility tree<br />Named control references</span>
-          </div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node">
-            {{ICON_POLICY}}Choose one action<span
-              >Click, hover, fill,<br />key, scroll, wait, finish</span
-            >
-          </div>
-          <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node" data-tone="green">
-            {{ICON_WORKSPACE}}Update the workspace<span
-              >Execute the action<br />Observe the new state</span
-            >
-          </div>
-        </div>
-        <ul>
-          <li>All runs used seed 1042, the last four turns, and no site guide.</li>
-          <li>All runs allowed 40 actions, 180 seconds, and 4,096 output tokens per request.</li>
-          <li>
-            These results compare model routes under one interface, not which interface works best.
-          </li>
-        </ul>
-        <ul class="sources">
-          <li>
-            Checked against all 306 hash-verified episode records. Reasoning used provider defaults;
-            routing and collection time were not controlled.
-          </li>
-          <li>
-            No screenshot-only condition, direct API condition, or llms.txt comparison is included
-            in these 306 runs.
+            >. Provider routing and collection time were not controlled.
           </li>
         </ul>
       </section>
@@ -515,7 +484,9 @@
           </li>
           <li>
             {{COMPARISON_PROVENANCE}} Two tasks have unclear instructions.
-            <a href="https://relay.kevinliu.studio/presentation#10">Read the failure analysis</a>.
+            <a href="https://relay.kevinliu.studio/presentation#main-lesson"
+              >Read the failure analysis</a
+            >.
           </li>
           <li>
             <a
@@ -532,74 +503,19 @@
               href="https://raw.githubusercontent.com/Kevin-Liu-01/Relay/main/evidence/campaigns/{{COMPARISON_ID}}/trials.csv"
               >Download all trials (CSV)</a
             >
-            ·
-            <a
-              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/model-comparison-2026-10-02-final/README.md"
-              >Earlier 36-trial pilot: 20 passed</a
-            >
-          </li>
-        </ul>
-      </section>
-      <section class="slide" data-title="Matched interface study">
-        <h2>Change the interface, keep the task fixed</h2>
-        <div
-          class="diagram study-design"
-          role="img"
-          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
-        >
-          <div class="study-start">
-            {{ICON_TASK}}<strong>One model + one task</strong><span>Identical starting data</span>
-          </div>
-          <div class="study-arms">
-            <span>{{ICON_A11Y}}Accessibility</span><span>{{ICON_JSON}}Page JSON</span
-            ><span>{{ICON_PIXELS}}Pixels</span><span>{{ICON_API}}API</span>
-          </div>
-          <div class="study-end">
-            {{ICON_CHECK}}Same final-state checks · separate traces and costs
-          </div>
-        </div>
-        <ul>
-          <li>Four models attempt six tasks through four interfaces, giving 96 planned runs.</li>
-          <li>
-            Each attempt starts fresh, and the interface order is randomized within each model and
-            task.
-          </li>
-          <li>The study uses a separate $25 allowance with no retries.</li>
-        </ul>
-        <ul class="sources">
-          <li>
-            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
-            cleanup, decision record.
-          </li>
-          <li>
-            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
-            $1 ceiling per cell.
-          </li>
-        </ul>
-      </section>
-      <section class="slide interface-study-results" data-title="Interface results">
-        <h2>{{INTERFACE_STUDY_TITLE}}</h2>
-        {{INTERFACE_STUDY_RESULTS}}
-        <span class="sr-only" id="interface-sort-status" role="status"></span>
-        <ul>
-          {{INTERFACE_STUDY_FINDINGS}}
-        </ul>
-        <ul class="sources">
-          <li>{{INTERFACE_STUDY_STATUS}}</li>
-          <li>
-            Pixels use low-detail screenshots. Interfaces differ in visible information and action
-            size, not just formatting.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="Main lesson">
-        <h2>The checks and the instructions must agree</h2>
+        <h2>Low scores had different causes</h2>
         <ul>
           <li>
-            I tested the checker, but I did not ask an independent reader to solve every task.
+            Reviewing the failed tasks exposed two instruction problems that grader tests had not
+            caught.
           </li>
           <li>
-            Two tasks had unclear instructions, so their scores do not measure model ability alone.
+            Other runs failed because of incorrect actions or limits, so these scores need different
+            explanations.
           </li>
         </ul>
         <div
@@ -614,7 +530,7 @@
           <div class="mismatch-sign" aria-hidden="true">≠</div>
           <div>
             <span class="diagram-label">Result check</span><strong>“Willow”</strong
-            ><span>Checker requires this exact name</span>
+            ><span>Grader requires this exact name</span>
           </div>
         </div>
         <div class="finding-grid">
@@ -646,8 +562,111 @@
           </li>
         </ul>
       </section>
+      <section class="slide" data-title="Matched interface study">
+        <h2>Comparison 2: the same tasks through four interfaces</h2>
+        <div
+          class="diagram study-design"
+          role="img"
+          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
+        >
+          <div class="study-start">
+            {{ICON_TASK}}<strong>One model + one task</strong><span>Identical starting data</span>
+          </div>
+          <div class="study-arms">
+            <span>{{ICON_A11Y}}Accessibility</span><span>{{ICON_JSON}}Page JSON</span
+            ><span>{{ICON_PIXELS}}Pixels</span><span>{{ICON_API}}API</span>
+          </div>
+          <div class="study-end">
+            {{ICON_CHECK}}Same final-state checks · separate traces and costs
+          </div>
+        </div>
+        <ul>
+          <li>I ran four models on six tasks through four interfaces, giving 96 fresh attempts.</li>
+          <li>
+            Each attempt starts fresh, and the interface order is randomized within each model and
+            task.
+          </li>
+          <li>This is a separate study with a $25 allowance and no retries.</li>
+        </ul>
+        <ul class="sources">
+          <li>
+            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
+            cleanup, decision record.
+          </li>
+          <li>
+            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
+            $1 ceiling per cell.
+          </li>
+        </ul>
+      </section>
+      <section class="slide interface-study-results" data-title="Interface results">
+        <h2>{{INTERFACE_STUDY_TITLE}}</h2>
+        {{INTERFACE_STUDY_RESULTS}}
+        <span class="sr-only" id="interface-sort-status" role="status"></span>
+        <ul>
+          {{INTERFACE_STUDY_FINDINGS}}
+        </ul>
+        <ul class="sources">
+          <li>{{INTERFACE_STUDY_STATUS}}</li>
+          <li>
+            Pixels use low-detail screenshots. Interfaces differ in visible information and action
+            size, not just formatting.
+          </li>
+        </ul>
+      </section>
+      <section class="slide" data-title="Interpreting interface results">
+        <h2>These results do not isolate model ability</h2>
+        <div
+          class="verification-map"
+          role="img"
+          aria-label="Interpret API results as tool use, blocked runs as service or limit stops, and single-attempt comparisons as preliminary evidence."
+        >
+          <div>
+            <span class="diagram-label">API and accessibility</span>{{ICON_API}}<strong
+              >{{PAIRED_BOTH}} shared passes</strong
+            ><span>Same model and task<br />Different information and actions</span>
+          </div>
+          <div>
+            <span class="diagram-label">Pixel interruptions</span>{{ICON_PIXELS}}<strong
+              >{{PIXEL_BLOCKED}} blocked runs</strong
+            ><span
+              >{{PIXEL_CONNECTIONS}} connection failures<br />3 output limits · 2 timeouts</span
+            >
+          </div>
+          <div>
+            <span class="diagram-label">Study size</span>{{ICON_TEST}}<strong
+              >One attempt per condition</strong
+            ><span>No repeat-run estimate<br />No general CUA ranking</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            API actions can perform more work per step, so equal action limits do not create
+            equivalent tests.
+          </li>
+          <li>
+            Pixel runs used low-detail images, and keyboard shortcuts depended on macOS behavior.
+          </li>
+          <li>
+            Service failures and run limits prevent some attempts from measuring task completion.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li>{{PAIRED_DETAIL}}</li>
+          <li>
+            {{PAIRED_TIMING}} These are selected successful pairs, not a general speed estimate.
+          </li>
+          <li>
+            Elapsed time also includes shared-host activity.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/interface-study-2026-10-05/analysis.md"
+              >Definitions, costs, and all matched pairs</a
+            >.
+          </li>
+        </ul>
+      </section>
       <section class="slide" data-title="Speed and resources">
-        <h2>Measure local speed before adding more workers</h2>
+        <h2>Runs have separate data, but scaling is still untested</h2>
         <div
           class="metrics"
           role="img"
@@ -668,11 +687,10 @@
         </div>
         <ul>
           <li>
-            These timings exclude model calls and do not measure how many agents can run at once.
+            Each run has separate data, but these timings exclude model calls and shared-host
+            concurrency.
           </li>
-          <li>
-            Next, measure memory use, completed runs per minute, and cleanup with several workers.
-          </li>
+          <li>The proposed worker design still needs memory, throughput, and cleanup tests.</li>
         </ul>
         <div
           class="scale-diagram"
@@ -705,7 +723,7 @@
         </ul>
       </section>
       <section class="slide" data-title="The next benchmark version">
-        <h2>Validate each task before the next comparison</h2>
+        <h2>The next version needs validated tasks and repeated runs</h2>
         <ul>
           <li>Ask someone outside the project to solve each task from its instructions.</li>
           <li>Compare their interpretation with the expected result.</li>
@@ -731,7 +749,10 @@
             {{ICON_POLICY}}Compare runs<span>Same conditions</span>
           </div>
         </div>
-        <div class="takeaway">Validate the task instructions as carefully as the grading code.</div>
+        <div class="takeaway">
+          The current results describe these attempts. Repeated runs are needed to estimate
+          reliability.
+        </div>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
@@ -745,7 +766,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Demonstration and discussion">
-        <h2>Use the app and inspect a recorded run</h2>
+        <h2>Demo and design questions</h2>
         <div class="demo-path">
           <a href="https://relay.kevinliu.studio/play"
             >{{ICON_WORKSPACE}}<span class="diagram-label">01 · Try</span

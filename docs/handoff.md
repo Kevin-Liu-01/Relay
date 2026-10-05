@@ -3,8 +3,10 @@
 ## Current evidence and presentation
 
 - The 17-slide [presentation](https://relay.kevinliu.studio/presentation) and
-  [PDF](presentation.pdf) explain the assignment, harness, workflows, controls,
-  model comparison, matched-interface results and limitations.
+  [PDF](presentation.pdf) first explain the assignment, workflows, harness,
+  interfaces, grader, and software checks. Each comparison then has its setup,
+  results, and interpretation in sequence. Scaling and next tests close the deck.
+  [Speaker notes](presentation-notes.md) include transitions between slides.
 - The original 306 attempts remain unchanged: 152 passed, 61 incomplete and 93 blocked.
 - The separate matched study completed all 96 attempts: 58 passed, 11 incomplete
   and 27 blocked. All 96 have public traces and actual-UI state replays.

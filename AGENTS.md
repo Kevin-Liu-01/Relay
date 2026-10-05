@@ -1,5 +1,17 @@
 # Relay handoff
 
+## Presentation narrative
+
+Keep the 17-slide deck in this order: assignment and workflows, harness and
+interfaces, grading and verification, model comparison and its failure review,
+matched-interface study and its interpretation, then scaling and next tests.
+Define technical terms once. Use factual headings and one idea per bullet.
+Do not restore slogan headings or insert unmatched pilot scores into the main
+story. The 306-run controls now belong on the comparison setup slide. Use
+`#main-lesson` for the failure review, never a hard-coded slide number.
+Speaker transitions and supporting detail live in `docs/presentation-notes.md`.
+Preserve the existing grades, records, accounting, and stable result links.
+
 ## Viewport layout release
 
 The homepage shell owns `100dvh`; its header and controls do not shrink. The

@@ -1,5 +1,31 @@
 # Verification and evidence
 
+## Presentation narrative revision: 2026-10-05
+
+- Rewrote the 17-slide deck around the assignment, implementation, two separate
+  comparisons, findings, and next tests. Removed slogan headings and unmatched
+  pilot scores from the main story. Each study now has its setup, results, and
+  interpretation in sequence. Speaker notes follow the same order and provide
+  transitions. Useful technical terms are defined, not banned.
+- Combined the 306-run setup and accessibility controls. Added a separate
+  interpretation of the verified interface study, including paired outcomes,
+  selected-pair time/cost differences, pixel delivery, service failures, and
+  single-attempt limitations. Values are derived from the verified evidence.
+- All **213 backend tests and six targeted browser tests passed**. Browser
+  checks cover every slide, keyboard navigation, mobile width, production CSP,
+  sortable tables, stable result links, and all 96 interface-study replays.
+  This is not a new full-browser-suite report or a new inference campaign.
+- The 17-page PDF passes the clipping check. Rendered slides were inspected.
+  An initial scaling-slide overflow was fixed by shortening its text. An
+  expanded layout test initially assumed every slide had source notes; it now
+  checks the final content element on each narrative slide.
+- Validation used a credential-free isolated production build. The original
+  actor source and root `dist` remain byte-identical. Original trial catalogs,
+  records, graders, and accounting are unchanged. No paid inference was used.
+- The optional agent-docs audit still reports missing repository enrollment
+  scaffolding and a root `SKILL.md`; these pre-existing documentation-kit gaps
+  are outside this presentation revision. Its safety and link checks pass.
+
 ## Complete matched-interface study: 2026-10-05
 
 - All **96/96** planned attempts are recorded once: **58 passed, 11 incomplete,

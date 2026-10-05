@@ -1911,7 +1911,7 @@ a:focus-visible {
     font-size: 17px;
   }
   .interface-map > div {
-    grid-template-columns: 24px 1fr 46px;
+    grid-template-columns: 24px 1fr 82px;
     padding: 14px 4px;
     gap: 8px;
     font-size: 16px;
