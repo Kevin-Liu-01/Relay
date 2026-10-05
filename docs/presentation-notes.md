@@ -14,12 +14,12 @@
 
 ## Narrative
 
-The brief required an environment and evidence of agent use. I built the app and a
-harness around model APIs. Once that system could run repeatable tests, I used it
+I approached the project by building a harness around model APIs, with separate
+action execution and result checks. Once it could run repeatable tests, I used it
 for two comparisons. Reviewing those results showed what the environment measures
 and what still needs validation.
 
-- Slides 1–3: the assignment and workflows.
+- Slides 1–3: my approach and the workflows I chose.
 - Slides 4–7: execution, interfaces, grading, and verification.
 - Slide 8: why the scope expanded from an environment into a benchmark prototype.
 - Slides 9–11: model comparison, results, and task-definition findings.
@@ -43,13 +43,14 @@ and what still needs validation.
 - **Model route:** the model identifier sent to the provider, not pinned model weights.
 - **Reservation:** allowance retained for unknown usage, not a confirmed charge.
 
-## Slide 1: The assignment
+## Slide 1: My approach
 
-- The brief asked for a runnable Slack-like environment, meaningful tasks, different interaction methods, and recorded tests.
-- My starting point was the connection between a model API and a working app.
-- A model API alone does not execute clicks, maintain a workspace, or verify task completion.
-- I needed to research computer-use interfaces, build the execution harness, and test which tasks models could complete.
-- This was not initially a plan to replace Slack or establish a general model ranking.
+- The audience already knows the problem. Start with my engineering choices, not a recap of the brief.
+- I built the harness around model APIs rather than tying it to one model.
+- I separated model requests, action execution, and grading so I could check each part independently.
+- I researched what information and controls each computer-use interface provides.
+- I kept the run process consistent so I could compare task completion across models.
+- The broader benchmark came later, once this execution and recording process worked.
 - Next: show the concrete workflow that determined what the app needed.
 
 ## Slide 2: The environment

@@ -2005,21 +2005,25 @@ a:focus-visible {
   </head>
   <body>
     <main>
-      <section class="slide active cover" data-title="The assignment" data-slide-id="the-assignment"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+      <section class="slide active cover" data-title="My approach" data-slide-id="my-approach"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="18" fill="#35263f" />
   <path fill="#fff7eb" d="M14 38V24c0-6.63 5.37-12 12-12h21L35 24h-8v14H14Z" />
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
-Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>The assignment<span class="section-number">01 / 17</span></span></header>
+Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>My approach<span class="section-number">01 / 17</span></span></header>
         <h1>
-          A Slack environment<br />
-          <em>for testing agents</em>
+          I built a harness<br />
+          <em>around model APIs</em>
         </h1>
         <ul>
           <li>
-            The assignment asked for a working Slack-like app, agent tasks, and recorded tests.
+            I separated the model API, action execution, and result checks so I could test each part
+            independently.
           </li>
-          <li>I needed a harness that connects model APIs to the app and manages each test run.</li>
+          <li>
+            I kept the run process fixed so I could change models and compare how they completed the
+            same tasks.
+          </li>
         </ul>
         <div
           class="brief-map"
@@ -2043,10 +2047,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           </div>
         </div>
         <ul class="sources">
-          <li>
-            Kevin Liu · CUA implementation exercise · October 2026 · Based on the supplied
-            assignment brief.
-          </li>
+          <li>Kevin Liu · Relay · October 2026</li>
         </ul>
       </section>
       <section class="slide" data-title="The environment" data-slide-id="the-environment"><header class="masthead"><span class="wordmark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">

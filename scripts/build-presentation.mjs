@@ -71,7 +71,7 @@ const relay = readFileSync('src/assets/relay-mark.svg', 'utf8').replace(
   '<svg aria-hidden="true" ',
 );
 const sectionIcons = {
-  'The assignment': FileCheck2,
+  'My approach': FileCheck2,
   'The environment': AppWindow,
   'All workflows': ListChecks,
   'Define success': ListChecks,

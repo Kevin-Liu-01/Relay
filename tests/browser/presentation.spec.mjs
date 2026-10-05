@@ -31,8 +31,8 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
     'two instruction problems that grader tests had not caught',
   );
-  await expect(page.locator('[data-title="The assignment"] h1')).toHaveText(
-    'A Slack environment for testing agents',
+  await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
+    'I built a harness around model APIs',
   );
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'The reusable harness made model comparisons possible',
@@ -51,7 +51,7 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
     .locator('.slide')
     .evaluateAll((slides) => slides.map((s) => s.dataset.title));
   expect(sequence).toEqual([
-    'The assignment',
+    'My approach',
     'The environment',
     'All workflows',
     'The repeatable harness',
@@ -86,8 +86,11 @@ test('presentation: seventeen readable technical slides, evidence-backed counts 
   await expect(page.locator('[data-title="Define success"]')).toContainText(
     'Workspace state is the stored data',
   );
-  await expect(page.locator('[data-title="The assignment"]')).toContainText(
-    'a harness that connects model APIs to the app and manages each test run',
+  await expect(page.locator('[data-title="My approach"]')).toContainText(
+    'I separated the model API, action execution, and result checks',
+  );
+  await expect(page.locator('[data-title="My approach"]')).not.toContainText(
+    'The assignment asked',
   );
   await expect(page.locator('[data-title="Agent interfaces"]')).not.toContainText('Earlier passes');
   await expect(page.locator('[data-title="Comparison setup"]')).toContainText('All 306 runs');

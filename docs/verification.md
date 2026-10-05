@@ -1,5 +1,16 @@
 # Verification and evidence
 
+## Approach-first opening: 2026-10-05
+
+- Slide 1 now introduces Kevin's model-API harness, separation of execution and
+  grading, and consistent run process. Removed the assignment recap and updated
+  the opening speaker notes. The remainder of the slide sequence is unchanged.
+- All four presentation browser tests passed in an isolated production build,
+  including navigation, sorting, mobile layout, and print clipping. The opening
+  slide was inspected visually, and the 17-page PDF was regenerated.
+- Original actor source, root build, and both experiment collections are
+  unchanged. No new inference or backend behavior changes.
+
 ## Presentation narrative revision: 2026-10-05
 
 - Rewrote the 17-slide deck around the assignment, implementation, two separate
