@@ -1,5 +1,22 @@
 # Verification and evidence
 
+## STE-inspired presentation writing — 2026-10-04
+
+- Rewrote the 13-slide narrative and speaker notes in short, direct technical English.
+  The story still starts with the assignment, explains the environment and harness,
+  then covers the larger comparison, results, task-design lesson, and next tests.
+- Main narrative bullets each contain one complete sentence of at most 20 words.
+  The browser test enforces these limits. Technical terms have explicit definitions;
+  detailed figures remain in the results table and the notes. This is STE-inspired
+  writing, not a claim of formal ASD-STE100 dictionary compliance.
+- All **34 focused evidence/accounting tests and five presentation/results browser
+  tests passed**, without retries. Checks cover table sorting, cost exports, all-trial
+  links, keyboard navigation, production CSP, mobile width, and 13 unclipped print
+  pages. HTML and PDF were regenerated. This is not a new full-app test run.
+- No inference was performed. The frozen 306 outcomes, cost exports, task contracts,
+  original records, and campaign summary are unchanged. Validation used a separate
+  credential-free copy and confirmed the original actor source and build were unchanged.
+
 ## Simpler homepage and guarded free access — 2026-10-04
 
 - **181 backend tests and all 94 browser tests passed**, with test retries disabled.

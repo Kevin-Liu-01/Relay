@@ -29,13 +29,13 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
   await expect(page.locator('.slide p, .slide img')).toHaveCount(0);
   await expect(page.locator('.slide table')).toHaveCount(1);
   await expect(page.locator('[data-title="Main lesson"]')).toContainText(
-    'did not independently validate every task instruction',
+    'did not ask an independent reader to solve every task',
   );
   await expect(page.locator('[data-title="The assignment"] h1')).toHaveText(
-    'I started with a working environment',
+    'I started with the assignment',
   );
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
-    'The harness made a broader comparison possible',
+    'I then used the harness to compare models',
   );
   await expect(page.locator('.scope-diagram .scope-label')).toHaveText([
     'Original assignment',
@@ -72,11 +72,21 @@ test('presentation: thirteen readable technical slides, evidence-backed counts a
     .allTextContents();
   for (const bullet of narrative) {
     const text = bullet.replace(/\s+/g, ' ').trim();
-    expect(text.split(/\s+/).length, text).toBeLessThanOrEqual(24);
+    expect(text.split(/\s+/).length, text).toBeLessThanOrEqual(20);
+    expect(
+      [...new Intl.Segmenter('en', { granularity: 'sentence' }).segment(text)],
+      text,
+    ).toHaveLength(1);
     expect(text, text).not.toMatch(
       /[;—()]|\b(?:cohort|mutation|policy|idempotency|atomicity|gateways?)\b/i,
     );
   }
+  await expect(page.locator('[data-title="Define success"]')).toContainText(
+    'Workspace state is the stored data',
+  );
+  await expect(page.locator('[data-title="The repeatable harness"]')).toContainText(
+    'The harness is the code that manages each run.',
+  );
   const summary = JSON.parse(readFileSync('evidence/campaigns/onsite-2026-10-01/summary.json'));
   for (let i = 0; i < 13; i++) {
     const slide = page.locator('.slide.active');

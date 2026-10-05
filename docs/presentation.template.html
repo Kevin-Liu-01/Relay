@@ -13,22 +13,17 @@
     <main>
       <section class="slide active cover" data-title="The assignment">
         <h1>
-          I started with a<br />
-          <em>working environment</em>
+          I started with<br />
+          <em>the assignment</em>
         </h1>
         <ul>
-          <li>
-            The brief asked for a Slack-like app that agents could use and that I could verify.
-          </li>
-          <li>
-            I focused on complete workflows, repeatable runs, and evidence that someone else could
-            inspect.
-          </li>
+          <li>The brief asked for a Slack-like app that computer-use agents could operate.</li>
+          <li>I used its three requirements to plan the work.</li>
         </ul>
         <div
           class="brief-map"
           role="img"
-          aria-label="Three requirements from the brief map to three deliverables: runnable app to Slack workflows, verification to recorded agent runs, and design discussion to measured tradeoffs."
+          aria-label="The brief has three requirements. Build a runnable app. Verify tasks with recorded agent runs. Explain isolation, speed, and resource use."
         >
           <div>
             <span class="diagram-label">Build</span>{{SLACK_MARK}}<strong>Slack workflows</strong
@@ -40,8 +35,7 @@
             ><span>Actions and result checks</span>
           </div>
           <div>
-            <span class="diagram-label">Explain</span>{{ICON_TEST}}<strong
-              >Measured tradeoffs</strong
+            <span class="diagram-label">Explain</span>{{ICON_TEST}}<strong>Design choices</strong
             ><span>Isolation, speed, and resources</span>
           </div>
         </div>
@@ -53,17 +47,11 @@
         </ul>
       </section>
       <section class="slide" data-title="The environment">
-        <h2>Build the workflows before expanding the scope</h2>
+        <h2>Build a small set of complete workflows</h2>
         <ul>
-          <li>
-            I built a focused Slack-like app with synthetic people, channels, messages, and
-            decisions.
-          </li>
-          <li>
-            Search, threads, and message editing support tasks that require finding information
-            before making a change.
-          </li>
-          <li>People and agents use the same workspace UI and state changes.</li>
+          <li>I built the app with fictional people, channels, and messages.</li>
+          <li>I chose search, threads, and message editing as the core workflows.</li>
+          <li>People and browser agents use the same interface.</li>
         </ul>
         <div
           class="diagram workflow-diagram"
@@ -72,11 +60,11 @@
         >
           <div class="flow">
             <div class="node">
-              {{ICON_SEARCH}}Find the source<span>Search channels and messages</span>
+              {{ICON_SEARCH}}Find the message<span>Search channels and messages</span>
             </div>
             <div class="arrow">{{ICON_ARROW}}</div>
             <div class="node">
-              {{ICON_THREAD}}Read the context<span>Open the relevant thread</span>
+              {{ICON_THREAD}}Read the thread<span>Check the related messages</span>
             </div>
             <div class="arrow">{{ICON_ARROW}}</div>
             <div class="node" data-tone="green">
@@ -99,14 +87,11 @@
         </ul>
       </section>
       <section class="slide" data-title="Define success">
-        <h2>Define success as a change in workspace state</h2>
+        <h2>Check the final workspace state</h2>
         <ul>
-          <li>
-            A plausible action sequence is not enough. The requested result must exist in the right
-            place.
-          </li>
-          <li>The checks verify the text, author, destination, and unchanged data.</li>
-          <li>The model cannot pass a task by saying that it finished.</li>
+          <li>Workspace state is the stored data: messages, threads, topics, and saved items.</li>
+          <li>The checker compares this data with the task requirements.</li>
+          <li>A model's claim that it finished does not affect the result.</li>
         </ul>
         <div
           class="diagram state-diagram"
@@ -134,8 +119,8 @@
         </div>
         <ul class="sources">
           <li>
-            Checks grade the final state. A wrong action that the agent fully undoes is not
-            penalized.
+            The checker grades the final state. It does not penalize a wrong action that the agent
+            fully undoes.
           </li>
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/task-suite.md"
@@ -145,7 +130,7 @@
         </ul>
       </section>
       <section class="slide" data-title="The repeatable harness">
-        <h2>Make each run repeatable and inspectable</h2>
+        <h2>Start each run in a fresh workspace</h2>
         <div
           class="diagram harness-diagram"
           role="img"
@@ -154,7 +139,7 @@
           <div class="ownership-strip">
             {{ICON_BROWSER}}New browser session<span>+</span>{{ICON_DATABASE}}Private database<span
               class="ownership-tag"
-              >One owner per run</span
+              >Separate data for each run</span
             >
           </div>
           <div class="flow">
@@ -168,34 +153,30 @@
           </div>
           <div class="loop-return"><span>Next observation</span></div>
           <div class="harness-outputs">
-            <span>{{ICON_STATE}}Final state → independent result checks</span
-            ><span>{{ICON_EVIDENCE}}Every step → trace and replay</span>
+            <span>{{ICON_STATE}}Final state → result checks</span
+            ><span>{{ICON_EVIDENCE}}Saved steps → trace and replay</span>
           </div>
         </div>
         <ul>
-          <li>The harness is the code that controls each test run.</li>
+          <li>The harness is the code that manages each run.</li>
           <li>
-            It resets the workspace, controls the loop, enforces limits, and saves the evidence.
+            It resets the workspace, sends observations, executes actions, and records results.
           </li>
-          <li>Separate workspace data prevents runs from changing each other.</li>
+          <li>Each run has its own browser session and database.</li>
         </ul>
         <ul class="sources">
           <li>
-            Playwright controls the browser. Data isolation is not a security boundary for malicious
+            Playwright controls the browser. Separate data does not protect the host from malicious
             code.
           </li>
         </ul>
       </section>
       <section class="slide" data-title="The scope expands">
-        <h2>The harness made a broader comparison possible</h2>
+        <h2>I then used the harness to compare models</h2>
         <ul>
-          <li>
-            Once I could reset, run, check, and replay a task, I could reuse that process with
-            another model.
-          </li>
-          <li>
-            I expanded the project from an environment demonstration into a benchmark prototype.
-          </li>
+          <li>The same run process worked with different models.</li>
+          <li>I used it to compare 17 models on 18 tasks.</li>
+          <li>This expanded the project into a benchmark prototype.</li>
         </ul>
         <div
           class="scope-diagram"
@@ -212,7 +193,7 @@
           <div class="arrow scope-first">{{ICON_ARROW}}</div>
           <div class="node harness">
             {{ICON_RESET}}Repeatable harness<span
-              >Reset · act · check · record<br />Swap the model</span
+              >Reset · act · check · record<br />Select a model</span
             >
           </div>
           <div class="arrow scope-second">{{ICON_ARROW}}</div>
@@ -223,11 +204,11 @@
           </div>
         </div>
         <div class="takeaway">
-          A repeatable run is necessary. A valid comparison also needs validated tasks.
+          The comparison also needs clear tasks and consistent test conditions.
         </div>
       </section>
       <section class="slide" data-title="Agent interfaces">
-        <h2>Separate computer use from direct tool use</h2>
+        <h2>Each interface gives the agent different controls</h2>
         <div
           class="interface-map"
           role="img"
@@ -242,11 +223,11 @@
             ><b>{{PIXEL_PASS_COUNT}}</b>
           </div>
           <div>
-            {{ICON_A11Y}}<strong>Accessibility</strong
-            ><span>Labeled controls → element actions</span><b>{{A11Y_PASS_COUNT}}</b>
+            {{ICON_A11Y}}<strong>Accessibility</strong><span>Named controls → element actions</span
+            ><b>{{A11Y_PASS_COUNT}}</b>
           </div>
           <div>
-            {{ICON_JSON}}<strong>Page JSON</strong><span>Structured controls → element actions</span
+            {{ICON_JSON}}<strong>Page JSON</strong><span>Controls as JSON → element actions</span
             ><b>{{JSON_PASS_COUNT}}</b>
           </div>
           <div class="api-row">
@@ -256,12 +237,10 @@
         </div>
         <ul>
           <li>
-            The earlier tests used different tasks and models. They do not show which interface is
-            better.
+            Earlier runs used different tasks and models, so they cannot show which interface works
+            best.
           </li>
-          <li>
-            The 306-run comparison uses accessibility controls only. API results stay separate.
-          </li>
+          <li>The larger comparison uses only accessibility controls.</li>
         </ul>
         <ul class="sources">
           <li>
@@ -279,7 +258,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Verification">
-        <h2>Test the software separately from the agents</h2>
+        <h2>Test the software and the agents separately</h2>
         <div
           class="verification-map"
           role="img"
@@ -302,9 +281,9 @@
           </div>
         </div>
         <ul>
-          <li>Scripted browser tests show that the workflows are possible.</li>
-          <li>Constructed states test the result checks for the 12 longer tasks.</li>
-          <li>Neither test proves that a task instruction is clear to a new reader.</li>
+          <li>Scripted browser tests confirm that the app supports each workflow.</li>
+          <li>Known valid and invalid states test the checker.</li>
+          <li>Neither check proves that a new reader can understand the task.</li>
         </ul>
         <ul class="sources">
           <li>
@@ -316,7 +295,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Comparison setup">
-        <h2>One attempt for each model and task</h2>
+        <h2>Run each task once with each model</h2>
         <div class="campaign-equation" aria-label="Models in the campaign">
           <div>{{ICON_POLICY}}<strong>17</strong><span>model routes</span></div>
           <span class="equation-sign">×</span>
@@ -329,23 +308,20 @@
           </div>
         </div>
         <ul>
-          <li>The suite has six simple tasks and 12 tasks that require several changes.</li>
-          <li>Every model uses the same task data, action format, and result checks.</li>
-          <li>
-            One attempt shows coverage. It does not establish a reliable ranking or repeatability.
-          </li>
+          <li>I used six simple tasks and 12 tasks with several steps.</li>
+          <li>All models use the same task data, action format, and result checks.</li>
+          <li>One run per pair cannot show how often a model will succeed.</li>
         </ul>
         <div class="limit-strip">
           <span><strong>40</strong> actions</span><span><strong>180 s</strong> per run</span
           ><span><strong>$5</strong> estimated allowance per run</span>
         </div>
         <ul class="sources">
+          <li>I kept 105 earlier runs and added 201 new runs. I did not replace failed runs.</li>
           <li>
-            105 earlier attempts retained + 201 continuation attempts. No recorded failure was
-            replaced.
-          </li>
-          <li>
-            <a href="https://github.com/Kevin-Liu-01/Relay">Node 24 setup and BYOK instructions</a>
+            <a href="https://github.com/Kevin-Liu-01/Relay"
+              >Node 24 setup and API key instructions</a
+            >
             ·
             <a
               href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/{{COMPARISON_ID}}.md"
@@ -423,10 +399,10 @@
         <h2>The checks and the instructions must agree</h2>
         <ul>
           <li>
-            I tested the grading code, but did not independently validate every task instruction.
+            I tested the checker, but I did not ask an independent reader to solve every task.
           </li>
           <li>
-            Trace review found two unclear tasks. Their scores do not cleanly measure model ability.
+            Two tasks had unclear instructions, so their scores do not measure model ability alone.
           </li>
         </ul>
         <div
@@ -435,13 +411,13 @@
           aria-label="Design handoff instructions quoted DESIGN without explicitly requiring substitution. Six completed runs copied DESIGN, but the grader expected Willow. This is a task-definition mismatch."
         >
           <div>
-            <span class="diagram-label">Instruction</span><strong>“DESIGN”</strong
-            ><span>Replacement was not explicit</span>
+            <span class="diagram-label">Task text</span><strong>“DESIGN”</strong
+            ><span>No instruction to replace this word</span>
           </div>
           <div class="mismatch-sign" aria-hidden="true">≠</div>
           <div>
-            <span class="diagram-label">Expected result</span><strong>“Willow”</strong
-            ><span>Six completed runs copied DESIGN</span>
+            <span class="diagram-label">Result check</span><strong>“Willow”</strong
+            ><span>Checker requires this exact name</span>
           </div>
         </div>
         <div class="finding-grid">
@@ -458,6 +434,10 @@
         </div>
         <ul class="sources">
           <li>
+            Six completed runs copied DESIGN. The task did not explain that this word was a
+            placeholder.
+          </li>
+          <li>
             Best individual models: 14 / 18 tasks. Across all models: 15 / 18 tasks passed at least
             once.
           </li>
@@ -470,7 +450,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Speed and resources">
-        <h2>Measure local costs before scaling out</h2>
+        <h2>Measure local speed before adding more workers</h2>
         <div
           class="metrics"
           role="img"
@@ -491,11 +471,10 @@
         </div>
         <ul>
           <li>
-            These timings exclude model calls. They do not measure simultaneous-agent capacity.
+            These timings exclude model calls and do not measure how many agents can run at once.
           </li>
           <li>
-            Next, measure full browser memory, sustained throughput, and cleanup under concurrent
-            runs.
+            Next, measure memory use, completed runs per minute, and cleanup with several workers.
           </li>
         </ul>
         <div
@@ -503,7 +482,7 @@
           role="img"
           aria-label="Proposed, not measured: a queue assigns runs to separate workers. Each worker owns a browser and database. Both write recordings to external storage."
         >
-          <span class="diagram-label">Proposed scale-out</span>
+          <span class="diagram-label">Proposed design</span>
           <div class="flow">
             <div class="node">{{ICON_QUEUE}}Run queue</div>
             <div class="arrow">{{ICON_ARROW}}</div>
@@ -529,39 +508,33 @@
         </ul>
       </section>
       <section class="slide" data-title="The next benchmark version">
-        <h2>Validate the test before comparing the models</h2>
+        <h2>Validate each task before the next comparison</h2>
         <ul>
-          <li>
-            Have an independent reader solve each task using only its instructions and visible
-            workspace.
-          </li>
-          <li>Test limits on long workflows before fixing the comparison settings.</li>
-          <li>
-            Use unseen task variants and matched runs to measure reliability and compare interfaces.
-          </li>
+          <li>Ask someone outside the project to solve each task from its instructions.</li>
+          <li>Compare their interpretation with the expected result.</li>
+          <li>Set run limits with both short and long tasks.</li>
+          <li>Use new task variants and repeat runs to measure reliability.</li>
         </ul>
         <div
           class="diagram next-diagram flow"
           role="img"
-          aria-label="The proposed next version reviews task instructions, calibrates limits, freezes task versions and settings, then collects matched runs."
+          aria-label="Before the next comparison, review the instructions and test the limits. Then keep the task version and settings fixed during all runs."
         >
           <div class="node">
             {{ICON_TASK}}Review instructions<span>Can a new reader solve it?</span>
           </div>
           <div class="arrow">{{ICON_ARROW}}</div>
-          <div class="node">{{ICON_TEST}}Calibrate limits<span>Include long workflows</span></div>
+          <div class="node">{{ICON_TEST}}Test the limits<span>Include long tasks</span></div>
           <div class="arrow">{{ICON_ARROW}}</div>
           <div class="node">
-            {{ICON_STATE}}Freeze the version<span>Tasks, seeds, and settings</span>
+            {{ICON_STATE}}Keep settings fixed<span>Tasks, seeds, and limits</span>
           </div>
           <div class="arrow">{{ICON_ARROW}}</div>
           <div class="node" data-tone="green">
             {{ICON_POLICY}}Compare runs<span>Same conditions</span>
           </div>
         </div>
-        <div class="takeaway">
-          The environment is reusable. Benchmark validity requires a separate validation process.
-        </div>
+        <div class="takeaway">Validate the task instructions as carefully as the grading code.</div>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/build-review.md"
@@ -575,7 +548,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Demonstration and discussion">
-        <h2>Inspect the behavior, then discuss the next test</h2>
+        <h2>Use the app and inspect a recorded run</h2>
         <div class="demo-path">
           <a href="https://relay.kevinliu.studio/play"
             >{{ICON_WORKSPACE}}<span class="diagram-label">01 · Try</span
@@ -591,9 +564,9 @@
           >
         </div>
         <ul>
-          <li>Which workflows best test the behavior you want to improve?</li>
-          <li>Should scoring include wrong actions that an agent later undoes?</li>
-          <li>What concurrency and cost targets should guide the next version?</li>
+          <li>Which workflows should the next version test?</li>
+          <li>Should the score include wrong actions that the agent later undoes?</li>
+          <li>How many agents must run at once, and what should each run cost?</li>
         </ul>
         <ul class="sources">
           <li>
