@@ -1,5 +1,21 @@
 # Verification and evidence
 
+## Tab icons and punctuation: 2026-10-04
+
+- Added Relay SVG and ICO favicons to the presentation and results pages, including
+  standalone downloads and the raw presentation template. Hosted pages publish the
+  same icon bytes on their own origin. Trial review now has an ICO fallback.
+- Short tab titles distinguish Computer use, Presentation, and Results and replays.
+  Removed em dashes from authored interface copy and presentation notes. Missing
+  numeric values display `N/A`; their empty sort values remain unchanged. Historical
+  messages, recorded model output, trial outcomes, and cost data were not rewritten.
+- All **181 backend tests and 19 targeted browser tests passed**, without retries.
+  New tests verify both icon formats, served MIME types, exact asset bytes, SVG
+  decoding, offline icons, and page titles across six public routes. Existing checks
+  cover replay, BYOK, errors, sorting, navigation, and 13 unclipped PDF pages.
+- Validation used a credential-free temporary build. The frozen root actor build
+  and historical evidence remain unchanged. No paid inference was performed.
+
 ## STE-inspired presentation writing — 2026-10-04
 
 - Rewrote the 13-slide narrative and speaker notes in short, direct technical English.

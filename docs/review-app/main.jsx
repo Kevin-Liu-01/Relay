@@ -142,7 +142,7 @@ function Trace({ record }) {
                   {event.kind === 'step' && event.action?.type ? ` · ${event.action.type}` : ''}
                 </b>
                 <small>
-                  {event.step == null ? '—' : `Step ${event.step}`} ·{' '}
+                  {event.step == null ? 'No step' : `Step ${event.step}`} ·{' '}
                   {Number.isFinite(event.elapsedMs)
                     ? `${(event.elapsedMs / 1000).toFixed(2)}s`
                     : (event.at ?? 'No timestamp')}

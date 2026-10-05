@@ -650,7 +650,7 @@ function App() {
           {currentStep?.error && <p role="alert">{currentStep.error}</p>}
           <dl>
             <dt>Requested</dt>
-            <dd>{currentStep?.response?.requestedModel ?? '—'}</dd>
+            <dd>{currentStep?.response?.requestedModel ?? 'Not selected'}</dd>
             <dt>Returned</dt>
             <dd>{currentStep?.response?.returnedModel ?? 'Not recorded'}</dd>
             <dt>Latency</dt>

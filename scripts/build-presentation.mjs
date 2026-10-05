@@ -300,6 +300,18 @@ let html = readFileSync('docs/presentation.template.html', 'utf8').replace(
   },
 );
 if (/\{\{[^}]+\}\}/.test(html)) throw Error('Unresolved presentation template field.');
+// The generated download works without adjacent assets. The raw template keeps
+// relative icon links so opening it in the repository also has a favicon.
+for (const [file, type] of [
+  ['relay-favicon.ico', 'image/x-icon'],
+  ['relay-mark.svg', 'image/svg+xml'],
+]) {
+  html = html.replaceAll(
+    `../src/assets/${file}`,
+    `data:${type};base64,${readFileSync(`src/assets/${file}`).toString('base64')}`,
+  );
+}
+const faviconLinks = html.match(/<link rel="icon"[^>]*>/g).join('');
 let sectionIndex = 0;
 html = html.replace(/(<section\b[^>]*data-title="([^"]+)"[^>]*>)/g, (_, tag, title) => {
   const icon = sectionIcons[sectionIndex++];
@@ -314,7 +326,7 @@ const dialog = html.match(/<dialog id="trials-dialog"[\s\S]*?<\/dialog>/)[0];
 const controls = html.match(/<script>[\s\S]*?<\/script>/)[0];
 writeFileSync(
   'docs/results.html',
-  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay — Results and replays</title><link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
+  `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relay · Results and replays</title>${faviconLinks}<link rel="canonical" href="https://relay.kevinliu.studio/results"><style>${values.PRESENTATION_STYLES}</style></head><body class="results-page"><header class="results-nav"><a href="/">← Relay</a><a href="/play">Try Slack</a><a href="/presentation">Presentation</a></header><main>${resultSection.replace('class="slide ', 'class="results-panel ').replace(/<span class="section-number">[\s\S]*?<\/span>/, '')}</main>${dialog}${controls}</body></html>`,
 );
 console.log(
   JSON.stringify({

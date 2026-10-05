@@ -210,7 +210,7 @@ test('comparison rendering: planned cells are not fake failures, HTML is escaped
   const html = comparisonSlide(summary);
   assert.equal((html.COMPARISON_TABLE.match(/class="trial-cell unattempted"/g) ?? []).length, 120);
   assert.equal((html.COMPARISON_TRIALS.match(/<tr(?: |>)/g) ?? []).length, 121);
-  assert.match(html.COMPARISON_TABLE, /data-sort="">—/);
+  assert.match(html.COMPARISON_TABLE, /data-sort="">N\/A/);
   assert.equal(trialsCSV(summary.rows).trim().split('\n').length, 121);
   assert.equal(escapeHTML('<img src="x">&'), '&lt;img src=&quot;x&quot;&gt;&amp;');
 });

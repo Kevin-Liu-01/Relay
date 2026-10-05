@@ -103,9 +103,22 @@ writeFileSync(
   ),
 );
 // Keep the downloadable HTML standalone; serve controls externally under the site's CSP.
+// Hosted favicons use same-origin URLs for browser tab metadata and caching.
+function publishFavicons(html) {
+  return html.replace(
+    /data:image\/(x-icon|svg\+xml);base64,([A-Za-z0-9+/=]+)/g,
+    (_, type, data) => {
+      const bytes = Buffer.from(data, 'base64');
+      const extension = type === 'x-icon' ? 'ico' : 'svg';
+      const name = `relay-icon-${createHash('sha256').update(bytes).digest('hex').slice(0, 16)}.${extension}`;
+      writeFileSync(`dist/assets/${name}`, bytes);
+      return `./assets/${name}`;
+    },
+  );
+}
 // The offline document embeds fonts. Publish those exact bytes as same-origin
 // assets without relaxing the production font-src policy.
-const presentation = readFileSync('docs/presentation.html', 'utf8').replace(
+const presentation = publishFavicons(readFileSync('docs/presentation.html', 'utf8')).replace(
   /data:font\/woff2;base64,([A-Za-z0-9+/=]+)/g,
   (_, data) => {
     const font = Buffer.from(data, 'base64');
@@ -123,7 +136,7 @@ writeFileSync(
 );
 if (existsSync('docs/presentation.pdf'))
   copyFileSync('docs/presentation.pdf', 'dist/presentation.pdf');
-const results = readFileSync('docs/results.html', 'utf8').replace(
+const results = publishFavicons(readFileSync('docs/results.html', 'utf8')).replace(
   /data:font\/woff2;base64,([A-Za-z0-9+/=]+)/g,
   (_, data) =>
     `./assets/presentation-${createHash('sha256').update(Buffer.from(data, 'base64')).digest('hex').slice(0, 16)}.woff2`,

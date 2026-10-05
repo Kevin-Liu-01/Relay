@@ -56,8 +56,8 @@ import { AgentCursor, StreamImage, StreamBadge } from './workspace-view.jsx';
 
 const MODES = { a11y: 'Accessibility', 'json-ui': 'Page JSON', pixels: 'Pixels', api: 'Actor API' };
 const elapsed = (n) =>
-  n == null ? '—' : n < 1000 ? `${Math.round(n)} ms` : `${(n / 1000).toFixed(1)} s`;
-const money = (n) => (n == null ? '—' : `$${n.toFixed(5)}`);
+  n == null ? 'N/A' : n < 1000 ? `${Math.round(n)} ms` : `${(n / 1000).toFixed(1)} s`;
+const money = (n) => (n == null ? 'N/A' : `$${n.toFixed(5)}`);
 async function api(op, body, signal) {
   const r = await fetch(
     `/api/relay?op=${op}`,
@@ -1674,7 +1674,7 @@ function App() {
                 >
                   <span>{x.event.kind}</span>
                   <small>
-                    {x.episodeId} · {x.event.step ?? '—'}
+                    {x.episodeId} · {x.event.step ?? 'No step'}
                   </small>
                 </button>
               ))}
@@ -1722,8 +1722,8 @@ function App() {
       {modal === 'demo' && (
         <Modal title="Reference demonstration" close={() => setModal(null)} wide>
           <p className="hint">
-            Recorded, scripted verification—not live inference or a model score. The public build is
-            tested on six Slack workflows.
+            Recorded, scripted verification. Not live inference or a model score. The public build
+            is tested on six Slack workflows.
           </p>
           <img
             className="demo-image"

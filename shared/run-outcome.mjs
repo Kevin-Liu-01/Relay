@@ -1,11 +1,11 @@
 // Presentation only. Never changes a recorded reward, receipt or historical run.
 export function episodeOutcome(episode) {
-  if (!episode) return { kind: 'pending', title: 'Ready', symbol: '—' };
+  if (!episode) return { kind: 'pending', title: 'Ready', symbol: '·' };
   if (['queued', 'running'].includes(episode.status))
     return {
       kind: 'pending',
       title: episode.status === 'queued' ? 'Not started' : 'Running',
-      symbol: '—',
+      symbol: '·',
     };
   const status =
     episode.providerFailure?.httpStatus ?? Number(episode.error?.match(/Router HTTP (\d{3})/)?.[1]);
@@ -41,7 +41,7 @@ export function episodeOutcome(episode) {
           episode.status,
         ),
     };
-  if (!episode.evaluation) return { kind: 'pending', title: 'Outcome unavailable', symbol: '—' };
+  if (!episode.evaluation) return { kind: 'pending', title: 'Outcome unavailable', symbol: '·' };
   return episode.evaluation.success
     ? { kind: 'passed', title: 'Task passed', symbol: '✓' }
     : { kind: 'incomplete', title: 'Task incomplete', symbol: '×' };

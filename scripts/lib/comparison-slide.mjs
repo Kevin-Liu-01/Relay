@@ -33,7 +33,7 @@ const names = {
 const heading = (name, type = 'number', direction = 'ascending') =>
   `<th scope="col" aria-sort="none"><button type="button" data-type="${type}" data-direction="${direction}">${name}<span class="sort-arrow" aria-hidden="true">↕</span></button></th>`;
 
-const money = (value) => (value == null ? '—' : `$${value.toFixed(4)}`);
+const money = (value) => (value == null ? 'N/A' : `$${value.toFixed(4)}`);
 function costCells(cost, row) {
   if (!cost)
     cost = {
@@ -73,9 +73,9 @@ function modelRows(summary, logos, reviewIds, accounting) {
       return `<tr data-model="${escapeHTML(m.model)}">
       <th scope="row" data-sort="${escapeHTML(name)}"><button class="model-identity model-name" type="button" data-review-model="${escapeHTML(m.model)}" aria-label="View ${escapeHTML(name)} trials">${logos[m.model] ?? ''}<span>${escapeHTML(name)}<small>${escapeHTML(family)}</small></span></button></th>
       ${cell(m.attempted, `<span class="trial-count">${m.attempted} / ${m.planned}</span><span class="trial-strip${m.planned > 40 ? ' dense' : ''}" aria-label="${m.passed} passed, ${m.incomplete} incomplete, ${m.blocked} blocked, ${m.unattempted} unattempted">${strip}</span>`)}
-      ${cell(m.successRate, `<strong class="pass-count">${m.attempted ? `${m.passed} / ${m.attempted}` : '—'}</strong><small>${m.successRate == null ? 'Not run' : `${Math.round(m.successRate * 100)}%`}</small>`)}
+      ${cell(m.successRate, `<strong class="pass-count">${m.attempted ? `${m.passed} / ${m.attempted}` : 'N/A'}</strong><small>${m.successRate == null ? 'Not run' : `${Math.round(m.successRate * 100)}%`}</small>`)}
       ${cell(m.incomplete, m.incomplete)}${cell(m.blocked, m.blocked)}
-      ${cell(m.medianSeconds, m.medianSeconds == null ? '—' : `${m.medianSeconds.toFixed(1)}s`)}
+      ${cell(m.medianSeconds, m.medianSeconds == null ? 'N/A' : `${m.medianSeconds.toFixed(1)}s`)}
       ${costCells(cost, m)}
       <td><button class="model-trials" type="button" data-review-model="${escapeHTML(m.model)}">${trials.length} ${trials.length === 1 ? 'trial' : 'trials'} ↗</button></td>
     </tr>`;
@@ -106,11 +106,11 @@ export function comparisonSlide(summary, logos = {}, reviewIds = new Set(), acco
     ${cell(r.task, escapeHTML(r.task))}${cell(r.seed, r.seed)}
     ${cell(r.outcome, `<span class="outcome-label" data-outcome="${r.outcome}">${escapeHTML(r.outcome)}</span>`)}
     ${cell(r.actionAttempts, r.actionAttempts)}
-    ${cell(r.durationMs, r.durationMs == null ? '—' : `${(r.durationMs / 1000).toFixed(1)}s`)}
+    ${cell(r.durationMs, r.durationMs == null ? 'N/A' : `${(r.durationMs / 1000).toFixed(1)}s`)}
     ${costCells(accounting[trialId(r)], r)}
-    ${cell(accounting[trialId(r)]?.requests, accounting[trialId(r)]?.requests ?? '—')}
-    ${cell(accounting[trialId(r)]?.inputTokens, accounting[trialId(r)]?.inputTokens?.toLocaleString('en-US') ?? '—')}
-    ${cell(accounting[trialId(r)]?.outputTokens, accounting[trialId(r)]?.outputTokens?.toLocaleString('en-US') ?? '—')}
+    ${cell(accounting[trialId(r)]?.requests, accounting[trialId(r)]?.requests ?? 'N/A')}
+    ${cell(accounting[trialId(r)]?.inputTokens, accounting[trialId(r)]?.inputTokens?.toLocaleString('en-US') ?? 'N/A')}
+    ${cell(accounting[trialId(r)]?.outputTokens, accounting[trialId(r)]?.outputTokens?.toLocaleString('en-US') ?? 'N/A')}
     <td>${escapeHTML(r.error || r.failedChecks.join(', ') || (r.outcome === 'passed' ? 'All state checks passed' : 'Not launched'))}${r.cohort ? `<small class="trial-origin">${escapeHTML(r.cohort)} · ${escapeHTML(r.originCampaign)} · ${escapeHTML(r.phase)}${r.runId ? ` · ${escapeHTML(r.runId)}` : ''}</small>` : ''}</td>
   </tr>`,
     )

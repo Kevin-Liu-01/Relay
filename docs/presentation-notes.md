@@ -7,6 +7,7 @@
 - Name the person or component that performs the action.
 - Use the same term for the same thing. Define technical terms before you depend on them.
 - Remove metaphors, vague claims, and asides that interrupt a sentence.
+- Do not use em dashes. Use a period, colon, or middle dot where appropriate.
 - Keep result limits explicit. Shorter writing must not make a stronger claim.
 - Short diagram labels can be phrases. Tables and source notes can carry detail.
 - These rules adapt the [official ASD-STE100 guidance](https://www.asd-ste100.org/STE_faq.html). This deck does not audit every word against its dictionary.
@@ -34,14 +35,14 @@
 - The diagrams explain the design. They are not captured executions.
 - This writing revision does not add model runs or change previous results.
 
-## Slide 1 — The assignment
+## Slide 1: The assignment
 
 - The brief asked for a runnable Slack-like app that computer-use agents could operate.
 - It also asked for meaningful tasks, different interaction methods, and recorded agent runs.
 - I split the work into three parts: build the app, verify tasks, and explain the design.
 - I started with a small set of complete workflows. I did not plan a full Slack replacement.
 
-## Slide 2 — The environment
+## Slide 2: The environment
 
 - I chose search, threads, and message editing as the core workflows from the brief.
 - A longer task can require an agent to find a message, read its thread, and change the correct item.
@@ -51,7 +52,7 @@
 - All workspace data is fictional. Relay does not connect to a real Slack organization.
 - I reviewed Cua Slack, env0, Agent-Diff, and UI mockups. I did not run comparisons against them.
 
-## Slide 3 — Define success
+## Slide 3: Define success
 
 - Workspace state is the stored data, such as messages, topics, and saved items.
 - The checker compares the final state with the task requirements.
@@ -62,7 +63,7 @@
 - A blocked run stays blocked, even if its diagnostic state checks pass.
 - The checker does not penalize a wrong action that the agent fully undoes. This is a design choice to discuss.
 
-## Slide 4 — The repeatable harness
+## Slide 4: The repeatable harness
 
 - The harness is the code that manages each run.
 - It starts a fresh browser session and a separate database with known data.
@@ -75,7 +76,7 @@
 - Separate databases prevent runs from changing each other's data. They do not contain malicious code that can access the host.
 - The actor and control servers currently share a process. Stronger isolation needs separate processes, containers, or virtual machines.
 
-## Slide 5 — The scope expands
+## Slide 5: The scope expands
 
 - Once the environment and harness worked, I could use the same run process with another model.
 - This let me ask which tasks different models could complete through the same interface.
@@ -84,7 +85,7 @@
 - This was an expansion of the original assignment, not a claim that I had built a validated benchmark.
 - A working harness does not prove that the task instructions are clear.
 
-## Slide 6 — Agent interfaces
+## Slide 6: Agent interfaces
 
 - Pixel mode gives the model a screenshot. The model uses mouse coordinates and keyboard actions.
 - Accessibility mode gives the model named controls and element references.
@@ -96,7 +97,7 @@
 - The larger 306-run comparison uses only accessibility mode. Keep the two studies separate.
 - Documentation and history settings are configurable. Their benefits have not been measured.
 
-## Slide 7 — Verification
+## Slide 7: Verification
 
 - Software tests and model runs answer different questions.
 - Scripted browser tests confirm that each workflow can work in the app.
@@ -105,7 +106,7 @@
 - None of these checks proves that a new reader will interpret the instructions as intended.
 - The slide uses saved full-suite reports. Newer release checks are recorded in [the verification log](verification.md).
 
-## Slide 8 — Comparison setup
+## Slide 8: Comparison setup
 
 - I used 17 model routes, 18 tasks, and one run per pair. This gives 306 attempts.
 - Six tasks are simple. Twelve tasks require several steps or changes.
@@ -119,7 +120,7 @@
 - One attempt per pair cannot show how often a model will succeed.
 - The README has Node 24 setup steps. New model runs need a provider key. The manual workspace and replays do not.
 
-## Slide 9 — Model comparison
+## Slide 9: Model comparison
 
 - All 306 attempts are recorded: 152 passed, 61 were incomplete, and 93 were blocked.
 - No planned attempt is missing. A blocked run cannot become a pass through diagnostic checks alone.
@@ -130,7 +131,7 @@
 - Costs are estimates from recorded base rates. Unknown usage keeps its reservation. Neither amount is an invoice.
 - All records remain tied to the original source and result summary. The current UI did not produce these runs.
 
-## Slide 10 — Main lesson
+## Slide 10: Main lesson
 
 - I tested the checker, but I did not ask an independent reader to solve every task before the larger comparison.
 - The checker can apply its rules correctly while the task instructions remain unclear.
@@ -144,7 +145,7 @@
 - Keep the original outcomes. Correct the instructions in a new task version before collecting new results.
 - The [failure review](campaigns/model-breadth-2026-10-03-observations.md) links to the recorded actions.
 
-## Slide 11 — Speed and resources
+## Slide 11: Speed and resources
 
 - I measured local session creation, state reset, and screenshots.
 - Median times were 17.34 ms, 1.50 ms, and 84.15 ms, respectively.
@@ -155,7 +156,7 @@
 - Test 1, 4, 8, and 16 workers. Measure memory, CPU, action time, completed runs per minute, errors, and cleanup.
 - Choose the isolation boundary based on the code and tools that agents can execute.
 
-## Slide 12 — The next benchmark version
+## Slide 12: The next benchmark version
 
 - First, ask someone outside the project to solve each task from its instructions and visible workspace.
 - Compare their interpretation with the expected result.
@@ -167,7 +168,7 @@
 - The environment is reusable. The current model comparison is exploratory.
 - The [engineering review](build-review.md) covers recording, error labels, replay ownership, and storage. Use it for follow-up questions.
 
-## Slide 13 — Demonstration and discussion
+## Slide 13: Demonstration and discussion
 
 - Open `/play`. Search `in:design navigation`, open the decision thread, and read the approval.
 - Open `/results`. Select a model and task, then open its trace and replay.
