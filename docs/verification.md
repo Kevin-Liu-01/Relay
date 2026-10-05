@@ -1,5 +1,29 @@
 # Verification and evidence
 
+## Reference-style presentation and development lessons: 2026-10-05
+
+- Restored the earlier deck's visual language: a two-color opening, actual Slack
+  mark, outlined icon labels, short bullets, and a four-node flow in a pale panel.
+  Verification, resource, interpretation, and demo cards use the same treatment.
+  The approach-first opening and newer 20-slide sequence remain intact.
+- The matched-study introduction now explains what the early development runs
+  established, why their different task/model coverage could not compare
+  interfaces, and which controls the later study uses. No third results table
+  was added. Speaker notes link the actual examples without inventing later
+  grader or parser changes.
+- All **four presentation browser tests passed** in an isolated production
+  build. They cover all slides, the updated opening, narrative rules, keyboard
+  navigation, sorting, mobile width, production security policy, and all 32
+  interface timing values. The backend suite was not rerun for this document-only
+  change. An initial selector incorrectly expected a hidden slide link to be
+  visible; it now checks that link's content and destination directly.
+- Regenerated the 20-page PDF and checked every page for overflow. Corrected two
+  initial print spacing issues, inspected slide screenshots, and rendered the
+  PDF opening to confirm its appearance. The package credential screen passed.
+- Original actor source and root `dist` remain byte-identical. Historical
+  records, grades, accounting, and interface timing data are unchanged. No new
+  inference was used.
+
 ## Interface-comparison timing: 2026-10-05
 
 - Each model/interface cell now shows median recorded elapsed seconds for all

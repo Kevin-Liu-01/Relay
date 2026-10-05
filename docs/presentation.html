@@ -27,6 +27,8 @@
   --line: #e5e2e9;
   --muted: #6f6877;
   --green: #3a8468;
+  --blue: #456c89;
+  --diagram-fill: #f7f4fa;
 }
 body {
   margin: 0;
@@ -102,7 +104,8 @@ h1 {
   max-width: 980px;
   font-size: clamp(40px, 4.6vw, 60px);
 }
-h1 em {
+h1 em,
+h2 em {
   color: var(--plum);
   font-style: normal;
 }
@@ -246,15 +249,24 @@ a {
 }
 .cover .brand-chip {
   background: #fff;
-  font-size: 17px;
-  padding: 9px 13px;
+  font-size: 19px;
+  padding: 10px 15px;
 }
 .cover .brand-chip svg {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
 }
 .cover .diagram {
   margin-bottom: 0;
+}
+.approach-flow .node {
+  padding: 22px 16px;
+  font-size: 23px;
+}
+.approach-flow .node .glyph {
+  width: 29px;
+  height: 29px;
+  margin-bottom: 16px;
 }
 .metrics {
   display: grid;
@@ -1075,6 +1087,12 @@ a:focus-visible {
     margin: 10px 0;
     padding: 14px;
   }
+  .approach-flow .node {
+    padding: 14px 16px;
+  }
+  .approach-flow .node .glyph {
+    margin-bottom: 12px;
+  }
   .sort-tools {
     display: none;
   }
@@ -1505,9 +1523,40 @@ a:focus-visible {
   flex-direction: column;
   gap: 16px;
   padding: 21px;
-  border: 1px solid var(--line);
-  border-top: 3px solid #cbb7d4;
-  border-radius: 8px;
+  border: 1px solid #e1d8e7;
+  border-radius: 12px;
+  background: var(--diagram-fill);
+}
+.check-examples > [data-tone='blue'],
+.tradeoff-grid > [data-tone='blue'] {
+  background: #f0f5fa;
+  border-color: #d0dfe9;
+}
+.check-examples > [data-tone='green'],
+.tradeoff-grid > [data-tone='green'] {
+  background: #f0f7f4;
+  border-color: #cce3d8;
+}
+.check-examples .diagram-label,
+.tradeoff-grid .diagram-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+}
+.check-examples .diagram-label svg,
+.tradeoff-grid .diagram-label svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.check-examples [data-tone='blue'] .diagram-label,
+.tradeoff-grid [data-tone='blue'] .diagram-label {
+  color: var(--blue);
+}
+.check-examples [data-tone='green'] .diagram-label,
+.tradeoff-grid [data-tone='green'] .diagram-label {
+  color: var(--green);
 }
 .check-examples strong,
 .tradeoff-grid strong {
@@ -1685,8 +1734,10 @@ a:focus-visible {
 .brief-map > div,
 .verification-map > div,
 .demo-path > a {
-  border-top: 2px solid #d1c1dc;
-  padding: 20px 0 8px;
+  border: 1px solid #e1d8e7;
+  border-radius: 12px;
+  background: var(--diagram-fill);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2051,12 +2102,16 @@ a:focus-visible {
 }
 .demo-path a {
   text-decoration: none;
-  border-top-color: var(--plum);
 }
-.demo-path a:hover,
 .demo-path a:focus-visible {
-  background: #f8f6fa;
-  border-radius: 0 0 8px 8px;
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .demo-path a:hover {
+    background: #ede5f3;
+    border-color: #bca7c8;
+  }
 }
 @media screen and (max-width: 760px) {
   .brief-map,
@@ -2087,17 +2142,20 @@ a:focus-visible {
   .ownership-tag {
     width: 100%;
   }
+  .approach-flow .flow,
   .harness-diagram .flow,
   .scale-diagram .flow,
   .next-diagram {
     flex-direction: column;
     align-items: stretch;
   }
+  .approach-flow .node,
   .harness-diagram .node,
   .scale-diagram .node,
   .next-diagram .node {
     flex-basis: auto;
   }
+  .approach-flow .arrow,
   .harness-diagram .arrow,
   .scale-diagram .arrow,
   .next-diagram .arrow {
@@ -2201,6 +2259,9 @@ a:focus-visible {
   .demo-path {
     margin: 24px 0;
   }
+  .verification-map > div {
+    padding: 16px;
+  }
   .scope-diagram {
     margin: 26px 0;
   }
@@ -2236,35 +2297,34 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           I used one harness<br />
           <em>for multiple model APIs</em>
         </h1>
+        <div class="brand-row" aria-label="What Relay supports">
+          <span class="brand-chip"><svg viewBox="0 0 2447.6 2452.5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z" fill="#36c5f0"></path><path d="m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z" fill="#2eb67d"></path><path d="m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z" fill="#ecb22e"></path><path d="m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0" fill="#e01e5a"></path></g></svg>Slack workflows</span>
+          <span class="brand-chip"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Automatic result checks</span>
+        </div>
         <ul>
           <li>
-            I used model APIs to choose actions and built a harness to execute those actions in
-            Slack.
+            I used model APIs to choose actions and built a harness to execute them in a working
+            Slack-like app.
           </li>
           <li>
-            The harness owns the starting data, browser, result checks, and recording, so changing
-            models does not require rebuilding the test.
+            I kept workspace setup, action execution, result checks, and recording separate from the
+            model.
           </li>
+          <li>This let me change models and interfaces without rebuilding the environment.</li>
         </ul>
         <div
-          class="brief-map"
+          class="diagram approach-flow"
           role="img"
-          aria-label="Three design questions: what information to send to a model, how to execute its action, and how to check that the requested change actually happened."
+          aria-label="The harness takes a task, creates a fresh workspace, executes model actions, and checks the saved result. Each run is recorded."
         >
-          <div>
-            <span class="diagram-label">Model input</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg><strong
-              >What does it see?</strong
-            ><span>Compare screenshots, page controls, and structured data.</span>
-          </div>
-          <div>
-            <span class="diagram-label">Action execution</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-timer-reset glyph" aria-hidden="true"><path d="M10 2h4"></path><path d="M12 14v-4"></path><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"></path><path d="M9 17H4v5"></path></svg><strong
-              >How does it act?</strong
-            ><span>Turn the response into a browser action or an API operation.</span>
-          </div>
-          <div>
-            <span class="diagram-label">Result check</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><strong
-              >Did the change happen?</strong
-            ><span>Check saved application data, not the model's claim.</span>
+          <div class="flow">
+            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>Task</div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Fresh<br />workspace</div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node" data-tone="blue"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot glyph" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Model<br />actions</div>
+            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right glyph" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+            <div class="node" data-tone="green"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Result<br />checks</div>
           </div>
         </div>
         <ul class="sources">
@@ -2277,7 +2337,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>The environment<span class="section-number">02 / 20</span></span></header>
-        <h2>I started with a task that needs a real saved change</h2>
+        <h2>I started with a task that needs a <em>real saved change</em></h2>
         <ul>
           <li>
             The agent must find Alex's launch-review message and change its time from 14:00 to 15:00
@@ -2337,7 +2397,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg>All workflows<span class="section-number">03 / 20</span></span></header>
-        <h2>The task set covers 18 workflows</h2>
+        <h2>The task set covers <em>18 workflows</em></h2>
         <div
           class="workflow-inventory"
           role="img"
@@ -2490,7 +2550,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-eye glyph" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="1"></circle><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"></path></svg>Agent interfaces<span class="section-number">05 / 20</span></span></header>
-        <h2>The model can use four interfaces to the same app</h2>
+        <h2>The model can use <em>four interfaces</em> to the same app</h2>
         <div
           class="interface-map"
           role="img"
@@ -2598,20 +2658,20 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           role="img"
           aria-label="A scripted browser solution checks that the task is possible. Grader tests change a correct solution into a wrong destination or an extra edit and require failure. Recording checks bind the reported result to saved actions and data."
         >
-          <div>
-            <span class="diagram-label">Can the UI do it?</span
+          <div data-tone="blue">
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Can the UI do it?</span
             ><strong>Run a scripted solution</strong>
             <span>Search → edit → Save → inspect the stored message</span
             ><b>The requested change must persist.</b>
           </div>
-          <div>
-            <span class="diagram-label">Can the grader catch a near miss?</span
+          <div data-tone="green">
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Can the grader catch a near miss?</span
             ><strong>Alter a known correct result</strong>
             <span>Wrong destination, wrong author, or one extra change</span
             ><b>The altered result must fail.</b>
           </div>
           <div>
-            <span class="diagram-label">Can I explain a model's result?</span
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Can I explain a model's result?</span
             ><strong>Reopen the recorded run</strong>
             <span>Read its actions and check its saved data again</span
             ><b>The recorded grade must agree.</b>
@@ -2643,7 +2703,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Session isolation<span class="section-number">08 / 20</span></span></header>
-        <h2>Two agents must not share mutable workspace data</h2>
+        <h2>Two agents must not share <em>mutable workspace data</em></h2>
         <ul>
           <li>If agent A edits a message, agent B must still see its own unchanged copy.</li>
           <li>
@@ -2750,18 +2810,19 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
           aria-label="SQLite limits backend services but still consumes disk and synchronous writes. Fresh browsers simplify cleanup but cost startup time and memory. Detailed recordings support review but consume storage."
         >
           <article>
-            <span class="diagram-label">Workspace data</span><strong>One SQLite file per run</strong
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database glyph" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>Workspace data</span
+            ><strong>One SQLite file per run</strong
             ><span>Simple creation, reset, and deletion</span
             ><b>Measured: 48 KiB per fixture after one post</b>
           </article>
-          <article>
-            <span class="diagram-label">Browser execution</span
+          <article data-tone="blue">
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-app-window glyph" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg>Browser execution</span
             ><strong>Fresh browser per experiment run</strong
             ><span>No browser state carried into the next run</span
             ><b>Cost: startup time and browser memory</b>
           </article>
-          <article>
-            <span class="diagram-label">Evidence</span
+          <article data-tone="green">
+            <span class="diagram-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner lucide-file-check-2 glyph" aria-hidden="true"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>Evidence</span
             ><strong>Record actions and workspace states</strong
             ><span>Review failures without new model calls</span
             ><b>Cost: growing files and disk writes</b>
@@ -2841,7 +2902,7 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 glyph" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>The scope expands<span class="section-number">12 / 20</span></span></header>
-        <h2>The reusable harness made model comparisons possible</h2>
+        <h2>The reusable harness made <em>model comparisons</em> possible</h2>
         <ul>
           <li>Once the harness worked, I could change the model without rebuilding the test.</li>
           <li>
@@ -5773,39 +5834,52 @@ Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" 
   <path fill="#c7a6e8" d="M50 26v14c0 6.63-5.37 12-12 12H17l12-12h8V26h13Z" />
 </svg>
 Relay</span><span class="section-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flask-conical glyph" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>Matched interface study<span class="section-number">16 / 20</span></span></header>
-        <h2>Comparison 2: the same tasks through four interfaces</h2>
+        <h2>What the early interface tests <em>taught me</em></h2>
+        <ul>
+          <li>
+            These runs showed the harness could record successes, wrong actions, and interrupted
+            runs.
+          </li>
+          <li>
+            They used different task and model combinations, so their pooled scores could not
+            compare interfaces.
+          </li>
+          <li>
+            For the next study, I gave every model the same six tasks through all four interfaces.
+          </li>
+        </ul>
         <div
           class="diagram study-design"
           role="img"
-          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
+          aria-label="The later matched study repeats every model and task across four fresh workspaces with identical starting data and final-state checks. Accessibility, Page JSON, and pixels control the browser; API is tool use. Four models, six tasks, and four interfaces give 96 fresh attempts."
         >
           <div class="study-start">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg><strong>One model + one task</strong><span>Identical starting data</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks glyph" aria-hidden="true"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path></svg><strong>Later study: one model + one task</strong
+            ><span>Four fresh workspaces · identical starting data</span>
           </div>
           <div class="study-arms">
             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility glyph" aria-hidden="true"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg>Accessibility</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces lucide-curly-braces glyph" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>Page JSON</span
-            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg>Pixels</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg>API</span>
+            ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-2 glyph" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"></path></svg>Pixels</span><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable glyph" aria-hidden="true"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"></path><path d="M17 21v-2"></path><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"></path><path d="M21 21v-2"></path><path d="M3 5V3"></path><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"></path><path d="M7 5V3"></path></svg>API · tool use</span>
           </div>
           <div class="study-end">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Same final-state checks · separate traces and costs
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check glyph" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Same final-state checks · 4 models × 6 tasks × 4 interfaces = 96 attempts
           </div>
         </div>
-        <ul>
-          <li>I ran four models on six tasks through four interfaces, giving 96 fresh attempts.</li>
-          <li>
-            Each attempt starts fresh, and the interface order is randomized within each model and
-            task.
-          </li>
-          <li>This is a separate study with a $25 allowance and no retries.</li>
-        </ul>
         <ul class="sources">
           <li>
-            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
-            cleanup, decision record.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
+              >Early development traces</a
+            >
+            are separate evidence, not a third benchmark or part of the later scores.
           </li>
           <li>
-            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
-            $1 ceiling per cell.
+            Later study: randomized interface order · fixed seed, history, reasoning, and limits ·
+            $25 total · no retries.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/interface-study-2026-10-05.md"
+              >Full design and controls</a
+            >.
           </li>
         </ul>
       </section>

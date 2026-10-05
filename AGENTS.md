@@ -29,6 +29,14 @@ The interface table shows median elapsed seconds for all attempts and passed
 tasks separately. Derive both from verified episode durations. Keep N/A for no
 passed tasks, disclose early stops and different successful subsets, and do not
 present these descriptive medians as a speed ranking.
+Early interface attempts belong only in the learning/refinement story: what the
+traces established, why mixed task/model coverage could not compare interfaces,
+and what the later matched study controls. Do not restore a third results table
+or claim the existing grader/action validator was added after those early runs.
+Use the reference deck's visual language: a two-color opening, outlined icon
+labels, short bullets, and pale diagram panels with distinct nodes. Keep actual
+brand marks and Camber. Use blue for execution and green for checks or evidence.
+Preserve the newer 20-slide story and verified tables when changing the style.
 
 ## Viewport layout release
 

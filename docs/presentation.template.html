@@ -19,35 +19,34 @@
           I used one harness<br />
           <em>for multiple model APIs</em>
         </h1>
+        <div class="brand-row" aria-label="What Relay supports">
+          <span class="brand-chip">{{SLACK_MARK}}Slack workflows</span>
+          <span class="brand-chip">{{ICON_CHECK}}Automatic result checks</span>
+        </div>
         <ul>
           <li>
-            I used model APIs to choose actions and built a harness to execute those actions in
-            Slack.
+            I used model APIs to choose actions and built a harness to execute them in a working
+            Slack-like app.
           </li>
           <li>
-            The harness owns the starting data, browser, result checks, and recording, so changing
-            models does not require rebuilding the test.
+            I kept workspace setup, action execution, result checks, and recording separate from the
+            model.
           </li>
+          <li>This let me change models and interfaces without rebuilding the environment.</li>
         </ul>
         <div
-          class="brief-map"
+          class="diagram approach-flow"
           role="img"
-          aria-label="Three design questions: what information to send to a model, how to execute its action, and how to check that the requested change actually happened."
+          aria-label="The harness takes a task, creates a fresh workspace, executes model actions, and checks the saved result. Each run is recorded."
         >
-          <div>
-            <span class="diagram-label">Model input</span>{{ICON_PIXELS}}<strong
-              >What does it see?</strong
-            ><span>Compare screenshots, page controls, and structured data.</span>
-          </div>
-          <div>
-            <span class="diagram-label">Action execution</span>{{ICON_RESET}}<strong
-              >How does it act?</strong
-            ><span>Turn the response into a browser action or an API operation.</span>
-          </div>
-          <div>
-            <span class="diagram-label">Result check</span>{{ICON_CHECK}}<strong
-              >Did the change happen?</strong
-            ><span>Check saved application data, not the model's claim.</span>
+          <div class="flow">
+            <div class="node">{{ICON_TASK}}Task</div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node">{{ICON_WORKSPACE}}Fresh<br />workspace</div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="blue">{{ICON_POLICY}}Model<br />actions</div>
+            <div class="arrow">{{ICON_ARROW}}</div>
+            <div class="node" data-tone="green">{{ICON_CHECK}}Result<br />checks</div>
           </div>
         </div>
         <ul class="sources">
@@ -55,7 +54,7 @@
         </ul>
       </section>
       <section class="slide" data-title="The environment">
-        <h2>I started with a task that needs a real saved change</h2>
+        <h2>I started with a task that needs a <em>real saved change</em></h2>
         <ul>
           <li>
             The agent must find Alex's launch-review message and change its time from 14:00 to 15:00
@@ -110,7 +109,7 @@
         </ul>
       </section>
       <section class="slide workflow-inventory-slide" data-title="All workflows">
-        <h2>The task set covers 18 workflows</h2>
+        <h2>The task set covers <em>18 workflows</em></h2>
         <div
           class="workflow-inventory"
           role="img"
@@ -253,7 +252,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Agent interfaces">
-        <h2>The model can use four interfaces to the same app</h2>
+        <h2>The model can use <em>four interfaces</em> to the same app</h2>
         <div
           class="interface-map"
           role="img"
@@ -351,20 +350,20 @@
           role="img"
           aria-label="A scripted browser solution checks that the task is possible. Grader tests change a correct solution into a wrong destination or an extra edit and require failure. Recording checks bind the reported result to saved actions and data."
         >
-          <div>
-            <span class="diagram-label">Can the UI do it?</span
+          <div data-tone="blue">
+            <span class="diagram-label">{{ICON_WORKSPACE}}Can the UI do it?</span
             ><strong>Run a scripted solution</strong>
             <span>Search → edit → Save → inspect the stored message</span
             ><b>The requested change must persist.</b>
           </div>
-          <div>
-            <span class="diagram-label">Can the grader catch a near miss?</span
+          <div data-tone="green">
+            <span class="diagram-label">{{ICON_CHECK}}Can the grader catch a near miss?</span
             ><strong>Alter a known correct result</strong>
             <span>Wrong destination, wrong author, or one extra change</span
             ><b>The altered result must fail.</b>
           </div>
           <div>
-            <span class="diagram-label">Can I explain a model's result?</span
+            <span class="diagram-label">{{ICON_EVIDENCE}}Can I explain a model's result?</span
             ><strong>Reopen the recorded run</strong>
             <span>Read its actions and check its saved data again</span
             ><b>The recorded grade must agree.</b>
@@ -391,7 +390,7 @@
         </ul>
       </section>
       <section class="slide" data-title="Session isolation">
-        <h2>Two agents must not share mutable workspace data</h2>
+        <h2>Two agents must not share <em>mutable workspace data</em></h2>
         <ul>
           <li>If agent A edits a message, agent B must still see its own unchanged copy.</li>
           <li>
@@ -488,18 +487,19 @@
           aria-label="SQLite limits backend services but still consumes disk and synchronous writes. Fresh browsers simplify cleanup but cost startup time and memory. Detailed recordings support review but consume storage."
         >
           <article>
-            <span class="diagram-label">Workspace data</span><strong>One SQLite file per run</strong
+            <span class="diagram-label">{{ICON_DATABASE}}Workspace data</span
+            ><strong>One SQLite file per run</strong
             ><span>Simple creation, reset, and deletion</span
             ><b>Measured: 48 KiB per fixture after one post</b>
           </article>
-          <article>
-            <span class="diagram-label">Browser execution</span
+          <article data-tone="blue">
+            <span class="diagram-label">{{ICON_BROWSER}}Browser execution</span
             ><strong>Fresh browser per experiment run</strong
             ><span>No browser state carried into the next run</span
             ><b>Cost: startup time and browser memory</b>
           </article>
-          <article>
-            <span class="diagram-label">Evidence</span
+          <article data-tone="green">
+            <span class="diagram-label">{{ICON_EVIDENCE}}Evidence</span
             ><strong>Record actions and workspace states</strong
             ><span>Review failures without new model calls</span
             ><b>Cost: growing files and disk writes</b>
@@ -569,7 +569,7 @@
         </ul>
       </section>
       <section class="slide" data-title="The scope expands">
-        <h2>The reusable harness made model comparisons possible</h2>
+        <h2>The reusable harness made <em>model comparisons</em> possible</h2>
         <ul>
           <li>Once the harness worked, I could change the model without rebuilding the test.</li>
           <li>
@@ -761,39 +761,52 @@
         </ul>
       </section>
       <section class="slide" data-title="Matched interface study">
-        <h2>Comparison 2: the same tasks through four interfaces</h2>
+        <h2>What the early interface tests <em>taught me</em></h2>
+        <ul>
+          <li>
+            These runs showed the harness could record successes, wrong actions, and interrupted
+            runs.
+          </li>
+          <li>
+            They used different task and model combinations, so their pooled scores could not
+            compare interfaces.
+          </li>
+          <li>
+            For the next study, I gave every model the same six tasks through all four interfaces.
+          </li>
+        </ul>
         <div
           class="diagram study-design"
           role="img"
-          aria-label="For each model and task, start four fresh workspaces with the same data. Compare accessibility, Page JSON, pixels, and API. Use the same final-state checks."
+          aria-label="The later matched study repeats every model and task across four fresh workspaces with identical starting data and final-state checks. Accessibility, Page JSON, and pixels control the browser; API is tool use. Four models, six tasks, and four interfaces give 96 fresh attempts."
         >
           <div class="study-start">
-            {{ICON_TASK}}<strong>One model + one task</strong><span>Identical starting data</span>
+            {{ICON_TASK}}<strong>Later study: one model + one task</strong
+            ><span>Four fresh workspaces · identical starting data</span>
           </div>
           <div class="study-arms">
             <span>{{ICON_A11Y}}Accessibility</span><span>{{ICON_JSON}}Page JSON</span
-            ><span>{{ICON_PIXELS}}Pixels</span><span>{{ICON_API}}API</span>
+            ><span>{{ICON_PIXELS}}Pixels</span><span>{{ICON_API}}API · tool use</span>
           </div>
           <div class="study-end">
-            {{ICON_CHECK}}Same final-state checks · separate traces and costs
+            {{ICON_CHECK}}Same final-state checks · 4 models × 6 tasks × 4 interfaces = 96 attempts
           </div>
         </div>
-        <ul>
-          <li>I ran four models on six tasks through four interfaces, giving 96 fresh attempts.</li>
-          <li>
-            Each attempt starts fresh, and the interface order is randomized within each model and
-            task.
-          </li>
-          <li>This is a separate study with a $25 allowance and no retries.</li>
-        </ul>
         <ul class="sources">
           <li>
-            Sol, Sonnet, Qwen and Grok · topic, thread reply, message edit, incident closeout, saved
-            cleanup, decision record.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md"
+              >Early development traces</a
+            >
+            are separate evidence, not a third benchmark or part of the later scores.
           </li>
           <li>
-            Seed 2042 · low reasoning · recent-four history · no guide · 40 actions · 180 seconds ·
-            $1 ceiling per cell.
+            Later study: randomized interface order · fixed seed, history, reasoning, and limits ·
+            $25 total · no retries.
+            <a
+              href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/campaigns/interface-study-2026-10-05.md"
+              >Full design and controls</a
+            >.
           </li>
         </ul>
       </section>

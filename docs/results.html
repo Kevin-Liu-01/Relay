@@ -16,6 +16,8 @@
   --line: #e5e2e9;
   --muted: #6f6877;
   --green: #3a8468;
+  --blue: #456c89;
+  --diagram-fill: #f7f4fa;
 }
 body {
   margin: 0;
@@ -91,7 +93,8 @@ h1 {
   max-width: 980px;
   font-size: clamp(40px, 4.6vw, 60px);
 }
-h1 em {
+h1 em,
+h2 em {
   color: var(--plum);
   font-style: normal;
 }
@@ -235,15 +238,24 @@ a {
 }
 .cover .brand-chip {
   background: #fff;
-  font-size: 17px;
-  padding: 9px 13px;
+  font-size: 19px;
+  padding: 10px 15px;
 }
 .cover .brand-chip svg {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
 }
 .cover .diagram {
   margin-bottom: 0;
+}
+.approach-flow .node {
+  padding: 22px 16px;
+  font-size: 23px;
+}
+.approach-flow .node .glyph {
+  width: 29px;
+  height: 29px;
+  margin-bottom: 16px;
 }
 .metrics {
   display: grid;
@@ -1064,6 +1076,12 @@ a:focus-visible {
     margin: 10px 0;
     padding: 14px;
   }
+  .approach-flow .node {
+    padding: 14px 16px;
+  }
+  .approach-flow .node .glyph {
+    margin-bottom: 12px;
+  }
   .sort-tools {
     display: none;
   }
@@ -1494,9 +1512,40 @@ a:focus-visible {
   flex-direction: column;
   gap: 16px;
   padding: 21px;
-  border: 1px solid var(--line);
-  border-top: 3px solid #cbb7d4;
-  border-radius: 8px;
+  border: 1px solid #e1d8e7;
+  border-radius: 12px;
+  background: var(--diagram-fill);
+}
+.check-examples > [data-tone='blue'],
+.tradeoff-grid > [data-tone='blue'] {
+  background: #f0f5fa;
+  border-color: #d0dfe9;
+}
+.check-examples > [data-tone='green'],
+.tradeoff-grid > [data-tone='green'] {
+  background: #f0f7f4;
+  border-color: #cce3d8;
+}
+.check-examples .diagram-label,
+.tradeoff-grid .diagram-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+}
+.check-examples .diagram-label svg,
+.tradeoff-grid .diagram-label svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.check-examples [data-tone='blue'] .diagram-label,
+.tradeoff-grid [data-tone='blue'] .diagram-label {
+  color: var(--blue);
+}
+.check-examples [data-tone='green'] .diagram-label,
+.tradeoff-grid [data-tone='green'] .diagram-label {
+  color: var(--green);
 }
 .check-examples strong,
 .tradeoff-grid strong {
@@ -1674,8 +1723,10 @@ a:focus-visible {
 .brief-map > div,
 .verification-map > div,
 .demo-path > a {
-  border-top: 2px solid #d1c1dc;
-  padding: 20px 0 8px;
+  border: 1px solid #e1d8e7;
+  border-radius: 12px;
+  background: var(--diagram-fill);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2040,12 +2091,16 @@ a:focus-visible {
 }
 .demo-path a {
   text-decoration: none;
-  border-top-color: var(--plum);
 }
-.demo-path a:hover,
 .demo-path a:focus-visible {
-  background: #f8f6fa;
-  border-radius: 0 0 8px 8px;
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .demo-path a:hover {
+    background: #ede5f3;
+    border-color: #bca7c8;
+  }
 }
 @media screen and (max-width: 760px) {
   .brief-map,
@@ -2076,17 +2131,20 @@ a:focus-visible {
   .ownership-tag {
     width: 100%;
   }
+  .approach-flow .flow,
   .harness-diagram .flow,
   .scale-diagram .flow,
   .next-diagram {
     flex-direction: column;
     align-items: stretch;
   }
+  .approach-flow .node,
   .harness-diagram .node,
   .scale-diagram .node,
   .next-diagram .node {
     flex-basis: auto;
   }
+  .approach-flow .arrow,
   .harness-diagram .arrow,
   .scale-diagram .arrow,
   .next-diagram .arrow {
@@ -2189,6 +2247,9 @@ a:focus-visible {
   .verification-map,
   .demo-path {
     margin: 24px 0;
+  }
+  .verification-map > div {
+    padding: 16px;
   }
   .scope-diagram {
     margin: 26px 0;

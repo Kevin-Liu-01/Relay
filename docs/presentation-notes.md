@@ -23,8 +23,14 @@ A model API gives me a proposed action. I still need to execute it, preserve the
 application's rules, and determine whether it worked. I built those parts once
 so I could change the model without changing the test.
 
-The three questions on this slide define the system: what to send the model,
-how to execute its response, and how to check the saved result.
+Use the flow to explain ownership: the harness takes a task, creates a fresh
+workspace, executes model actions, and checks the saved result. The model selects
+actions; the harness controls the environment and the record of what happened.
+
+The restored visual style uses the older deck's two-color opening, outlined icon
+labels, short bullets, and contained diagrams. It does not restore the older
+wording, unmatched results, or slide order. Purple identifies the harness, blue
+identifies execution, and green identifies checks or saved evidence.
 
 Next: use a specific Slack task to show what this requires.
 
@@ -240,9 +246,26 @@ release-sync has an unclear source location; every retrospective run hit a limit
 Sol and Astra entered a correct handoff edit, then clicked Cancel. Those are
 different explanations, not one general statement that long tasks are impossible.
 
-Next: compare interface choices using a separate study.
+Next: explain what the early development runs taught me before showing the separate interface comparison.
 
 ## 16. Matched interface study
+
+This is a learning and design-refinement slide, not another results table.
+The early onsite campaign attempted 20 of 30 planned runs. It exercised several
+interfaces, but did not give every interface the same task/model combinations.
+For example, its only attempted pixel run was Mini on topic update, while the
+other interfaces covered more tasks and also used Luna.
+
+Those traces were useful for checking the harness. Mini posted a requested topic
+as a message and claimed completion; the state grader rejected it. A pixel run
+returned malformed multi-action outputs; the parser rejected them without
+changing the workspace. These examples support the existing validation design.
+Do not claim that the grader or action validator was added after these runs.
+
+The comparison needed a change: use the same models, tasks, starting data, and
+outcome checks for every interface. The later study does that. It also labels API
+as tool use, because semantic operations skip browser interaction. This tighter
+design still does not isolate visual reasoning or prove a general winner.
 
 Four image-capable routes, six tasks, four interfaces, one attempt each gives 96.
 Each model/task block starts from four fresh copies of the same data. Interface
@@ -250,9 +273,12 @@ order is randomized within the block.
 
 The plan fixed $25 total, $1 per run, 40 actions, 180 seconds, 90 seconds per
 request, 4,096 output tokens, low reasoning, seed 2042, recent-four history, and no
-guide. There are no retries. The original 306 trials are not reused as its baseline.
+guide. There are no retries. Neither the early development attempts nor the
+original 306 trials are reused as its baseline. The full controls remain linked
+on the slide. Models are Sol, Sonnet, Qwen, and Grok; tasks are topic update,
+thread reply, message edit, incident closeout, saved cleanup, and decision record.
 
-Next: show the full matrix, including stops.
+Next: show what happened under that matched design, including every stop.
 
 ## 17. Interface results
 

@@ -34,6 +34,15 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="My approach"] h1')).toHaveText(
     'I used one harness for multiple model APIs',
   );
+  await expect(page.locator('.cover .brand-chip')).toHaveText([
+    'Slack workflows',
+    'Automatic result checks',
+  ]);
+  await expect(page.locator('.cover .brand-chip svg')).toHaveCount(2);
+  await expect(page.locator('.approach-flow .node')).toHaveCount(4);
+  await expect(page.locator('.approach-flow .node[data-tone="blue"]')).toHaveText('Modelactions');
+  await expect(page.locator('.approach-flow .node[data-tone="green"]')).toHaveText('Resultchecks');
+  await expect(page.locator('.approach-flow')).toHaveCSS('background-color', 'rgb(247, 244, 250)');
   await expect(page.locator('[data-title="The scope expands"] h2')).toHaveText(
     'The reusable harness made model comparisons possible',
   );
@@ -96,6 +105,22 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
     'The assignment asked',
   );
   await expect(page.locator('[data-title="Agent interfaces"]')).not.toContainText('Earlier passes');
+  await expect(page.locator('main')).not.toContainText('Results from the earlier interface tests');
+  const refinement = page.locator('[data-title="Matched interface study"]');
+  await expect(refinement.locator('h2')).toHaveText('What the early interface tests taught me');
+  await expect(refinement).toContainText('their pooled scores could not compare interfaces');
+  await expect(refinement).toContainText(
+    'every model the same six tasks through all four interfaces',
+  );
+  await expect(refinement).toContainText('API · tool use');
+  await expect(refinement).toContainText('96 attempts');
+  await expect(refinement.locator('table')).toHaveCount(0);
+  await expect(
+    refinement.locator('a').filter({ hasText: 'Early development traces' }),
+  ).toHaveAttribute(
+    'href',
+    'https://github.com/Kevin-Liu-01/Relay/blob/main/evidence/campaigns/onsite-2026-10-01/README.md',
+  );
   await expect(page.locator('[data-title="Comparison setup"]')).toContainText('All 306 runs');
   await expect(page.locator('[data-title="Session isolation"]')).toContainText(
     'Launch review stays at 14:00',
