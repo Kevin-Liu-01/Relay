@@ -111,6 +111,23 @@ test('presentation: twenty readable technical slides, evidence-backed counts and
   await expect(page.locator('[data-title="Define success"] h2')).toHaveText(
     'Success means the requested change was saved',
   );
+  const verification = page.locator('[data-title="Verification"]');
+  await expect(verification.locator('h2')).toHaveText('I tested the success rule on the same edit');
+  await expect(verification).toContainText(
+    "Alex's original message must change from 14:00 to 15:00",
+  );
+  await expect(verification.locator('.diagram-label')).toHaveText([
+    'App test',
+    'Grader test',
+    'Recording test',
+  ]);
+  await expect(verification).toContainText(
+    'Keep 14:00, or save 15:00 and add an unrelated message.',
+  );
+  await expect(verification).toContainText('Recomputed grade = recorded grade');
+  await expect(verification).toContainText(
+    'Passing these tests does not prove the task instructions are clear.',
+  );
   await expect(page.locator('[data-title="My approach"]')).toContainText(
     'I studied how agents observe and act on pages',
   );

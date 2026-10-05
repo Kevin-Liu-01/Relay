@@ -130,11 +130,18 @@ Next: explain how I tested this check without trusting a model.
 
 ## 7. Verification
 
-The three examples test different things.
+The previous slide defines success: change Alex's original message from 14:00
+to 15:00 and leave the rest of the workspace unchanged. This slide tests whether
+the implementation follows that rule.
 
-- A scripted browser solution tests whether the UI can complete the task.
-- Deliberately wrong versions of a correct state test whether the grader rejects near misses.
-- Reopening a recording tests whether its saved grade agrees with the saved data.
+- App test: a script makes the edit through the UI, saves it, and checks the
+  stored result. This establishes that the app can complete the workflow.
+- Grader test: supply the unchanged 14:00 state, then a correct 15:00 edit with
+  an extra message. Both must fail. The first checks the required edit; the
+  second checks the previous slide's no-extra-changes rule.
+- Recording test: open a saved run and grade its final workspace again. The
+  recomputed grade must match the recorded grade. This is an offline check,
+  not a second model attempt or replaying actions to manufacture a new result.
 
 The long-workflow challenge report contains 84 valid and 2,583 invalid states
 across seven seeds. Those are software checks, not thousands of model attempts.

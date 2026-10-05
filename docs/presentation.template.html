@@ -356,52 +356,45 @@
         </ul>
       </section>
       <section class="slide" data-title="Verification">
-        <h2>I tested correct and nearly correct outcomes separately</h2>
+        <h2>I tested the success rule on the same edit</h2>
+        <ul>
+          <li>Alex's original message must change from 14:00 to 15:00, with no other changes.</li>
+        </ul>
         <div
           class="check-examples"
           role="img"
-          aria-label="A scripted browser solution checks that the task is possible. Grader tests change a correct solution into a wrong destination or an extra edit and require failure. Recording checks bind the reported result to saved actions and data."
+          aria-label="Three checks of the same message edit: a scripted UI edit saves 15:00 and passes; unchanged 14:00 or an extra message fails; grading the archived final workspace reproduces its recorded grade."
         >
           <div data-tone="blue">
-            <span class="diagram-label">{{ICON_WORKSPACE}}Can the UI do it?</span
-            ><strong>Run a scripted solution</strong>
-            <span>Search → edit → Save → inspect the stored message</span
-            ><b>The requested change must persist.</b>
+            <span class="diagram-label">{{ICON_WORKSPACE}}App test</span
+            ><strong>Save the requested edit</strong>
+            <span>A script uses the UI to edit Alex's message, then reads the stored data.</span
+            ><b>15:00 saved → expected pass</b>
           </div>
           <div data-tone="green">
-            <span class="diagram-label">{{ICON_CHECK}}Can the grader catch a near miss?</span
-            ><strong>Alter a known correct result</strong>
-            <span>Wrong destination, wrong author, or one extra change</span
-            ><b>The altered result must fail.</b>
+            <span class="diagram-label">{{ICON_CHECK}}Grader test</span
+            ><strong>Give it incorrect saved data</strong>
+            <span>Keep 14:00, or save 15:00 and add an unrelated message.</span
+            ><b>Either case → expected failure</b>
           </div>
           <div>
-            <span class="diagram-label">{{ICON_EVIDENCE}}Can I explain a model's result?</span
-            ><strong>Reopen the recorded run</strong>
-            <span>Read its actions and check its saved data again</span
-            ><b>The recorded grade must agree.</b>
+            <span class="diagram-label">{{ICON_EVIDENCE}}Recording test</span
+            ><strong>Recheck the saved run</strong>
+            <span
+              >Run the same grader on the archived final workspace, without calling the model.</span
+            ><b>Recomputed grade = recorded grade</b>
           </div>
         </div>
         <ul>
-          <li>
-            A failed run can come from the app, the grader, or the model, so I check each
-            separately.
-          </li>
-          <li>
-            I inspect the saved actions and data to explain the failure without buying another
-            attempt.
-          </li>
-          <li>
-            A scripted solution tests my intended answer, not whether another reader understands the
-            task.
-          </li>
+          <li>This helps distinguish software errors from a model taking the wrong action.</li>
+          <li>Passing these tests does not prove the task instructions are clear.</li>
         </ul>
         <ul class="sources">
           <li>
             <a href="https://github.com/Kevin-Liu-01/Relay/blob/main/docs/verification.md"
               >Software verification</a
             >
-            · The longer-workflow grader tests cover 84 valid and 2,583 invalid states across seven
-            seeds.
+            · Broader workflow tests cover 84 valid and 2,583 invalid states across seven seeds.
           </li>
         </ul>
       </section>

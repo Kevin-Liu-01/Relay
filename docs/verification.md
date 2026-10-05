@@ -1,5 +1,15 @@
 # Verification and evidence
 
+## Verification-slide continuity: 2026-10-05
+
+- Connected the verification slide to the preceding success definition using
+  the same 14:00-to-15:00 message edit. The three cards now explain the app
+  test, incorrect-state grader tests, and offline regrading of a saved run.
+  Speaker notes distinguish these checks from new model attempts.
+- All four presentation browser tests passed in an isolated production build.
+  Checked all 20 print pages and mobile width, inspected slide 7, and regenerated
+  HTML/PDF. Historical results and the frozen actor source/build are unchanged.
+
 ## Slide-one title: 2026-10-05
 
 - Changed the opening title to “How does an Agent use Slack?” as requested.
