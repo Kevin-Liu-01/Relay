@@ -2325,6 +2325,9 @@ a:focus-visible {
   display: contents;
 }
 @media screen {
+  :root:has(.presentation-page) {
+    scrollbar-gutter: stable;
+  }
   .presentation-page main {
     width: calc(100% - 48px);
     margin-bottom: 108px;
@@ -2368,6 +2371,7 @@ a:focus-visible {
     overflow: hidden;
   }
   .presenter-dock {
+    position: fixed;
     left: 50%;
     right: auto;
     bottom: max(16px, env(safe-area-inset-bottom));
@@ -2415,8 +2419,13 @@ a:focus-visible {
     justify-content: start;
     gap: 12px;
     text-align: left;
-    min-width: 165px;
-    max-width: 250px;
+    /* Slide titles must not resize the dock or move its navigation targets. */
+    flex: 0 1 240px;
+    width: 240px;
+    min-width: 0;
+    max-width: none;
+    height: 48px;
+    padding-block: 4px;
   }
   .slide-picker > span {
     min-width: 0;
@@ -2870,6 +2879,8 @@ a:focus-visible {
       display: none;
     }
     .presenter-dock .slide-picker {
+      flex-basis: 90px;
+      width: 90px;
       min-width: 0;
       max-width: none;
       gap: 8px;
@@ -2911,6 +2922,10 @@ a:focus-visible {
     }
   }
   @media (max-width: 380px) {
+    .presenter-dock .slide-picker {
+      flex-basis: 60px;
+      width: 60px;
+    }
     .presentation-page:not(.deck-presenting) :is(#prev, #next, #toggle-present) {
       padding-inline: 8px;
     }

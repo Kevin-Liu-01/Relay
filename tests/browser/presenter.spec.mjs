@@ -4,6 +4,70 @@ import { pathToFileURL } from 'node:url';
 
 const deck = (hash = '') => pathToFileURL(resolve('docs/presentation.html')).href + hash;
 
+test('bottom dock and every navigation target stay fixed across all slide titles', async ({
+  page,
+}, testInfo) => {
+  test.setTimeout(90000);
+  await page.addInitScript(() => {
+    Element.prototype.requestFullscreen = async () => {
+      throw new Error('Test the dock in a fixed viewport');
+    };
+  });
+  await page.goto(deck('#my-approach'));
+  await page.evaluate(() => document.fonts.ready);
+  await expect(page.locator('html')).toHaveCSS('scrollbar-gutter', 'stable');
+  const geometry = () =>
+    page.locator('.presenter-dock').evaluate((dock) =>
+      [dock, ...dock.querySelectorAll(':scope > button')].map((node) => {
+        const r = node.getBoundingClientRect();
+        return { id: node.id || 'dock', x: r.x, y: r.y, width: r.width, height: r.height };
+      }),
+    );
+  for (const size of [
+    { width: 1440, height: 900 },
+    { width: 800, height: 600 },
+    { width: 390, height: 844 },
+    { width: 320, height: 740 },
+  ]) {
+    await page.setViewportSize(size);
+    for (const slides of [false, true]) {
+      if (slides) await page.getByRole('button', { name: 'Enter slides', exact: true }).click();
+      await page.keyboard.press('Home');
+      await expect(page.locator('#counter')).toHaveText('1 / 20');
+      const baseline = await geometry();
+      await expect(page.locator('.presenter-dock')).toHaveCSS('position', 'fixed');
+      expect(baseline[0].y + baseline[0].height).toBeLessThanOrEqual(size.height);
+      if (!slides) expect(baseline[0].y + baseline[0].height).toBe(size.height);
+      for (let n = 1; n <= 20; n++) {
+        // Exercise real navigation through short/long titles and 9 -> 10 digits.
+        if (n > 1) {
+          if (n % 2) await page.getByRole('button', { name: 'Next slide', exact: true }).click();
+          else await page.keyboard.press('ArrowRight');
+        }
+        await expect(page.locator('#counter')).toHaveText(`${n} / 20`);
+        const actual = await geometry();
+        for (const [i, rect] of actual.entries()) {
+          for (const key of ['x', 'y', 'width', 'height']) {
+            expect(
+              Math.abs(rect[key] - baseline[i][key]),
+              `${size.width}, slides=${slides}, slide=${n}, ${rect.id}.${key}`,
+            ).toBeLessThan(0.5);
+          }
+          expect(rect.x).toBeGreaterThanOrEqual(0);
+          expect(rect.x + rect.width).toBeLessThanOrEqual(size.width);
+        }
+      }
+      await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
+      expect(await geometry()).toEqual(baseline);
+      if (size.width === 1440)
+        await page.screenshot({
+          path: testInfo.outputPath(slides ? 'fixed-slide-dock.png' : 'fixed-document-dock.png'),
+        });
+      if (slides) await page.keyboard.press('Escape');
+    }
+  }
+});
+
 test('presenter overview searches all slides, jumps by title and restores focus', async ({
   page,
 }, testInfo) => {

@@ -43,6 +43,10 @@ surfaces and retains the existing 20-page export.
 - Route: `/presentation`, all named anchors, plus offline generated HTML.
 - Navigation: immediate for keyboard and reduced-motion users. Pointer navigation
   has a 150 ms opacity-only transition using the Web Animations API.
+- The dock stays fixed to the viewport bottom. Its slide-title area has a reserved
+  width at each breakpoint, so changing titles or slide numbers does not move the
+  buttons. A stable scrollbar gutter prevents short and tall pages from shifting
+  the controls horizontally.
 - Rapid navigation cancels the previous slide animation before showing the next.
   There is never an outgoing interactive slide underneath the active slide.
 - Fullscreen entry is guarded while its promise settles. Fit changes are not

@@ -127,6 +127,9 @@ Default to the document-style card and full-width navigation footer. Enter slide
 is an explicit mode with a fixed 1280×720 canvas and 56px horizontal/40px vertical
 safe margins. Scale content uniformly within those margins, then fit the canvas
 to the viewport. Preserve notes, overview, timer, tables and same-slide return.
+Keep the bottom dock and its navigation targets stationary across slide changes.
+Reserve the topic/counter width and scrollbar gutter; do not size the dock from
+the current title. Test every slide in both modes at desktop and phone widths.
 
 Keep the 20-slide deck in this order: my approach and a concrete editing task,
 all workflows, harness and interfaces, grading and verification, then dedicated

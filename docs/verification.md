@@ -1,5 +1,22 @@
 # Verification and evidence
 
+## Stationary bottom navigation: 2026-10-05
+
+- The topic label previously changed the slide-picker width, moving neighboring
+  buttons and resizing the floating dock. Reserved its width at each breakpoint,
+  fixed its height, made viewport positioning explicit, and reserved the page
+  scrollbar gutter. No navigation animation or study data changed.
+- All **12 targeted browser tests and three presenter-note tests passed** in
+  isolated production workspace `relay-review-validation-h92ote`. The new
+  regression checks the dock and each button's position and size across all
+  20 slides in both modes at four screen sizes. It uses pointer and keyboard
+  navigation, checks the single-to-double-digit counter transition, and verifies
+  that scrolling cannot move the dock. All 160 combinations passed.
+- Inspected the rendered document and slide controls. Existing 16:9/padding,
+  mobile, notes, keyboard, table and production-policy checks passed. All 20
+  print pages passed the clipping check; HTML/PDF were regenerated. The original
+  actor source and frozen root build still match the pre-study receipt.
+
 ## Document view and padded slide canvas: 2026-10-05
 
 - Restored the document-style card and full-width Previous/Next footer as the
